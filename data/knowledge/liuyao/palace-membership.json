@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0",
+  "id": "liuyao_palace_membership",
+  "title": "八宫",
+  "summary": "六十四卦在纳甲体系中被分入乾、兑、离、震、巽、坎、艮、坤八宫，每宫各收八卦。每宫从上下相同的纯卦出发，初至五爻依次变化，返变四爻形成游魂，再把内卦三爻同时变回形成归魂；八个位置始终沿用宫首经卦的五行。",
+  "palaces": [
+    {"name": "乾", "element": "金"}, {"name": "兑", "element": "金"},
+    {"name": "离", "element": "火"}, {"name": "震", "element": "木"},
+    {"name": "巽", "element": "木"}, {"name": "坎", "element": "水"},
+    {"name": "艮", "element": "土"}, {"name": "坤", "element": "土"}
+  ],
+  "stages": ["本宫", "一世", "二世", "三世", "四世", "五世", "游魂", "归魂"],
+  "palace_members": [
+    {"name": "乾", "palace": "乾宫", "element": "金", "code": "111", "members": [
+      {"stage": "本宫", "name": "乾为天"}, {"stage": "一世", "name": "天风姤"}, {"stage": "二世", "name": "天山遁"}, {"stage": "三世", "name": "天地否"},
+      {"stage": "四世", "name": "风地观"}, {"stage": "五世", "name": "山地剥"}, {"stage": "游魂", "name": "火地晋"}, {"stage": "归魂", "name": "火天大有"}
+    ]},
+    {"name": "兑", "palace": "兑宫", "element": "金", "code": "011", "members": [
+      {"stage": "本宫", "name": "兑为泽"}, {"stage": "一世", "name": "泽水困"}, {"stage": "二世", "name": "泽地萃"}, {"stage": "三世", "name": "泽山咸"},
+      {"stage": "四世", "name": "水山蹇"}, {"stage": "五世", "name": "地山谦"}, {"stage": "游魂", "name": "雷山小过"}, {"stage": "归魂", "name": "雷泽归妹"}
+    ]},
+    {"name": "离", "palace": "离宫", "element": "火", "code": "101", "members": [
+      {"stage": "本宫", "name": "离为火"}, {"stage": "一世", "name": "火山旅"}, {"stage": "二世", "name": "火风鼎"}, {"stage": "三世", "name": "火水未济"},
+      {"stage": "四世", "name": "山水蒙"}, {"stage": "五世", "name": "风水涣"}, {"stage": "游魂", "name": "天水讼"}, {"stage": "归魂", "name": "天火同人"}
+    ]},
+    {"name": "震", "palace": "震宫", "element": "木", "code": "001", "members": [
+      {"stage": "本宫", "name": "震为雷"}, {"stage": "一世", "name": "雷地豫"}, {"stage": "二世", "name": "雷水解"}, {"stage": "三世", "name": "雷风恒"},
+      {"stage": "四世", "name": "地风升"}, {"stage": "五世", "name": "水风井"}, {"stage": "游魂", "name": "泽风大过"}, {"stage": "归魂", "name": "泽雷随"}
+    ]},
+    {"name": "巽", "palace": "巽宫", "element": "木", "code": "110", "members": [
+      {"stage": "本宫", "name": "巽为风"}, {"stage": "一世", "name": "风天小畜"}, {"stage": "二世", "name": "风火家人"}, {"stage": "三世", "name": "风雷益"},
+      {"stage": "四世", "name": "天雷无妄"}, {"stage": "五世", "name": "火雷噬嗑"}, {"stage": "游魂", "name": "山雷颐"}, {"stage": "归魂", "name": "山风蛊"}
+    ]},
+    {"name": "坎", "palace": "坎宫", "element": "水", "code": "010", "members": [
+      {"stage": "本宫", "name": "坎为水"}, {"stage": "一世", "name": "水泽节"}, {"stage": "二世", "name": "水雷屯"}, {"stage": "三世", "name": "水火既济"},
+      {"stage": "四世", "name": "泽火革"}, {"stage": "五世", "name": "雷火丰"}, {"stage": "游魂", "name": "地火明夷"}, {"stage": "归魂", "name": "地水师"}
+    ]},
+    {"name": "艮", "palace": "艮宫", "element": "土", "code": "100", "members": [
+      {"stage": "本宫", "name": "艮为山"}, {"stage": "一世", "name": "山火贲"}, {"stage": "二世", "name": "山天大畜"}, {"stage": "三世", "name": "山泽损"},
+      {"stage": "四世", "name": "火泽睽"}, {"stage": "五世", "name": "天泽履"}, {"stage": "游魂", "name": "风泽中孚"}, {"stage": "归魂", "name": "风山渐"}
+    ]},
+    {"name": "坤", "palace": "坤宫", "element": "土", "code": "000", "members": [
+      {"stage": "本宫", "name": "坤为地"}, {"stage": "一世", "name": "地雷复"}, {"stage": "二世", "name": "地泽临"}, {"stage": "三世", "name": "地天泰"},
+      {"stage": "四世", "name": "雷天大壮"}, {"stage": "五世", "name": "泽天夬"}, {"stage": "游魂", "name": "水天需"}, {"stage": "归魂", "name": "水地比"}
+    ]}
+  ],
+  "generation_path": [
+    {"stage": "本宫", "step": "纯卦起点", "changed_from_previous": [], "different_from_pure": [], "note": "上下卦相同，作为本宫其余七卦的变化起点。"},
+    {"stage": "一世", "step": "初爻变", "changed_from_previous": [1], "different_from_pure": [1], "note": "从本宫卦先改变初爻，得到一世卦。"},
+    {"stage": "二世", "step": "二爻接着变", "changed_from_previous": [2], "different_from_pure": [1, 2], "note": "保留初爻变化，再改变二爻。"},
+    {"stage": "三世", "step": "三爻接着变", "changed_from_previous": [3], "different_from_pure": [1, 2, 3], "note": "内卦三爻至此全部相对本宫发生变化。"},
+    {"stage": "四世", "step": "四爻接着变", "changed_from_previous": [4], "different_from_pure": [1, 2, 3, 4], "note": "变化越过内外卦边界，继续到四爻。"},
+    {"stage": "五世", "step": "五爻接着变", "changed_from_previous": [5], "different_from_pure": [1, 2, 3, 4, 5], "note": "一世至五世沿初、二、三、四、五爻逐次推进。"},
+    {"stage": "游魂", "step": "返变四爻", "changed_from_previous": [4], "different_from_pure": [1, 2, 3, 5], "note": "不继续改变上爻，而是把四爻返回，形成每宫第七卦。"},
+    {"stage": "归魂", "step": "内卦三爻同变", "changed_from_previous": [1, 2, 3], "different_from_pure": [5], "note": "从游魂卦同时改变初、二、三爻，使内卦回到本宫经卦，形成每宫第八卦。"}
+  ],
+  "generation_notes": [
+    "一世至五世的数字同时对应本步新改变的爻位。",
+    "游魂与归魂是八宫序列中的第七、第八位置，不由名称直接推出吉凶。",
+    "部分程序以固定内外卦名单识别游魂、归魂；名单可以核对结果，但不能替代逐爻生成路径。"
+  ],
+  "reading_boundary": "八宫归属在这里用于说明六十四卦怎样分组以及六亲关系基准从哪里来，不把宫名、游魂归魂或世次直接解释为吉凶。",
+  "internal_review": {
+    "status": "all_eight_palaces_sixty_four_members_and_generation_path_cross_checked",
+    "reviewed_at": "2026-08-04",
+    "source_refs": ["github_chxb_jishiyu_97b6d6d", "bushi_zhengzong_scan_volume_1_pdf_page_20_hexagram_names", "bushi_zhengzong_scan_volume_1_pdf_pages_34_58_palace_tables", "zengshan_buyi_wikisource_chapter_3_eight_palaces"],
+    "boundary": "公开八宫各八卦完整名单、共同变序和宫五行；不提供排卦输入，不把宫名或阶段转成事件结果。"
+  }
+}

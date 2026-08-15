@@ -1,0 +1,55 @@
+{
+  "schema_version":"1.0.0",
+  "id":"five-essence-cycle-coordinates",
+  "title":"天皇、帝符、天时、太尊与五行的周期坐标",
+  "summary":"《太乙金镜式经》卷七为天皇、帝符、天时、太尊、五行分别给出二十、二十、十二、四、五的小周，但它们并不共享同一种坐标：天皇与帝符沿十六神位并在四个指定神名重留，天时从吕申位起行十二辰，太尊从八宫起行四正宫，五行则在小周五之外另列一、三、五、七、九、二、四、六、八的宫数步序。锁定实现保留了天皇武德位、帝符阴主位和天时吕申位的起点，却把二十周重留改成末段折返，并在整除分支切回未旋转的十六位；天时函数实际走含四维的十六位表，太尊与五行还会在周期边界改变返回坐标。据此分开保存原典规则、坐标域、固定输出和边界异常，不展示十精合宫后的天象、灾异或行动判断。",
+  "fixed_input":"1552年9月24日 0时0分 · 年计",
+  "coordinate_domains":[
+    {"id":"sixteen","name":"十六神位","values":"子、丑、艮、寅、卯、辰、巽、巳、午、未、坤、申、酉、戌、乾、亥","used_by":"天皇、帝符","note":"位置附有地主至大义的十六神名；神名不能按字面误作地支。"},
+    {"id":"twelve","name":"十二辰","values":"寅、卯、辰、巳、午、未、申、酉、戌、亥、子、丑","used_by":"天时","note":"从吕申所在寅位起；四维艮、巽、坤、乾不属于十二地支。"},
+    {"id":"four","name":"四正宫","values":"8、2、4、6宫（子、午、卯、酉）","used_by":"太尊","note":"数字宫与正宫位置可对应，但返回时必须说明使用哪一层。"},
+    {"id":"nine","name":"九宫步序","values":"1、3、5、7、9、2、4、6、8","used_by":"五行","note":"原典同时称小周五；周期数和所列九步的关系仍待底本级复核。"}
+  ],
+  "objects":[
+    {"id":"heaven-emperor","name":"天皇","classical_cycle":"小周20","classical_start":"武德 · 申位","classical_path":"顺行十六神；阴德、大炅、大武、和德各重留一算","domain":"十六神位","implementation":"积年mod 20；通常从申旋转十六位，但余17—19无键；整除20时改查未旋转十六位","status":"起点同 · 重留与整除不同","tone":"unstable"},
+    {"id":"imperial-tally","name":"帝符","classical_cycle":"小周20","classical_start":"阴主 · 戌位","classical_path":"顺行十六神；地主、高丛、大威、太簇各重留一算","domain":"十六神位","implementation":"积年mod 20；从戌旋转十六位，余17—19折回前3位；整除20先反复除20再取余","status":"起点同 · 重留位置不同","tone":"different"},
+    {"id":"heaven-time","name":"天时","classical_cycle":"小周12","classical_start":"吕申 · 寅位","classical_path":"从寅顺行十二地支","domain":"十二辰","implementation":"通常从寅旋转十六位表并取前12项；整除12时改查未旋转十六位","status":"起点同 · 坐标表不同","tone":"different"},
+    {"id":"great-honored","name":"太尊","classical_cycle":"小周4","classical_start":"8宫 · 子位","classical_path":"顺行四正宫：8、2、4、6宫","domain":"四正宫","implementation":"非整除时返回子、午、卯；余0改查未旋转十六位，故酉分支在普通模4路径不可达","status":"边界改变路径与返回域","tone":"unstable"},
+    {"id":"five-phases","name":"五行","classical_cycle":"小周5","classical_start":"1宫","classical_path":"另列3、5、7、9、2、4、6、8，连同起点形成九宫步序","domain":"九宫数字","implementation":"非整除时按1—4返回乾、子、艮、巽；余0反复除5后以其mod 5查未旋转十六位","status":"周期、步序与返回坐标未对齐","tone":"unstable"}
+  ],
+  "method_results":[
+    {"method":0,"label":"太乙统宗","accumulated":10155469,"board":"阳遁十三局","remainders":{"天皇":9,"帝符":9,"天时":1,"太尊":1,"五行":4},"returns":{"天皇":"寅","帝符":"辰","天时":"寅","太尊":"子","五行":"巽"},"status":"与太乙局相同"},
+    {"method":1,"label":"太乙金镜","accumulated":1938109,"board":"阳遁十三局","remainders":{"天皇":9,"帝符":9,"天时":1,"太尊":1,"五行":4},"returns":{"天皇":"寅","帝符":"辰","天时":"寅","太尊":"子","五行":"巽"},"status":"与统宗、太乙局相同"},
+    {"method":2,"label":"太乙淘金歌","accumulated":10155745,"board":"阳遁一局","remainders":{"天皇":5,"帝符":5,"天时":1,"太尊":1,"五行":0},"returns":{"天皇":"亥","帝符":"丑","天时":"寅","太尊":"子","五行":"寅"},"status":"五行触发整除分支"},
+    {"method":3,"label":"太乙局","accumulated":10155469,"board":"阳遁十三局","remainders":{"天皇":9,"帝符":9,"天时":1,"太尊":1,"五行":4},"returns":{"天皇":"寅","帝符":"辰","天时":"寅","太尊":"子","五行":"巽"},"status":"与统宗完全相同"}
+  ],
+  "boundary_samples":[
+    {"input":17,"object":"天皇","intermediate":"17 mod 20 = 17；旋转表只有1—16键","return":"空","status":"小周20的第17算未返回"},
+    {"input":20,"object":"天皇／帝符","intermediate":"整除20后反复除20得到1","return":"天皇子 · 帝符戌","status":"天皇切回未旋转表；帝符仍以戌为首"},
+    {"input":12,"object":"天时","intermediate":"整除12后反复除12得到1","return":"子","status":"与普通余1返回寅采用不同起点"},
+    {"input":4,"object":"太尊","intermediate":"4 mod 4 = 0；反复除4得到1","return":"子","status":"第4算未返回酉，转入十六位特殊分支"},
+    {"input":5,"object":"五行","intermediate":"5 mod 5 = 0；反复除5得到1","return":"子","status":"第5算未走非整除表中的坤键，且不返回宫数"}
+  ],
+  "layer_differences":[
+    {"label":"神名不能按字面读成地支","classical":"天时从‘吕申’起；天皇从‘武德’起；帝符从‘阴主’起","implementation":"三者分别从寅、申、戌旋转，正对应三个神名的固定位置","handling":"起点标为一致；不把吕申误读成申支，也不把武德、阴主当作移动对象。"},
+    {"label":"二十周不是十六位后简单折返","classical":"天皇、帝符各指定四个不同神位重留，借此由十六算组成二十周","implementation":"帝符把余17—19折回旋转表前端；天皇余17—19直接为空","handling":"重留条件单列，不用实现折返替代原典四个重留点。"},
+    {"label":"十二辰不等于十六神位前十二项","classical":"天时顺行十二辰","implementation":"函数从寅开始读取十六位表，途中包含巽、坤等四维","handling":"本节点把十二地支与十六位分成两个坐标域。"},
+    {"label":"整除分支改变起点或坐标","classical":"各小周以同一规则循环","implementation":"天皇、天时、太尊、五行在余0时切换到未旋转gong1或另一套取值逻辑","handling":"整除样本独立显示，不把边界返回外推成传统周期。"},
+    {"label":"五行原典自身仍有计数疑点","classical":"称小周五，却从一宫起并续列三五七九二四六八，共呈九宫步序","implementation":"按mod 5返回位置字符串，未实现这条完整九宫数字序列","handling":"保留‘小周5’与‘九步宫序’两条原文信息，等待影像和其他底本校勘。"},
+    {"label":"高风险解释不公开","classical":"各段附与太乙、飞鸟等合位后的风雨、日月和云气说明","implementation":"可继续组合多个十精位置输出","handling":"范围止于周期与坐标，不展示气象、灾异、战争或行动结论。"}
+  ],
+  "reading_boundaries":[
+    {"label":"可识别","note":"五个对象各自的小周、起点、路径与坐标域。"},
+    {"label":"可复核","note":"固定四个method的函数返回，以及17、20、12、4、5等边界输入。"},
+    {"label":"待校勘","note":"天皇、帝符二十算逐步复原与五行小周五／九宫步序之间的关系。"},
+    {"label":"不由此推出","note":"任何现实天象、气候、灾异、战争、地域、行动或个人结果。"}
+  ],
+  "public_sources":[
+    {"title":"《太乙金鏡式經》卷七：天皇、帝符、天时、太尊与五行","url":"https://ctext.org/wiki.pl?chapter=469355&if=gb&remap=gb","note":"第6至15条依次列五者的小周、起点、重留点或行宫序列；来源连接四库影像，五行计数关系仍待回看底本。"},
+    {"title":"《太乙金鏡式經》卷二：十六神名称与位置","url":"https://ctext.org/wiki.pl?chapter=275091&if=gb&remap=gb","note":"第20至37条说明吕申在寅、武德在申、阴主在戌等固定名称与位置；用于避免按名称字面误判起点。"},
+    {"title":"kintaiyi锁定五个周期函数","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/config.py#L645-L693","note":"固定提交的wuxing、kingfu、tian_wang、tian_shi、taijun定义余数、旋转表与整除分支。"},
+    {"title":"kintaiyi锁定十六位、神名与宫数配置","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/config.py#L52-L67","note":"固定提交列十六位、十六神名、十六位到八个外宫数字的映射，为坐标域核对依据。"},
+    {"title":"kintaiyi锁定固定例输入","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/examples/basic_usage.py#L13-L20","note":"固定输入1552-09-24 00:00、年计；本页在临时锁定环境复跑method 0—3与五组周期边界。"}
+  ],
+  "internal_review":{"status":"formal_five_essence_cycle_coordinate_audit","reviewed_at":"2026-08-06","owner":["火华","Codex"],"runtime_environment":"temporary Python venv; locked repository commit installed from source","runtime_command":"config.tian_wang/kingfu/tian_shi/taijun/wuxing(accnum), method=0..3 plus boundary inputs 4, 5, 12, 17, 20","deduplication":"不并入‘十六神名称与四时序列’：该页定义固定位置神名，本页审计五个会随积年移动的十精对象。不并入风鸟周期：风鸟主要返回九宫数字，本页同时跨十六位、十二辰、四正宫与九宫四种坐标。不并入九宫与十六神位：坐标页定义通用映射，本页关注五条周期怎样使用或混用这些坐标。","known_gaps":["卷七五行小周五与九宫步序的关系未完成影像及异本校勘","天皇与帝符的二十算尚未形成独立逐步复原表","五个函数未发现专项测试"],"boundary":"固定样本、无真人输入、无随机；本节点不展示天象、风雨、云气、灾异、战争、地域、行动或个人断语。"}
+}

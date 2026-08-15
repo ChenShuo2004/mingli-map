@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "id": "tarot-meaning-lineages",
+  "title": "牌义来源：Mathers与Waite版本",
+  "summary": "以早期纸牌、Mathers 1888和Waite 1910为三个明确节点，理解牌义必须跟随作者与版本保存。",
+  "stages": [
+    {"id":"game","period":"15世纪","label":"纸牌游戏","author":"早期牌组","object":"牌组与王牌","note":"现存记录先支撑纸牌游戏与牌组结构，不能把后来作者的占卜牌义倒推为早期牌面原意。","source_id":"met"},
+    {"id":"mathers","period":"1888","label":"作者牌义版本","author":"S. L. MacGregor Mathers","object":"78张牌的意义与方法","note":"Mathers出版独立的塔罗著作，书中分别设置牌义与占卜方法；这是有作者和年份的版本。","source_id":"mathers"},
+    {"id":"waite","period":"1910","label":"RWS作者版本","author":"A. E. Waite","object":"RWS牌面说明与正逆位牌义","note":"Waite围绕Smith绘制的RWS牌面写作，并给出自己的正位与逆位词义；本专题的单牌资料以这一版本为固定对照。","source_id":"waite"}
+  ],
+  "fixed_card": {"number":"I","name":"魔术师","image":"TheMagician.png","route":"/topic/tarot/major-arcana-images?card=I&mode=upright"},
+  "same_card_layers": [
+    {"id":"image","label":"牌面","value":"桌前人物举起权杖，桌上放着四类物件。","kind":"可直接观察"},
+    {"id":"source","label":"Waite 1910","value":"读取Waite在原书中为这张牌写下的正位或逆位短义。","kind":"作者陈述"},
+    {"id":"context","label":"放入问题与牌位","value":"结合当前问题、牌阵版本、牌位任务和方向形成当次理解。","kind":"情境解释"},
+    {"id":"boundary","label":"仍不能证明","value":"单张牌不能证明未来必然发生，也不能替未在场者陈述内心。","kind":"未知与边界"}
+  ],
+  "source_checklist": ["作者或组织是谁？","出版或固定版本是哪一年？","使用的是哪一副牌面？","原文、翻译还是二次摘要？","正逆位与牌阵规则是否属于同一版本？"],
+  "linked_nodes": [
+    {"label":"塔罗历史与牌系","route":"/topic/tarot/history-and-decks","note":"先确认牌系和时代。"},
+    {"label":"RWS大阿卡纳：牌面与Waite牌义","route":"/topic/tarot/major-arcana-images?card=I&mode=upright","note":"同一张牌内查看牌面与Waite牌义。"},
+    {"label":"解读语言与不确定性","route":"/topic/tarot/interpretive-uncertainty","note":"把来源陈述与当次理解分开表达。"}
+  ],
+  "boundary":"本页展示版本谱系与来源检查，不把不同作者的牌义合并成一套通用关键词。",
+  "public_sources": [
+    {"id":"met","title":"大都会艺术博物馆：塔罗的早期游戏用途","note":"支撑15世纪意大利北部的早期纸牌记录与牌组结构，避免把后起牌义倒推为原始用途。","url":"https://www.metmuseum.org/perspectives/tarot-2"},
+    {"id":"mathers","title":"WorldCat：Mathers《The Tarot》1888书目","note":"确认作者、1888出版年份、伦敦Redway出版社及著作身份。","url":"https://search.worldcat.org/title/637249905"},
+    {"id":"mathers_text","title":"Internet Sacred Text Archive：Mathers《The Tarot》","note":"目录分别列出牌义、占卜方法、玩法与神秘主义意义，支撑其为独立作者版本。","url":"https://sacred-texts.com/tarot/mathers/index.htm"},
+    {"id":"waite","title":"Wikisource：Waite《The Pictorial Key to the Tarot》","note":"支撑RWS牌面说明、78张牌的正逆位牌义及作者版本身份。","url":"https://en.wikisource.org/wiki/The_Pictorial_Key_to_the_Tarot"}
+  ],
+  "internal_review": {"status":"formal_meaning_lineage_node","reviewed_at":"2026-08-07","source_refs":["met_tarot_history_structure","worldcat_mathers_637249905","sacred_texts_mathers_1888","wikisource_waite_pictorial_key"],"ownership":"K-TAROT.10 解释来源","boundary":"出版物与作者版本并列，不复制现代受限牌义，不合成唯一解释。"}
+}

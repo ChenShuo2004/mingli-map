@@ -1,0 +1,30 @@
+{
+  "id": "character-forms",
+  "title": "繁体、简体与异体字",
+  "summary": "原字、规范字、繁简对应、异体关系和屏幕字形是不同字段；转换后的字不能覆盖原姓名，也不能把繁体字与异体字当成同一种关系。",
+  "form_layers": [
+    {"id": "original", "label": "原字", "question": "实际输入或登记的是什么字？", "record": "原始字符与编码"},
+    {"id": "standard", "label": "规范字", "question": "在所选地区规范中采用什么字形？", "record": "规范体系与字表版本"},
+    {"id": "traditional", "label": "繁简关系", "question": "规范简化字对应哪些繁体字？", "record": "对应方向与语义条件"},
+    {"id": "variant", "label": "异体关系", "question": "音义和使用功能相同而字形不同吗？", "record": "正字、异体字与适用范围"},
+    {"id": "glyph", "label": "显示字形", "question": "同一编码在字体或地区中怎样显示？", "record": "字体、语言环境与字形快照"}
+  ],
+  "relation_examples": [
+    {"input": "发", "type": "一对多繁简关系", "matches": ["發", "髮"], "point": "必须结合词义，不能机械替换"},
+    {"input": "斗", "type": "同形分流", "matches": ["斗", "鬥"], "point": "量器义与争斗义的繁体写法不同"},
+    {"input": "喆", "type": "姓名用字范围", "matches": ["哲"], "point": "《通用规范汉字表》将喆收入三级字表，专作姓名用字"}
+  ],
+  "preservation_fields": ["原字符", "Unicode码点", "规范地区", "转换结果", "对应关系", "字表版本", "显示字体"],
+  "boundaries": [
+    "转换只生成另一个字段，不覆盖原姓名",
+    "简繁转换可能一对多或多对一，必须保存转换方向和语义条件",
+    "异体字关系不自动等于简体字与繁体字关系",
+    "同一Unicode字符可能因字体和地区呈现不同字形；显示差异不自动产生新字符",
+    "字形关系只确认字符身份，不决定姓名学笔画数"
+  ],
+  "public_sources": [
+    {"title": "教育部：《通用规范汉字表》的基本内容和特点", "note": "用于规范字、繁体字和异体字三类关系，以及96组非一一对应繁简字和姓名专用字的说明。", "url": "https://www.moe.gov.cn/jyb_xwfb/xw_fbh/moe_2069/s7135/s7562/s7569/201308/t20130827_156353.html"},
+    {"title": "教育部《重编国语辞典修订本》：单字基本体例", "note": "用于区分正字、异体字、部首外笔画与总笔画字段。", "url": "https://dict.revised.moe.edu.tw/page.jsp?ID=18"},
+    {"title": "Unicode Standard：CJK与汉字统一原则", "note": "用于说明字符编码与实际显示字形不是同一层。", "url": "https://unicode.org/versions/Unicode12.1.0/ch18.pdf"}
+  ]
+}

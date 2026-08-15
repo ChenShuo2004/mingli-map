@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "id": "ziwei_flanking_hidden_palaces",
+  "title": "夹宫与暗合宫",
+  "summary": "夹宫与暗合宫是两条不同的宫位关系：夹宫取目标地支位前后相邻的两宫，暗合宫则按地支六合为目标位找到唯一配对宫。前者每个目标产生左右两个邻位，后者把十二地支组成六条双向配对；它们都不等于三方四正，也不自动携带星曜、四化或事件解释。",
+  "branch_order": ["寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥", "子", "丑"],
+  "relation_definitions": [
+    {"id":"target","label":"本宫","count":1,"rule":"当前选择的目标地支位","note":"关系计算的起点，不预设某个真人命宫。"},
+    {"id":"flanking","label":"夹宫","count":2,"rule":"目标位在十二支循环中的前一格与后一格","note":"寅位的两个夹宫是丑位和卯位；跨过序列首尾仍按十二格循环。"},
+    {"id":"hidden","label":"暗合宫","count":1,"rule":"目标地支的六合配对位","note":"十二支组成六条互为暗合的双向关系，每个地支只有一个配对位。"},
+    {"id":"surrounded","label":"三方四正","count":4,"rule":"本宫、顺数4格、顺数6格、顺数8格","note":"这里只作已发布节点的比较坐标，不复制其12组正式关系表。"}
+  ],
+  "hidden_pairs": [
+    {"branches":["子","丑"],"element":"土"},
+    {"branches":["寅","亥"],"element":"木"},
+    {"branches":["卯","戌"],"element":"火"},
+    {"branches":["辰","酉"],"element":"金"},
+    {"branches":["巳","申"],"element":"水"},
+    {"branches":["午","未"],"element":"土"}
+  ],
+  "relation_table": [
+    {"target":"寅","previous":"丑","next":"卯","hidden":"亥","trines":["午","戌"],"opposite":"申"},
+    {"target":"卯","previous":"寅","next":"辰","hidden":"戌","trines":["未","亥"],"opposite":"酉"},
+    {"target":"辰","previous":"卯","next":"巳","hidden":"酉","trines":["申","子"],"opposite":"戌"},
+    {"target":"巳","previous":"辰","next":"午","hidden":"申","trines":["酉","丑"],"opposite":"亥"},
+    {"target":"午","previous":"巳","next":"未","hidden":"未","trines":["戌","寅"],"opposite":"子"},
+    {"target":"未","previous":"午","next":"申","hidden":"午","trines":["亥","卯"],"opposite":"丑"},
+    {"target":"申","previous":"未","next":"酉","hidden":"巳","trines":["子","辰"],"opposite":"寅"},
+    {"target":"酉","previous":"申","next":"戌","hidden":"辰","trines":["丑","巳"],"opposite":"卯"},
+    {"target":"戌","previous":"酉","next":"亥","hidden":"卯","trines":["寅","午"],"opposite":"辰"},
+    {"target":"亥","previous":"戌","next":"子","hidden":"寅","trines":["卯","未"],"opposite":"巳"},
+    {"target":"子","previous":"亥","next":"丑","hidden":"丑","trines":["辰","申"],"opposite":"午"},
+    {"target":"丑","previous":"子","next":"寅","hidden":"子","trines":["巳","酉"],"opposite":"未"}
+  ],
+  "comparison": [
+    {"label":"夹宫","output":"2个相邻位","distance":"−1、＋1","basis":"十二支循环邻接","question":"谁紧邻目标位？"},
+    {"label":"暗合宫","output":"1个配对位","distance":"不按固定步数","basis":"地支六合六组表","question":"谁与目标位六合？"},
+    {"label":"三方四正","output":"本宫＋3个跨宫位","distance":"＋4、＋6、＋8","basis":"三合与六冲位置","question":"目标位的四宫关系网是什么？"}
+  ],
+  "fixed_examples": [
+    {"target":"寅","flanking":["丑","卯"],"hidden":"亥","surrounded":["寅","午","申","戌"],"note":"夹宫只取相邻丑、卯；暗合取亥；三方四正另取午、申、戌。四组位置不可互相代替。"},
+    {"target":"午","flanking":["巳","未"],"hidden":"未","surrounded":["午","戌","子","寅"],"note":"午位的后一夹宫恰好也是暗合宫未位，表示两条关系在此重合，不表示两种关系定义相同。"}
+  ],
+  "boundaries": [
+    {"label":"位置重合不等于关系合并","note":"午—未与子—丑等六合对本身也相邻；页面同时标出两个标签，仍保留“邻接”与“六合”两条生成依据。"},
+    {"label":"暗合宫不是第十三宫","note":"它是十二个既有地支位之间的配对关系，不增加新的盘格，也不改变十二宫名称。"},
+    {"label":"不展开格局与飞化","note":"来源用明科暗禄举例说明暗合的使用语境；本节点不据此收录格局条件，也不生成宫干飞化网络。"},
+    {"label":"不把关系翻译成事件","note":"命中夹宫或暗合宫只说明坐标关系，不自动推出感情、事业、财富、健康或吉凶结论。"}
+  ],
+  "public_sources": [
+    {"title":"iztro基础扫盲：夹宫定义","note":"官方学习文档把夹宫定义为目标宫位前后两个宫位。","url":"https://docs.iztro.com/learn/basis.html#宫位"},
+    {"title":"iztro基础扫盲：地支六合","note":"官方学习文档列出子丑、寅亥、卯戌、辰酉、巳申、午未六组六合，并说明该表用于暗合宫。","url":"https://docs.iztro.com/learn/basis.html#地支六合"},
+    {"title":"iztro宫位知识：暗合宫","note":"官方宫位文档明确暗合宫来自地支六合，并用盘面纵向镜像展示十二位的六组配对。","url":"https://docs.iztro.com/learn/palace.html#暗合宫"},
+    {"title":"iztro锁定地支次序","note":"锁定源码保存子、丑、寅至亥的十二支循环；本页改从寅位显示，但邻接计算仍是同一循环。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/data/constants.ts#L18-L32"}
+  ],
+  "internal_review": {
+    "status":"formal_flanking_hidden_palace_relations",
+    "reviewed_at":"2026-08-06",
+    "source_refs":["github_sylarlong_iztro_2fb2030"],
+    "ownership":"K-ZW.06 三方四正与飞化网络",
+    "deduplication":"不并入三方四正：该节点只保存本宫、两个三合方和对宫，本对象新增前后相邻两宫与六合唯一配对；不并入十二宫盘面：十二宫只提供地支坐标，本对象保存坐标之间的关系；不并入飞化网络：夹宫与暗合关系不读取宫干、星曜或四化。",
+    "boundary":"只开放十二地支抽象位置、两侧夹宫、六合暗合与三方四正对照，不接收真人资料，不解释格局、飞化、事件或吉凶。"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "schema_version":"1.0.0",
+  "id":"qimen_door_palace_overcoming",
+  "title":"门迫与宫制的五行方向",
+  "summary":"门迫与宫制使用同一组八门五行和九宫五行，却把克制方向反过来：门克宫称门迫，宫克门称宫制。先分清谁克谁，再查门实际落宫；当前表只覆盖八门所在的八个外围宫，不把飞盘、鸣法的中门自动并入。",
+  "door_elements":[
+    {"doors":["开门","惊门"],"element":"金"},
+    {"doors":["休门"],"element":"水"},
+    {"doors":["生门","死门"],"element":"土"},
+    {"doors":["伤门","杜门"],"element":"木"},
+    {"doors":["景门"],"element":"火"}
+  ],
+  "directions":[
+    {"id":"door_overcomes","label":"门迫","formula":"门五行克宫五行","pairs":[
+      {"doors":["开门","惊门"],"palaces":[3,4],"relation":"金克木"},
+      {"doors":["休门"],"palaces":[9],"relation":"水克火"},
+      {"doors":["生门","死门"],"palaces":[1],"relation":"土克水"},
+      {"doors":["伤门","杜门"],"palaces":[2,8],"relation":"木克土"},
+      {"doors":["景门"],"palaces":[6,7],"relation":"火克金"}
+    ]},
+    {"id":"palace_overcomes","label":"宫制","formula":"宫五行克门五行","pairs":[
+      {"doors":["开门","惊门"],"palaces":[9],"relation":"火克金"},
+      {"doors":["休门"],"palaces":[2,8],"relation":"土克水"},
+      {"doors":["生门","死门"],"palaces":[3,4],"relation":"木克土"},
+      {"doors":["伤门","杜门"],"palaces":[6,7],"relation":"金克木"},
+      {"doors":["景门"],"palaces":[1],"relation":"水克火"}
+    ]}
+  ],
+  "fixed_checks":[
+    {"time":"2024-01-15 12:00","door":"惊门","palace":4,"result":"金门克巽木宫 · 门迫"},
+    {"time":"2024-06-21 12:00","door":"开门","palace":6,"result":"同属金 · 非门迫、非宫制"},
+    {"time":"2024-12-21 00:00","door":"休门","palace":1,"result":"同属水 · 非门迫、非宫制"}
+  ],
+  "reading_boundaries":[
+    "页面只展示五行方向与完整组合，不把门迫、宫制换算成吉凶比例。",
+    "必须使用门的实际落宫；八门原始宫位只用于认对象，不能直接代入。",
+    "中门属于飞盘、鸣法的版本化对象，当前八门表未提供其中宫克制规则。"
+  ],
+  "public_sources":[
+    {"title":"mingli-skills 锁定门迫／宫制表","url":"https://github.com/weizeW/mingli-skills/blob/c16eca0/qimen-dunjia/data/menpo.json","note":"提供八门五行及门迫、宫制两个方向的完整宫位表。"},
+    {"title":"qimen-go 锁定门宫五行与门迫检查","url":"https://github.com/deminzhang/qimen-go/blob/4d3f58fa0f401b5b3a337f119138e99e90685dda/cmd/qimen/main.go#L151-L180","note":"程序用门五行克宫五行识别门迫，并输出固定盘注解。"},
+    {"title":"qimenpaipan 锁定门迫常量","url":"https://github.com/redrockhorse/qimenpaipan/blob/b6de54245cf7a514f59e51833dc01a87e1a3a849/qimenpaipan.py","note":"第二套实现保存13组门迫组合。"}
+  ],
+  "internal_review": {
+    "status":"formal_relation_table",
+    "reviewed_at":"2026-08-09",
+    "owner":["火华","Codex"],
+    "source_refs":["github_weizew_mingli_skills_c16eca0","github_deminzhang_qimen_go_4d3f58f","github_redrockhorse_qimenpaipan_b6de542"],
+    "deduplication":"八门身份与原始宫位另页维护；本页只保存门移动后与实际宫位发生的两种克制方向。",
+    "known_gaps":["宫制只有结构表对照，qimen-go命令行只显式输出门迫。","中门未纳入八门关系表。","缺规则级古籍页码。"],
+    "boundary":"五行关系识别，不输出吉凶或强弱判断。"
+  }
+}

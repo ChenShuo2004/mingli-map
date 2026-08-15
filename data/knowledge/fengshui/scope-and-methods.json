@@ -1,0 +1,20 @@
+{
+  "id": "scope-and-methods",
+  "title": "风水研究什么",
+  "summary": "风水把地形、水势、空间围合、坐向方位和时间规则组织在同一套选址与宅墓观察传统中；不同方法共享对象，但不共享一条统一算法。",
+  "object_layers": [
+    {"id":"terrain","label":"地形水势","items":["山体与高低","来水与去水","开合与围护"]},
+    {"id":"space","label":"空间形态","items":["外部环境","建筑位置","门窗与内部区位"]},
+    {"id":"orientation","label":"方位坐向","items":["八方","二十四山","坐山与朝向"]},
+    {"id":"time","label":"时间层","items":["元运","年序","不同时间盘"]}
+  ],
+  "method_families": [
+    {"label":"形势观察","focus":"山水形态、空间围护与来去关系"},
+    {"label":"方位理气","focus":"方位、卦宫、数序与时间规则"}
+  ],
+  "boundaries": ["形势与理气可以在同一案例中并列，但规则不能互相替换","八宅、玄空等体系分别保存自己的输入与表值","对象与规则的说明不延伸为现实住宅评价"],
+  "public_sources": [
+    {"title":"《葬书》内篇","note":"用于说明风、水、气与地形观察在传统文本中的基本关系。","url":"https://ctext.org/wiki.pl?chapter=346403&if=en"},
+    {"title":"《葬书集注》内篇二","note":"保存‘聚之使不散，行之使有止’及风水名称的文本线索。","url":"https://ctext.org/wiki.pl?chapter=596823&if=en"}
+  ]
+}

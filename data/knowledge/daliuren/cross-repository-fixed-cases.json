@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "id": "daliuren_cross_repository_fixed_cases",
+  "title": "六个固定课例与八专分歧",
+  "summary": "把 kinliuren README及议题中的六组固定输入送入锁定 dalurenpython 后，五组三传与kinliuren当前HEAD一致；唯一分歧是庚申日、亥将、子时的八专例。该例中dalurenpython、qimen-go和原报告期望均为酉未未，kinliuren当前HEAD为巳未未。这增强了工程回归判断，但仍不裁决传统取法。",
+  "headline": "相同输入逐层比较，结果一致与名称一致不是一回事",
+  "steps": [
+    {"label": "冻结输入", "value": "月将 · 占时 · 日干支", "note": "六例都使用明确输入，不读取当前时间。"},
+    {"label": "先比四课", "value": "四组上下神", "note": "确认分歧是否早于取传。"},
+    {"label": "再比三传", "value": "5 同 · 1 异", "note": "只比较初中末三支。"},
+    {"label": "最后比标签", "value": "课体可能另有差异", "note": "三传相同也不自动合并名称。"}
+  ],
+  "facts": [
+    {"label": "总体结果", "detail": "dalurenpython 与 kinliuren HEAD 在六例中5例三传相同。"},
+    {"label": "唯一分歧", "detail": "issue #13：庚申日、亥将、子时；酉未未与巳未未两套结果并列。"},
+    {"label": "证据层级", "detail": "报告期望、作者回复、仓库HEAD、PyPI历史和第三套实现必须分层保存。"}
+  ],
+  "cases": [
+    {"id": "readme", "label": "README例", "month_general": "亥", "zhan_time": "午", "day": "己未", "four_lessons": ["子／己", "巳／子", "子／未", "巳／子"], "dalurenpython": "巳戌卯", "kinliuren": "巳戌卯", "qimen_go": "—", "status": "三传一致", "pattern_note": "dalurenpython标知一；kinliuren历史标签存在返吟／绝嗣差异。"},
+    {"id": "issue-1", "label": "issue #1", "month_general": "酉", "zhan_time": "未", "day": "乙卯", "four_lessons": ["午／乙", "申／午", "巳／卯", "未／巳"], "dalurenpython": "申戌子", "kinliuren": "申戌子", "qimen_go": "—", "status": "三传一致", "pattern_note": "dalurenpython标重审。"},
+    {"id": "issue-5", "label": "issue #5", "month_general": "丑", "zhan_time": "午", "day": "己酉", "four_lessons": ["寅／己", "酉／寅", "辰／酉", "亥／辰"], "dalurenpython": "亥午丑", "kinliuren": "亥午丑", "qimen_go": "—", "status": "三传一致", "pattern_note": "dalurenpython标重审。"},
+    {"id": "issue-6", "label": "issue #6", "month_general": "酉", "zhan_time": "寅", "day": "庚申", "four_lessons": ["卯／庚", "戌／卯", "卯／申", "戌／卯"], "dalurenpython": "戌巳子", "kinliuren": "戌巳子", "qimen_go": "—", "status": "三传一致", "pattern_note": "dalurenpython标知一。"},
+    {"id": "issue-13", "label": "issue #13 · 八专", "month_general": "亥", "zhan_time": "子", "day": "庚申", "four_lessons": ["未／庚", "午／未", "未／申", "午／未"], "dalurenpython": "酉未未", "kinliuren": "巳未未", "qimen_go": "酉未未", "status": "三传分歧", "pattern_note": "原报告期望也是酉未未；加强当前HEAD回归判断，不作为传统裁决。"},
+    {"id": "issue-14", "label": "issue #14", "month_general": "申", "zhan_time": "午", "day": "丁未", "four_lessons": ["酉／丁", "亥／酉", "酉／未", "亥／酉"], "dalurenpython": "酉亥丑", "kinliuren": "酉亥丑", "qimen_go": "—", "status": "三传一致", "pattern_note": "dalurenpython标重审。"}
+  ],
+  "comparisons": [
+    {"label": "issue #13", "left": "dalurenpython／qimen-go／报告：酉未未", "right": "kinliuren HEAD：巳未未", "handling": "保存为实现回归证据"},
+    {"label": "标签层", "left": "三传结果相同", "right": "课体名称可能不同", "handling": "不按三传自动合并标签"}
+  ],
+  "reading_boundaries": ["六个课例只用于复算和比较，不输出事项解释。", "三套实现多数一致不等于传统真理投票。", "issue #13保留为开放分歧，等待可定位底本课例。"],
+  "public_sources": [
+    {"title": "kinliuren 固定课例与议题", "url": "https://github.com/kentang2017/kinliuren/tree/3ba45a9540f08269b56d81508a061c7d46938785", "note": "提供README例、议题输入及当前HEAD结果。"},
+    {"title": "qimen-go issue #13对照实现", "url": "https://github.com/deminzhang/qimen-go/blob/4d3f58fa0f401b5b3a337f119138e99e90685dda/xuan/big6.go", "note": "该固定例输出酉未未。"},
+    {"title": "dalurenpython 固定课例复跑", "url": "https://github.com/wlhyl/dalurenpython/tree/62764a4ad2c10f5ccc34b86c8520d9f4a96ba3aa", "note": "无仓库许可；只发布原创比较结果。"}
+  ],
+  "internal_review": {"reviewed_on": "2026-08-10", "owner": ["火华", "Codex"], "status": "formal_fixed_case_comparison"}
+}

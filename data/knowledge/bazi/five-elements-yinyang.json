@@ -1,0 +1,19 @@
+{
+  "id": "five-elements-yinyang",
+  "title": "阴阳五行与生克",
+  "summary": "木、火、土、金、水是干支关系的基础分类；相生与相克描述它们之间的两种方向。阴阳再区分同一五行内的两类天干，使后续十神关系能继续细分。",
+  "elements": [
+    {"name": "木", "yang_stem": "甲", "yin_stem": "乙", "description": "《洪范》以“曲直”说其性。"},
+    {"name": "火", "yang_stem": "丙", "yin_stem": "丁", "description": "《洪范》以“炎上”说其性。"},
+    {"name": "土", "yang_stem": "戊", "yin_stem": "己", "description": "《洪范》以“稼穑”说其性。"},
+    {"name": "金", "yang_stem": "庚", "yin_stem": "辛", "description": "《洪范》以“从革”说其性。"},
+    {"name": "水", "yang_stem": "壬", "yin_stem": "癸", "description": "《洪范》以“润下”说其性。"}
+  ],
+  "generating_cycle": ["木生火", "火生土", "土生金", "金生水", "水生木"],
+  "overcoming_cycle": ["木克土", "土克水", "水克火", "火克金", "金克木"],
+  "yin_yang_note": "阴阳在这里是同一五行内的分类属性，不是吉凶标签。十神先看五行生克方向，再以阴阳同异区分。",
+  "public_sources": [
+    {"title": "《尚书·洪范》", "note": "列出五行及其基本性质。", "url": "https://zh.wikisource.org/wiki/%E5%B0%9A%E6%9B%B8/%E6%B4%AA%E7%AF%84"},
+    {"title": "《五行大义》卷二", "note": "保留五行相生次序的传统论述。", "url": "https://zh.wikisource.org/wiki/%E4%BA%94%E8%A1%8C%E5%A4%A7%E7%BE%A9/2"}
+  ]
+}

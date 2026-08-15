@@ -1,0 +1,223 @@
+{
+  "schema_version": "1.0",
+  "id": "liuyao_growth_peak_tomb_absolute",
+  "title": "生旺墓绝",
+  "summary": "十二长生把五行沿十二地支排成完整阶段环，《增删卜易》在六爻经验中进一步突出长生、帝旺、墓、绝四个锚点。目标爻五行固定后，日辰、另一动爻或同位变爻带来的地支都可落入这条环；命中墓位时，又依来源分别称日墓、动墓或化墓。墓位成立后仍要检查观察爻的旺衰、生扶，以及墓支自身是否被破；表值只是关系标签，不能跳过其他条件。土寄生另保留随水、随火两说。",
+  "branch_order": ["子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"],
+  "twelve_stages": [
+    {"id": "birth", "label": "长生", "short": "生", "anchor": true},
+    {"id": "bath", "label": "沐浴", "short": "沐", "anchor": false},
+    {"id": "crown", "label": "冠带", "short": "冠", "anchor": false},
+    {"id": "office", "label": "临官", "short": "临", "anchor": false},
+    {"id": "peak", "label": "帝旺", "short": "旺", "anchor": true},
+    {"id": "decline", "label": "衰", "short": "衰", "anchor": false},
+    {"id": "illness", "label": "病", "short": "病", "anchor": false},
+    {"id": "death", "label": "死", "short": "死", "anchor": false},
+    {"id": "tomb", "label": "墓", "short": "墓", "anchor": true},
+    {"id": "absolute", "label": "绝", "short": "绝", "anchor": true},
+    {"id": "embryo", "label": "胎", "short": "胎", "anchor": false},
+    {"id": "nourish", "label": "养", "short": "养", "anchor": false}
+  ],
+  "states": [
+    {"id": "birth", "label": "长生", "short": "生"},
+    {"id": "peak", "label": "旺（帝旺）", "short": "旺"},
+    {"id": "tomb", "label": "墓", "short": "墓"},
+    {"id": "absolute", "label": "绝", "short": "绝"}
+  ],
+  "element_tracks": [
+    {"element": "金", "cycle": ["巳", "午", "未", "申", "酉", "戌", "亥", "子", "丑", "寅", "卯", "辰"], "anchors": {"birth": "巳", "peak": "酉", "tomb": "丑", "absolute": "寅"}},
+    {"element": "木", "cycle": ["亥", "子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌"], "anchors": {"birth": "亥", "peak": "卯", "tomb": "未", "absolute": "申"}},
+    {"element": "水", "cycle": ["申", "酉", "戌", "亥", "子", "丑", "寅", "卯", "辰", "巳", "午", "未"], "anchors": {"birth": "申", "peak": "子", "tomb": "辰", "absolute": "巳"}},
+    {"element": "火", "cycle": ["寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥", "子", "丑"], "anchors": {"birth": "寅", "peak": "午", "tomb": "戌", "absolute": "亥"}}
+  ],
+  "soil_methods": [
+    {
+      "id": "water",
+      "label": "水土同宫",
+      "start": "申",
+      "cycle": ["申", "酉", "戌", "亥", "子", "丑", "寅", "卯", "辰", "巳", "午", "未"],
+      "anchors": {"birth": "申", "peak": "子", "tomb": "辰", "absolute": "巳"},
+      "source_position": "《增删卜易》采用此表，并记录古法另有土长生在寅之说。"
+    },
+    {
+      "id": "fire",
+      "label": "火土同宫",
+      "start": "寅",
+      "cycle": ["寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥", "子", "丑"],
+      "anchors": {"birth": "寅", "peak": "午", "tomb": "戌", "absolute": "亥"},
+      "source_position": "同书所引异说以火土同宫起寅；页面并列保存，不把来源争论改写成共识。"
+    }
+  ],
+  "source_modes": [
+    {
+      "id": "day",
+      "label": "日辰",
+      "verb": "日辰落入",
+      "result_prefix": "遇",
+      "route": "目标爻五行 × 占日地支",
+      "note": "例如木爻遇亥日称遇长生，遇卯日称值旺。"
+    },
+    {
+      "id": "moving",
+      "label": "另一动爻",
+      "verb": "卦中动出",
+      "result_prefix": "逢",
+      "route": "目标爻五行 × 他爻发动地支",
+      "note": "同一锚点由卦中另一发动爻提供；墓位即“动墓”的来源。"
+    },
+    {
+      "id": "changed",
+      "label": "同位变爻",
+      "verb": "自身变出",
+      "result_prefix": "化",
+      "route": "目标动爻五行 × 同位变支",
+      "note": "同位变出四个锚点分别称化长生、化旺、化墓、化绝。"
+    }
+  ],
+  "tomb_source_examples": [
+    {
+      "id": "day",
+      "label": "日墓",
+      "arrow": "日辰墓支 → 目标爻",
+      "example": "辰日 → 亥水",
+      "result": "亥水入日墓"
+    },
+    {
+      "id": "moving",
+      "label": "动墓",
+      "arrow": "发动墓爻 → 目标爻",
+      "example": "戌土爻发动 → 午火",
+      "result": "午火入动墓"
+    },
+    {
+      "id": "changed",
+      "label": "化墓",
+      "arrow": "目标动爻 → 同位墓支",
+      "example": "酉金动 → 化丑",
+      "result": "酉金动而化墓"
+    }
+  ],
+  "tomb_condition_chain": {
+    "title": "墓位成立以后，再判断它有没有形成有效约束",
+    "target_modes": [
+      {
+        "id": "self",
+        "label": "自占",
+        "target": "世爻",
+        "note": "先以世爻作为观察对象，再核对它是否进入日墓、动墓或化墓。"
+      },
+      {
+        "id": "proxy",
+        "label": "代占",
+        "target": "用神",
+        "note": "先按所问关系确定用神，再核对该用神的墓位来源；不能把世爻直接替代用神。"
+      }
+    ],
+    "gates": [
+      {
+        "id": "supported",
+        "label": "旺相或有扶",
+        "condition": "观察爻有气，或另得原神、日月、动爻生扶",
+        "result": "墓标签存在，但不能单凭入墓判定其失去作用。",
+        "example": "亥水入辰墓，同时得申金生扶"
+      },
+      {
+        "id": "depleted",
+        "label": "休囚又受克",
+        "condition": "观察爻休囚无气，又受克制并进入墓位",
+        "result": "衰弱、受克、入墓三层条件同时成立，约束才明显加重。",
+        "example": "亥水休囚受土克，又入辰墓"
+      },
+      {
+        "id": "tomb-opened",
+        "label": "墓支被破",
+        "condition": "墓支自身逢月破，或被日辰、动爻冲破",
+        "result": "墓门本身已经受损，不能继续按完整墓局读取。",
+        "example": "辰墓逢戌冲，或辰支自身月破"
+      }
+    ],
+    "reading_steps": [
+      {"label": "定观察爻", "note": "自占看世爻，代占先定用神。"},
+      {"label": "定墓来源", "note": "区分日墓、另一动爻形成的动墓和同位变出的化墓。"},
+      {"label": "查爻状态", "note": "继续检查旺衰、受克与原神、日月、动爻的生扶。"},
+      {"label": "查墓状态", "note": "最后检查墓支自身是否空破或被冲开。"}
+    ],
+    "source_difference": {
+      "older_rule": "旧说把世爻、本命、世身等多个位置随官鬼入墓并列为判断入口。",
+      "zengshan_position": "《增删卜易》认为这种铺开会让辰戌丑未相关卦例几乎处处成墓，改以世爻或用神为核心，并加入旺衰、生扶与墓破条件。",
+      "comparison": "《卜筮正宗》的问答占验同样以原神生扶说明：入墓标签不能越过完整作用关系单独下结论。"
+    }
+  },
+  "month_tomb_variant": "部分现代实现也标注入月墓；这一口径作为扩展并列保存，不混入日墓、动墓、化墓三种古籍标题。",
+  "override_examples": [
+    {
+      "title": "命中长生，仍可能先论克",
+      "element": "金",
+      "branch": "巳",
+      "table_hit": "金长生在巳",
+      "competing_relation": "金爻休囚无气，又遇巳午火多",
+      "source_conclusion": "资料要求先看烈火克金，不把巳支机械读成长生结果。"
+    },
+    {
+      "title": "命中绝位，仍可能先论生",
+      "element": "土",
+      "branch": "巳",
+      "table_hit": "水土同宫表中土绝在巳",
+      "competing_relation": "土爻旺相，或另得日月动爻生扶",
+      "source_conclusion": "巳火反能生土，资料明确说此时论生而不论绝。"
+    }
+  ],
+  "distinctions": [
+    {
+      "label": "八字十二长生",
+      "object": "十天干沿十二支",
+      "difference": "区分阴阳干顺逆与十个起点；五行四锚只按五行列出长生、旺、墓、绝。"
+    },
+    {
+      "label": "化墓绝空破",
+      "object": "同位变爻的四类标签",
+      "difference": "只覆盖墓的三种来源中的同位变爻，并另接旬空、月破条件。"
+    },
+    {
+      "label": "墓的三种来源",
+      "object": "五行、来源支与四个阶段锚点",
+      "difference": "墓位嵌在四锚表内，再按日辰、另一动爻、同位变爻分别命名。"
+    }
+  ],
+  "source_positions": [
+    {
+      "label": "古籍取四锚",
+      "position": "《增删卜易》先列十二阶段，随即说明其经验只取生、旺、墓、绝，并给出金木水火及水土同宫四表。",
+      "public_use": "页面补全十二阶段和对应地支，同时突出四锚，不把其余八阶段伪装成同等使用频率。"
+    },
+    {
+      "label": "三种来源",
+      "position": "同章用木爻分别说明日辰、卦中动出与同位变出如何生成遇生、值旺、入墓、逢绝。",
+      "public_use": "公开关系入口与名称变化，不采用具体事项或应期断语。"
+    },
+    {
+      "label": "土寄生分歧",
+      "position": "资料同时记录土长生申与土长生寅两说，作者以占验主张随水在申；后附评语仍承认其缺少确定考据。",
+      "public_use": "项目保存“采用意见”和“来源仍有异说”两层，不宣称已经终结争论。"
+    },
+    {
+      "label": "锁定实现",
+      "position": "现代实现把五行起点沿十二支顺排，并允许土随水、土随火或关闭长生标记；其默认设置不代表传统共识。",
+      "public_use": "只用来核对两套确定映射与完整十二环，不继承其自动分析结果。"
+    }
+  ],
+  "reading_boundary": "本页展示完整十二阶段、六爻经验突出的四锚、墓的三种来源、入墓后的条件复核和土寄生两说；表值只作为关系标签，不自动生成最终判断。",
+  "internal_review": {
+    "status": "merged_full_twelve_stage_cycle_four_anchors_three_tomb_sources_and_tomb_condition_chain_cross_checked",
+    "reviewed_at": "2026-08-05",
+    "source_refs": [
+      "zengshan_buyi_pdf_pages_47_48_lines_1982_2020",
+      "zengshan_buyi_wikisource_growth_peak_tomb_absolute_chapter",
+      "github_horace_maxwell_horosa_7d8a93e_liuyao_const_changsheng",
+      "github_horace_maxwell_horosa_7d8a93e_liuyao_engine_changsheng",
+      "zengshan_buyi_pdf_sui_gui_ru_mu_pages_61_63",
+      "github_maiernte_gitbook_zengshan_80984bb_sui_gui_ru_mu"
+    ],
+    "boundary": "公开十二阶段完整环、四锚表、来源方向、土寄生两说与覆盖反例；其余八阶段作为完整结构显示，不提升为与四锚同等的六爻经验断法，具体用神、旺衰取舍、事项、吉凶和应期不作为自动结论。"
+  }
+}

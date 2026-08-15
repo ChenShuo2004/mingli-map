@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0",
+  "id": "year-count-boundaries",
+  "title": "年计",
+  "summary": "年计不是把公历年份直接加到一个常数上。选定原典先建立上元积年，再把同一积年分别送入360、60、72、24与三年一宫等周期；《太乙金镜式经》以唐开元十二年甲子积年1937281为检查点，《武备志》以隆庆庚午积年10155487为另一检查点。锁定实现的四个method确实保存四个起点常数，但读取的是农历年：method 0与3完全同值，method 1与它们相差8217360，恰为360的整倍数，因此核心纪、局与宫轨同值；method 2再偏移276，局号相差60。与此同时，太岁入口读取另一条岁干支字段。2024年锁定实现于2月4日把岁干支从癸卯换成甲辰，却到2月10日农历正月初一才令积年加一，形成六天双年界。本节点把公历年、岁干支、农历年、积年原数和周期结果分开保存，不替原典补定唯一年界，也不把软件method名称直接写成版本史。",
+  "fixed_input": "固定复核：1552年9月24日；年界复核：2024年1月1日至2月10日",
+  "identity_layers": [
+    {"id":"civil","index":"01","name":"公历年份","question":"界面日期写的是哪一年？","input":"公历年月日","note":"是程序接收的日期字段，但年计积数并不直接读取它。"},
+    {"id":"ganzhi","index":"02","name":"岁干支","question":"太岁与五子元选择读取哪一个年干支？","input":"sxtwl年干支","note":"锁定实现按立春所在公历日换年；它可以先于农历年变化。"},
+    {"id":"lunar","index":"03","name":"农历年","question":"积年公式实际加的是哪一年？","input":"农历转换结果","note":"锁定accnum读取getLunarYear，至农历正月初一才加一。"},
+    {"id":"accumulated","index":"04","name":"积年数","question":"上元以来累计到第几算？","input":"method常数 + 农历年","note":"再分别进入周纪、六纪、七十二局、宫轨与其他长短周期。"}
+  ],
+  "source_anchors": [
+    {"id":"golden-mirror","name":"《太乙金镜式经》","status":"积年检查点可定位","anchor":"开元十二年甲子 · 1,937,281算","route":"上元甲子 → 距所求年 → 每年加减一算 → 360／60／72／24／3","note":"原文说明上考每年减一、下验每年加一；选定段落以冬至立上元，但没有直接说明日常起局应在公历元旦、立春或正月初一换岁。"},
+    {"id":"wubeizhi","name":"《武备志》","status":"庚午固定例可定位","anchor":"隆庆四年庚午 · 10,155,487算","route":"积年 → 360余247 → 60入第五纪 → 72入庚子元31局 → 240余7入三宫第一年","note":"只保留积年、余数、局号与宫轨；同段兵事、灾异和胜负文字不纳入本节点。"},
+    {"id":"implementation","name":"锁定实现","status":"固定commit可运行","anchor":"四常数 + 农历年","route":"公历日期 → 农历年 → method常数 → 积年 → 核心周期","note":"岁干支由另一函数生成，故积年与太岁可以在年界附近不同步。"}
+  ],
+  "classical_checkpoints": [
+    {"id":"kaiyuan","label":"开元十二年甲子","year":724,"source_value":1937281,"matching_method":1,"implementation_value":1937281,"match":"同值","note":"锁定method 1在农历年进入724后返回1936557 + 724 = 1937281；只证明数值检查点相合，不证明完整历法路线相同。"},
+    {"id":"longqing","label":"隆庆四年庚午","year":1570,"source_value":10155487,"matching_method":0,"implementation_value":10155487,"match":"同值","note":"锁定method 0／3在农历年进入1570后返回10153917 + 1570 = 10155487。"}
+  ],
+  "implementation_methods": [
+    {"method":0,"label":"太乙统宗","constant":10153917,"formula":"10153917 + 农历年；公元前年份另+1","fixed_accumulated":10155469,"fixed_cycle":229,"fixed_board":13,"fixed_palace":6,"relation":"与method 3完全同值；与method 1核心周期同值","tone":"core"},
+    {"method":1,"label":"太乙金镜","constant":1936557,"formula":"1936557 + 农历年；公元前年份另+1","fixed_accumulated":1938109,"fixed_cycle":229,"fixed_board":13,"fixed_palace":6,"relation":"与method 0相差8217360 = 22826×360","tone":"core"},
+    {"method":2,"label":"太乙淘金歌","constant":10154193,"formula":"10154193 + 农历年；公元前年份另+1","fixed_accumulated":10155745,"fixed_cycle":145,"fixed_board":1,"fixed_palace":1,"relation":"比method 0多276；mod72相差60","tone":"different"},
+    {"method":3,"label":"太乙局","constant":10153917,"formula":"10153917 + 农历年；公元前年份另+1","fixed_accumulated":10155469,"fixed_cycle":229,"fixed_board":13,"fixed_palace":6,"relation":"年计分支与method 0逐字同式","tone":"same"}
+  ],
+  "boundary_audits": [
+    {"date":"2024-01-01","event":"公历元旦","civil_year":2024,"year_ganzhi":"癸卯","lunar":"癸卯年十一月二十","lunar_year":2023,"accumulated":[10155940,1938580,10156216,10155940],"boards":[52,52,40,52],"palaces":[2,2,7,2],"change":"公历年已变；岁干支、农历年与积年均未变。"},
+    {"date":"2024-02-03","event":"立春前一日","civil_year":2024,"year_ganzhi":"癸卯","lunar":"癸卯年十二月廿四","lunar_year":2023,"accumulated":[10155940,1938580,10156216,10155940],"boards":[52,52,40,52],"palaces":[2,2,7,2],"change":"三条年字段仍分成公历2024与癸卯／农历2023。"},
+    {"date":"2024-02-04","event":"立春所在日","civil_year":2024,"year_ganzhi":"甲辰","lunar":"癸卯年十二月廿五","lunar_year":2023,"accumulated":[10155940,1938580,10156216,10155940],"boards":[52,52,40,52],"palaces":[2,2,7,2],"change":"岁干支换为甲辰；农历年、积年、局号与宫位保持不变。"},
+    {"date":"2024-02-09","event":"除夕","civil_year":2024,"year_ganzhi":"甲辰","lunar":"癸卯年十二月三十","lunar_year":2023,"accumulated":[10155940,1938580,10156216,10155940],"boards":[52,52,40,52],"palaces":[2,2,7,2],"change":"立春后第六天，太岁已读辰，积年仍读2023。"},
+    {"date":"2024-02-10","event":"正月初一","civil_year":2024,"year_ganzhi":"甲辰","lunar":"甲辰年正月初一","lunar_year":2024,"accumulated":[10155941,1938581,10156217,10155941],"boards":[53,53,41,53],"palaces":[2,2,7,2],"change":"四分支积年各+1，局号各+1；本次没有跨越三局一宫边界。"}
+  ],
+  "cycle_differences": [
+    {"label":"核心360周期","left":"method 0／3：余229","right":"method 1：余229","result":"8217360可被360整除，所以六纪、72局与24宫轨同值。"},
+    {"label":"七十二局","left":"method 0／1／3：13局","right":"method 2：1局","result":"method 2比method 0多276，折入72后相差60。"},
+    {"label":"非核心积年周期","left":"同局不等于原数相同","right":"29、225、288、4320等周期可分开","result":"不能因为核心局宫同值，就把所有读取积年的十精、五福或大游结果视为相同。"},
+    {"label":"双年界","left":"立春日：岁干支变化","right":"正月初一：农历年与积年变化","result":"太岁入口和积年入口是两条时钟；2024固定样本相隔六天。"},
+    {"label":"公元前补偿","left":"农历年<0时额外+1","right":"代码注释用于无公元0年换算","result":"保留为实现约定；公元前边界仍待独立核验。"}
+  ],
+  "reading_boundaries": [
+    {"label":"短对象名","note":"入口只叫“年计”；上元、双年界、四常数和周期差异留在页内。"},
+    {"label":"原典年界","note":"选定段落没有直接裁定立春与正月初一谁是唯一换岁点，因此不倒推成共识。"},
+    {"label":"名称边界","note":"method名称来自锁定软件接口；两个数值检查点相合，不足以建立四分支版本谱系。"},
+    {"label":"固定样本","note":"仅展示历史检查点和2024年界，不接收真人日期。"},
+    {"label":"内容范围","note":"只公开积年、余数、局号、宫位和字段差异，不公开岁占、国运、灾异、战争或个人断语。"}
+  ],
+  "public_sources": [
+    {"title":"《太乙金镜式经》卷一：推上元积年与太乙所在","url":"https://ctext.org/wiki.pl?chapter=582866&if=gb&remap=gb","note":"保存开元十二年积年1937281、每年加减一算，以及360、60、72、24、3层取数。"},
+    {"title":"《武备志》：岁计太乙行宫并入局入纪","url":"https://ctext.org/wiki.pl?chapter=3064539&if=gb&remap=gb","note":"影像页44—45保存隆庆庚午积年10155487、余247、庚子元31局与三宫第一年。"},
+    {"title":"kintaiyi锁定年计积数实现","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L382-L399","note":"固定提交显示四个常数、农历年入口与公元前年份补1。"},
+    {"title":"kintaiyi农历年与岁干支入口","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/config.py#L465-L484","note":"gangzhi生成岁干支；lunar_date_d另由公历日期返回农历年月日，两者进入不同字段。"},
+    {"title":"kintaiyi农历日期包装","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/config.py#L534-L537","note":"accnum实际读取该包装返回的农历年。"}
+  ],
+  "internal_review": {
+    "status":"formal_year_count_boundary_audit",
+    "reviewed_at":"2026-08-06",
+    "owner":["火华","Codex"],
+    "runtime_environment":"temporary Python venv; locked repository commit installed from source",
+    "runtime_command":"Taiyi.accnum/kook/ty for ji_style=0, method=0..3 across 724, 1552, 1570 and 2024 year-boundary probes",
+    "deduplication":"不并入五计：五计只辨五种入口与method轴，不能承接四类年字段、两条原典检查点和双年界。不并入固定年计装盘：装盘页从一个既定积年继续到局式，本页追问积年从何而来、何时加一。不并入纪元：纪元页解释积年取得以后如何进入六纪、三元与五子元，本页只解释积年原数与年界。",
+    "known_gaps":["金镜所用上元体系与锁定method 1的完整历法路线尚未逐步复原","武备志庚午例与锁定method 0数值相合不等于版本身份已证实","选定原典未直接裁定现代日期中的立春／正月初一换岁边界","method 2常数增加276的来源与四method版本谱系待核","公元前补1与双年界没有专项测试"],
+    "boundary":"固定历史与历法样本，无真人输入；不公开岁占、国运、灾异、战争、行动或个人结论。"
+  }
+}

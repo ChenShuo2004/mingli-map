@@ -1,0 +1,13 @@
+{
+  "id":"day-bad-gods","title":"凶煞宜忌","summary":"凶煞宜忌记录当天进入凶煞集合的名称；凶煞出现不等于所有事项一律转为忌。",
+  "fixed_example":{"date":"1986-05-29","month":"癸巳","day":"癸酉","gods":["死气","五离","朱雀"]},
+  "items":[
+    {"name":"死气","identity":"月家凶神名"},{"name":"五离","identity":"日神煞名"},{"name":"朱雀","identity":"十二天神中的黑道神，同时进入本日凶煞集合"}
+  ],
+  "comparison":{"twelve_day_god":"朱雀／黑道","bad_god_membership":"朱雀","rule":"同名对象可同时出现在每日周期与凶煞名单，但字段职责不同"},
+  "boundaries":["凶煞名单是输入层，不是总分","不同神煞有不同起例和事项范围","不由数量多少判断一天好坏"],
+  "public_sources":[
+    {"title":"《协纪辨方书》神煞同位异名","note":"用于保留神煞同位、异名与重复登记的辨析边界。","url":"https://www.shidianguji.com/zh/book/SK1619/chapter/1l9lm21xfgb9r"},
+    {"title":"tyme4ts","note":"固定日期三个凶煞名称来自锁定实现。","url":"https://github.com/6tail/tyme4ts"}
+  ]
+}

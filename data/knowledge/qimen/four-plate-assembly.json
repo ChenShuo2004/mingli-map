@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0.0",
+  "id": "qimen_four_plate_assembly",
+  "title": "四盘层次与装配顺序",
+  "summary": "四盘是一种帮助辨层的阅读模型：地盘先放三奇六仪，天盘承接九星与随星移动的天盘奇仪，人盘放八门，神盘放八神。具体实现还要确定旬首、值符、值使、中宫寄法及转盘或飞盘路径；因此‘四盘层次’可以先学，‘唯一装盘算法’目前不能宣称。",
+  "layers": [
+    {"order":1,"name":"地盘","objects":["三奇六仪"],"question":"九个干先落在哪九宫？","dependency":"阴阳遁与局数"},
+    {"order":2,"name":"天盘","objects":["九星","天盘奇仪"],"question":"值符星与天盘干怎样移动？","dependency":"旬首、时干与中宫寄法"},
+    {"order":3,"name":"人盘","objects":["八门"],"question":"值使与八门怎样进入宫位？","dependency":"值使、时支与盘式路径"},
+    {"order":4,"name":"神盘","objects":["八神或版本化神系"],"question":"神系从哪里起排、顺逆如何？","dependency":"值符落宫、阴阳遁与盘式版本"}
+  ],
+  "version_comparison": [
+    {"style":"转盘","source":"qimen-go／qimenpaipan","structure":"八宫旋转，需处理中五宫寄宫与天禽随寄","status":"两实现结构可对照，传统课例断言不足"},
+    {"style":"飞盘","source":"qimen-go","structure":"九宫飞布九星、九神、九门，可配置不同顺逆法","status":"作者实现，内部展示名存在漂移"},
+    {"style":"鸣法","source":"qimen-go dev材料与代码","structure":"九星只顺、九门入中，并增加飞支与暗干层","status":"文档权利与版本链不足，只作内部对照"}
+  ],
+  "reading_boundaries": ["四盘名称是对象分层，不保证所有流派以完全相同方式命名或装配。", "本页不接收时间生成新盘，只用来源中已锁定的固定结构说明层次。", "值符值使、转飞盘差异与起局法需要后续独立节点，不能塞进本页成为一条简化公式。"],
+  "public_sources": [
+    {"title":"qimen-go 锁定转盘／飞盘实现","url":"https://github.com/deminzhang/qimen-go/blob/4d3f58fa0f401b5b3a337f119138e99e90685dda/xuan/qimen.go","note":"提供多盘式的确定性装配结构；固定矩阵通过结构检查，但没有传统正确性断言。"},
+    {"title":"qimenpaipan 锁定转盘实现","url":"https://github.com/redrockhorse/qimenpaipan/blob/b6de54245cf7a514f59e51833dc01a87e1a3a849/qimenpaipan.py#L852-L1019","note":"从地盘奇仪到九星、八门、八神分段实现，可作为层次对照。"},
+    {"title":"mingli-skills 锁定元旦盘","url":"https://github.com/weizeW/mingli-skills/blob/c16eca0/qimen-dunjia/data/yuandan.json","note":"提供九宫、九星、八门、八神的基础对象表，不单独验证动态装盘。"}
+  ],
+  "internal_review":{"status":"formal_layer_model_with_implementation_variants","reviewed_at":"2026-08-09","owner":["火华","Codex"],"source_refs":["github_deminzhang_qimen_go_4d3f58f","github_redrockhorse_qimenpaipan_b6de542","github_weizew_mingli_skills_c16eca0"],"deduplication":"本页只解释四层依赖关系；各对象清单仍由独立节点负责。","known_gaps":["缺可引传统底本的完整固定课例。","飞盘常量注释与展示名存在内部漂移。"],"boundary":"固定结构演示，不生成真人盘。"}
+}

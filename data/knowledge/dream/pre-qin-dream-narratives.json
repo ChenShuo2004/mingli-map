@@ -1,0 +1,26 @@
+{
+  "id": "pre-qin-dream-narratives",
+  "title": "先秦题材的传世梦叙事",
+  "summary": "《诗经》《左传》与今本《尚书·说命上》保存的梦叙事并非统一格式：有的直接列梦象与占语，有的连接画像求贤，有的把梦、疾病、解释者与结局编入长叙事。",
+  "examples": [
+    {"id":"shigan","source":"《诗经·小雅·斯干》","genre":"诗歌中的梦占问答","dreamer":"君子","dream":"熊、罴；虺、蛇；旐、旟与众鱼","mediation":"“大人占之”后分述梦象","outcome":"以生男、生女等占语收束","shape":"设问 → 梦象分组 → 占语"},
+    {"id":"fuyue","source":"今本《尚书·说命上》","genre":"传世诰命叙事","dreamer":"高宗","dream":"帝赉良弼，并记其形象","mediation":"审其形，画像旁求于天下","outcome":"傅岩得说，立为相","shape":"梦告 → 画像 → 搜求 → 任命"},
+    {"id":"jinggong","source":"《左传·成公十年》","genre":"编年史叙事","dreamer":"晋侯与小臣","dream":"大厉破门、疾病化二竖；小臣梦负公登天","mediation":"桑田巫与秦医缓分别回应","outcome":"疾病、死亡与殉葬叙事相继出现","shape":"多梦 → 多解释者 → 医疗判断 → 结局"}
+  ],
+  "reading_fields": [
+    {"field":"文本体裁","question":"梦写在诗、诰命还是史传中？"},
+    {"field":"梦者身份","question":"谁做梦，是否由他人代为解释？"},
+    {"field":"中介动作","question":"占、画像、求医或其他行动怎样接入？"},
+    {"field":"叙事结果","question":"文本是在当场给占语，还是事后连缀应验？"}
+  ],
+  "boundaries": [
+    "这里整理的是传世文本的叙事结构，不替历史人物复原真实梦境。",
+    "同一篇中的梦、解释和结局可能由叙事者连缀，不能自动视为当时记录。",
+    "梦例只用于观察文本怎样组织材料，不提炼现代通用梦义。"
+  ],
+  "public_sources": [
+    {"title":"《诗经·小雅·斯干》","note":"保存设问、梦象分组与“大人占之”的占语结构。","url":"https://ctext.org/book-of-poetry/si-gan/zh"},
+    {"title":"《尚书·说命上》","note":"保存高宗梦良弼、审形画像、旁求傅说的叙事链。","url":"https://ctext.org/shang-shu/charge-to-yue-i/zh"},
+    {"title":"《左传·成公十年》","note":"保存晋侯多梦、桑田巫、秦医缓与结局相连的长叙事。","url":"https://ctext.org/chun-qiu-zuo-zhuan/cheng-gong-shi-nian/zh"}
+  ]
+}

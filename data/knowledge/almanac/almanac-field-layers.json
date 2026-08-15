@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "id": "almanac-field-layers",
+  "title": "黄历栏目总览",
+  "summary": "黄历页面不是一条连续结论，而是日期坐标、周期标记、神煞、方位、宜忌与时辰六组字段的并列集合。",
+  "layers": [
+    {"id":"calendar","label":"日期坐标","fields":["公历","农历","干支","节气"]},
+    {"id":"cycles","label":"周期标记","fields":["建除十二值","十二天神","二十八宿","九星","月相"]},
+    {"id":"spirits","label":"神煞","fields":["吉神宜趋","凶煞宜忌","彭祖百忌"]},
+    {"id":"directions","label":"方位","fields":["喜神福神财神","阴阳贵神","太岁胎神","冲煞"]},
+    {"id":"activities","label":"宜忌","fields":["每日宜","每日忌","事项名称"]},
+    {"id":"hours","label":"时辰","fields":["时干支","时冲煞","时神","时辰宜忌"]}
+  ],
+  "boundaries": [
+    "日期事实不等于宜忌解释",
+    "同名字段需要保留来源版本",
+    "每日字段与时辰字段不可混成一层"
+  ],
+  "public_sources": [
+    {"title":"lunar-javascript 锁定实现","note":"提供公农历、干支、节气、彭祖百忌、神方、冲煞、星宿、建除、十二神及宜忌等字段清单。","url":"https://github.com/6tail/lunar-javascript/tree/4c45a59"},
+    {"title":"SeeYourBZ 黄历页面审计","note":"只采用黄历总览、神煞、值神、胎神、冲煞与时辰的信息层级，不复制页面文案。","url":"https://github.com/fiftonb/SeeYourBZ/tree/97dd496"}
+  ]
+}

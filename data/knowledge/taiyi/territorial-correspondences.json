@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0.0",
+  "id": "taiyi-territorial-correspondences",
+  "title": "分野",
+  "summary": "锁定卷八实现同时保存十二辰分野、九宫分野与绛宫／明堂／玉堂三组表。它们分别以地支、太乙宫数和特殊宫名为入口，不能压成一张唯一的地域对应表。仅用于辨认古代术数文本怎样把天区、宫位与历史州国名连接起来；这些州国不是现代行政区，也不据此输出地域灾异、军事或真人判断。",
+  "fixed_input": "1552年9月24日 00:00 · 壬子年 · 年计四分支",
+  "layers": [
+    {"index": "01", "name": "十二辰分野", "input": "岁支或其他地支", "output": "国、州、十二次", "count": "12组", "status": "地支入口"},
+    {"index": "02", "name": "九宫分野", "input": "太乙宫数1—9", "output": "州、城名干支、五行方位象", "count": "9组", "status": "宫数入口"},
+    {"index": "03", "name": "三座特殊宫", "input": "绛宫／明堂／玉堂", "output": "分野、禹贡域与宫名例", "count": "3组", "status": "宫名入口"}
+  ],
+  "branch_correspondences": [
+    {"branch": "寅", "state": "燕", "region": "幽州", "lunar_station": "析木之次"},
+    {"branch": "卯", "state": "宋", "region": "豫州", "lunar_station": "大火之次"},
+    {"branch": "辰", "state": "郑", "region": "兖州", "lunar_station": "寿星之次"},
+    {"branch": "巳", "state": "楚", "region": "荆州", "lunar_station": "鹑尾之次"},
+    {"branch": "午", "state": "周", "region": "三河", "lunar_station": "鹑火之次"},
+    {"branch": "未", "state": "秦", "region": "雍州", "lunar_station": "鹑首之次"},
+    {"branch": "申", "state": "晋", "region": "益州", "lunar_station": "实沈之次"},
+    {"branch": "酉", "state": "赵", "region": "冀州", "lunar_station": "大梁之次"},
+    {"branch": "戌", "state": "鲁", "region": "徐州", "lunar_station": "降娄之次"},
+    {"branch": "亥", "state": "卫", "region": "并州", "lunar_station": "娵訾之次"},
+    {"branch": "子", "state": "齐", "region": "青州", "lunar_station": "星纪之次"},
+    {"branch": "丑", "state": "吴", "region": "扬州", "lunar_station": "玄枵之次"}
+  ],
+  "palace_correspondences": [
+    {"number": 1, "palace": "乾", "region": "冀州", "city_ganzhi": "丁丑", "element_image": "北方坎水", "status": "宫名与五行象冲突待核"},
+    {"number": 2, "palace": "午", "region": "荆州", "city_ganzhi": "丁未", "element_image": "正南离火", "status": "午位／离象"},
+    {"number": 3, "palace": "艮", "region": "青州", "city_ganzhi": "癸丑", "element_image": "东北艮土", "status": "一致"},
+    {"number": 4, "palace": "卯", "region": "徐州", "city_ganzhi": "甲辰", "element_image": "正东震木", "status": "卯位／震象"},
+    {"number": 5, "palace": "中", "region": "豫州", "city_ganzhi": "乙丑", "element_image": "中央土", "status": "中宫"},
+    {"number": 6, "palace": "酉", "region": "雍州", "city_ganzhi": "甲申", "element_image": "正西兑金", "status": "酉位／兑象"},
+    {"number": 7, "palace": "坤", "region": "梁州", "city_ganzhi": "戊戌", "element_image": "西南坤土", "status": "一致"},
+    {"number": 8, "palace": "子", "region": "兖州", "city_ganzhi": "乙未", "element_image": "正北坎水", "status": "子位／坎象"},
+    {"number": 9, "palace": "巽", "region": "扬州", "city_ganzhi": "癸酉", "element_image": "东南巽木", "status": "一致"}
+  ],
+  "special_palaces": [
+    {"name": "绛宫", "ganzhi": "己巳", "region": "交州", "yugong_region": "扬州之域（南越）", "city_example": "合浦壬申", "note": "主表干支与宫名例干支是两个字段。"},
+    {"name": "明堂", "ganzhi": "辛丑", "region": "益州", "yugong_region": "梁州之域", "city_example": "成都、嘉州、犍为", "note": "实现另表以辛丑作特殊宫匹配值。"},
+    {"name": "玉堂", "ganzhi": "癸卯", "region": "幽州", "yugong_region": "冀州之域", "city_example": "范阳、燕国", "note": "实现另表以癸卯作特殊宫匹配值。"}
+  ],
+  "fixed_methods": [
+    {"method": 0, "label": "太乙统宗", "taiyi_palace_number": 6, "taiyi_palace": "酉", "palace_region": "雍州", "city_ganzhi": "甲申", "year_branch": "子", "year_state": "齐", "year_region": "青州", "lunar_station": "星纪之次", "status": "与method 1／3同组"},
+    {"method": 1, "label": "太乙金镜", "taiyi_palace_number": 6, "taiyi_palace": "酉", "palace_region": "雍州", "city_ganzhi": "甲申", "year_branch": "子", "year_state": "齐", "year_region": "青州", "lunar_station": "星纪之次", "status": "固定完整例"},
+    {"method": 2, "label": "太乙淘金歌", "taiyi_palace_number": 1, "taiyi_palace": "乾", "palace_region": "冀州", "city_ganzhi": "丁丑", "year_branch": "子", "year_state": "齐", "year_region": "青州", "lunar_station": "星纪之次", "status": "只改变太乙宫分野"},
+    {"method": 3, "label": "太乙局", "taiyi_palace_number": 6, "taiyi_palace": "酉", "palace_region": "雍州", "city_ganzhi": "甲申", "year_branch": "子", "year_state": "齐", "year_region": "青州", "lunar_station": "星纪之次", "status": "与method 0同式同值"}
+  ],
+  "implementation_differences": [
+    {"label": "三张表不能互相替代", "source": "选定文本分别保存九宫分野、十二辰次与三座特殊宫。", "implementation": "zonghe同时返回九宫表、十二表、特殊宫表、太乙分野与岁建分野。", "handling": "按输入类型分层，不生成唯一‘本年地域’。"},
+    {"label": "历史州国不是现代行政区", "source": "九宫条目继续援引禹贡、舜十二牧和历代州域。", "implementation": "字段直接使用燕、宋、郑及冀、荆、青等历史名称。", "handling": "只作古代文本坐标，不与现代省市自动换算。"},
+    {"label": "一宫的宫名与五行象冲突", "source": "选定九宫序明确一宫冀州；太乙宫数系统的一宫返回乾。", "implementation": "一宫同一行却写‘北方坎水’，而八宫子位也写北方坎水。", "handling": "保留乾／冀州／丁丑程序字段，把坎水象标为待核。"},
+    {"label": "‘城名’字段实际重复州名", "source": "来源层区分州国、城名干支与详细疆界。", "implementation": "fenye_for_palace把_NINE_GONG_CHENG元组第一项州名再次写入‘城名’。", "handling": "此处称‘州’与‘城名干支’，不展示误标的城名结果。"},
+    {"label": "特殊宫自动命中路径不可达", "source": "绛宫、明堂、玉堂各有独立干支和宫名例。", "implementation": "函数拿九宫的丁丑等值去匹配壬申、辛丑、癸卯，九项均不相等，固定太乙宫不会返回特宫。", "handling": "三座特殊宫作为独立表展示，不伪造自动命中。"},
+    {"label": "固定例有两条同时成立的分野路线", "source": "太乙宫与岁建地支本来就是不同入口。", "implementation": "壬子年岁建始终得齐／青州／星纪；method 2只把太乙宫由酉位雍州改成乾位冀州。", "handling": "并列显示‘宫数分野’与‘岁建分野’，不合成结论。"},
+    {"label": "地域灾异解释不纳入本节点", "source": "卷八与函数下游把太乙所临州国继续连接灾祥和门吉凶。", "implementation": "fenye_for_palace直接返回‘遇开休生大吉’等要诀。", "handling": "只保留映射关系，删除灾异、兵事和行动判断。"}
+  ],
+  "reading_boundaries": [
+    {"label": "可理解", "note": "十二地支、九宫数和三座特殊宫分别怎样连接历史州国名。"},
+    {"label": "可比较", "note": "同一固定年里，岁建分野不变，method 2只改变太乙宫分野。"},
+    {"label": "待核验", "note": "十二辰分野原式、一宫坎水冲突、三座特殊宫两类干支及详细疆界。"},
+    {"label": "不作断语", "note": "不把历史分野换算为现代地区，不展示地域灾异、战争或真人判断。"}
+  ],
+  "public_sources": [
+    {"title": "《太乙金镜式经》九宫分野连接文本", "url": "https://ctext.org/wiki.pl?chapter=367760&if=gb", "note": "可辨一至九宫及绛宫、明堂、玉堂所配州名；详细疆界OCR不稳。"},
+    {"title": "《太乙统宗宝鉴》书目与影像入口", "url": "https://ctext.org/wiki.pl?if=gb&res=444363", "note": "卷八相关底本导航，不把自动OCR当作无误校本。"},
+    {"title": "kintaiyi锁定分野表与综合函数", "url": "https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/fenye.py#L1-L132", "note": "保存十二辰、九宫、三座特殊宫及太乙宫／岁建两条入口。"},
+    {"title": "kintaiyi锁定太乙宫数映射", "url": "https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/config.py#L337-L341", "note": "确认一至九宫依次返回乾、午、艮、卯、中、酉、坤、子、巽。"},
+    {"title": "kintaiyi锁定卷八结果入口", "url": "https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L2316-L2321", "note": "完整结果把太乙宫和岁支传入分野综合函数。"}
+  ],
+  "internal_review": {
+    "status": "formal_three_layer_territorial_correspondence_audit",
+    "reviewed_at": "2026-08-07",
+    "owner": ["火华", "Codex"],
+    "runtime_basis": "固定四method太乙宫取自已核年计节点，壬子岁支取自固定历法输入；逐项查锁定九宫与十二辰表",
+    "deduplication": "不并入九宫与十六神位：该页定义盘面坐标，本页保存坐标到历史州国／次舍的特定文本映射。不并入二十八宿：十二次是分野标签，不是本节点已核的二十八宿序、锚宿或值日路线。",
+    "known_gaps": ["十二辰分野未逐页影像校勘", "一宫坎水象冲突未解决", "特殊宫自动匹配不可达", "详细疆界与历史地名未做版本学核对"],
+    "boundary": "固定宫位与历史地名映射，无现代行政区换算、真人输入或随机；不公开灾异、军事和行动断语。"
+  }
+}

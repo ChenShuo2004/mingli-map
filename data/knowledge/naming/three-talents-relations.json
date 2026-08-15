@@ -1,0 +1,39 @@
+{
+  "id": "three-talents-relations",
+  "title": "三才配置的关系读法",
+  "summary": "三才关系必须按有方向的五行对读取：同类为比和，前项生后项为相生，前项克后项为相克；反向则分别记录为被生、被克，不用一个无方向的“生克”覆盖。",
+  "generating_cycle": ["木生火", "火生土", "土生金", "金生水", "水生木"],
+  "overcoming_cycle": ["木克土", "土克水", "水克火", "火克金", "金克木"],
+  "ordered_pair_rules": [
+    {"id": "same", "condition": "前项与后项同五行", "label": "比和", "example": "木→木"},
+    {"id": "generates", "condition": "前项生后项", "label": "相生", "example": "木→火"},
+    {"id": "is-generated", "condition": "后项生前项", "label": "被生", "example": "火→木"},
+    {"id": "overcomes", "condition": "前项克后项", "label": "相克", "example": "木→土"},
+    {"id": "is-overcome", "condition": "后项克前项", "label": "被克", "example": "土→木"}
+  ],
+  "comparison_paths": [
+    {"id": "heaven-person", "from": "天才", "to": "人才", "required": true},
+    {"id": "person-earth", "from": "人才", "to": "地才", "required": true},
+    {"id": "heaven-earth", "from": "天才", "to": "地才", "required": false, "version_note": "tianji实现另作天地对照；须标公式版本"}
+  ],
+  "fixed_relation_examples": [
+    {"configuration": "金木火", "heaven_person": "金克木｜相克", "person_earth": "木生火｜相生", "heaven_earth": "火克金｜金被克"},
+    {"configuration": "土火火", "heaven_person": "火生土｜土被生", "person_earth": "火火同类｜比和", "heaven_earth": "火生土｜土被生"}
+  ],
+  "version_register": [
+    {"version": "基础关系层", "status": "共同规则", "content": "保存五行相生、相克、比和及方向。"},
+    {"version": "三对比较实现", "status": "tianji版本", "content": "比较天→人、人→地、天→地三对。"},
+    {"version": "评分与吉凶表", "status": "解释层", "content": "部分资料另设阈值、权重、成功运与基础运断语，不属于关系计算。"}
+  ],
+  "boundaries": [
+    "箭头表示比较顺序，不表示现实中的能量流动或因果",
+    "相生、相克与比和是关系标签，不直接等于吉、凶或人生结果",
+    "同一对五行反向读取时标签可能改变，必须保存from与to",
+    "不得由三才配置推断健康、婚姻、事业、性格或改名建议"
+  ],
+  "public_sources": [
+    {"title": "《五行大义》卷二", "note": "用于五行相生次序；关系方向与现代三才字段另按实现版本记录。", "url": "https://zh.wikisource.org/wiki/%E4%BA%94%E8%A1%8C%E5%A4%A7%E7%BE%A9/2"},
+    {"title": "tianji：三才关系函数", "note": "用于比和、相生、被生、相克、被克五类有向关系及三对比较；不采用评分阈值与断语。", "url": "https://github.com/Ficere/tianji"},
+    {"title": "八字辅助工具：三才计算资料", "note": "用于交叉核对数尾映射与五行生克顺序；吉凶解释不进入公开节点。", "url": "https://github.com/TVB-JINPAIJIANZHI/bazifuzugongju"}
+  ]
+}

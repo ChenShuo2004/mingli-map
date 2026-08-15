@@ -1,0 +1,540 @@
+{
+  "id": "eighty-one-number-index",
+  "title": "八十一数理编号表（tianji版本）",
+  "summary": "八十一数理把1—81作为查表编号；这里完整列出tianji当前实现的81项分类标签，并同时保留阴阳与数尾五行。标签只属于这一来源版本。",
+  "index_version": {
+    "source": "Ficere/tianji",
+    "commit": "d674635c810b167c616df5fd607418a38d290315",
+    "coverage": "1—81完整",
+    "classification_counts": {
+      "大吉": 28,
+      "吉": 2,
+      "半吉": 17,
+      "凶": 34
+    }
+  },
+  "entries": [
+    {
+      "number": 1,
+      "polarity": "阳",
+      "element": "木",
+      "source_label": "大吉"
+    },
+    {
+      "number": 2,
+      "polarity": "阴",
+      "element": "木",
+      "source_label": "凶"
+    },
+    {
+      "number": 3,
+      "polarity": "阳",
+      "element": "火",
+      "source_label": "大吉"
+    },
+    {
+      "number": 4,
+      "polarity": "阴",
+      "element": "火",
+      "source_label": "凶"
+    },
+    {
+      "number": 5,
+      "polarity": "阳",
+      "element": "土",
+      "source_label": "大吉"
+    },
+    {
+      "number": 6,
+      "polarity": "阴",
+      "element": "土",
+      "source_label": "大吉"
+    },
+    {
+      "number": 7,
+      "polarity": "阳",
+      "element": "金",
+      "source_label": "吉"
+    },
+    {
+      "number": 8,
+      "polarity": "阴",
+      "element": "金",
+      "source_label": "半吉"
+    },
+    {
+      "number": 9,
+      "polarity": "阳",
+      "element": "水",
+      "source_label": "凶"
+    },
+    {
+      "number": 10,
+      "polarity": "阴",
+      "element": "水",
+      "source_label": "凶"
+    },
+    {
+      "number": 11,
+      "polarity": "阳",
+      "element": "木",
+      "source_label": "大吉"
+    },
+    {
+      "number": 12,
+      "polarity": "阴",
+      "element": "木",
+      "source_label": "凶"
+    },
+    {
+      "number": 13,
+      "polarity": "阳",
+      "element": "火",
+      "source_label": "大吉"
+    },
+    {
+      "number": 14,
+      "polarity": "阴",
+      "element": "火",
+      "source_label": "凶"
+    },
+    {
+      "number": 15,
+      "polarity": "阳",
+      "element": "土",
+      "source_label": "大吉"
+    },
+    {
+      "number": 16,
+      "polarity": "阴",
+      "element": "土",
+      "source_label": "大吉"
+    },
+    {
+      "number": 17,
+      "polarity": "阳",
+      "element": "金",
+      "source_label": "半吉"
+    },
+    {
+      "number": 18,
+      "polarity": "阴",
+      "element": "金",
+      "source_label": "半吉"
+    },
+    {
+      "number": 19,
+      "polarity": "阳",
+      "element": "水",
+      "source_label": "凶"
+    },
+    {
+      "number": 20,
+      "polarity": "阴",
+      "element": "水",
+      "source_label": "凶"
+    },
+    {
+      "number": 21,
+      "polarity": "阳",
+      "element": "木",
+      "source_label": "大吉"
+    },
+    {
+      "number": 22,
+      "polarity": "阴",
+      "element": "木",
+      "source_label": "凶"
+    },
+    {
+      "number": 23,
+      "polarity": "阳",
+      "element": "火",
+      "source_label": "大吉"
+    },
+    {
+      "number": 24,
+      "polarity": "阴",
+      "element": "火",
+      "source_label": "大吉"
+    },
+    {
+      "number": 25,
+      "polarity": "阳",
+      "element": "土",
+      "source_label": "半吉"
+    },
+    {
+      "number": 26,
+      "polarity": "阴",
+      "element": "土",
+      "source_label": "凶"
+    },
+    {
+      "number": 27,
+      "polarity": "阳",
+      "element": "金",
+      "source_label": "凶"
+    },
+    {
+      "number": 28,
+      "polarity": "阴",
+      "element": "金",
+      "source_label": "凶"
+    },
+    {
+      "number": 29,
+      "polarity": "阳",
+      "element": "水",
+      "source_label": "大吉"
+    },
+    {
+      "number": 30,
+      "polarity": "阴",
+      "element": "水",
+      "source_label": "半吉"
+    },
+    {
+      "number": 31,
+      "polarity": "阳",
+      "element": "木",
+      "source_label": "大吉"
+    },
+    {
+      "number": 32,
+      "polarity": "阴",
+      "element": "木",
+      "source_label": "大吉"
+    },
+    {
+      "number": 33,
+      "polarity": "阳",
+      "element": "火",
+      "source_label": "大吉"
+    },
+    {
+      "number": 34,
+      "polarity": "阴",
+      "element": "火",
+      "source_label": "凶"
+    },
+    {
+      "number": 35,
+      "polarity": "阳",
+      "element": "土",
+      "source_label": "大吉"
+    },
+    {
+      "number": 36,
+      "polarity": "阴",
+      "element": "土",
+      "source_label": "半吉"
+    },
+    {
+      "number": 37,
+      "polarity": "阳",
+      "element": "金",
+      "source_label": "大吉"
+    },
+    {
+      "number": 38,
+      "polarity": "阴",
+      "element": "金",
+      "source_label": "半吉"
+    },
+    {
+      "number": 39,
+      "polarity": "阳",
+      "element": "水",
+      "source_label": "半吉"
+    },
+    {
+      "number": 40,
+      "polarity": "阴",
+      "element": "水",
+      "source_label": "凶"
+    },
+    {
+      "number": 41,
+      "polarity": "阳",
+      "element": "木",
+      "source_label": "大吉"
+    },
+    {
+      "number": 42,
+      "polarity": "阴",
+      "element": "木",
+      "source_label": "凶"
+    },
+    {
+      "number": 43,
+      "polarity": "阳",
+      "element": "火",
+      "source_label": "凶"
+    },
+    {
+      "number": 44,
+      "polarity": "阴",
+      "element": "火",
+      "source_label": "凶"
+    },
+    {
+      "number": 45,
+      "polarity": "阳",
+      "element": "土",
+      "source_label": "大吉"
+    },
+    {
+      "number": 46,
+      "polarity": "阴",
+      "element": "土",
+      "source_label": "凶"
+    },
+    {
+      "number": 47,
+      "polarity": "阳",
+      "element": "金",
+      "source_label": "大吉"
+    },
+    {
+      "number": 48,
+      "polarity": "阴",
+      "element": "金",
+      "source_label": "大吉"
+    },
+    {
+      "number": 49,
+      "polarity": "阳",
+      "element": "水",
+      "source_label": "半吉"
+    },
+    {
+      "number": 50,
+      "polarity": "阴",
+      "element": "水",
+      "source_label": "半吉"
+    },
+    {
+      "number": 51,
+      "polarity": "阳",
+      "element": "木",
+      "source_label": "半吉"
+    },
+    {
+      "number": 52,
+      "polarity": "阴",
+      "element": "木",
+      "source_label": "大吉"
+    },
+    {
+      "number": 53,
+      "polarity": "阳",
+      "element": "火",
+      "source_label": "凶"
+    },
+    {
+      "number": 54,
+      "polarity": "阴",
+      "element": "火",
+      "source_label": "凶"
+    },
+    {
+      "number": 55,
+      "polarity": "阳",
+      "element": "土",
+      "source_label": "半吉"
+    },
+    {
+      "number": 56,
+      "polarity": "阴",
+      "element": "土",
+      "source_label": "凶"
+    },
+    {
+      "number": 57,
+      "polarity": "阳",
+      "element": "金",
+      "source_label": "吉"
+    },
+    {
+      "number": 58,
+      "polarity": "阴",
+      "element": "金",
+      "source_label": "半吉"
+    },
+    {
+      "number": 59,
+      "polarity": "阳",
+      "element": "水",
+      "source_label": "凶"
+    },
+    {
+      "number": 60,
+      "polarity": "阴",
+      "element": "水",
+      "source_label": "凶"
+    },
+    {
+      "number": 61,
+      "polarity": "阳",
+      "element": "木",
+      "source_label": "大吉"
+    },
+    {
+      "number": 62,
+      "polarity": "阴",
+      "element": "木",
+      "source_label": "凶"
+    },
+    {
+      "number": 63,
+      "polarity": "阳",
+      "element": "火",
+      "source_label": "大吉"
+    },
+    {
+      "number": 64,
+      "polarity": "阴",
+      "element": "火",
+      "source_label": "凶"
+    },
+    {
+      "number": 65,
+      "polarity": "阳",
+      "element": "土",
+      "source_label": "大吉"
+    },
+    {
+      "number": 66,
+      "polarity": "阴",
+      "element": "土",
+      "source_label": "凶"
+    },
+    {
+      "number": 67,
+      "polarity": "阳",
+      "element": "金",
+      "source_label": "大吉"
+    },
+    {
+      "number": 68,
+      "polarity": "阴",
+      "element": "金",
+      "source_label": "大吉"
+    },
+    {
+      "number": 69,
+      "polarity": "阳",
+      "element": "水",
+      "source_label": "凶"
+    },
+    {
+      "number": 70,
+      "polarity": "阴",
+      "element": "水",
+      "source_label": "凶"
+    },
+    {
+      "number": 71,
+      "polarity": "阳",
+      "element": "木",
+      "source_label": "半吉"
+    },
+    {
+      "number": 72,
+      "polarity": "阴",
+      "element": "木",
+      "source_label": "半吉"
+    },
+    {
+      "number": 73,
+      "polarity": "阳",
+      "element": "火",
+      "source_label": "半吉"
+    },
+    {
+      "number": 74,
+      "polarity": "阴",
+      "element": "火",
+      "source_label": "凶"
+    },
+    {
+      "number": 75,
+      "polarity": "阳",
+      "element": "土",
+      "source_label": "凶"
+    },
+    {
+      "number": 76,
+      "polarity": "阴",
+      "element": "土",
+      "source_label": "凶"
+    },
+    {
+      "number": 77,
+      "polarity": "阳",
+      "element": "金",
+      "source_label": "半吉"
+    },
+    {
+      "number": 78,
+      "polarity": "阴",
+      "element": "金",
+      "source_label": "凶"
+    },
+    {
+      "number": 79,
+      "polarity": "阳",
+      "element": "水",
+      "source_label": "凶"
+    },
+    {
+      "number": 80,
+      "polarity": "阴",
+      "element": "水",
+      "source_label": "凶"
+    },
+    {
+      "number": 81,
+      "polarity": "阳",
+      "element": "木",
+      "source_label": "大吉"
+    }
+  ],
+  "field_notes": [
+    {
+      "field": "number",
+      "content": "1—81查表编号"
+    },
+    {
+      "field": "polarity",
+      "content": "奇数记阳，偶数记阴"
+    },
+    {
+      "field": "element",
+      "content": "沿用数尾五行映射"
+    },
+    {
+      "field": "source_label",
+      "content": "tianji实现中的版本分类标签"
+    }
+  ],
+  "boundaries": [
+    "完整覆盖只表示编号无缺项，不证明分类有历史底本或经验效度",
+    "编号表不复制各号长篇断语，不把版本标签翻译成个人命运结论",
+    "其他资料对同一编号有不同分类时并列保存，不用多数票覆盖",
+    "81项分类必须与来源、提交和分类口径一起使用"
+  ],
+  "public_sources": [
+    {
+      "title": "《熊崎式姓名学》国立国会图书馆书目",
+      "note": "作为历史著作书目锚点；未取得具体页码前，不用它证明81项分类。",
+      "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000000642480"
+    },
+    {
+      "title": "tianji：81数理实现表",
+      "note": "当前完整索引的直接来源；只采用编号和版本标签，不采用长篇断语、评分或个人解释。",
+      "url": "https://github.com/Ficere/tianji"
+    }
+  ]
+}

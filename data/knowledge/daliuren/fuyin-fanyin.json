@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0.0",
+  "id": "daliuren_fuyin_fanyin",
+  "title": "伏吟与返吟",
+  "summary": "伏吟和返吟首先是天地盘关系形成的特殊入口：月将与占时相同时天地盘同位，现有实现进入伏吟，并继续区分有克、无克、自任、自信、自刑等路径；天地盘形成冲转关系时进入返吟，并根据有无直接贼克及马星条件处理。‘返吟’与‘反吟’作为术语写法并列保存。",
+  "headline": "先看天地盘是否同位或冲转，再进入各自的取传子树",
+  "steps": [
+    {"label": "伏吟入口", "value": "月将 = 占时", "note": "天地盘十二位重合。"},
+    {"label": "伏吟子路", "value": "有克／无克／刑", "note": "实现中继续出现自任、自信、自刑等标签。"},
+    {"label": "返吟入口", "value": "天地盘冲转", "note": "不能只凭课体名称反推全部三传。"},
+    {"label": "返吟子路", "value": "有克／无依／马星", "note": "不同实现的课体标签可能分歧。"}
+  ],
+  "facts": [
+    {"label": "固定重合", "detail": "jishiyu 源码也明确把月将与时支相同标为伏吟特例。"},
+    {"label": "标签分歧", "detail": "两个三传一致的跨库案例中，dalurenpython 标知一，kinliuren 标返吟／绝嗣。"},
+    {"label": "开放争议", "detail": "kinliuren issue #7涉及伏吟日期或顺序，报告者说法与当前实现需并列。"}
+  ],
+  "comparisons": [
+    {"label": "术语", "left": "返吟", "right": "反吟", "handling": "作为同一入口的来源写法保存"},
+    {"label": "结果层", "left": "三传可以一致", "right": "课体标签仍可能不同", "handling": "不按结果自动合并名称"}
+  ],
+  "reading_boundaries": ["本页只解释结构入口与分支，不采用长篇占断。", "自任、自信等标签尚未获得规则级底本页码。", "固定案例留到后续案例批次完整展开。"],
+  "public_sources": [
+    {"title": "kinliuren 伏吟返吟实现", "url": "https://github.com/kentang2017/kinliuren/blob/3ba45a9540f08269b56d81508a061c7d46938785/src/kinliuren/kinliuren.py", "note": "提供分支与开放议题对应实现。"},
+    {"title": "dalurenpython 伏吟返吟实现", "url": "https://github.com/wlhyl/dalurenpython/blob/62764a4ad2c10f5ccc34b86c8520d9f4a96ba3aa/shipan/shipan.py#L728-L779", "note": "无仓库许可；用于结构与标签对照。"},
+    {"title": "jishiyu 伏吟特例", "url": "https://github.com/chxb/jishiyu/blob/97b6d6d8e58c6947a86e281d5b69de1032e9bc08/js/da6ren.js", "note": "源码注释明确月将与时支相同的伏吟入口。"}
+  ],
+  "internal_review": {"reviewed_on": "2026-08-10", "owner": ["火华", "Codex"], "status": "formal_special_structure_with_label_dispute"}
+}

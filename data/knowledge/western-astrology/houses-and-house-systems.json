@@ -1,0 +1,91 @@
+{
+  "schema_version": "1.0.0",
+  "id": "western_astrology_houses_and_house_systems",
+  "title": "宫位与宫制",
+  "summary": "十二宫先提供一组固定编号和主题入口，宫制再决定盘面怎样划出十二个宫界。当前来源一边把整宫制作为自身古典分析的默认选择，另一边的 `flatlib` 把宫制保留为可替换参数、默认使用 Alcabitius；本页并列两种项目默认，不把任一默认值升级成唯一传统。",
+  "concept_split": [
+    {"id":"houses","label":"宫位","question":"十二个编号分别承接什么主题？","stable_part":"编号仍为1至12；主题名称属于当前来源陈述。"},
+    {"id":"systems","label":"宫制","question":"十二个宫界怎样从盘面中划出？","stable_part":"它是计算与展示参数；选择不同宫制不等于增加或减少宫位数量。"}
+  ],
+  "houses": [
+    {"number":1,"group":"角宫","themes":["生命","身体","自我"],"joy_planet":"水星"},
+    {"number":2,"group":"续宫","themes":["财产","资源","价值"],"joy_planet":null},
+    {"number":3,"group":"果宫","themes":["手足","近行","沟通"],"joy_planet":"月亮"},
+    {"number":4,"group":"角宫","themes":["家庭","根基","终结"],"joy_planet":null},
+    {"number":5,"group":"续宫","themes":["子女","创造","娱乐"],"joy_planet":"金星"},
+    {"number":6,"group":"果宫","themes":["疾病","劳作","日常"],"joy_planet":"火星"},
+    {"number":7,"group":"角宫","themes":["婚姻","伴侣","对手"],"joy_planet":null},
+    {"number":8,"group":"续宫","themes":["死亡","他人资源","恐惧"],"joy_planet":null},
+    {"number":9,"group":"果宫","themes":["信仰","远行","哲学"],"joy_planet":"太阳"},
+    {"number":10,"group":"角宫","themes":["事业","声望","行动"],"joy_planet":null},
+    {"number":11,"group":"续宫","themes":["友谊","希望","团体"],"joy_planet":"木星"},
+    {"number":12,"group":"果宫","themes":["隐秘","损失","禁闭"],"joy_planet":"土星"}
+  ],
+  "house_groups": [
+    {"id":"angular","label":"角宫","english":"Angular","houses":[1,4,7,10]},
+    {"id":"succedent","label":"续宫","english":"Succedent","houses":[2,5,8,11]},
+    {"id":"cadent","label":"果宫","english":"Cadent","houses":[3,6,9,12]}
+  ],
+  "house_systems": [
+    {"id":"PLACIDUS","name":"Placidus"},
+    {"id":"KOCH","name":"Koch"},
+    {"id":"PORPHYRIUS","name":"Porphyrius"},
+    {"id":"REGIOMONTANUS","name":"Regiomontanus"},
+    {"id":"CAMPANUS","name":"Campanus"},
+    {"id":"EQUAL","name":"Equal"},
+    {"id":"EQUAL_2","name":"Equal 2"},
+    {"id":"VEHLOW_EQUAL","name":"Vehlow Equal"},
+    {"id":"WHOLE_SIGN","name":"Whole Sign"},
+    {"id":"MERIDIAN","name":"Meridian"},
+    {"id":"AZIMUTHAL","name":"Azimuthal"},
+    {"id":"POLICH_PAGE","name":"Polich Page"},
+    {"id":"ALCABITUS","name":"Alcabitius"},
+    {"id":"MORINUS","name":"Morinus"}
+  ],
+  "source_defaults": [
+    {"source":"fortune-telling-skills 本命框架","value":"Whole Sign","label":"整宫制","status":"作者工作流默认"},
+    {"source":"flatlib 计算实现","value":"Alcabitius","label":"Alcabitius","status":"软件默认参数"}
+  ],
+  "inventory_difference": {
+    "earlier_catalog_count": 13,
+    "structured_snapshot_count": 14,
+    "missing_from_earlier_count_note": "结构化快照末项另有 MORINUS；早期知识目录的‘13种’描述与同批快照不一致。",
+    "current_handling": "本页按结构化快照逐项展示14个标识，同时保留早期13项计数错误，不把数量差异解释成传统流派分歧。"
+  },
+  "reading_boundaries": [
+    "宫位主题、角续果分类和喜乐宫对应均保存为来源陈述，不直接用于真人事项判断。",
+    "两个默认值分别是作者工作流和软件配置的选择，不代表古典占星只有一个公认宫制。",
+    "本页只登记宫制标识和默认差异；没有足够证据时不补写每种宫制的历史、公式或优劣。",
+    "页面不接收出生时间与地点，不生成宫头、上升点、天顶或个人星盘。"
+  ],
+  "public_sources": [
+    {
+      "title": "fortune-telling-skills：本命盘解读体系",
+      "url": "https://github.com/doododod/fortune-telling-skills/blob/8bcc734491ac75cfb21c1de8727c9fc3f9427b1e/astrology-chart-analysis/references/natal-chart.md",
+      "note": "提供十二宫主题、角续果分类、喜乐宫对应及该作者工作流采用整宫制的声明；未逐项给出古典底本。"
+    },
+    {
+      "title": "flatlib：宫制常量",
+      "url": "https://github.com/flatangle/flatlib/blob/856d26b8bd1316ccdafe76399994696f9510de9e/flatlib/const.py",
+      "note": "结构化快照从此处抽出14个宫制标识；早期知识目录误记为13个。"
+    },
+    {
+      "title": "flatlib：星盘构造",
+      "url": "https://github.com/flatangle/flatlib/blob/856d26b8bd1316ccdafe76399994696f9510de9e/flatlib/chart.py",
+      "note": "用于确认宫制作为星盘构造参数，并保存软件默认值 Alcabitius。"
+    }
+  ],
+  "internal_review": {
+    "status": "formal_structure_node_with_inventory_correction",
+    "reviewed_at": "2026-08-09",
+    "owner": ["火华", "Codex"],
+    "source_refs": ["github_doododod_fortune_telling_skills_8bcc734","github_flatangle_flatlib_856d26b"],
+    "deduplication": "与七曜分开：七曜回答盘中有哪些基本对象，宫位回答对象落入哪个主题位置，宫制回答位置边界怎样计算。与相位分开：相位描述对象之间的角距离与运动关系，不负责划宫。",
+    "known_gaps": [
+      "十二宫主题、角续果分类与喜乐宫尚缺逐项原典版次和页码。",
+      "14个宫制目前只有实现标识，没有逐种公式、历史谱系与版本对照。",
+      "早期flatlib知识目录写13种，与结构化快照14项冲突；已确认是同批抽取内部计数不一致，尚未回写来源层历史文件。"
+    ],
+    "boundary": "固定知识表与参数比较；无真人输入、排盘、事项判断、宫位吉凶或宫制推荐。"
+  }
+}

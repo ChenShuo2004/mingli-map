@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0.0",
+  "id": "daliuren_four_lessons_generation",
+  "title": "四课的四步生成",
+  "summary": "四课由日干侧两课与日支侧两课组成。第一课从日干寄宫取天盘上神，第二课再以上一步上神取新的上神；第三课从日支取上神，第四课同样以上一步上神继续取一次。四课保存上下神方向，不能压缩为四个无方向的地支。",
+  "headline": "干侧两步、支侧两步，都是沿天地盘逐层取上神",
+  "steps": [
+    {"label": "一课 · 干阳", "value": "日干寄宫 → 天盘", "note": "下神为日干，先以寄宫定位；上神为该位天盘。"},
+    {"label": "二课 · 干阴", "value": "干阳上神 → 再取天盘", "note": "承接第一课上神。"},
+    {"label": "三课 · 支阳", "value": "日支 → 天盘", "note": "从日支直接定位。"},
+    {"label": "四课 · 支阴", "value": "支阳上神 → 再取天盘", "note": "承接第三课上神。"}
+  ],
+  "facts": [
+    {"label": "固定例输入", "detail": "酉将、未时、乙卯日。"},
+    {"label": "固定例四课", "detail": "一课午／乙，二课申／午，三课巳／卯，四课未／巳；斜线前为上神、后为下神。"},
+    {"label": "依赖关系", "detail": "若天地盘或寄宫版本改变，四课会随之改变。"}
+  ],
+  "reading_boundaries": ["固定例只复演字段生成，不解释事项。", "上神与下神的方向必须保留。", "实现可复算不等于每一步已有传统底本页码。"],
+  "public_sources": [
+    {"title": "kinliuren 四课实现", "url": "https://github.com/kentang2017/kinliuren/blob/3ba45a9540f08269b56d81508a061c7d46938785/src/kinliuren/kinliuren.py", "note": "提供 all_sike 与固定课例。"},
+    {"title": "qimen-go 四课实现", "url": "https://github.com/deminzhang/qimen-go/blob/4d3f58fa0f401b5b3a337f119138e99e90685dda/xuan/big6.go", "note": "提供第二套逐层取上神结构。"},
+    {"title": "dalurenpython 四课实现", "url": "https://github.com/wlhyl/dalurenpython/blob/62764a4ad2c10f5ccc34b86c8520d9f4a96ba3aa/shipan/shipan.py#L341-L415", "note": "无仓库许可；用于固定结构对照。"}
+  ],
+  "internal_review": {"reviewed_on": "2026-08-10", "owner": ["火华", "Codex"], "status": "formal_generation_structure"}
+}

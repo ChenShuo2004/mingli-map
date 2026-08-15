@@ -1,0 +1,75 @@
+{
+  "schema_version": "1.0",
+  "id": "liuyao_timing_triggers",
+  "title": "应期",
+  "summary": "应期不是另一套起卦规则，而是把已经确认的目标爻及其动静、旺衰、墓、合、破、空、进退等状态，转换成后续时间需要出现的关系条件。《增删卜易》把这些条件集中列为总注；《卜筮正宗》也以“空要值日、破要填合、冲待合、合待冲”概括同一结构。先有目标与状态，才谈触发关系；单独看到某日某支，不能反推事情一定发生。",
+  "rule_groups": [
+    {
+      "id": "motion",
+      "label": "动静入口",
+      "note": "先由目标爻原本是静还是动，决定优先观察哪种时间关系。",
+      "rules": [
+        { "id": "static", "state": "目标爻安静", "trigger": ["逢值", "逢冲"], "example": "子水静爻 → 子日或午日", "dependency": "先确认该爻确是当前目标，且没有其他状态改写入口。" },
+        { "id": "moving", "state": "目标爻发动", "trigger": ["逢值", "逢合"], "example": "子水动爻 → 子日或丑日", "dependency": "动爻已经进入作用链；这里仅记录时间关系，不重复判断其作用方向。" }
+      ]
+    },
+    {
+      "id": "state",
+      "label": "状态时间门",
+      "note": "旺衰、墓、合、破、空各有不同的等待关系，不能统称为“等填实”。",
+      "rules": [
+        { "id": "too-strong", "state": "目标爻太旺", "trigger": ["逢墓", "逢冲"], "example": "午火又得巳午助 → 戌日或亥子时间", "dependency": "太旺必须来自月日或同类过多，不能只因出现帝旺字样就成立。" },
+        { "id": "weak", "state": "目标爻衰绝", "trigger": ["遇生", "遇旺"], "example": "金在巳午时休囚 → 土时间或秋令", "dependency": "先由月令和生扶判断衰弱，再寻找能生或当令的时间。" },
+        { "id": "tomb", "state": "目标爻入墓", "trigger": ["冲开墓支"], "example": "午火墓于戌 → 辰时间", "dependency": "先区分日墓、动墓、化墓及目标五行，不能见辰戌丑未便一概称墓。" },
+        { "id": "harmony", "state": "目标爻被合", "trigger": ["冲开合支"], "example": "子丑相合 → 午或未时间", "dependency": "先确认日月合、爻合或动化合的来源；合住与合好不是同一状态。" },
+        { "id": "month-break", "state": "目标爻月破", "trigger": ["同支填实", "六合相合"], "example": "子月午爻破 → 午日或未日", "dependency": "月破的动静、受助与出月仍由“月建与日辰”页判断。" },
+        { "id": "void", "state": "目标爻旬空", "trigger": ["同支填实", "六冲冲空", "出旬"], "example": "甲子旬亥空 → 亥时间、巳时间或下一旬", "dependency": "先分当前空支有无支撑；真空与待时可用不能只靠触发名称合并。" }
+      ]
+    },
+    {
+      "id": "change",
+      "label": "动变附线",
+      "note": "进退、独发独静以及本爻与变爻，会把另一位置带入时间观察。",
+      "rules": [
+        { "id": "advance", "state": "动爻化进神", "trigger": ["值本爻", "冲本爻", "合本爻"], "example": "申动化酉 → 申、寅或巳时间", "dependency": "先确认同五行进神方向；这里不把化进自动写成有利。" },
+        { "id": "retreat", "state": "动爻化退神", "trigger": ["值变爻", "冲变爻"], "example": "酉动化申 → 申或寅时间", "dependency": "先确认退神方向；原文另提示旺衰会影响进退何时落实。" },
+        { "id": "single", "state": "独发或独静", "trigger": ["以独见位置作线索"], "example": "六爻中只有一处发动或一处安静", "dependency": "原书只说“间有应于”，不能舍弃用神与核心关系单独据此定时。" },
+        { "id": "base-change", "state": "本爻与变爻并见", "trigger": ["值本爻", "值变爻"], "example": "戌土动变酉金 → 戌日或酉日", "dependency": "两者是同位变化的前后层，不把所有出现过的地支都当成应期候选。" }
+      ]
+    },
+    {
+      "id": "condition",
+      "label": "作用条件",
+      "note": "当结果结构仍被另一作用卡住时，时间门可能落在制约来源，而非目标爻本身。",
+      "rules": [
+        { "id": "blocker-controlled", "state": "目标结构已受生扶，但仍被克制", "trigger": ["克神受制"], "example": "辰土受寅卯克 → 申酉时间制木", "dependency": "必须先建立目标、支持来源和克制来源三层关系。" },
+        { "id": "attacker-supported", "state": "目标结构无助而又受克", "trigger": ["克者再得生扶"], "example": "辰土无助又受寅卯克 → 寅卯亥时间", "dependency": "这是原书的条件化时间线索，不据此单独输出吉凶。" },
+        { "id": "self-void-origin-moving", "state": "世爻空、原神发动", "trigger": ["原神逢值"], "example": "先锁定发动的原神，再等同支时间", "dependency": "先确定用神与原神，不能把任一生世动爻都直接套入。" },
+        { "id": "self-weak-origin-static", "state": "世爻衰、原神安静", "trigger": ["原神逢冲"], "example": "先锁定静止的原神，再看相冲时间", "dependency": "原神本身仍需有气；本条不能替代原神有力无力的判断。" }
+      ]
+    }
+  ],
+  "time_scale": [
+    { "id": "far", "label": "远事", "units": ["年", "月"], "note": "原书以年月作为远事的主要时间尺度。" },
+    { "id": "near", "label": "近事", "units": ["日", "时"], "note": "原书以日时作为近事的主要时间尺度。" }
+  ],
+  "scale_boundary": "远近只是选择时间单位的第一层，原书同时明确存在占远应近、占近应远、占月应年、占日应时等例外，不能把单位选择写成固定算法。",
+  "reading_order": [
+    { "label": "定目标", "note": "先从问题关系中确定真正观察的爻或角色。" },
+    { "label": "定状态", "note": "再判断它当前属于动静、旺衰、墓合破空或动变哪一类。" },
+    { "label": "找关系", "note": "按该状态查值、冲、合、生、旺、墓等后续时间关系。" },
+    { "label": "选尺度", "note": "最后区分远近尺度，并保留实际材料可能跨尺度的例外。" }
+  ],
+  "cross_node_note": "旬空、月破、入墓、合住、进退等状态必须先按各自规则成立；应期承接已经成立的状态，把它们汇入统一的时间触发结构，而不重新定义这些状态。",
+  "reading_boundary": "本节点只演示古籍怎样从既定状态生成时间关系候选；不接收日期、卦象或真人事项，不替用户取用神，不计算哪年哪月发生，也不把任何候选时间输出为确定事件。",
+  "internal_review": {
+    "status": "general_timing_rules_and_second_classical_witness_cross_checked",
+    "reviewed_at": "2026-08-05",
+    "source_refs": [
+      "zengshan_buyi_volume_1_part_2_general_timing_note_locked_text",
+      "bushi_zhengzong_lower_volume_month_break_void_and_flying_hidden_locked_text",
+      "github_chxb_jishiyu_97b6d6d_book_corpus"
+    ],
+    "boundary": "公开总注中的结构规则、远近尺度与非绝对性；不公开具体事项断语，不把规则自动套入真人卦象或日期。"
+  }
+}

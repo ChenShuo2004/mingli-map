@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0.0",
+  "id": "daliuren_course_relations_candidates",
+  "title": "四课五行关系与取传候选",
+  "summary": "四课生成后，锁定实现分别比较每课上下神的五行方向，得到下贼上、上克下、比和、下生上、上生下等关系。取三传并不是看到任意相克就结束，而是先收集符合当前分支的候选，再处理重复、阴阳同类与多候选问题。",
+  "headline": "先给每课标方向，再从四课中建立候选集合",
+  "steps": [
+    {"label": "逐课比较", "value": "下神五行 ↔ 上神五行", "note": "保留作用方向。"},
+    {"label": "关系标记", "value": "贼 · 克 · 比 · 生", "note": "下贼上与上克下不能交换。"},
+    {"label": "候选集合", "value": "一项或多项", "note": "重复上神与多课同类需继续处理。"},
+    {"label": "进入取传", "value": "贼克／比用／涉害…", "note": "下一节点才决定初传。"}
+  ],
+  "facts": [
+    {"label": "关系范围", "detail": "现有实现保存下贼上、上克下、比和、下生上、上生下五类方向。"},
+    {"label": "对象边界", "detail": "关系属于一课上下神；课体名称属于更下游分类。"},
+    {"label": "实现风险", "detail": "kinliuren 选择代码含次序与特例，不能压成跨流派唯一公式。"}
+  ],
+  "reading_boundaries": ["五行关系只用于说明候选如何出现。", "本页不把相克翻译成事件吉凶。", "候选去重、比用与涉害必须保留来源版本。"],
+  "public_sources": [
+    {"title": "kinliuren 四课关系实现", "url": "https://github.com/kentang2017/kinliuren/blob/3ba45a9540f08269b56d81508a061c7d46938785/src/kinliuren/kinliuren.py", "note": "find_ke_relation 与 find_sike_relations 提供五类方向及候选入口。"},
+    {"title": "dalurenpython 贼克分支", "url": "https://github.com/wlhyl/dalurenpython/blob/62764a4ad2c10f5ccc34b86c8520d9f4a96ba3aa/shipan/shipan.py#L462-L633", "note": "无仓库许可；用于分支结构比较。"}
+  ],
+  "internal_review": {"reviewed_on": "2026-08-10", "owner": ["火华", "Codex"], "status": "formal_relation_structure_not_consensus_selector"}
+}

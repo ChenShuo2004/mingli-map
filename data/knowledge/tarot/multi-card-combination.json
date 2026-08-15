@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "id": "tarot-multi-card-combination",
+  "title": "多张牌怎样组合",
+  "summary": "把问题、牌阵、牌位、方向和多张牌的次序放在同一张结构图里。",
+  "layers": [
+    {"id":"question","index":1,"label":"问题","question":"这些牌共同回答什么？","note":"同一组牌放进不同问题，阅读范围会改变。"},
+    {"id":"spread","index":2,"label":"牌阵","question":"使用哪一套位置结构？","note":"先保存牌阵名称与版本，再读取每个位置。"},
+    {"id":"position","index":3,"label":"牌位","question":"每张牌落在哪个位置？","note":"牌位是当前牌在这组结构中的任务。"},
+    {"id":"card","index":4,"label":"单牌","question":"牌面、来源牌义与方向是什么？","note":"可见画面、作者牌义和正逆位保持分层。"},
+    {"id":"sequence","index":5,"label":"整组","question":"次序与重复关系怎样出现？","note":"最后才观察前后次序、方向分布、牌组类型和重复元素。"}
+  ],
+  "examples": [
+    {"id":"major","label":"三张大阿卡纳","source_example":"three_card_position_demo","question":"一个固定的过去／现在／未来结构","observations":["3张均为大阿卡纳","方向依次为正位、逆位、正位","抽牌次序对应过去、现在、未来","只保存结构，不生成整组结论"]},
+    {"id":"mixed","label":"完整牌组混合例","source_example":"three_card_mixed_deck_demo","question":"同一套过去／现在／未来结构","observations":["1张大阿卡纳＋2张小阿卡纳","小阿卡纳来自圣杯与星币","方向依次为正位、逆位、正位","牌组类型与花色可以作为整组观察字段"]}
+  ],
+  "same_card_positions": [
+    {"position":"过去","role":"查看此前影响","route":"/topic/tarot/spread-structures?spread=three&position=1"},
+    {"position":"建议","role":"查看可采取的行动","route":"/topic/tarot/spread-structures?spread=five&position=3"},
+    {"position":"结果","role":"查看所选版本的结果位置","route":"/topic/tarot/spread-structures?spread=five&position=5"}
+  ],
+  "boundary":"组合页只展示输入字段和牌与牌的结构关系，不把固定牌例写成个人预测。",
+  "public_sources": [
+    {"title":"Project Gutenberg：Waite 1910相对主题阅读","note":"原书说明牌义需相对于当前主题、位置与具体条件来理解。","url":"https://www.gutenberg.org/cache/epub/43548/pg43548-images.html#III8"},
+    {"title":"bazi-agent：固定提交中的整组字段","note":"实现把牌阵、问题、牌位、单牌方向与所有牌摘要组合成不同字段；页面只复用字段结构，不复用自动结论。","url":"https://github.com/DadanLuo/bazi_agent/blob/24f0216e13730df3d2b53e413d00ca3c9f2f40b4/src/agents/tarot_tools.py"},
+    {"title":"bazi-master：固定提交中的牌位映射","note":"实现为每张抽取牌保存次序、牌位名称、牌位说明与正逆位状态。","url":"https://github.com/tytsxai/bazi-master/blob/9d9fe528c71cde787a9ffef6d1092de9e7fba85b/backend/services/tarot.service.js"}
+  ],
+  "internal_review": {"status":"formal_multi_card_structure_node","reviewed_at":"2026-08-07","source_refs":["gutenberg_waite_43548","github_dadanluo_bazi_agent_24f0216","github_tytsxai_bazi_master_9d9fe52"],"ownership":"K-TAROT.07 牌阵与解读","boundary":"字段组合与个人解释分开；固定牌例不形成预测。"}
+}

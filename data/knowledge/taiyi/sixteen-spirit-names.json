@@ -1,0 +1,94 @@
+{
+  "schema_version": "1.0",
+  "id": "taiyi_sixteen_spirit_names",
+  "title": "十六神名称与四时序列",
+  "summary": "沿十六神位保存十六个位置神名，并把十二支月与艮、巽、坤、乾四个季节交界分成四组阅读。名称后的四时说明来自《太乙金镜式经》卷二的来源陈述，不转写成自然事实或吉凶属性；巽、巳两位在选定OCR文本与锁定实现中的不同名称并列保留。",
+  "fixed_example": "1552年9月24日 0时0分 · 年计 · 太乙金镜",
+  "season_arcs": [
+    {
+      "id": "spring",
+      "label": "春序",
+      "range": "艮 → 寅 → 卯 → 辰",
+      "transition": "艮位连接冬春，其后三支对应寅、卯、辰月。",
+      "spirits": [
+        {"position": "艮", "position_type": "正宫", "ctext_ocr_name": "和德", "implementation_name": "和德", "rationale": "卷二以冬春将交、阴阳气合、群物方生解释此名。", "fixed_objects": []},
+        {"position": "寅", "position_type": "间神", "ctext_ocr_name": "吕申", "implementation_name": "吕申", "rationale": "卷二以建寅之月阳气伸展、草木萌发解释此名。", "fixed_objects": ["计神"]},
+        {"position": "卯", "position_type": "正宫", "ctext_ocr_name": "高丛", "implementation_name": "高丛", "rationale": "卷二以建卯之月万物出地、丛生解释此名。", "fixed_objects": ["主参将"]},
+        {"position": "辰", "position_type": "间神", "ctext_ocr_name": "太阳", "implementation_name": "太阳", "rationale": "卷二以建辰之月雷动、阳气盛解释此名。", "fixed_objects": ["始击", "定目"]}
+      ]
+    },
+    {
+      "id": "summer",
+      "label": "夏序",
+      "range": "巽 → 巳 → 午 → 未",
+      "transition": "巽位连接春夏，其后三支对应巳、午、未月。",
+      "spirits": [
+        {"position": "巽", "position_type": "正宫", "ctext_ocr_name": "太灵", "implementation_name": "大炅", "rationale": "选定OCR文本以春夏将交、暑气将至解释“太灵”；锁定实现与内置七十二局文本使用“大炅”。", "fixed_objects": ["文昌", "客大将"]},
+        {"position": "巳", "position_type": "间神", "ctext_ocr_name": "太神", "implementation_name": "大神", "rationale": "选定OCR文本以建巳之月少阴用事、阴阳不测解释“太神”；锁定实现使用“大神”。", "fixed_objects": []},
+        {"position": "午", "position_type": "正宫", "ctext_ocr_name": "大威", "implementation_name": "大威", "rationale": "卷二以建午之月阳极而阴生解释此名。", "fixed_objects": []},
+        {"position": "未", "position_type": "间神", "ctext_ocr_name": "天道", "implementation_name": "天道", "rationale": "卷二以建未之月火土关系及土气当令解释此名。", "fixed_objects": []}
+      ]
+    },
+    {
+      "id": "autumn",
+      "label": "秋序",
+      "range": "坤 → 申 → 酉 → 戌",
+      "transition": "坤位连接夏秋，其后三支对应申、酉、戌月。",
+      "spirits": [
+        {"position": "坤", "position_type": "正宫", "ctext_ocr_name": "大武", "implementation_name": "大武", "rationale": "卷二以夏秋将交、阴气施令解释此名。", "fixed_objects": ["客参将"]},
+        {"position": "申", "position_type": "间神", "ctext_ocr_name": "武德", "implementation_name": "武德", "rationale": "卷二以建申之月万物趋于收敛、荠麦将生解释此名。", "fixed_objects": []},
+        {"position": "酉", "position_type": "正宫", "ctext_ocr_name": "太簇", "implementation_name": "太簇", "rationale": "卷二以建酉之月万物成聚解释此名。", "fixed_objects": ["太乙"]},
+        {"position": "戌", "position_type": "间神", "ctext_ocr_name": "阴主", "implementation_name": "阴主", "rationale": "卷二以建戌之月阳气不长、阴气用事解释此名。", "fixed_objects": []}
+      ]
+    },
+    {
+      "id": "winter",
+      "label": "冬序",
+      "range": "乾 → 亥 → 子 → 丑",
+      "transition": "乾位连接秋冬，其后三支对应亥、子、丑月。",
+      "spirits": [
+        {"position": "乾", "position_type": "正宫", "ctext_ocr_name": "阴德", "implementation_name": "阴德", "rationale": "卷二以秋冬将交及阴阳转换解释此名。", "fixed_objects": []},
+        {"position": "亥", "position_type": "间神", "ctext_ocr_name": "大义", "implementation_name": "大义", "rationale": "卷二以建亥之月群阳将尽解释此名。", "fixed_objects": []},
+        {"position": "子", "position_type": "正宫", "ctext_ocr_name": "地主", "implementation_name": "地主", "rationale": "卷二以建子之月阳气初发、万物处于阴中解释此名。", "fixed_objects": ["主大将"]},
+        {"position": "丑", "position_type": "间神", "ctext_ocr_name": "阳德", "implementation_name": "阳德", "rationale": "卷二以建丑之月二阳用事、布育万物解释此名。", "fixed_objects": ["合神"]}
+      ]
+    }
+  ],
+  "fixed_example_links": [
+    {"object": "太乙", "position": "酉", "spirit_name": "太簇", "note": "对象、位置与位置神名三层同时保留。"},
+    {"object": "文昌", "position": "巽", "spirit_name": "太灵／大炅", "note": "选定OCR文本与锁定实现名称不同。"},
+    {"object": "始击／定目", "position": "辰", "spirit_name": "太阳", "note": "两个对象可共享同一位置及位置神名。"},
+    {"object": "计神", "position": "寅", "spirit_name": "吕申", "note": "计神是盘面对象，吕申是寅位的十六神名。"},
+    {"object": "合神", "position": "丑", "spirit_name": "阳德", "note": "合神不是阳德的别名，只是本例落在阳德位。"}
+  ],
+  "source_differences": [
+    {"position": "巽", "ctext_ocr": "太灵", "locked_config": "大炅", "locked_embedded_text": "大炅", "handling": "并列保存；未完成不同底本字形校勘前，不定唯一正名。"},
+    {"position": "巳", "ctext_ocr": "太神", "locked_config": "大神", "locked_embedded_text": "大神", "handling": "并列保存；只称来源名称差异，不自行判断讹误。"},
+    {"position": "未／戌／乾", "ctext_ocr": "数字化文本出现末／戍／干", "locked_config": "未／戌／乾", "locked_embedded_text": "未／戌／乾", "handling": "按十六位序列规范位置字展示，同时提示OCR与简繁转换可能造成字形漂移。"}
+  ],
+  "identity_boundaries": [
+    {"label": "位置神名不是盘面对象别名", "note": "“文昌在巽／大炅位”不等于文昌又名大炅。"},
+    {"label": "十六神不是另行推步诸神", "note": "本页十六神是固定位置名称；四神、天乙、地乙、直符等是另有推步的盘面对象。"},
+    {"label": "四时解释是来源陈述", "note": "本节点只转述卷二的命名说明，不把它升级为可验证自然规律。"},
+    {"label": "不公开所主吉凶", "note": "原典及后世资料中的兵事、灾异和吉凶断语不进入本节点。"}
+  ],
+  "reading_boundaries": [
+    {"label": "可识别", "note": "十六位置、十六神名和四组季节序列。"},
+    {"label": "可追溯", "note": "每个名称对应选定OCR文本与锁定实现，差异单列。"},
+    {"label": "不由此推出", "note": "神名、月份或季节位置对现实事件与个人具有吉凶效力。"}
+  ],
+  "public_sources": [
+    {"title": "《太乙金鏡式經》卷二：推十六神所主法", "url": "https://ctext.org/wiki.pl?chapter=275091&if=gb&remap=gb", "note": "第20至37条依次列十六位置神名及四时命名说明；该资料为与四库本影像连接的OCR文本，巽、巳等关键字形继续保留版本校勘状态。"},
+    {"title": "kintaiyi锁定十六神配置", "url": "https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/config.py#L52-L67", "note": "固定提交把地主至大义十六名映射到子、丑、艮、寅、卯、辰、巽、巳、午、未、坤、申、酉、戌、乾、亥。"},
+    {"title": "kintaiyi锁定七十二局内置文本", "url": "https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/taiyimishu.py#L19-L36", "note": "内置局文实际使用太阳、大炅、大神等名称；本固定第13局的天目为大炅、始击为太阳。只作为仓库内部文本层，不证明古籍版本。"}
+  ],
+  "internal_review": {
+    "status": "formal_identity_sequence_node_with_parallel_source_names",
+    "reviewed_at": "2026-08-06",
+    "owner": ["火华", "Codex"],
+    "source_refs": ["github_kentang2017_kintaiyi_f2719d6", "ctext_taiyi_jinjing_vol_2"],
+    "deduplication": "不并入‘九宫与十六神位’：该页定义位置类型与宫数映射；本页定义位置上的十六神名、四时序列和名称差异。不并入‘盘面符号身份’：该页区分会移动或由计算生成的对象；十六神名固定附着于位置，不是同一组输出对象。",
+    "known_gaps": ["巽位太灵／大炅、巳位太神／大神尚未完成多底本图像校勘", "卷二OCR中的未／戌／乾字形仍需回看影像逐字确认"],
+    "boundary": "固定名称表、无真人输入、无随机、不展示兵事、灾异、方向吉凶或个人结论。"
+  }
+}

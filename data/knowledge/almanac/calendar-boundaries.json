@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "id": "calendar-boundaries",
+  "title": "黄历中的年月日边界",
+  "summary": "同一个时刻可以同时跨越公历、农历、干支与节气坐标；年界、月界和日界必须说明正在切换哪个字段。",
+  "boundary_rows": [
+    {"scale":"年","field":"公历年","boundary":"1月1日","result":"公历年份递增"},
+    {"scale":"年","field":"农历年","boundary":"正月初一","result":"农历年份递增"},
+    {"scale":"年","field":"干支年","boundary":"来源可见立春／正月初一口径","result":"必须保存字段或版本"},
+    {"scale":"月","field":"农历月","boundary":"朔日","result":"月份进入下一朔望月"},
+    {"scale":"月","field":"节气月／月干支","boundary":"十二个节","result":"月支依节切换"},
+    {"scale":"日","field":"民用日期","boundary":"00:00","result":"公历日切换"},
+    {"scale":"日","field":"干支日","boundary":"子初换日存在实现差异","result":"必须标明日界口径"}
+  ],
+  "leap_month_rule": {
+    "basis": "朔望月与中气",
+    "rule": "两个冬至之间出现13个农历月时，没有中气的月份置为闰月。",
+    "identity": "闰月沿用前一个月的月名，不等于重复同一公历月份。"
+  },
+  "public_sources": [
+    {"title":"香港天文台：二十四节气","note":"用于核对中气与闰月的历法关系。","url":"https://www.hko.gov.hk/sc/gts/time/24solarterms.htm"},
+    {"title":"香港天文台：今天是哪一年？","note":"用于核对朔望月、平年／闰年与农历新年的基础关系。","url":"https://www.hko.gov.hk/en/education/astronomy-and-time/time-service/00506-what-year-is-it-today.html"},
+    {"title":"lunar-javascript 锁定实现","note":"用于保存公农历、节气与干支字段的实现口径；边界变体不升级为唯一传统规则。","url":"https://github.com/6tail/lunar-javascript/tree/4c45a59"}
+  ]
+}

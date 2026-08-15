@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0.0",
+  "id": "qimen_nine_palace_coordinate",
+  "title": "九宫坐标与原始位置",
+  "summary": "九宫先是一套固定坐标，不是一张已经排好的具体时局。网页采用洛书九宫的视觉位置：上排四、九、二，中排三、五、七，下排八、一、六；八卦、方位与五行是宫位底座，门与星的原始位置只是后续移动时的参照。",
+  "layout": [[4, 9, 2], [3, 5, 7], [8, 1, 6]],
+  "palaces": [
+    {"number": 1, "name": "坎一宫", "trigram": "坎", "element": "水", "direction": "北"},
+    {"number": 2, "name": "坤二宫", "trigram": "坤", "element": "土", "direction": "西南"},
+    {"number": 3, "name": "震三宫", "trigram": "震", "element": "木", "direction": "东"},
+    {"number": 4, "name": "巽四宫", "trigram": "巽", "element": "木", "direction": "东南"},
+    {"number": 5, "name": "中五宫", "trigram": null, "element": "土", "direction": "中"},
+    {"number": 6, "name": "乾六宫", "trigram": "乾", "element": "金", "direction": "西北"},
+    {"number": 7, "name": "兑七宫", "trigram": "兑", "element": "金", "direction": "西"},
+    {"number": 8, "name": "艮八宫", "trigram": "艮", "element": "土", "direction": "东北"},
+    {"number": 9, "name": "离九宫", "trigram": "离", "element": "火", "direction": "南"}
+  ],
+  "reading_boundaries": [
+    "宫号不是网页阅读顺序；一至九的数序与九宫格的空间位置要分开看。",
+    "中五宫没有对应八卦；不同盘式怎样处理中心对象，留到四盘装配节点比较。",
+    "本页不加入九宫象意、方位选择或现实行动建议。"
+  ],
+  "public_sources": [
+    {"title": "mingli-skills 锁定九宫数据", "url": "https://github.com/weizeW/mingli-skills/blob/c16eca0/qimen-dunjia/data/yuandan.json", "note": "提供九宫号、八卦、五行、方位及原始门星字段；项目只采用坐标底座。"},
+    {"title": "qimen-go 锁定九宫渲染", "url": "https://github.com/deminzhang/qimen-go/blob/4d3f58fa0f401b5b3a337f119138e99e90685dda/xuan/render_text.go#L11-L29", "note": "代码明确使用四九二／三五七／八一六的洛书九宫视觉布局。"}
+  ],
+  "internal_review": {"status": "formal_coordinate_node", "reviewed_at": "2026-08-09", "owner": ["火华", "Codex"], "source_refs": ["github_weizew_mingli_skills_c16eca0", "github_deminzhang_qimen_go_4d3f58f"], "deduplication": "只保存宫位坐标；八门、九星与四盘分别进入独立节点。", "boundary": "固定坐标演示，不接收真人方位。"}
+}

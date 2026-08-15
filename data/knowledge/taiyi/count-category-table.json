@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0.0",
+  "id": "count-category-table",
+  "title": "主客定算的十类数名与空缺值",
+  "summary": "把主算、客算、定算得到的数，与锁定numdict中的纯阴、纯阳、杂阴阳、重阴阳及上和、次和、下和标签分开核对。实现表在1—40范围只为30个数配置10类名称，另有10个数没有数类名；cal_des还会叠加三才足数或无天、无地、无人等解释，但这些高风险描述不纳入本节点。卷二OCR可以支撑相关名称存在，却无法可靠拆开同一行粘连的数字、宫位与标签，因此不把实现映射宣称为古籍定本。",
+  "fixed_input": "1552年9月24日 0时0分 · 年计",
+  "families": [
+    {
+      "id": "base",
+      "name": "基础阴阳类",
+      "count": "4类 · 12数",
+      "note": "锁定表直接使用纯、杂与阴阳名称；同一标签可能跨一位数与两位数。",
+      "categories": [
+        {"id": "mixed-yin", "name": "杂阴", "numbers": [1, 7]},
+        {"id": "pure-yin", "name": "纯阴", "numbers": [2, 6, 22, 26]},
+        {"id": "pure-yang", "name": "纯阳", "numbers": [3, 9, 33, 39]},
+        {"id": "mixed-yang", "name": "杂阳", "numbers": [4, 8]}
+      ]
+    },
+    {
+      "id": "repeated",
+      "name": "重阴阳类",
+      "count": "3类 · 8数",
+      "note": "这些是锁定映射的字符串标签，不等同于上一节点由宫阴阳×算奇偶生成的重阳、重阴。",
+      "categories": [
+        {"id": "yin-heavy-yang", "name": "阴中重阳", "numbers": [11, 17]},
+        {"id": "mixed-heavy-yang", "name": "杂重阳", "numbers": [13, 19, 31, 37]},
+        {"id": "mixed-heavy-yin", "name": "杂重阴", "numbers": [24, 28]}
+      ]
+    },
+    {
+      "id": "harmony",
+      "name": "三等和类",
+      "count": "3类 · 10数",
+      "note": "上和、次和、下和是按完整算数查表的等级名，不由奇偶一项直接生成。",
+      "categories": [
+        {"id": "upper-harmony", "name": "上和", "numbers": [14, 18]},
+        {"id": "secondary-harmony", "name": "次和", "numbers": [23, 29, 32]},
+        {"id": "lower-harmony", "name": "下和", "numbers": [12, 16, 27, 34, 38]}
+      ]
+    }
+  ],
+  "unmapped_numbers": [5, 10, 15, 20, 21, 25, 30, 35, 36, 40],
+  "coverage": {"range": "1—40", "mapped": 30, "unmapped": 10, "category_count": 10, "note": "无数类名只表示numdict查不到，不表示该数没有其他cal_des输出。"},
+  "method_results": [
+    {"method": 0, "label": "太乙统宗", "accumulated": 10155469, "board": "阳遁十三局", "counts": [{"role": "主算", "value": 18, "category": "上和", "family": "三等和类"}, {"role": "客算", "value": 19, "category": "杂重阳", "family": "重阴阳类"}, {"role": "定算", "value": 19, "category": "杂重阳", "family": "重阴阳类"}], "status": "与金镜、太乙局相同"},
+    {"method": 1, "label": "太乙金镜", "accumulated": 1938109, "board": "阳遁十三局", "counts": [{"role": "主算", "value": 18, "category": "上和", "family": "三等和类"}, {"role": "客算", "value": 19, "category": "杂重阳", "family": "重阴阳类"}, {"role": "定算", "value": 19, "category": "杂重阳", "family": "重阴阳类"}], "status": "固定例"},
+    {"method": 2, "label": "太乙淘金歌", "accumulated": 10155745, "board": "阳遁一局", "counts": [{"role": "主算", "value": 7, "category": "杂阴", "family": "基础阴阳类"}, {"role": "客算", "value": 13, "category": "杂重阳", "family": "重阴阳类"}, {"role": "定算", "value": 13, "category": "杂重阳", "family": "重阴阳类"}], "status": "主算从上和切换为杂阴"},
+    {"method": 3, "label": "太乙局", "accumulated": 10155469, "board": "阳遁十三局", "counts": [{"role": "主算", "value": 18, "category": "上和", "family": "三等和类"}, {"role": "客算", "value": 19, "category": "杂重阳", "family": "重阴阳类"}, {"role": "定算", "value": 19, "category": "杂重阳", "family": "重阴阳类"}], "status": "与统宗、金镜相同"}
+  ],
+  "layer_differences": [
+    {"label": "原典名称不等于实现定本", "classical": "卷二OCR同段可见纯阴、纯阳、杂阴阳、重阴阳与上次下和等名称", "implementation": "numdict把10类名称固定映射到30个数", "handling": "确认名称线索，具体数字映射仍标作锁定实现。"},
+    {"label": "数类名不覆盖全部算数", "classical": "选定OCR段没有给出可机械验证的1—40完备表", "implementation": "5、10、15、20、21、25、30、35、36、40查不到numdict标签", "handling": "本节点显式显示10个空缺，不用相邻规律补齐。"},
+    {"label": "数类表不等于奇偶矩阵", "classical": "同段同时讨论宫阴阳、算奇偶与完整数值组", "implementation": "numdict按完整数值查名；tui_danger另按奇偶分支", "handling": "两个节点分开，‘19杂重阳’不替代‘阴宫×奇数的和型分支’。"},
+    {"label": "cal_des叠加其他文本", "classical": "卷二另有三才、天地人及结果解释", "implementation": "cal_des除numdict标签外还添加三才足数、无天、无地、无人及灾异文字", "handling": "本节点只读数类名；其他文本不随标签公开。"},
+    {"label": "固定例只覆盖四个数", "classical": "原典段落涉及更广数值集合", "implementation": "四个method固定例只出现7、13、18、19", "handling": "固定例证明四个查询结果，不证明其余26个映射正确。"}
+  ],
+  "reading_boundaries": [
+    {"label": "可识别", "note": "锁定表的10类名称、30个已映射数与10个空缺数。"},
+    {"label": "可复核", "note": "固定年计四个method的主、客、定三算如何查询数类名。"},
+    {"label": "待校勘", "note": "卷二数字、宫位与类名的逐项断句，以及不同版本的完整映射。"},
+    {"label": "不由此推出", "note": "任何数类名对真人灾异、健康、胜负、行动或吉凶具有现实效力。"}
+  ],
+  "public_sources": [
+    {"title": "《太乙金鏡式經》卷二：推阴阳和不和", "url": "https://ctext.org/wiki.pl?chapter=872714&if=gb&remap=gb", "note": "第36条保存纯阴、纯阳、杂阴阳、重阴阳及上和、次和、下和等名称线索；OCR数字与宫位粘连，需结合影像继续断句。"},
+    {"title": "kintaiyi锁定数类映射表", "url": "https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/config.py#L101-L107", "note": "固定提交的numdict为30个数配置10类字符串标签。"},
+    {"title": "kintaiyi锁定算数描述函数", "url": "https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/config.py#L349-L360", "note": "cal_des把numdict标签与三才足数、无天、无地、无人等其他文本叠加；本节点只取数类标签。"},
+    {"title": "kintaiyi锁定主客定算表", "url": "https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/config.py#L109-L114", "note": "固定四分支使用阳遁十三局[18,19,19]与阳遁一局[7,13,13]作为本页查询输入。"},
+    {"title": "kintaiyi锁定固定例输入", "url": "https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/examples/basic_usage.py#L13-L20", "note": "固定输入1552-09-24 00:00、年计；本页在临时锁定环境复跑method 0—3。"}
+  ],
+  "internal_review": {
+    "status": "formal_locked_count_category_inventory",
+    "reviewed_at": "2026-08-06",
+    "owner": ["火华", "Codex"],
+    "source_refs": ["ctext_taiyi_jinjing_vol_2", "github_kentang2017_kintaiyi_f2719d6"],
+    "runtime_environment": "temporary Python venv; locked repository commit installed from source",
+    "runtime_command": "config.numdict, config.cal_des and Taiyi(...).home_cal/away_cal/set_cal(0, method), method=0..3",
+    "deduplication": "不并入太乙宫阴阳与主客算奇偶：奇偶页是2×2规则矩阵，本页是完整数值查表，19在两页得到不同维度的标签。不并入主客七类关系：该页处理算到将及位置几何，本页只处理算数的实现类名。",
+    "known_gaps": ["卷二扫描页的数字与宫位断句尚未完成", "不同古籍版本的数类映射尚未并列", "numdict与cal_des未发现专项测试"],
+    "boundary": "固定样本、无真人输入、无随机；只展示实现数类标签与空缺，不公开三才、天地人、灾异、胜负或吉凶断语。"
+  }
+}

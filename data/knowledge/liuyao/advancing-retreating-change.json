@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0",
+  "id": "liuyao_advancing_retreating_change",
+  "title": "进神与退神",
+  "summary": "进神与退神比较动爻和同位变爻的地支：两者五行相同，并沿规定次序向前变化称进神，沿反方向变化称退神。木、火、金、水各有一组相邻变化，四个土支另成一条循环。",
+  "directions": [
+    { "id": "advance", "label": "进神", "mark": "进", "verb": "向前", "color": "blue" },
+    { "id": "retreat", "label": "退神", "mark": "退", "verb": "向后", "color": "cinnabar" }
+  ],
+  "element_tracks": [
+    { "element": "木", "branches": ["寅", "卯"], "closed": false },
+    { "element": "火", "branches": ["巳", "午"], "closed": false },
+    { "element": "金", "branches": ["申", "酉"], "closed": false },
+    { "element": "水", "branches": ["亥", "子"], "closed": false },
+    { "element": "土", "branches": ["丑", "辰", "未", "戌"], "closed": true }
+  ],
+  "relations": {
+    "advance": [
+      { "element": "木", "from": "寅", "to": "卯" },
+      { "element": "火", "from": "巳", "to": "午" },
+      { "element": "金", "from": "申", "to": "酉" },
+      { "element": "水", "from": "亥", "to": "子" },
+      { "element": "土", "from": "丑", "to": "辰" },
+      { "element": "土", "from": "辰", "to": "未" },
+      { "element": "土", "from": "未", "to": "戌" },
+      { "element": "土", "from": "戌", "to": "丑", "wrap": true }
+    ],
+    "retreat": [
+      { "element": "木", "from": "卯", "to": "寅" },
+      { "element": "火", "from": "午", "to": "巳" },
+      { "element": "金", "from": "酉", "to": "申" },
+      { "element": "水", "from": "子", "to": "亥" },
+      { "element": "土", "from": "辰", "to": "丑" },
+      { "element": "土", "from": "未", "to": "辰" },
+      { "element": "土", "from": "戌", "to": "未" },
+      { "element": "土", "from": "丑", "to": "戌", "wrap": true }
+    ]
+  },
+  "soil_variant_note": "常见完整表把土支写成丑、辰、未、戌循环，因此包含戌进丑、丑退戌；也有现代实现允许断开这一回环。这里保存完整古籍表，分歧留作实现边界，不把它改写成唯一自然次序。",
+  "terminology_boundary": "《天玄赋》等资料还把甲子、甲午、己卯、己酉等固定干支称为进神，把壬戌、壬辰、丁丑、丁未称为退神。那是干支静态分类，不是这里“动爻变出同五行地支”的变化规则，两者不可混用。",
+  "reading_boundary": "这里只说明动爻与同位变爻的地支方向关系，不根据进退标签判断吉凶、事件发展或应期，也不提供起卦和个人占断。",
+  "internal_review": {
+    "status": "classical_table_and_locked_implementations_cross_checked",
+    "reviewed_at": "2026-08-04",
+    "source_refs": [
+      "zengshan_buyi_jintui_chapter_29_pdf",
+      "bushi_quanshu_ctext_jin_tui_examples",
+      "github_horace_maxwell_horosa_7d8a93e_liuyao_dongbian",
+      "github_vvoliucano_3d8430b_liuyao_app"
+    ],
+    "boundary": "公开十六组动变方向、五行轨道、土支回环与同名术语边界；喜忌、旺衰、应期和事件断语留在受限层。"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "id": "xiaoliuren_engine_info_source_conflicts",
+  "title": "计算引擎与说明文本的内部冲突",
+  "summary": "同一锁定仓库的 x6ren.js 与 x6ren_info.js 并不完全一致。引擎把留连定为土、小吉定为水，并让六神随天盘地支移动；说明文本却写留连属水临玄武、小吉属木临六合。页面把代码事实、说明陈述与项目处置分成三列，不根据文件角色或熟悉程度选出唯一答案。",
+  "sources": [
+    {"id":"engine","label":"计算引擎 x6ren.js","role":"实际生成 panData", "rights":"许可边界受限；短字段审计"},
+    {"id":"info","label":"说明文本 x6ren_info.js","role":"界面长篇释义资料", "rights":"长文不公开；只登记冲突短字段"}
+  ],
+  "conflicts": [
+    {"object":"留连五行","engine":"土","info":"水","status":"直接冲突","decision":"两值并列，待独立底本核验"},
+    {"object":"小吉五行","engine":"水","info":"木","status":"直接冲突","decision":"两值并列，待独立底本核验"},
+    {"object":"六神身份","engine":"由天盘地支动态取得","info":"留连临玄武、小吉临六合等固定描述","status":"对象模型冲突","decision":"动态神盘与固定说明分层，不互相覆盖"}
+  ],
+  "confirmed_engine_fields": ["大安木、留连土、速喜火、赤口金、小吉水、空亡土", "panData.shen 由天盘地支查表生成", "神盘表只含青龙、朱雀、勾陈、腾蛇、白虎、玄武"],
+  "excluded_info_content": ["六宫断诀", "神煞长篇类象", "五星吉凶解释", "六亲取用与事项说明"],
+  "reading_boundaries": ["冲突登记不等于判定说明文本错误，也不等于引擎代表传统正统。", "不以代码可运行作为知识正确性的证明。", "说明文本中的长篇判断不进入公开知识层。"],
+  "public_sources": [
+    {"title": "chxb/jishiyu 锁定计算引擎", "url": "https://github.com/chxb/jishiyu/blob/97b6d6d8e58c6947a86e281d5b69de1032e9bc08/js/x6ren.js", "note": "用于登记实际宫五行与动态六神字段。"},
+    {"title": "chxb/jishiyu 锁定说明文本", "url": "https://github.com/chxb/jishiyu/blob/97b6d6d8e58c6947a86e281d5b69de1032e9bc08/js/x6ren_info.js", "note": "仅用于定位冲突短字段；不复用长篇释义。"}
+  ],
+  "internal_review": {"reviewed_on": "2026-08-10", "owner": ["火华", "Codex"], "status": "formal_internal_conflict_audit"}
+}

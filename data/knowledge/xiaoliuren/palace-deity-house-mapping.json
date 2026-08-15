@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0.0",
+  "id": "xiaoliuren_palace_deity_house_mapping",
+  "title": "六宫、神煞与主题宫名字段",
+  "summary": "版本三笔记与 maifusha 六神表都把六个核心宫位同时连接到一组神煞名和一组主题宫名，六组短字段逐项对齐。本节点只保存三层对象之间的名称关系：六宫是循环中的位置，神煞是随宫出现的象征标签，事业宫、田宅宫等则是该版本的主题分类名；它们不是三个可以互换的宫位系统，也不自动生成事业、感情或健康结论。",
+  "identity_layers": [
+    {"id": "palace", "label": "六宫", "role": "六位循环中的核心位置名", "examples": ["大安", "留连"]},
+    {"id": "deity", "label": "神煞", "role": "两份具名材料随六宫配置的象征标签", "examples": ["青龙", "腾蛇"]},
+    {"id": "topic_house", "label": "主题宫名", "role": "作者表中用来标记主题类别的字段", "examples": ["事业宫", "田宅宫"]}
+  ],
+  "mappings": [
+    {"position": 1, "palace": "大安", "deity": "青龙", "topic_house": "事业宫"},
+    {"position": 2, "palace": "留连", "deity": "腾蛇", "topic_house": "田宅宫"},
+    {"position": 3, "palace": "速喜", "deity": "朱雀", "topic_house": "感情宫"},
+    {"position": 4, "palace": "赤口", "deity": "白虎", "topic_house": "疾厄宫"},
+    {"position": 5, "palace": "小吉", "deity": "玄武", "topic_house": "驿马宫"},
+    {"position": 6, "palace": "空亡", "deity": "勾陈", "topic_house": "福德宫"}
+  ],
+  "source_alignment": {
+    "aligned_count": 6,
+    "sources": ["版本三笔记", "maifusha 六神表"],
+    "statement": "当前抽取的六组名称关系逐项相同；这只说明所选字段对齐，不证明两套材料的全部解释相同。"
+  },
+  "reading_rules": [
+    "先从六宫位置出发，再沿关系边分别读取神煞标签和主题宫名。",
+    "主题宫名是该版本表中的分类字段，不等于紫微斗数、七政四余等体系的完整宫制。",
+    "字段对齐不等于解释共识；两份来源的长篇类象、断语与案例仍分开留在受限层。",
+    "不能从“疾厄宫”等名称直接推出真人健康状况，也不能从“事业宫”“感情宫”直接生成结果。"
+  ],
+  "excluded_claims": ["事业成败", "感情结果", "疾病诊断", "出行吉凶", "财富结论", "应期与行动建议"],
+  "reading_boundaries": [
+    "页面展示名称关系，不展示宫义长文。",
+    "不把六组关系称作跨流派统一表。",
+    "不为真人事项选择宫位或生成解释。"
+  ],
+  "public_sources": [
+    {
+      "title": "Horace-Maxwell 小六壬笔记版本三",
+      "url": "https://github.com/Horace-Maxwell/divination-notes-prompt/blob/b22ecfaafcd17782ddc0f633df163b6492b766d4/%E5%B0%8F%E5%85%AD%E5%A3%AC%E7%AC%94%E8%AE%B0.md",
+      "note": "无许可证；只用于核对六组短字段，页面不复用长篇类象与断语。"
+    },
+    {
+      "title": "maifusha/xiaoliuren 锁定六神表",
+      "url": "https://github.com/maifusha/xiaoliuren/tree/00b56579cf35b9961af5468bd2dc90f9211cc146",
+      "note": "MIT仓库；本节点只使用六宫表中的神煞与十二宫字段。"
+    }
+  ],
+  "internal_review": {
+    "reviewed_on": "2026-08-09",
+    "owner": ["火华", "Codex"],
+    "status": "formal_cross_source_field_mapping"
+  }
+}

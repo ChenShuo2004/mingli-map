@@ -1,0 +1,47 @@
+{
+  "id": "scope-and-objects",
+  "title": "占梦的五层对象与阅读顺序",
+  "summary": "占梦不是梦象词典的别名；阅读材料时应依次分开梦境、梦类、梦象、占辞与梦验记录，避免用后来的结果反造最初解释。",
+  "object_layers": [
+    {"id":"report","label":"梦境材料","question":"梦见了什么","fields":["梦者","场景","人物","对象","动作","状态"]},
+    {"id":"type","label":"梦类","question":"来源怎样给梦分类","fields":["六梦","十梦","其他梦因分类"]},
+    {"id":"image","label":"梦象","question":"梦中哪些对象与关系进入辨识","fields":["对象","动作","位置","变化"]},
+    {"id":"judgement","label":"占辞","question":"来源给出什么兆应说法","fields":["吉凶标签","所主事项","条件","时间"]},
+    {"id":"verification","label":"梦验记录","question":"后来的文本怎样记述结果","fields":["应验事件","未验记录","追记方式","叙事来源"]}
+  ],
+  "material_forms": [
+    {"label":"职官条文","example":"《周礼》占梦官","role":"保存职责、分类和占法条件"},
+    {"label":"梦论","example":"《潜夫论·梦列》","role":"讨论梦类、梦因与占梦限度"},
+    {"label":"梦书条目","example":"敦煌与后世梦书","role":"按梦象检索占辞"},
+    {"label":"历史梦例","example":"史书、笔记中的纪梦","role":"保存做梦、释梦与梦验叙事"}
+  ],
+  "steps": [
+    {"index":1,"label":"梦境","input":"梦中叙事","output":"人物、对象、动作、状态"},
+    {"index":2,"label":"辨类","input":"来源采用的梦类","output":"六梦、十梦或该书自定类别"},
+    {"index":3,"label":"识象","input":"梦中可辨对象与关系","output":"一个或多个梦象条目"},
+    {"index":4,"label":"占辞","input":"梦书、占者或叙事中的解释","output":"具名来源的兆应说法"},
+    {"index":5,"label":"梦验","input":"后来被记录的事件","output":"验、未验或无法核对"}
+  ],
+  "separation_checks": [
+    {"label":"梦前／梦后","left":"做梦时可知的信息","right":"事件发生后的追记"},
+    {"label":"原梦／释梦","left":"梦者讲述的内容","right":"占者或作者加上的解释"},
+    {"label":"条目／案例","left":"梦书中的检索式占辞","right":"史书中的完整叙事"}
+  ],
+  "historical_clues": [
+    "《周礼》先辨六梦，再以日月星辰占其吉凶",
+    "《潜夫论》先列十梦，再讨论占梦大略与梦例",
+    "历史梦例常把做梦、释梦和后来事件写在同一段中"
+  ],
+  "boundaries": [
+    "梦境材料是被记录的经验，梦象是来源从材料中抽出的对象，两者不等同",
+    "占辞是特定文本的说法，不自动成为事实",
+    "梦验多由后来的叙事保存，需与事前记录分开",
+    "五步是阅读分层，不冒充失传的统一古法",
+    "页面不把多个梦象自动合成个人结论"
+  ],
+  "public_sources": [
+    {"title":"《周礼·春官宗伯·占梦》","note":"职官条文提供占梦职责、六梦和岁终献吉梦等结构。","url":"https://ctext.org/text.pl?node=37001&if=gb"},
+    {"title":"《潜夫论·梦列》","note":"梦论保存十梦、占梦大略及复杂梦境可能难以尽述的边界。","url":"https://ctext.org/qian-fu-lun/meng-lie/zhs"},
+    {"title":"Harvard：传统中国占梦的认知与文化演化研究","note":"以正史梦例讨论预测成功记录、追溯推断与漏报失败等传播偏差。","url":"https://coevolution.fas.harvard.edu/publications/dream-interpretation-cognitive-and-cultural-evolutionary"}
+  ]
+}

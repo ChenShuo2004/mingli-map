@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0",
+  "id": "ziwei_childhood_limit_sequence",
+  "title": "大限前童限回退",
+  "summary": "锁定实现先按虚岁查找是否已经进入某一段大限；只有尚未进入首段大限时，才依次用命宫、财帛宫、疾厄宫、夫妻宫、福德宫、官禄宫承接一至六岁，并把所选宫位包装成名为“童限”的大限对象。五行局决定首段大限从二至六岁中的哪一年开始，因此源码虽保存六个宫名，标准五局实际最多只会走到五岁福德宫。",
+  "selection_chain": [
+    {"id":"nominal-age","label":"计算虚岁","input":"出生农历年、目标农历年、虚岁分界配置","output":"nominalAge","note":"自然年分界直接加1；生日分界只在达到对应农历生日后加1。"},
+    {"id":"decadal-scan","label":"先查大限","input":"虚岁与十二宫大限区间","output":"匹配宫位或-1","note":"只要虚岁落入任一大限range，就使用正常大限，不进入童限分支。"},
+    {"id":"childhood-fallback","label":"未起运才查童限","input":"nominalAge-1","output":"六宫序列中的宫名","note":"分支条件是大限索引仍小于0；童限不是与大限同时存在的另一条结果。"},
+    {"id":"wrap-result","label":"包装返回对象","input":"所选宫位的索引、天干、地支","output":"名称为童限的decadal对象","note":"继续生成该宫干四化和decadal scope流耀，但不改写原盘宫位。"}
+  ],
+  "palace_sequence": [
+    {"nominal_age":1,"palace":"命宫","code_index":0,"reachable_bureaus":["水二局","木三局","金四局","土五局","火六局"],"status":"五局均可达"},
+    {"nominal_age":2,"palace":"财帛宫","code_index":1,"reachable_bureaus":["木三局","金四局","土五局","火六局"],"status":"水二局已起大限"},
+    {"nominal_age":3,"palace":"疾厄宫","code_index":2,"reachable_bureaus":["金四局","土五局","火六局"],"status":"水二、木三局已起大限"},
+    {"nominal_age":4,"palace":"夫妻宫","code_index":3,"reachable_bureaus":["土五局","火六局"],"status":"仅土五、火六局可达"},
+    {"nominal_age":5,"palace":"福德宫","code_index":4,"reachable_bureaus":["火六局"],"status":"仅火六局可达"},
+    {"nominal_age":6,"palace":"官禄宫","code_index":5,"reachable_bureaus":[],"status":"标准五局不可达"}
+  ],
+  "bureau_windows": [
+    {"bureau":"水二局","first_decadal_start":2,"childhood_ages":[1],"last_childhood_palace":"命宫","count":1},
+    {"bureau":"木三局","first_decadal_start":3,"childhood_ages":[1,2],"last_childhood_palace":"财帛宫","count":2},
+    {"bureau":"金四局","first_decadal_start":4,"childhood_ages":[1,2,3],"last_childhood_palace":"疾厄宫","count":3},
+    {"bureau":"土五局","first_decadal_start":5,"childhood_ages":[1,2,3,4],"last_childhood_palace":"夫妻宫","count":4},
+    {"bureau":"火六局","first_decadal_start":6,"childhood_ages":[1,2,3,4,5],"last_childhood_palace":"福德宫","count":5}
+  ],
+  "fixed_tests": [
+    {"birth":"2023-10-18 申时女","target":"2023-12-19","expected_name":"童限","expected_palace":"命宫","asserted":true},
+    {"birth":"2023-10-18 申时女","target":"2024-12-29","expected_name":"童限","expected_palace":"财帛宫","asserted":true},
+    {"birth":"2023-10-18 申时女","target":"2025-12-29","expected_name":"童限","expected_palace":"疾厄宫","asserted":true}
+  ],
+  "output_fields": [
+    {"field":"name","value":"童限","source":"分支布尔值isChildhood"},
+    {"field":"index","value":"所选宫位索引","source":"targetPalace.index"},
+    {"field":"heavenlyStem／earthlyBranch","value":"所选宫位干支","source":"targetPalace"},
+    {"field":"palaceNames","value":"以童限索引重排的十二宫名","source":"getPalaceNames"},
+    {"field":"mutagen","value":"所选宫干对应四化目标星","source":"getMutagensByHeavenlyStem"},
+    {"field":"stars","value":"以所选宫干支生成的decadal scope流耀","source":"getHoroscopeStar"}
+  ],
+  "boundaries": [
+    {"label":"不是固定六年窗口","note":"童限是否继续由五行局首段起岁决定；水二局只走1岁，火六局最多走1至5岁。"},
+    {"label":"第六项当前不可达","note":"官禄宫虽在源码六项数组中，但标准五行局最迟6岁已进入首段大限，童限分支不会在6岁执行。"},
+    {"label":"不是小限别名","note":"小限另有1至120岁的十二年循环；童限写入返回对象的decadal字段，并只在未进入首段大限时替代其入口。"},
+    {"label":"不生成童年解释","note":"本页只展示选择条件和返回字段，不把宫名扩写成性格、家庭、健康、婚恋、事业或吉凶。"}
+  ],
+  "public_sources": [
+    {"title":"iztro：童限回退分支与六宫序列","note":"锁定实现先扫描大限区间；未匹配时才按虚岁从命、财帛、疾厄、夫妻、福德、官禄六宫取目标，并保存童限标记。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/astro/FunctionalAstrolabe.ts#L45-L114"},
+    {"title":"iztro：童限对象返回字段","note":"童限沿用decadal字段，返回所选宫位的索引、干支、重排宫名、宫干四化与大限scope流耀。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/astro/FunctionalAstrolabe.ts#L145-L165"},
+    {"title":"iztro：五行局首段起岁","note":"五种局数分别把首段大限起岁设为2、3、4、5、6岁，是各局童限可达年龄不同的直接上游。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/astro/palace.ts#L166-L218"},
+    {"title":"iztro：童限前三岁固定测试","note":"测试用同一固定出生输入，逐年断言童限依次落命宫、财帛宫与疾厄宫；未覆盖4至6岁及五行局窗口边界。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/__tests__/astro/astro.test.ts#L952-L968"}
+  ],
+  "internal_review": {
+    "status":"formal_childhood_fallback_sequence_locked_implementation_with_unreachable_sixth_entry",
+    "reviewed_at":"2026-08-06",
+    "source_refs":["github_sylarlong_iztro_2fb2030"],
+    "ownership":"K-ZW.07 运限层次／首个大限前替代入口",
+    "deduplication":"不并入运限层次概览：概览只标出童限是大限前替代入口，本对象新增四步选择链、六宫源码序列、五种局数的实际窗口与返回字段；不并入小限岁序：小限按生年支、性别和虚岁形成1至120岁循环，童限只在首个大限前按固定宫名序列写入decadal字段；不并入五行局：五行局只提供首段起岁，不能承接童限宫名序列和fallback条件。",
+    "boundary":"只公开锁定实现的选择链、固定测试和可达性审计；六宫数组不包装成传统共识，第六项不可达明确保留；不接收真人生日，不输出童年事件、性格或吉凶。"
+  }
+}

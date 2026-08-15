@@ -1,0 +1,264 @@
+{
+  "schema_version": "1.0.0",
+  "id": "western_astrology_core_lots_and_sect_formulas",
+  "title": "核心 Lots 与教派公式",
+  "summary": "Lot 不是天空中另一颗实体，而是把上升点与两个对象之间的黄经距离组合后投射出的计算点。当前节点只发布福点、精神点及两条依赖它们的派生公式，用同一组固定黄经比较日间与夜间怎样交换减数和加数；更大的阿拉伯点库存只登记为实现范围，不假定共享同一传统版本。",
+  "formula_grammar": {
+    "expression": "C + B - A",
+    "source_wording": "从C出发，投射A到B的有向距离",
+    "normalization": "结果按360°取模，落回0°至小于360°的黄道范围。",
+    "flatlib_tuple_order": [
+      "A",
+      "B",
+      "C"
+    ]
+  },
+  "lots": [
+    {
+      "id": "fortune",
+      "name": "福点",
+      "english": "Lot of Fortune",
+      "flatlib_id": "Pars Fortuna",
+      "dependency_level": 1,
+      "depends_on": [
+        "ASC",
+        "太阳",
+        "月亮"
+      ],
+      "day": {
+        "a": "太阳",
+        "b": "月亮",
+        "c": "ASC",
+        "expression": "ASC + 月亮 − 太阳"
+      },
+      "night": {
+        "a": "月亮",
+        "b": "太阳",
+        "c": "ASC",
+        "expression": "ASC + 太阳 − 月亮"
+      },
+      "source_association": "作者资料把它关联到身体、健康、物质财富与世俗运势；本页只登记为来源陈述，不用于个人解释。"
+    },
+    {
+      "id": "spirit",
+      "name": "精神点",
+      "english": "Lot of Spirit",
+      "flatlib_id": "Pars Spirit",
+      "dependency_level": 1,
+      "depends_on": [
+        "ASC",
+        "太阳",
+        "月亮"
+      ],
+      "day": {
+        "a": "月亮",
+        "b": "太阳",
+        "c": "ASC",
+        "expression": "ASC + 太阳 − 月亮"
+      },
+      "night": {
+        "a": "太阳",
+        "b": "月亮",
+        "c": "ASC",
+        "expression": "ASC + 月亮 − 太阳"
+      },
+      "source_association": "作者资料把它关联到灵魂、意志、行动力与事业方向；本页只登记为来源陈述，不用于个人解释。"
+    },
+    {
+      "id": "eros",
+      "name": "爱情点",
+      "english": "Lot of Eros",
+      "flatlib_id": "Pars Venus",
+      "dependency_level": 2,
+      "depends_on": [
+        "ASC",
+        "金星",
+        "精神点"
+      ],
+      "day": {
+        "a": "精神点",
+        "b": "金星",
+        "c": "ASC",
+        "expression": "ASC + 金星 − 精神点"
+      },
+      "night": {
+        "a": "金星",
+        "b": "精神点",
+        "c": "ASC",
+        "expression": "ASC + 精神点 − 金星"
+      },
+      "source_association": "作者资料只给出日间形态并写“根据教派调整”；与flatlib的Pars Venus名称对应继续标为项目映射。"
+    },
+    {
+      "id": "necessity",
+      "name": "必然点",
+      "english": "Lot of Necessity",
+      "flatlib_id": "Pars Mercury",
+      "dependency_level": 2,
+      "depends_on": [
+        "ASC",
+        "水星",
+        "福点"
+      ],
+      "day": {
+        "a": "水星",
+        "b": "福点",
+        "c": "ASC",
+        "expression": "ASC + 福点 − 水星"
+      },
+      "night": {
+        "a": "福点",
+        "b": "水星",
+        "c": "ASC",
+        "expression": "ASC + 水星 − 福点"
+      },
+      "source_association": "作者资料只给出日间形态并写“根据教派调整”；与flatlib的Pars Mercury名称对应继续标为项目映射。"
+    }
+  ],
+  "fixed_chart": {
+    "label": "固定黄经样本",
+    "inputs": [
+      {
+        "id": "asc",
+        "name": "ASC",
+        "longitude": 10
+      },
+      {
+        "id": "sun",
+        "name": "太阳",
+        "longitude": 100
+      },
+      {
+        "id": "moon",
+        "name": "月亮",
+        "longitude": 250
+      },
+      {
+        "id": "venus",
+        "name": "金星",
+        "longitude": 40
+      },
+      {
+        "id": "mercury",
+        "name": "水星",
+        "longitude": 310
+      }
+    ],
+    "results": {
+      "day": {
+        "fortune": 160,
+        "spirit": 220,
+        "eros": 190,
+        "necessity": 220
+      },
+      "night": {
+        "fortune": 220,
+        "spirit": 160,
+        "eros": 130,
+        "necessity": 100
+      }
+    }
+  },
+  "calculation_steps": [
+    {
+      "label": "先定教派",
+      "note": "日间或夜间决定每条公式采用哪一行；实现以太阳是否在真实地平线上为判断。"
+    },
+    {
+      "label": "再算一级点",
+      "note": "福点与精神点只依赖ASC、太阳和月亮，并在昼夜之间交换方向。"
+    },
+    {
+      "label": "再算派生点",
+      "note": "爱情点需要精神点，必然点需要福点，所以不能与一级点同时无序计算。"
+    },
+    {
+      "label": "最后归一化",
+      "note": "负数或超过360°的结果都按360°取模，再转换为黄道位置。"
+    }
+  ],
+  "implementation_inventory": {
+    "formula_count": 20,
+    "published_here": 4,
+    "dependency_kinds": [
+      "直接对象",
+      "宫位尖点",
+      "宫主星",
+      "另一个Lot"
+    ],
+    "note": "flatlib共列20个命名公式；其婚姻点按男女分式，部分公式调用宫主星或其他Lot。当前不把完整软件清单视为同一历史来源中的统一体系。"
+  },
+  "source_differences": [
+    {
+      "field": "爱情点名称",
+      "author_source": "Lot of Eros，写作ASC + Venus − Spirit，并注明根据教派调整。",
+      "flatlib": "同形日间公式列在Pars Venus名下，夜间交换Spirit与Venus。",
+      "handling": "保留名称差异，把对应关系标成项目映射。"
+    },
+    {
+      "field": "必然点名称",
+      "author_source": "Lot of Necessity，写作ASC + Fortune − Mercury，并注明根据教派调整。",
+      "flatlib": "同形日间公式列在Pars Mercury名下，夜间交换Fortune与Mercury。",
+      "handling": "保留名称差异，把对应关系标成项目映射。"
+    },
+    {
+      "field": "昼夜判断",
+      "author_source": "给出日间盘与夜间盘两行公式，没有在该段重述地平线算法。",
+      "flatlib": "由太阳赤经、赤纬、中天赤经与地点纬度判断太阳是否在地平线上。",
+      "handling": "复用“教派与喜乐”节点，不用宫号简写替代真实地平线。"
+    },
+    {
+      "field": "公式库存范围",
+      "author_source": "当前核心表列福点、精神点、爱情点、必然点四项。",
+      "flatlib": "FORMULAS字典列20项，包含宫主星依赖、性别分式和递归Lot。",
+      "handling": "本页只发布可交叉对应的四项，其余继续作为待核库存。"
+    }
+  ],
+  "reading_boundaries": [
+    "页面只切换日间／夜间固定样本，不读取出生时间、地点、当前星历或真人命盘。",
+    "计算结果只是黄经位置，不自动等于星座主星、宫位含义、强弱或事件结论。",
+    "爱情点／必然点与Pars Venus／Pars Mercury的名称对应是项目映射，不宣布为跨传统唯一命名。",
+    "黄道释放只登记为后续依赖关系；本页不生成时期、不预测人生节奏。"
+  ],
+  "public_sources": [
+    {
+      "title": "fortune-telling-skills：本命盘核心Lots",
+      "url": "https://github.com/doododod/fortune-telling-skills/blob/8bcc734491ac75cfb21c1de8727c9fc3f9427b1e/astrology-chart-analysis/references/natal-chart.md#%E6%A0%B8%E5%BF%83lots",
+      "note": "提供福点、精神点的昼夜公式，以及爱情点、必然点的日间形态与教派调整提示。"
+    },
+    {
+      "title": "flatlib：Arabic Parts公式与递归计算",
+      "url": "https://github.com/flatangle/flatlib/blob/856d26b8bd1316ccdafe76399994696f9510de9e/flatlib/tools/arabicparts.py",
+      "note": "提供C+B−A语法、20项公式、昼夜分支、宫主星与Lot递归依赖。"
+    },
+    {
+      "title": "flatlib：太阳在地平线上的教派判断",
+      "url": "https://github.com/flatangle/flatlib/blob/856d26b8bd1316ccdafe76399994696f9510de9e/flatlib/chart.py#L126-L136",
+      "note": "提供公式选取前的日间／夜间实现条件。"
+    },
+    {
+      "title": "flatlib：黄经归一化",
+      "url": "https://github.com/flatangle/flatlib/blob/856d26b8bd1316ccdafe76399994696f9510de9e/flatlib/object.py#L75-L79",
+      "note": "GenericObject.relocate把结果按360°归一化并写回星座位置。"
+    }
+  ],
+  "internal_review": {
+    "status": "formal_four_lot_formula_comparison_with_fixed_longitudes",
+    "reviewed_at": "2026-08-09",
+    "owner": [
+      "火华",
+      "Codex"
+    ],
+    "source_refs": [
+      "github_doododod_fortune_telling_skills_8bcc734",
+      "github_flatangle_flatlib_856d26b"
+    ],
+    "known_gaps": [
+      "四项公式仍缺逐项古典底本、版次和页码交叉核验。",
+      "Lot of Eros／Necessity与Pars Venus／Mercury的历史命名关系尚未独立核清。",
+      "flatlib其余16项公式来自哪些传统层和版本尚未核清。",
+      "黄道释放的起点选择与技术规则留待独立预测技术节点。"
+    ],
+    "boundary": "固定黄经公式教育与来源比较；无出生输入、排盘、真人Lot位置、宫主星解释、黄道释放、事件预测或行动建议。"
+  }
+}

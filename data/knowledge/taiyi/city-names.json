@@ -1,0 +1,69 @@
+{
+  "schema_version":"1.0.0",
+  "id":"taiyi-city-names",
+  "title":"kintaiyi卷十一城名支线",
+  "summary":"卷十一实现把十六神五行变化、州国月数、飞符四杀、九宫／十干城名、城名厄会、岁内路线与宋琨法汇成同一接口。它们共享太乙宫、文昌、合神、飞符、年月日時支和城名干支，因此合成一个“城名”节点比拆成多张灾变卡更清楚。九宫州国与城名干支基础表已经在“分野”出现，本页只引用它；普通结果会按太乙宫自动取丁丑等干支作为city_gz，使城名专属三支实际执行，但这只是程序把州级映射当作城名输入，不等于选择了真实城市。仅展示输入链、结构字段、固定月位与接口差异，删除灾异、疫病、屠城、用兵和行动判断。",
+  "fixed_input":"固定1552-09-24 00:00年计 · 壬子年 · 己酉月 · 丙戌日 · 戊子时",
+  "shared_inputs":[
+    {"id":"board","name":"盘面对象","values":["太乙宫","文昌","合神","飞符"],"role":"州国月位与飞符路线"},
+    {"id":"calendar","name":"历法干支","values":["年干支","月支","日支","时支"],"role":"岁内与四杀锚点"},
+    {"id":"city","name":"城名干支","values":["九宫映射自动代入","可选显式city_gz"],"role":"城名专属三条支线"},
+    {"id":"sixteen","name":"十六神位","values":["固定神位","五行","旋转关系"],"role":"所有旋转函数的共同坐标"}
+  ],
+  "routes":[
+    {"index":"01","name":"十六神变化","input":"默认吕申及十六神五行","output":"十六神、五行、旺相休囚死关系","public_handling":"保留结构关系，删除各神所主事件"},
+    {"index":"02","name":"州国月数","input":"太乙宫、文昌、合神","output":"十二月中天目与太乙同宫／对宫的月位","public_handling":"只称掩／格位置命中，不称灾月"},
+    {"index":"03","name":"飞符四杀","input":"飞符、合神、年／月／日／时支、城名干支","output":"锚点优先级与多个位置字段","public_handling":"展示输入优先级和字段组，不显示杀名事件判断"},
+    {"index":"04","name":"城名厄会","input":"城名干支","output":"十六神旋转及两组年份位置","public_handling":"只保留旋转链，年份断语受限"},
+    {"index":"05","name":"岁内路线","input":"年干阴阳、年支、城名干支","output":"加神、太阳／阴主位置与月份字段","public_handling":"保留条件与字段，不展示灾发结论"},
+    {"index":"06","name":"宋琨法","input":"城名干支、两神步数","output":"干支数、81余数、年／月拆分","public_handling":"只作另一实现路线，传统依据待核"}
+  ],
+  "ten_stem_city_branches":[
+    {"stem":"甲","branch":"寅"},{"stem":"乙","branch":"卯"},{"stem":"丙","branch":"巳"},{"stem":"丁","branch":"午"},{"stem":"戊","branch":"巳"},{"stem":"己","branch":"未"},{"stem":"庚","branch":"申"},{"stem":"辛","branch":"酉"},{"stem":"壬","branch":"亥"},{"stem":"癸","branch":"子"}
+  ],
+  "fixed_methods":[
+    {"method":0,"label":"太乙统宗","board":13,"taiyi":6,"skyeyes":"巽","hegod":"丑","flyfu":"未","auto_city":"甲申","month_hits":["4月巳·掩·酉","10月亥·格·卯"],"status":"与method 1／3同组"},
+    {"method":1,"label":"太乙金镜","board":13,"taiyi":6,"skyeyes":"巽","hegod":"丑","flyfu":"未","auto_city":"甲申","month_hits":["4月巳·掩·酉","10月亥·格·卯"],"status":"固定完整例"},
+    {"method":2,"label":"太乙淘金歌","board":1,"taiyi":1,"skyeyes":"申","hegod":"丑","flyfu":"中","auto_city":"丁丑","month_hits":["1月寅·掩·戌","2月卯·掩·乾","7月申·格·辰","8月酉·格·巽"],"status":"宫、文昌、飞符、自动城名和月位均改变"},
+    {"method":3,"label":"太乙局","board":13,"taiyi":6,"skyeyes":"巽","hegod":"丑","flyfu":"未","auto_city":"甲申","month_hits":["4月巳·掩·酉","10月亥·格·卯"],"status":"与method 0／1同组"}
+  ],
+  "interface_flow":[
+    {"step":"太乙宫","value":"6宫或1宫","next":"查分野的九宫州国／城名干支表"},
+    {"step":"自动city_gz","value":"甲申或丁丑","next":"传入城名厄会、岁内、宋琨与飞符四杀"},
+    {"step":"城名专属分支","value":"三条均执行","next":"返回旋转、月份与81余数等字段"},
+    {"step":"公开内容","value":"只保留结构","next":"不把自动州级干支解释为真实城市结论"}
+  ],
+  "implementation_differences":[
+    {"label":"分野基础表只引用一次","source":"卷中九宫城名与分野页的九宫州国／干支表相同。","implementation":"_NINE_GONG_CHENG同时被分野和卷十一调用。","handling":"本页不复制九宫十二行，只展示自动代入链；完整映射回到‘分野’。"},
+    {"label":"普通接口自动代入城名干支","source":"城名诸术名义上需要一个城名干支。","implementation":"完整结果从太乙宫映射直接取甲申、丁丑等city_gz，城名专属三支因此自动执行。","handling":"明确标作程序默认样本，不等同用户选择真实城市。"},
+    {"label":"州级映射被当作城名输入","source":"九宫表第一字段是冀州、荆州等州国，第二字段被称城名干支。","implementation":"接口只传干支，没有城市名、版本或地理实体。","handling":"称‘自动城名干支’，不生成现代地点或州城结论。"},
+    {"label":"十六神变化默认只以吕申为锚","source":"条目讨论十六宫间变化。","implementation":"综合函数不开放anchor_god，固定调用sixteen_god_bianhua()。","handling":"只展示吕申木与十六神五行关系，其他锚点不补算。"},
+    {"label":"飞符四杀的时间锚点按时日月年回退","source":"函数同时接收年、月、日、时支。","implementation":"实际优先级是时支→日支→月支→年支；固定例总以子时为锚。","handling":"公开输入优先级，不把四个时间层并列当作四次计算。"},
+    {"label":"月杀分组三季而非四季","source":"函数按寅卯辰、巳午未与其余月份分组。","implementation":"申酉戌和亥子丑都会落入同一个‘其余→丑’分支。","handling":"标为实现简化，原典分季规则待回看。"},
+    {"label":"宋琨干数表混入己亥键","source":"表其余行都是两天干成组。","implementation":"最后一行写(己,亥):4，且判断既比较天干又比较地支。","handling":"不把该表发布为稳定十干规则；只显示81余数路线。"},
+    {"label":"卷次编号存在版本错位","source":"选定《太乙金镜式经》连接页把州国月数、域名厄会、飞行四杀列在卷十。","implementation":"锁定代码注释和结果键称卷十一。","handling":"以条目名和固定提交定位，不据卷号宣称同版逐字对应。"},
+    {"label":"事件与行动断语全部排除","source":"原典与函数连接州国灾变、疫病、屠城与用兵。","implementation":"多条返回直接包含灾月、兵徭、疾疫和不可用兵文字。","handling":"只保留坐标、输入、旋转、余数和实现缺口。"}
+  ],
+  "reading_boundaries":[
+    {"label":"可理解","note":"六条支线共享哪些盘面、历法、十六神和城名干支输入。"},
+    {"label":"可比较","note":"method 2怎样同时改变太乙宫、文昌、飞符、自动城名干支与月位命中。"},
+    {"label":"待核验","note":"十干城支、宋琨数表、月杀分季、卷次和城名干支原表。"},
+    {"label":"不作断语","note":"不换算现代城市，不展示灾异、疫病、屠城、军事、行动或真人判断。"}
+  ],
+  "public_sources":[
+    {"title":"《太乙金镜式经》州国月数、域名厄会与飞行四杀","url":"https://ctext.org/wiki.pl?chapter=111079&if=gb","note":"第11—14条可定位岁中月数、域名厄会和飞行四杀；本节点卷次与锁定实现注释不同。"},
+    {"title":"《太乙统宗宝鉴》卷六连接文本","url":"https://ctext.org/wiki.pl?chapter=623071&if=gb","note":"可定位州国月数、城名与飞行四杀相关标题；自动OCR错字很多，仅作研究连接。"},
+    {"title":"kintaiyi锁定卷十一综合实现","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/config.py#L2983-L3368","note":"保存共享表、六条支线、十干城支和综合函数。"},
+    {"title":"kintaiyi锁定普通结果接口","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L2333-L2344","note":"确认年月日時支全部传入，并从太乙宫映射自动补入city_gz。"},
+    {"title":"kintaiyi锁定分野基础映射","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/fenye.py#L1-L132","note":"九宫州国／城名干支的上游映射已在‘分野’节点完整展示。"}
+  ],
+  "internal_review":{
+    "status":"formal_city_name_shared_interface_and_boundary_audit",
+    "reviewed_at":"2026-08-07",
+    "owner":["火华","Codex"],
+    "runtime_basis":"固定1552年四method沿已核局号、太乙宫、文昌、合神、飞符公式与己酉／丙戌／戊子干支逐式复算月位和自动city_gz",
+    "deduplication":"不拆成十六神变化、州国月数、飞符四杀、城名厄会、岁内与宋琨六张卡：六者由同一vol11接口汇合并共享盘面／城名干支输入。不并入分野：分野保存静态地域映射，本页解释该映射怎样被卷十一动态接口消费。",
+    "known_gaps":["城名干支原表未逐页影像校清","十干城支未见独立来源核验","宋琨己亥键疑误","月杀三分支需回看原典","十六神变化只实现吕申锚","缺少卷十一专项测试"],
+    "boundary":"固定历史式盘与自动干支样本，无真人地点输入或随机；不公开灾异、疫病、屠城、军事和行动判断。"
+  }
+}

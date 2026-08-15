@@ -1,0 +1,160 @@
+{
+  "schema_version": "1.0.0",
+  "id": "western_astrology_accidental_dignities",
+  "title": "偶然尊贵",
+  "summary": "偶然尊贵不是另一张星座尊贵表，而是行星因宫位、运动、日光关系、晨昏性、相位和整盘条件获得的一组外在状态。当前页面先建立六类状态库存，再用五个固定日距样本展示阈值差异；`flatlib`的逐项分数只作为项目参数登记，不相加成最终力量。",
+  "categories": [
+    {
+      "id": "house",
+      "name": "宫位与喜乐",
+      "question": "行星落在哪一宫，是否命中自己的喜乐宫？",
+      "inputs": ["宫位编号", "行星对象"],
+      "properties": ["house", "houseScore", "inHouseJoy", "inSignJoy"],
+      "notes": ["宫位分数是flatlib项目参数。", "喜乐宫关系已在“教派与喜乐”节点独立解释。"]
+    },
+    {
+      "id": "motion",
+      "name": "运动与速度",
+      "question": "行星顺行还是逆行，速度快于还是慢于实现基准？",
+      "inputs": ["黄经速度", "对象类别"],
+      "properties": ["isDirect", "isFast", "direction score", "speed score"],
+      "notes": ["flatlib不给太阳、月亮方向分，但仍计算速度分。", "速度基准由对象属性实现决定，本页不补写平均速度表。"]
+    },
+    {
+      "id": "sun",
+      "name": "与太阳的距离",
+      "question": "行星离太阳多远，进入日心、燃烧还是日光下？",
+      "inputs": ["太阳黄经", "行星黄经"],
+      "properties": ["Cazimi", "Combust", "Under the Sun", "No relation"],
+      "notes": ["日心与燃烧阈值两来源基本一致。", "日光下外界在作者资料为17°，flatlib为16°。"]
+    },
+    {
+      "id": "light",
+      "name": "光量与晨昏性",
+      "question": "相对太阳的方向与两者速度怎样形成增光／减光、东方／西方？",
+      "inputs": ["相对黄经", "太阳速度", "对象速度"],
+      "properties": ["Augmenting Light", "Diminishing Light", "Oriental", "Occidental"],
+      "notes": ["东方／西方对三颗外行星与水金月的评分方向不同。", "水星在Hayz中的阴阳与教派还随晨昏性变化。"]
+    },
+    {
+      "id": "aspects",
+      "name": "相位环境",
+      "question": "当前相位是否精确或入相，并连接到指定吉星／凶星集合？",
+      "inputs": ["相位角", "入出相", "对方对象"],
+      "properties": ["aspectBenefics", "aspectMalefics", "isAuxilied", "isSurrounded"],
+      "notes": ["吉星集合固定为金星、木星；凶星集合固定为火星、土星。", "辅助／围困只检查快照前后关系，源码明确不保证相位最终完成。"]
+    },
+    {
+      "id": "chart",
+      "name": "整盘附加状态",
+      "question": "节点、空亡、野性、Hayz与燃烧之路需要哪些整盘条件？",
+      "inputs": ["交点位置", "整盘主相位", "昼夜与地平线", "星座阴阳"],
+      "properties": ["North/South Node", "Void of Course", "Feral", "Haiz/Contra-Haiz", "Via Combusta"],
+      "notes": ["燃烧之路在实现中只给月亮计分。", "Hayz同时比较对象教派、地平线上下与星座阴阳，不等于简单符合教派。"]
+    }
+  ],
+  "sun_relation_thresholds": {
+    "author_source": [
+      { "id": "cazimi", "name": "日心", "max_exclusive_degree": 0.2833, "display": "17角分以内" },
+      { "id": "combust", "name": "燃烧", "max_exclusive_degree": 8, "display": "8°以内" },
+      { "id": "under-sun", "name": "日光下", "max_exclusive_degree": 17, "display": "17°以内" }
+    ],
+    "flatlib": [
+      { "id": "cazimi", "name": "日心", "max_exclusive_degree": 0.2833, "display": "小于0.2833°" },
+      { "id": "combust", "name": "燃烧", "max_exclusive_degree": 8, "display": "小于8°" },
+      { "id": "under-sun", "name": "日光下", "max_exclusive_degree": 16, "display": "小于16°" }
+    ]
+  },
+  "fixed_sun_distances": [
+    { "id": "twelve-minutes", "distance": 0.2, "label": "0.2° · 12角分", "author_state": "日心", "flatlib_state": "日心" },
+    { "id": "four-degrees", "distance": 4, "label": "4°", "author_state": "燃烧", "flatlib_state": "燃烧" },
+    { "id": "twelve-degrees", "distance": 12, "label": "12°", "author_state": "日光下", "flatlib_state": "日光下" },
+    { "id": "sixteen-half", "distance": 16.5, "label": "16.5°", "author_state": "日光下", "flatlib_state": "无日光关系" },
+    { "id": "eighteen-degrees", "distance": 18, "label": "18°", "author_state": "无日光关系", "flatlib_state": "无日光关系" }
+  ],
+  "house_score_parameters": [
+    { "house": 1, "group": "角宫", "score": 5 },
+    { "house": 2, "group": "续宫", "score": 3 },
+    { "house": 3, "group": "果宫", "score": 1 },
+    { "house": 4, "group": "角宫", "score": 4 },
+    { "house": 5, "group": "续宫", "score": 3 },
+    { "house": 6, "group": "果宫", "score": -3 },
+    { "house": 7, "group": "角宫", "score": 4 },
+    { "house": 8, "group": "续宫", "score": -4 },
+    { "house": 9, "group": "果宫", "score": 2 },
+    { "house": 10, "group": "角宫", "score": 5 },
+    { "house": 11, "group": "续宫", "score": 4 },
+    { "house": 12, "group": "果宫", "score": -5 }
+  ],
+  "implementation_score_inventory": [
+    { "group": "既有节点复用", "items": ["游走", "同类入庙互容", "同类擢升互容", "喜乐宫"] },
+    { "group": "位置与运动", "items": ["十二宫分", "顺逆行", "速度快慢"] },
+    { "group": "太阳与光", "items": ["日心", "燃烧", "日光下", "增减光", "晨昏性"] },
+    { "group": "关系环境", "items": ["吉凶星相位", "辅助", "围困", "南北交"] },
+    { "group": "整盘状态", "items": ["空亡", "野性", "Hayz", "Contra-Hayz", "月亮燃烧之路"] }
+  ],
+  "source_differences": [
+    {
+      "field": "日光下阈值",
+      "author_source": "太阳17°以内。",
+      "flatlib": "距离小于16°。",
+      "handling": "16.5°固定例并列显示两个结果。"
+    },
+    {
+      "field": "宫位力量",
+      "author_source": "按角宫、续宫、果宫分强中弱，并另写角宫内部10＞1＞7＞4。",
+      "flatlib": "十二宫分别给+5至-5的项目分数，1宫与10宫同为+5，4宫与7宫同为+4。",
+      "handling": "保留分组与软件参数，不改写成统一排序。"
+    },
+    {
+      "field": "北交合",
+      "author_source": "列为增加力量因素。",
+      "flatlib": "`north_node`命中时记-3；南交命中记-5。",
+      "handling": "冲突只登记，不发布北交方向结论。"
+    },
+    {
+      "field": "辅助与围困",
+      "author_source": "作为增加／减少力量因素描述。",
+      "flatlib": "只看当前快照的上一分离与下一入相，源码说明不保证相位最终完成。",
+      "handling": "保存为实现快照状态，不升级为完整预测规则。"
+    }
+  ],
+  "reading_steps": [
+    { "label": "先记录输入", "note": "宫位、速度、太阳距离、相位对象与整盘昼夜分别进入不同函数。" },
+    { "label": "再返回状态", "note": "每个函数先回答命中／未命中或分类标签。" },
+    { "label": "分数另存", "note": "flatlib随后把状态映射成项目分值；分值不是状态定义本身。" },
+    { "label": "不做总裁决", "note": "本页不把非零分数求和，也不转换成强弱、吉凶或事件结论。" }
+  ],
+  "reading_boundaries": [
+    "所有切换都是固定抽象状态，不读取出生资料、当前日期、地点、星历或真人命盘。",
+    "宫位分、顺逆行分、相位分与Hayz分都是flatlib项目参数，不宣布为唯一古典权重。",
+    "作者资料和实现发生方向冲突时并列保存，不以软件可计算为理由覆盖来源差异。",
+    "空亡、野性、围困、辅助和Hayz需要整盘上下文；本页只登记输入结构，不制作伪造的单字段演算。"
+  ],
+  "public_sources": [
+    {
+      "title": "fortune-telling-skills：尊贵度与互容",
+      "url": "https://github.com/doododod/fortune-telling-skills/blob/8bcc734491ac75cfb21c1de8727c9fc3f9427b1e/astrology-chart-analysis/references/dignities-reception.md",
+      "note": "提供宫位、运动、日光、喜乐、相位与交点等偶然尊贵／无力因素及作者阈值；没有逐项古典底本。"
+    },
+    {
+      "title": "flatlib：偶然尊贵接口与评分",
+      "url": "https://github.com/flatangle/flatlib/blob/856d26b8bd1316ccdafe76399994696f9510de9e/flatlib/dignities/accidental.py",
+      "note": "提供六类状态函数、日距阈值、十二宫分与完整项目评分表；分数属于软件参数。"
+    },
+    {
+      "title": "flatlib：星盘关系接口",
+      "url": "https://github.com/flatangle/flatlib/blob/856d26b8bd1316ccdafe76399994696f9510de9e/flatlib/tools/chartdynamics.py",
+      "note": "提供接纳、即时前后相位、空亡及关系环境所需的整盘动态入口。"
+    }
+  ],
+  "internal_review": {
+    "status": "formal_state_inventory_with_fixed_sun_distance_comparison",
+    "reviewed_at": "2026-08-09",
+    "owner": ["火华", "Codex"],
+    "source_refs": ["github_doododod_fortune_telling_skills_8bcc734", "github_flatangle_flatlib_856d26b"],
+    "deduplication": "复用宫位、喜乐、相位、入出相、必然尊贵与互容节点的基础对象，只在本页建立外在状态库存与实现参数边界。",
+    "known_gaps": ["作者资料没有为偶然尊贵因素提供逐项古典底本版次和页码。", "北交合的方向在作者资料与flatlib评分间直接冲突。", "平均速度基准、sign joy表、VOC时间范围与Hayz传统版本尚未单独核清。", "辅助／围困函数只检查快照且不保证相位完成，不能直接用于预测。"],
+    "boundary": "固定状态教育与参数比较；无真人输入、排盘、总分、吉凶、健康、关系、事件预测或行动建议。"
+  }
+}

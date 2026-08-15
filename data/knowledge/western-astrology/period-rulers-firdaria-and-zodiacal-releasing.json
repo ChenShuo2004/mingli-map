@@ -1,0 +1,27 @@
+{
+  "schema_version":"1.0.0","id":"western_astrology_period_rulers_firdaria_and_zodiacal_releasing","title":"时期主星：法达与黄道释放","summary":"法达星限与黄道释放都把人生时间切成层级时期，但起点、序列单位和依赖不同。法达先按盘面昼夜选择行星顺序与固定年限，再细分子限；黄道释放从福点或精神点所在星座出发，按该星座主宰星的周期生成L1—L4。当前锁定flatlib两者都没有专门模块，因此页面只保存来源结构与依赖，不运行真人时间线。",
+  "concept_cards":[
+    {"id":"firdaria","name":"法达星限","tag":"行星时期","summary":"依赖日间／夜间盘、行星顺序和固定年限，输出大限主星与子限主星。","details":["日间从太阳起","夜间从月亮起","作者表总计75年后循环"]},
+    {"id":"zr","name":"黄道释放","tag":"星座时期","summary":"依赖福点或精神点、起始星座与行星周期版本，输出L1—L4星座序列。","details":["起点先依赖Lots公式","时期单位是星座而非单颗行星"]},
+    {"id":"dependency","name":"前置依赖","tag":"教派＋Lots","summary":"法达读取教派节点，黄道释放读取核心Lots与传统主宰星节点。","details":["依赖不满足时不生成时间线","两个体系不能互作替代"]}
+  ],
+  "fixed_samples":[
+    {"id":"day-firdaria","label":"日间法达顺序","input":"日间盘","output":"太阳10 → 金星8 → 水星13 → 月亮9 → 火星7 → 土星11 → 北交3 → 南交2 → 木星12","note":"作者来源顺序；版本史待核"},
+    {"id":"night-firdaria","label":"夜间法达顺序","input":"夜间盘","output":"月亮9 → 土星11 → 木星12 → 火星7 → 太阳10 → 金星8 → 水星13 → 北交3 → 南交2","note":"作者来源顺序；版本史待核"},
+    {"id":"firdaria-sub","label":"法达子周期","input":"当前大限年长÷作者列出的子限数量","output":"大限内再按行星序列细分","note":"作者太阳10年示例约1.43年隐含7分，不与九项总序静默合并"},
+    {"id":"zr-fortune","label":"从福点释放","input":"福点黄经 → 所在星座","output":"由主宰星周期生成L1—L4","note":"只保存依赖链"},
+    {"id":"zr-spirit","label":"从精神点释放","input":"精神点黄经 → 所在星座","output":"由主宰星周期生成L1—L4","note":"不继承事业／高峰解释"}
+  ],
+  "comparisons":[
+    {"field":"起点","left":"法达从教派决定的首颗行星开始","right":"黄道释放从Lot所在星座开始","handling":"教派与Lots分别作为前置节点。"},
+    {"field":"时期单位","left":"法达输出行星大限／子限","right":"黄道释放输出星座L1—L4","handling":"同为时期主星不代表序列同构。"},
+    {"field":"实现覆盖","left":"作者提供顺序与周期摘要","right":"锁定flatlib无firdaria或zodiacal releasing模块","handling":"均标为来源说明层。"},
+    {"field":"来源内部张力","left":"日间表列九项并称总计75年","right":"太阳子限示例写每颗约1.43年，等于10年÷7","handling":"子限参与对象与交点规则待核，不补成确定算法。"}
+  ],
+  "reading_boundaries":["页面不读取年龄、生日或真人Lots，不生成任何个人时间线。","作者的基调、焦点、高峰期、松绑和事件显著性不进入输出。","法达交点位置与子限参与规则标为待核版本。","黄道释放的行星最小／最大年限表不直接当作唯一传统周期算法。"],
+  "public_sources":[
+    {"type":"参考资料","title":"fortune-telling-skills：法达星限与黄道释放","url":"https://github.com/doododod/fortune-telling-skills/blob/8bcc734491ac75cfb21c1de8727c9fc3f9427b1e/astrology-chart-analysis/references/predictive-techniques.md#%E6%B3%95%E8%BE%BE%E6%98%9F%E9%99%90firdaria","note":"提供日夜法达顺序、年限、子周期示例及黄道释放层级；事件解释不继承。"},
+    {"type":"参考资料","title":"fortune-telling-skills：核心Lots","url":"https://github.com/doododod/fortune-telling-skills/blob/8bcc734491ac75cfb21c1de8727c9fc3f9427b1e/astrology-chart-analysis/references/natal-chart.md#%E6%A0%B8%E5%BF%83lots","note":"说明福点与精神点是黄道释放起点；公式由既有Lots节点管理。"}
+  ],
+  "internal_review":{"excluded_claims":["个人时期时间线","人生高峰","松绑事件","法达算法伪实现"]}
+}

@@ -1,0 +1,16 @@
+{
+  "id":"jupiter-directions","title":"年、月、日太岁方位","summary":"黄历中的太岁方位至少有年、月、日三种尺度；三者输入和循环长度不同，不能只写“太岁在某方”而省略尺度。",
+  "year_rows":[
+    {"branch":"子","direction":"正北"},{"branch":"丑","direction":"东北"},{"branch":"寅","direction":"东北"},{"branch":"卯","direction":"正东"},{"branch":"辰","direction":"东南"},{"branch":"巳","direction":"东南"},
+    {"branch":"午","direction":"正南"},{"branch":"未","direction":"西南"},{"branch":"申","direction":"西南"},{"branch":"酉","direction":"正西"},{"branch":"戌","direction":"正北"},{"branch":"亥","direction":"正北"}
+  ],
+  "scales":[
+    {"id":"year","label":"年太岁","input":"干支年／年支","cycle":"十二年方位表"},{"id":"month","label":"月太岁","input":"干支月","cycle":"月干支位置表"},{"id":"day","label":"日太岁","input":"六十日干支","cycle":"六十日位置表"}
+  ],
+  "fixed_example":{"date":"1986-05-29","year":{"ganzhi":"丙寅","direction":"东北"},"month":{"ganzhi":"癸巳","direction":"东南"},"day":{"ganzhi":"癸酉","direction":"东北"}},
+  "boundaries":["先标年、月或日，再写方位","当前固定结果来自锁定实现，不将版本表升级为唯一传统口径","不输出动土、出行或个人避忌建议"],
+  "public_sources":[
+    {"title":"《协纪辨方书》卷九","note":"明确年神方位在通书、时宪书之间存在取用差异。","url":"https://www.shidianguji.com/book/SK1619/chapter/1l9llrk4bizp0"},
+    {"title":"lunar-javascript 锁定实现","note":"年、月、日三层太岁方位及固定样本来自锁定版本。","url":"https://github.com/6tail/lunar-javascript/tree/4c45a59"}
+  ]
+}

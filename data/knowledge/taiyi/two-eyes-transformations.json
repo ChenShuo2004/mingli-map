@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0",
+  "id": "two-eyes-transformations",
+  "title": "二目变化",
+  "summary": "文昌与始击同属二目，却不共享一条变化规则。锁定实现中的文昌变化读取太乙、文昌与始击的空间关系，检查同宫、对宫和前后邻宫；始击变化则把岁干分成五组，再把始击所在位置转换成五行，进入五乘五映射。仅展示两条输入链、结构标签和未执行分支，不公开映射后的军政、灾异或胜负断语。",
+  "fixed_input": "固定样本：1552-09-24 00:00 · 壬子年 · 年计 · 四个积年分支",
+  "identities": [
+    {"name":"文昌","role":"下目／主目","route":"空间关系","inputs":["太乙宫","文昌位置","始击位置"],"output":"囚、格对、二目相关、内外宫迫或平和"},
+    {"name":"始击","role":"上目／客目","route":"岁干 × 五行","inputs":["岁干组","始击位置五行"],"output":"25格映射中的对应条目；断语留在受限层"}
+  ],
+  "wenchang_conditions": [
+    {"name":"囚","condition":"文昌与太乙同宫","inputs":"文昌宫＝太乙宫","status":"已执行"},
+    {"name":"格对","condition":"文昌与太乙相对","inputs":"1↔9、2↔8、3↔7、4↔6","status":"已执行"},
+    {"name":"二目相关","condition":"文昌与始击同宫","inputs":"文昌宫＝始击宫","status":"已执行"},
+    {"name":"外宫迫","condition":"文昌在太乙前一宫","inputs":"按1→8→3→4→9→2→7→6环","status":"已执行"},
+    {"name":"内宫迫","condition":"文昌在太乙后一宫","inputs":"按同一八宫环反向一位","status":"已执行"},
+    {"name":"格对附表","condition":"四组对宫另有次级查表","inputs":"1→9、2→8、6→4、7→3","status":"与格对同时命中"},
+    {"name":"易绝","condition":"常量表声明文昌在易绝之地","inputs":"函数没有对应判断分支","status":"未执行"},
+    {"name":"平和","condition":"以上已执行位置关系均未命中","inputs":"默认返回","status":"已执行"}
+  ],
+  "shiji_stem_groups": ["甲乙","丙丁","戊己","庚辛","壬癸"],
+  "shiji_elements": ["木","火","土","金","水"],
+  "shiji_matrix": [
+    {"stem_group":"甲乙","available":["木","火","土","金","水"]},
+    {"stem_group":"丙丁","available":["木","火","土","金","水"]},
+    {"stem_group":"戊己","available":["木","火","土","金","水"]},
+    {"stem_group":"庚辛","available":["木","火","土","金","水"]},
+    {"stem_group":"壬癸","available":["木","火","土","金","水"]}
+  ],
+  "fixed_methods": [
+    {"method":0,"label":"太乙统宗","board":13,"taiyi":"6宫 · 酉","wenchang":"巽 · 9宫","shiji":"辰 · 9宫 · 土","wenchang_hit":"二目相关","shiji_entry":"壬癸 × 土","status":"与method 1／3同盘"},
+    {"method":1,"label":"太乙金镜","board":13,"taiyi":"6宫 · 酉","wenchang":"巽 · 9宫","shiji":"辰 · 9宫 · 土","wenchang_hit":"二目相关","shiji_entry":"壬癸 × 土","status":"固定示例分支"},
+    {"method":2,"label":"太乙淘金歌","board":1,"taiyi":"1宫 · 乾","wenchang":"申 · 6宫","shiji":"坤 · 7宫 · 土","wenchang_hit":"内宫迫","shiji_entry":"壬癸 × 土","status":"空间路线分流"},
+    {"method":3,"label":"太乙局","board":13,"taiyi":"6宫 · 酉","wenchang":"巽 · 9宫","shiji":"辰 · 9宫 · 土","wenchang_hit":"二目相关","shiji_entry":"壬癸 × 土","status":"与method 0／1同盘"}
+  ],
+  "implementation_differences": [
+    {"label":"同为二目，不同输入","source":"卷六把文昌变化与始击变化分别列篇","implementation":"两个函数分别读取空间关系与岁干五行","handling":"合为一个节点中的两条路线，不合成一个变化表。"},
+    {"label":"文昌参数范围","source":"文昌路线需要太乙与二目位置","implementation":"函数签名还接收geju，但函数体没有读取该参数","handling":"公开条件链不声称格局会直接改变文昌函数结果。"},
+    {"label":"易绝只存在于声明表","source":"常量表保存“易绝”标签","implementation":"wenchang_bianhua没有任何分支调用它","handling":"明确标作未执行，不按其他绝易函数替它补算。"},
+    {"label":"格对会叠加次级条目","source":"格对是文昌与太乙相冲","implementation":"四组特定对宫又会追加格对附表结果","handling":"显示标签叠加关系，不显示附表中的灾变文本。"},
+    {"label":"二目相关附加胜负","source":"同宫关系先形成二目相关","implementation":"程序再按一八三七／四九二六附加主客胜负","handling":"本节点只保留“同宫”结构，胜负断语排除。"},
+    {"label":"始击五行来自位置字符","source":"函数说明称依岁干分组及始击五行","implementation":"普通式盘先以Ganzhiwuxing把始击位置转换为木火土金水","handling":"展示转换后的五行入口，不把位置五行写成始击固有五行。"},
+    {"label":"25格全部有文本","source":"五组岁干乘五种五行形成25项","implementation":"固定壬子年四method都进入壬癸×土","handling":"只展示矩阵覆盖和固定落点，25条军政灾异文本不公开。"},
+    {"label":"缺输入时走回退文字","source":"完整路线需要岁干组与始击五行","implementation":"任一输入缺失时返回提示而不是结构标签","handling":"视为实现边界，不补造对应映射。"}
+  ],
+  "reading_boundaries": [
+    {"label":"保留","note":"二目身份、两条输入链、文昌八类条件、始击五乘五矩阵、固定四method与实现缺口。"},
+    {"label":"复用","note":"二目名称来自“式盘”，同宫、对宫和邻宫坐标来自“主客算／复合关系”，绝易位置回到“宫位状态”。"},
+    {"label":"不输出","note":"主客胜负、军政、战争、灾异、疾病、地域、行动建议和真人判断。"}
+  ],
+  "public_sources": [
+    {"title":"《太乙统宗宝鉴》馆藏文本入口","url":"https://ctext.org/wiki.pl?if=gb&res=444363","note":"卷六目录包含文昌变化与始击变化；当前本节点只把它作为底本入口，关键字句仍待影像逐字校勘。"},
+    {"title":"kintaiyi锁定文昌与始击变化实现","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/config.py#L1843-L1951","note":"保存文昌条件表、格对附表、始击25格表和两个函数；代码注释声明来源为《太乙统宗宝鉴》卷六。"},
+    {"title":"kintaiyi锁定普通式盘接口","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L2408-L2416","note":"显示文昌变化读取太乙与二目位置，始击变化读取岁干与始击位置五行。"},
+    {"title":"kintaiyi锁定宫位与五行转换","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/config.py#L66-L67","note":"十六位置先映射到八个宫数；始击位置另由Ganzhiwuxing转换为五行。"},
+    {"title":"kintaiyi二十卷覆盖自审","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/docs/%E5%8F%A4%E7%B1%8D%E6%9C%AA%E7%B4%8D%E5%85%A5%E5%85%A7%E5%AE%B9%E5%88%86%E6%9E%90.md","note":"用于确认卷六篇目与仓库当时覆盖状态；报告早于后续函数实现，不能机械当作当前缺口清单。"}
+  ],
+  "internal_review": {
+    "status":"formal_two_eyes_transformation_audit",
+    "reviewed_at":"2026-08-09",
+    "owner":["火华","Codex"],
+    "source_refs":["ctext_taiyi_tongzong_baojian","github_kentang2017_kintaiyi_f2719d6"],
+    "runtime_environment":"temporary Python venv; locked repository commit installed from source",
+    "runtime_command":"Taiyi(1552,9,24,0,0) with config.wenchang_bianhua and config.shiji_bianhua for method=0..3",
+    "deduplication":"不并入‘主客算’：主客算解释二目怎样生成算与将，本页解释二目取得位置以后各自进入哪条变化路线。不并入‘复合关系’：该页比较多个对象共同形成的格局，本页保留文昌函数自己的同宫、对宫、邻宫条件与始击五行矩阵。不拆成两张卡：文昌与始击共同回答二目在盘后怎样变化，且并列才能看见两条输入不对称。",
+    "known_gaps":["卷六底本影像尚未逐字校勘","易绝常量未进入函数分支","geju参数未被函数体使用","始击25格只有单一仓库实现来源，未完成版本横向比较","相关函数未发现专项测试"],
+    "boundary":"固定样本、无真人输入、无随机；本节点只展示两条输入链、结构条件、矩阵覆盖和实现缺口。"
+  }
+}

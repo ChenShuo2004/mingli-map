@@ -1,0 +1,36 @@
+{
+  "schema_version":"1.0.0",
+  "id":"tarot-imagery-elements-map",
+  "title":"牌面元素地图",
+  "summary":"按共同出现的景物、动物、人物和物件连接RWS大、小阿卡纳牌面。",
+  "groups":[
+    {"id":"nature","label":"天地景物","note":"山、水、天空与植物","terms":["山","水","云","花","树","太阳"]},
+    {"id":"animals","label":"动物","note":"牌面中出现的动物","terms":["马","鸟","蛇","狗","狮子"]},
+    {"id":"people","label":"人物身份","note":"能够直接辨认的人物称谓","terms":["孩子","骑士","王后","国王"]},
+    {"id":"objects","label":"人造物","note":"可直接指出的物件与建筑","terms":["船","塔","王冠","王座","城堡"]}
+  ],
+  "public_sources":[
+    {
+      "title":"Project Gutenberg：Waite逐张描述大阿卡纳",
+      "note":"支撑RWS大阿卡纳的牌面对象与画面描述。",
+      "url":"https://www.gutenberg.org/cache/epub/43548/pg43548-images.html#II2"
+    },
+    {
+      "title":"Wikisource：Waite《The Pictorial Key to the Tarot》Part III",
+      "note":"支撑56张小阿卡纳的逐牌画面描述。",
+      "url":"https://en.wikisource.org/wiki/The_Pictorial_Key_to_the_Tarot/Part_3"
+    },
+    {
+      "title":"tarot-api：固定提交中的78张RWS牌图",
+      "note":"页面用同一固定提交的真实牌面缩略图连接元素与单牌。",
+      "url":"https://github.com/LindseyB/tarot-api/tree/319ce18f1b583035e00c63854a2a405a0088bc73/public/cards"
+    }
+  ],
+  "internal_review":{
+    "status":"formal_cross_arcana_imagery_relationship_node",
+    "reviewed_at":"2026-08-06",
+    "source_refs":["gutenberg_waite_major_imagery","wikisource_waite_pictorial_key_part3","github_lindseyb_tarot_api_319ce18"],
+    "ownership":"K-TR.02 单牌资料",
+    "boundary":"关系仅来自当前正式牌面观察文本中的可见元素命中；不把共同元素自动解释为共同牌义。"
+  }
+}

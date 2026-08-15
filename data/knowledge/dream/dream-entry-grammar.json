@@ -1,0 +1,14 @@
+{
+  "id":"dream-entry-grammar","title":"梦书条目的基本句式","summary":"P.3908多用短句把条件和结果直接并置；“梦见……”是梦象从句，“者”可收束条件，“主、有、得、忧”等词引出占辞。",
+  "kicker":"条件从句 → 连接词 → 占辞主句",
+  "sections":[
+    {"label":"梦象起句","note":"提出梦中内容","items":[{"term":"梦见＋对象","detail":"梦见天、地、树木、病人、棺等"},{"term":"梦见＋动作","detail":"梦见上天、饮水、乘车、登山等"}]},
+    {"label":"条件收束","note":"限定对象或动作","items":[{"term":"者","detail":"常置于梦象描述之后"},{"term":"省略者","detail":"短句也可能直接接占辞"}]},
+    {"label":"结果引词","note":"连接梦象与结果","items":[{"term":"主","detail":"主官事、主疾病、主长命等"},{"term":"有／得","detail":"有喜、得财、得官、得远信等"},{"term":"忧／失","detail":"忧病、忧官事、失财等"}]},
+    {"label":"句末结果","note":"完成一条占辞","items":[{"term":"简判","detail":"吉、凶、大吉、大凶"},{"term":"事件","detail":"宅不安、客至、口舌、酒肉、婚姻等"}]}
+  ],
+  "relations":[{"from":"梦见＋对象／动作","link":"可接","to":"者","note":"形成条件段"},{"from":"条件段","link":"可接","to":"主／有／得／忧／失","note":"形成结果段"}],
+  "fixed_examples":[{"source":"P.3908·天文章","dream":"天明","qualifier":"明","marker":"者","outcome":"大喜","note":"对象与状态合成梦象条件"},{"source":"P.3908·地理章","dream":"地陷","qualifier":"陷","marker":"者","outcome":"宅不安","note":"状态词不是装饰字段"},{"source":"P.3908·舟车桥市谷章","dream":"乘车行","qualifier":"乘／行","marker":"—","outcome":"得官","note":"省略“者”仍可形成短句"}],
+  "boundaries":["句式分析只说明文本怎样组织，不证明梦象与结果之间存在因果。","写本有俗字、残缺和断句问题；公开例使用研究者校录，仍须回看影像。","同一写本内部也可能重复或出现不同程度的说法。"],
+  "public_sources":[{"title":"P.3908译注与写本对校","note":"支撑梦见、者、主、有、得、忧等条目句式。","url":"https://www.daowen.com/lilun/1567134.html"},{"title":"Pelliot chinois 3908馆藏元数据","note":"核对BnF馆藏对象和题名。","url":"https://portail.biblissima.fr/ark:/43093/mdata7e1bfc68ade549efa6b5aadd2f82a5a9ec362119"}]
+}

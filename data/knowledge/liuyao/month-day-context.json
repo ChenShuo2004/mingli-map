@@ -1,0 +1,133 @@
+{
+  "schema_version": "1.0",
+  "id": "liuyao_month_day_context",
+  "title": "时间来源",
+  "summary": "太岁、月建与日辰从卦外提供年、月、日三层时间背景，但三者不能等权读取。月建提供当月框架并形成临月建、月合、月破，日辰提供当日关系并形成临日辰、日合、日冲；太岁负责年度与远期线索，古籍同时限制它在普通细事中的直接权力。先记录来源、尺度与关系，再判断它是否有权限参与当前问题。",
+  "contexts": [
+    {
+      "id": "year",
+      "label": "太岁",
+      "branch": "辰",
+      "element": "土",
+      "time_span": "当年 · 远期背景",
+      "role": "提供年度、远期或少数大事的时间线索；普通细事中不自动压过月日",
+      "special_labels": ["临太岁", "岁合", "岁冲"]
+    },
+    {
+      "id": "month",
+      "label": "月建",
+      "branch": "寅",
+      "element": "木",
+      "time_span": "当月 · 三旬框架",
+      "role": "提供较长的月度关系背景",
+      "special_labels": ["临月建", "月合", "月破"]
+    },
+    {
+      "id": "day",
+      "label": "日辰",
+      "branch": "申",
+      "element": "金",
+      "time_span": "当日",
+      "role": "提供当日关系与冲动触发",
+      "special_labels": ["临日辰", "日合", "日冲"]
+    }
+  ],
+  "fixed_context_note": "固定例采用辰年、寅月、申日；上方关系板只演示月建与日辰怎样直接连接同一爻，太岁的年度权限在下方单独比较，不读取当前日期。",
+  "fixed_samples": [
+    {
+      "branch": "寅",
+      "element": "木",
+      "month_relations": ["临月建"],
+      "day_relations": ["日冲"],
+      "explanation": "寅与月建寅同支；申日与寅支构成寅申六冲。"
+    },
+    {
+      "branch": "申",
+      "element": "金",
+      "month_relations": ["月破"],
+      "day_relations": ["临日辰"],
+      "explanation": "寅月所冲的申支为月破；申又与日辰申同支。"
+    },
+    {
+      "branch": "亥",
+      "element": "水",
+      "month_relations": ["月合"],
+      "day_relations": ["日生"],
+      "explanation": "寅与亥构成六合；申金对亥水形成五行相生。"
+    },
+    {
+      "branch": "巳",
+      "element": "火",
+      "month_relations": ["月生"],
+      "day_relations": ["日合"],
+      "explanation": "寅木对巳火形成五行相生；申与巳构成六合。"
+    }
+  ],
+  "relation_templates": [
+    { "condition": "来源与爻同支", "month": "临月建", "day": "临日辰" },
+    { "condition": "来源与爻六合", "month": "月合", "day": "日合" },
+    { "condition": "来源与爻六冲", "month": "月破", "day": "日冲" },
+    { "condition": "来源五行生爻", "month": "月生", "day": "日生" },
+    { "condition": "来源五行克爻", "month": "月克", "day": "日克" },
+    { "condition": "来源与爻同五行", "month": "月扶", "day": "日扶" }
+  ],
+  "year_context": {
+    "fixed_branch": "辰",
+    "fixed_element": "土",
+    "rules": [
+      {
+        "id": "annual",
+        "label": "年度与远期",
+        "question": "什么时候可以把太岁纳入？",
+        "note": "观察尺度本来就在一年或更远，或既有状态明确等待某一流年填实、冲开、入墓时，太岁可以作为后续时间线索。"
+      },
+      {
+        "id": "major",
+        "label": "少数大事",
+        "question": "为什么古籍单列部分事项？",
+        "note": "旧籍把少数公共、长程或年度事项列为太岁作用较明显的范围；这些列举只说明权限范围，不搬入具体事项断语。"
+      },
+      {
+        "id": "ordinary",
+        "label": "普通细事",
+        "question": "岁冲、岁合能直接定结果吗？",
+        "note": "不能。古籍明确说普通细事中太岁不及月建、日辰亲近；岁冲不自动为凶，岁合也不自动为吉。"
+      }
+    ],
+    "source_positions": [
+      {
+        "label": "三传并列",
+        "position": "《卜筮正宗》第一问把年、月、日并称三传，允许三层时间来源一起进入生克数量比较。"
+      },
+      {
+        "label": "太岁限权",
+        "position": "《增删卜易》承认太岁司一年之令，同时以“尊而不亲”限制它在普通细事中的直接权力。"
+      },
+      {
+        "label": "并列不等权",
+        "position": "两种说法共同说明：年、月、日都应记录，但来源并列不代表时间尺度、作用范围与权力完全相同。"
+      }
+    ]
+  },
+  "object_scope": [
+    { "id": "static", "label": "静爻", "note": "没有发动的本卦爻" },
+    { "id": "moving", "label": "动爻", "note": "发生阴阳翻转的本卦爻" },
+    { "id": "changed", "label": "变爻", "note": "变卦同位产生的爻" },
+    { "id": "flying", "label": "飞神", "note": "本卦当前爻位的显层" },
+    { "id": "hidden", "label": "伏神", "note": "从本宫纯卦恢复的同位隐层" }
+  ],
+  "reading_boundary": "本页展示太岁、月建、日辰三层时间来源的尺度与权限，并继续演示月建、日辰怎样作用于卦中不同对象及生成关系名称；日冲后的暗动、日破与冲空不重复展开。不输入当前日期，不判断爻的最终旺衰，不输出吉凶、应期或个人事件结论。",
+  "internal_review": {
+    "status": "classical_year_month_day_sources_scope_and_locked_structure_cross_checked",
+    "reviewed_at": "2026-08-04",
+    "source_refs": [
+      "zengshan_buyi_wikisource_month_general_lines_773_777",
+      "zengshan_buyi_wikisource_day_general_lines_856_862",
+      "zengshan_buyi_wikisource_change_scope_lines_743_755",
+      "zengshan_buyi_locked_volume_2_part_1_taisui_scope_lines_930_940",
+      "bushi_zhengzong_eighteen_questions_part_1_three_transmissions_lines_1649_1651",
+      "github_weizew_mingli_skills_c16eca0_phase3_harness"
+    ],
+    "boundary": "公开固定寅月申日、双时间源、五类对象和关系命名；日冲状态分流移入独立节点，取用、权重、最终旺衰、吉凶、应期与事件解释留在受限层。"
+  }
+}

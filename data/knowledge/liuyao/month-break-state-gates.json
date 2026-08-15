@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "id": "liuyao_month_break_state_gates",
+  "title": "月破与破而不废",
+  "summary": "月建与爻支六冲时先形成月破，但《增删卜易》又区分载体状态与恢复时间：静而无助者可能一直保持破态，发动、变出或另得生助者不能一概抹去作用；值日、逢合与出月则是三种解除当前破态的时间门。月破因此不是一个永久开关。",
+  "fixed_context": {"month": "子月", "target": "午", "relation": "子午六冲", "label": "午爻月破"},
+  "carrier_states": [
+    {"id": "still", "label": "静而无助", "marker": "静", "current": "当月持续月破", "source_position": "惟不动又无日辰动爻生助者，则到底而破", "tone": "broken"},
+    {"id": "moving", "label": "本爻发动", "marker": "○", "current": "月破仍标，但发动不被抹去", "source_position": "动则能伤于爻；目下虽破，出月则不破", "tone": "active"},
+    {"id": "changed", "label": "作为变爻", "marker": "变", "current": "月破仍标，但变爻不被抹去", "source_position": "变则能伤于动", "tone": "active"},
+    {"id": "assisted", "label": "另得生助", "marker": "+", "current": "不能判作到底而破", "source_position": "静而无日辰动爻生助，才被列为到底而破", "tone": "held"}
+  ],
+  "time_gates": [
+    {"id": "current", "label": "仍在子月", "marker": "子月", "relation": "月建继续冲午", "effect": "保留当前载体分流"},
+    {"id": "value", "label": "午日值实", "marker": "午日", "relation": "时间与破支同支", "effect": "实破之日则不破"},
+    {"id": "harmony", "label": "未日来合", "marker": "未日", "relation": "午未六合", "effect": "合之日则不破"},
+    {"id": "leave", "label": "已经出月", "marker": "出月", "relation": "子月月建离场", "effect": "出月则不破"}
+  ],
+  "comparison": [
+    {"label": "月建与日辰", "difference": "只生成月破标签，不继续展开载体状态与解除门。"},
+    {"label": "化墓绝空破", "difference": "只讨论同位变爻怎样获得化破标签。"},
+    {"label": "月破与破而不废", "difference": "同时追踪静、动、变、受助四种载体与三种解除时间。"}
+  ],
+  "source_positions": [
+    {"label": "旧说", "position": "旧说把月破描述为有迹如无，甚至认为动、变也不能作用。", "public_use": "保存为被反驳的规则主张。"},
+    {"label": "作者经验", "position": "作者认为动爻、变爻仍能产生关系，并提出出月、值日、合日三种不破时点。", "public_use": "页面只呈现状态与时间门，不采用原案例结论。"},
+    {"label": "现代实现分歧", "position": "锁定实现允许月破仅当月有效或长期标破，并把出月填实留给解释层。", "public_use": "两种软件开关只作为实现差异，不覆盖古籍的载体分流。"}
+  ],
+  "reading_boundary": "本页固定子月午爻，展示月破标签如何与载体状态、值日、逢合和出月并存；不读取真实月份，不判断具体爻是否有助，不输出事项、吉凶或应期。",
+  "internal_review": {"status": "wikisource_pdf_and_locked_yuepo_mode_cross_checked", "reviewed_at": "2026-08-05", "source_refs": ["zengshan_buyi_wikisource_month_break_chapter", "zengshan_buyi_wikisource_response_time_notes", "github_horace_maxwell_horosa_7d8a93e_yuepo_mode"]}
+}

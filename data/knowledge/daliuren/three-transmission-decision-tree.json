@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0.0",
+  "id": "daliuren_three_transmission_decision_tree",
+  "title": "三传取法总决策树",
+  "summary": "三传选择是一棵有优先条件的分支树，不是一组可以同时套用的标签。现有实现共同覆盖贼克、比用、涉害、遥克、昴星、别责、八专、伏吟和返吟，但检测顺序、函数归属与课体标签仍有差异，因此本页只保存导航骨架。",
+  "headline": "先识别特殊盘，再沿有无贼克与候选数量继续分流",
+  "steps": [
+    {"label": "盘面先验", "value": "伏吟／返吟？", "note": "dalurenpython 将两者放在普通分流之前。"},
+    {"label": "直接相克", "value": "有贼克？", "note": "一候选可取；多候选继续比用、涉害。"},
+    {"label": "隔位相克", "value": "有遥克？", "note": "无直接贼克后检查。"},
+    {"label": "特殊补足", "value": "昴星／别责／八专", "note": "依四课数量、阴阳与干支条件分流。"},
+    {"label": "三步结果", "value": "初传 → 中传 → 末传", "note": "结果与课体命名分开保存。"}
+  ],
+  "facts": [
+    {"label": "共同覆盖", "detail": "三套实现都能进入主要取传分支，但代码组织并不完全相同。"},
+    {"label": "结构扫描", "detail": "dalurenpython 穷举8,640组结构输入，全部得到非空三传。"},
+    {"label": "仍有缺口", "detail": "结构成功不是底本验证；kinliuren 另有10组确认崩溃输入。"}
+  ],
+  "comparisons": [
+    {"label": "顺序", "left": "dalurenpython：伏吟／返吟优先", "right": "其他实现按函数组合处理", "handling": "保存实现顺序，不宣布唯一流程"},
+    {"label": "标签", "left": "三传结果", "right": "课体名称", "handling": "两层分开比较"}
+  ],
+  "reading_boundaries": ["决策树是三套实现的比较导航，不是传统定本。", "页面不让用户输入时间起课。", "课体断语和神煞不进入本节点。"],
+  "public_sources": [
+    {"title": "kinliuren 九法选择器", "url": "https://github.com/kentang2017/kinliuren/blob/3ba45a9540f08269b56d81508a061c7d46938785/src/kinliuren/kinliuren.py", "note": "提供主要分支及丰富实现标签。"},
+    {"title": "qimen-go 三传实现", "url": "https://github.com/deminzhang/qimen-go/blob/4d3f58fa0f401b5b3a337f119138e99e90685dda/xuan/big6.go", "note": "提供第二套分支对照。"},
+    {"title": "dalurenpython 三传实现", "url": "https://github.com/wlhyl/dalurenpython/blob/62764a4ad2c10f5ccc34b86c8520d9f4a96ba3aa/shipan/shipan.py#L417-L779", "note": "无仓库许可；8,640组扫描只用于结构验证。"}
+  ],
+  "internal_review": {"reviewed_on": "2026-08-10", "owner": ["火华", "Codex"], "status": "formal_navigation_with_order_variants"}
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0.0",
+  "id": "xiaoliuren_six_palace_sequence",
+  "title": "六宫身份与固定顺序",
+  "summary": "在 maifusha/xiaoliuren 的具名版本中，六个掌诀位按大安、留连、速喜、赤口、小吉、空亡循环。这个节点只保存名称、位置编号和循环关系，不把同仓的吉凶、疾病、财富、婚恋或行动解释并入宫位身份。",
+  "version_scope": {
+    "version": "maifusha/xiaoliuren",
+    "commit": "00b56579cf35b9961af5468bd2dc90f9211cc146",
+    "status": "具名实现版本，不代表所有小六壬法本"
+  },
+  "palaces": [
+    { "position": 1, "name": "大安", "next": "留连" },
+    { "position": 2, "name": "留连", "next": "速喜" },
+    { "position": 3, "name": "速喜", "next": "赤口" },
+    { "position": 4, "name": "赤口", "next": "小吉" },
+    { "position": 5, "name": "小吉", "next": "空亡" },
+    { "position": 6, "name": "空亡", "next": "大安" }
+  ],
+  "cycle_rules": [
+    "从选定起点开始，把起点本身计作第一位。",
+    "超过第六位后回到第一位，形成长度为六的循环。",
+    "宫名相同不表示不同版本的属性、起点和解释也相同。"
+  ],
+  "reading_boundaries": [
+    "不展示六宫吉凶等级。",
+    "不展示健康、财富、婚恋、神鬼或行动建议。",
+    "不把这一具名版本升级为传统唯一顺序。"
+  ],
+  "public_sources": [
+    {
+      "title": "maifusha/xiaoliuren 锁定六宫数据",
+      "url": "https://github.com/maifusha/xiaoliuren/tree/00b56579cf35b9961af5468bd2dc90f9211cc146",
+      "note": "MIT仓库；六宫表和循环实现可作具名版本的结构来源，断辞与事项解释不进入本节点。"
+    }
+  ],
+  "internal_review": {
+    "reviewed_on": "2026-08-09",
+    "owner": ["火华", "Codex"],
+    "status": "formal_versioned_structure"
+  }
+}

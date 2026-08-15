@@ -1,0 +1,331 @@
+{
+  "schema_version": "1.0.0",
+  "id": "western_astrology_predictive_techniques_map",
+  "title": "预测技术入口与实现覆盖",
+  "summary": "预测技术不是一条从粗到细的单线流程：有些比较真实时间的天空，有些旋转或象征推进本命盘，有些分配时期主星，还有些等待本命对象回到原位。当前节点先把八类技术的输入、变换和输出分开，并标记锁定flatlib是否有专门模块；不把作者的事件判断与确定性措辞带入知识地图。",
+  "families": [
+    {
+      "id": "sky-comparison",
+      "name": "真实天空比较",
+      "question": "给定一个真实日期，天空位置怎样与本命基线比较？",
+      "techniques": [
+        "transits"
+      ]
+    },
+    {
+      "id": "chart-transformation",
+      "name": "星盘变换",
+      "question": "怎样按年龄、象征时间或地球自转变换本命坐标？",
+      "techniques": [
+        "annual-profections",
+        "solar-arc",
+        "secondary-progressions",
+        "primary-directions"
+      ]
+    },
+    {
+      "id": "period-rulers",
+      "name": "时期主星",
+      "question": "怎样把时间分段，并为每段指定主星或星座？",
+      "techniques": [
+        "firdaria",
+        "zodiacal-releasing"
+      ]
+    },
+    {
+      "id": "returns",
+      "name": "回归时刻",
+      "question": "怎样寻找对象回到本命精确黄经的下一或上一时刻？",
+      "techniques": [
+        "return-charts"
+      ]
+    }
+  ],
+  "techniques": [
+    {
+      "id": "transits",
+      "name": "行运",
+      "english": "Transits",
+      "family": "sky-comparison",
+      "time_scope": "指定真实日期／时刻",
+      "base_inputs": [
+        "本命盘",
+        "目标日期",
+        "目标地点口径"
+      ],
+      "transformation": "计算目标时刻天体位置，再与本命对象比较。",
+      "output_structure": "两张位置集合及其关系",
+      "flatlib_status": "无专门predictives模块；星历与相位接口可作为底层积木。",
+      "implementation_level": "building-blocks"
+    },
+    {
+      "id": "annual-profections",
+      "name": "小限法",
+      "english": "Annual Profections",
+      "family": "chart-transformation",
+      "time_scope": "年为主，作者另列月限",
+      "base_inputs": [
+        "本命盘",
+        "目标日期",
+        "出生后年龄"
+      ],
+      "transformation": "作者摘要按每年整宫推进；flatlib把整盘按每年30°并叠加当前回归年内比例连续旋转。",
+      "output_structure": "旋转后的宫位、轴点与可选对象",
+      "flatlib_status": "有专门模块profections.compute。",
+      "implementation_level": "dedicated-module"
+    },
+    {
+      "id": "firdaria",
+      "name": "法达星限",
+      "english": "Firdaria",
+      "family": "period-rulers",
+      "time_scope": "多年大限与子限",
+      "base_inputs": [
+        "盘面教派",
+        "年龄／经过时间",
+        "行星次序与年限版本"
+      ],
+      "transformation": "按日间或夜间次序分配行星主管时期。",
+      "output_structure": "大限主星与子限主星",
+      "flatlib_status": "锁定提交无专门模块。",
+      "implementation_level": "source-description-only"
+    },
+    {
+      "id": "solar-arc",
+      "name": "日弧推运",
+      "english": "Solar Arc Directions",
+      "family": "chart-transformation",
+      "time_scope": "按年龄累积统一弧度",
+      "base_inputs": [
+        "本命盘",
+        "年龄",
+        "太阳弧口径"
+      ],
+      "transformation": "所有对象与轴点推进同一太阳弧。",
+      "output_structure": "统一平移后的对象与本命关系",
+      "flatlib_status": "锁定提交无专门模块。",
+      "implementation_level": "source-description-only"
+    },
+    {
+      "id": "secondary-progressions",
+      "name": "次限推运",
+      "english": "Secondary Progressions",
+      "family": "chart-transformation",
+      "time_scope": "一天象征一年",
+      "base_inputs": [
+        "本命日期",
+        "年龄",
+        "象征日期"
+      ],
+      "transformation": "出生后第N天的位置对应第N年的推运位置。",
+      "output_structure": "各对象按自身速度形成的推运盘",
+      "flatlib_status": "锁定提交无专门模块。",
+      "implementation_level": "source-description-only"
+    },
+    {
+      "id": "primary-directions",
+      "name": "主限推运",
+      "english": "Primary Directions",
+      "family": "chart-transformation",
+      "time_scope": "方向弧；历年换算需另选key",
+      "base_inputs": [
+        "本命赤经／赤纬",
+        "地理纬度",
+        "许诺星与征象星",
+        "主限口径"
+      ],
+      "transformation": "flatlib默认顺向、半弧法，同时计算黄道内与世界内方向弧。",
+      "output_structure": "许诺星—征象星方向弧列表",
+      "flatlib_status": "有专门模块primarydirections；只输出弧，不把弧转换为具体年份。",
+      "implementation_level": "dedicated-module"
+    },
+    {
+      "id": "zodiacal-releasing",
+      "name": "黄道释放",
+      "english": "Zodiacal Releasing",
+      "family": "period-rulers",
+      "time_scope": "多层星座时期",
+      "base_inputs": [
+        "福点或精神点",
+        "起始星座",
+        "行星周期版本"
+      ],
+      "transformation": "从Lot所在星座出发，按主宰星周期生成多层时期。",
+      "output_structure": "L1至L4时期序列",
+      "flatlib_status": "锁定提交无专门模块；依赖本专题已完成的核心Lots节点。",
+      "implementation_level": "source-description-only"
+    },
+    {
+      "id": "return-charts",
+      "name": "回归盘",
+      "english": "Return Charts",
+      "family": "returns",
+      "time_scope": "相邻回归时刻",
+      "base_inputs": [
+        "本命对象黄经",
+        "搜索起始日期",
+        "地点与宫制"
+      ],
+      "transformation": "寻找对象回到本命精确黄经的前一或后一时刻，再按原地点与宫制重建星盘。",
+      "output_structure": "回归时刻与回归盘",
+      "flatlib_status": "有专门returns模块，但源码明确当前只处理太阳回归。",
+      "implementation_level": "partial-dedicated-module"
+    }
+  ],
+  "implementation_coverage": [
+    {
+      "level": "dedicated-module",
+      "name": "专门模块",
+      "count": 2,
+      "techniques": [
+        "annual-profections",
+        "primary-directions"
+      ]
+    },
+    {
+      "level": "partial-dedicated-module",
+      "name": "部分专门模块",
+      "count": 1,
+      "techniques": [
+        "return-charts"
+      ]
+    },
+    {
+      "level": "building-blocks",
+      "name": "只有底层积木",
+      "count": 1,
+      "techniques": [
+        "transits"
+      ]
+    },
+    {
+      "level": "source-description-only",
+      "name": "当前只有来源说明",
+      "count": 4,
+      "techniques": [
+        "firdaria",
+        "solar-arc",
+        "secondary-progressions",
+        "zodiacal-releasing"
+      ]
+    }
+  ],
+  "fixed_learning_routes": [
+    {
+      "id": "real-date",
+      "question": "我想知道某个真实日期的天空如何与本命基线比较。",
+      "candidates": [
+        "transits"
+      ],
+      "note": "这是位置集合比较，不等于直接读取事件。"
+    },
+    {
+      "id": "annual-activation",
+      "question": "我想理解年龄怎样选择年度宫位或年度主星。",
+      "candidates": [
+        "annual-profections"
+      ],
+      "note": "需先分清整宫年步与软件连续旋转。"
+    },
+    {
+      "id": "period-ruler",
+      "question": "我想理解一段时间由哪个行星或星座主管。",
+      "candidates": [
+        "firdaria",
+        "zodiacal-releasing"
+      ],
+      "note": "两者起点、序列和时间单位不同，不能互换。"
+    },
+    {
+      "id": "symbolic-motion",
+      "question": "我想比较不同的象征推进或方向弧。",
+      "candidates": [
+        "solar-arc",
+        "secondary-progressions",
+        "primary-directions"
+      ],
+      "note": "统一太阳弧、一天一年和半弧方向是三种不同变换。"
+    },
+    {
+      "id": "return-moment",
+      "question": "我想寻找对象回到本命黄经的时刻。",
+      "candidates": [
+        "return-charts"
+      ],
+      "note": "当前锁定实现只接通太阳回归。"
+    }
+  ],
+  "source_differences": [
+    {
+      "field": "小限推进",
+      "author_source": "基本原理写每过一年从上升推进一个整宫，月限另从小限宫逐月推进。",
+      "flatlib": "以相邻太阳回归之间的日数比例计算年内弧，再叠加每个完整年龄30°，形成连续旋转。",
+      "handling": "先登记为两个不同粒度的模型，下一节点用固定年龄样本专门比较。"
+    },
+    {
+      "field": "回归盘范围",
+      "author_source": "同时介绍太阳回归与月亮回归。",
+      "flatlib": "returns模块注释明确当前只处理太阳回归。",
+      "handling": "页面标成部分覆盖，不以共享标题推断月返已实现。"
+    },
+    {
+      "field": "主限时间换算",
+      "author_source": "以约1°赤经等于1年概括Ptolemy量度。",
+      "flatlib": "计算并排序方向弧，默认最大弧100°，没有在模块内把弧换成年份。",
+      "handling": "当前只发布方向弧结构，不发布事件日期。"
+    },
+    {
+      "field": "实现覆盖",
+      "author_source": "目录列8类技术，并给出组合判断建议。",
+      "flatlib": "predictives目录只有profections、primarydirections、returns三个模块；行运只有通用星历／相位积木。",
+      "handling": "概念存在、底层可拼装和专门模块三种状态分别保存。"
+    }
+  ],
+  "reading_boundaries": [
+    "页面只切换技术说明与固定学习问题，不读取出生资料、当前日期、位置或真人星盘。",
+    "“有专门模块”只表示锁定仓库存在对应代码，不表示技术已获历史验证或能产生可靠事件预测。",
+    "作者资料中的影响、激活、高峰、危机、转折与事件确定性表述不进入本页输出。",
+    "不同技术的输出不能直接相加成分数，也不能因为多个标签重合就宣布事件必然发生。"
+  ],
+  "public_sources": [
+    {
+      "title": "fortune-telling-skills：预测技法体系",
+      "url": "https://github.com/doododod/fortune-telling-skills/blob/8bcc734491ac75cfb21c1de8727c9fc3f9427b1e/astrology-chart-analysis/references/predictive-techniques.md",
+      "note": "提供8类预测技术的作者定义、时间尺度、公式摘要与组合建议；事件解释只作为来源背景。"
+    },
+    {
+      "title": "flatlib：小限连续旋转实现",
+      "url": "https://github.com/flatangle/flatlib/blob/856d26b8bd1316ccdafe76399994696f9510de9e/flatlib/predictives/profections.py",
+      "note": "按完整年龄30°及太阳回归年内比例旋转对象、宫位与轴点。"
+    },
+    {
+      "title": "flatlib：太阳回归实现",
+      "url": "https://github.com/flatangle/flatlib/blob/856d26b8bd1316ccdafe76399994696f9510de9e/flatlib/predictives/returns.py",
+      "note": "提供上一／下一太阳回归及重建星盘；源码明确当前只处理太阳回归。"
+    },
+    {
+      "title": "flatlib：主限半弧实现",
+      "url": "https://github.com/flatangle/flatlib/blob/856d26b8bd1316ccdafe76399994696f9510de9e/flatlib/predictives/primarydirections.py",
+      "note": "提供顺向半弧法、黄道内／世界内方向弧、许诺星与征象星列表。"
+    }
+  ],
+  "internal_review": {
+    "status": "formal_predictive_techniques_orientation_and_implementation_coverage_map",
+    "reviewed_at": "2026-08-09",
+    "owner": [
+      "火华",
+      "Codex"
+    ],
+    "source_refs": [
+      "github_doododod_fortune_telling_skills_8bcc734",
+      "github_flatangle_flatlib_856d26b"
+    ],
+    "known_gaps": [
+      "8类技术的逐项古典底本、版本与术语谱系尚未独立核清。",
+      "法达节点次序、黄道释放周期、日弧key和次限日界仍需单项验证。",
+      "行运虽可用通用星历与相位积木构造，但锁定仓库没有专门工作流接口。",
+      "预测技术的经验有效性与历史使用不由代码覆盖状态证明。"
+    ],
+    "boundary": "技术导航与实现覆盖比较；无真人输入、实时星历、推运计算、事件判断、风险评级或行动建议。"
+  }
+}

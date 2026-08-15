@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0",
+  "id": "bazi_pattern_structure",
+  "title": "格局结构",
+  "summary": "格局不是给命盘贴一个固定名称，而是从月令进入，继续检查藏干、透出与全局配合，再讨论结构是否成立、受损或得到补救。",
+  "reading_sequence": [
+    {"id": "month", "label": "月令入口", "explanation": "先看月支当令之气与其中所藏。"},
+    {"id": "exposure", "label": "藏干透出", "explanation": "月令所藏不止一个，哪一气透出会改变观察重点。"},
+    {"id": "configuration", "label": "四柱配合", "explanation": "同一入口还要看其他干支如何承接、制化或形成冲突。"},
+    {"id": "outcome", "label": "成败救应", "explanation": "判断结构能否成立、在哪里受损，以及是否存在补救关系。"},
+    {"id": "change", "label": "格局变化", "explanation": "透干、会合与其他关系可能让原来的观察重点发生变化。"}
+  ],
+  "fixed_structure_example": {
+    "day_stem": "戊",
+    "month_branch": "寅",
+    "hidden_stems": ["甲", "丙", "戊"],
+    "exposed_stem": "丙",
+    "note": "寅中藏甲、丙、戊，月干丙透出。这只说明阅读如何从月令进入透干，还不足以单独确定格局成败。"
+  },
+  "regular_entries": [
+    {"name": "正官", "family": "官杀"}, {"name": "七杀", "family": "官杀"},
+    {"name": "正财", "family": "财"}, {"name": "偏财", "family": "财"},
+    {"name": "正印", "family": "印"}, {"name": "偏印", "family": "印"},
+    {"name": "食神", "family": "食伤"}, {"name": "伤官", "family": "食伤"}
+  ],
+  "separate_routes": [
+    {"name": "建禄与月劫", "explanation": "月令落在比肩、劫财时，通常另立阅读路径，不直接塞进普通八格。"},
+    {"name": "特殊格局", "explanation": "从格、化气、专旺等需要更严格的成立条件，不能只凭一个局部特征命名。"}
+  ],
+  "public_sources": [
+    {"title": "《子平真诠·论用神》", "note": "以月令为格局阅读的重要入口，并说明顺用、逆用与结构配合。", "url": "https://www.luckclub.cn/bazi/002/010/"},
+    {"title": "《子平真诠·论用神变化》", "note": "说明月令所藏不一，透干与会合会改变格局的观察重点。", "url": "https://www.luckclub.cn/bazi/002/012/"}
+  ],
+  "internal_review": {
+    "status": "reading_framework_verified_thresholds_rejected",
+    "reviewed_at": "2026-08-04",
+    "source_refs": ["ziping_zhenquan_lunyongshen", "ziping_zhenquan_lunyongshen_bianhua", "github_minervaowl7_bazi_pro_65955b3"],
+    "boundary": "公开月令、透出、配合、成败救应和变化的阅读链；仓库用于判定普通格、特殊格的百分比阈值不进入正式知识。"
+  }
+}

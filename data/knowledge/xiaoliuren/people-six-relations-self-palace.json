@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0.0",
+  "id": "xiaoliuren_people_six_relations_self_palace",
+  "title": "人盘六亲怎样以时宫为自身",
+  "summary": "人盘读取天盘地支五行，并把时宫强制标为自身；其余宫再按生我、克我、我克、我生和同类关系标记父母、官鬼、妻财、子孙、兄弟。源码还加入一条特殊兄弟规则：自身非土时，只把时宫之后遇到的第一个土地支宫指定为兄弟。本页把通用五行方向与作者特例分开。",
+  "self_rule": {"time_palace": "大安", "time_branch": "戌", "self_element": "土", "override": "时宫最终覆盖为自身"},
+  "relation_directions": [
+    {"direction":"生我","relation":"父母"},{"direction":"克我","relation":"官鬼"},{"direction":"我克","relation":"妻财"},{"direction":"我生","relation":"子孙"},{"direction":"同类／作者特例","relation":"兄弟"}
+  ],
+  "fixed_rows": [
+    {"palace":"大安","branch":"戌","element":"土","direction":"时宫覆盖","relation":"自身"},
+    {"palace":"留连","branch":"子","element":"水","direction":"土克水","relation":"妻财"},
+    {"palace":"速喜","branch":"寅","element":"木","direction":"木克土","relation":"官鬼"},
+    {"palace":"赤口","branch":"辰","element":"土","direction":"同类","relation":"兄弟"},
+    {"palace":"小吉","branch":"午","element":"火","direction":"火生土","relation":"父母"},
+    {"palace":"空亡","branch":"申","element":"金","direction":"土生金","relation":"子孙"}
+  ],
+  "special_brother_rule": {"when_self_is_earth":"所有土地支宫先视为兄弟，时宫再覆盖为自身", "when_self_is_not_earth":"从时宫之后寻找第一个土地支宫，强制作为唯一兄弟宫", "status":"作者实现特例；传统依据待核"},
+  "reading_boundaries": ["六亲名称只表示这套计算中的关系标签，不展开人物、事项或用神判断。", "特殊兄弟规则与常规同五行关系分开登记。", "固定例只用于检查六种标签是否各有落点。"],
+  "public_sources": [{"title": "chxb/jishiyu 锁定 getPeoplePlate 实现", "url": "https://github.com/chxb/jishiyu/blob/97b6d6d8e58c6947a86e281d5b69de1032e9bc08/js/x6ren.js", "note": "用于复算五行关系方向及特殊兄弟宫规则。"}],
+  "internal_review": {"reviewed_on": "2026-08-10", "owner": ["火华", "Codex"], "status": "formal_people_plate_audit"}
+}

@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0.0",
+  "id": "western_astrology_seven_traditional_planets",
+  "title": "七曜",
+  "summary": "西方古典占星先把太阳、月亮、水星、金星、火星、木星、土星作为一组基本对象。这里先辨认七曜及来源给出的教派、喜乐宫和关键词，再把它们与星座位置、宫位、尊贵度和相位分开；一颗星的名称本身不直接生成个人结论。",
+  "object_group": {
+    "label": "七个传统对象",
+    "luminaries": ["sun", "moon"],
+    "wandering_planets": ["mercury", "venus", "mars", "jupiter", "saturn"],
+    "note": "占星语境常把七者合称七曜或七颗传统行星；本页另标太阳、月亮为两颗发光体，避免把传统对象名和现代天文学分类混为一层。"
+  },
+  "planets": [
+    {"id":"sun","name":"太阳","english":"Sun","symbol":"☉","kind":"发光体","sect":"日间","joy_house":9,"keywords":["精神","生命力","权威"]},
+    {"id":"moon","name":"月亮","english":"Moon","symbol":"☽","kind":"发光体","sect":"夜间","joy_house":3,"keywords":["身体","日常","变化"]},
+    {"id":"mercury","name":"水星","english":"Mercury","symbol":"☿","kind":"游星","sect":"随条件变化","joy_house":1,"keywords":["言语","思维","技艺"]},
+    {"id":"venus","name":"金星","english":"Venus","symbol":"♀","kind":"游星","sect":"夜间","joy_house":5,"keywords":["联结","和谐","享乐"]},
+    {"id":"mars","name":"火星","english":"Mars","symbol":"♂","kind":"游星","sect":"夜间","joy_house":6,"keywords":["行动","冲突","切割"]},
+    {"id":"jupiter","name":"木星","english":"Jupiter","symbol":"♃","kind":"游星","sect":"日间","joy_house":11,"keywords":["扩张","信仰","慷慨"]},
+    {"id":"saturn","name":"土星","english":"Saturn","symbol":"♄","kind":"游星","sect":"日间","joy_house":12,"keywords":["限制","时间","结构"]}
+  ],
+  "reading_layers": [
+    {"id":"identity","label":"对象","question":"正在看哪一曜？","note":"先确认名称、符号及发光体／游星身份。"},
+    {"id":"position","label":"位置","question":"它落在哪里？","note":"星座、度数和宫位属于位置层，不写回七曜的固定定义。"},
+    {"id":"condition","label":"状态","question":"它怎样发挥？","note":"教派、顺逆行、日光关系与尊贵度留给后续状态节点。"},
+    {"id":"relation","label":"关系","question":"它与谁连接？","note":"相位、主宰、接纳和互容属于关系层。"}
+  ],
+  "source_statement_boundaries": [
+    "关键词、教派归属与喜乐宫是当前仓库来源的传统占星陈述，不是现代天文学属性。",
+    "水星的教派不能在本页压成固定日间或夜间；后续需结合其与太阳的关系另行核验。",
+    "天王星、海王星和冥王星不是本节点的七曜对象；这只是专题范围划分，不是否认现代天文学中的行星。",
+    "本页不接收出生资料，不把任一关键词直接转换成性格、职业、关系、健康或事件判断。"
+  ],
+  "public_sources": [
+    {
+      "title": "fortune-telling-skills：本命盘解读体系",
+      "url": "https://github.com/doododod/fortune-telling-skills/blob/8bcc734491ac75cfb21c1de8727c9fc3f9427b1e/astrology-chart-analysis/references/natal-chart.md",
+      "note": "提供七曜名称、符号、关键词、教派和喜乐宫表；仓库未逐项列出传统底本，因此这些字段保留为来源陈述。"
+    },
+    {
+      "title": "flatlib：占星对象与常量",
+      "url": "https://github.com/flatangle/flatlib/blob/856d26b8bd1316ccdafe76399994696f9510de9e/flatlib/const.py",
+      "note": "提供程序中的行星对象标识，并与位置、运动、宫位和尊贵度计算层连接；MIT代码不替代传统术语的原典证据。"
+    },
+    {
+      "title": "flatlib：对象字段",
+      "url": "https://github.com/flatangle/flatlib/blob/856d26b8bd1316ccdafe76399994696f9510de9e/flatlib/object.py",
+      "note": "用于核对对象层与星座位置、速度及运动状态的分离方式。"
+    }
+  ],
+  "internal_review": {
+    "status": "formal_foundation_node_with_source_statements",
+    "reviewed_at": "2026-08-09",
+    "owner": ["火华", "Codex"],
+    "source_refs": [
+      "github_doododod_fortune_telling_skills_8bcc734",
+      "github_flatangle_flatlib_856d26b",
+      "github_horace_maxwell_divination_notes_prompt_b22ecfa"
+    ],
+    "deduplication": "不并入星座或宫位：七曜回答盘中有哪些基本行动者，星座与宫位回答它们落在哪里。不并入教派、尊贵度或相位：这些都需要额外条件才能描述七曜的状态与关系。",
+    "known_gaps": [
+      "现有公开核心表没有给出七曜关键词、教派和喜乐宫的逐项古典底本版次与页码。",
+      "水星教派的具体判定条件尚未在当前节点核清，先保存为随条件变化。",
+      "喜乐宫只保存对应关系；其历史来源和解释逻辑留待教派与喜乐节点追核。"
+    ],
+    "boundary": "知识地图固定对象展示；无真人输入、排盘、性格归因、吉凶、预测或行动建议。"
+  }
+}

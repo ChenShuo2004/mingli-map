@@ -1,0 +1,324 @@
+{
+  "schema_version": "1.0.0",
+  "id": "tarot-history-decks",
+  "title": "塔罗历史与牌系",
+  "summary": "从15世纪纸牌游戏到RWS牌系，快速看懂塔罗的历史变化与常见牌系差别。",
+  "timeline": [
+    {
+      "id": "early-italy",
+      "period": "1440s–1450s",
+      "place": "意大利北部",
+      "title": "最早记录中的塔罗是纸牌游戏",
+      "note": "56张四花色牌，加上21张王牌与愚人牌。早期牌组的顺序和张数并不完全统一。",
+      "mark": "TRIONFI",
+      "artifact_image": "https://upload.wikimedia.org/wikipedia/commons/b/bd/Visconti-Sforza_tarot_deck._Death.jpg",
+      "artifact_label": "Visconti–Sforza · 15世纪",
+      "artifact_alt": "Visconti–Sforza牌组死神牌"
+    },
+    {
+      "id": "marseille-print",
+      "period": "17–18世纪",
+      "place": "法国印刷传统",
+      "title": "木刻与模板上色让牌面广泛流通",
+      "note": "今天常说的马赛系保留意大利式四花色；法国馆藏可见1701至1715年的78张Jean Dodal牌组。",
+      "mark": "MARSEILLE",
+      "artifact_image": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Jean_Dodal_Tarot_trump_01.jpg",
+      "artifact_label": "Jean Dodal · 1701–1715",
+      "artifact_alt": "Jean Dodal马赛塔罗魔术师牌"
+    },
+    {
+      "id": "occult-turn",
+      "period": "18世纪末–19世纪",
+      "place": "法国与英国",
+      "title": "占卜与神秘主义解释逐渐进入塔罗",
+      "note": "塔罗与占卜、神秘主义的广泛关联形成得较晚，不能倒推成15世纪牌组原本的用途。",
+      "mark": "DIVINATION",
+      "artifact_image": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Court_de_G%C3%A9belin_-_Atout_00.jpg",
+      "artifact_label": "Court de Gébelin · 1781",
+      "artifact_alt": "Court de Gébelin 1781年塔罗愚人图版"
+    },
+    {
+      "id": "rws",
+      "period": "1909–1910",
+      "place": "伦敦",
+      "title": "Pamela Colman Smith画出RWS牌面",
+      "note": "Waite策划、Smith绘制、Rider出版。56张小阿卡纳也采用完整场景插图，成为后来大量现代牌组的视觉参照。",
+      "mark": "RWS"
+    }
+  ],
+  "deck_families": [
+    {
+      "id": "visconti",
+      "name": "早期意大利牌",
+      "latin": "Visconti–Sforza",
+      "period": "约1450",
+      "look": "手绘金底，人物服饰接近当时宫廷",
+      "difference": "留存牌常不完整；早期王牌没有统一印刷编号",
+      "sample_image": "https://upload.wikimedia.org/wikipedia/commons/b/bd/Visconti-Sforza_tarot_deck._Death.jpg",
+      "sample_alt": "Visconti–Sforza牌组死神牌"
+    },
+    {
+      "id": "marseille",
+      "name": "马赛系",
+      "latin": "Tarot de Marseille",
+      "period": "17–18世纪形成印刷传统",
+      "look": "木刻线条、模板上色、法文牌名",
+      "difference": "数字牌多以花色符号排列，不采用RWS式完整场景",
+      "sample_image": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Jean_Dodal_Tarot_trump_01.jpg",
+      "sample_alt": "Jean Dodal马赛塔罗魔术师牌"
+    },
+    {
+      "id": "rws",
+      "name": "RWS牌系",
+      "latin": "Rider–Waite–Smith",
+      "period": "1909–1910",
+      "look": "大、小阿卡纳都有完整叙事画面",
+      "difference": "本专题以这一牌系的78张牌面与Waite牌义作为固定对照",
+      "sample_image": "/tarot/rws/TheMagician.png",
+      "sample_alt": "RWS魔术师牌"
+    }
+  ],
+  "visual_comparisons": [
+    {
+      "id": "fool",
+      "marker": "0 / —",
+      "name_zh": "愚人",
+      "name_en": "The Fool / Le Fou",
+      "note": "RWS牌面印有0；Lequart愚人牌不以罗马数字标号。",
+      "rws_image": "TheFool.png",
+      "marseille_image": "https://upload.wikimedia.org/wikipedia/commons/5/54/TT_Tarot.png",
+      "marseille_label": "Lequart 1890",
+      "commons_file": "https://commons.wikimedia.org/wiki/File:TT_Tarot.png",
+      "license": "Public domain"
+    },
+    {
+      "id": "magician",
+      "marker": "I",
+      "name_zh": "魔术师",
+      "name_en": "The Magician / Le Bateleur",
+      "note": "同为I号牌，人物、桌面与牌名的画法不同。",
+      "rws_image": "TheMagician.png",
+      "marseille_image": "https://upload.wikimedia.org/wikipedia/commons/9/97/T1_Tarot.png",
+      "marseille_label": "Lequart 1890",
+      "commons_file": "https://commons.wikimedia.org/wiki/File:T1_Tarot.png",
+      "license": "Public domain"
+    },
+    {
+      "id": "high-priestess",
+      "marker": "II",
+      "name_zh": "女祭司",
+      "name_en": "The High Priestess / Junon",
+      "note": "RWS画出两根字母立柱；Lequart画成持杖的坐姿人物。",
+      "rws_image": "TheHighPriestess.png",
+      "marseille_image": "https://upload.wikimedia.org/wikipedia/commons/a/ac/T2_Tarot.png",
+      "marseille_label": "Lequart 1890",
+      "commons_file": "https://commons.wikimedia.org/wiki/File:T2_Tarot.png",
+      "license": "Public domain"
+    },
+    {
+      "id": "empress",
+      "marker": "III",
+      "name_zh": "皇后",
+      "name_en": "The Empress / L'Impératrice",
+      "note": "两张牌都有加冕人物，服饰、背景与手中物件不同。",
+      "rws_image": "TheEmpress.png",
+      "marseille_image": "https://upload.wikimedia.org/wikipedia/commons/f/fd/T3_Tarot.png",
+      "marseille_label": "Lequart 1890",
+      "commons_file": "https://commons.wikimedia.org/wiki/File:T3_Tarot.png",
+      "license": "Public domain"
+    },
+    {
+      "id": "hierophant",
+      "marker": "V",
+      "name_zh": "教皇",
+      "name_en": "The Hierophant / Jupiter",
+      "note": "RWS画出正面的宗教人物与两名随从；Lequart采用不同人物称名与构图。",
+      "rws_image": "TheHierophant.png",
+      "marseille_image": "https://upload.wikimedia.org/wikipedia/commons/7/72/T5_Tarot.png",
+      "marseille_label": "Lequart 1890",
+      "commons_file": "https://commons.wikimedia.org/wiki/File:T5_Tarot.png",
+      "license": "Public domain"
+    },
+    {
+      "id": "world",
+      "marker": "XXI",
+      "name_zh": "世界",
+      "name_en": "The World / Le Monde",
+      "note": "两张牌都以中央人物和椭圆环为核心，四角形象与线条风格不同。",
+      "rws_image": "TheWorld.png",
+      "marseille_image": "https://upload.wikimedia.org/wikipedia/commons/c/ca/T21_Tarot.png",
+      "marseille_label": "Lequart 1890",
+      "commons_file": "https://commons.wikimedia.org/wiki/File:T21_Tarot.png",
+      "license": "Public domain"
+    },
+    {
+      "id": "strength",
+      "marker": "VIII / XI",
+      "name_zh": "力量",
+      "name_en": "Strength / La Force",
+      "note": "RWS把力量编为VIII；Lequart牌面编为XI，人物与狮子主题仍可辨认。",
+      "rws_image": "Strength.png",
+      "marseille_image": "https://upload.wikimedia.org/wikipedia/commons/8/80/T11_Tarot.png",
+      "marseille_label": "Lequart 1890",
+      "commons_file": "https://commons.wikimedia.org/wiki/File:T11_Tarot.png",
+      "license": "Public domain"
+    },
+    {
+      "id": "tower",
+      "marker": "XVI",
+      "name_zh": "高塔",
+      "name_en": "The Tower / La Maison Dieu",
+      "note": "RWS标题为The Tower；Lequart使用La Maison Dieu，塔顶与人物构图不同。",
+      "rws_image": "TheTower.png",
+      "marseille_image": "https://upload.wikimedia.org/wikipedia/commons/2/26/T16_Tarot.png",
+      "marseille_label": "Lequart 1890",
+      "commons_file": "https://commons.wikimedia.org/wiki/File:T16_Tarot.png",
+      "license": "Public domain"
+    },
+    {
+      "id": "three-of-cups",
+      "marker": "杯 3",
+      "name_zh": "圣杯三",
+      "name_en": "Three of Cups / Trois de Coupes",
+      "note": "RWS画成聚会场景；马赛系直接排列三个圣杯。",
+      "rws_image": "Cups03.png",
+      "marseille_image": "https://upload.wikimedia.org/wikipedia/commons/f/f0/3C_Tarot.png",
+      "marseille_label": "Lequart 1890",
+      "commons_file": "https://commons.wikimedia.org/wiki/File:3C_Tarot.png",
+      "license": "Public domain"
+    },
+    {
+      "id": "ace-of-swords",
+      "marker": "剑 A",
+      "name_zh": "宝剑王牌",
+      "name_en": "Ace of Swords / As d'Épée",
+      "note": "RWS画云中手握宝剑；马赛系以一把剑和花叶组成牌面。",
+      "rws_image": "Swords01.png",
+      "marseille_image": "https://upload.wikimedia.org/wikipedia/commons/a/ab/1S_Tarot.png",
+      "marseille_label": "Lequart 1890",
+      "commons_file": "https://commons.wikimedia.org/wiki/File:1S_Tarot.png",
+      "license": "Public domain"
+    },
+    {
+      "id": "ace-of-pentacles",
+      "marker": "币 A",
+      "name_zh": "星币王牌",
+      "name_en": "Ace of Pentacles / As de Denier",
+      "note": "RWS画云中手托星币；马赛系把单枚钱币纹章放在中央。",
+      "rws_image": "Pentacles01.png",
+      "marseille_image": "https://upload.wikimedia.org/wikipedia/commons/6/62/1P_Tarot.png",
+      "marseille_label": "Lequart 1890",
+      "commons_file": "https://commons.wikimedia.org/wiki/File:1P_Tarot.png",
+      "license": "Public domain"
+    },
+    {
+      "id": "queen-of-cups",
+      "marker": "杯 Q",
+      "name_zh": "圣杯王后",
+      "name_en": "Queen of Cups / Reine de Coupe",
+      "note": "两张都是圣杯王后；RWS加入海岸背景，Lequart集中表现人物与杯。",
+      "rws_image": "Cups13.png",
+      "marseille_image": "https://upload.wikimedia.org/wikipedia/commons/9/9d/QC_Tarot.png",
+      "marseille_label": "Lequart 1890",
+      "commons_file": "https://commons.wikimedia.org/wiki/File:QC_Tarot.png",
+      "license": "Public domain"
+    }
+  ],
+  "adjacent_system_note": "Petit Lenormand与神谕卡是相邻但不同的卡牌系统；不能直接套用塔罗的78张、大小阿卡纳与四花色结构。",
+  "public_sources": [
+    {
+      "title": "大都会艺术博物馆：占卜之前的塔罗历史与结构",
+      "note": "支撑15世纪意大利北部的早期记录、56张花色牌加21张王牌与愚人的结构，以及塔罗最初作为纸牌游戏的历史范围。",
+      "url": "https://www.metmuseum.org/perspectives/tarot-2"
+    },
+    {
+      "title": "V&A：塔罗牌历史",
+      "note": "支撑18至19世纪占卜语境的形成，以及Pamela Colman Smith、Waite与Rider在RWS牌组中的角色。",
+      "url": "https://www.vam.ac.uk/articles/tarot-cards"
+    },
+    {
+      "title": "法国国家图书馆：Jean Dodal马赛塔罗",
+      "note": "馆藏记录一副1701至1715年间在里昂制作、木刻并以模板上色的78张马赛塔罗。",
+      "url": "https://catalogue.bnf.fr/ark:/12148/cb40918567t"
+    },
+    {
+      "title": "大英博物馆：Visconti–Sforza牌组复制件",
+      "note": "馆藏记录连接15世纪Visconti–Sforza牌组、原件缺牌与后补情况。",
+      "url": "https://www.britishmuseum.org/collection/object/P_1976-0131-25-1-78"
+    },
+    {
+      "title": "Project Gutenberg：Waite《The Illustrated Key to the Tarot》",
+      "note": "支撑RWS大阿卡纳顺序、四花色结构与Waite 1910作者版本牌义。",
+      "url": "https://www.gutenberg.org/ebooks/43548"
+    },
+    {
+      "title": "Wikimedia Commons：Lequart 1890马赛系牌图",
+      "note": "十二张对照牌的逐图页面均标为公版，并追溯到法国国家图书馆Gallica馆藏。",
+      "url": "https://commons.wikimedia.org/wiki/Category:Tarot_nouveau_-_Lequart"
+    },
+    {
+      "title": "GitHub固定提交：querent马赛牌图索引",
+      "note": "用于核对完整牌组文件与Commons来源说明；图像权利仍以Commons逐图记录为准。",
+      "url": "https://github.com/zzkt/querent/tree/1f20a21fb0876d8c6d85317086b919c6dddd3044/data/tdm"
+    },
+    {
+      "title": "法国国家图书馆Gallica：Lequart 1890牌组",
+      "note": "Commons逐图元数据所指向的馆藏原始来源。",
+      "url": "https://gallica.bnf.fr/ark:/12148/btv1b10539498w"
+    },
+    {
+      "title": "Wikimedia Commons：Visconti–Sforza死神牌",
+      "note": "15世纪Pierpont Morgan–Bergamo牌组实图，逐图记录标为公版。",
+      "url": "https://commons.wikimedia.org/wiki/File:Visconti-Sforza_tarot_deck._Death.jpg"
+    },
+    {
+      "title": "Wikimedia Commons：Jean Dodal魔术师牌",
+      "note": "1701至1715年马赛印刷传统实图，逐图记录标为公版。",
+      "url": "https://commons.wikimedia.org/wiki/File:Jean_Dodal_Tarot_trump_01.jpg"
+    },
+    {
+      "title": "Wikimedia Commons：Court de Gébelin 1781愚人图版",
+      "note": "《Du Jeu des Tarots》图版，逐图记录标为公版。",
+      "url": "https://commons.wikimedia.org/wiki/File:Court_de_G%C3%A9belin_-_Atout_00.jpg"
+    },
+    {
+      "title": "Horniman Museum：36张Lenormand牌组",
+      "note": "馆藏记录确认一副36张德国Lenormand牌，并追溯到约1799年的《希望游戏》。",
+      "url": "https://www.horniman.ac.uk/object/1970.18/"
+    },
+    {
+      "title": "大英博物馆：36张Mlle Lenormand牌组",
+      "note": "馆藏记录确认36张完整实物与19世纪德国出版背景。",
+      "url": "https://www.britishmuseum.org/collection/object/P_1896-0501-413"
+    },
+    {
+      "title": "U.S. Games：44张Conscious Spirit Oracle",
+      "note": "出版社实例确认一副44张、由作者组织主题与说明书的神谕卡。",
+      "url": "https://www.usgamesinc.com/tarot-and-inspiration/conscious-spirit-oracle-deck.html"
+    },
+    {
+      "title": "U.S. Games：52张Old Style Oracle",
+      "note": "出版社实例确认一副52张、由作者设计结构并配说明书的神谕卡；与44张实例并列，用于说明具体结构取决于出版物。",
+      "url": "https://www.usgamesinc.com/old-style-oracle"
+    }
+  ],
+  "internal_review": {
+    "status": "formal_beginner_history_and_deck_families_node",
+    "reviewed_at": "2026-08-07",
+    "source_refs": [
+      "met_tarot_history_structure",
+      "vam_tarot_history",
+      "bnf_jean_dodal_tarot",
+      "british_museum_visconti_sforza",
+      "gutenberg_waite_43548",
+      "commons_lequart_1890",
+      "github_querent_tdm_fixed_commit",
+      "bnf_gallica_lequart_1890",
+      "commons_visconti_sforza_death",
+      "commons_jean_dodal_trump_01",
+      "commons_court_de_gebelin_atout_00"
+    ],
+    "ownership": "K-TR.01 牌组结构",
+    "boundary": "只呈现可由馆藏与原始出版物支撑的历史节点和牌系差异，不把后起神秘主义主张倒推为中世纪事实。"
+  }
+}

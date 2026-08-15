@@ -1,0 +1,33 @@
+{
+  "id": "mengzhan-yizhi-structure",
+  "title": "《梦占逸旨》怎样组织材料",
+  "summary": "明代陈士元《梦占逸旨》共八卷，以内篇讨论梦论、分类与方法，以外篇汇集历代梦例；理论层和材料汇编层需要分开阅读。",
+  "metadata": {"author":"陈士元","period":"明代","volumes":8,"main_divisions":["内篇","外篇"]},
+  "architecture": [
+    {"division":"内篇","role":"梦论与方法","contents":["梦的发生与感变","前代梦说与制度","梦类整理","占梦古法"]},
+    {"division":"外篇","role":"分类梦例汇编","contents":["按日月、山水、草木、食衣等对象归类","征引经史、类书与杂记","并列梦象、解释与叙事结果","保存材料出处线索"]}
+  ],
+  "nine_dreams": [
+    {"order":1,"name":"气盛","key":"身体之气偏盛"},
+    {"order":2,"name":"气虚","key":"身体之气偏虚"},
+    {"order":3,"name":"邪寓","key":"外邪客寓"},
+    {"order":4,"name":"体滞","key":"身体感觉凝滞"},
+    {"order":5,"name":"情溢","key":"情志过度"},
+    {"order":6,"name":"直叶","key":"梦与后事直接相合"},
+    {"order":7,"name":"比象","key":"缘象比类"},
+    {"order":8,"name":"反极","key":"梦象与情境相反"},
+    {"order":9,"name":"厉妖","key":"厉鬼妖异之梦"}
+  ],
+  "reading_order": ["先确认卷次与内外篇","再区分作者梦论与所引旧说","外篇梦例逐条登记原引来源","最后比较同一梦象在不同材料中的说法"],
+  "boundaries": [
+    "九梦是《梦占逸旨》的整理口径，不替代《周礼》六梦或《潜夫论》十梦。",
+    "外篇收录的古例不等于陈士元亲历，也不等于来源之间没有冲突。",
+    "电子识别文本可能有错字，节点名称和引文须回看八卷影像。"
+  ],
+  "public_sources": [
+    {"title":"《梦占逸旨》八卷影像","note":"核对作者、卷次、内外篇与具体文字。","url":"https://ctext.org/library.pl?if=gb&res=3642"},
+    {"title":"《梦占逸旨》OCR与图文对照入口","note":"提供检索文本；页面明确提示OCR错字须回看影像。","url":"https://ctext.org/wiki.pl?if=gb&remap=gb&res=475324"},
+    {"title":"大阪大学：《梦占逸旨》外篇研究","note":"支撑内篇为梦论、外篇以资料汇集为主的结构划分。","url":"https://ir.library.osaka-u.ac.jp/repo/ouka/all/11517/mrp_038-065.pdf"},
+    {"title":"《梦占逸旨》卷八公开影像","note":"补充卷八底本影像核对入口。","url":"https://upload.wikimedia.org/wikipedia/commons/7/78/SSID-12623327_%E5%A4%A2%E5%8D%A0%E9%80%B8%E6%97%A8.pdf"}
+  ]
+}

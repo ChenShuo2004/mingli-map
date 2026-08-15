@@ -1,0 +1,104 @@
+{
+  "schema_version": "1.0",
+  "id": "ziwei_fourteen_major_stars",
+  "title": "十四主星",
+  "summary": "十四主星不是十四套彼此独立的落宫规则。完整安置链先用五行局与农历日求出紫微、天府两颗锚星，再把六颗紫微星系与八颗天府星系按相反方向和固定间距展开。星曜解释、亮度与四化仍留在各自规则层。",
+  "groups": [
+    {
+      "id": "ziwei-lineage",
+      "label": "紫微星系",
+      "anchor": "紫微",
+      "direction": "逆行",
+      "star_count": 6,
+      "summary": "以紫微为第0位，逆行展开；数组中的留空表示相对间距，不是新增星曜。",
+      "slots": [
+        {"offset":0,"star":"紫微"},
+        {"offset":1,"star":"天机"},
+        {"offset":2,"star":null},
+        {"offset":3,"star":"太阳"},
+        {"offset":4,"star":"武曲"},
+        {"offset":5,"star":"天同"},
+        {"offset":6,"star":null},
+        {"offset":7,"star":null},
+        {"offset":8,"star":"廉贞"}
+      ]
+    },
+    {
+      "id": "tianfu-lineage",
+      "label": "天府星系",
+      "anchor": "天府",
+      "direction": "顺行",
+      "star_count": 8,
+      "summary": "以天府为第0位，顺行展开；七杀之后留三位，再到破军。",
+      "slots": [
+        {"offset":0,"star":"天府"},
+        {"offset":1,"star":"太阴"},
+        {"offset":2,"star":"贪狼"},
+        {"offset":3,"star":"巨门"},
+        {"offset":4,"star":"天相"},
+        {"offset":5,"star":"天梁"},
+        {"offset":6,"star":"七杀"},
+        {"offset":7,"star":null},
+        {"offset":8,"star":null},
+        {"offset":9,"star":null},
+        {"offset":10,"star":"破军"}
+      ]
+    }
+  ],
+  "fixed_example": {
+    "label": "固定双锚例",
+    "anchors": [{"star":"紫微","branch":"寅"},{"star":"天府","branch":"申"}],
+    "note": "只用固定锚点展示两组相对偏移，不代表替读者排出的命盘。",
+    "palaces": [
+      {"branch":"寅","stars":[{"name":"紫微","group":"ziwei-lineage"},{"name":"七杀","group":"tianfu-lineage"}]},
+      {"branch":"卯","stars":[]},
+      {"branch":"辰","stars":[]},
+      {"branch":"巳","stars":[]},
+      {"branch":"午","stars":[{"name":"廉贞","group":"ziwei-lineage"},{"name":"破军","group":"tianfu-lineage"}]},
+      {"branch":"未","stars":[]},
+      {"branch":"申","stars":[{"name":"天府","group":"tianfu-lineage"}]},
+      {"branch":"酉","stars":[{"name":"天同","group":"ziwei-lineage"},{"name":"太阴","group":"tianfu-lineage"}]},
+      {"branch":"戌","stars":[{"name":"武曲","group":"ziwei-lineage"},{"name":"贪狼","group":"tianfu-lineage"}]},
+      {"branch":"亥","stars":[{"name":"太阳","group":"ziwei-lineage"},{"name":"巨门","group":"tianfu-lineage"}]},
+      {"branch":"子","stars":[{"name":"天相","group":"tianfu-lineage"}]},
+      {"branch":"丑","stars":[{"name":"天机","group":"ziwei-lineage"},{"name":"天梁","group":"tianfu-lineage"}]}
+    ]
+  },
+  "identity_profiles": [
+    {"star":"紫微","yin_yang":"阴","element":"己土","division":"中天星系","huaqi":"尊贵","palace_role":"官禄主"},
+    {"star":"天机","yin_yang":"阴","element":"乙木","division":"南斗第三星","huaqi":"善","palace_role":"兄弟主"},
+    {"star":"太阳","yin_yang":"阳","element":"丙火","division":"中天星系","huaqi":"权贵","palace_role":"官禄主"},
+    {"star":"武曲","yin_yang":"阴","element":"辛金","division":"北斗第六星","huaqi":"财富","palace_role":"财帛主"},
+    {"star":"天同","yin_yang":"阳","element":"壬水","division":"南斗第四星","huaqi":"温和","palace_role":"福德主"},
+    {"star":"廉贞","yin_yang":"阴","element":"丁火","division":"北斗第五星","huaqi":"囚","palace_role":"官禄主（行政）"},
+    {"star":"天府","yin_yang":"阳","element":"戊土","division":"南斗主星","huaqi":"库","palace_role":"田宅主、财帛主"},
+    {"star":"太阴","yin_yang":"阴","element":"癸水","division":"中天星系","huaqi":"富","palace_role":"田宅主"},
+    {"star":"贪狼","yin_yang":"阳","element":"甲木（气为水）","division":"北斗第一星","huaqi":"桃花","palace_role":"子女主"},
+    {"star":"巨门","yin_yang":"阴","element":"癸水／己土（藏金木）","division":"北斗第二星","huaqi":"暗","palace_role":"疾厄主"},
+    {"star":"天相","yin_yang":"阳","element":"壬水","division":"南斗第五星","huaqi":"印","palace_role":"官禄主"},
+    {"star":"天梁","yin_yang":"阳","element":"戊土","division":"南斗第二星","huaqi":"荫","palace_role":"父母主"},
+    {"star":"七杀","yin_yang":"阴","element":"辛金","division":"南斗第六星","huaqi":"肃杀","palace_role":"迁移主"},
+    {"star":"破军","yin_yang":"阴","element":"癸水","division":"北斗第七星","huaqi":"耗","palace_role":"迁移主"}
+  ],
+  "identity_boundary": "五项字段是iztro文档作者整理的传统身份标签，不是跨流派共识，也不是性格或事件判断；其中“宫位主”表示来源中的传统角色名称，不代表星曜必落该宫。",
+  "reading_boundaries": [
+    {"id":"identity","label":"本页回答","title":"十四颗是谁","note":"保存主星身份、两组归属、方向和相对间距。"},
+    {"id":"anchor","label":"同页定位层","title":"两颗锚星在哪","note":"紫微与天府的起点需要五行局与农历日，先在本页锚点板块复算，再进入两条星系的间距展开。"},
+    {"id":"overlay","label":"后续解释层","title":"落宫后怎样解释","note":"亮度、四化、组合与宫位解释都不由主星名单直接推出。"}
+  ],
+  "public_sources": [
+    {"title":"iztro：两组主星口诀与排列数组","note":"锁定版本直接列出紫微系与天府系的名称、空位和相对顺序，是本页两组骨架的主要来源。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/star/majorStar.ts#L10-L54"},
+    {"title":"iztro：两组相反方向的装配实现","note":"锁定实现从紫微起点减去偏移、从天府起点加上偏移，并把两组星曜标记为 major；支持本页方向与类别边界。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/star/majorStar.ts#L56-L85"},
+    {"title":"iztro：十四主星简体名称映射","note":"锁定简体中文词表逐项给出十四个 major 键名，帮助核对页面名称，不延伸采用后续辅星与杂耀。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/i18n/locales/zh-CN/star.ts#L1-L15"},
+    {"title":"iztro：紫微与天府起点计算","note":"锁定实现另以五行局、农历日和偏移计算紫微起点，再得到天府相对位置；证明锚点生成与十四主星身份排列是两条可分开的规则链。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/star/location.ts#L16-L95"},
+    {"title":"紫微研习社：十四主星资料入口","note":"文档作者逐星列出阴阳、五行、斗分、化气与传统宫位角色；本页只摘录这五类身份字段，不复用性格概率、组合解释或个人断语。","url":"https://iztro.com/learn/major-star.html"}
+  ],
+  "internal_review": {
+    "status": "formal_structure_node_implementation_scope",
+    "reviewed_at": "2026-08-05",
+    "source_refs": ["github_sylarlong_iztro_2fb2030"],
+    "ownership": "K-ZW.05 星曜体系与庙旺",
+    "deduplication": "不并入五行局：五行局只提供锚星定位所需参数；不并入十二宫盘面：盘面只提供十二个承载位置；不与后续安星起点、亮度或四化合并：它们分别新增日期输入、宫位状态或年干映射。",
+    "boundary": "本页按锁定实现发布十四主星身份、两组相对排列和一个固定双锚演示，不接收生日、不生成锚点、不解释性格吉凶，也不把单一实现升格为跨流派共识。"
+  }
+}

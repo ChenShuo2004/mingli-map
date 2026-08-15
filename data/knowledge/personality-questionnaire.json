@@ -1,0 +1,1035 @@
+{
+  "schema_version": "1.0",
+  "id": "mbti",
+  "title": "人格问卷",
+  "latin": "Personality Questionnaires",
+  "kicker": "人格问卷 · 体系、作答与结果",
+  "eyebrow": "问卷形态、常见体系、维度、计分、报告与证据",
+  "description": "从一份问卷实际长什么样开始，辨认常见人格问卷、维度与类型、作答和计分、分数与报告，以及不同使用场景需要怎样的证据。",
+  "searchHint": "搜索：大五、HEXACO、MBTI、16PF、报告、常模…",
+  "emptyHint": "可以试试“大五”“MBTI”“强迫选择”“百分位”或“效度”。",
+  "node_structure": [
+    {
+      "id": "questionnaire-form",
+      "group": "认识问卷",
+      "title": "问卷长什么样",
+      "latin": "What a questionnaire looks like",
+      "question": "从填写说明、题目和选项，到最后拿到报告，一份人格问卷包含哪些部分？",
+      "summary": "沿一份固定示意问卷走完填写说明、题目与选项、回答记录、计分规则和结果报告，认清一份问卷的可见组成。",
+      "count": "1段知识",
+      "tags": ["填写说明", "题目", "选项", "计分", "报告"],
+      "unit_roles": {
+        "questionnaire-anatomy": "完整走一遍"
+      },
+      "unit_ids": ["questionnaire-anatomy"]
+    },
+    {"id": "bfi-2-questionnaire", "group": "常见问卷", "direct_unit": true, "unit_ids": ["bfi-2-questionnaire"]},
+    {"id": "hexaco-questionnaire", "group": "常见问卷", "direct_unit": true, "unit_ids": ["hexaco-questionnaire"]},
+    {"id": "mbti-questionnaire", "group": "常见问卷", "direct_unit": true, "unit_ids": ["mbti-questionnaire"]},
+    {"id": "sixteen-pf-questionnaire", "group": "常见问卷", "direct_unit": true, "unit_ids": ["sixteen-pf-questionnaire"]},
+    {"id": "hpi-questionnaire", "group": "常见问卷", "direct_unit": true, "unit_ids": ["hpi-questionnaire"]},
+    {"id": "hds-questionnaire", "group": "常见问卷", "direct_unit": true, "unit_ids": ["hds-questionnaire"]},
+    {"id": "mvpi-questionnaire", "group": "常见问卷", "direct_unit": true, "unit_ids": ["mvpi-questionnaire"]},
+    {"id": "mmpi-3-questionnaire", "group": "常见问卷", "direct_unit": true, "unit_ids": ["mmpi-3-questionnaire"]},
+    {
+      "id": "models-and-dimensions",
+      "group": "理解结果",
+      "title": "特质怎样呈现",
+      "latin": "How traits appear",
+      "question": "人格维度怎样从题目汇总出来，又怎样在不同情境和不同观察者眼中呈现？",
+      "summary": "从问卷测量对象进入大五的域与facet，再看特质在情境中的波动，以及自评和他评各自能够观察什么。",
+      "count": "4段知识",
+      "tags": ["测量对象", "大五", "情境", "自评他评"],
+      "unit_roles": {
+        "what-personality-questionnaires-measure": "测量对象",
+        "big-five-domains-and-facets": "结构层",
+        "trait-expression-across-situations": "行为层",
+        "self-and-informant-personality-reports": "观察层"
+      },
+      "unit_ids": ["what-personality-questionnaires-measure", "big-five-domains-and-facets", "trait-expression-across-situations", "self-and-informant-personality-reports"]
+    },
+    {
+      "id": "answering-and-scoring",
+      "group": "作答与计分",
+      "title": "作答与计分",
+      "latin": "Answering and scoring",
+      "question": "一道题怎样被理解和回答，多道题又怎样经过选题、键向与汇总成为分数？",
+      "summary": "把人的作答过程、正反向计分和赞同倾向放在同一条链上，说明一次回答怎样被转换并汇总成分数。",
+      "count": "3段知识",
+      "tags": ["作答过程", "反向计分", "赞同倾向"],
+      "unit_roles": {
+        "how-a-self-report-item-is-answered": "回答怎样产生",
+        "from-items-to-scores": "分数怎样形成",
+        "trait-signal-and-acquiescence": "偏向怎样混入"
+      },
+      "unit_ids": ["how-a-self-report-item-is-answered", "from-items-to-scores", "trait-signal-and-acquiescence"]
+    },
+    {
+      "id": "scores-and-reports",
+      "group": "理解结果",
+      "title": "分数与报告",
+      "latin": "Scores and reports",
+      "question": "原始回答经过结果模型和常模参照以后，怎样变成一份可以阅读的报告？",
+      "summary": "先分清四种结果模型和四种报告形态，再读取常模位置、完整轮廓与时间变化。",
+      "count": "4段知识",
+      "tags": ["结果模型", "报告", "常模", "T分数", "时间变化"],
+      "unit_roles": {
+        "personality-result-models": "结果语言",
+        "personality-report-forms": "先辨认报告",
+        "reading-scores-and-profile": "常模参照",
+        "interpreting-score-change-over-time": "时间参照"
+      },
+      "unit_ids": ["personality-result-models", "personality-report-forms", "reading-scores-and-profile", "interpreting-score-change-over-time"]
+    },
+    {
+      "id": "uses-and-evidence",
+      "group": "使用问卷",
+      "title": "用途与证据",
+      "latin": "Uses and evidence",
+      "question": "研究、自我认识、团队发展、招聘和临床评估为什么需要不同问卷与不同证据？",
+      "summary": "先按使用任务选择问卷，再检查量表开发、语言适配、群体可比性、单次答卷与整份量表的证据。",
+      "count": "6段知识",
+      "tags": ["研究", "团队", "招聘", "临床", "量表开发", "翻译", "群体比较", "答卷质量", "效度"],
+      "unit_roles": {
+        "personality-questionnaire-use-contexts": "先看任务",
+        "how-personality-scales-are-developed": "开发证据",
+        "translation-adaptation-and-validation": "语言证据",
+        "comparing-scores-across-groups": "比较证据",
+        "checking-response-quality": "单次答卷",
+        "scale-reliability-structure-validity": "整份量表"
+      },
+      "unit_ids": ["personality-questionnaire-use-contexts", "how-personality-scales-are-developed", "translation-adaptation-and-validation", "comparing-scores-across-groups", "checking-response-quality", "scale-reliability-structure-validity"]
+    }
+  ],
+  "cards": [
+    {
+      "id": "questionnaire-anatomy",
+      "group": "认识问卷",
+      "title": "一份问卷的组成",
+      "latin": "Anatomy of a questionnaire",
+      "question": "打开一份人格问卷，填写者会依次遇到哪些部分？",
+      "summary": "人格问卷不是一串孤立题目，而是由填写说明、题目与选项、回答记录、计分规则和结果报告连接成的完整工具。",
+      "count": "说明 → 题目 → 报告",
+      "tags": ["填写说明", "题目", "选项", "计分", "报告"],
+      "teaching": {
+        "core_idea": "一份完整人格问卷至少要把五件事连起来：要求按照什么时间和参照作答、看到什么题目、用什么选项回答、怎样把回答换成量表分数，以及报告用什么单位呈现结果。缺少其中一环，读者就无法知道一个分数是怎样来的。",
+        "stages": [
+          {"name": "填写说明", "question": "按哪个时间范围和参照回答？", "content": "说明会规定回答最近一段时间还是通常状态、描述自己还是评价熟人，以及是否必须完成全部题目。"},
+          {"name": "题目与选项", "question": "填写者实际看到什么？", "content": "常见形式包括同意程度、符合程度、是／否和多句强迫选择；同一量表的题目通常被分散排列。"},
+          {"name": "回答记录", "question": "一次选择保存了什么？", "content": "每道题只保存一个局部判断；作答时间、漏答、多选和连续同选等信息可能同时被记录。"},
+          {"name": "计分规则", "question": "回答怎样进入量表？", "content": "先按正反向键统一方向，再把属于同一facet或量表的题目汇总；有些工具还会换算常模分。"},
+          {"name": "结果报告", "question": "最终拿到什么？", "content": "不同工具可能输出连续特质轮廓、类型偏好、临床量表、效度指标或职场行为倾向。"}
+        ],
+        "fixed_walkthrough": {
+          "instruction": "按过去六个月的通常表现作答",
+          "item": "在小组讨论中，我通常会主动提出观点。",
+          "response": "比较符合 · 4",
+          "key": "正向计分 · 4",
+          "scale": "与同类题汇总为主动性facet",
+          "report": "主动性 T=58"
+        },
+        "response_formats": [
+          {"name": "等级选择", "example": "1完全不符合—5非常符合", "seen_in": "大五、HEXACO、16PF等特质量表"},
+          {"name": "是非判断", "example": "是／否", "seen_in": "MMPI等部分临床量表"},
+          {"name": "强迫选择", "example": "从几句话中选最像／最不像", "seen_in": "部分职场人格问卷"}
+        ]
+      },
+      "source_refs": ["bfi2_official", "hexaco_inventory_official", "mmpi3_official"]
+    },
+    {
+      "id": "bfi-2-questionnaire",
+      "group": "常见问卷",
+      "title": "BFI-2",
+      "latin": "BFI-2",
+      "question": "BFI-2怎样把日常行为汇成五个连续特质？",
+      "summary": "以BFI-2为固定样本，读懂60道等级题、五个大域、15个facet和连续特质轮廓。",
+      "count": "60题 · 5域 · 15facet",
+      "tags": ["大五", "BFI-2", "连续特质", "facet"],
+      "teaching": {
+        "core_idea": "BFI-2不是把人分成五类，而是用60道自陈等级题同时估计五个大域；每个大域再由三个facet说明同一总分内部可能怎样不同。",
+        "identity": "用较少题目获得五域与15个facet的连续轮廓",
+        "response": "对描述自身通常表现的陈述选择符合程度；正向题与反向题混排。",
+        "scoring": "先按计分键统一方向，再汇总每个facet及其所属大域；结果是多条连续分数，不是单一总分。",
+        "report": "通常先见五域轮廓，再展开15个facet；两个大域总分相近的人，facet组合仍可能不同。",
+        "use": "适合研究与一般人格描述，也常用来解释个体或群体在连续特质上的差异。",
+        "distinction": "它回答“某种倾向有多少”，不回答“属于哪一种固定类型”。",
+        "domains": [
+          {"code": "E", "name": "外向性", "facets": ["社交性", "果断性", "活力水平"]},
+          {"code": "A", "name": "宜人性", "facets": ["同情心", "尊重", "信任"]},
+          {"code": "C", "name": "尽责性", "facets": ["条理", "勤奋", "责任"]},
+          {"code": "N", "name": "负性情绪", "facets": ["焦虑", "抑郁", "情绪波动"]},
+          {"code": "O", "name": "开放性", "facets": ["求知", "审美", "创造性"]}
+        ],
+        "versions": [
+          {"name": "BFI-2", "items": "60题", "coverage": "5域＋15 facet", "density": "每facet 4题", "reading": "完整读取域与facet，是官方对多数研究优先推荐的版本。"},
+          {"name": "BFI-2-S", "items": "30题", "coverage": "5域＋15 facet", "density": "每facet 2题", "reading": "缩短作答时间，但facet只由两题支撑。"},
+          {"name": "BFI-2-XS", "items": "15题", "coverage": "以5域为主", "density": "每facet 1题", "reading": "主要保留五域宽轮廓，不适合把单题当成稳定facet分数。"}
+        ],
+        "scoring_path": ["5级回答", "反向题换向", "4题汇成facet", "3个facet汇成大域"],
+        "balance": "完整BFI-2在量表内平衡正向与反向键，用来减少一味赞同对分数的系统性推移。",
+        "family_note": "BFI-2的15个facet与NEO／IPIP体系常用的30个facet不是同一套细分目录。它们共享大五五域，但不能把两个体系的facet数量直接拼在一起。",
+        "worked_profile": "示意轮廓：外向性总分居中，但果断性较高、社交性较低、活力居中。它描述的是愿意主导讨论，却不一定偏好频繁聚会；不能只用“中等外向”抹平三个facet。"
+      },
+      "source_refs": ["bfi2_official"]
+    },
+    {
+      "id": "hexaco-questionnaire",
+      "group": "常见问卷",
+      "title": "HEXACO",
+      "latin": "HEXACO-PI-R",
+      "question": "HEXACO为什么是六因素，而不是把大五换一个名字？",
+      "summary": "从诚实—谦逊这个第六因素进入，再看60、100与200题版本、自评与他评形式以及域和facet的层级。",
+      "count": "6域 · 25facet",
+      "tags": ["HEXACO", "诚实谦逊", "六因素", "自评他评"],
+      "teaching": {
+        "core_idea": "HEXACO以六个连续人格域组织结果，其中诚实—谦逊不是大五某一维的简单改名；不同题量版本改变facet覆盖与测量精度，但都服务于同一六因素框架。",
+        "identity": "六因素连续特质模型，突出诚实—谦逊",
+        "response": "提供自评与观察者报告形式，填写者用等级选项判断陈述与目标人物的符合程度。",
+        "scoring": "题目汇入facet与六个大域；60题版适合时间很紧的场景，100题版是官方对多数研究的推荐版本，200题版提供更细覆盖。",
+        "report": "先显示H、E、X、A、C、O六域，再展开各facet；利他主义作为跨域facet单列。",
+        "use": "用于人格研究、教学和一般人格轮廓描述。",
+        "distinction": "与大五最关键的结构差异，是诚实—谦逊被单独建模，同时情绪性与宜人性的内容边界也不同。",
+        "domains": [
+          {"code": "H", "name": "诚实—谦逊", "facets": ["真诚", "公平", "避免贪婪", "谦逊"]},
+          {"code": "E", "name": "情绪性", "facets": ["恐惧", "焦虑", "依赖", "多愁善感"]},
+          {"code": "X", "name": "外向性", "facets": ["社会自尊", "社交大胆", "社交性", "活力"]},
+          {"code": "A", "name": "宜人性", "facets": ["宽恕", "温和", "灵活", "耐心"]},
+          {"code": "C", "name": "尽责性", "facets": ["条理", "勤奋", "完美主义", "审慎"]},
+          {"code": "O", "name": "经验开放性", "facets": ["审美欣赏", "求知", "创造力", "非传统性"]}
+        ],
+        "versions": [
+          {"name": "HEXACO-60", "time": "约12—15分钟", "facet_use": "以六域为主；24个域内facet只形成很短的指标。"},
+          {"name": "HEXACO-100", "time": "约20—25分钟", "facet_use": "官方对多数研究的推荐版本，可读取25个简短facet。"},
+          {"name": "HEXACO-200", "time": "约40—50分钟", "facet_use": "为25个facet提供完整长度量表。"}
+        ],
+        "scoring_rules": ["1—5级回答", "反向键先做5↔1、4↔2", "facet按所属题目取均值", "六域按域内题目取均值"],
+        "altruism": "利他主义—对抗性是第25个跨域facet；计算六个域分数时不把它并入任何单一域。",
+        "domain_reading": [
+          {"code": "H", "low": "更愿意利用地位与资源争取个人收益", "high": "更强调公平、真诚并减少特权诉求"},
+          {"code": "E", "low": "较少担忧危险，也较少寻求情感支持", "high": "更容易感到风险、依恋与情绪牵动"},
+          {"code": "X", "low": "较安静克制，较少主动寻求社交刺激", "high": "更有社交自信、活力并主动接近他人"},
+          {"code": "A", "low": "更容易坚持立场并对冒犯作出强烈反应", "high": "更愿意宽恕、妥协并保持耐心"},
+          {"code": "C", "low": "较即兴，对秩序和细节投入较少", "high": "更有条理、勤奋、审慎并关注完成质量"},
+          {"code": "O", "low": "更偏好熟悉、具体和传统的经验", "high": "更重视审美、求知、创造与非传统观点"}
+        ],
+        "worked_profile": "示意轮廓：诚实—谦逊较高、宜人性居中、外向性较低。可读成较少利用特权、发生分歧时并非一味退让，同时不主动寻求大量社交；三条维度不能压缩成一个性格标签。"
+      },
+      "source_refs": ["hexaco_inventory_official", "hexaco_scoring_official"]
+    },
+    {
+      "id": "mbti-questionnaire",
+      "group": "常见问卷",
+      "title": "MBTI",
+      "latin": "MBTI Global",
+      "question": "MBTI的四组偏好怎样组合成类型，Step II又增加了什么？",
+      "summary": "按四组偏好读取Step I，再理解Step II如何用facet说明同一类型内部的差异。",
+      "count": "4组偏好 · Step I／II",
+      "tags": ["MBTI", "类型偏好", "Step I", "Step II"],
+      "teaching": {
+        "core_idea": "MBTI的基本结果不是五条连续特质，而是E–I、S–N、T–F、J–P四组偏好及其组合类型；Step II再用更细的facet呈现同一偏好内部的差异。",
+        "identity": "四组二元偏好组成类型语言",
+        "response": "题目要求在不同心理取向或行为偏好之间作选择；Global Step I为92题，Step II为143题。",
+        "scoring": "各题进入相应偏好对，Global版本使用概率指标组织结果；四组偏好共同形成类型代码。",
+        "report": "Step I报告四组偏好和组合类型；Step II在此基础上展开每组偏好内部的facet结果。",
+        "use": "常用于自我理解、沟通、团队发展与领导力讨论。",
+        "distinction": "类型字母表示偏好方向，不等同于大五分数的高低，也不能把两个体系逐字母互换。",
+        "pairs": [
+          {"code": "E—I", "left": "E 外倾", "right": "I 内倾", "question": "注意与能量更自然地朝向哪里？", "facets": ["主动发起—等待回应", "外显表达—内敛含蓄", "广泛交往—亲密交往", "行动—反思", "热情—安静"]},
+          {"code": "S—N", "left": "S 实感", "right": "N 直觉", "question": "更习惯接收哪类信息？", "facets": ["具体—抽象", "现实—想象", "实用—概念", "经验—理论", "传统—原创"]},
+          {"code": "T—F", "left": "T 思考", "right": "F 情感", "question": "做决定时更自然地依赖什么？", "facets": ["逻辑—共情", "理性—同情", "质疑—迁就", "批判—接纳", "强硬—温柔"]},
+          {"code": "J—P", "left": "J 判断", "right": "P 感知", "question": "怎样与外部生活打交道？", "facets": ["系统—随性", "计划—开放", "提前启动—压力启动", "按表—自发", "有章法—边做边成形"]}
+        ],
+        "steps": ["Step I · 92题 · 四组偏好与类型", "Step II · 143题 · 20组facet"],
+        "probability_index": "Probability Index表示再次作答时得到同一偏好结果的统计可能性，不表示某个偏好有多强，也不是该字母占人格的百分比。",
+        "reading_order": ["逐对核对四组偏好", "组成四字母类型", "再看Probability Index", "Step II展开20组facet", "寻找同一类型内部的差异"],
+        "verification_steps": [
+          {"name": "先分开两个结果", "content": "自己预先估计的类型和问卷计分得到的报告类型，此时都是待核对的假设。"},
+          {"name": "逐对核对偏好", "content": "比较E–I、S–N、T–F、J–P两端的描述，回想自然、长期而非当下角色要求下的做法。"},
+          {"name": "处理不吻合", "content": "如果某一对与报告不同，回看作答心境、类型描述和Step II facet，找出差异出现在哪一层。"},
+          {"name": "确认最佳拟合", "content": "由作答者确认最能描述自然偏好的四字母组合；它可以与报告类型相同，也可以不同。"}
+        ],
+        "verification_result": "报告类型是根据本次作答计分得到的起点；最佳拟合类型是经过偏好描述、作答情境和facet核对后确认的结果。这是解释过程，不是把原始答案重新计分。",
+        "type_walkthrough": [
+          {"pair": "E／I", "choice": "I", "basis": "更偏好先在内部整理想法，再进入互动"},
+          {"pair": "S／N", "choice": "N", "basis": "更偏好从可能性和整体模式理解信息"},
+          {"pair": "T／F", "choice": "F", "basis": "做决定时更先检查价值与对人的影响"},
+          {"pair": "J／P", "choice": "J", "basis": "更偏好提早形成结构与收束安排"}
+        ],
+        "type_result": "四组偏好依次组合为INFJ。这个代码记录四次偏好选择；它不是四个独立能力分，也不表示每个字母所占的人格百分比。"
+      },
+      "source_refs": ["mbti_facts_official", "mbti_global_official", "mbti_assessment_official"]
+    },
+    {
+      "id": "sixteen-pf-questionnaire",
+      "group": "常见问卷",
+      "title": "16PF",
+      "latin": "16pf Fifth Edition",
+      "question": "16PF为什么保留16个主要因素，还要再汇成全局因素？",
+      "summary": "从185道选择题进入16个主要人格因素，再看它们怎样形成更高层的全局轮廓与场景报告。",
+      "count": "185题 · 16因素",
+      "tags": ["16PF", "16因素", "全局因素", "正常人格"],
+      "teaching": {
+        "core_idea": "16PF以16个主要人格因素描述正常人格，再把相关因素组合成更高层的全局因素；主要因素保留具体差异，全局因素提供较宽的总体轮廓。",
+        "identity": "16个主要因素加更高层全局因素",
+        "response": "第五版包含185道多项选择题，通常约35—50分钟完成。",
+        "scoring": "回答先形成16个主要因素分数，再组合成全局因素；不同报告会根据职业、咨询或关系任务重新组织这些结果。",
+        "report": "可以是基础分数报告，也可以是按职业发展、管理潜力或咨询主题组织的解释报告。",
+        "use": "用于正常人格评估、职业指导、人员发展和咨询等多种场景。",
+        "distinction": "它不是“16种人格类型”；数字16指16条连续的主要因素。",
+        "factors": [
+          {"code": "A", "name": "温暖", "low": "疏离", "high": "温暖"}, {"code": "B", "name": "推理", "low": "具体", "high": "抽象"},
+          {"code": "C", "name": "情绪稳定", "low": "反应性", "high": "稳定"}, {"code": "E", "name": "支配", "low": "顺从", "high": "支配"},
+          {"code": "F", "name": "活泼", "low": "严肃", "high": "活泼"}, {"code": "G", "name": "规则意识", "low": "权宜", "high": "守规"},
+          {"code": "H", "name": "社交大胆", "low": "害羞", "high": "大胆"}, {"code": "I", "name": "敏感", "low": "功利", "high": "敏感"},
+          {"code": "L", "name": "警觉", "low": "信任", "high": "警觉"}, {"code": "M", "name": "抽象", "low": "务实", "high": "沉思"},
+          {"code": "N", "name": "隐私", "low": "坦率", "high": "隐私"}, {"code": "O", "name": "忧虑", "low": "自信", "high": "忧虑"},
+          {"code": "Q1", "name": "开放改变", "low": "传统", "high": "开放"}, {"code": "Q2", "name": "自立", "low": "群体导向", "high": "自立"},
+          {"code": "Q3", "name": "完美主义", "low": "容忍无序", "high": "完美主义"}, {"code": "Q4", "name": "紧张", "low": "放松", "high": "紧张"}
+        ],
+        "layers": ["185道选择题", "16个主要因素", "5个全局因素", "场景化报告"],
+        "global_factors": [
+          {"name": "外向性", "contributors": "温暖、活泼、社交大胆、低隐私、低自立"},
+          {"name": "焦虑", "contributors": "低情绪稳定、警觉、忧虑、紧张"},
+          {"name": "强硬性", "contributors": "低温暖、低敏感、低抽象、低开放改变"},
+          {"name": "独立性", "contributors": "支配、社交大胆、警觉、开放改变"},
+          {"name": "自我控制", "contributors": "低活泼、规则意识、低抽象、完美主义"}
+        ],
+        "score_unit": "报告常用1—10的sten位置显示因素轮廓；每条主要因素都有两端含义，低分不是空白，高分也不是统一的好。",
+        "report_modes": ["基础轮廓／解释报告", "管理潜力报告", "伴侣咨询报告", "临床报告"],
+        "response_style_indices": [
+          {"name": "印象管理", "english": "Impression Management", "question": "是否把自己呈现得过度正面，或过度自我批判？"},
+          {"name": "顺从作答", "english": "Acquiescence", "question": "是否不顾题意，持续倾向同意某一类选项？"},
+          {"name": "罕见作答", "english": "Infrequency", "question": "回答是否过于异常或不寻常，需要排查随机作答？"}
+        ],
+        "response_style_order": "三项指标检查的是本次作答方式，不是第17、18、19个人格因素。阅读时先检查它们，再进入16个主要因素与5个全局因素。",
+        "worked_profile": "示意轮廓：因素E支配为sten 8、H社交大胆为sten 4、Q3完美主义为sten 7。它可以表示在熟悉任务中愿意主导并要求结构，但在陌生社交场合未必主动；三条因素需要联合阅读。"
+      },
+      "source_refs": ["sixteen_pf_official", "sixteen_pf_sample_report"]
+    },
+    {
+      "id": "hpi-questionnaire",
+      "group": "常见问卷",
+      "title": "HPI",
+      "latin": "Hogan Personality Inventory",
+      "question": "HPI怎样描述一个人在正常状态下呈现给同事的工作风格？",
+      "summary": "沿7个主要量表读取日常工作声誉，再把百分位放回岗位任务理解。",
+      "count": "7个主要量表",
+      "tags": ["Hogan", "HPI", "日常表现", "职场人格"],
+      "teaching": {
+        "core_idea": "HPI描述正常状态下较稳定、可被他人观察到的工作行为与声誉。它不把七个主要量表合成一个总分，而是保留一组相对独立的连续位置。",
+        "identity": "正常状态下的职场人格与日常声誉",
+        "response": "填写者对日常行为和典型反应作自陈回答，题目共同形成七个主要量表。",
+        "scoring": "七个主要量表分别计分，并与劳动力常模比较；百分位表示相对位置，不表示答对比例。",
+        "report": "报告依次显示适应、抱负、社交、人际敏感、审慎、好奇和学习取向，再联系领导、协作与执行任务。",
+        "use": "用于人才发展、领导力、团队协作和有岗位依据的人员评估。",
+        "distinction": "HPI讲的是正常状态下别人通常看见的工作行为，不讲压力下的脱轨风险，也不讲价值动机。",
+        "scales": [
+          {"name": "适应", "reads": "沉着、自信与承压时的稳定程度"},
+          {"name": "抱负", "reads": "竞争、成就与承担领导角色的倾向"},
+          {"name": "社交", "reads": "主动接近他人及寻找社交刺激的倾向"},
+          {"name": "人际敏感", "reads": "体察他人、维持关系与避免敌意的倾向"},
+          {"name": "审慎", "reads": "计划、规则、克制与可靠执行的倾向"},
+          {"name": "好奇", "reads": "探索、想象、产生新观点与处理复杂问题的倾向"},
+          {"name": "学习取向", "reads": "阅读、学习与主动更新知识的倾向"}
+        ],
+        "percentile": "同一个百分位放进不同岗位会产生不同意义：需要快速试错的任务与需要严格复核的任务，对审慎的要求并不相同。",
+        "reading_steps": ["先看七条量表形成的整体轮廓", "再找与具体岗位任务有关的组合", "用真实行为例子核对量表含义", "最后与HDS和MVPI分别连接"]
+      },
+      "source_refs": ["hogan_hpi_official", "hogan_suite_official"]
+    },
+    {
+      "id": "hds-questionnaire",
+      "group": "常见问卷",
+      "title": "HDS",
+      "latin": "Hogan Development Survey",
+      "question": "HDS怎样描述压力、疲劳或缺少自我监控时可能出现的行为风险？",
+      "summary": "沿11条风险量表理解优势被过度使用时怎样影响判断、关系与执行。",
+      "count": "11条风险量表",
+      "tags": ["Hogan", "HDS", "压力风险", "脱轨倾向"],
+      "teaching": {
+        "core_idea": "HDS观察的是压力增大、疲劳或放松自我监控时可能反复出现的行为倾向。量表名称描述潜在风险模式，不等于临床诊断，也不是日常状态的固定标签。",
+        "identity": "压力下可能被过度使用的行为倾向",
+        "response": "填写者对典型反应与人际方式作自陈回答，题目分别汇入十一条风险量表。",
+        "scoring": "十一条量表分别与工作人群常模比较；读取重点是哪些风险在特定压力条件下可能共同出现。",
+        "report": "报告呈现易激动、怀疑、谨慎、冷淡、消极抵抗、自负、冒险、戏剧化、想象、苛求与顺从。",
+        "use": "用于领导力发展、辅导、团队风险讨论和岗位情境分析。",
+        "distinction": "HDS不是HPI的负面分数；它专门观察压力条件下可能失衡的另一层行为。",
+        "scales": [
+          {"name": "易激动", "reads": "热情与失望之间快速摆动"}, {"name": "怀疑", "reads": "警觉他人动机并容易记住冒犯"},
+          {"name": "谨慎", "reads": "担心犯错而延迟决定或回避风险"}, {"name": "冷淡", "reads": "独立克制，但可能减少沟通与情感回应"},
+          {"name": "消极抵抗", "reads": "表面配合，私下抵触控制或要求"}, {"name": "自负", "reads": "自信和雄心被过度使用为特殊待遇感"},
+          {"name": "冒险", "reads": "魅力与胆量被过度使用为试探规则"}, {"name": "戏剧化", "reads": "表达与感染力被过度使用为抢占注意"},
+          {"name": "想象", "reads": "创意被过度使用为偏离现实或难以跟随"}, {"name": "苛求", "reads": "高标准被过度使用为难以授权和反复挑错"},
+          {"name": "顺从", "reads": "支持权威被过度使用为不愿独立表达异议"}
+        ],
+        "percentile": "较高百分位只说明这一风险倾向相对更容易出现；是否成为问题取决于压力来源、岗位任务和已有的自我管理方式。",
+        "reading_steps": ["先确认当前工作中的压力条件", "寻找两三条可能相互强化的风险", "对照真实事件而不是只看标签", "再与HPI日常优势和MVPI动机连接"]
+      },
+      "source_refs": ["hogan_hds_official", "hogan_suite_official"]
+    },
+    {
+      "id": "mvpi-questionnaire",
+      "group": "常见问卷",
+      "title": "MVPI",
+      "latin": "Motives, Values, Preferences Inventory",
+      "question": "MVPI怎样说明一个人重视什么，以及什么环境更可能带来投入感？",
+      "summary": "沿10条价值量表读取驱动力、偏好的组织文化和容易失去投入的环境。",
+      "count": "10条价值量表",
+      "tags": ["Hogan", "MVPI", "动机", "价值", "组织文化"],
+      "teaching": {
+        "core_idea": "MVPI描述驱动选择与投入的价值主题。它既可以解释个人更容易被什么目标激发，也可以说明偏好怎样影响对组织文化、同事和奖励方式的判断。",
+        "identity": "工作动机、核心价值与偏好环境",
+        "response": "填写者对兴趣、目标、偏好与理想环境作自陈回答，题目分别形成十条价值量表。",
+        "scoring": "十条价值量表独立形成常模位置，不合成单一动机高低；组合模式比单条排序更有意义。",
+        "report": "报告呈现认可、权力、享乐、利他、归属、传统、安全、商业、审美和科学，并连接组织文化主题。",
+        "use": "用于职业探索、领导力、团队文化、人员保留与组织匹配讨论。",
+        "distinction": "MVPI讲想追求什么与偏好什么环境，不直接描述能力、日常行为或压力风险。",
+        "scales": [
+          {"name": "认可", "reads": "被注意、获得肯定与公开反馈"}, {"name": "权力", "reads": "影响、竞争、成就与推进结果"},
+          {"name": "享乐", "reads": "趣味、变化、社交与即时体验"}, {"name": "利他", "reads": "帮助他人、改善福祉与公共价值"},
+          {"name": "归属", "reads": "合作、联系与团队共同体"}, {"name": "传统", "reads": "原则、秩序、责任与稳定规范"},
+          {"name": "安全", "reads": "可预测、风险控制与长期保障"}, {"name": "商业", "reads": "收益、资源、交易与经济结果"},
+          {"name": "审美", "reads": "品质、形式、设计与创造表达"}, {"name": "科学", "reads": "分析、证据、技术与理解规律"}
+        ],
+        "percentile": "价值量表没有统一的优劣顺序。匹配表示环境持续提供一个人重视的回报，不匹配则可能解释投入感为什么下降。",
+        "reading_steps": ["先看最高与最低的价值主题", "再看两三条价值怎样组成环境偏好", "区分本人动力与对他人的价值投射", "最后与HPI行为和HDS风险连接"]
+      },
+      "source_refs": ["hogan_mvpi_official", "hogan_suite_official"]
+    },
+    {
+      "id": "mmpi-3-questionnaire",
+      "group": "常见问卷",
+      "title": "MMPI-3",
+      "latin": "Minnesota Multiphasic Personality Inventory-3",
+      "question": "MMPI-3为什么必须先读效度量表，再看临床与人格病理量表？",
+      "summary": "沿335道是非题、效度量表和临床相关量表的阅读顺序，理解临床问卷怎样组织证据。",
+      "count": "335题 · 52量表",
+      "tags": ["MMPI-3", "效度量表", "临床", "是非题"],
+      "teaching": {
+        "core_idea": "MMPI-3的报告不是先找最高的临床分数，而是先用效度量表判断这份回答呈现出怎样的一致性、罕见反应或症状呈现方式，再进入更高阶、特定问题与人格病理量表。",
+        "identity": "效度在前的临床人格与心理病理量表体系",
+        "response": "335道是／否题覆盖广泛的行为、情绪、身体感受与态度内容。",
+        "scoring": "回答形成10个效度量表与多组实质量表，共52个量表；分数通常结合常模和量表间轮廓解释。",
+        "report": "先列效度指标，再呈现高阶量表、特定问题量表、重构临床量表和人格病理五量表等结果组。",
+        "use": "用于心理健康、医疗、司法、公共安全等需要专业评估的场景。",
+        "distinction": "它不是一般兴趣型人格分类，也不能跳过答卷效度，直接把单个升高分数当作诊断。",
+        "gate": [
+          {"name": "效度量表", "job": "这份答卷怎样作答，后续结果能怎样读取？"},
+          {"name": "高阶量表", "job": "整体功能失调集中在哪些宽广领域？"},
+          {"name": "特定问题与RC量表", "job": "哪些症状和临床构念需要细看？"},
+          {"name": "人格病理量表", "job": "哪些人格病理维度构成长期模式？"}
+        ],
+        "administration": ["335道是／否题", "约35—50分钟", "18岁及以上", "纸笔或计算机施测"],
+        "validity_scales": [
+          {"code": "CRIN", "name": "组合反应不一致", "signal": "随机或固定的不一致回答"},
+          {"code": "VRIN", "name": "可变反应不一致", "signal": "随机回答"},
+          {"code": "TRIN", "name": "真值反应不一致", "signal": "固定选择真或假"},
+          {"code": "F", "name": "罕见反应", "signal": "普通人群中罕见的回答"},
+          {"code": "Fp", "name": "罕见心理病理反应", "signal": "精神科人群中也罕见的回答"},
+          {"code": "Fs", "name": "罕见躯体反应", "signal": "医疗人群中罕见的躯体主诉"},
+          {"code": "FBS", "name": "症状效度", "signal": "不可信的躯体与认知主诉"},
+          {"code": "RBS", "name": "反应偏差", "signal": "夸大的记忆主诉"},
+          {"code": "L", "name": "不常见美德", "signal": "极少有人声称的美德或行为"},
+          {"code": "K", "name": "适应效度", "signal": "异常高的心理适应呈现"}
+        ],
+        "higher_order": [
+          {"code": "EID", "name": "情绪／内化功能失调"},
+          {"code": "THD", "name": "思维功能失调"},
+          {"code": "BXD", "name": "行为／外化功能失调"}
+        ],
+        "scale_groups": [
+          {"name": "重构临床量表", "members": "RCd、RC1、RC2、RC4、RC6、RC7、RC8、RC9", "scales": [
+            {"code": "RCd", "name": "士气低落", "focus": "广泛的不幸福感与不满"},
+            {"code": "RC1", "name": "躯体抱怨", "focus": "弥散的身体健康抱怨"},
+            {"code": "RC2", "name": "低正向情绪", "focus": "对正向体验的反应不足"},
+            {"code": "RC4", "name": "反社会行为", "focus": "破坏规则与不负责任的行为"},
+            {"code": "RC6", "name": "被害观念", "focus": "认为他人对自己构成威胁"},
+            {"code": "RC7", "name": "失调负性情绪", "focus": "适应不良的焦虑、愤怒与烦躁"},
+            {"code": "RC8", "name": "异常经验", "focus": "与思维失调有关的异常感知或想法"},
+            {"code": "RC9", "name": "轻躁状态激活", "focus": "过度激活、攻击、冲动与夸大"}
+          ]},
+          {"name": "躯体／认知量表", "members": "MLS、NUC、EAT、COG", "scales": [
+            {"code": "MLS", "name": "不适", "focus": "总体的身体虚弱与健康不佳感"},
+            {"code": "NUC", "name": "神经系统抱怨", "focus": "头晕、无力与平衡困难等抱怨"},
+            {"code": "EAT", "name": "进食担忧", "focus": "与进食有关的问题行为"},
+            {"code": "COG", "name": "认知抱怨", "focus": "记忆与注意集中困难"}
+          ]},
+          {"name": "内化量表", "members": "SUI、HLP、SFD、NFC、STR、WRY、CMP、ARX、ANP、BRF", "scales": [
+            {"code": "SUI", "name": "自杀／死亡意念", "focus": "直接报告的自杀意念与近期尝试"},
+            {"code": "HLP", "name": "无助／无望", "focus": "认为目标无法达成或问题无法解决"},
+            {"code": "SFD", "name": "自我怀疑", "focus": "缺乏自信与无用感"},
+            {"code": "NFC", "name": "低效能感", "focus": "认为自己犹豫且缺乏效能"},
+            {"code": "STR", "name": "压力", "focus": "压力与紧张相关问题"},
+            {"code": "WRY", "name": "担忧", "focus": "过度担忧与持续挂念"},
+            {"code": "CMP", "name": "强迫性", "focus": "从事强迫性行为"},
+            {"code": "ARX", "name": "焦虑相关经验", "focus": "灾难化、惊恐、恐惧与侵入性想法"},
+            {"code": "ANP", "name": "易怒", "focus": "容易愤怒且对他人缺乏耐心"},
+            {"code": "BRF", "name": "限制行为的恐惧", "focus": "明显妨碍正常行为的恐惧"}
+          ]},
+          {"name": "外化量表", "members": "FML、JCP、SUB、IMP、ACT、AGG、CYN", "scales": [
+            {"code": "FML", "name": "家庭问题", "focus": "冲突性的家庭关系"},
+            {"code": "JCP", "name": "青少年品行问题", "focus": "学校与家庭困难、偷窃等行为"},
+            {"code": "SUB", "name": "物质滥用", "focus": "当前或过去的酒精与药物滥用"},
+            {"code": "IMP", "name": "冲动性", "focus": "冲动控制不佳与缺少计划"},
+            {"code": "ACT", "name": "激活", "focus": "过高的兴奋与精力水平"},
+            {"code": "AGG", "name": "攻击", "focus": "身体攻击与暴力行为"},
+            {"code": "CYN", "name": "玩世不恭", "focus": "认为他人不良且不可信"}
+          ]},
+          {"name": "人际量表", "members": "SFI、DOM、DSF、SAV、SHY", "scales": [
+            {"code": "SFI", "name": "自我重要性", "focus": "认为自己拥有特殊才能与能力"},
+            {"code": "DOM", "name": "支配性", "focus": "在人际关系中表现得强势和支配"},
+            {"code": "DSF", "name": "疏离性", "focus": "不喜欢他人或不愿与人相处"},
+            {"code": "SAV", "name": "社交回避", "focus": "不享受并回避社交活动"},
+            {"code": "SHY", "name": "害羞", "focus": "在他人面前不适与焦虑"}
+          ]},
+          {"name": "PSY-5人格病理五量表", "members": "AGGR、PSYC、DISC、NEGE、INTR", "scales": [
+            {"code": "AGGR", "name": "攻击性", "focus": "工具性、目标导向的攻击"},
+            {"code": "PSYC", "name": "精神病性", "focus": "与现实脱节"},
+            {"code": "DISC", "name": "失控性", "focus": "控制不足的行为"},
+            {"code": "NEGE", "name": "负性情绪／神经质", "focus": "焦虑、不安、担忧与恐惧"},
+            {"code": "INTR", "name": "内向／低正性情绪", "focus": "社交脱离与快感缺失"}
+          ]}
+        ],
+        "norm": "MMPI-3美国常模样本包含810名男性与810名女性，并按2020年美国人口预测更新；报告中的位置必须和所用语言版本及常模一起读取。",
+        "profile_reading": "示意读法：先确认不一致与罕见反应指标是否支持继续解释；随后从高阶量表定位宽广问题领域，再查看对应RC与特定问题量表是否形成一致轮廓。单条升高不能跳过前两步。"
+      },
+      "source_refs": ["mmpi3_official"]
+    },
+    {
+      "id": "personality-result-models",
+      "group": "结果模型",
+      "title": "四种结果模型",
+      "latin": "Four result models",
+      "question": "人格问卷的结果为什么有时是分数、有时是类型、有时又是一组临床量表？",
+      "summary": "结果长什么样取决于问卷先把人格定义成连续差异、偏好类别、临床构念还是与工作有关的行为和动机。",
+      "count": "特质 · 类型 · 临床 · 职场",
+      "tags": ["连续特质", "类型偏好", "临床量表", "职场行为"],
+      "teaching": {
+        "core_idea": "同一个回答只有放进具体模型才会获得含义。连续特质比较程度，类型偏好强调类别组合，临床量表检查症状与人格病理构念，职场模型则把正常人格、潜在风险和动机价值拆成与工作有关的观察单位。",
+        "models": [
+          {"name": "连续特质", "question": "某种倾向处在什么位置？", "unit": "域、facet、T分数或百分位", "example": "外向性T=58，主动性高于群居偏好", "instruments": "BFI-2、HEXACO、16PF"},
+          {"name": "类型偏好", "question": "更偏好哪一种心理取向？", "unit": "偏好对与组合类型", "example": "四组偏好组合成一个类型代码", "instruments": "MBTI"},
+          {"name": "临床量表", "question": "哪些效度、症状或人格病理构念需要进一步解释？", "unit": "效度量表、临床量表和症状量表", "example": "先看回答一致性，再读取临床量表", "instruments": "MMPI-3、PAI等"},
+          {"name": "职场模型", "question": "平时怎样工作，压力下可能怎样失衡，什么环境更有动力？", "unit": "日常行为、风险倾向、动机价值", "example": "同一套报告分开日常优势、潜在风险与价值动机", "instruments": "Hogan HPI／HDS／MVPI"}
+        ]
+      },
+      "source_refs": ["bfi2_official", "hexaco_inventory_official", "mbti_facts_official", "hogan_hpi_official", "mmpi3_official"]
+    },
+    {
+      "id": "personality-report-forms",
+      "group": "结果呈现",
+      "title": "四种报告长什么样",
+      "latin": "Four report forms",
+      "question": "拿到报告以后，怎样先认出它在用哪一种结果语言？",
+      "summary": "先辨认报告是在画连续轮廓、组合偏好类型、排列临床量表，还是把日常行为、风险和动机分栏，再进入具体解释。",
+      "count": "轮廓 · 类型 · 临床 · 职场",
+      "tags": ["特质轮廓", "类型报告", "临床报告", "职场报告"],
+      "teaching": {
+        "core_idea": "报告不是把所有问卷都翻译成高、中、低。特质报告强调多个连续位置，类型报告强调偏好组合，临床报告先处理效度再读取量表，职场报告常把日常表现、压力风险和动机价值分开。",
+        "reports": [
+          {"name": "特质轮廓", "headline": "五域／六域分数图", "elements": ["域分数", "facet分数", "常模位置", "组合差异"], "fixed_example": "外向性T=58；主动性62、群居偏好49", "route": ["确认版本与常模", "看五域／六域整体形状", "展开造成总分差异的facet", "用多个真实情境核对组合"]},
+          {"name": "类型报告", "headline": "偏好对与组合类型", "elements": ["四组偏好", "组合类型", "偏好清晰度或概率", "类型说明"], "fixed_example": "先核对每组偏好，再阅读组合类型", "route": ["逐对读取四组偏好", "把四次偏好选择组合成类型", "查看概率或清晰度信息", "用Step II facet解释同型差异"]},
+          {"name": "临床量表报告", "headline": "效度在前，临床量表在后", "elements": ["回答一致性", "罕见回答", "临床量表", "症状与人格病理量表"], "fixed_example": "效度指标决定后续量表能否进入解释", "route": ["先读不一致与罕见反应指标", "判断后续轮廓可以怎样解释", "从高阶量表定位宽广领域", "再进入RC与特定问题量表"]},
+          {"name": "职场报告", "headline": "日常表现、风险与动机分栏", "elements": ["正常人格", "压力风险", "动机价值", "岗位或发展主题"], "fixed_example": "优势不自动等于岗位适配，仍要对应具体任务", "route": ["确认来自HPI、HDS还是MVPI", "分别读取日常、风险与动机", "找跨报告相互强化或牵制的组合", "回到岗位任务与真实行为"], "integrated_case": {
+            "task": "一个需要带队抢进度、同时接受同行复核的岗位",
+            "signals": [
+              {"instrument": "HPI", "score": "抱负 78百分位", "meaning": "日常状态下愿意竞争、推进目标并承担领导角色。"},
+              {"instrument": "HDS", "score": "自负 82百分位", "meaning": "压力下可能过度相信自己的判断，低估反对意见或复核需求。"},
+              {"instrument": "MVPI", "score": "权力 76百分位", "meaning": "对成就、影响力和掌控资源的环境更容易产生动力。"}
+            ],
+            "synthesis": "三份结果连起来后，可以看到“为什么想带队——平时怎样推进——压力下哪种优势可能用过头”。对这个岗位，既要核对其推进与带队的真实行为，也要确认是否有接受复核和修正判断的机制。"
+          }}
+        ],
+        "reading_order": ["先认模型", "再认分数单位", "核对参照样本", "查看细分量表", "回到使用问题"]
+      },
+      "source_refs": ["bfi2_official", "mbti_facts_official", "mbti_global_official", "hogan_hpi_official", "hogan_hds_official", "hogan_mvpi_official", "hogan_suite_official", "mmpi3_official"]
+    },
+    {
+      "id": "personality-questionnaire-use-contexts",
+      "group": "使用场景",
+      "title": "五种使用任务",
+      "latin": "Five use contexts",
+      "question": "同一份人格结果放进研究、团队、招聘或临床场景，为什么不能沿用同一种解释？",
+      "summary": "选择问卷要先确定任务、对象、比较方式和结果责任，再检查该工具是否有对应场景的证据与使用条件。",
+      "count": "研究 · 自我 · 团队 · 招聘 · 临床",
+      "tags": ["研究", "自我理解", "团队", "招聘", "临床"],
+      "teaching": {
+        "core_idea": "问卷是否适合，不只取决于它测什么，还取决于结果要支持哪一种行动。研究关心变量关系，自我理解关心描述语言，团队发展关心协作主题，招聘关心岗位相关预测，临床评估则需要把效度、症状、访谈和其他资料共同解释。",
+        "contexts": [
+          {"name": "研究", "task": "比较群体或检验变量关系", "needs": "清楚的构念、计分规则、样本信效度与可比性", "common_forms": "BFI-2、HEXACO、IPIP等", "example_question": "检验尽责性与学习投入是否相关", "example_choice": "选择有明确尽责性结构和公开计分资料的连续特质量表", "example_check": "样本信度、结构、变量关系及不同群体的可比性"},
+          {"name": "自我理解", "task": "获得描述自身倾向的语言", "needs": "可读报告、明确模型、不过度放大单次结果", "common_forms": "BFI-2、HEXACO、MBTI等", "example_question": "得到描述自身日常倾向的语言", "example_choice": "先决定需要连续维度还是偏好类型，再选择对应报告", "example_check": "模型是否清楚、报告是否解释分数单位、结果能否回到实际经历"},
+          {"name": "团队发展", "task": "讨论沟通、分工和协作差异", "needs": "共同语言、团队层解释和反馈过程", "common_forms": "MBTI、Hogan及其他团队工具", "example_question": "讨论团队在信息沟通和决策方式上的差异", "example_choice": "选择能形成共同语言并配套团队反馈过程的工具", "example_check": "团队用途证据、主持方式、个人结果怎样汇入团队讨论"},
+          {"name": "招聘与选拔", "task": "预测与具体岗位有关的行为", "needs": "岗位分析、效标效度、公平性、规范施测与合格解释者", "common_forms": "经过岗位验证的职场人格工具", "example_question": "预测客户经理岗位中的持续跟进和关系维护", "example_choice": "先完成岗位分析，再选择与目标行为有证据关系的职场量表", "example_check": "岗位效标、增量效度、群体公平性、规范施测与解释流程"},
+          {"name": "临床评估", "task": "理解症状、人格病理与回答效度", "needs": "专业资格、临床常模、效度量表、访谈及其他资料", "common_forms": "MMPI-3、PAI等", "example_question": "理解症状呈现、回答效度与人格病理线索", "example_choice": "选择含效度指标和相应临床常模的专业评估工具", "example_check": "效度量表、访谈、病史、行为观察及其他测验是否相互印证"}
+        ],
+        "selection_axes": ["要回答什么问题", "谁来作答", "和谁比较", "结果影响什么决定", "谁负责解释"]
+      },
+      "source_refs": ["bfi2_official", "hexaco_inventory_official", "mbti_assessment_official", "hogan_hpi_official", "mmpi3_official"]
+    },
+    {
+      "id": "what-personality-questionnaires-measure",
+      "group": "问卷基础",
+      "title": "人格问卷在测什么",
+      "latin": "What a questionnaire measures",
+      "question": "一组自我描述题，怎样形成一份人格轮廓？",
+      "summary": "人格问卷用多道题重复观察行为、情绪和思考倾向，再把回答汇总成若干连续维度。",
+      "count": "自陈 → 连续维度",
+      "tags": ["自陈", "特质", "连续维度"],
+      "teaching": {
+        "core_idea": "单道题只记录一个局部回答；多道相关题共同出现，才能较稳定地描述一种倾向。最终得到的是各维度的相对位置，而不是从题目里发现一个隐藏类型。",
+        "observations": [
+          "题目让答题者判断一句描述在多大程度上符合自己。",
+          "同一倾向由多道不同表述的题目共同观察，减少单题和单一情境的影响。",
+          "不同维度可以同时高、同时低，也可以在同一维度的不同facet上呈现不同组合。"
+        ],
+        "example": {
+          "input": "一个人喜欢结识新朋友，但不喜欢大型聚会。",
+          "process": "亲近、群居、主张性等题目分别记录，再与同维度其他题目汇总。",
+          "output": "外向性内部可以出现不一致的facet组合。"
+        }
+      },
+      "source_refs": ["johnson_2014_ipip_neo_120", "github_alheimsins_b5_johnson_120_ipip_neo_pi_r_493546d"]
+    },
+    {
+      "id": "how-a-self-report-item-is-answered",
+      "group": "问卷基础",
+      "title": "一道自陈题是怎样被回答的",
+      "latin": "How a self-report item is answered",
+      "question": "看到“我经常主动和陌生人交谈”，人怎样从生活经验选出1—5？",
+      "summary": "作答不是把一个现成特质直接抄到选项上，而是理解题目、提取相关经历、选择比较参照，再把综合判断映射到回答等级。",
+      "count": "题意 → 记忆 → 参照 → 选项",
+      "tags": ["题意理解", "记忆提取", "参照群体", "选项映射"],
+      "teaching": {
+        "core_idea": "同一道题进入分数以前，先经历一段判断过程。题目里的时间范围、行为对象和频率词决定要找哪些经历；参照对象决定“经常”相对于谁；最后才把模糊的总体判断压进1—5中的一个选项。",
+        "item": "我经常主动和陌生人交谈。",
+        "stages": [
+          {"name": "理解题意", "focus": "经常 · 主动 · 陌生人", "work": "确认题目问的是主动发起交谈，不是被问以后礼貌回应。"},
+          {"name": "提取经历", "focus": "想起哪些场景", "work": "从工作、聚会、出行等经历中提取相关事件；最近或印象强烈的事件往往更容易被想起。"},
+          {"name": "选择参照", "focus": "相对于谁算经常", "work": "可能与一般人、同龄人、亲近朋友或过去的自己比较；参照改变，判断尺度也会改变。"},
+          {"name": "整合频率", "focus": "多数场景还是少数场景", "work": "把不同场景中的行为合成一个总体倾向，而不是用最突出的一次经历代替全部。"},
+          {"name": "映射选项", "focus": "从判断落到1—5", "work": "把“略符合”“大多符合”等模糊判断放到问卷给定的回答等级。"}
+        ],
+        "reference_frames": [
+          {"name": "与一般人比较", "answer": 4, "reason": "想到自己比多数陌生人更常主动开口。"},
+          {"name": "与亲近朋友比较", "answer": 3, "reason": "朋友圈本来就很健谈，自己的位置接近中间。"},
+          {"name": "与过去的自己比较", "answer": 5, "reason": "近一年明显比过去更常主动交谈。"}
+        ],
+        "frame_note": "三个回答是同一个人的固定示意，不是研究样本的实际均值；它展示的是参照改变怎样进入作答过程。",
+        "response_inputs": [
+          {"name": "题目给出的范围", "meaning": "“通常”“最近一个月”“在工作中”会调用不同经历。"},
+          {"name": "能够想起的证据", "meaning": "回答依赖自传记忆与当下能够提取的行为例子。"},
+          {"name": "呈现自己的方式", "meaning": "回答还可能受到希望怎样描述自己的动机影响。"}
+        ]
+      },
+      "source_refs": ["paulhus_vazire_2007_self_report_method", "lenhausen_2024_reference_group_instructions"]
+    },
+    {
+      "id": "how-personality-scales-are-developed",
+      "group": "问卷基础",
+      "title": "一份人格量表怎样被开发出来",
+      "latin": "How a personality scale is developed",
+      "question": "从想测一个构念，到留下最终题目，中间经历什么？",
+      "summary": "量表开发把构念定义、候选题筛选、内容检查、内部分析和新样本验证连成一条证据链。题目不是先写完再包装，而是在数据与内容之间反复筛选。",
+      "count": "构念 → 选题 → 验证",
+      "tags": ["构念", "候选题", "题项筛选", "样本验证"],
+      "teaching": {
+        "core_idea": "IPIP量表常同时使用外部标准、内容判断和内部分析：先找出与目标构念关系较强的题目，再删除语义重复或偏离主题的题目，检查正反键与内部一致性，最后用新的样本检验结构和效度。",
+        "stages": [
+          {"name": "定义构念", "question": "究竟想测什么？", "work": "明确目标大域或facet，以及它与相邻构念的区别。"},
+          {"name": "建立候选池", "question": "哪些题可能观察到它？", "work": "从大量题目中寻找与外部标准相关的候选题。"},
+          {"name": "筛选题目", "question": "哪些题留下？", "work": "比较关联强度，兼顾正反向键，并避免题目只集中在一个狭窄表现。"},
+          {"name": "检查内容", "question": "这些题是否在重复同一句话？", "work": "删除语义重复、偏离主线或无法共同讲清构念的题目。"},
+          {"name": "分析量表", "question": "题目能否共同形成分数？", "work": "检查内部一致性、项目表现和预期的维度结构。"},
+          {"name": "新样本验证", "question": "换一批人还能成立吗？", "work": "比较结构、相关量表、外部变量或他人评价，检验解释能否复现。"}
+        ],
+        "johnson_case": {
+          "start": "从300题IPIP-NEO中为30个facet选择候选题",
+          "selection": "每个facet留下4题，共120题",
+          "validation": "在多个样本中检查facet信度、五域结构，以及与NEO PI-R和他人评价的关系"
+        }
+      },
+      "source_refs": ["ipip_scale_construction_official", "johnson_2014_ipip_neo_120"]
+    },
+    {
+      "id": "translation-adaptation-and-validation",
+      "group": "版本与语言",
+      "title": "翻译后还是同一把尺子吗",
+      "latin": "Translation, adaptation, and validation",
+      "question": "把120道题翻成中文以后，怎样知道它仍在测原来的构念？",
+      "summary": "问卷翻译先对齐题意与构念，再用本地样本检查题目、facet、五域结构和分数参照；译文完成只是起点。",
+      "count": "翻译 → 适配 → 本地验证",
+      "tags": ["前向翻译", "回译", "文化适配", "本地验证", "中文常模"],
+      "teaching": {
+        "core_idea": "翻译要同时守住自然语言和测量含义。原句经过前向翻译、共识修订和回译后，还要让专家与目标使用者检查表达，再用本地样本观察各层分数是否按预期工作。",
+        "stages": [
+          {"name": "构念与原题", "question": "原题想观察哪种倾向？", "work": "先固定题目所属大域、facet和键向，避免只逐字替换句子。"},
+          {"name": "前向翻译", "question": "目标语言怎样自然表达？", "work": "由熟悉两种语言的人生成译文，记录难以直接对应的词义。"},
+          {"name": "共识修订", "question": "不同译法怎样收束？", "work": "比较多个译法，让措辞、语气强度和日常可理解性共同对齐。"},
+          {"name": "回译核对", "question": "译文是否改变原意？", "work": "把译文重新译回源语言，与原题逐项比较遗漏、增义和语气偏移。"},
+          {"name": "审阅与试读", "question": "目标人群怎样理解这句话？", "work": "由专家、语言教师和潜在使用者检查内容与表达，继续修订歧义。"},
+          {"name": "本地样本验证", "question": "译文形成的分数怎样工作？", "work": "检查内部一致性、结构、与相关量表的关系，并建立适合该语言样本的参照资料。"}
+        ],
+        "mandarin_case": {
+          "procedure": "IPIP-NEO-120普通话版经历前向翻译、共识会议、回译，以及专家、英语教师与潜在使用者审阅。",
+          "domain_alphas": [
+            {"code": "N", "value": 0.885},
+            {"code": "E", "value": 0.840},
+            {"code": "O", "value": 0.799},
+            {"code": "A", "value": 0.804},
+            {"code": "C", "value": 0.917}
+          ],
+          "facet_contrast": [
+            {"name": "E4 活跃度", "alpha": "0.422"},
+            {"name": "O6 价值开放", "alpha": "0.498"},
+            {"name": "C6 谨慎", "alpha": "0.880"}
+          ],
+          "meaning": "五域分数可以呈现较高内部一致性，但某些四题facet明显较弱；验证必须看到具体层级，不能只确认中文题目已经存在。"
+        }
+      },
+      "source_refs": ["ipip_translation_clearinghouse_official", "ipip_mandarin_translation_official", "ipip_mandarin_reliability_validity_official"]
+    },
+    {
+      "id": "comparing-scores-across-groups",
+      "group": "版本与语言",
+      "title": "两个群体的分数能直接比较吗",
+      "latin": "Measurement invariance across groups",
+      "question": "同一份问卷在两组人里都能算分，为什么平均分仍未必可比？",
+      "summary": "群体比较要逐层检查题目是否形成相同结构、是否以相近强度反映构念，以及同一构念水平是否对应相同的回答起点。",
+      "count": "结构 → 载荷 → 截距",
+      "tags": ["测量不变性", "群体比较", "结构不变", "载荷不变", "截距不变"],
+      "teaching": {
+        "core_idea": "同名量表只能说明两组人回答了相同题目。要比较它们的关系或平均水平，还要验证这把尺子的结构、刻度间距和零点在两组中是否按相同方式工作。",
+        "levels": [
+          {"name": "结构不变", "technical": "Configural", "question": "题目是否仍按相同方式组成维度？", "check": "比较两组中题目聚合成facet和大域的基本结构。", "supports": "可以讨论两组是否具有相近的构念结构。", "symbol": "同一张图"},
+          {"name": "载荷不变", "technical": "Metric", "question": "题目与维度的关系强度是否相近？", "check": "比较各题对所在因子的载荷，而不只看两组各自的alpha。", "supports": "可以比较维度与其他变量的关系或相关模式。", "symbol": "同一格距"},
+          {"name": "截距不变", "technical": "Scalar", "question": "相同构念水平是否对应相同回答起点？", "check": "比较题目截距，识别某一组是否系统性更容易赞同或否定某些表述。", "supports": "才进一步支持比较两组的平均分水平。", "symbol": "同一零点"}
+        ],
+        "fixed_example": {
+          "trait": "宜人性",
+          "group_a": "甲组在相同潜在水平下，平均选择3",
+          "group_b": "乙组受表达习惯影响，平均选择4",
+          "observed": "乙组原始平均分更高",
+          "meaning": "若题目截距不同，分数差同时混入回答起点差异，不能只解释成特质平均水平不同。"
+        },
+        "evidence_cases": [
+          {"sample": "12个国家 · 23,268人", "result": "IPIP-NEO-120的N、E、C达到标量层；A、O达到载荷层。", "reading": "不同大域支持的跨文化比较层级并不相同。"},
+          {"sample": "49个国家 · 831,849人", "result": "30个facet中约一半在性别组内呈现稳健结构；达到标量层的facet比例随国家而变。", "reading": "同一量表内部也要逐facet核查，而不是给整份问卷一个统一通行证。"}
+        ]
+      },
+      "source_refs": ["kajonius_2017_ipip_cross_cultural_invariance", "temizyurek_2024_ipip_gender_invariance", "sheppard_2026_cross_cultural_personality_review"]
+    },
+    {
+      "id": "from-items-to-scores",
+      "group": "分数形成",
+      "title": "题目怎样变成分数",
+      "latin": "From items to scores",
+      "question": "不同问卷怎样把回答变成连续维度、偏好类型、职场量表或临床量表？",
+      "summary": "先用等级题示例理解键向与汇总，再比较类型、职场与临床问卷各自不同的计分出口。",
+      "count": "5种计分路径",
+      "tags": ["五点作答", "反向计分", "facet分", "大域分"],
+      "teaching": {
+        "core_idea": "plus和minus表示题目的计分方向。若1—5计分中的反向题原始回答为2，统一方向后得到6−2=4；只有方向一致的题目才能继续汇总。",
+        "pipeline": [
+          {"step": "作答", "value": "1—5", "note": "把符合程度记录为有序分值"},
+          {"step": "统一键向", "value": "6 − 原始分", "note": "只翻转minus题，plus题保持原值"},
+          {"step": "facet汇总", "value": "4题或10题", "note": "合并同一细分倾向的题目"},
+          {"step": "大域汇总", "value": "6个facet", "note": "形成N、E、O、A、C五域轮廓"}
+        ],
+        "worked_example": [
+          {"item": "正向题", "raw": 4, "key": "plus", "scored": 4},
+          {"item": "反向题", "raw": 2, "key": "minus", "scored": 4}
+        ],
+        "architectures": [
+          {"name": "连续特质", "instruments": "BFI-2、HEXACO", "input": "等级回答", "steps": ["按键向统一方向", "汇总facet或域", "必要时换算常模位置"], "output": "多条连续维度"},
+          {"name": "偏好类型", "instruments": "MBTI", "input": "偏好回答", "steps": ["形成四组偏好证据", "核对每组偏好结果", "组合类型并读取facet"], "output": "四组偏好与组合类型"},
+          {"name": "双极因素", "instruments": "16PF", "input": "选择题回答", "steps": ["按所属主要因素计分", "换算sten位置", "组合五个全局因素"], "output": "16因素与5个全局因素"},
+          {"name": "职场量表", "instruments": "HPI、HDS、MVPI", "input": "行为、风险或价值回答", "steps": ["三份问卷分别计分", "与劳动力常模比较", "按岗位任务连接轮廓"], "output": "日常、风险或动机量表"},
+          {"name": "临床量表", "instruments": "MMPI-3", "input": "是／否回答", "steps": ["按量表键形成原始分", "换算常模分数", "先读效度再读实质量表"], "output": "效度与临床相关量表"}
+        ]
+      },
+      "source_refs": ["johnson_2014_ipip_neo_120", "github_alheimsins_b5_johnson_120_ipip_neo_pi_r_493546d", "github_chfhhd_ipip_neo_120_paper_pencil_5f12d8c"]
+    },
+    {
+      "id": "trait-signal-and-acquiescence",
+      "group": "分数形成",
+      "title": "同意得多，等于特质更高吗",
+      "latin": "Trait signal and acquiescent responding",
+      "question": "同样选择“非常同意”，为什么进入分数的信号可能不同？",
+      "summary": "一次回答同时受题目内容与作答倾向影响。把含义相反、键向相反的题目配对观察，可以区分特质方向与不看内容就倾向同意。",
+      "count": "内容信号 + 赞同倾向",
+      "tags": ["赞同反应", "正反键向", "平衡量表", "方法因子"],
+      "teaching": {
+        "core_idea": "“同意”不是一种固定的特质信号：在正向题里它推高分数，在反向题里计分后会降低分数。若一个人不论题意都偏向同意，正反向题会留下与真正特质方向不同的回答图形。",
+        "illustrative_pair": [
+          {"key": "plus", "label": "正向示意题", "text": "我经常在群体中主动开口。"},
+          {"key": "minus", "label": "反向示意题", "text": "我通常避免在群体中发言。"}
+        ],
+        "response_modes": [
+          {"name": "按内容作答", "description": "主动表达倾向较高，因此同意正向题、不同意反向题。", "plus_raw": 5, "minus_raw": 1, "plus_scored": 5, "minus_scored": 5, "pattern": "计分后两题共同指向较高位置"},
+          {"name": "一律倾向同意", "description": "不论句子方向，两题都选择同意。", "plus_raw": 5, "minus_raw": 5, "plus_scored": 5, "minus_scored": 1, "pattern": "计分后两题相互冲突，赞同倾向显现"}
+        ],
+        "balance_comparison": [
+          {"name": "单一键向", "items": ["+", "+", "+", "+"], "effect": "特质方向与赞同倾向叠在同一个总分里。"},
+          {"name": "平衡键向", "items": ["+", "+", "−", "−"], "effect": "相反题意让赞同倾向可以被观察、估计或在分析中控制。"}
+        ],
+        "research_findings": [
+          {"study": "Danner等，2015", "finding": "赞同倾向会系统性影响人格题目方差和与其他变量的关联，并在不同题型间保持一致、随时间呈中等稳定。"},
+          {"study": "Soto与John，2019", "finding": "正负键向失衡会放大或压低特质与外部标准的关联；极端组合中，共享方差的相对差异可达47%。"}
+        ],
+        "tradeoff": "平衡键向提供了分离特质与赞同倾向的条件，但反向措辞也可能增加理解负担并形成方法因子；因此要同时检查题意是否真正相反、目标人群能否稳定理解。"
+      },
+      "source_refs": ["danner_2015_acquiescence_personality", "soto_john_2019_scale_balance", "ipip_scale_construction_official"]
+    },
+    {
+      "id": "big-five-domains-and-facets",
+      "group": "特质结构",
+      "title": "大五维度与30个facet",
+      "latin": "Big Five domains and 30 facets",
+      "question": "N、E、O、A、C各自在描述什么？",
+      "summary": "五个大域是人格轮廓的宽坐标；每个大域由6个facet组成，用来展开同一总分内部的不同倾向。",
+      "count": "N · E · O · A · C",
+      "tags": ["情绪反应性", "外向性", "开放性", "宜人性", "尽责性", "30facet"],
+      "teaching": {
+        "core_idea": "每个大域都压缩了六种相关但不相同的倾向。阅读时先确认大域描述的方向，再展开facet观察内部组合。",
+        "domains": [
+          {"code": "N", "title": "情绪反应性", "latin": "Neuroticism", "summary": "负面情绪被触发的频率与强度，以及压力下感到不安、脆弱或难以平复的倾向。", "facets": ["担忧", "愤怒", "低落", "自我意识", "冲动", "脆弱"], "facet_notes": ["是否容易预想坏结果或持续担忧", "冲突、受阻或被冒犯时是否容易被激怒", "挫折以后低落反应出现的频率与持续程度", "被观察或评价时是否容易感到不自在", "强烈情绪出现时是否难以延迟行动", "压力增大时是否容易感到无法应付"]},
+          {"code": "E", "title": "外向性", "latin": "Extraversion", "summary": "亲近他人、群体偏好、主导表达、活动水平、刺激寻求和积极情绪。", "facets": ["亲近", "群居", "主张", "活动", "刺激", "积极情绪"], "facet_notes": ["是否容易主动接近他人并建立联系", "是否偏好群体活动和热闹环境", "在群体中是否愿意表达主张或承担带领角色", "日常行动节奏与活动量通常有多高", "是否偏好新鲜、强烈或高唤醒的体验", "兴奋、愉快等积极情绪通常出现得多频繁"]},
+          {"code": "O", "title": "开放性", "latin": "Openness to Experience", "summary": "探索新经验和复杂观念的倾向，涵盖想象、艺术兴趣、情感体验、尝新、思辨与价值开放。", "facets": ["想象", "审美", "情感", "尝新", "思辨", "价值开放"], "facet_notes": ["是否容易进入想象世界并考虑多种可能", "是否容易被艺术、形式与审美经验吸引", "是否愿意辨认并深入体验自己的情感", "是否愿意尝试新的活动、路径和生活经验", "是否享受抽象问题、复杂观念与推理探索", "面对不同价值观时是否愿意暂缓结论继续理解"]},
+          {"code": "A", "title": "宜人性", "latin": "Agreeableness", "summary": "人际互动中的信任、坦诚、助人、合作、谦逊与同情倾向。", "facets": ["信任", "坦诚", "助人", "合作", "谦逊", "同情"], "facet_notes": ["默认更容易相信他人善意，还是先保持警惕", "表达意图时更直接坦白，还是更强调策略与保留", "是否容易注意到别人需要帮助并愿意回应", "冲突中更倾向协商合作，还是坚持竞争", "是否倾向淡化自我优越感与功劳", "是否容易感受到并回应他人的困难处境"]},
+          {"code": "C", "title": "尽责性", "latin": "Conscientiousness", "summary": "效能、秩序、责任、成就驱动、自律和谨慎决策等自我管理倾向。", "facets": ["效能", "秩序", "责任", "成就", "自律", "谨慎"], "facet_notes": ["是否相信自己能够处理任务并找到办法", "是否习惯提前组织信息、物品与步骤", "承诺和规则是否会稳定约束自己的行动", "是否持续追求更高标准与完成目标", "即使缺少即时动力，是否仍能持续推进", "行动前是否会评估后果并延迟冲动决定"]}
+        ]
+      },
+      "source_refs": ["johnson_2014_ipip_neo_120", "github_alheimsins_b5_johnson_120_ipip_neo_pi_r_493546d"]
+    },
+    {
+      "id": "trait-expression-across-situations",
+      "group": "特质结构",
+      "title": "外向性高，为什么也会有安静的时候",
+      "latin": "Trait expression across situations",
+      "question": "如果特质是稳定倾向，为什么同一个人在不同场景里仍会表现得很不一样？",
+      "summary": "特质描述许多时刻形成的行为分布，而不是规定每一次行为；一个人的典型位置、波动范围和对特定情境的反应可以同时存在。",
+      "count": "人 × 情境 → 行为分布",
+      "tags": ["特质状态", "情境", "行为分布", "特质激活"],
+      "teaching": {
+        "core_idea": "外向性分数概括的是跨越多种情境后的典型倾向。具体一刻表现多外向，还要看当时的角色、目标和场景是否提供表达这种特质的机会；因此两个人的行为范围可以重叠，但长期分布中心不同。",
+        "scale": ["安静", "少量互动", "一般", "主动互动", "活跃", "主导场面"],
+        "people": [
+          {"name": "甲", "profile": "分布中心较高，仍包含安静时刻", "values": [2, 5, 4, 6, 3, 5, 4], "average": 4.1},
+          {"name": "乙", "profile": "分布中心较低，也会出现活跃时刻", "values": [1, 3, 2, 4, 1, 2, 3], "average": 2.3}
+        ],
+        "moments": ["独自整理资料", "熟人晚餐", "小组讨论", "公开分享", "通勤途中", "项目启动会", "陌生人聚会"],
+        "situations": [
+          {"name": "独自整理资料", "cue": "没有互动机会", "person_a": 2, "person_b": 1, "reading": "两个人都表现得安静；这个场景几乎没有激活外向行为。"},
+          {"name": "熟人晚餐", "cue": "熟悉关系降低互动成本", "person_a": 5, "person_b": 3, "reading": "两个人都比独处时活跃，但仍保留相对差异。"},
+          {"name": "公开分享", "cue": "角色要求主动表达", "person_a": 6, "person_b": 4, "reading": "情境把两个人都向活跃端推移，不等于两人的典型倾向相同。"},
+          {"name": "陌生人聚会", "cue": "社交机会与陌生性同时存在", "person_a": 4, "person_b": 3, "reading": "同一场景对不同人的吸引与压力并不完全相同。"}
+        ],
+        "distribution_parts": [
+          {"name": "中心", "meaning": "许多时刻累积后，通常落在哪个位置。"},
+          {"name": "范围", "meaning": "一个人在日常生活中会跨过多大的行为区间。"},
+          {"name": "情境模式", "meaning": "哪些场景会稳定地把行为推高或压低。"}
+        ],
+        "example_note": "甲乙的七个时刻是用于解释分布结构的固定示意；Fleeson的经验采样研究支持高个体内波动与稳定分布中心可以同时存在。"
+      },
+      "source_refs": ["fleeson_2001_trait_density_distributions", "tett_guterman_2000_trait_activation"]
+    },
+    {
+      "id": "reading-scores-and-profile",
+      "group": "结果阅读",
+      "title": "怎样阅读分数与人格轮廓",
+      "latin": "Reading scores and a trait profile",
+      "question": "原始分、T分数、百分位和五域轮廓怎样连起来？",
+      "summary": "原始分记录题目汇总，T分数与百分位把它放入常模，最后再结合大域和facet的组合阅读整份轮廓。",
+      "count": "原始分 → 常模位置 → 轮廓",
+      "tags": ["原始分", "T分数", "百分位", "常模", "轮廓"],
+      "teaching": {
+        "core_idea": "原始分受题量和计分范围影响；标准分用常模均值与标准差描述相对位置；轮廓阅读再比较五域和facet之间的组合。三个层次回答的是不同问题。",
+        "score_forms": [
+          {"name": "原始分", "question": "这套题汇总了多少分？", "example": "48"},
+          {"name": "T分数", "question": "离所用常模平均值多远？", "example": "T=60"},
+          {"name": "百分位", "question": "在参照人群中处于什么相对位置？", "example": "约P84"}
+        ],
+        "formula": "z=(原始分−常模均值)/常模标准差；T=50+10z",
+        "norm_example": {
+          "raw": 48,
+          "norm_a": "均值40、标准差8 → z=1 → T=60 → 约P84",
+          "norm_b": "均值48、标准差8 → z=0 → T=50 → P50",
+          "meaning": "原始分相同，参照人群不同，相对位置就会改变。"
+        },
+        "threshold_methods": [
+          {"name": "半个标准差", "rule": "T<45偏低；45—55平均；T>55偏高", "example": "T=53落在平均范围", "basis": "用常模均值上下0.5个标准差划成三段。"},
+          {"name": "五等分", "rule": "按常模百分位分成五个等量区间", "example": "P70落在第四个区间", "basis": "比较的是参照人群中的排序位置。"},
+          {"name": "研究切点", "rule": "按预先说明的研究规则分组", "example": "可用百分位或外部标准形成分组", "basis": "切点服务于具体分析任务，不能冒充普遍人格边界。"}
+        ],
+        "reading_order": ["确认问卷版本与计分规则", "确认常模来自哪个参照样本", "比较五个大域的相对位置", "展开与问题有关的facet", "回到多个真实情境核对这种组合是否反复出现"]
+      },
+      "source_refs": ["johnson_2014_ipip_neo_120", "github_kholia_ipip_neo_pi_0cd4e20", "github_chfhhd_ipip_neo_120_paper_pencil_5f12d8c", "ipip_score_interpretation_official", "ipip_norms_official"]
+    },
+    {
+      "id": "interpreting-score-change-over-time",
+      "group": "结果阅读",
+      "title": "两次分数不一样，真的发生变化了吗",
+      "latin": "Interpreting score change over time",
+      "question": "同一个人从T=50变成T=58，怎样区分个人变化与测量波动？",
+      "summary": "两次分数之差同时可能包含持久变化、当次情境和测量误差；先保证两次分数可比，再判断差值是否大到超过量表预期的误差范围。",
+      "count": "时间点1 → 分差 → 时间点2",
+      "tags": ["重测", "个人变化", "测量误差", "可靠变化指数"],
+      "teaching": {
+        "core_idea": "群体的重测相关、群体的平均变化和一个人的分数变化是三种不同问题。对个人差值，不能只看相差几分；还要把两次测量各自的误差合并，观察差值相对于这个误差有多大。",
+        "change_sources": [
+          {"name": "持久变化", "meaning": "长期倾向本身在两个时间点之间发生了改变。"},
+          {"name": "当次情境", "meaning": "近期事件、角色、疲劳或作答环境改变了这一次的回答。"},
+          {"name": "测量误差", "meaning": "题目抽样和回答波动让观察分数围绕潜在水平上下移动。"}
+        ],
+        "comparison_questions": [
+          {"name": "排序稳定", "unit": "一群人", "question": "第一次相对较高的人，第二次仍相对较高吗？", "statistic": "重测相关"},
+          {"name": "平均变化", "unit": "一群人", "question": "这群人的平均分是否随时间整体移动？", "statistic": "均值差"},
+          {"name": "个人变化", "unit": "一个人", "question": "这个人的分差是否超过预期测量误差？", "statistic": "可靠变化指数"}
+        ],
+        "formula": "差值标准误 Sdiff=√(SEM₁²+SEM₂²)；可靠变化指数 RCI=(T₂−T₁)/Sdiff",
+        "fixed_cases": [
+          {"name": "相差8分", "t1": 50, "t2": 58, "delta": 8, "sem": 3, "sdiff": "4.24", "rci": "1.89", "result": "没有跨过±1.96参考线", "reading": "在这个示例设定下，8分差值仍落在两次测量合并误差的95%统计参考范围内。"},
+          {"name": "相差12分", "t1": 50, "t2": 62, "delta": 12, "sem": 3, "sdiff": "4.24", "rci": "2.83", "result": "跨过±1.96参考线", "reading": "在同一示例设定下，12分差值大于测量误差通常能够解释的范围；下一步才是查明变化来自哪里。"}
+        ],
+        "comparison_checks": ["同一问卷版本与题目", "同一计分规则", "同一常模或参照", "记录时间间隔与当次情境"],
+        "interpretation": "跨过统计参考线只说明差值不容易由该误差模型单独解释；它不自动说明变化持久，也不能替代对情境、生活事件和后续测量的检查。"
+      },
+      "source_refs": ["watson_2004_stability_change_error", "roberts_mroczek_2008_personality_change", "jacobson_truax_1991_reliable_change"]
+    },
+    {
+      "id": "self-and-informant-personality-reports",
+      "group": "结果阅读",
+      "title": "自己和别人眼中的人格为什么不完全一样",
+      "latin": "Self and informant personality reports",
+      "question": "同一个人的自评和熟人评价不同，是谁看错了，还是两边看见的信息本来就不同？",
+      "summary": "自评能够接触内心体验和跨场景记忆，他评能够持续观察公开行为与人际影响；两种报告既有重合，也各自携带对方难以获得的信息。",
+      "count": "内在经验 ↔ 公开行为",
+      "tags": ["自评", "他评", "可见性", "信息来源"],
+      "teaching": {
+        "core_idea": "自评与他评不是同一摄像机的两份拷贝。一个人能直接接触自己的担忧、意图和不同场景经历；熟人更容易看见反复出现的公开行为以及这些行为给别人造成的影响。两边的一致程度会随特质可见性、熟悉程度和评价色彩改变。",
+        "perspectives": [
+          {"name": "自己", "sees": ["内心情绪与想法", "未表现出来的意图", "跨多个关系和场景的经历"], "misses": "可能难以看见自己的行为给别人留下的稳定印象。"},
+          {"name": "熟人", "sees": ["可观察的言行", "反复出现的人际模式", "行为对周围人的影响"], "misses": "无法直接读取没有表现出来的感受与动机。"}
+        ],
+        "fixed_case": {
+          "context": "项目例会中的一次公开发言",
+          "self_view": "发言前持续紧张，反复担心说错，因此把自己的情绪反应性评得较高。",
+          "informant_view": "同事只看到准备充分、表达平稳，因此在可见的紧张表现上给出较低评价。",
+          "overlap": "双方都观察到这个人按时准备并完成发言；分歧发生在内心体验是否外显。"
+        },
+        "trait_windows": [
+          {"name": "内在担忧", "visibility": "自己信息更多", "reason": "想法和身体感受未必会被外部观察到。"},
+          {"name": "主动交谈", "visibility": "双方都有信息", "reason": "行为可见，自己也能跨场景回忆。"},
+          {"name": "给人的压迫感", "visibility": "他人信息更多", "reason": "这是行为在别人身上形成的体验。"}
+        ],
+        "agreement_factors": ["评价者与本人相处多久", "是否在多种场景中见过本人", "特质是否容易从行为中看见", "题目是在问内心体验还是公开表现"],
+        "evidence_note": "自评与他评通常存在中等程度重合，但他评还能够提供独特的行为预测信息；差异不能直接化约成一方真实、另一方错误。"
+      },
+      "source_refs": ["vazire_2006_informant_reports", "connelly_ones_2010_observer_meta_analysis", "kim_2019_self_other_means_meta_analysis"]
+    },
+    {
+      "id": "checking-response-quality",
+      "group": "答卷检查",
+      "title": "一次答卷的质量怎样检查",
+      "latin": "Checking response quality",
+      "question": "同样能算出分数的两份答卷，为什么信息质量可能不同？",
+      "summary": "答卷检查关注输入是否完整、作答过程是否足以支撑计分，以及回答模式中有没有明显的信息损失。它检查的是这一次数据，不评价整份量表。",
+      "count": "完整性 · 时长 · 回答模式",
+      "tags": ["漏答", "作答时长", "机械同选", "语义一致性"],
+      "teaching": {
+        "core_idea": "评分程序可以处理任何输入，但不同输入携带的信息量不同。检查时把缺失、速度、同选和语义一致性分开观察，再决定哪些分数能够继续进入汇总。",
+        "checks": [
+          {"name": "完整性", "signal": "漏答、同题多选或无法识别的选项", "effect": "对应题目缺少唯一分值，facet与大域汇总会出现空缺或依赖补值规则。"},
+          {"name": "作答时长", "signal": "总时长短到难以完成题目阅读", "effect": "快速本身不是结论，但会降低回答经过逐题判断的可信度。"},
+          {"name": "选项分布", "signal": "长段连续使用同一个选项", "effect": "需要结合正反向键检查它是否只是偏好某个按钮，还是确实形成一致内容。"},
+          {"name": "语义一致性", "signal": "意思相近或相反的题目出现难以解释的组合", "effect": "可比较同义题、反义题和同一facet内部的回答分散程度。"}
+        ],
+        "fixed_response": {
+          "items": 120,
+          "seconds": 90,
+          "missing": 8,
+          "pattern": "多数页面连续选择同一选项",
+          "reading": "三类信号同时出现：分数仍可被程序生成，但输入已经损失了大量可解释信息。"
+        }
+      },
+      "source_refs": ["github_markshepherd_ipip_neo_scorer_96db6b8", "ipip_response_validity_official", "github_chfhhd_ipip_neo_120_paper_pencil_5f12d8c"]
+    },
+    {
+      "id": "scale-reliability-structure-validity",
+      "group": "测量证据",
+      "title": "一份量表的测量证据怎样建立",
+      "latin": "Reliability, structure, and validity",
+      "question": "信度、因子结构和效度分别为哪一层解释提供依据？",
+      "summary": "信度描述分数的一致性与误差，因子结构检查题目怎样聚合，效度则检验这些分数能否支持预定构念和用途。三类证据回答不同问题。",
+      "count": "信度 → 结构 → 效度",
+      "tags": ["信度", "测量误差", "因子结构", "效度"],
+      "teaching": {
+        "core_idea": "量表证据不是一个总分。题目彼此一致，只说明它们能够共同形成分数；形成预期结构，说明这些分数的组织方式有数据支持；与相关量表、他评和外部变量出现预期关系，才继续支持构念解释。",
+        "layers": [
+          {"name": "信度", "question": "分数有多稳定、精确？", "evidence": ["内部一致性", "重测稳定性", "测量误差"], "result": "说明分数能否被足够一致地形成。"},
+          {"name": "因子结构", "question": "题目怎样聚成维度？", "evidence": ["题目载荷", "facet归属", "五域层级"], "result": "说明实际回答是否呈现预期的5域与30facet关系。"},
+          {"name": "效度", "question": "这些分数支持什么解释？", "evidence": ["与相关量表的关系", "与不同构念的区分", "他评与外部变量"], "result": "说明证据能否支撑所声称的构念和用途。"}
+        ],
+        "comparison": [
+          {"item": "结构", "ipip": "5域、30facet、每facet多题", "short_quiz": "10道题集中询问社交活跃"},
+          {"item": "已有证据", "ipip": "量表开发、样本、信度、结构与效度研究", "short_quiz": "只有题目与加总规则"},
+          {"item": "输出", "ipip": "基于量表结构的特质分数", "short_quiz": "这10道题的回答总和"}
+        ],
+        "repetition_case": "十道题反复改写“我喜欢热闹”，可能形成很高的内部一致性，却只覆盖群居偏好；信度高没有自动补足外向性的其他facet。"
+      },
+      "source_refs": ["ipip_reliability_validity_official", "github_cran_psych_2b17d1e", "johnson_2014_ipip_neo_120"]
+    }
+  ],
+  "public_sources": [
+    {"source_ref": "bfi2_official", "title": "BFI-2官方资料与计分键", "note": "提供60题自评表、五个大域、15个facet、计分键与研究用资料。", "url": "https://www.colby.edu/academics/departments-and-programs/psychology/research-opportunities/personality-lab/the-bfi-2/"},
+    {"source_ref": "hexaco_inventory_official", "title": "HEXACO-PI-R官方问卷资料", "note": "说明六因素模型、60／100／200题版本、自评与他评形式及facet结构。", "url": "https://hexaco.org/hexaco-inventory"},
+    {"source_ref": "hexaco_scoring_official", "title": "HEXACO-100官方计分键", "note": "说明反向计分、facet与域分数取均值，以及利他主义不进入六域分数。", "url": "https://hexaco.org/downloads/ScoringKeys_100.pdf"},
+    {"source_ref": "mbti_facts_official", "title": "MBTI类型与特质区别", "note": "说明MBTI以四组类型偏好和最佳拟合类型组织结果，并区分类型与连续特质。", "url": "https://www.themyersbriggs.com/en-us/support/mbti-facts"},
+    {"source_ref": "mbti_global_official", "title": "MBTI Global Step I与Step II资料", "note": "介绍最新全球版本、概率指标、Step I／II报告和样本资料。", "url": "https://www.themyersbriggs.com/en-US/Access-Resources/MBTI-Global-Version"},
+    {"source_ref": "mbti_assessment_official", "title": "MBTI评估的使用场景", "note": "说明MBTI用于人格偏好、沟通与团队发展，并列出其报告和使用方式。", "url": "https://www.themyersbriggs.com/en-US/Explore-Solutions/MBTI"},
+    {"source_ref": "sixteen_pf_official", "title": "16PF第五版官方资料", "note": "说明16PF用于正常人格评估，输出16个人格因素及解释报告。", "url": "https://www.pearsonassessments.com/en-us/Store/Professional-Assessments/Personality-%26-Biopsychosocial/Sixteen-Personality-Factor-Questionnaire-%7C-Fifth-Edition/p/100000483"},
+    {"source_ref": "sixteen_pf_sample_report", "title": "16PF官方解释报告样本", "note": "展示sten轮廓、五个全局因素及其主要因素组成。", "url": "https://www.pearsonassessments.com/content/dam/school/global/clinical/us/assets/16pf/16pf-interpretive-sample-report.pdf"},
+    {"source_ref": "hogan_hpi_official", "title": "Hogan Personality Inventory官方资料", "note": "说明HPI面向职场正常人格，包含7个主要量表与42个子量表。", "url": "https://www.hoganassessments.com/assessment/hogan-personality-inventory/"},
+    {"source_ref": "hogan_hds_official", "title": "Hogan Development Survey官方资料", "note": "说明HDS用11个量表与33个子量表观察压力下的脱轨倾向。", "url": "https://www.hoganassessments.com/assessment/hogan-development-survey/"},
+    {"source_ref": "hogan_suite_official", "title": "Hogan三套核心问卷说明", "note": "区分HPI日常人格、HDS压力风险与MVPI价值动机，并说明三者在职场任务中的关系。", "url": "https://www.hoganassessments.com/about/why-hogan/"},
+    {"source_ref": "hogan_mvpi_official", "title": "Hogan MVPI量表与主题", "note": "列出MVPI十个价值量表及生活方式、信念、职业偏好、厌恶与偏好同伴五类主题。", "url": "https://www.hoganassessments.com/blog/mvpi-item-themes/"},
+    {"source_ref": "mmpi3_official", "title": "MMPI-3官方资料", "note": "说明MMPI-3的335道是非题、52个效度与临床相关量表及专业应用场景。", "url": "https://www.upress.umn.edu/test-division/mmpi-3/"},
+    {"source_ref": "johnson_2014_ipip_neo_120", "title": "Johnson (2014), IPIP-NEO-120量表开发研究", "note": "支持120题、五域与30个facet的测量结构。", "url": "https://doi.org/10.1016/j.jrp.2014.05.003"},
+    {"source_ref": "github_alheimsins_b5_johnson_120_ipip_neo_pi_r_493546d", "title": "Johnson IPIP 120题资料仓库", "note": "提供题项ID、域、facet编号、正反向键与多语言结构。", "url": "https://github.com/Alheimsins/b5-johnson-120-ipip-neo-pi-r"},
+    {"source_ref": "github_alheimsins_b5_50_ipip_neo_pi_r_fe47461", "title": "IPIP 50题资料仓库", "note": "提供50题、五域组织与正反向键。", "url": "https://github.com/Alheimsins/b5-50-ipip-neo-pi-r"},
+    {"source_ref": "github_alheimsins_b5_costa_mccrae_300_ipip_neo_pi_r_192042c", "title": "IPIP 300题资料仓库", "note": "提供300题、30个facet与每facet 10题的结构。", "url": "https://github.com/Alheimsins/b5-costa-mccrae-300-ipip-neo-pi-r"},
+    {"source_ref": "github_kholia_ipip_neo_pi_0cd4e20", "title": "IPIP-NEO评分实现（Kartik Mistry / Kholia）", "note": "实现原始分、T分数、百分位与分组常模换算。", "url": "https://github.com/kholia/IPIP-NEO-PI"},
+    {"source_ref": "github_chfhhd_ipip_neo_120_paper_pencil_5f12d8c", "title": "IPIP-NEO-120纸笔版与评分表", "note": "提供facet汇总、常模替换提示与纸笔答卷检查结构。", "url": "https://github.com/chfhhd/IPIP-NEO-120-paper-pencil"},
+    {"source_ref": "github_markshepherd_ipip_neo_scorer_96db6b8", "title": "IPIP-NEO答卷评分器", "note": "实现漏答、多选、作答时间与回答一致性检查。", "url": "https://github.com/markshepherd/IPIP-NEO-Scorer"},
+    {"source_ref": "github_cran_psych_2b17d1e", "title": "CRAN psych方法工具包镜像", "note": "提供信度、因子分析、项目分析、计分与IRT方法。", "url": "https://github.com/cran/psych"}
+    ,{"source_ref": "ipip_scale_construction_official", "title": "IPIP量表构建方法", "note": "说明外部标准、内容判断、正反键平衡与内部分析怎样共同筛选题目。", "url": "https://ipip.ori.org/newScaleConstruction.htm"}
+    ,{"source_ref": "ipip_response_validity_official", "title": "IPIP答卷有效性指标", "note": "列出同选、缺失、语义一致性与回答分布等答卷检查方法。", "url": "https://ipip.ori.org/newValidity.htm"}
+    ,{"source_ref": "ipip_reliability_validity_official", "title": "IPIP信度与效度资料", "note": "说明IPIP量表的alpha资料、与目标量表的相关及进一步效度研究入口。", "url": "https://ipip.ori.org/ReliabilityValidity.htm"}
+    ,{"source_ref": "ipip_translation_clearinghouse_official", "title": "IPIP翻译资料汇总", "note": "记录各语言版本的翻译流程与研究状态；IPIP不统一替各译本核验准确性。", "url": "https://www.ipip.ori.org/newItemTranslations.htm"}
+    ,{"source_ref": "ipip_mandarin_translation_official", "title": "IPIP-NEO-120普通话版本", "note": "提供普通话版题目、作答说明及中文信效度和常模入口。", "url": "https://ipip.ori.org/Mandarin%20translation%20of%20IPIP-NEO-120.htm"}
+    ,{"source_ref": "ipip_mandarin_reliability_validity_official", "title": "普通话IPIP-NEO-120信效度结果", "note": "列出中文样本的五域与facet内部一致性，以及与中文大五短量表的相关。", "url": "https://ipip.ori.org/ChineseIPIP-120reliability.htm"}
+    ,{"source_ref": "ipip_score_interpretation_official", "title": "IPIP分数解释方法", "note": "比较半个标准差分段、五等分等连续分数解释方法。", "url": "https://ipip.ori.org/InterpretingIndividualIPIPScaleScores.htm"}
+    ,{"source_ref": "ipip_norms_official", "title": "IPIP常模资料与使用说明", "note": "说明本地常模、量表实现与参照样本如何影响分数位置。", "url": "https://ipip.ori.org/newNorms.htm"}
+    ,{"source_ref": "kajonius_2017_ipip_cross_cultural_invariance", "title": "12国IPIP-NEO跨文化比较研究", "note": "在23,268人中检验IPIP-NEO-120的跨国结构与测量等价，并讨论观察到的国家差异中可能混入测量差异。", "url": "https://ijpp.rug.nl/article/view/25634"}
+    ,{"source_ref": "temizyurek_2024_ipip_gender_invariance", "title": "49国IPIP-NEO facet性别可比性研究", "note": "在831,849人中逐项检查30个facet的组内结构与跨性别测量不变性。", "url": "https://doi.org/10.1016/j.jrp.2024.104551"}
+    ,{"source_ref": "sheppard_2026_cross_cultural_personality_review", "title": "人格测量的跨文化适用性综述", "note": "解释结构、载荷与截距不变分别支持哪一层群体比较，并汇总IPIP-NEO-120的跨文化证据。", "url": "https://doi.org/10.1371/journal.pone.0338521"}
+    ,{"source_ref": "danner_2015_acquiescence_personality", "title": "人格问卷中的赞同反应研究", "note": "检验赞同倾向对题目方差、外部关联、不同题型与时间稳定性的影响。", "url": "https://doi.org/10.1016/j.jrp.2015.05.004"}
+    ,{"source_ref": "soto_john_2019_scale_balance", "title": "量表长度、宽度与键向平衡研究", "note": "系统比较正负键向平衡怎样影响人格量表与自评、他评外部标准的关联。", "url": "https://doi.org/10.1037/pas0000586"}
+    ,{"source_ref": "watson_2004_stability_change_error", "title": "Watson（2004）：稳定、变化与测量误差", "note": "区分真实心理变化与时间不稳定中的测量误差，并说明重测相关回答的是群体排序稳定问题。", "url": "https://doi.org/10.1016/j.jrp.2004.03.001"}
+    ,{"source_ref": "roberts_mroczek_2008_personality_change", "title": "Roberts与Mroczek（2008）：成年期人格特质变化", "note": "区分群体均值变化、群体排序稳定和个人差异变化等不同的纵向问题。", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2743415/"}
+    ,{"source_ref": "jacobson_truax_1991_reliable_change", "title": "Jacobson与Truax（1991）：可靠变化指数", "note": "提出把个人前后差值与两次测量的合并误差相比，用于判断差值在统计上是否可靠。", "url": "https://pubmed.ncbi.nlm.nih.gov/2002127/"}
+    ,{"source_ref": "paulhus_vazire_2007_self_report_method", "title": "Paulhus与Vazire（2007）：自陈法", "note": "梳理人格自评中的信息提取、自我知觉、回答动机，以及自评与其他测量来源的重合和差异。", "url": "https://www2.psych.ubc.ca/~dpaulhus/research/SDR/downloads/CHAPTERS/2008%20Handbook%20Research%20Methods/paulhus-vazire%2007%20chap.pdf"}
+    ,{"source_ref": "lenhausen_2024_reference_group_instructions", "title": "Lenhausen等（2024）：参照群体怎样改变大五作答", "note": "比较未指定参照与一般人、亲近者、同龄人、过去自己和理想自己等参照指令下的大五分数。", "url": "https://doi.org/10.1177/10731911231175850"}
+    ,{"source_ref": "fleeson_2001_trait_density_distributions", "title": "Fleeson（2001）：特质作为状态分布", "note": "三项经验采样研究显示个体内行为波动很大，同时个人行为分布的中心位置能够保持稳定。", "url": "https://doi.org/10.1037/0022-3514.80.6.1011"}
+    ,{"source_ref": "tett_guterman_2000_trait_activation", "title": "Tett与Guterman（2000）：情境相关性与特质表达", "note": "检验与特质相关的情境如何影响特质表达以及跨情境一致性。", "url": "https://doi.org/10.1006/jrpe.2000.2292"}
+    ,{"source_ref": "vazire_2006_informant_reports", "title": "Vazire（2006）：熟人报告在人格测量中的作用", "note": "说明熟人评价如何为自评以外的信息来源，并支持多方法人格测量。", "url": "https://doi.org/10.1016/j.jrp.2005.03.003"}
+    ,{"source_ref": "connelly_ones_2010_observer_meta_analysis", "title": "Connelly与Ones（2010）：他评准确性与预测效度元分析", "note": "综合评价者一致、自评—他评相关和行为预测，说明他评与自评既重合也提供独特信息。", "url": "https://doi.org/10.1037/a0021212"}
+    ,{"source_ref": "kim_2019_self_other_means_meta_analysis", "title": "Kim等（2019）：自评与他评均值差异元分析", "note": "汇总152个样本、33,033人的大五自评与他评，检验两种来源的均值差异及自我美化解释。", "url": "https://doi.org/10.1177/0956797618810000"}
+  ],
+  "internal_review": {
+    "status": "formal_topic_v18_final_cleanup_and_qa_complete",
+    "reviewed_at": "2026-08-12",
+    "owner": ["火华", "Codex"],
+    "decision": "公开专题保持13个同级节点，不新增节点。最后四处知识缺口已回填：MBTI的最佳拟合核对、16PF的三项作答风格指标、MMPI-3的39条实质量表代码与含义、HPI／HDS／MVPI三报告联合案例。最终整理统一HDS“自负”用词，16PF默认先显示作答风格，删除未被任何节点使用的旧“问卷版本与内部结构”卡片及死代码。桌面914px与手机390×844实际验收通过。"
+  }
+}

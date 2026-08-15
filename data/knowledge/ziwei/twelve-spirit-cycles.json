@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0",
+  "id": "ziwei_twelve_spirit_cycles",
+  "title": "四组十二神循环",
+  "summary": "紫微盘的每个宫格除宫名、星曜与运限外，还可并列保存长生、博士、岁前、将前四条十二位循环。四条循环都恰好覆盖十二宫，但锚点与方向不同：长生读取五行局，博士从禄存起，岁前从流年地支起岁建，将前按流年地支三合组起将星。",
+  "branch_order": [
+    {"index":0,"id":"soul","name":"寅"},{"index":1,"id":"parents","name":"卯"},{"index":2,"id":"spirit","name":"辰"},{"index":3,"id":"property","name":"巳"},
+    {"index":4,"id":"career","name":"午"},{"index":5,"id":"friends","name":"未"},{"index":6,"id":"surface","name":"申"},{"index":7,"id":"health","name":"酉"},
+    {"index":8,"id":"wealth","name":"戌"},{"index":9,"id":"children","name":"亥"},{"index":10,"id":"spouse","name":"子"},{"index":11,"id":"siblings","name":"丑"}
+  ],
+  "cycles": [
+    {"id":"changsheng","label":"长生十二神","scope":"本命宫格字段","anchor":"五行局决定长生位","direction":"阳男阴女顺，阴男阳女逆","labels":["长生","沐浴","冠带","临官","帝旺","衰","病","死","墓","绝","胎","养"],"note":"与八字十二长生同名，但本页处理紫微盘中十二标签怎样沿宫位安置，不复用八字日干阴阳起点。"},
+    {"id":"boshi","label":"博士十二神","scope":"本命宫格字段","anchor":"禄存所在宫起博士","direction":"阳男阴女顺，阴男阳女逆","labels":["博士","力士","青龙","小耗","将军","奏书","飞廉","喜神","病符","大耗","伏兵","官府"],"note":"必须先由年干取得禄存位置；页面只让使用者移动抽象禄存锚点，不输入真实年份。"},
+    {"id":"suiqian","label":"岁前十二神","scope":"流年宫格字段","anchor":"流年地支所在宫起岁建","direction":"固定顺行","labels":["岁建","晦气","丧门","贯索","官符","小耗","大耗","龙德","白虎","天德","吊客","病符"],"note":"锁定默认算法第七位写“大耗”；中州算法同一位置写“岁破”，两版并列。"},
+    {"id":"jiangqian","label":"将前十二神","scope":"流年宫格字段","anchor":"流年地支三合组决定将星位","direction":"固定顺行","labels":["将星","攀鞍","岁驿","息神","华盖","劫煞","灾煞","天煞","指背","咸池","月煞","亡神"],"note":"流年支先归入寅午戌、申子辰、巳酉丑、亥卯未四组，再分别从午、子、酉、卯起将星。"}
+  ],
+  "changsheng_anchors": [
+    {"bureau":"水二局","anchor":"申"},{"bureau":"木三局","anchor":"亥"},{"bureau":"金四局","anchor":"巳"},{"bureau":"土五局","anchor":"申"},{"bureau":"火六局","anchor":"寅"}
+  ],
+  "jiangqian_anchors": [
+    {"year_branches":["寅","午","戌"],"anchor":"午"},{"year_branches":["申","子","辰"],"anchor":"子"},{"year_branches":["巳","酉","丑"],"anchor":"酉"},{"year_branches":["亥","卯","未"],"anchor":"卯"}
+  ],
+  "direction_table": [
+    {"year_yinyang":"阳","gender":"男","direction":"顺行"},{"year_yinyang":"阴","gender":"女","direction":"顺行"},
+    {"year_yinyang":"阴","gender":"男","direction":"逆行"},{"year_yinyang":"阳","gender":"女","direction":"逆行"}
+  ],
+  "suiqian_variants": [
+    {"id":"default","label":"默认算法","seventh":"大耗","labels":["岁建","晦气","丧门","贯索","官符","小耗","大耗","龙德","白虎","天德","吊客","病符"]},
+    {"id":"zhongzhou","label":"中州算法","seventh":"岁破","labels":["岁建","晦气","丧门","贯索","官符","小耗","岁破","龙德","白虎","天德","吊客","病符"]}
+  ],
+  "field_relation": [
+    {"label":"不是主辅星数组","note":"四条循环在宫位对象中各占一个单值字段，不进入majorStars、minorStars或adjectiveStars数组。"},
+    {"label":"不是运限层本身","note":"岁前与将前会随流年变化，但它们是流年层附加到十二宫的两组标签，不另造时间作用域。"},
+    {"label":"同名不等于同规则","note":"长生十二神与八字十二长生共享名称序列；紫微安置读取五行局与年阴阳／性别，不能照搬八字日干起点。"}
+  ],
+  "boundaries": [
+    {"label":"只展示安置结构","note":"标签落宫不自动产生个人吉凶；本页不解释某神落某宫的结果。"},
+    {"label":"方向输入保持抽象","note":"长生与博士只切换“顺／逆”，不要求输入真实性别与出生年。"},
+    {"label":"版本名随实现保存","note":"岁前第七位“大耗／岁破”按默认与中州配置并列，不擅自合成同义共识。"}
+  ],
+  "public_sources": [
+    {"title":"iztro：四条十二神安置实现","note":"锁定源码给出长生五局起点、长生与博士顺逆、将前四组三合锚点，以及岁前默认／中州两套第七位名称。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/star/decorativeStar.ts#L15-L275"},
+    {"title":"iztro：四字段装入十二宫","note":"排盘生成时把changsheng12、boshi12、jiangqian12与suiqian12分别写入每个宫位，证明它们是四条并列字段。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/astro/astro.ts#L136-L206"},
+    {"title":"iztro：宫位对象字段类型","note":"Palace类型把四条十二神与主星、辅星、杂曜、大限和小限分开声明，支持本页的对象边界。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/data/types/palace.ts#L25-L75"},
+    {"title":"iztro：十二神固定测试","note":"测试核对多组长生顺逆、博士完整序列、岁前／将前固定结果，并逐项断言五局与四组三合起点。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/__tests__/star/star.test.ts#L190-L307"}
+  ],
+  "internal_review": {
+    "status":"formal_four_parallel_palace_cycles_locked_implementation_with_named_variant",
+    "reviewed_at":"2026-08-06",
+    "source_refs":["github_sylarlong_iztro_2fb2030"],
+    "ownership":"K-ZW.01 基础盘面／宫格附加循环",
+    "deduplication":"不并入十四主星或待核验辅杂星：四循环是宫位单值字段而非星曜数组；不并入运限层次：后者定义六个时间作用域，岁前与将前只是流年层携带的标签；不并入八字十二长生：虽共享12个名称，紫微长生以五行局为锚并以年阴阳／性别定方向。",
+    "boundary":"只允许选择抽象循环、锚点、顺逆和算法版本，不接收出生资料或目标年份，不输出某神落宫的个人解释。"
+  }
+}

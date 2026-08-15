@@ -1,0 +1,13 @@
+{
+  "id":"day-good-gods","title":"吉神宜趋","summary":"吉神宜趋记录当天进入吉神集合的名称；它是宜忌判断的输入层之一，不等同于最终宜事清单。",
+  "fixed_example":{"date":"1986-05-29","month":"癸巳","day":"癸酉","gods":["民日","三合","时阴","要安","除神","鸣吠"]},
+  "items":[
+    {"name":"民日","identity":"月日神煞名"},{"name":"三合","identity":"支间关系神煞名"},{"name":"时阴","identity":"月日神煞名"},{"name":"要安","identity":"月日神煞名"},{"name":"除神","identity":"月日神煞名"},{"name":"鸣吠","identity":"日神煞名"}
+  ],
+  "generation_layers":["干支月","六十日干支","月日关系表","实现版本"],
+  "boundaries":["吉神名单不是最终宜事清单","名称相同不代表不同体系中的定义自动相同","只保存固定实现结果与字段身份"],
+  "public_sources":[
+    {"title":"《协纪辨方书》宜忌","note":"说明宜忌须考虑神煞性质与力量，不能把吉凶名单机械相减。","url":"https://www.shidianguji.com/zh/book/SK1619/chapter/1l9llro8ceia7"},
+    {"title":"tyme4ts","note":"固定日期六个吉神名称来自锁定实现。","url":"https://github.com/6tail/tyme4ts"}
+  ]
+}

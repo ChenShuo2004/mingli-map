@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0.0",
+  "id": "xiaoliuren_three_course_stage_model",
+  "title": "三课的初期、过程与结果",
+  "summary": "在 maifusha 实现版的界面中，月课、日课、时课依次被标作事项初期、过程与结果。这个节点保存的是三次既有落宫如何获得时间阶段身份，不增加第四次起课，也不把阶段标签误写成跨版本共识或事件预测。",
+  "version_scope": {
+    "version": "maifusha/xiaoliuren",
+    "commit": "00b56579cf35b9961af5468bd2dc90f9211cc146",
+    "status": "作者界面解释层，不代表所有小六壬版本"
+  },
+  "stages": [
+    {
+      "order": 1,
+      "course_id": "month",
+      "course": "月课",
+      "stage": "初期",
+      "input_scope": "农历月数",
+      "fixed_example_position": 5,
+      "fixed_example_palace": "小吉"
+    },
+    {
+      "order": 2,
+      "course_id": "day",
+      "course": "日课",
+      "stage": "过程",
+      "input_scope": "月数接续日数",
+      "fixed_example_position": 27,
+      "fixed_example_palace": "速喜"
+    },
+    {
+      "order": 3,
+      "course_id": "hour",
+      "course": "时课",
+      "stage": "结果",
+      "input_scope": "月日累计接续时支序数",
+      "fixed_example_position": 37,
+      "fixed_example_palace": "大安"
+    }
+  ],
+  "structure_rules": [
+    "三个阶段复用月课、日课、时课已经算出的三个落点，不重新计算另一套宫位。",
+    "初期、过程、结果是该具名实现的界面语义，不从阶段名称推导事件内容。",
+    "固定例只核对第5、27、37位与小吉、速喜、大安的对应，不输出吉凶。"
+  ],
+  "reading_boundaries": [
+    "不把初期、过程、结果解释成确定会发生的事件。",
+    "不读取当前日期、真人输入或报数。",
+    "其他版本若使用不同阶段定义，应新增版本列而不是覆盖本节点。"
+  ],
+  "public_sources": [
+    {
+      "title": "maifusha/xiaoliuren 三课界面",
+      "url": "https://github.com/maifusha/xiaoliuren/blob/00b56579cf35b9961af5468bd2dc90f9211cc146/template/fragment/jixiong.tpl",
+      "note": "MIT仓库中的界面模板；支持月课、日课、时课分别标作事项初期、过程与结果。"
+    },
+    {
+      "title": "maifusha/xiaoliuren 起课实现",
+      "url": "https://github.com/maifusha/xiaoliuren/blob/00b56579cf35b9961af5468bd2dc90f9211cc146/pkg/liuren/gongwei.go",
+      "note": "用于连接三个阶段与既有月、日、时落宫，不支持阶段事件解释。"
+    }
+  ],
+  "internal_review": {
+    "reviewed_on": "2026-08-09",
+    "owner": ["火华", "Codex"],
+    "status": "formal_versioned_interpretive_structure"
+  }
+}

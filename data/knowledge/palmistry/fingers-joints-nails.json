@@ -1,0 +1,21 @@
+{
+  "id": "fingers-joints-nails",
+  "title": "手指、指节与指甲",
+  "summary": "手指按拇、食、中、无名、小指分别记录轴线、长度、节段、间距与指尖；指甲只记录当前可见外形和表面状态。",
+  "image": "/assets/palmistry/ai-left-palm-detail.webp",
+  "fingers": [
+    {"id": "thumb", "label": "拇指", "segments": "两段可见指骨区", "reference": "掌桡侧，虎口外侧", "x": 79, "y": 39, "observe": ["展开角", "轴线", "两节比例", "指尖", "与掌缘连接"]},
+    {"id": "index", "label": "食指", "segments": "近节、中节、末节", "reference": "拇指相邻的第一长指", "x": 63, "y": 18, "observe": ["相对长度", "三节比例", "轴线", "指尖", "指间距"]},
+    {"id": "middle", "label": "中指", "segments": "近节、中节、末节", "reference": "中央且通常最长的手指", "x": 51, "y": 13, "observe": ["相对长度", "三节比例", "轴线", "指尖", "指间距"]},
+    {"id": "ring", "label": "无名指", "segments": "近节、中节、末节", "reference": "中指与小指之间", "x": 40, "y": 17, "observe": ["与食指比较", "三节比例", "轴线", "指尖", "指间距"]},
+    {"id": "little", "label": "小指", "segments": "近节、中节、末节", "reference": "掌尺侧最外端", "x": 28, "y": 26, "observe": ["相对无名指高度", "三节比例", "轴线", "指尖", "外展角"]}
+  ],
+  "joint_fields": ["掌指连接处", "近侧指间关节", "远侧指间关节", "关节轴线", "屈伸姿态", "左右对应"],
+  "nail_fields": ["甲板长宽", "长宽比例", "近端与侧缘轮廓", "自由缘形状", "纵横纹理可见度", "表面反光", "颜色所受光线影响", "遮挡或修饰状态"],
+  "capture_notes": ["手掌自然放松", "手指尽量同一平面", "正面图记录长度与间距", "侧面图补曲度与厚度", "指甲需要更近距离且光线均匀的图"],
+  "boundaries": ["指节和指甲外观不用于疾病诊断", "指长比例不用于推断性格、能力或性别", "美甲、受力、角度与镜头畸变必须作为干扰条件记录"],
+  "public_sources": [
+    {"title": "NIST SP 500-271：手与指纹图像记录", "note": "用于侧别、掌区、图像尺度及采集条件的记录底座。", "url": "https://www.nist.gov/publications/data-format-interchange-fingerprint-facial-other-biometric-information-ansinist-itl-1-0"},
+    {"title": "《神相全编》卷八公版扫描", "note": "用于索引传统论手、指与掌纹材料；不采用健康或人物断语。", "url": "https://commons.wikimedia.org/wiki/File:SSID-13003395_%E7%A5%9E%E7%9B%B8%E5%85%A8%E7%B7%A8_%E5%8D%B78.pdf"}
+  ]
+}

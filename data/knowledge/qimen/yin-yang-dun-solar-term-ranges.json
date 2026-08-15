@@ -1,0 +1,16 @@
+{
+  "schema_version":"1.0.0","id":"qimen_yin_yang_dun_solar_term_ranges","title":"阴阳遁的节气范围",
+  "summary":"当前时家奇门资料把一年二十四节气分成两段：冬至起至芒种为阳遁十二节气，夏至起至大雪为阴遁十二节气。阴阳遁在这里先回答地盘序列沿宫号递增还是递减；具体某节气采用几局，还要继续查上中下三元表。",
+  "ranges":[
+    {"id":"yang","label":"阳遁","start":"冬至","end":"芒种","movement":"地盘沿宫号递增","terms":["冬至","小寒","大寒","立春","雨水","惊蛰","春分","清明","谷雨","立夏","小满","芒种"]},
+    {"id":"yin","label":"阴遁","start":"夏至","end":"大雪","movement":"地盘沿宫号递减","terms":["夏至","小暑","大暑","立秋","处暑","白露","秋分","寒露","霜降","立冬","小雪","大雪"]}
+  ],
+  "boundary_chain":["先确定当前交节后所属节气","由节气落入阳遁或阴遁半年","再由起局法确定上、中、下元","最后查节气三元局数表"],
+  "reading_boundaries":["本页保存的是当前三套软件资料共同采用的时家节气分段，不声称覆盖年家、月家、日家或全部流派。","冬至、夏至是两段入口；精确交节时刻由历法实现提供，本页不计算。","页面只切换固定节气名称，不读取系统日期。"],
+  "public_sources":[
+    {"title":"mingli-skills 锁定节气局数表","url":"https://github.com/weizeW/mingli-skills/blob/c16eca0/qimen-dunjia/data/jieqi_jushu.json","note":"保存阳遁冬至至芒种、阴遁夏至至大雪的24节气分段。"},
+    {"title":"qimenpaipan 锁定局数表实现","url":"https://github.com/redrockhorse/qimenpaipan/blob/b6de54245cf7a514f59e51833dc01a87e1a3a849/qimenpaipan.py#L145-L194","note":"第二套实现采用相同的两段24节气三元局数表。"},
+    {"title":"qimen-go 锁定时家入口","url":"https://github.com/deminzhang/qimen-go/blob/4d3f58fa0f401b5b3a337f119138e99e90685dda/xuan/qimen.go","note":"第三套实现先定节气与阴阳遁，再进入起局法分支。"}
+  ],
+  "internal_review":{"status":"formal_range_node_with_implementation_agreement","reviewed_at":"2026-08-09","owner":["火华","Codex"],"source_refs":["github_weizew_mingli_skills_c16eca0","github_redrockhorse_qimenpaipan_b6de542","github_deminzhang_qimen_go_4d3f58f"],"deduplication":"本页只定阴阳遁节气范围；三元局数另页维护。","known_gaps":["缺逐条可引传统底本页码。"],"boundary":"固定节气表，不读取真人时间。"}
+}

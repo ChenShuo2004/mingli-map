@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0.0",
+  "id": "xiaoliuren_month_day_hour_casting",
+  "title": "月课、日课与时课",
+  "summary": "这一具名版本从选定起点出发，先用农历月数得到月课，再把农历日数接到月课，最后把时支序数接到日课。三个步骤共享六宫循环，但输入和累计位置不同；页面冻结字段，只解释公式，不执行真人起课。",
+  "version_scope": {
+    "version": "maifusha/xiaoliuren",
+    "commit": "00b56579cf35b9961af5468bd2dc90f9211cc146",
+    "start_rule": "本批固定从大安开始；仓库对不同事项另有起点约定，留待版本节点处理。"
+  },
+  "input_fields": [
+    { "id": "lunar_month", "label": "农历月数", "range": "1—12" },
+    { "id": "lunar_day", "label": "农历日数", "range": "1—30" },
+    { "id": "hour_branch_index", "label": "时支序数", "range": "子1—亥12" }
+  ],
+  "steps": [
+    { "id": "month", "label": "月课", "zero_based_formula": "start + lunar_month - 1", "plain_language": "起点记作正月，沿六宫数到当前月。" },
+    { "id": "day", "label": "日课", "zero_based_formula": "start + lunar_month + lunar_day - 2", "plain_language": "月课落点记作初一，再数到当前日。" },
+    { "id": "hour", "label": "时课", "zero_based_formula": "start + lunar_month + lunar_day + hour_branch_index - 3", "plain_language": "日课落点记作子时，再数到当前时支。" }
+  ],
+  "normalization": {
+    "expression": "((value % 6) + 6) % 6",
+    "note": "公式以零基位置计算；页面同时显示从一开始数的累计位次，避免把偏移量误读成另一个版本。"
+  },
+  "reading_boundaries": [
+    "不读取系统日期、农历或当前时辰。",
+    "不接受用户报数、汉字笔画或任意取数。",
+    "落宫只作为结构结果，不转换为吉凶或事项判断。"
+  ],
+  "public_sources": [
+    {
+      "title": "maifusha/xiaoliuren 锁定起课实现",
+      "url": "https://github.com/maifusha/xiaoliuren/tree/00b56579cf35b9961af5468bd2dc90f9211cc146",
+      "note": "保存月、日、时三步 FingerByCount 调用；当前公式是该实现的等价零基表达。"
+    }
+  ],
+  "internal_review": {
+    "reviewed_on": "2026-08-09",
+    "owner": ["火华", "Codex"],
+    "status": "formal_versioned_rule"
+  }
+}

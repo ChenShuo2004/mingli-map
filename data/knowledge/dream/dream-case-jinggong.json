@@ -1,0 +1,13 @@
+{
+  "id":"dream-case-jinggong","title":"晋景公多梦、巫医与结局","summary":"《左传·成公十年》把晋侯两梦、小臣一梦、桑田巫解释、秦医缓诊断、求医与死亡按月日连续编入同一段史传。",
+  "kicker":"《左传·成公十年》 · 多梦—多解释者—多行动",
+  "stages":[{"label":"第一梦","content":"晋侯梦大厉破门入室"},{"label":"巫占","content":"桑田巫复述如梦，并言不食新"},{"label":"第二梦","content":"疾病化为二竖，藏于膏下肓上"},{"label":"医断","content":"医缓判断病不可治，位置与梦相合"},{"label":"行动","content":"厚礼遣医；后示新麦并杀巫"},{"label":"结局","content":"将食、如厕、陷而卒"},{"label":"第三梦","content":"小臣晨梦负公登天，后负尸出厕并殉"}],
+  "records":[
+    {"label":"角色","items":[{"term":"梦者一","detail":"晋侯"},{"term":"解释者","detail":"桑田巫"},{"term":"医疗判断者","detail":"秦医缓"},{"term":"梦者二","detail":"小臣"}]},
+    {"label":"时间标记","items":[{"term":"五月","detail":"梦、巫占与求医"},{"term":"六月丙午","detail":"新麦、杀巫与死亡"},{"term":"晨／日中","detail":"小臣梦与负尸行动"}]},
+    {"label":"三条叙事线","items":[{"term":"厉鬼线","detail":"第一梦—巫占—杀巫—不食新"},{"term":"疾病线","detail":"第二梦—医断—不可治"},{"term":"小臣线","detail":"负公登天—负尸出厕—殉葬"}]}
+  ],
+  "case_notes":[{"label":"巫占与医断","note":"两种知识身份并列，不合并成同一种解释"},{"label":"梦验连接","note":"编年叙述把多段事件连续排列"},{"label":"叙事伦理","note":"杀巫与殉葬作为原文事件保存，不作操作或价值建议"}],
+  "boundaries":["疾病与死亡材料不用于健康、寿命或医疗判断。","医缓的诊断属于古代医疗叙事，不等于现代医学证据。","三梦共享一个史传段落，但各自梦者、解释者和后事必须分开。"],
+  "public_sources":[{"title":"《左传·成公十年》","note":"原文保存五月至六月的完整叙事链。","url":"https://zh.wikisource.org/zh-hans/%E6%98%A5%E7%A7%8B%E5%B7%A6%E6%B0%8F%E5%82%B3/%E6%88%90%E5%85%AC"},{"title":"中国哲学书电子化计划：《左传·成公十年》","note":"另一公开原文入口。","url":"https://ctext.org/chun-qiu-zuo-zhuan/cheng-gong-shi-nian/zh"}]
+}

@@ -1,0 +1,45 @@
+{
+  "id": "stroke-conventions",
+  "title": "姓名用字的笔画口径",
+  "summary": "笔画数必须绑定具体字形、字表与计数版本；现代规范总笔画、辞典检字笔画和姓名数理资料中的所谓康熙笔画不能混成一个无来源数字。",
+  "stroke_fields": [
+    {"id": "written", "label": "现代规范笔画", "basis": "所选规范字形的楷书笔顺规范", "must_record": ["规范地区", "字表版本", "总笔画"]},
+    {"id": "dictionary", "label": "辞典总笔画", "basis": "字典按部首、部首外笔画与总笔画著录", "must_record": ["辞典名称", "辞典版本", "部首", "部首外笔画", "总笔画"]},
+    {"id": "kangxi", "label": "康熙字典体系", "basis": "指定《康熙字典》底本、字头与检字位置", "must_record": ["底本", "字头", "部首", "页位或图文位置", "采用笔画"]},
+    {"id": "implementation", "label": "现代数理字库", "basis": "现代程序或起名资料内置的笔画表", "must_record": ["字库名称", "版本或提交", "表值", "上游依据", "核验状态"]}
+  ],
+  "lookup_sequence": [
+    {"step": 1, "label": "锁定原字", "content": "保留姓名中实际出现的字符"},
+    {"step": 2, "label": "选择字形", "content": "明确使用原字、规范简体、繁体或异体字"},
+    {"step": 3, "label": "选择口径", "content": "现代规范、指定辞典、康熙底本或现代数理字库"},
+    {"step": 4, "label": "取得表值", "content": "只从该版本的明确字头读取"},
+    {"step": 5, "label": "保留出处", "content": "笔画值与字形、版本和定位信息一起保存"}
+  ],
+  "missing_states": [
+    {"state": "未收字", "action": "标记缺字，继续查其他有版本的字库"},
+    {"state": "多字头", "action": "分别保存正字、异体或繁简字头，不自动择一"},
+    {"state": "表值冲突", "action": "按来源并列，不取平均值也不多数表决"},
+    {"state": "只有程序值", "action": "标为现代数理字库值，不能写成康熙定本"}
+  ],
+  "fixed_record": {
+    "character": "示例字",
+    "original_form": "原字A",
+    "selected_form": "字形A",
+    "convention": "字库甲·版本1",
+    "stroke_count": "N画",
+    "status": "结构示例，不提供真实字的数理值"
+  },
+  "boundaries": [
+    "部首笔画、部首外笔画与全字总笔画是不同字段",
+    "数据库收录量大不等于每个笔画值已有底本",
+    "缺字时不得用Unicode码点、字符序号或随机公式估算笔画",
+    "同一字符在不同字形或字库中出现不同表值时按版本并列",
+    "笔画口径只形成可复核的输入，不进入五格计算和数理分类"
+  ],
+  "public_sources": [
+    {"title": "教育部：通用规范汉字笔顺规范", "note": "用于现代规范汉字的笔形、笔画与笔顺口径。", "url": "https://www.moe.gov.cn/jyb_sjzl/ziliao/A19/202103/W020210318300204215237.pdf"},
+    {"title": "教育部《重编国语辞典修订本》：单字基本体例", "note": "用于部首、部首外笔画与总笔画三个辞典字段。", "url": "https://dict.revised.moe.edu.tw/page.jsp?ID=18"},
+    {"title": "中国哲学书电子化计划：《康熙字典》", "note": "提供《乾隆御览四库全书荟要》本影像与OCR入口；具体字头必须回看图文，不能只取搜索页数字。", "url": "https://ctext.org/kangxi-zidian/zh"},
+    {"title": "tianji 姓名笔画实现（来源索引）", "note": "约4.6万字的现代数理字库仅作为实现版本；其康熙底本尚未逐字落实，因此不升格为通行表。", "url": "https://github.com/Ficere/Tianji"}
+  ]
+}

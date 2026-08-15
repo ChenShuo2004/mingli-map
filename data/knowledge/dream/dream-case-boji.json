@@ -1,0 +1,13 @@
+{
+  "id":"dream-case-boji","title":"薄姬苍龙梦与代王叙事","summary":"《史记·外戚世家》把许负相语、薄姬苍龙入腹之梦、高祖“贵征”解释、生代王及代王后来即帝位串成两层预兆叙事。",
+  "kicker":"《史记·外戚世家》 · 相语与梦兆分层",
+  "stages":[{"label":"前置信息","content":"许负相薄姬，当生天子"},{"label":"梦者","content":"薄姬"},{"label":"梦境","content":"苍龙据腹"},{"label":"转述","content":"薄姬向高祖述梦"},{"label":"解释","content":"高祖称为贵征"},{"label":"近后事","content":"生男，为代王"},{"label":"远后事","content":"代王十七年后被迎立为孝文帝"}],
+  "records":[
+    {"label":"两层预兆","items":[{"term":"相语","detail":"许负在梦前作人物相法判断"},{"term":"梦兆","detail":"薄姬梦苍龙据腹"},{"term":"解释","detail":"高祖称贵征"}]},
+    {"label":"两段结果","items":[{"term":"出生","detail":"一幸生男，成为代王"},{"term":"即位","detail":"十七年后大臣迎立代王"},{"term":"文本回看","detail":"后世身份强化了梦的政治意义"}]},
+    {"label":"角色","items":[{"term":"梦者","detail":"薄姬"},{"term":"听梦与解释者","detail":"汉高祖"},{"term":"前兆解释者","detail":"许负"},{"term":"后事行动者","detail":"迎立代王的大臣"}]}
+  ],
+  "case_notes":[{"label":"不能合并","note":"许负相语与薄姬梦是两种不同材料"},{"label":"时间距离","note":"生代王与后来即位不是同一时点"},{"label":"叙事视角","note":"《史记》在已知文帝身份后回述其母梦兆"}],
+  "boundaries":["不把生育梦象用于个人怀孕、性别或身份预测。","“苍龙—贵征—天子”只作为《史记》本例的叙事关系。","近后事与十七年后的远后事分开记录，不压缩成即时应验。"],
+  "public_sources":[{"title":"《史记》卷四十九《外戚世家》","note":"薄太后段保存相语、苍龙梦、生代王和后来即位。","url":"https://zh.wikisource.org/zh-hans/%E5%8F%B2%E8%A8%98/%E5%8D%B7049"},{"title":"中国哲学书电子化计划：《史记·外戚世家》","note":"另一公开原文入口。","url":"https://ctext.org/shiji/wai-qi-shi-jia/zh"}]
+}

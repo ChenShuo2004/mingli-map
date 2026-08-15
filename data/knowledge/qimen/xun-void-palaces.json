@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0.0",
+  "id": "qimen_xun_void_palaces",
+  "title": "六甲旬空与空亡落宫",
+  "summary": "一旬只有十组干支，十二地支中会余下两个空位。时家奇门先由时柱确定六甲旬首，再把该旬两支空亡映射到九宫；同一宫容纳两个地支时，两个空支可能合并成一个空亡宫标记。",
+  "rows": [
+    {"xun":"甲子","instrument":"戊","empty_branches":["戌","亥"],"palaces":[6,6],"shape":"两支同在乾六宫"},
+    {"xun":"甲戌","instrument":"己","empty_branches":["申","酉"],"palaces":[2,7],"shape":"分落坤二、兑七宫"},
+    {"xun":"甲申","instrument":"庚","empty_branches":["午","未"],"palaces":[9,2],"shape":"分落离九、坤二宫"},
+    {"xun":"甲午","instrument":"辛","empty_branches":["辰","巳"],"palaces":[4,4],"shape":"两支同在巽四宫"},
+    {"xun":"甲辰","instrument":"壬","empty_branches":["寅","卯"],"palaces":[8,3],"shape":"分落艮八、震三宫"},
+    {"xun":"甲寅","instrument":"癸","empty_branches":["子","丑"],"palaces":[1,8],"shape":"分落坎一、艮八宫"}
+  ],
+  "fixed_checks": [
+    {"time":"2024-01-15 12:00","time_xun":"甲寅","result":"子丑空 · 坎一与艮八宫"},
+    {"time":"2024-06-21 12:00","time_xun":"甲午","result":"辰巳空 · 同落巽四宫"},
+    {"time":"2024-12-21 00:00","time_xun":"甲子","result":"戌亥空 · 同落乾六宫"}
+  ],
+  "reading_boundaries": [
+    "本页只展示六甲旬首到空支、空宫的固定映射，不解释空亡吉凶。",
+    "时家盘使用时旬空；年、月、日旬空是另外三组字段，不能混成一组。",
+    "空支映射到同一宫不代表少了一支，只是九宫坐标发生合并。"
+  ],
+  "public_sources": [
+    {"title":"mingli-skills 锁定旬空表","url":"https://github.com/weizeW/mingli-skills/blob/c16eca0/qimen-dunjia/data/kongwang.json","note":"提供六甲旬首、两支空亡及九宫落点完整表。"},
+    {"title":"qimen-go 锁定空亡常量","url":"https://github.com/deminzhang/qimen-go/blob/4d3f58fa0f401b5b3a337f119138e99e90685dda/xuan/ganzhi.go#L31-L48","note":"提供六旬空支映射，并在时家盘输出年、月、日、时四组旬空。"},
+    {"title":"qimen-go 锁定空亡入盘实现","url":"https://github.com/deminzhang/qimen-go/blob/4d3f58fa0f401b5b3a337f119138e99e90685dda/xuan/qimen.go#L189-L262","note":"展示年、月、日、时四组旬空怎样写入盘体，并将时旬空保留为宫位标记。"}
+  ],
+  "internal_review": {
+    "status":"formal_rule_mapping",
+    "reviewed_at":"2026-08-09",
+    "owner":["火华","Codex"],
+    "source_refs":["github_weizew_mingli_skills_c16eca0","github_deminzhang_qimen_go_4d3f58f"],
+    "deduplication":"旬首六仪映射已在值符值使页出现；本页只保存由旬首继续推出两空支与空宫的下一步。",
+    "known_gaps":["缺规则级古籍页码。","不处理填实、冲空、对宫等解释规则。"],
+    "boundary":"固定映射，不提供实时排盘或断语。"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0",
+  "id": "tarot-interpretive-uncertainty",
+  "title": "解读语言与不确定性",
+  "summary": "把看见的、来源写的、当次推断的和仍然不知道的内容分别说清楚。",
+  "language_layers": [
+    {"id":"observed","label":"看见的","verb":"牌面上出现……","note":"只记录人物、物件、动作、方向与构图。","certainty":"可由当前牌图复核"},
+    {"id":"sourced","label":"来源写的","verb":"Waite在1910版本中写作……","note":"保留作者、出版物、方向和翻译层。","certainty":"只属于所标来源"},
+    {"id":"inferred","label":"当次理解","verb":"放在这个问题与牌位下，可以考虑……","note":"说明问题、牌阵、牌位和组合条件。","certainty":"情境中的解释"},
+    {"id":"unknown","label":"仍不知道","verb":"这组牌不能直接证明……","note":"留下无法由牌面或来源确认的内容。","certainty":"明确不确定性"}
+  ],
+  "rewrites": [
+    {"id":"certainty","before":"这件事一定会发生。","after":"如果当前条件不变，这可以作为一种需要留意的可能性。","changed":"把必然结果改成有条件的可能性。"},
+    {"id":"third-party","before":"这张牌证明他正在隐瞒我。","after":"这张牌不能证明未在场者的内心；我可以回到自己观察到的事实。","changed":"把第三方断言改回可观察范围。"},
+    {"id":"authority","before":"这张牌就是这个意思。","after":"Waite 1910为这张牌写下这组短义；其他作者版本可能不同。","changed":"补上作者与版本。"},
+    {"id":"advice","before":"牌要求我马上辞职。","after":"牌位可以提示一个考虑方向，决定仍需结合现实信息。","changed":"把命令改成可评估的选择。"},
+    {"id":"accuracy","before":"后来发生了，所以当时全说准了。","after":"分别记录吻合、不吻合和当时过于模糊的部分。","changed":"避免只挑选事后吻合的内容。"}
+  ],
+  "fixed_example": {
+    "card_number":"I",
+    "card_name":"魔术师",
+    "image":"TheMagician.png",
+    "orientation":"upright",
+    "position":"过去",
+    "question":"未来三个月，我可以怎样调整目前的学习计划？",
+    "layers": {
+      "observed":"人物站在桌前，一手举杖；桌面可见四类物件。",
+      "sourced":"读取Waite 1910魔术师正位短义，并保留作者版本。",
+      "inferred":"在“过去”牌位中，可回看此前已经使用的资源、方法或主动行动。",
+      "unknown":"不能由这一张牌证明三个月后的结果，也不能替当事人作决定。"
+    }
+  },
+  "linked_nodes": [
+    {"label":"牌义来源：Mathers与Waite版本","route":"/topic/tarot/meaning-lineages"},
+    {"label":"多张牌怎样组合","route":"/topic/tarot/multi-card-combination"},
+    {"label":"解读记录与复盘","route":"/topic/tarot/reading-review"},
+    {"label":"咨询边界与伦理","route":"/topic/tarot/consultation-ethics"}
+  ],
+  "boundary":"四层表达是用于区分观察、来源、推断与未知的学习模板，不是新的传统牌义体系。",
+  "public_sources": [
+    {"title":"Waite 1910：牌义相对于主题与条件","note":"支撑把作者牌义放回当前主题、位置和具体条件，而不是脱离语境拼接。","url":"https://www.gutenberg.org/cache/epub/43548/pg43548-images.html#III8"},
+    {"title":"TABI：Aims and Ethics","note":"支撑尊重当事人选择、第三方问题改写或拒绝、适时转介专业人士。","url":"https://tabi.org.uk/about-us/aims-and-ethics/"},
+    {"title":"香港专业塔罗协会：专业守则及实务","note":"支撑知情、自决、隐私和资料用途边界。","url":"https://hktarot.org.hk/code-of-ethics"}
+  ],
+  "internal_review": {"status":"formal_interpretive_uncertainty_node","reviewed_at":"2026-08-07","source_refs":["gutenberg_waite_43548","tabi_aims_ethics","hkta_code_ethics"],"ownership":"K-TAROT.10 解释来源","boundary":"观察、作者陈述、情境推断与未知分层；本站模板不充当新牌义。"}
+}

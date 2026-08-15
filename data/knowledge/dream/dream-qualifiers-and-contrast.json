@@ -1,0 +1,14 @@
+{
+  "id":"dream-qualifiers-and-contrast","title":"状态、动作与位置怎样改变占辞","summary":"同一对象并不固定对应一个结果；明暗、新破、生死、入出、上下、人与物的动作关系都可能使条目分流。",
+  "kicker":"同一对象 × 不同限定词 = 不同条目",
+  "sections":[
+    {"label":"状态对举","note":"对象不变，状态改变","items":[{"term":"明／暗","detail":"镜的明暗分别立项"},{"term":"新／破","detail":"巾袜、屋舍等以新破分流"},{"term":"生／死","detail":"树木、人物等以生死分流"}]},
+    {"label":"方向关系","note":"位置改变结果词","items":[{"term":"入宅／出宅","detail":"棺与宅的方向关系相反"},{"term":"上／落","detail":"登楼、坠地分别成条"},{"term":"入身／离身","detail":"对象与身体的接近或离开"}]},
+    {"label":"动作关系","note":"谁对谁做什么","items":[{"term":"见／拜","detail":"观看与礼拜不是同一条"},{"term":"食／饮","detail":"对象种类与入口动作共同限定"},{"term":"追／被追","detail":"主动与被动方向分开"}]},
+    {"label":"显著属性","note":"复合梦象中的主限定","items":[{"term":"颜色","detail":"必须与具体对象一起记录"},{"term":"数量","detail":"单个、成群、多寡不可省略"},{"term":"完整性","detail":"有轮／无轮、折／未折等"}]}
+  ],
+  "relations":[{"from":"对象词","link":"不足以单独定位","to":"状态词","note":"如镜还要看明暗"},{"from":"对象＋状态","link":"还可能需要","to":"动作与位置","note":"如棺还要看入宅或出宅"}],
+  "fixed_examples":[{"source":"P.3908·人身梳镜章","dream":"镜","qualifier":"明／暗","marker":"—","outcome":"吉／凶","note":"状态对举"},{"source":"P.3908·冢墓棺材章","dream":"棺","qualifier":"入宅／出宅","marker":"—","outcome":"财来／失财","note":"方向对举"},{"source":"P.3908·舟车桥市谷章","dream":"车","qualifier":"无轮","marker":"—","outcome":"福败","note":"完整性限定"}],
+  "boundaries":["颜色、数量和状态不能脱离具体对象单独解释。","对举条目只保存来源结构，不将吉凶二值扩展成现代评分。","若异本给出不同结果，优先进入版本冲突节点。"],
+  "public_sources":[{"title":"P.3908译注与写本对校","note":"提供明暗、新破、入出、上下等对举条目。","url":"https://www.daowen.com/lilun/1567134.html"},{"title":"敦煌本S.5900与P.3908校释札记","note":"说明词语释读、校勘和断句仍存在修订空间。","url":"https://m.fx361.com/news/2019/0305/6418426.html"}]
+}

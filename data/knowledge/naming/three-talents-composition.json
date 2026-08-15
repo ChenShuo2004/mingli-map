@@ -1,0 +1,32 @@
+{
+  "id": "three-talents-composition",
+  "title": "三才的组成",
+  "summary": "三才依次取天格、人格、地格的数尾五行，组成“天—人—地”三个位置；外格与总格仍属于五格，但不进入三才三字段。",
+  "positions": [
+    {"id": "heaven", "label": "天才", "source_grid": "天格", "order": 1, "content": "天格数值的数尾五行"},
+    {"id": "person", "label": "人才", "source_grid": "人格", "order": 2, "content": "人格数值的数尾五行"},
+    {"id": "earth", "label": "地才", "source_grid": "地格", "order": 3, "content": "地格数值的数尾五行"}
+  ],
+  "formation_steps": ["读取天格、人格、地格", "分别取得个位数", "分别转换为五行", "按天—人—地顺序连接"],
+  "fixed_examples": [
+    {"source": "单姓双名固定例", "grids": [8, 12, 13], "digits": [8, 2, 3], "elements": ["金", "木", "火"], "configuration": "金木火"},
+    {"source": "单姓单名固定例", "grids": [8, 12, 6], "digits": [8, 2, 6], "elements": ["金", "木", "土"], "configuration": "金木土"},
+    {"source": "复姓双名固定例", "grids": [16, 14, 13], "digits": [6, 4, 3], "elements": ["土", "火", "火"], "configuration": "土火火"}
+  ],
+  "not_included": [
+    {"grid": "外格", "reason": "不占三才位置"},
+    {"grid": "总格", "reason": "不占三才位置"},
+    {"field": "单字五行", "reason": "属于另一套用字分类，不能替代格数五行"},
+    {"field": "八字五行", "reason": "属于出生信息体系，不能混入三才三字段"}
+  ],
+  "boundaries": [
+    "三才的天、人、地是三个位置名，不是出生年、出生日与姓名笔画的混合定义",
+    "三才配置必须保留顺序；金木火与火木金不是同一配置",
+    "只在五格公式与数尾映射版本确定后生成三才",
+    "三才组成只形成三元素序列，不生成评级"
+  ],
+  "public_sources": [
+    {"title": "tianji：三才配置实现", "note": "程序依次取天格、人格、地格的五行形成三才数组；不采用评分与个人解释。", "url": "https://github.com/Ficere/tianji"},
+    {"title": "八字辅助工具：三才的计算", "note": "资料后段明确三才指天、人格、地格的五行属性；同文前段冲突定义继续排除。", "url": "https://github.com/TVB-JINPAIJIANZHI/bazifuzugongju"}
+  ]
+}

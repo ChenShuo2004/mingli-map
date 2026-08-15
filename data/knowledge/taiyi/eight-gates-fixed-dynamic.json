@@ -1,0 +1,118 @@
+{
+  "schema_version": "1.0",
+  "id": "taiyi_eight_gates_fixed_dynamic",
+  "title": "八门固定身份与动态分布",
+  "summary": "把开、休、生、伤、杜、景、死、惊的固定卦位身份，与锁定实现根据积数和值事门生成的动态八宫分布分开。固定身份回答每个门在卷二中对应哪一卦与方向；动态分布回答同一固定时刻、同一实现分支下八门实际落到哪些太乙宫数。仅展示名称、生成步骤和固定结果，不展示传统吉凶等级或行动建议。",
+  "fixed_input": "1552年9月24日 0时0分 · 年计",
+  "fixed_identities": [
+    {"id": "open", "name": "开", "trigram": "乾", "direction": "西北", "source_role": "卷二以开向、通达说明门名。"},
+    {"id": "rest", "name": "休", "trigram": "坎", "direction": "正北", "source_role": "卷二以休息、安居说明门名。"},
+    {"id": "life", "name": "生", "trigram": "艮", "direction": "东北", "source_role": "卷二以生育万物说明门名。"},
+    {"id": "injury", "name": "伤", "trigram": "震", "direction": "正东", "source_role": "卷二把疾病、灾殃列为此门所主说法。"},
+    {"id": "block", "name": "杜", "trigram": "巽", "direction": "东南", "source_role": "卷二以闭塞不通说明门名。"},
+    {"id": "view", "name": "景", "trigram": "离", "direction": "正南", "source_role": "卷二在此门下保存亡遗、惊恐等来源说法。"},
+    {"id": "death", "name": "死", "trigram": "坤", "direction": "西南", "source_role": "卷二以死丧、葬埋说明门名。"},
+    {"id": "alarm", "name": "惊", "trigram": "兑", "direction": "正西", "source_role": "卷二以惊恐、奔走说明门名。"}
+  ],
+  "generation_chain": [
+    {"step": 1, "label": "积数取240余数", "note": "锁定`eight_door`先以当前积数对240取余。"},
+    {"step": 2, "label": "每30数选值事门", "note": "余数按30一段映射到开、休、生、伤、杜、景、死、惊。"},
+    {"step": 3, "label": "从太乙宫起八宫序", "note": "宫序使用8、3、4、9、2、7、6、1，并旋转到太乙所在宫。"},
+    {"step": 4, "label": "从值事门起八门序", "note": "门序旋转到值事门，再与八个宫数逐项配对。"}
+  ],
+  "method_distributions": [
+    {
+      "method": 0,
+      "label": "太乙统宗",
+      "accumulated": 10155469,
+      "duty_gate": "伤",
+      "taiyi_palace": 6,
+      "three_gates_output": "三门具",
+      "status": "与金镜、太乙局同分布",
+      "distribution": [
+        {"palace": 6, "position": "酉", "gate": "伤"}, {"palace": 1, "position": "乾", "gate": "杜"},
+        {"palace": 8, "position": "子", "gate": "景"}, {"palace": 3, "position": "艮", "gate": "死"},
+        {"palace": 4, "position": "卯", "gate": "惊"}, {"palace": 9, "position": "巽", "gate": "开"},
+        {"palace": 2, "position": "午", "gate": "休"}, {"palace": 7, "position": "坤", "gate": "生"}
+      ]
+    },
+    {
+      "method": 1,
+      "label": "太乙金镜",
+      "accumulated": 1938109,
+      "duty_gate": "伤",
+      "taiyi_palace": 6,
+      "three_gates_output": "三门具",
+      "status": "固定例",
+      "distribution": [
+        {"palace": 6, "position": "酉", "gate": "伤"}, {"palace": 1, "position": "乾", "gate": "杜"},
+        {"palace": 8, "position": "子", "gate": "景"}, {"palace": 3, "position": "艮", "gate": "死"},
+        {"palace": 4, "position": "卯", "gate": "惊"}, {"palace": 9, "position": "巽", "gate": "开"},
+        {"palace": 2, "position": "午", "gate": "休"}, {"palace": 7, "position": "坤", "gate": "生"}
+      ]
+    },
+    {
+      "method": 2,
+      "label": "太乙淘金歌",
+      "accumulated": 10155745,
+      "duty_gate": "杜",
+      "taiyi_palace": 1,
+      "three_gates_output": "三门具",
+      "status": "固定例产生不同值事门与起宫",
+      "distribution": [
+        {"palace": 1, "position": "乾", "gate": "杜"}, {"palace": 8, "position": "子", "gate": "景"},
+        {"palace": 3, "position": "艮", "gate": "死"}, {"palace": 4, "position": "卯", "gate": "惊"},
+        {"palace": 9, "position": "巽", "gate": "开"}, {"palace": 2, "position": "午", "gate": "休"},
+        {"palace": 7, "position": "坤", "gate": "生"}, {"palace": 6, "position": "酉", "gate": "伤"}
+      ]
+    },
+    {
+      "method": 3,
+      "label": "太乙局",
+      "accumulated": 10155469,
+      "duty_gate": "伤",
+      "taiyi_palace": 6,
+      "three_gates_output": "三门具",
+      "status": "与统宗、金镜同分布",
+      "distribution": [
+        {"palace": 6, "position": "酉", "gate": "伤"}, {"palace": 1, "position": "乾", "gate": "杜"},
+        {"palace": 8, "position": "子", "gate": "景"}, {"palace": 3, "position": "艮", "gate": "死"},
+        {"palace": 4, "position": "卯", "gate": "惊"}, {"palace": 9, "position": "巽", "gate": "开"},
+        {"palace": 2, "position": "午", "gate": "休"}, {"palace": 7, "position": "坤", "gate": "生"}
+      ]
+    }
+  ],
+  "comparison_examples": [
+    {"gate": "开", "fixed_identity": "乾 · 西北", "runtime_example": "金镜年计落9宫 · 巽", "note": "固定卦位是门的身份；动态落宫是本次盘面结果。"},
+    {"gate": "休", "fixed_identity": "坎 · 正北", "runtime_example": "金镜年计落2宫 · 午", "note": "两套位置不能用名称相似直接替换。"},
+    {"gate": "伤", "fixed_identity": "震 · 正东", "runtime_example": "金镜年计值事并落6宫 · 酉", "note": "值事门只是本次旋转起点，不改变伤门的固定身份。"}
+  ],
+  "implementation_boundaries": [
+    {"label": "固定八方不等于动态八宫", "evidence": "卷二给八门各自所直卦位；`geteightdoors`另按积数和太乙宫旋转。", "handling": "内容分成身份表与固定例分布两块。"},
+    {"label": "宫数标签不直接等于卦名", "evidence": "锁定太乙宫数转写使用乾、午、艮、卯、中、酉、坤、子、巽；卷二固定门位使用乾坎艮震巽离坤兑。", "handling": "动态结果同时显示宫数和锁定位置标签，不冒充固定卦位。"},
+    {"label": "時計另有节气分支", "evidence": "`ji_style=3`时，锁定实现按冬至／夏至区间再调整起宫。", "handling": "本页只展示年计固定例，不外推至時計。"},
+    {"label": "三门具是实现输出", "evidence": "固定四分支均返回“三门具”；函数以太乙宫所临门是否属于休、生、开判断。", "handling": "只展示返回值和判断入口，不转写成行动建议或传统效力证明。"}
+  ],
+  "reading_boundaries": [
+    {"label": "可识别", "note": "八门名称、固定卦位、方向与来源角色说明。"},
+    {"label": "可复算", "note": "固定年计四分支的值事门、太乙起宫与八门分布。"},
+    {"label": "不由此推出", "note": "某门、方向或“三门具”对现实行动具有吉凶效力。"}
+  ],
+  "public_sources": [
+    {"title": "《太乙金鏡式經》卷二：推八门所主法", "url": "https://ctext.org/wiki.pl?chapter=275091&if=gb&remap=gb", "note": "第18至19条列开、休、生、伤、杜、景、死、惊对应的卦位、方向与所主说法；该资料为四库本影像连接OCR文本。"},
+    {"title": "kintaiyi锁定值事门与基础分布函数", "url": "https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/config.py#L828-L848", "note": "固定提交以积数模240、每30数一段选择值事门，并保存八宫配门的基础函数。"},
+    {"title": "kintaiyi锁定动态八门实现", "url": "https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L1353-L1387", "note": "`geteightdoors`从太乙宫与值事门分别旋转宫序、门序；時計另按冬至／夏至分支调整。"},
+    {"title": "kintaiyi锁定固定例输入", "url": "https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/examples/basic_usage.py#L13-L20", "note": "固定输入1552-09-24 00:00、年计；本页在临时锁定环境复跑四个方法分支。"}
+  ],
+  "internal_review": {
+    "status": "formal_fixed_identity_and_dynamic_distribution_node",
+    "reviewed_at": "2026-08-06",
+    "owner": ["火华", "Codex"],
+    "source_refs": ["github_kentang2017_kintaiyi_f2719d6", "ctext_taiyi_jinjing_vol_2"],
+    "runtime_environment": "temporary Python venv; locked repository commit installed from source",
+    "runtime_command": "Taiyi(1552, 9, 24, 0, 0).geteightdoors(0, method), method=0..3",
+    "deduplication": "不并入‘五种时间粒度与四个积年分支’：该页比较积数、局数和太乙宫；本页解释八门固定身份及由这些上游量生成的门分布。不并入‘九宫与十六神位’：该页定义坐标；本页定义在八宫间旋转的另一组符号。",
+    "known_gaps": ["卷二八门传统评价等级未进入本节点", "時計的冬至／夏至动态分布未以固定样本展开", "不同古籍版本的值事门推法尚未逐条校勘"],
+    "boundary": "固定样本、无真人输入、无随机、不展示传统吉凶等级、兵事、灾异、方向建议或个人结论。"
+  }
+}

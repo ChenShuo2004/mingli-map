@@ -1,0 +1,79 @@
+{
+  "schema_version":"1.0.0",
+  "id":"hour-count-multiple-cycles",
+  "title":"时计积时的二十四、六十与七十二周期",
+  "summary":"《武备志》时计法把一日计十二算，同一积时分别以二十四除而求行宫、以六十除而入纪、以七十二约而入局；庚辰日丁丑时的原典实例用积时194得到余2、第四纪余14、戊子元五十局。二十四、六十、七十二因此不是三个竞争公式，而是同一输入的三个下游身份：两日行宫周期、五日一纪、六日七十二局；三者在最小公倍数360时、即三十日重新对齐。锁定实现的kook按积时mod72取局，ty通过重复三次的24项宫轨等价读取mod24，但getepoch对时计改查日干支而不读取积时mod360。固定1552-09-24中method 0／1的积时纪与日干支纪同为第五纪，method 2按积时应是第六纪、method 3应是第一纪，却仍显示第五纪。更早日期还有负日差截断：method 0—2在00:00到01:00一次增加13，次日00:00又倒退12；2000年同样探针只增加1并在午夜连续。保存三周期、四分支、纪字段错位与历史日期断点，不把局号、行宫和纪数合并。",
+  "identity_layers":[
+    {"id":"raw","index":"01","name":"积时原数","range":"连续时算","formula":"(积日−1)×12 + 当日时数","question":"从起点累计到第几时？","note":"是三个取余层的共同输入，不直接等同局号或纪数。"},
+    {"id":"palace","index":"02","name":"二十四行宫数","range":"1—24","formula":"积时 mod 24，以24承接余0","question":"太乙在两日宫轨的哪一步？","note":"阳遁一宫顺行、阴遁九宫逆行，每宫三时。"},
+    {"id":"epoch","index":"03","name":"六十入纪数","range":"1—60","formula":"积时 mod 60，以60承接余0","question":"本纪内第几时？","note":"六十时为五日一纪；六纪共三十日。"},
+    {"id":"board","index":"04","name":"七十二入局数","range":"1—72","formula":"积时 mod 72，以72承接余0","question":"进入七十二局中的第几局？","note":"六日一轮；可继续定位五子元。"}
+  ],
+  "cycle_table":[
+    {"divisor":24,"label":"行宫周期","days":"2日","result":"余数定宫轨步骤","implementation":"ty的24项轨道重复3次"},
+    {"divisor":60,"label":"一纪周期","days":"5日","result":"余数定纪内时位","implementation":"getepoch未直接使用此余数"},
+    {"divisor":72,"label":"入局周期","days":"6日","result":"余数定1—72局","implementation":"kook直接取mod72"},
+    {"divisor":360,"label":"三周期重合","days":"30日","result":"24、60、72同时归位","implementation":"也是六纪与五子元共同总周期"}
+  ],
+  "classical_example":{
+    "label":"庚辰日丁丑时","raw":194,"construction":"17日减1，乘12得192，再加子、丑二时得194","results":[
+      {"divisor":24,"quotient":8,"remainder":2,"identity":"行宫","reading":"阳遁命一乾宫，二算仍在一宫"},
+      {"divisor":60,"quotient":3,"remainder":14,"identity":"入纪","reading":"满三纪后，值第四纪上元内第14时"},
+      {"divisor":72,"quotient":2,"remainder":50,"identity":"入局","reading":"除甲子、丙子两元144时，入戊子元50局"}
+    ],
+    "boundary":"原文随后连接主客与行动判断；范围止于积时、纪、局与行宫。"
+  },
+  "method_results":[
+    {"method":0,"label":"太乙统宗","accumulated":8494607065,"cycle360":265,"epoch_from_count":"第五纪","remainder24":1,"remainder60":25,"remainder72":49,"board":"阴遁四十九局","palace":9,"getepoch":"第五纪","epoch_state":"same"},
+    {"method":1,"label":"太乙金镜","accumulated":8372760049,"cycle360":289,"epoch_from_count":"第五纪","remainder24":1,"remainder60":49,"remainder72":1,"board":"阴遁一局","palace":9,"getepoch":"第五纪","epoch_state":"same"},
+    {"method":2,"label":"太乙淘金歌","accumulated":8372760061,"cycle360":301,"epoch_from_count":"第六纪","remainder24":13,"remainder60":1,"remainder72":13,"board":"阴遁十三局","palace":4,"getepoch":"第五纪","epoch_state":"mismatch"},
+    {"method":3,"label":"太乙局","accumulated":49,"cycle360":49,"epoch_from_count":"第一纪","remainder24":1,"remainder60":49,"remainder72":49,"board":"阴遁四十九局","palace":9,"getepoch":"第五纪","epoch_state":"mismatch"}
+  ],
+  "time_step_audits":[
+    {"year":1552,"label":"负日差历史样本","status":"discontinuous","points":[
+      {"time":"09-24 00:00","values":[8494607065,8372760049,8372760061,49],"boards":[49,1,13,49]},
+      {"time":"09-24 01:00","values":[8494607078,8372760062,8372760074,50],"boards":[62,14,26,50]},
+      {"time":"09-24 02:00","values":[8494607078,8372760062,8372760074,50],"boards":[62,14,26,50]},
+      {"time":"09-24 23:00","values":[8494607089,8372760073,8372760085,61],"boards":[1,25,37,61]},
+      {"time":"09-25 00:00","values":[8494607077,8372760061,8372760073,61],"boards":[61,13,25,61]}
+    ]},
+    {"year":2000,"label":"正日差对照样本","status":"continuous","points":[
+      {"time":"09-24 00:00","values":[8496570493,8374723477,8374723489,37],"boards":[37,61,1,37]},
+      {"time":"09-24 01:00","values":[8496570494,8374723478,8374723490,38],"boards":[38,62,2,38]},
+      {"time":"09-24 02:00","values":[8496570494,8374723478,8374723490,38],"boards":[38,62,2,38]},
+      {"time":"09-24 23:00","values":[8496570505,8374723489,8374723501,49],"boards":[49,1,13,49]},
+      {"time":"09-25 00:00","values":[8496570505,8374723489,8374723501,49],"boards":[49,1,13,49]}
+    ]}
+  ],
+  "step_explanation":[
+    {"step":"00:00→01:00","historical":"method 0—2增加13","modern":"method 0—2增加1","cause":"1552相对1900的儒略日差为负；int(负整数+小时小数)向零截断，日差先增加1，再被×12，加上时支步进1。"},
+    {"step":"01:00→02:00","historical":"数值不变","modern":"数值不变","cause":"(hour+1)//2把01:00与02:00放在同一双小时。"},
+    {"step":"23:00→次日00:00","historical":"method 0—2倒退12","modern":"数值连续","cause":"历史样本在午夜恢复负整数日差，撤销此前多出的12；正日差没有向零截断跳变。"},
+    {"step":"method 3","historical":"49→50→…→61，午夜连续","modern":"37→38→…→49，午夜连续","cause":"改由日干支分组与时支序号生成1—72局部数，不经过1900日差。"}
+  ],
+  "implementation_differences":[
+    {"label":"同一积时三种身份","source":"原典实例对194分别除24、60、72","implementation":"kook、ty与getepoch分散在不同函数","handling":"以同一原数并排三个余数，不把任一结果称为唯一‘时数’。"},
+    {"label":"行宫虽未显式mod24但数值等价","source":"积算24数除行宫","implementation":"ty以1—72局号查三次重复的24项宫轨","handling":"标作等价读取，不误写成源码直接执行%24。"},
+    {"label":"纪字段改读日干支","source":"原典以积时除60入纪","implementation":"getepoch(ji_style=3)用日干支查epochdict，四个method共用一个纪","handling":"同时列积时应得纪与接口返回；method 2、3标错位。"},
+    {"label":"局号直接读取mod72","source":"七十二约之为入局","implementation":"kook以accnum%72或72生成局数","handling":"局号保留为1—72，不与五子元1—360总编号混写。"},
+    {"label":"四个method不是同一积时起点","source":"选定原典实例只有一条积时构造","implementation":"method 0—2使用不同大常数／偏移，method 3改用日时干支局部数","handling":"四分支逐项展示，不以一个固定例代表全部。"},
+    {"label":"负日差向零截断","source":"原典积日乘12要求时序连续","implementation":"_days_between先把带小时的负JD差int化，00→01引入整日跳变","handling":"1552与2000同月日并排，记录+13与−12断点。"},
+    {"label":"method 3绕开日差但纪未跟随","source":"积时、入纪、入局来自同一原数链","implementation":"method 3局部数49可正确给局49，却仍以日干支返回第五纪而非第一纪","handling":"不把绕开一个错误写成整条链已一致。"},
+    {"label":"高风险解释排除","source":"原典实例随后接主客、守攻与行动判断","implementation":"综合盘会继续派生诸将关系与断语","handling":"范围止于周期、取余、宫位、纪与实现缺口。"}
+  ],
+  "reading_boundaries":[
+    {"label":"可理解","note":"24、60、72分别回答行宫、入纪与入局，为什么在360时／30日重新对齐。"},
+    {"label":"可操作","note":"切换四个method与1552／2000时间步，比较三个余数、宫位、局号及纪字段。"},
+    {"label":"可复核","note":"原典积时194实例、固定输入四分支、10个时刻探针与两处纪错位。"},
+    {"label":"不由此推出","note":"任何战争、守攻、灾异、行动、人事、胜负或个人结果；运行一致性也不证明版本正确。"}
+  ],
+  "public_sources":[
+    {"title":"《武备志》：时计24、60、72三层与积时194实例","url":"https://ctext.org/wiki.pl?chapter=3064539&if=gb&remap=gb","note":"‘求时计’段明确一日十二算、24行宫、60入纪、72入局，并以194分别得到余2、余14、余50。后续断语不纳入本节点。"},
+    {"title":"《太乙金镜式经》卷一至卷四：冬夏二至时实与24行宫","url":"https://ctext.org/wiki.pl?chapter=465956&if=gb&remap=gb","note":"保存二至后时实、太乙周法24去之、每三时移宫及阴阳顺逆结构；OCR不稳处仅作结构互证。"},
+    {"title":"kintaiyi锁定时计积数实现","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L419-L430","note":"method 0—2由1900日差、12倍与小时序号生成大积时；method 3改用日干支分组和时支序号。"},
+    {"title":"kintaiyi锁定局号与太乙宫轨","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L500-L580","note":"kook取mod72，getepoch时计改查日干支，ty以重复三次的24项宫轨读取1—72局号。"},
+    {"title":"kintaiyi锁定日差截断函数","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L312-L318","note":"_days_between把包含小时小数的儒略日差直接传给int；负值按向零方向截断。"},
+    {"title":"kintaiyi锁定固定例输入","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/examples/basic_usage.py#L13-L20","note":"沿用1552-09-24 00:00，并以2000年同月日作为正日差对照。"}
+  ],
+  "internal_review":{"status":"formal_hour_count_cycle_audit","reviewed_at":"2026-08-06","owner":["火华","Codex"],"runtime_environment":"temporary Python venv; locked repository commit installed from source","runtime_command":"Taiyi.accnum/kook/ty/getepoch for ji_style=3, method=0..3; 1552 and 2000 hourly boundary probes","deduplication":"不并入‘五子元’：该页从72局定位1—360总编号，本页解释时计同一原数先分24行宫、60入纪、72入局。不并入‘阴阳遁输入’：上一页解释遁别从哪里来，本页解释选定遁别后积时如何进入宫、纪、局。","known_gaps":["四个method各自积时起点与古籍版本的逐条对应仍待校","getepoch时计改读日干支的设计依据未明","负日差小时截断没有专项测试","method 3条件tiangan == dgz_num类型不相容但当前else分支仍可生成局部数"],"boundary":"固定样本与机械枚举，无真人输入、无随机；只展示时计周期、取余、宫位、纪、局号与实现缺口。"}
+}

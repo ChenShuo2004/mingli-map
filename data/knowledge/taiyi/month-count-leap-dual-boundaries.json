@@ -1,0 +1,83 @@
+{
+  "schema_version":"1.0.0",
+  "id":"month-count-leap-dual-boundaries",
+  "title":"月计的十二乘积月、闰月与双重月界",
+  "summary":"《武备志》月计先把积年减一、乘十二得月实，再加从起点天正十一月至所求月的月数；隆庆庚午正月例先得13752月，再加十一月至正月三算为13755，恰从七十二局整周后进入丙子元第三局。《太乙金镜式经》则另保存章岁／章月、闰余与求闰月步骤，并明确闰月只以逐月节气时刻为正，说明月计不能只把农历月名当作唯一月界。锁定实现使用(常数+农历年−1)×12+2+农历月序，lunar_date_d只返回年、月、日，虽然底层sxtwl能识别闰月，包装层没有传出isLunarLeap。2023癸卯年因此呈现两条并行时钟：二月初一到闰二月末，积月与局号始终不变；惊蛰、清明仍让节气月干支及月太岁由寅转卯、再转辰；三月初一才让局号40升到41。四个method积月常数不同，但本组样本局号完全同值；method 2的纪字段却比其余三支多两纪。本节点把名义十二月索引、闰月事实、节气月干支、局号和纪分开，不接收真人日期起盘。",
+  "identity_layers":[
+    {"id":"nominal","index":"01","name":"名义积月","input":"农历年 + 数字月序","output":"连续大数中的月份位置","formula":"(常数 + 农历年 − 1) × 12 + 2 + 农历月序","note":"每个农历年固定按12个月槽展开；闰月标记未进入公式。"},
+    {"id":"leap","index":"02","name":"闰月事实","input":"sxtwl.isLunarLeap()","output":"是／否","formula":"底层历法字段","note":"底层可识别闰月，但lunar_date_d返回对象没有保存它。"},
+    {"id":"term","index":"03","name":"节气月干支","input":"节令交接","output":"甲寅、乙卯、丙辰……","formula":"gangzhi()[1]","note":"月太岁读取其地支；可在同一农历月内随节气变化。"},
+    {"id":"board","index":"04","name":"月计局号","input":"名义积月","output":"1—72局","formula":"积月 mod 72，以72承接余0","note":"本实现不读取闰标记或节气月干支来生成局号。"}
+  ],
+  "source_routes":[
+    {"id":"wubeizhi","name":"《武备志》简式月实","route":"积年减一 → 乘12 → 加所求月数","leap":"月计段未单列闰月步骤；日计段另把闰数加回月实","status":"平月简式与实例清楚"},
+    {"id":"jinjing","name":"《太乙金镜式经》历法路线","route":"积年 → 章岁／章月 → 闰余 → 逐月节气时刻","leap":"原文明确闰月以逐月节气时刻为正","status":"结构可读，OCR数值仍待影像校"},
+    {"id":"implementation","name":"锁定程序名义月序","route":"农历年 × 12 + 数字农历月","leap":"底层能识别，包装层与accnum均未使用闰标记","status":"实现事实，非原典共识"}
+  ],
+  "cycle_table":[
+    {"months":3,"label":"一宫驻月","result":"太乙在同一外宫连续三月","source":"《武备志》称三月移一宫；ty按三局一宫"},
+    {"months":24,"label":"八宫一轮","result":"8个外宫 × 每宫3月","source":"中五不游；由3×8派生"},
+    {"months":60,"label":"五年一纪","result":"月计纪内六十个月","source":"《太乙金镜式经》月建段；getepoch按60分纪"},
+    {"months":72,"label":"一段七十二局","result":"积月对72取余生成局号","source":"《武备志》实例与kook一致"},
+    {"months":360,"label":"三十年总周期","result":"六纪与五段七十二局重合","source":"两部原典月计结构互证"}
+  ],
+  "classical_example":{
+    "label":"隆庆庚午岁正月",
+    "start":"魏大武始光元年天正甲子十一月",
+    "year_count":1147,
+    "nominal_months":13752,
+    "added_months":3,
+    "total_months":13755,
+    "construction":"(1147−1)×12＝13752；再数十一月、十二月、正月三算",
+    "board_result":"13752恰为72的整倍数，再加3算，入丙子元第三局",
+    "boundary":"原文随后进入宫、目、算、将与官职断验；范围止于积月、纪、局与宫轨。"
+  },
+  "timeline_2023":[
+    {"date":"2023-02-20","lunar":"二月初一","leap":false,"month_gz":"甲寅","month_branch":"寅","acc0":121871272,"board":40,"event":"农历月界","change":"进入二月，名义积月定位40局"},
+    {"date":"2023-03-06","lunar":"二月十五","leap":false,"month_gz":"乙卯","month_branch":"卯","acc0":121871272,"board":40,"event":"节气月界","change":"节气月由寅转卯，局号不变"},
+    {"date":"2023-03-21","lunar":"二月三十","leap":false,"month_gz":"乙卯","month_branch":"卯","acc0":121871272,"board":40,"event":"平月末","change":"仍为40局"},
+    {"date":"2023-03-22","lunar":"闰二月初一","leap":true,"month_gz":"乙卯","month_branch":"卯","acc0":121871272,"board":40,"event":"闰月朔","change":"闰标记出现，但包装月序仍为2，局号停留"},
+    {"date":"2023-04-06","lunar":"闰二月十六","leap":true,"month_gz":"丙辰","month_branch":"辰","acc0":121871272,"board":40,"event":"节气月界","change":"节气月由卯转辰，局号仍不变"},
+    {"date":"2023-04-19","lunar":"闰二月廿九","leap":true,"month_gz":"丙辰","month_branch":"辰","acc0":121871272,"board":40,"event":"闰月末","change":"闰月整段没有增加名义积月"},
+    {"date":"2023-04-20","lunar":"三月初一","leap":false,"month_gz":"丙辰","month_branch":"辰","acc0":121871273,"board":41,"event":"农历月界","change":"数字月序2→3，局号40→41"},
+    {"date":"2023-05-19","lunar":"四月初一","leap":false,"month_gz":"丁巳","month_branch":"巳","acc0":121871274,"board":42,"event":"农历月界","change":"数字月序3→4，局号41→42"}
+  ],
+  "method_results":[
+    {"method":0,"label":"太乙统宗","acc_feb":121871272,"acc_apr":121871273,"cycle_feb":112,"board_feb":40,"board_apr":41,"epoch":"第二纪","palace":7},
+    {"method":1,"label":"太乙金镜","acc_feb":23262952,"acc_apr":23262953,"cycle_feb":112,"board_feb":40,"board_apr":41,"epoch":"第二纪","palace":7},
+    {"method":2,"label":"太乙淘金歌","acc_feb":121874584,"acc_apr":121874585,"cycle_feb":184,"board_feb":40,"board_apr":41,"epoch":"第四纪","palace":7},
+    {"method":3,"label":"太乙局","acc_feb":121871272,"acc_apr":121871273,"cycle_feb":112,"board_feb":40,"board_apr":41,"epoch":"第二纪","palace":7}
+  ],
+  "boundary_explanation":[
+    {"boundary":"二月初一","nominal":"数字月序变为2，积月进入40局","term":"仍是甲寅月，月太岁寅","meaning":"农历朔日与节气月界没有重合。"},
+    {"boundary":"惊蛰后","nominal":"积月与40局不变","term":"月干支转乙卯，月太岁转卯","meaning":"同一局号可以配不同月干支。"},
+    {"boundary":"闰二月初一","nominal":"包装层仍返回月序2，积月不加一","term":"仍是乙卯月","meaning":"底层闰标记存在，但没有进入局号链。"},
+    {"boundary":"清明后","nominal":"积月与40局仍不变","term":"月干支转丙辰，月太岁转辰","meaning":"闰月内部再次跨越节气月界。"},
+    {"boundary":"三月初一","nominal":"月序2→3，局号40→41","term":"仍是丙辰月","meaning":"局号变化时，月干支反而不变。"}
+  ],
+  "implementation_differences":[
+    {"label":"十二乘简式与闰余路线","source":"《武备志》月计直接以积年减一乘12；《太乙金镜式经》另列闰余、求闰月与节气时刻","implementation":"accnum固定每年12槽","handling":"两条原典路线并列，不把简式自动扩成含闰月的实月数。"},
+    {"label":"底层识闰、包装丢闰","source":"2023-03-22底层isLunarLeap为true","implementation":"lunar_date_d只返回年、月、日，闰二月与二月都写月=2","handling":"同时展示底层闰标记和包装月序。"},
+    {"label":"局号月界","source":"《武备志》以逐月算推进；金镜式经又强调闰月节气时刻","implementation":"只有数字农历月变化才推动积月和局号","handling":"闰月朔、节气交接、下月朔分别列探针。"},
+    {"label":"月太岁月界","source":"月建本就与节令结构相连","implementation":"taishui(1)读取gangzhi()[1]的地支，按节气月变化","handling":"不因局号不动就说程序整个月状态不变。"},
+    {"label":"四method同局异纪","source":"选定原典没有四个现代具名常数并列表","implementation":"四支常数对72同余，局号同为40／41；method 2对360余184，显示第四纪","handling":"同局与同纪分字段保存。"},
+    {"label":"三月一宫","source":"《武备志》明确太乙三月移一宫","implementation":"ty沿用七十二局三局一宫表，40与41均在7宫","handling":"宫位变化慢于局号，不把每月加一误写成每月移宫。"},
+    {"label":"+2偏移身份未明","source":"《武备志》实例从天正十一月数至所求月","implementation":"公式固定加2再加数字农历月","handling":"记录为起点对齐实现；与各古籍起算点的逐条对应仍待校。"},
+    {"label":"高风险解释排除","source":"原典实例随后接宫、目、主客算、诸将与官职断验","implementation":"综合接口继续生成盘面关系和断语","handling":"范围止于月界、积月、局号、纪、宫与实现缺口。"}
+  ],
+  "reading_boundaries":[
+    {"label":"可理解","note":"农历朔日、闰月标记与节气月界为什么是三个不同事件。"},
+    {"label":"可操作","note":"沿2023时间线切换，观察名义积月、局号、月干支与月太岁各自何时变化。"},
+    {"label":"可复核","note":"隆庆庚午13755月原典例、8个2023探针、四method同局异纪与底层闰标记。"},
+    {"label":"不由此推出","note":"任何吉凶、官职、战争、天气、行动、人事或个人结果；实现一致也不证明历法版本正确。"}
+  ],
+  "public_sources":[
+    {"title":"《武备志》：求月计太乙","url":"https://ctext.org/wiki.pl?chapter=3064539&if=gb&remap=gb","note":"第83页保存积年减一乘12、三月移一宫、60／72／360分层及隆庆庚午正月13755月实例；后续断验不纳入本节点。"},
+    {"title":"《太乙金镜式经》卷一至卷四：月计差法与闰月","url":"https://ctext.org/wiki.pl?chapter=465956&if=gb&remap=gb","note":"第25—29页保存六纪月建、章岁／章月、闰余、求闰月，并称闰月以逐月节气时刻为正；OCR数值不稳处只作结构证据。"},
+    {"title":"kintaiyi锁定月计积数公式","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L387-L400","note":"accnum(ji_style=1)读取农历年与数字月序，按12乘与固定+2生成积月；四method使用不同常数。"},
+    {"title":"kintaiyi锁定农历日期包装","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/config.py#L535-L537","note":"lunar_date_d只返回年、月、日，没有转发底层sxtwl的isLunarLeap标记。"},
+    {"title":"kintaiyi锁定月干支与月太岁入口","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/config.py#L466-L485","note":"gangzhi()[1]生成节气月干支；taishui(ji_style=1)读取该干支的地支。"},
+    {"title":"kintaiyi锁定局号、纪与宫轨","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L500-L580","note":"kook按积月mod72给局，getepoch按mod360／60给纪，ty让每三局共用一宫。"}
+  ],
+  "internal_review":{"status":"formal_month_count_leap_boundary_audit","reviewed_at":"2026-08-06","owner":["火华","Codex"],"runtime_environment":"temporary Python venv; locked repository commit installed from source","runtime_command":"Taiyi.accnum/kook/getepoch/ty/taishui and sxtwl.isLunarLeap for eight 2023 boundary probes, method 0..3","deduplication":"不并入‘五种时间粒度’：入口页只说明月计存在，本页解释月计内部同时读取农历月序与节气月干支。不并入‘阴阳遁输入’：月计固定阳遁已在该页，本页只处理积月、闰月和月界。","known_gaps":["《太乙金镜式经》章岁／章月与闰差数值需影像逐字校","固定+2与不同古籍月计起点的对应未明","其他版本如何处理闰月与节气月界尚未横向比较","lunar_date_d丢闰标记缺专项单元测试"],"boundary":"固定历法样本与机械复算，无真人输入、无随机；只展示月界、积月、局号、纪、宫与实现缺口。"}
+}

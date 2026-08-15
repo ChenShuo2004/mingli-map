@@ -1,0 +1,17 @@
+{
+  "id":"day-recommends-avoids","title":"每日宜与忌","summary":"每日宜、忌是事项清单，不是神煞名称清单；同一日期可有多项宜而忌栏为空。",
+  "fixed_example":{
+    "date":"1986-05-29","day":"癸酉","duty":"定","day_god":"朱雀／黑道",
+    "recommends":["嫁娶","祭祀","祈福","求嗣","开光","出行","出火","拆卸","动土","上梁","进人口","入宅","移徙","安床","安门","开市","交易","立券","挂匾","栽种","破土","安葬"],
+    "avoids":[]
+  },
+  "field_chain":[
+    {"step":"输入","content":"干支月、六十日、建除与神煞"},{"step":"事项表","content":"各规则所关联的事项类别"},{"step":"合成结果","content":"分别输出宜栏与忌栏"}
+  ],
+  "empty_rule":"实现原始显示为“无”；数据层保存为空数组，表示该版本没有列出忌项，不解释为现实中的绝对安全。",
+  "boundaries":["宜忌是传统历注事项，不是现代法律、医疗或安全建议","不因朱雀黑道便覆盖当天全部宜项","固定样本不替用户选择日期"],
+  "public_sources":[
+    {"title":"《协纪辨方书》宜忌","note":"说明吉凶神的作用有轻重和事项差异，反对一概从忌。","url":"https://www.shidianguji.com/zh/book/SK1619/chapter/1l9llro8ceia7"},
+    {"title":"lunar-javascript 锁定实现","note":"固定日期22项宜与空忌栏来自锁定版本。","url":"https://github.com/6tail/lunar-javascript/tree/4c45a59"}
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0",
+  "id": "ziwei_five_elements_bureau",
+  "title": "五行局",
+  "summary": "五行局把命宫天干与地支的两组取数合成一个盘面参数，结果只有水二局、木三局、金四局、土五局、火六局五类。它不是十二宫中的新宫位，也不是一般五行名称的简单重排；局数会继续参与紫微星定位、大限起点与长生十二神装配。",
+  "input_chain": [
+    {"id":"soul-palace","label":"命宫位置","note":"先由月、时定位命宫所在的地支位置。"},
+    {"id":"palace-stem","label":"宫干装配","note":"再由年干起宫干，得到命宫天干。"},
+    {"id":"stem-branch","label":"命宫干支","note":"五行局直接读取命宫的天干与地支。"},
+    {"id":"bureau","label":"五行局","note":"两组取数相加并归入五类局。"}
+  ],
+  "stem_groups": [
+    {"id":"jia-yi","stems":["甲","乙"],"value":1},
+    {"id":"bing-ding","stems":["丙","丁"],"value":2},
+    {"id":"wu-ji","stems":["戊","己"],"value":3},
+    {"id":"geng-xin","stems":["庚","辛"],"value":4},
+    {"id":"ren-gui","stems":["壬","癸"],"value":5}
+  ],
+  "branch_groups": [
+    {"id":"branch-one","branches":["子","丑","午","未"],"value":1},
+    {"id":"branch-two","branches":["寅","卯","申","酉"],"value":2},
+    {"id":"branch-three","branches":["辰","巳","戌","亥"],"value":3}
+  ],
+  "result_scale": [
+    {"value":1,"element":"木","bureau":"木三局","number":3,"color":"wood"},
+    {"value":2,"element":"金","bureau":"金四局","number":4,"color":"metal"},
+    {"value":3,"element":"水","bureau":"水二局","number":2,"color":"water"},
+    {"value":4,"element":"火","bureau":"火六局","number":6,"color":"fire"},
+    {"value":5,"element":"土","bureau":"土五局","number":5,"color":"earth"}
+  ],
+  "rule": {
+    "label": "两数组合",
+    "formula": "天干组数 + 地支组数；结果超过5时反复减5，再按1木、2金、3水、4火、5土映射到五行局。",
+    "note": "局数2、3、4、5、6是五类局各自的固定名称与下游参数，不等于上一步合计值。"
+  },
+  "fixed_examples": [
+    {"id":"bing-zi","label":"丙子","stem":"丙","branch":"子","stem_value":2,"branch_value":1,"sum":3,"reduced":3,"bureau":"水二局","note":"丙取2，子取1，合计3；取数3映射为水，名称是水二局。"},
+    {"id":"xin-wei","label":"辛未","stem":"辛","branch":"未","stem_value":4,"branch_value":1,"sum":5,"reduced":5,"bureau":"土五局","note":"辛取4，未取1，合计5；取数5映射为土，名称是土五局。"},
+    {"id":"geng-shen","label":"庚申","stem":"庚","branch":"申","stem_value":4,"branch_value":2,"sum":6,"reduced":1,"bureau":"木三局","note":"庚取4，申取2，合计6；超过5减5得1，取数1映射为木，名称是木三局。"}
+  ],
+  "downstream_uses": [
+    {"id":"major-star","label":"紫微星定位","uses":"局数 + 农历日","note":"锁定实现以局数参与紫微、天府起始位置计算；具体安星规则归“星曜与四化”继续展开。"},
+    {"id":"decadal","label":"大限起点","uses":"局数作为起始岁数","note":"锁定实现以二至六作为第一组大限的起始虚岁；顺逆行和各宫十年区间归运限层。"},
+    {"id":"growth-cycle","label":"长生十二神","uses":"五类局决定长生起位","note":"水、土起申，木起亥，金起巳，火起寅；顺逆排法另受年支阴阳与性别条件影响。"}
+  ],
+  "public_sources": [
+    {"title":"iztro：命宫干支装配","note":"锁定版本先由月、时得到命宫地支位置，再按年干五虎遁取得寅宫起干并顺推命宫天干，直接支撑本页的上游输入链。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/astro/palace.ts#L27-L91"},
+    {"title":"iztro：五行局取数实现","note":"锁定版本完整列出天干、地支取数、超过5减5、五类结果及三个固定例，是本页映射规则的直接来源。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/astro/palace.ts#L94-L154"},
+    {"title":"iztro：五类局数常量","note":"锁定版本把水、木、金、土、火五局分别保存为2、3、4、5、6，并说明用于紫微星与起运年龄。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/data/constants.ts#L72-L90"},
+    {"title":"iztro：五行局固定断言","note":"锁定测试用12组命宫干支断言五行局结果，可核对页面三例及五类输出，但测试通过只证明该实现内部一致。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/__tests__/astro/palace.test.ts#L47-L59"},
+    {"title":"iztro：长生十二神起位","note":"锁定实现直接列出五类局对应的长生起位，并在装配时先由命宫干支取得五行局。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/star/decorativeStar.ts#L20-L42"}
+  ],
+  "internal_review": {
+    "status": "formal_structure_node_implementation_scope",
+    "reviewed_at": "2026-08-05",
+    "source_refs": ["github_sylarlong_iztro_2fb2030"],
+    "ownership": "K-ZW.01 基础盘面",
+    "deduplication": "不并入十二宫盘面：十二宫回答宫格与锚点怎样形成，五行局回答命宫干支怎样生成可传给多个模块的五类参数；不并入星曜与四化或宫位关系与运限：这些下游板块只消费五行局，不负责生成它。",
+    "boundary": "本页发布锁定实现的取数结构、三组固定例和下游依赖，不接收出生资料、不生成五行局、不安星、不排大限，也不把单一代码实现升格为跨流派共识。"
+  }
+}

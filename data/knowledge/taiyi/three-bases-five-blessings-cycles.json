@@ -1,0 +1,47 @@
+{
+  "schema_version":"1.0.0",
+  "id":"three-bases-five-blessings-cycles",
+  "title":"君臣民三基与五福的周期入口",
+  "summary":"把君基、臣基、民基与五福放在同一页比较，但不把它们合成一条算法。卷四分别给三基三种周法，又给五福二百二十五年、五宫循环；锁定实现中君基与五福直接读取积年，臣基与民基则读取七十二局数。相同局数可以保留相同三基位置，却因积年不同得到不同五福宫位，正好说明‘同盘对象’不等于‘同一时间入口’。",
+  "fixed_input":"1552年9月24日 0时0分 · 年计",
+  "objects":[
+    {"id":"king-base","name":"君基","input":"积年数","implementation_cycle":"360年一轮 · 每30年一位","implementation_order":["午","未","申","酉","戌","亥","子","丑","寅","卯","辰","巳"],"classical_anchor":"卷四第3—5条：大周360，以30除为邦数，命起戌邦顺行十二邦。","difference":"锁定实现以(accnum＋250)模360后每30年分段，位置序列从午起；起点与选定原典文字不同。"},
+    {"id":"officer-base","name":"臣基","input":"七十二局数","implementation_cycle":"36局一轮 · 环形每3局一位","implementation_order":["巳","午","未","申","酉","戌","亥","子","丑","寅","卯","辰"],"classical_anchor":"卷四第6—8条：大周360、小周36，再以3约，命起戌邦顺行十二邦。","difference":"锁定配置把巳跨在36／1／2局，随后每三局换位；实现起点与原典‘戌邦’不同。"},
+    {"id":"people-base","name":"民基","input":"七十二局数","implementation_cycle":"12局一轮 · 每局一位","implementation_order":["申","酉","戌","亥","子","丑","寅","卯","辰","巳","午","未"],"classical_anchor":"卷四第9—10条：大周360、小周12，命起戌邦顺行十二邦。","difference":"锁定实现按局数循环读取从申起的十二支序列；起点与选定原典文字不同。"},
+    {"id":"five-blessings","name":"五福","input":"积年数","implementation_cycle":"225年一轮 · 每45年一宫","implementation_order":["乾","艮","巽","坤","中"],"classical_anchor":"卷四第11—15条：五福行乾、艮、巽、坤、中五宫，二百二十五年一周。","difference":"锁定实现以(accnum＋250)模225分成五段；本节点只采用周期与宫序，不展示原典灾异说法。"}
+  ],
+  "input_paths":[
+    {"label":"直接积年路径","nodes":["当前分支积年数","君基：模360／30","五福：模225／45"],"note":"即使局数相同，积年余数不同仍可能改变结果。"},
+    {"label":"七十二局路径","nodes":["当前分支积年数","模72得局数","臣基／民基查各自序列"],"note":"两个分支局数相同，就会在锁定实现中得到相同臣基、民基。"}
+  ],
+  "method_results":[
+    {"method":0,"label":"太乙统宗","accumulated":10155469,"board":"阳遁十三局","kook":13,"positions":{"君基":"申","臣基":"酉","民基":"申","五福":"巽 · 9宫"},"status":"与太乙局完全相同"},
+    {"method":1,"label":"太乙金镜","accumulated":1938109,"board":"阳遁十三局","kook":13,"positions":{"君基":"申","臣基":"酉","民基":"申","五福":"中 · 5宫"},"status":"三基相同，五福不同"},
+    {"method":2,"label":"太乙淘金歌","accumulated":10155745,"board":"阳遁一局","kook":1,"positions":{"君基":"午","臣基":"巳","民基":"申","五福":"坤 · 7宫"},"status":"局数与积年余数均不同"},
+    {"method":3,"label":"太乙局","accumulated":10155469,"board":"阳遁十三局","kook":13,"positions":{"君基":"申","臣基":"酉","民基":"申","五福":"巽 · 9宫"},"status":"与太乙统宗完全相同"}
+  ],
+  "comparison_examples":[
+    {"label":"同为十三局，不代表所有对象相同","left":"method 0 · 五福巽9宫","right":"method 1 · 五福中5宫","shared":"君基申 · 臣基酉 · 民基申","note":"三基在本例巧合相同；五福直接读取不同积年余数。"},
+    {"label":"局数改变时，两条路径同时重算","left":"method 1 · 十三局","right":"method 2 · 一局","shared":"民基都在申","note":"相同单项结果也可能来自周期循环，不表示两种method等价。"},
+    {"label":"相同积年才会完全相同","left":"method 0","right":"method 3","shared":"积年10,155,469 · 十三局 · 四项一致","note":"锁定实现中这两个分支在固定年计输入下共用同一积年结果。"}
+  ],
+  "source_differences":[
+    {"label":"三基不是同一周期","evidence":"原典分别使用30、36再3约、12等步骤；实现也拆成积年分段、三局一位与每局一位。","handling":"本节点逐项展示周期，不用‘三基同法’概括。"},
+    {"label":"三基起点存在原典／实现差异","evidence":"选定卷四三处均写命起戌邦；实现序列分别从午、巳、申展开。","handling":"并列保存，不据程序反改原文，也不据原文修补程序结果。"},
+    {"label":"五福不读取七十二局数","evidence":"锁定wufu直接使用积年模225；它与同为十三局的method 0、1产生不同宫位。","handling":"五福留在直接积年路径，不并入臣基、民基局表。"},
+    {"label":"四类对象的所主断语不公开","evidence":"卷四含服方、进献、兵革、疾疫、饥荒等来源陈述。","handling":"只公开名称、周期、序列、输入路径与固定结果。"}
+  ],
+  "reading_boundaries":[
+    {"label":"可识别","note":"三基与五福各自读取积年或局数的入口及周期。"},
+    {"label":"可比较","note":"固定输入四个method下四项位置为何有同有异。"},
+    {"label":"不由此推出","note":"某基或五福所在方向会改变现实事件、灾异或行动结果。"}
+  ],
+  "public_sources":[
+    {"title":"《太乙金鏡式經》卷四：三基与五福推法","url":"https://ctext.org/wiki.pl?chapter=835116&if=gb&remap=gb","note":"第3—15条分别保存君基、臣基、民基和五福的周期、起点与宫序；该资料为四库影像连接OCR文本。"},
+    {"title":"kintaiyi锁定三基位置函数","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L962-L974","note":"君基直接读取积年，臣基与民基读取当前七十二局数。"},
+    {"title":"kintaiyi锁定臣基配置","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/config.py#L42-L42","note":"臣基36项环形配置从巳展开。"},
+    {"title":"kintaiyi锁定五福函数","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/config.py#L738-L772","note":"五福直接以积年模225分成五个45年区段。"},
+    {"title":"kintaiyi锁定固定例输入","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/examples/basic_usage.py#L13-L20","note":"固定输入1552-09-24 00:00、年计；四个method的积年与局数沿用已复核样本。"}
+  ],
+  "internal_review":{"owner":"火华、Codex","reviewed_on":"2026-08-06","boundary":"只做周期与固定例比较，不接收真人时间，不输出国运、灾异、方向或行动判断。","dedup":"不重复盘面身份与独立诸神局序；本节点解释三基和五福为何读取不同时间入口。","gaps":["卷四OCR中五福‘四、十五年’等字形需回看影像确认。","三基实现起点与选定原典起点不一致，尚未完成其他版本校勘。"]}
+}

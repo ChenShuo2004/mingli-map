@@ -1,0 +1,21 @@
+{
+  "schema_version":"1.0.0","id":"qimen_ju_method_variants","title":"拆补、置闰与茅山起局法",
+  "summary":"三种方法都要为节气局数表提供‘当前属于上、中、下哪一元’，但输入和换元边界不同。拆补按最近甲日或己日的符头地支分孟仲季；置闰围绕符头、超神接气与特定节气处理；茅山从实际交节时刻累计时辰。当前材料只能支持三个实现版本并列，不能裁定唯一传统规则。",
+  "methods":[
+    {"id":"chaibu","label":"拆补","inputs":["当前节气","日干支","最近甲／己符头"],"yuan_rule":"符头支属子午卯酉为上元，寅申巳亥为中元，辰戌丑未为下元；交节即换节气表","implementation_evidence":"mingli-skills结构表、qimen-go与qimenpaipan代码","status":"多实现结构重合；缺规则级底本与正式断言"},
+    {"id":"zhirun","label":"置闰","inputs":["节气与交节时刻","符头","超神／接气状态"],"yuan_rule":"qimenpaipan当前实现按六十甲子索引每5日分三元，并从二至参考符头每15日推进；qimen-go只在大雪／芒种使用作者自定年份条件","implementation_evidence":"两套实现的置闰条件不相同","status":"明确版本分歧；qimenpaipan在2026年6—7月连续三次改写"},
+    {"id":"maoshan","label":"茅山","inputs":["实际交节时刻","此后累计时辰"],"yuan_rule":"qimen-go从交节时刻起每60个时辰换一元，超过三元时封顶为下元","implementation_evidence":"仅qimen-go确定性实现","status":"作者实现候选；缺第二套同法固定例与底本"}
+  ],
+  "futou_groups":[
+    {"yuan":"上元","branch_group":"四仲","branches":["子","午","卯","酉"],"heads":["甲子","甲午","己卯","己酉"]},
+    {"yuan":"中元","branch_group":"四孟","branches":["寅","申","巳","亥"],"heads":["甲寅","甲申","己巳","己亥"]},
+    {"yuan":"下元","branch_group":"四季","branches":["辰","戌","丑","未"],"heads":["甲辰","甲戌","己丑","己未"]}
+  ],
+  "reading_boundaries":["页面比较输入、换元规则和证据状态，不让用户输入日期。","置闰的两套代码条件直接冲突，不能把描述拼成一条综合算法。","软件可运行、最近提交频繁或README自称某法，都不等于传统版本已经核准。"],
+  "public_sources":[
+    {"title":"mingli-skills 锁定符头表","url":"https://github.com/weizeW/mingli-skills/blob/c16eca0/qimen-dunjia/data/futou.json","note":"提供拆补法三组符头与孟仲季分类。"},
+    {"title":"qimen-go 锁定三种起局实现","url":"https://github.com/deminzhang/qimen-go/blob/4d3f58fa0f401b5b3a337f119138e99e90685dda/xuan/qimen.go","note":"同时实现拆补、作者置闰口径和茅山累计时辰法。"},
+    {"title":"qimenpaipan 锁定拆补／置闰实现","url":"https://github.com/redrockhorse/qimenpaipan/blob/b6de54245cf7a514f59e51833dc01a87e1a3a849/qimenpaipan.py#L558-L659","note":"保存另一套拆补与持续变动的置闰代码，用于确认版本分歧。"}
+  ],
+  "internal_review":{"status":"formal_method_variant_comparison","reviewed_at":"2026-08-09","owner":["火华","Codex"],"source_refs":["github_weizew_mingli_skills_c16eca0","github_deminzhang_qimen_go_4d3f58f","github_redrockhorse_qimenpaipan_b6de542"],"deduplication":"三种方法同页对照，因为它们竞争同一个三元输入位置；具体局数表另页维护。","known_gaps":["置闰两实现冲突。","茅山只有一个实现。","缺规则级底本页码。"],"boundary":"版本比较，不提供实时起局。"}
+}

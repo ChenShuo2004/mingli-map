@@ -1,0 +1,56 @@
+{
+  "id": "number-table-application-and-conflicts",
+  "title": "五格查表与冲突版本",
+  "summary": "五格的五个原始数值分别进入同一份81数理表；超过81时必须注明循环规则。不同资料存在二分类、三分类、重复归类和缺项，不能拼成一张无来源的统一吉凶表。",
+  "application_steps": [
+    {"step": 1, "label": "保留五格原值", "content": "天格、人格、地格、外格、总格分别保存"},
+    {"step": 2, "label": "选择数理版本", "content": "记录表名、来源、提交或版次"},
+    {"step": 3, "label": "处理超过81", "content": "按所选版本的循环规则取得查表号"},
+    {"step": 4, "label": "逐格查表", "content": "五格分别查询，不先加总或取平均"},
+    {"step": 5, "label": "保存原始标签", "content": "不把不同版本标签强行换成统一分数"}
+  ],
+  "grid_lookup": [
+    {"grid": "天格", "input": "天格原始值", "output": "天格数理号"},
+    {"grid": "人格", "input": "人格原始值", "output": "人格数理号"},
+    {"grid": "地格", "input": "地格原始值", "output": "地格数理号"},
+    {"grid": "外格", "input": "外格原始值", "output": "外格数理号"},
+    {"grid": "总格", "input": "总格原始值", "output": "总格数理号"}
+  ],
+  "normalization_rule": {
+    "version": "tianji实现",
+    "rule": "数值大于81时反复减80，直到不大于81",
+    "examples": [
+      {"raw": 80, "lookup": 80, "path": "80"},
+      {"raw": 81, "lookup": 81, "path": "81"},
+      {"raw": 82, "lookup": 2, "path": "82－80＝2"},
+      {"raw": 161, "lookup": 81, "path": "161－80＝81"},
+      {"raw": 162, "lookup": 2, "path": "162－80＝82；82－80＝2"}
+    ],
+    "boundary": "脚本另把非正数改为1；正常五格公式不应产生非正数，因此只记为实现防护"
+  },
+  "version_comparison": [
+    {"id": "tianji-four-label", "source": "Ficere/tianji", "structure": "大吉、吉、半吉、凶", "memberships": 81, "unique_numbers": 81, "missing": [], "duplicate": [], "status": "完整实现版本"},
+    {"id": "tvb-first-binary", "source": "bazifuzugongju前表", "structure": "吉、凶", "memberships": 81, "unique_numbers": 81, "missing": [], "duplicate": [], "status": "二分类版本"},
+    {"id": "tvb-later-three-label", "source": "bazifuzugongju后表", "structure": "吉、半吉、凶", "memberships": 82, "unique_numbers": 81, "missing": [], "duplicate": [52], "status": "同号重复归类"},
+    {"id": "liki-binary", "source": "ml8s/liki", "structure": "吉、凶", "memberships": 79, "unique_numbers": 79, "missing": [27, 55], "duplicate": [], "status": "两项缺失"}
+  ],
+  "conflict_samples": [
+    {"number": 27, "tianji": "凶", "tvb_first": "凶", "tvb_later": "半吉", "liki": "缺项"},
+    {"number": 38, "tianji": "半吉", "tvb_first": "凶", "tvb_later": "吉", "liki": "凶"},
+    {"number": 52, "tianji": "大吉", "tvb_first": "吉", "tvb_later": "吉＋半吉", "liki": "吉"},
+    {"number": 55, "tianji": "半吉", "tvb_first": "吉", "tvb_later": "半吉", "liki": "缺项"},
+    {"number": 75, "tianji": "凶", "tvb_first": "凶", "tvb_later": "半吉", "liki": "凶"}
+  ],
+  "record_fields": ["五格原始值", "循环后查表号", "数理表版本", "来源原标签", "缺项或重复状态"],
+  "boundaries": [
+    "五格查表与三才数尾是两条派生路径：前者查81项版本表，后者只取个位映射五行",
+    "表项完整不等于分类正确，更不等于对个人具有预测效度",
+    "遇到缺项、重复或冲突时显示来源状态，不自动补值、不平均、不多数表决",
+    "五格标签不加权成总分，也不据此给出起名、改名或人生建议"
+  ],
+  "public_sources": [
+    {"title": "tianji：81数理表与循环实现", "note": "用于完整81项版本和超过81反复减80的实现规则；评分权重与断语排除。", "url": "https://github.com/Ficere/tianji"},
+    {"title": "八字辅助工具：两张数理分类表", "note": "用于保存同一文本前后分类结构变化及52重复归类。", "url": "https://github.com/TVB-JINPAIJIANZHI/bazifuzugongju"},
+    {"title": "liki：五格数理分类表", "note": "该版本覆盖79项，27、55缺失；38、52、75分别列为凶、吉、凶。", "url": "https://github.com/ml8s/liki/blob/923870b76350a0528642ce25fc26ccfb074a1f26/domains/qiming/duanyu/wuge.md"}
+  ]
+}

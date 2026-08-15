@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.0.0",
+  "id": "meihua_precise_time_modern_extension",
+  "title": "分秒起卦的现代扩展",
+  "summary": "锁定仓库为避免同一时辰内结果完全相同，设计了分入下卦、秒入动爻的秒精度入口，并明确注明为今人扩充、非邵雍原法。它并非在传统时辰公式末尾简单追加分秒：时支从下卦加项移入了上卦，分钟接替下卦加项，秒数再进入动爻，因此必须作为独立现代算法版本保存。",
+  "variant_comparison": [
+    {
+      "id": "canonical-shichen",
+      "label": "时辰精度口径",
+      "status": "现有时间起卦节点的主实现版本",
+      "formula": [
+        {"target": "上卦", "expression": "年支序数＋农历月＋农历日", "divisor": 8},
+        {"target": "下卦", "expression": "上卦总数＋时支序数", "divisor": 8},
+        {"target": "动爻", "expression": "上卦总数＋时支序数", "divisor": 6}
+      ]
+    },
+    {
+      "id": "precise-modern",
+      "label": "分秒精度扩展",
+      "status": "仓库作者现代扩展",
+      "formula": [
+        {"target": "上卦", "expression": "年支序数＋农历月＋农历日＋时支序数", "divisor": 8},
+        {"target": "下卦", "expression": "上卦总数＋分钟", "divisor": 8},
+        {"target": "动爻", "expression": "下卦总数＋秒数", "divisor": 6}
+      ]
+    }
+  ],
+  "field_reassignment": [
+    {"field": "时支序数", "canonical_role": "加入下卦与动爻", "modern_role": "提前加入上卦"},
+    {"field": "分钟", "canonical_role": "不参与", "modern_role": "加入下卦与动爻前序总数"},
+    {"field": "秒数", "canonical_role": "不参与", "modern_role": "只加入动爻总数"}
+  ],
+  "fixed_example": {
+    "lunar": {"year": 2026, "year_branch": "午", "year_branch_number": 7, "month": 5, "day": 4, "hour": 14, "hour_branch": "未", "hour_branch_number": 8, "minute": 30, "second": 45},
+    "canonical": {"upper_sum": 16, "lower_sum": 24, "moving_sum": 24, "upper": "坤", "lower": "坤", "hexagram": "坤为地", "moving_line": 6},
+    "modern": {"upper_sum": 24, "lower_sum": 54, "moving_sum": 99, "upper": "坤", "lower": "坎", "hexagram": "地水师", "moving_line": 3}
+  },
+  "sensitivity_examples": [
+    {"change": "秒数45→46", "result": "本卦仍为地水师，动爻由三爻变为四爻", "scope": "秒只改变动爻总数"},
+    {"change": "分钟30→31，秒保持45", "result": "下卦由坎变艮，本卦由地水师变地山谦，动爻由三爻变为四爻", "scope": "分钟同时影响下卦与后续动爻总数"}
+  ],
+  "source_boundary": {
+    "preserved": "锁定实现的字段分配、取余公式、确定性测试与作者自标的现代扩展身份。",
+    "excluded": "为了不重复得卦而提高精度属于软件设计目标，不证明预测更准确或更传统。",
+    "positioning": "现代算法实验节点；不与传统时辰口径合并，也不设为默认起卦工具。"
+  },
+  "reading_boundaries": [
+    "页面使用冻结的农历时间，不读取系统当前时间。",
+    "页面不允许输入真人时间，也不生成可用于占问的实时卦。",
+    "更细时间颗粒度只表示输出变化更频繁，不代表知识可靠性、准确率或有效性更高。"
+  ],
+  "public_sources": [
+    {
+      "title": "muyen/meihua-yishu 锁定分秒起卦实现",
+      "url": "https://github.com/muyen/meihua-yishu/blob/aecdf87ebef26328c32caa65d40b2f9d273088ec/scripts/meihua_calc.py#L633-L684",
+      "note": "支撑分秒字段的公式、子时处理及‘今人精确扩充，非邵雍原法’的作者声明。"
+    },
+    {
+      "title": "锁定分秒精度测试",
+      "url": "https://github.com/muyen/meihua-yishu/blob/aecdf87ebef26328c32caa65d40b2f9d273088ec/tests/test_meihua_calc.py#L236-L283",
+      "note": "支撑固定时刻、秒变动爻、分变下卦及同一时辰差异。"
+    },
+    {
+      "title": "锁定命令行入口",
+      "url": "https://github.com/muyen/meihua-yishu/blob/aecdf87ebef26328c32caa65d40b2f9d273088ec/scripts/meihua_calc.py#L818-L832",
+      "note": "证明仓库曾把秒精度入口设为time命令默认；本知识地图不继承这个产品默认值。"
+    }
+  ],
+  "internal_review": {
+    "status": "formal_modern_algorithm_extension",
+    "reviewed_at": "2026-08-09",
+    "owner": ["火华", "Codex"],
+    "source_refs": ["github_muyen_meihua_yishu_aecdf87"],
+    "deduplication": "时间起卦版本节点比较年项与23时日界；本节点专门比较时辰精度与作者分秒扩展的字段重分配，不能作为同一公式的小注。",
+    "known_gaps": ["没有独立传统来源支持分秒字段分配。", "没有第二套实现或研究证明这种精度扩展具有传统或经验有效性。"],
+    "boundary": "冻结时间、只比较算法；不读取当前时间、不开放输入、不生成个人结论。"
+  }
+}

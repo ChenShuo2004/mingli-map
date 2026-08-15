@@ -1,0 +1,30 @@
+{
+  "id": "yangren-structure",
+  "title": "羊刃查法与来源分歧",
+  "summary": "《三命通会》在同一篇中保留了不同层次的记录：先列八个干的极盛位，另在“连珠刃”名单中记戊午、己未，后又说子平只取五阳干。三者不应压成一张十干极位表。",
+  "extreme_positions": [
+    {"stem": "甲", "lu": "寅", "blade": "卯"},
+    {"stem": "乙", "lu": "卯", "blade": "辰"},
+    {"stem": "丙", "lu": "巳", "blade": "午"},
+    {"stem": "丁", "lu": "午", "blade": "未"},
+    {"stem": "庚", "lu": "申", "blade": "酉"},
+    {"stem": "辛", "lu": "酉", "blade": "戌"},
+    {"stem": "壬", "lu": "亥", "blade": "子"},
+    {"stem": "癸", "lu": "子", "blade": "丑"}
+  ],
+  "linked_blade_records": [
+    {"stem": "戊", "blade": "午", "scope": "连珠刃名单"},
+    {"stem": "己", "blade": "未", "scope": "连珠刃名单"}
+  ],
+  "ziping_method": [
+    {"stem": "甲", "blade": "卯"},
+    {"stem": "丙", "blade": "午"},
+    {"stem": "戊", "blade": "午"},
+    {"stem": "庚", "blade": "酉"},
+    {"stem": "壬", "blade": "子"}
+  ],
+  "reading_boundary": "这三层记录来自同篇不同段落，应保留各自的名称与范围；羊刃位置本身不直接等于个人结论。",
+  "public_sources": [
+    {"title": "《三命通会·论羊刃》", "note": "八干极盛位、连珠刃名单与子平五阳干说均见于本篇不同段落。", "url": "https://www.luckclub.cn/bazi/005/052/"}
+  ]
+}

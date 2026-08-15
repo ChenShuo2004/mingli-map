@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0",
+  "id": "tarot-correspondence-systems",
+  "title": "象征对应体系",
+  "summary": "认识数字、元素、占星与卡巴拉怎样被不同作者和牌组接入塔罗。",
+  "layers": [
+    {"id":"number","label":"数字序列","scope":"小阿卡纳王牌至十","question":"同一数字在四个花色中怎样重复？","note":"数字首先是牌组的可见结构；进一步解释仍要标明作者版本。"},
+    {"id":"element","label":"四元素","scope":"Book T版本：权杖、圣杯、宝剑、星币","question":"花色与火、水、风、土怎样对应？","note":"本页的四花色对照明确标作Golden Dawn／Book T版本；具体牌组可能增加、改写甚至扩成五个花色。"},
+    {"id":"astrology","label":"占星对应","scope":"行星、星座与黄道分段","question":"哪些牌被放进占星坐标？","note":"有些牌组把符号直接印在牌上，有些只在说明书或特定体系中出现。"},
+    {"id":"qabalah","label":"卡巴拉对应","scope":"希伯来字母与生命之树路径","question":"22张大阿卡纳怎样连接另一套符号系统？","note":"这是特定神秘主义谱系中的组织方式，不是从所有塔罗牌面都能直接看出的事实。"}
+  ],
+  "systems": [
+    {"id":"rws","label":"RWS与Waite原书","period":"1909–1911","source":"Waite文字＋Smith牌面","visible":"78张牌面与逐牌说明","added":"原书讨论象征与占卜方法，但后来的完整对应表不能倒写成每张RWS牌的唯一原意。","source_id":"waite"},
+    {"id":"book-t","label":"Golden Dawn／Book T","period":"1912公开文本","source":"《The Equinox》I.8","visible":"78张牌的称号、属性与方法","added":"该文本明确把牌与元素、占星等属性组织在一起，是一套可标出出版出处的对应版本。","source_id":"book_t"},
+    {"id":"explicit-deck","label":"明确印出对应的现代牌组","period":"具体出版物","source":"牌面符号＋随附说明书","visible":"由作者决定哪些体系进入牌面","added":"Celestial Tarot与Hermetic Tarot均由出版社明确说明占星、元素或卡巴拉对应；只能代表各自出版物。","source_id":"publisher"},
+    {"id":"variant","label":"改变结构的作者牌组","period":"具体出版物","source":"牌数、花色与说明书","visible":"结构本身已经不同","added":"Sealed Path Tarot使用97张与五个小阿卡纳花色，说明对应体系不能脱离具体牌组直接套用。","source_id":"variant"}
+  ],
+  "suit_element_example": [
+    {"suit":"权杖","element":"火","mark":"杖","image":"Wands01.png"},
+    {"suit":"圣杯","element":"水","mark":"杯","image":"Cups01.png"},
+    {"suit":"宝剑","element":"风","mark":"剑","image":"Swords01.png"},
+    {"suit":"星币","element":"土","mark":"币","image":"Pentacles01.png"}
+  ],
+  "suit_element_version": "Golden Dawn／Book T（1912公开文本）",
+  "reading_order": ["先确认当前牌组与说明书","再确认采用哪套对应体系","区分牌面可见符号与书中属性","只在当前问题需要时使用对应关系","记录作者、版本与翻译来源"],
+  "linked_nodes": [
+    {"label":"塔罗历史与牌系","route":"/topic/tarot/history-and-decks"},
+    {"label":"牌义来源：Mathers与Waite版本","route":"/topic/tarot/meaning-lineages"},
+    {"label":"RWS小阿卡纳","route":"/topic/tarot/minor-arcana-images?suit=wands&rank=ace&mode=imagery"}
+  ],
+  "boundary":"本页只展示对应体系如何进入塔罗，不把数字、元素、占星或卡巴拉合成为一套普遍牌义。",
+  "public_sources": [
+    {"id":"waite","title":"Project Gutenberg：Waite牌面说明与方法","note":"支撑RWS作者版本、78张牌面说明与原书方法范围。","url":"https://www.gutenberg.org/ebooks/43548"},
+    {"id":"book_t","title":"The Equinox I.8：A Description of the Cards of the Tarot","note":"1912公开文本以牌的属性与占卜方法组织78张牌，用于标记Golden Dawn／Book T谱系。","url":"https://www.100thmonkeypress.com/biblio/acrowley/books/equinox_1_8_1912/equinox_1_8_1912.htm"},
+    {"id":"publisher","title":"U.S. Games：Celestial Tarot","note":"出版社说明该牌组把占星、四元素、希伯来字母与卡巴拉等对应写入牌面和说明书。","url":"https://www.usgamesinc.com/tarot-and-inspiration/celestial-tarot-deck.html"},
+    {"id":"hermetic","title":"U.S. Games：Hermetic Tarot","note":"出版社说明该牌组明确呈现Golden Dawn、占星、元素与生命之树对应。","url":"https://www.usgamesinc.com/hermetic-tarot-deck.html"},
+    {"id":"variant","title":"U.S. Games：Sealed Path Tarot","note":"出版社实例为97张、五个小阿卡纳花色，用于说明作者牌组可以改变对应结构。","url":"https://www.usgamesinc.com/the-sealed-path-tarot"}
+  ],
+  "internal_review": {"status":"formal_correspondence_versions_node","reviewed_at":"2026-08-07","source_refs":["gutenberg_waite_43548","equinox_i_8_1912","usgames_celestial_tarot","usgames_hermetic_tarot","usgames_sealed_path"],"ownership":"K-TAROT.10 解释来源","boundary":"对应体系按作者与出版物并列，不补写成RWS唯一原意。"}
+}

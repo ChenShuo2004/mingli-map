@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0",
+  "id": "liuyao_repeating_opposing_change",
+  "title": "反吟与伏吟",
+  "summary": "反吟与伏吟是在本卦、变卦之间比较同一爻位纳甲地支的变化关系：对应地支相冲称反吟，对应地支相同称伏吟。比较既可以落在内卦三爻、外卦三爻，也可以覆盖内外六爻。",
+  "position_labels": ["初爻", "二爻", "三爻", "四爻", "五爻", "上爻"],
+  "parts": [
+    { "id": "inner", "label": "内卦", "positions": [1, 2, 3], "note": "只比较初、二、三爻" },
+    { "id": "outer", "label": "外卦", "positions": [4, 5, 6], "note": "只比较四、五、上爻" },
+    { "id": "whole", "label": "内外全卦", "positions": [1, 2, 3, 4, 5, 6], "note": "六个同位关系一起比较" }
+  ],
+  "relations": [
+    {
+      "id": "fanyin",
+      "label": "反吟",
+      "comparison": "相冲",
+      "mark": "冲",
+      "fixed_example": {
+        "base_name": "地风升",
+        "changed_name": "风地观",
+        "scope": "whole",
+        "pairs": [
+          { "position": 1, "base": "丑", "changed": "未", "relation": "冲" },
+          { "position": 2, "base": "亥", "changed": "巳", "relation": "冲" },
+          { "position": 3, "base": "酉", "changed": "卯", "relation": "冲" },
+          { "position": 4, "base": "丑", "changed": "未", "relation": "冲" },
+          { "position": 5, "base": "亥", "changed": "巳", "relation": "冲" },
+          { "position": 6, "base": "酉", "changed": "卯", "relation": "冲" }
+        ]
+      }
+    },
+    {
+      "id": "fuyin",
+      "label": "伏吟",
+      "comparison": "相同",
+      "mark": "同",
+      "fixed_example": {
+        "base_name": "天风姤",
+        "changed_name": "雷风恒",
+        "scope": "whole",
+        "pairs": [
+          { "position": 1, "base": "丑", "changed": "丑", "relation": "同" },
+          { "position": 2, "base": "亥", "changed": "亥", "relation": "同" },
+          { "position": 3, "base": "酉", "changed": "酉", "relation": "同" },
+          { "position": 4, "base": "午", "changed": "午", "relation": "同" },
+          { "position": 5, "base": "申", "changed": "申", "relation": "同" },
+          { "position": 6, "base": "戌", "changed": "戌", "relation": "同" }
+        ]
+      }
+    }
+  ],
+  "reading_steps": [
+    { "label": "先得本卦", "note": "保留本卦六个爻位的纳甲地支。" },
+    { "label": "再得变卦", "note": "动爻翻转后，重新读取变卦各爻地支。" },
+    { "label": "同位比较", "note": "初对初、二对二，直到上爻对上爻。" },
+    { "label": "确认范围", "note": "关系可能只见内卦、只见外卦，或覆盖全卦。" }
+  ],
+  "terminology_note": "古籍对卦变、爻变以及卦之反伏、爻之反伏的命名层级并不完全一致。可直接核对的是同位地支关系与作用范围，不把不同术语层级强并为唯一口径。",
+  "reading_boundary": "这里只解释本卦与变卦怎样形成同位地支的相冲或重复，不提供起卦、用神选择，也不把反吟、伏吟直接解释成事件结果。",
+  "internal_review": {
+    "status": "classical_structure_and_locked_implementation_cross_checked",
+    "reviewed_at": "2026-08-04",
+    "source_refs": [
+      "zengshan_buyi_wikisource_chapter_25",
+      "yilin_buyi_wikisource_volume_1",
+      "github_horace_maxwell_horosa_7d8a93e_liuyao_dongbian"
+    ],
+    "boundary": "公开本变卦同位比较、内外范围与两组固定例；占断、旺衰、用神及事件解释留在受限层。"
+  }
+}

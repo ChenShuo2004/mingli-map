@@ -1,0 +1,36 @@
+{
+  "id": "observation-record-structure",
+  "title": "一条相学观察怎样组成",
+  "summary": "一条可复核的相学记录至少包含观察对象、图像条件、可见事实、术语标签、版本说明与来源依据；缺少任一层时，不把推测补成确定事实。",
+  "record_layers": [
+    {"id": "object", "label": "观察对象", "question": "正在看哪个部位？", "fields": ["面部或手部", "主体侧别", "局部名称", "观察范围"], "example": "主体左手 · 掌面 · 掌上部横纹"},
+    {"id": "image", "label": "图像条件", "question": "这张图怎样取得？", "fields": ["正面或侧面", "是否镜像", "光线", "距离与焦段", "裁切", "是否修饰"], "example": "掌面正向 · 未镜像 · 指尖至腕部完整"},
+    {"id": "visible", "label": "可见事实", "question": "画面中实际看见什么？", "fields": ["位置", "比例", "形态", "走向", "连续性", "可见度"], "example": "掌上部可见一条由小指侧向食指侧延伸的横纹"},
+    {"id": "term", "label": "术语标签", "question": "哪个名称连接到这项观察？", "fields": ["原文名称", "现代常用名", "别名", "仅作检索或位置标签"], "example": "现代常称感情线；部分资料称心线或天纹"},
+    {"id": "version", "label": "版本说明", "question": "名称与位置属于哪个版本？", "fields": ["书名", "卷次或篇目", "刊刻或整理版本", "异名同位", "同名异位", "待核差异"], "example": "名称按现代整理登记；传统别名另附来源"},
+    {"id": "source", "label": "来源依据", "question": "读者怎样回到原材料？", "fields": ["题名", "作者或责任者", "版本身份", "页码或卷次", "馆藏或网址", "权利状态", "核对日期"], "example": "链接到可复核的馆藏扫描或版本研究"}
+  ],
+  "fixed_record": {
+    "title": "固定示例：掌上部横纹",
+    "object": "主体左手掌面，掌上部",
+    "image_condition": "AI教学样本；正向掌面；未作真人判断",
+    "visible_statement": "画面中可见一条由小指侧向食指侧延伸的横纹，局部与细纹交会",
+    "term_statement": "以“感情线”作为现代检索名，并列“心线／天纹”别名",
+    "version_statement": "名称和参考位置需随资料版本保存，不把别名合成唯一古称",
+    "source_statement": "位置材料连接公版古籍扫描与版本研究；教学线条只作示意"
+  },
+  "evidence_states": [
+    {"label": "已观察", "meaning": "当前图像中可以直接看见并描述"},
+    {"label": "部分可见", "meaning": "受裁切、光线或遮挡影响，只能描述可见部分"},
+    {"label": "当前未见", "meaning": "当前画面没有看见，不等于对象必然不存在"},
+    {"label": "来源称述", "meaning": "资料中的说法，与当前图像观察分开记录"},
+    {"label": "待核版本", "meaning": "名称、位置或版本关系尚未完成原页核对"}
+  ],
+  "validation_checks": ["对象与侧别明确", "图像条件足以复核", "事实句不含人物结论", "术语附参考位置", "版本身份可区分", "来源能回到具体材料", "不确定项有状态标记"],
+  "boundaries": ["观察事实与来源说法不得写成同一句确定结论", "当前未见不等于不存在", "传统名称不等于现代医学或心理学概念", "没有原页或可靠版本依据时标记待核，不凭记忆补齐", "一条记录不自动产生吉凶、性格或行动建议"],
+  "public_sources": [
+    {"title": "NIST SP 500-271：图像与描述字段的交换格式", "note": "用于确认侧别、掌区、采集参数及相关描述字段应与图像一并记录。", "url": "https://www.nist.gov/publications/data-format-interchange-fingerprint-facial-other-biometric-information-ansinist-itl-1-0"},
+    {"title": "梁伟贤《麻衣相法》版本初探", "note": "用于说明相书篇目、卷次和内容在不同版本中会发生重排与增删。", "url": "https://ccsndb.ncl.edu.tw/nclccs/pdf/01_034_004_01_05.pdf"},
+    {"title": "Wikimedia Commons《神相全编》馆藏分类", "note": "提供多种馆藏与卷次扫描，便于回到具体版本核对。", "url": "https://commons.wikimedia.org/wiki/Category:%E7%A5%9E%E7%9B%B8%E5%85%A8%E7%B7%A8"}
+  ]
+}

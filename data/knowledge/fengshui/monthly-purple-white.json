@@ -1,0 +1,21 @@
+{
+  "id": "monthly-purple-white",
+  "title": "月紫白的三组起例",
+  "summary": "月紫白先按当年地支归入四仲、四孟或四季组，分别以八白、二黑或五黄作为正月入中星；此后逐月递减一位，再把当月星入中顺飞九宫。",
+  "year_branch_groups": [
+    {"group":"四仲年","branches":["子","午","卯","酉"],"first_month_star":8,"first_month_name":"八白"},
+    {"group":"四孟年","branches":["寅","申","巳","亥"],"first_month_star":2,"first_month_name":"二黑"},
+    {"group":"四季年","branches":["辰","戌","丑","未"],"first_month_star":5,"first_month_name":"五黄"}
+  ],
+  "monthly_sequences": [
+    {"group":"四仲年","stars":[8,7,6,5,4,3,2,1,9,8,7,6]},
+    {"group":"四孟年","stars":[2,1,9,8,7,6,5,4,3,2,1,9]},
+    {"group":"四季年","stars":[5,4,3,2,1,9,8,7,6,5,4,3]}
+  ],
+  "reading_chain": ["取得年支","归入四仲／四孟／四季","读取正月起星","按月序逐月减一","当月星入中并顺飞九宫"],
+  "version_fields": ["正月按寅月还是农历月名","月界按节、气、朔日或其他口径","闰月是否重复前月星或另行推进","交界日时与时区"],
+  "boundaries": ["“正月”必须随来源说明历法身份，不能直接等同公历一月","三组起例只决定月星入中序列，不替代年紫白或宅盘","闰月和月界存在版本差异，本表不自行裁定"],
+  "public_sources": [
+    {"title":"南华大学：风水场域之意象性研究","note":"列出子午卯酉八白、寅申巳亥二黑、辰戌丑未五黄起正月及逐月逆数。","url":"https://nhuir.nhu.edu.tw/retrieve/28545/092NHU05699014-001.pdf"}
+  ]
+}

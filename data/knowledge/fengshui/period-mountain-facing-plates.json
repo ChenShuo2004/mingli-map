@@ -1,0 +1,26 @@
+{
+  "id":"period-mountain-facing-plates","title":"运盘、山盘与向盘","summary":"玄空宅盘由运盘、山盘、向盘三层组成：运星先入中飞布；再读取运盘在坐方与向方的星数，分别作为山盘和向盘的入中星，并按各自同元龙山位的阴阳决定顺逆。",
+  "plates":[{"index":1,"name":"运盘","also_called":"元运盘／地盘","seed":"所属运的星数入中","role":"提供全盘的时间层及坐、向两端取数位置"},{"index":2,"name":"山盘","also_called":"山星盘","seed":"运盘在坐方宫位的星数","role":"回到起星本宫，以同元龙山位阴阳决定顺飞或逆飞"},{"index":3,"name":"向盘","also_called":"向星盘／水星盘","seed":"运盘在向方宫位的星数","role":"回到起星本宫，以同元龙山位阴阳决定顺飞或逆飞"}],
+  "dependency_chain":["所属运 → 运星入中","运盘飞布 → 坐宫星数／向宫星数","坐宫星数 → 山盘入中星","向宫星数 → 向盘入中星","同元龙山位阴阳 → 各盘顺逆","三盘叠合 → 每宫三层星数"],
+  "palace_fields":["宫位坐标","运星","山星","向星","山盘顺逆版本","向盘顺逆版本"],
+  "version_checks":["元运盘、地盘等术语是否同义","坐向二十四山采用哪套三元龙阴阳表","山盘和向盘各自的顺逆依据","替卦时是否更换入中星及更换规则"],
+  "fixed_chart_example": {
+    "label":"九运卯山酉向下卦",
+    "inputs":["九运","坐卯：82.5°—97.5°","向酉","下卦"],
+    "starts":["坐方震宫运星七入山盘中宫；七归兑宫，同元龙酉为阴","向方兑宫运星二入向盘中宫；二归坤宫，同元龙坤为阳"],
+    "directions":["山盘逆飞","向盘顺飞"],
+    "palaces":[
+      {"palace":"巽","direction":"东南","mountain":8,"facing":1,"period":8},
+      {"palace":"离","direction":"正南","mountain":3,"facing":6,"period":4},
+      {"palace":"坤","direction":"西南","mountain":1,"facing":8,"period":6},
+      {"palace":"震","direction":"正东","mountain":9,"facing":9,"period":7},
+      {"palace":"中","direction":"中央","mountain":7,"facing":2,"period":9},
+      {"palace":"兑","direction":"正西","mountain":5,"facing":4,"period":2},
+      {"palace":"艮","direction":"东北","mountain":4,"facing":5,"period":3},
+      {"palace":"坎","direction":"正北","mountain":2,"facing":7,"period":5},
+      {"palace":"乾","direction":"西北","mountain":6,"facing":3,"period":1}
+    ]
+  },
+  "boundaries":["固定例锁定九运、卯山酉向、下卦和本专题三元龙阴阳表，只用于回放三盘依赖","三盘是相互依赖的三层数据，不是三个独立九宫图","顺逆必须分别记录，不能从一个盘自动复制到另一个盘","三盘组合只用于展示盘层结构，不转换成宅运、健康或财富判断"],
+  "public_sources":[{"title":"南华大学：风水场域之意象性研究","note":"用于核对元运盘为基础、另有坐向两盘及阳顺阴逆的结构。","url":"https://nhuir.nhu.edu.tw/retrieve/28545/092NHU05699014-001.pdf"},{"title":"南华大学：建筑门向与玄空风水研究","note":"用于核对运盘、山盘、向盘的取数和飞布关系。","url":"https://nhuir.nhu.edu.tw/bitstream/987654321/25746/1/105NHU00356002-001.pdf"},{"title":"九运卯山酉向下卦宅星盘","note":"只用于核对固定示例的九宫山星、向星与运星数值，不采用文中的空间判断。","url":"https://www.108s.tw/article/info/362"}]
+}

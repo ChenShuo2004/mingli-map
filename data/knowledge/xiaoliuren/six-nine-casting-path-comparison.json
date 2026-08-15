@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.0.0",
+  "id": "xiaoliuren_six_nine_casting_path_comparison",
+  "title": "同一组三数在六位与九位系统中的路径差异",
+  "summary": "六位与九位系统即使接收同样的五月、二十三、戌时序数十一，也不会得到完全相同的三步路径。两者都从大安起、都把前一步落点作为下一次数数的起点，但循环长度和位序表不同：六位路径为小吉、速喜、大安，九位路径为小吉、天德、大安。这个节点只比较计算路径，不继承原资料对案例结果的判断。",
+  "source_scope": {
+    "source": "Horace-Maxwell/divination-notes-prompt 小六壬笔记",
+    "commit": "b22ecfaafcd17782ddc0f633df163b6492b766d4",
+    "status": "无仓库许可的并列版本笔记；只保存短字段与原创结构摘要"
+  },
+  "fixed_input": {
+    "lunar_month": 5,
+    "lunar_day": 23,
+    "hour_branch": "戌",
+    "hour_index": 11,
+    "start_name": "大安",
+    "counting_rule": "起点自身计1；后一个数字从上一步落点重新计1"
+  },
+  "systems": [
+    {
+      "id": "six_position",
+      "label": "六位系统",
+      "cycle_length": 6,
+      "sequence": ["大安", "留连", "速喜", "赤口", "小吉", "空亡"],
+      "steps": [
+        {"stage": "月", "input": 5, "start": "大安", "result_position": 5, "result": "小吉"},
+        {"stage": "日", "input": 23, "start": "小吉", "result_position": 3, "result": "速喜"},
+        {"stage": "时", "input": 11, "start": "速喜", "result_position": 1, "result": "大安"}
+      ]
+    },
+    {
+      "id": "nine_position",
+      "label": "九位系统",
+      "cycle_length": 9,
+      "sequence": ["大安", "留连", "速喜", "赤口", "小吉", "空亡", "病符", "桃花", "天德"],
+      "steps": [
+        {"stage": "月", "input": 5, "start": "大安", "result_position": 5, "result": "小吉"},
+        {"stage": "日", "input": 23, "start": "小吉", "result_position": 9, "result": "天德"},
+        {"stage": "时", "input": 11, "start": "天德", "result_position": 1, "result": "大安"}
+      ]
+    }
+  ],
+  "comparison": [
+    {"stage": "月", "six_result": "小吉", "nine_result": "小吉", "relation": "相同"},
+    {"stage": "日", "six_result": "速喜", "nine_result": "天德", "relation": "分岔"},
+    {"stage": "时", "six_result": "大安", "nine_result": "大安", "relation": "重新汇合"}
+  ],
+  "mechanical_rules": [
+    "结果位置可按 ((起点位置 - 1) + 输入数 - 1) mod 循环长度 + 1 复算。",
+    "第一步输入5在两张表中都落第5位小吉，所以尚未分岔。",
+    "第二步从小吉计23：六位循环落第3位速喜，九位循环落第9位天德。",
+    "第三步分别从速喜或天德计11，两张表都回到第1位大安；末步相同不代表中间路径相同。"
+  ],
+  "reading_boundaries": [
+    "不把六位或九位系统选作默认正统。",
+    "不继承来源对固定案例的成败、贵人、财务或五行判断。",
+    "不接收真人日期、报数或问题。"
+  ],
+  "public_sources": [
+    {
+      "title": "Horace-Maxwell 小六壬笔记锁定版本",
+      "url": "https://github.com/Horace-Maxwell/divination-notes-prompt/blob/b22ecfaafcd17782ddc0f633df163b6492b766d4/%E5%B0%8F%E5%85%AD%E5%A3%AC%E7%AC%94%E8%AE%B0.md",
+      "note": "主流方法与道门秘传段落并列相同输入的六位、九位三步路径；仓库无许可，页面只保存原创结构摘要。"
+    }
+  ],
+  "internal_review": {
+    "reviewed_on": "2026-08-09",
+    "owner": ["火华", "Codex"],
+    "status": "formal_fixed_input_version_comparison"
+  }
+}

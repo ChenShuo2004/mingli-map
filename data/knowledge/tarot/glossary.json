@@ -1,0 +1,122 @@
+{
+  "schema_version": "1.0.0",
+  "id": "tarot-glossary",
+  "title": "塔罗术语",
+  "summary": "集中查看牌组、单牌内容、方向和牌阵中最常见的12个词。",
+  "groups": [
+    {"id":"deck","label":"牌组","note":"牌由什么组成"},
+    {"id":"content","label":"单牌内容","note":"图像与解释怎样区分"},
+    {"id":"orientation","label":"方向","note":"同一张牌怎样摆放"},
+    {"id":"spread","label":"牌阵","note":"牌放在哪个位置"}
+  ],
+  "terms": [
+    {
+      "id":"major-arcana","group":"deck","term":"大阿卡纳","latin":"Major Arcana","short":"22张王牌",
+      "detail":"RWS中从愚人0到世界XXI的22张牌。",
+      "example":"愚人、魔术师、恋人、世界",
+      "route":"/topic/tarot/major-arcana-images",
+      "related":["minor-arcana","deck-family"]
+    },
+    {
+      "id":"minor-arcana","group":"deck","term":"小阿卡纳","latin":"Minor Arcana","short":"四花色共56张",
+      "detail":"权杖、圣杯、宝剑、星币四个花色，每个花色14张。",
+      "example":"4 ×（10张数字牌＋4张宫廷牌）",
+      "route":"/topic/tarot/minor-arcana-images",
+      "related":["suit","pip-card","court-card"]
+    },
+    {
+      "id":"suit","group":"deck","term":"花色","latin":"Suit","short":"小阿卡纳的四组牌",
+      "detail":"RWS使用权杖、圣杯、宝剑与星币四个花色。",
+      "example":"Wands · Cups · Swords · Pentacles",
+      "route":"/topic/tarot/minor-arcana-images",
+      "related":["minor-arcana","pip-card","court-card"]
+    },
+    {
+      "id":"pip-card","group":"deck","term":"数字牌","latin":"Pip card","short":"王牌到十",
+      "detail":"每个花色中的Ace至Ten。RWS为这些牌绘制了完整场景。",
+      "example":"权杖王牌、圣杯六、宝剑十",
+      "route":"/topic/tarot/minor-arcana-images?suit=wands&rank=ace&mode=imagery",
+      "related":["suit","court-card"]
+    },
+    {
+      "id":"court-card","group":"deck","term":"宫廷牌","latin":"Court card","short":"侍从、骑士、王后、国王",
+      "detail":"每个花色都有4张宫廷牌，四个花色合计16张。",
+      "example":"Page · Knight · Queen · King",
+      "route":"/topic/tarot/minor-arcana-images?suit=wands&rank=page&mode=imagery",
+      "related":["suit","pip-card"]
+    },
+    {
+      "id":"deck-family","group":"deck","term":"牌系","latin":"Deck family","short":"同一传统中的一组版本特征",
+      "detail":"不同牌系可能改变编号、名称、构图和数字牌画法。本专题的单牌资料以RWS为固定对照。",
+      "example":"早期意大利牌 · 马赛系 · RWS",
+      "route":"/topic/tarot/history-and-decks",
+      "related":["major-arcana","card-imagery"]
+    },
+    {
+      "id":"card-imagery","group":"content","term":"牌面","latin":"Imagery","short":"牌上实际画出的图像",
+      "detail":"同一张牌在不同牌系中可能采用不同构图。本专题使用固定RWS牌面。",
+      "example":"愚人的人物、小狗、山崖与太阳",
+      "route":"/topic/tarot/imagery-elements-map",
+      "related":["deck-family","card-meaning"]
+    },
+    {
+      "id":"card-meaning","group":"content","term":"牌义","latin":"Meaning","short":"作者或版本对牌的解释",
+      "detail":"牌义不是从图像自动得出的唯一答案。单牌资料明确标出Waite 1910这一作者版本。",
+      "example":"同一张愚人牌可切换牌面、Waite正位与Waite逆位",
+      "route":"/topic/tarot/major-arcana-images?card=0&mode=upright",
+      "related":["card-imagery","upright","reversed"]
+    },
+    {
+      "id":"upright","group":"orientation","term":"正位","latin":"Upright","short":"牌面朝上",
+      "detail":"牌图按正常方向出现。具体含义仍要跟随作者和版本。",
+      "example":"查看Waite 1910正位短义",
+      "route":"/topic/tarot/major-arcana-images?card=0&mode=upright",
+      "related":["reversed","card-meaning"]
+    },
+    {
+      "id":"reversed","group":"orientation","term":"逆位","latin":"Reversed","short":"牌面上下倒转",
+      "detail":"同一张牌旋转180度后的方向状态。不同作者是否采用逆位并不完全一致。",
+      "example":"查看Waite 1910逆位短义",
+      "route":"/topic/tarot/major-arcana-images?card=0&mode=reversed",
+      "related":["upright","card-meaning"]
+    },
+    {
+      "id":"spread","group":"spread","term":"牌阵","latin":"Spread","short":"一组牌位的排列方式",
+      "detail":"牌阵规定放几张牌、按什么顺序摆放，以及每个位置叫什么。",
+      "example":"单张 · 三张 · 五张 · 凯尔特十字",
+      "route":"/topic/tarot/spread-structures",
+      "related":["position"]
+    },
+    {
+      "id":"position","group":"spread","term":"牌位","latin":"Position","short":"牌阵中的一个位置",
+      "detail":"牌位先给出问题角度，再由放入该位置的具体牌提供单牌内容。",
+      "example":"过去 · 当下 · 未来",
+      "route":"/topic/tarot/spread-structures?spread=three&version=waite_1910&position=2&example=three_card_position_demo&examplePosition=2",
+      "related":["spread"]
+    }
+  ],
+  "public_sources": [
+    {
+      "title":"大都会艺术博物馆：占卜之前的塔罗历史与结构",
+      "note":"支撑四花色、56张花色牌、21张王牌与愚人的结构术语。",
+      "url":"https://www.metmuseum.org/perspectives/tarot-2"
+    },
+    {
+      "title":"V&A：塔罗牌历史",
+      "note":"支撑78张牌、大／小阿卡纳称呼、四花色和RWS小阿卡纳完整场景的说明。",
+      "url":"https://www.vam.ac.uk/articles/tarot-cards"
+    },
+    {
+      "title":"Project Gutenberg：Waite《The Illustrated Key to the Tarot》",
+      "note":"支撑RWS牌名、正位／逆位作者短义与凯尔特十字牌位结构。",
+      "url":"https://www.gutenberg.org/ebooks/43548"
+    }
+  ],
+  "internal_review": {
+    "status":"formal_beginner_tarot_glossary",
+    "reviewed_at":"2026-08-06",
+    "source_refs":["met_tarot_history_structure","vam_tarot_history","gutenberg_waite_43548"],
+    "ownership":"K-TR.01 牌组结构",
+    "boundary":"术语只建立跨节点识别与跳转；具体牌义继续保留作者版本，牌位不自动生成个人结论。"
+  }
+}

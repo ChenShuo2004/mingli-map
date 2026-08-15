@@ -1,0 +1,2548 @@
+{
+  "title": "印度占星",
+  "tradition": "vedic",
+  "summary": "从恒星黄道、盘面对象与历法进入分盘、方法分支和时间技术。",
+  "groups": [
+    {
+      "id": "coordinates",
+      "title": "坐标与基础盘面",
+      "sequence": 1
+    },
+    {
+      "id": "calendar",
+      "title": "历法与时间单位",
+      "sequence": 2
+    },
+    {
+      "id": "derived",
+      "title": "分盘与派生对象",
+      "sequence": 3
+    },
+    {
+      "id": "schools",
+      "title": "方法分支",
+      "sequence": 4
+    },
+    {
+      "id": "timing",
+      "title": "时间技术",
+      "sequence": 5
+    }
+  ],
+  "nodes": [
+    {
+      "id": "sidereal-zodiac-ayanamsa",
+      "group": "coordinates",
+      "sequence": 1,
+      "title": "恒星黄道与 Ayanamsa",
+      "latin": "Sidereal zodiac & ayanamsa",
+      "count": "2 层坐标 · 21 个源码模式",
+      "tags": [
+        "恒星黄道",
+        "岁差差值",
+        "参数版本"
+      ],
+      "question": "热带黄经怎样转换为不同版本的恒星黄经？",
+      "summary": "先取得指定时刻的热带黄经，再扣除同一时刻、同一模式的 Ayanamsa；模式名是计算输入，不是结果旁注。",
+      "facts": [
+        [
+          "热带层",
+          "星历先给出 0—360° 热带黄经"
+        ],
+        [
+          "差值层",
+          "恒星黄经 = 热带黄经 − Ayanamsa，再归一化"
+        ],
+        [
+          "版本层",
+          "结果同时保存模式、时刻与节点版本"
+        ]
+      ],
+      "formula": {
+        "input": "λ tropical",
+        "operation": "− ayanamsa(t, mode)",
+        "output": "λ sidereal mod 360°"
+      },
+      "mode_groups": [
+        {
+          "label": "常见选项",
+          "items": [
+            "LAHIRI",
+            "RAMAN",
+            "KP",
+            "FAGAN",
+            "USHASHASHI",
+            "YUKTESHWAR"
+          ]
+        },
+        {
+          "label": "恒星锚点",
+          "items": [
+            "TRUE_CITRA",
+            "TRUE_REVATI",
+            "TRUE_PUSHYA",
+            "TRUE_MULA",
+            "SS_CITRA",
+            "SS_REVATI",
+            "TRUE_LAHIRI"
+          ]
+        },
+        {
+          "label": "历算／自定义",
+          "items": [
+            "SURYASIDDHANTA",
+            "SURYASIDDHANTA_MSUN",
+            "ARYABHATA",
+            "ARYABHATA_MSUN",
+            "SENTHIL",
+            "KP-SENTHIL",
+            "SIDM_USER",
+            "SUNDAR_SS"
+          ]
+        }
+      ],
+      "implementation_note": "PyJHora 固定版本列出 21 个模式键，源码默认值为 TRUE_PUSHYA；此默认仅代表该版本软件设置，不代表传统唯一标准。",
+      "public_sources": [
+        {
+          "title": "PyJHora const.py · Ayanamsa 模式与默认值",
+          "url": "https://github.com/naturalstupid/PyJHora/blob/ca22995709bd60e371e7820a1a5efc80ce4cf821/src/jhora/const.py",
+          "fields": [
+            "available_ayanamsa_modes",
+            "_DEFAULT_AYANAMSA_MODE"
+          ]
+        },
+        {
+          "title": "PyJHora drik.py · 恒星黄经转换",
+          "url": "https://github.com/naturalstupid/PyJHora/blob/ca22995709bd60e371e7820a1a5efc80ce4cf821/src/jhora/panchanga/drik.py",
+          "fields": [
+            "set_ayanamsa_mode",
+            "sidereal_longitude"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chart-input-lagna",
+      "group": "coordinates",
+      "sequence": 2,
+      "title": "星盘输入与 Lagna",
+      "latin": "Chart input & lagna",
+      "count": "4 类输入 · 4 项输出",
+      "tags": [
+        "日期时间",
+        "地理坐标",
+        "Lagna"
+      ],
+      "question": "时刻、地点和坐标参数怎样共同确定 Lagna？",
+      "summary": "当地日期时间先与时区合成儒略日；经纬度建立当地地平坐标，Ayanamsa 再确定恒星黄道中的 Lagna。",
+      "facts": [
+        [
+          "输入",
+          "当地日期时间、时区、纬度、经度"
+        ],
+        [
+          "转换",
+          "当地儒略日减去时区小时／24 得到 UTC 儒略日"
+        ],
+        [
+          "输出",
+          "Rashi、宫内度数、Nakshatra、Pada"
+        ]
+      ],
+      "pipeline": [
+        {
+          "index": 1,
+          "label": "当地时刻",
+          "value": "日期 + 钟点"
+        },
+        {
+          "index": 2,
+          "label": "绝对时刻",
+          "value": "Julian day / UTC"
+        },
+        {
+          "index": 3,
+          "label": "地点",
+          "value": "纬度 + 经度"
+        },
+        {
+          "index": 4,
+          "label": "坐标版本",
+          "value": "Ayanamsa + 节点模式"
+        },
+        {
+          "index": 5,
+          "label": "Lagna",
+          "value": "Rashi + 度数 + 宿 + Pada"
+        }
+      ],
+      "output_fields": [
+        {
+          "label": "Rashi",
+          "note": "0—11 的黄道分区"
+        },
+        {
+          "label": "longitude",
+          "note": "该 Rashi 内的度数"
+        },
+        {
+          "label": "Nakshatra",
+          "note": "1—27"
+        },
+        {
+          "label": "Pada",
+          "note": "1—4"
+        }
+      ],
+      "public_sources": [
+        {
+          "title": "PyJHora drik.py · ascendant",
+          "url": "https://github.com/naturalstupid/PyJHora/blob/ca22995709bd60e371e7820a1a5efc80ce4cf821/src/jhora/panchanga/drik.py",
+          "fields": [
+            "ascendant"
+          ]
+        },
+        {
+          "title": "PyJHora charts.py · Rasi chart 输入输出",
+          "url": "https://github.com/naturalstupid/PyJHora/blob/ca22995709bd60e371e7820a1a5efc80ce4cf821/src/jhora/horoscope/chart/charts.py",
+          "fields": [
+            "rasi_chart"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nine-grahas",
+      "group": "coordinates",
+      "sequence": 3,
+      "title": "九曜 Graha",
+      "latin": "Nine grahas",
+      "count": "2 发光体 · 5 行星 · 2 交点",
+      "tags": [
+        "太阳至土星",
+        "Rahu",
+        "Ketu"
+      ],
+      "question": "印度占星的九曜由哪些对象组成？",
+      "summary": "源码固定次序为太阳、月亮、火星、水星、木星、金星、土星、Rahu、Ketu；Rahu 与 Ketu 是月球轨道交点，不是实体行星。",
+      "facts": [
+        [
+          "发光体",
+          "太阳、月亮"
+        ],
+        [
+          "五颗行星",
+          "火星、水星、木星、金星、土星"
+        ],
+        [
+          "月交点",
+          "Rahu、Ketu；真交点／平均交点需保存模式"
+        ]
+      ],
+      "grahas": [
+        {
+          "index": 1,
+          "name": "太阳",
+          "latin": "Surya",
+          "code": "Sun",
+          "kind": "发光体",
+          "symbol": "☉"
+        },
+        {
+          "index": 2,
+          "name": "月亮",
+          "latin": "Chandra",
+          "code": "Moon",
+          "kind": "发光体",
+          "symbol": "☾"
+        },
+        {
+          "index": 3,
+          "name": "火星",
+          "latin": "Mangala",
+          "code": "Mars",
+          "kind": "行星",
+          "symbol": "♂"
+        },
+        {
+          "index": 4,
+          "name": "水星",
+          "latin": "Budha",
+          "code": "Mercury",
+          "kind": "行星",
+          "symbol": "☿"
+        },
+        {
+          "index": 5,
+          "name": "木星",
+          "latin": "Guru",
+          "code": "Jupiter",
+          "kind": "行星",
+          "symbol": "♃"
+        },
+        {
+          "index": 6,
+          "name": "金星",
+          "latin": "Shukra",
+          "code": "Venus",
+          "kind": "行星",
+          "symbol": "♀"
+        },
+        {
+          "index": 7,
+          "name": "土星",
+          "latin": "Shani",
+          "code": "Saturn",
+          "kind": "行星",
+          "symbol": "♄"
+        },
+        {
+          "index": 8,
+          "name": "罗睺",
+          "latin": "Rahu",
+          "code": "Rahu",
+          "kind": "升交点",
+          "symbol": "☊"
+        },
+        {
+          "index": 9,
+          "name": "计都",
+          "latin": "Ketu",
+          "code": "Ketu",
+          "kind": "降交点",
+          "symbol": "☋"
+        }
+      ],
+      "version_fields": [
+        "Rahu／Ketu 使用真交点或平均交点",
+        "是否排除天王星、海王星、冥王星"
+      ],
+      "public_sources": [
+        {
+          "title": "PyJHora const.py · 行星 ID 与节点模式",
+          "url": "https://github.com/naturalstupid/PyJHora/blob/ca22995709bd60e371e7820a1a5efc80ce4cf821/src/jhora/const.py",
+          "fields": [
+            "SUN_ID—KETU_ID",
+            "set_node_mode"
+          ]
+        },
+        {
+          "title": "PyJHora 英文资源 · 行星固定顺序",
+          "url": "https://github.com/naturalstupid/PyJHora/blob/ca22995709bd60e371e7820a1a5efc80ce4cf821/src/jhora/lang/list_values_en.txt",
+          "fields": [
+            "PLANET_NAMES"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "twelve-rashis",
+      "group": "coordinates",
+      "sequence": 4,
+      "title": "十二 Rashi",
+      "latin": "Twelve rashis",
+      "count": "12 分区 · 每区 30°",
+      "tags": [
+        "黄道分区",
+        "主星",
+        "恒星坐标"
+      ],
+      "question": "十二 Rashi 怎样切分恒星黄道？",
+      "summary": "恒星黄经从 0° 起连续十二等分；每个 Rashi 固定 30°，位置由整周黄经所属区间决定。",
+      "facts": [
+        [
+          "区间",
+          "12 × 30° = 360°"
+        ],
+        [
+          "索引",
+          "源码以白羊为 0、双鱼为 11"
+        ],
+        [
+          "边界",
+          "Rashi 是黄道分区，不等于 Bhava"
+        ]
+      ],
+      "rashis": [
+        {
+          "index": 1,
+          "name": "白羊",
+          "latin": "Mesha",
+          "english": "Aries",
+          "range": "0°—30°",
+          "lord": "火星"
+        },
+        {
+          "index": 2,
+          "name": "金牛",
+          "latin": "Vrishabha",
+          "english": "Taurus",
+          "range": "30°—60°",
+          "lord": "金星"
+        },
+        {
+          "index": 3,
+          "name": "双子",
+          "latin": "Mithuna",
+          "english": "Gemini",
+          "range": "60°—90°",
+          "lord": "水星"
+        },
+        {
+          "index": 4,
+          "name": "巨蟹",
+          "latin": "Karka",
+          "english": "Cancer",
+          "range": "90°—120°",
+          "lord": "月亮"
+        },
+        {
+          "index": 5,
+          "name": "狮子",
+          "latin": "Simha",
+          "english": "Leo",
+          "range": "120°—150°",
+          "lord": "太阳"
+        },
+        {
+          "index": 6,
+          "name": "室女",
+          "latin": "Kanya",
+          "english": "Virgo",
+          "range": "150°—180°",
+          "lord": "水星"
+        },
+        {
+          "index": 7,
+          "name": "天秤",
+          "latin": "Tula",
+          "english": "Libra",
+          "range": "180°—210°",
+          "lord": "金星"
+        },
+        {
+          "index": 8,
+          "name": "天蝎",
+          "latin": "Vrischika",
+          "english": "Scorpio",
+          "range": "210°—240°",
+          "lord": "火星"
+        },
+        {
+          "index": 9,
+          "name": "人马",
+          "latin": "Dhanu",
+          "english": "Sagittarius",
+          "range": "240°—270°",
+          "lord": "木星"
+        },
+        {
+          "index": 10,
+          "name": "摩羯",
+          "latin": "Makara",
+          "english": "Capricorn",
+          "range": "270°—300°",
+          "lord": "土星"
+        },
+        {
+          "index": 11,
+          "name": "宝瓶",
+          "latin": "Kumbha",
+          "english": "Aquarius",
+          "range": "300°—330°",
+          "lord": "土星"
+        },
+        {
+          "index": 12,
+          "name": "双鱼",
+          "latin": "Meena",
+          "english": "Pisces",
+          "range": "330°—360°",
+          "lord": "木星"
+        }
+      ],
+      "public_sources": [
+        {
+          "title": "PyJHora const.py · Rashi 索引与英文名",
+          "url": "https://github.com/naturalstupid/PyJHora/blob/ca22995709bd60e371e7820a1a5efc80ce4cf821/src/jhora/const.py",
+          "fields": [
+            "ARIES—PISCES",
+            "rasi_names_en"
+          ]
+        },
+        {
+          "title": "PyJHora 英文资源 · 十二 Rashi 顺序",
+          "url": "https://github.com/naturalstupid/PyJHora/blob/ca22995709bd60e371e7820a1a5efc80ce4cf821/src/jhora/lang/list_values_en.txt",
+          "fields": [
+            "RAASI_LIST"
+          ]
+        }
+      ],
+      "editorial_note": "中文名与常见梵文转写为知识地图规范化标签；源码键与英文顺序作为核对锚点。"
+    },
+    {
+      "id": "twelve-bhavas",
+      "group": "coordinates",
+      "sequence": 5,
+      "title": "十二 Bhava",
+      "latin": "Twelve bhavas",
+      "count": "12 宫位 · 5 条印度算法路线",
+      "tags": [
+        "宫位",
+        "Lagna",
+        "宫界"
+      ],
+      "question": "十二 Bhava 与十二 Rashi 为什么不能直接等同？",
+      "summary": "Rashi 固定切分黄道；Bhava 则由 Lagna、宫位算法以及“Lagna 是宫中还是宫首”的设定生成宫首、宫中与宫界。",
+      "facts": [
+        [
+          "编号",
+          "从 Lagna 所在第一 Bhava 顺数至第十二"
+        ],
+        [
+          "整宫路线",
+          "宫界跟随 Rashi 的 0°／30°边界"
+        ],
+        [
+          "宫界路线",
+          "宫首、宫中、宫界可与 Rashi 边界错开"
+        ]
+      ],
+      "bhavas": [
+        {
+          "index": 1,
+          "offset": "Lagna",
+          "axis": "1／7 轴"
+        },
+        {
+          "index": 2,
+          "offset": "+30°",
+          "axis": "资源轴"
+        },
+        {
+          "index": 3,
+          "offset": "+60°",
+          "axis": "3／9 轴"
+        },
+        {
+          "index": 4,
+          "offset": "+90°",
+          "axis": "4／10 轴"
+        },
+        {
+          "index": 5,
+          "offset": "+120°",
+          "axis": "创造轴"
+        },
+        {
+          "index": 6,
+          "offset": "+150°",
+          "axis": "6／12 轴"
+        },
+        {
+          "index": 7,
+          "offset": "+180°",
+          "axis": "1／7 轴"
+        },
+        {
+          "index": 8,
+          "offset": "+210°",
+          "axis": "资源轴"
+        },
+        {
+          "index": 9,
+          "offset": "+240°",
+          "axis": "3／9 轴"
+        },
+        {
+          "index": 10,
+          "offset": "+270°",
+          "axis": "4／10 轴"
+        },
+        {
+          "index": 11,
+          "offset": "+300°",
+          "axis": "创造轴"
+        },
+        {
+          "index": 12,
+          "offset": "+330°",
+          "axis": "6／12 轴"
+        }
+      ],
+      "house_methods": [
+        {
+          "code": "1",
+          "name": "KN Rao／Bhava Chalita",
+          "geometry": "Lagna 默认为第一宫宫中；每宫宫中前后各 15°"
+        },
+        {
+          "code": "2",
+          "name": "Parashari Whole Sign",
+          "geometry": "Lagna 所在 Rashi 为第一宫；宫界跟随星座边界"
+        },
+        {
+          "code": "3",
+          "name": "KP",
+          "geometry": "由宫首序列建立宫界"
+        },
+        {
+          "code": "4",
+          "name": "B. V. Raman",
+          "geometry": "关键宫首之间等分，再取相邻中点为边界"
+        },
+        {
+          "code": "5",
+          "name": "Nakshatra-pada Equal",
+          "geometry": "每宫 9 Pada，以 Pada 中心对齐"
+        }
+      ],
+      "public_sources": [
+        {
+          "title": "PyJHora charts.py · Bhava 五种印度算法",
+          "url": "https://github.com/naturalstupid/PyJHora/blob/ca22995709bd60e371e7820a1a5efc80ce4cf821/src/jhora/horoscope/chart/charts.py",
+          "fields": [
+            "bhava_chart",
+            "_bhaava_madhya_new"
+          ]
+        },
+        {
+          "title": "PyJHora const.py · 默认 Bhava 方法",
+          "url": "https://github.com/naturalstupid/PyJHora/blob/ca22995709bd60e371e7820a1a5efc80ce4cf821/src/jhora/const.py",
+          "fields": [
+            "bhaava_madhya_method"
+          ]
+        }
+      ],
+      "implementation_note": "该固定版本默认方法为 1；这是软件默认，不替代其他方法。"
+    },
+    {
+      "id": "nakshatra-pada",
+      "group": "coordinates",
+      "sequence": 6,
+      "title": "二十七宿与四 Pada",
+      "latin": "Nakshatra & pada",
+      "count": "27 宿 · 108 Pada",
+      "tags": [
+        "Nakshatra",
+        "Pada",
+        "月亮位置"
+      ],
+      "question": "二十七宿怎样继续细分恒星黄道？",
+      "summary": "360°恒星黄道先分成 27 个 13°20′的 Nakshatra，每宿再等分为 4 个 3°20′的 Pada。",
+      "facts": [
+        [
+          "Nakshatra",
+          "27 × 13°20′ = 360°"
+        ],
+        [
+          "Pada",
+          "每宿 4 段；27 × 4 = 108"
+        ],
+        [
+          "索引",
+          "Nakshatra 1—27，Pada 1—4"
+        ]
+      ],
+      "nakshatras": [
+        {
+          "index": 1,
+          "name": "Ashwini",
+          "range": "0°00′—13°20′",
+          "lord": "Ketu"
+        },
+        {
+          "index": 2,
+          "name": "Bharani",
+          "range": "13°20′—26°40′",
+          "lord": "Venus"
+        },
+        {
+          "index": 3,
+          "name": "Krittika",
+          "range": "26°40′—40°00′",
+          "lord": "Sun"
+        },
+        {
+          "index": 4,
+          "name": "Rohini",
+          "range": "40°00′—53°20′",
+          "lord": "Moon"
+        },
+        {
+          "index": 5,
+          "name": "Mrigashira",
+          "range": "53°20′—66°40′",
+          "lord": "Mars"
+        },
+        {
+          "index": 6,
+          "name": "Ardra",
+          "range": "66°40′—80°00′",
+          "lord": "Rahu"
+        },
+        {
+          "index": 7,
+          "name": "Punarvasu",
+          "range": "80°00′—93°20′",
+          "lord": "Jupiter"
+        },
+        {
+          "index": 8,
+          "name": "Pushya",
+          "range": "93°20′—106°40′",
+          "lord": "Saturn"
+        },
+        {
+          "index": 9,
+          "name": "Ashlesha",
+          "range": "106°40′—120°00′",
+          "lord": "Mercury"
+        },
+        {
+          "index": 10,
+          "name": "Magha",
+          "range": "120°00′—133°20′",
+          "lord": "Ketu"
+        },
+        {
+          "index": 11,
+          "name": "Purva Phalguni",
+          "range": "133°20′—146°40′",
+          "lord": "Venus"
+        },
+        {
+          "index": 12,
+          "name": "Uttara Phalguni",
+          "range": "146°40′—160°00′",
+          "lord": "Sun"
+        },
+        {
+          "index": 13,
+          "name": "Hasta",
+          "range": "160°00′—173°20′",
+          "lord": "Moon"
+        },
+        {
+          "index": 14,
+          "name": "Chitra",
+          "range": "173°20′—186°40′",
+          "lord": "Mars"
+        },
+        {
+          "index": 15,
+          "name": "Swati",
+          "range": "186°40′—200°00′",
+          "lord": "Rahu"
+        },
+        {
+          "index": 16,
+          "name": "Vishakha",
+          "range": "200°00′—213°20′",
+          "lord": "Jupiter"
+        },
+        {
+          "index": 17,
+          "name": "Anuradha",
+          "range": "213°20′—226°40′",
+          "lord": "Saturn"
+        },
+        {
+          "index": 18,
+          "name": "Jyeshtha",
+          "range": "226°40′—240°00′",
+          "lord": "Mercury"
+        },
+        {
+          "index": 19,
+          "name": "Mula",
+          "range": "240°00′—253°20′",
+          "lord": "Ketu"
+        },
+        {
+          "index": 20,
+          "name": "Purva Ashadha",
+          "range": "253°20′—266°40′",
+          "lord": "Venus"
+        },
+        {
+          "index": 21,
+          "name": "Uttara Ashadha",
+          "range": "266°40′—280°00′",
+          "lord": "Sun"
+        },
+        {
+          "index": 22,
+          "name": "Shravana",
+          "range": "280°00′—293°20′",
+          "lord": "Moon"
+        },
+        {
+          "index": 23,
+          "name": "Dhanishtha",
+          "range": "293°20′—306°40′",
+          "lord": "Mars"
+        },
+        {
+          "index": 24,
+          "name": "Shatabhisha",
+          "range": "306°40′—320°00′",
+          "lord": "Rahu"
+        },
+        {
+          "index": 25,
+          "name": "Purva Bhadrapada",
+          "range": "320°00′—333°20′",
+          "lord": "Jupiter"
+        },
+        {
+          "index": 26,
+          "name": "Uttara Bhadrapada",
+          "range": "333°20′—346°40′",
+          "lord": "Saturn"
+        },
+        {
+          "index": 27,
+          "name": "Revati",
+          "range": "346°40′—360°00′",
+          "lord": "Mercury"
+        }
+      ],
+      "padas": [
+        {
+          "index": 1,
+          "range": "0°00′—3°20′／宿"
+        },
+        {
+          "index": 2,
+          "range": "3°20′—6°40′／宿"
+        },
+        {
+          "index": 3,
+          "range": "6°40′—10°00′／宿"
+        },
+        {
+          "index": 4,
+          "range": "10°00′—13°20′／宿"
+        }
+      ],
+      "lord_cycle": [
+        "Ketu",
+        "Venus",
+        "Sun",
+        "Moon",
+        "Mars",
+        "Rahu",
+        "Jupiter",
+        "Saturn",
+        "Mercury"
+      ],
+      "public_sources": [
+        {
+          "title": "PyJHora drik.py · 27 宿与 108 Pada 切分",
+          "url": "https://github.com/naturalstupid/PyJHora/blob/ca22995709bd60e371e7820a1a5efc80ce4cf821/src/jhora/panchanga/drik.py",
+          "fields": [
+            "nakshatra_pada",
+            "nakshatra"
+          ]
+        },
+        {
+          "title": "PyJHora const.py · 宿主循环",
+          "url": "https://github.com/naturalstupid/PyJHora/blob/ca22995709bd60e371e7820a1a5efc80ce4cf821/src/jhora/const.py",
+          "fields": [
+            "nakshatra_lords"
+          ]
+        },
+        {
+          "title": "PyJHora 英文资源 · 二十七宿顺序",
+          "url": "https://github.com/naturalstupid/PyJHora/blob/ca22995709bd60e371e7820a1a5efc80ce4cf821/src/jhora/lang/list_values_en.txt",
+          "fields": [
+            "NAKSHATRA_LIST"
+          ]
+        }
+      ],
+      "editorial_note": "页面采用常见英文转写；源码资源中的泰米尔式转写保留在来源层，不与第 28 项 Abhijith 混入本节点的 27 宿等分。"
+    },
+    {
+      "id": "panchanga-five-limbs",
+      "group": "calendar",
+      "sequence": 1,
+      "title": "Panchanga 五支",
+      "latin": "Five limbs of panchanga",
+      "count": "5 个字段 · 4 种黄经关系",
+      "tags": [
+        "Tithi",
+        "Nakshatra",
+        "Yoga"
+      ],
+      "question": "Panchanga 的五个基本字段分别记录什么？",
+      "summary": "Tithi、Vara、Nakshatra、Yoga、Karana不是五种同类标签：四项由日月黄经或其分段取得，Vara则由星期与日界取得。",
+      "facts": [
+        [
+          "日月差",
+          "Tithi 30段；Karana为每个Tithi的前后半段"
+        ],
+        [
+          "月亮／日月和",
+          "Nakshatra看月亮黄经；Yoga看日月黄经和"
+        ],
+        [
+          "星期",
+          "Vara可按民用午夜或地方日出切换"
+        ]
+      ],
+      "panchanga_limbs": [
+        {
+          "index": 1,
+          "name": "Tithi",
+          "chinese": "月日",
+          "input": "(月亮黄经 − 太阳黄经) mod 360°",
+          "division": "30 × 12°",
+          "output": "1—30及起止时刻"
+        },
+        {
+          "index": 2,
+          "name": "Vara",
+          "chinese": "星期日",
+          "input": "儒略日 + 日界选项",
+          "division": "7日循环",
+          "output": "0星期日至6星期六"
+        },
+        {
+          "index": 3,
+          "name": "Nakshatra",
+          "chinese": "月宿",
+          "input": "月亮恒星黄经",
+          "division": "27 × 13°20′",
+          "output": "宿序、Pada及起止时刻"
+        },
+        {
+          "index": 4,
+          "name": "Yoga",
+          "chinese": "日月合量",
+          "input": "(月亮黄经 + 太阳黄经) mod 360°",
+          "division": "27 × 13°20′",
+          "output": "1—27及起止时刻"
+        },
+        {
+          "index": 5,
+          "name": "Karana",
+          "chinese": "半月日",
+          "input": "当前Tithi及其中点",
+          "division": "60个半Tithi位置",
+          "output": "序号及前后半段时刻"
+        }
+      ],
+      "relation_map": [
+        {
+          "from": "Moon − Sun",
+          "to": [
+            "Tithi",
+            "Karana"
+          ]
+        },
+        {
+          "from": "Moon",
+          "to": [
+            "Nakshatra"
+          ]
+        },
+        {
+          "from": "Moon + Sun",
+          "to": [
+            "Yoga"
+          ]
+        },
+        {
+          "from": "Julian day + boundary",
+          "to": [
+            "Vara"
+          ]
+        }
+      ],
+      "implementation_note": "源码的Tithi可选择当前时刻或强制日出取值；Vara默认使用日出至次日日出的Vedic day。",
+      "public_sources": [
+        {
+          "title": "PyJHora drik.py · Panchanga五支函数",
+          "url": "https://github.com/naturalstupid/PyJHora/blob/ca22995709bd60e371e7820a1a5efc80ce4cf821/src/jhora/panchanga/drik.py",
+          "fields": [
+            "tithi",
+            "vaara",
+            "nakshatra",
+            "yogam",
+            "karana"
+          ]
+        },
+        {
+          "title": "PyJHora英文资源 · 五支名称序列",
+          "url": "https://github.com/naturalstupid/PyJHora/blob/ca22995709bd60e371e7820a1a5efc80ce4cf821/src/jhora/lang/list_values_en.txt",
+          "fields": [
+            "TITHI_LIST",
+            "DAYS_LIST",
+            "NAKSHATRA_LIST",
+            "YOGAM_LIST",
+            "KARANA_LIST"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sunrise-day-month-variants",
+      "group": "calendar",
+      "sequence": 2,
+      "title": "日出、日界与月制版本",
+      "latin": "Day boundary & lunar month variants",
+      "count": "2 类日界 · 1 条主月制 · 1 条待核分支",
+      "status": "正式边界节点 · Purnimantha源码分支待核",
+      "tags": [
+        "日出日界",
+        "Amantha",
+        "Purnimantha"
+      ],
+      "question": "同一个民用日期为什么可能属于不同的印度历法日？",
+      "summary": "民用星期从午夜切换，Vedic weekday从地方日出切换；阴历月又可按朔后月或望后月编号，因此结果必须带地点、日界和月制。",
+      "facts": [
+        [
+          "星期日界",
+          "civil day：午夜；Vedic day：地方日出"
+        ],
+        [
+          "阴历月界",
+          "Amantha依新月；Purnimantha依满月路线重排月日"
+        ],
+        [
+          "闰月",
+          "相邻新月落在同一太阳Rashi时标记Adhika"
+        ]
+      ],
+      "day_boundaries": [
+        {
+          "id": "civil",
+          "name": "Civil weekday",
+          "start": "当地午夜",
+          "before_boundary": "仍属前一民用日期",
+          "source_behavior": "civil_weekday(jd)"
+        },
+        {
+          "id": "vedic",
+          "name": "Vedic weekday",
+          "start": "地方日出",
+          "before_boundary": "日出前沿用前一星期日",
+          "source_behavior": "vaara默认"
+        }
+      ],
+      "month_systems": [
+        {
+          "id": "amantha",
+          "name": "Amantha",
+          "anchor": "新月后开始新月",
+          "day_order": "Tithi 1—30",
+          "status": "源码主路线"
+        },
+        {
+          "id": "purnimantha",
+          "name": "Purnimantha",
+          "anchor": "满月后开始新月",
+          "day_order": "源码将16—30移为月初1—15",
+          "status": "源码标注尚未验证"
+        }
+      ],
+      "month_pipeline": [
+        "取得地方日出",
+        "寻找前后新月",
+        "读取两次新月的太阳Rashi",
+        "同Rashi则Adhika",
+        "按月制输出月与月日"
+      ],
+      "record_fields": [
+        "地点与经纬度",
+        "时区",
+        "地方日出时刻",
+        "日界类型",
+        "月制",
+        "Adhika／Nija状态"
+      ],
+      "implementation_note": "PyJHora固定版本在lunar_month_date的文档中明确写有Purnimanta计算尚未验证；本页只保存实现分支，不把它写成已验收历法结论。",
+      "public_sources": [
+        {
+          "title": "PyJHora drik.py · civil／Vedic weekday",
+          "url": "https://github.com/naturalstupid/PyJHora/blob/ca22995709bd60e371e7820a1a5efc80ce4cf821/src/jhora/panchanga/drik.py",
+          "fields": [
+            "civil_weekday",
+            "vedic_weekday",
+            "vaara"
+          ]
+        },
+        {
+          "title": "PyJHora drik.py · 阴历月与闰月分支",
+          "url": "https://github.com/naturalstupid/PyJHora/blob/ca22995709bd60e371e7820a1a5efc80ce4cf821/src/jhora/panchanga/drik.py",
+          "fields": [
+            "lunar_month",
+            "vedic_date",
+            "lunar_month_date"
+          ]
+        },
+        {
+          "title": "PyJHora const.py · 日历类型",
+          "url": "https://github.com/naturalstupid/PyJHora/blob/ca22995709bd60e371e7820a1a5efc80ce4cf821/src/jhora/const.py",
+          "fields": [
+            "CALENDAR_TYPE",
+            "LUNAR_MONTH_TYPE"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "varga-map",
+      "group": "derived",
+      "sequence": 1,
+      "title": "分盘 Varga 总表",
+      "latin": "Divisional charts",
+      "count": "D1基础盘 · 22种标准分盘",
+      "tags": [
+        "D1—D144",
+        "分盘因子",
+        "算法版本"
+      ],
+      "question": "同一颗行星怎样被投射到不同分盘？",
+      "summary": "先保留D1中的Rashi与宫内度数，再按因子N把每个30°Rashi切成N段；段号如何映射到新Rashi由该分盘的method决定。",
+      "facts": [
+        [
+          "基础",
+          "D1保存原Rashi与宫内度数"
+        ],
+        [
+          "切分",
+          "每段宽度 = 30° ÷ N"
+        ],
+        [
+          "映射",
+          "factor、method、base Rashi与逆数选项分别保存"
+        ]
+      ],
+      "vargas": [
+        {
+          "factor": 2,
+          "name": "Hora",
+          "options": 6
+        },
+        {
+          "factor": 3,
+          "name": "Drekkana",
+          "options": 5
+        },
+        {
+          "factor": 4,
+          "name": "Chaturthamsa",
+          "options": 4
+        },
+        {
+          "factor": 5,
+          "name": "Panchamsa",
+          "options": 4
+        },
+        {
+          "factor": 6,
+          "name": "Shashthamsa",
+          "options": 4
+        },
+        {
+          "factor": 7,
+          "name": "Saptamsa",
+          "options": 6
+        },
+        {
+          "factor": 8,
+          "name": "Ashtamsa",
+          "options": 4
+        },
+        {
+          "factor": 9,
+          "name": "Navamsha",
+          "options": 5
+        },
+        {
+          "factor": 10,
+          "name": "Dasamsa",
+          "options": 6
+        },
+        {
+          "factor": 11,
+          "name": "Rudramsa",
+          "options": 5
+        },
+        {
+          "factor": 12,
+          "name": "Dwadasamsa",
+          "options": 5
+        },
+        {
+          "factor": 16,
+          "name": "Shodasamsa",
+          "options": 4
+        },
+        {
+          "factor": 20,
+          "name": "Vimsamsa",
+          "options": 4
+        },
+        {
+          "factor": 24,
+          "name": "Chaturvimsamsa",
+          "options": 3
+        },
+        {
+          "factor": 27,
+          "name": "Nakshatramsa",
+          "options": 4
+        },
+        {
+          "factor": 30,
+          "name": "Trimsamsa",
+          "options": 5
+        },
+        {
+          "factor": 40,
+          "name": "Khavedamsa",
+          "options": 4
+        },
+        {
+          "factor": 45,
+          "name": "Akshavedamsa",
+          "options": 4
+        },
+        {
+          "factor": 60,
+          "name": "Shashtyamsa",
+          "options": 4
+        },
+        {
+          "factor": 81,
+          "name": "Nava-navamsa",
+          "options": 3
+        },
+        {
+          "factor": 108,
+          "name": "Ashtottaramsa",
+          "options": 4
+        },
+        {
+          "factor": 144,
+          "name": "Dwadas-dwadasamsa",
+          "options": 4
+        }
+      ],
+      "pipeline": [
+        {
+          "label": "D1位置",
+          "value": "Rashi + longitude"
+        },
+        {
+          "label": "段号",
+          "value": "floor(longitude ÷ (30°／N))"
+        },
+        {
+          "label": "映射",
+          "value": "具名分盘method"
+        },
+        {
+          "label": "输出",
+          "value": "新Rashi + 段内度数"
+        }
+      ],
+      "version_fields": [
+        "divisional_chart_factor",
+        "chart_method",
+        "standard或custom路线",
+        "base_rasi",
+        "count_from_end_of_sign"
+      ],
+      "implementation_note": "options是该固定版本varga_option_dict登记的方法槽数量，不等于传统流派数量；D9登记5项而函数实际处理6项，差异在D9节点单列。",
+      "public_sources": [
+        {
+          "title": "PyJHora const.py · 23个factor与方法槽登记",
+          "url": "https://github.com/naturalstupid/PyJHora/blob/ca22995709bd60e371e7820a1a5efc80ce4cf821/src/jhora/const.py",
+          "fields": [
+            "division_chart_factors",
+            "varga_option_dict"
+          ]
+        },
+        {
+          "title": "PyJHora charts.py · 标准与自定义分盘入口",
+          "url": "https://github.com/naturalstupid/PyJHora/blob/ca22995709bd60e371e7820a1a5efc80ce4cf821/src/jhora/horoscope/chart/charts.py",
+          "fields": [
+            "divisional_chart_functions",
+            "divisional_positions_from_rasi_positions",
+            "divisional_chart"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d9-navamsha",
+      "group": "derived",
+      "sequence": 2,
+      "title": "D9 Navamsha",
+      "latin": "Navamsha",
+      "count": "9分 · 108段 · 6种函数方法",
+      "tags": [
+        "D9",
+        "九分盘",
+        "映射顺序"
+      ],
+      "question": "D9 怎样把每个 Rashi 切成九段并重新映射？",
+      "summary": "每个Rashi先等分九段；传统Parashara路线按火、土、风、水四组分别从白羊、摩羯、天秤、巨蟹起排，其他method使用不同映射。",
+      "facts": [
+        [
+          "切分",
+          "30° ÷ 9 = 3°20′"
+        ],
+        [
+          "传统起点",
+          "火白羊、土摩羯、风天秤、水巨蟹"
+        ],
+        [
+          "版本冲突",
+          "函数处理6种method，常量登记表写5种"
+        ]
+      ],
+      "element_starts": [
+        {
+          "element": "火",
+          "rashis": [
+            "白羊",
+            "狮子",
+            "人马"
+          ],
+          "start": "白羊",
+          "direction": "顺行"
+        },
+        {
+          "element": "土",
+          "rashis": [
+            "金牛",
+            "室女",
+            "摩羯"
+          ],
+          "start": "摩羯",
+          "direction": "顺行"
+        },
+        {
+          "element": "风",
+          "rashis": [
+            "双子",
+            "天秤",
+            "宝瓶"
+          ],
+          "start": "天秤",
+          "direction": "顺行"
+        },
+        {
+          "element": "水",
+          "rashis": [
+            "巨蟹",
+            "天蝎",
+            "双鱼"
+          ],
+          "start": "巨蟹",
+          "direction": "顺行"
+        }
+      ],
+      "segments": [
+        {
+          "index": 1,
+          "range": "0°00′—3°20′"
+        },
+        {
+          "index": 2,
+          "range": "3°20′—6°40′"
+        },
+        {
+          "index": 3,
+          "range": "6°40′—10°00′"
+        },
+        {
+          "index": 4,
+          "range": "10°00′—13°20′"
+        },
+        {
+          "index": 5,
+          "range": "13°20′—16°40′"
+        },
+        {
+          "index": 6,
+          "range": "16°40′—20°00′"
+        },
+        {
+          "index": 7,
+          "range": "20°00′—23°20′"
+        },
+        {
+          "index": 8,
+          "range": "23°20′—26°40′"
+        },
+        {
+          "index": 9,
+          "range": "26°40′—30°00′"
+        }
+      ],
+      "methods": [
+        {
+          "code": 1,
+          "name": "Traditional Parashara",
+          "route": "四元素起点，顺行九段"
+        },
+        {
+          "code": 2,
+          "name": "Uniform Krishna Mishra",
+          "route": "偶数Rashi反向"
+        },
+        {
+          "code": 3,
+          "name": "Kalachakra Navamsha",
+          "route": "按Nakshatra与Pada查表"
+        },
+        {
+          "code": 4,
+          "name": "Rangacharya Krishna Mishra／Sanjay Rath Nadi",
+          "route": "水、土组反向"
+        },
+        {
+          "code": 5,
+          "name": "Parivritti Cyclic",
+          "route": "循环映射"
+        },
+        {
+          "code": 6,
+          "name": "Parivritti Alternate／Somanatha",
+          "route": "交替映射"
+        }
+      ],
+      "implementation_note": "navamsa_chart文档与分支包含method 1—6；const.varga_option_dict[9]登记(5,1)。本页并列保存，不擅自把登记表改成一致。",
+      "public_sources": [
+        {
+          "title": "PyJHora charts.py · Navamsha六种函数分支",
+          "url": "https://github.com/naturalstupid/PyJHora/blob/ca22995709bd60e371e7820a1a5efc80ce4cf821/src/jhora/horoscope/chart/charts.py",
+          "fields": [
+            "_navamsa_kalachakra",
+            "navamsa_chart"
+          ]
+        },
+        {
+          "title": "PyJHora const.py · D9方法槽登记与Kalachakra表",
+          "url": "https://github.com/naturalstupid/PyJHora/blob/ca22995709bd60e371e7820a1a5efc80ce4cf821/src/jhora/const.py",
+          "fields": [
+            "kalachakra_navamsa",
+            "varga_option_dict"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "arudha-sphuta-special-points",
+      "group": "derived",
+      "sequence": 3,
+      "title": "Arudha、Sphuta 与特殊点",
+      "latin": "Derived points",
+      "count": "3类派生对象 · 14个Sphuta键",
+      "tags": [
+        "Arudha",
+        "Sphuta",
+        "特殊 Lagna"
+      ],
+      "question": "哪些对象不是直接读取的行星位置？",
+      "summary": "Arudha从宫位与主星关系推导，Sphuta按具名黄经公式组合，特殊Lagna由时间速率或具名规则生成；三类都必须与九曜原始位置分层。",
+      "facts": [
+        [
+          "Arudha",
+          "宫位／行星位置 + 主星 + 例外规则"
+        ],
+        [
+          "Sphuta",
+          "多个黄经按具名公式组合并归一化"
+        ],
+        [
+          "特殊Lagna",
+          "时间、地点、分盘因子与具名速率／规则"
+        ]
+      ],
+      "derived_families": [
+        {
+          "id": "arudha",
+          "name": "Arudha",
+          "inputs": [
+            "Bhava或Graha位置",
+            "Rashi主星",
+            "基准点"
+          ],
+          "outputs": [
+            "A1—A12",
+            "Surya／Chandra Arudha",
+            "Graha Arudha"
+          ],
+          "version": "arudha_base、Bhava算法与例外规则"
+        },
+        {
+          "id": "sphuta",
+          "name": "Sphuta",
+          "inputs": [
+            "两项以上黄经",
+            "具名公式"
+          ],
+          "outputs": [
+            "Rashi",
+            "宫内度数"
+          ],
+          "version": "D1／分盘与公式名"
+        },
+        {
+          "id": "special-lagna",
+          "name": "特殊 Lagna",
+          "inputs": [
+            "日期时间",
+            "地点",
+            "速率或具名规则"
+          ],
+          "outputs": [
+            "Rashi",
+            "宫内度数"
+          ],
+          "version": "factor、method与具体Lagna名"
+        }
+      ],
+      "sphutas": [
+        "Tri",
+        "Chatur",
+        "Pancha",
+        "Prana",
+        "Deha",
+        "Mrityu",
+        "Sookshma Tri",
+        "Beeja",
+        "Kshetra",
+        "Tithi",
+        "Yoga",
+        "Rahu Tithi",
+        "Yogi",
+        "Avayogi"
+      ],
+      "formula_samples": [
+        {
+          "name": "Tri Sphuta",
+          "formula": "Moon + Lagna + Gulika"
+        },
+        {
+          "name": "Tithi Sphuta",
+          "formula": "Moon − Sun"
+        },
+        {
+          "name": "Yoga Sphuta",
+          "formula": "Moon + Sun"
+        }
+      ],
+      "special_lagnas": [
+        "Bhava Lagna",
+        "Hora Lagna",
+        "Ghati Lagna",
+        "Pranapada Lagna",
+        "Vighati Lagna",
+        "Indu Lagna",
+        "Bhrigu Bindu Lagna",
+        "Kunda Lagna",
+        "Sree Lagna",
+        "Varnada Lagna"
+      ],
+      "implementation_note": "special_lagna_longitudes在固定版本中没有实际返回；_amsa则直接调用具体special ascendant与具名Lagna函数。两层实现状态分别保存。",
+      "public_sources": [
+        {
+          "title": "PyJHora arudhas.py · Bhava与Graha Arudha",
+          "url": "https://github.com/naturalstupid/PyJHora/blob/ca22995709bd60e371e7820a1a5efc80ce4cf821/src/jhora/horoscope/chart/arudhas.py",
+          "fields": [
+            "bhava_arudhas_from_planet_positions",
+            "bhava_arudha_longitudes",
+            "graha_arudhas_from_planet_positions"
+          ]
+        },
+        {
+          "title": "PyJHora sphuta.py · 14组具名公式",
+          "url": "https://github.com/naturalstupid/PyJHora/blob/ca22995709bd60e371e7820a1a5efc80ce4cf821/src/jhora/horoscope/chart/sphuta.py",
+          "fields": [
+            "tri_sphuta",
+            "tithi_sphuta",
+            "yoga_sphuta"
+          ]
+        },
+        {
+          "title": "PyJHora charts.py · 特殊Lagna调用层",
+          "url": "https://github.com/naturalstupid/PyJHora/blob/ca22995709bd60e371e7820a1a5efc80ce4cf821/src/jhora/horoscope/chart/charts.py",
+          "fields": [
+            "special_lagna_longitudes",
+            "_amsa"
+          ]
+        },
+        {
+          "title": "PyJHora const.py · Sphuta键表",
+          "url": "https://github.com/naturalstupid/PyJHora/blob/ca22995709bd60e371e7820a1a5efc80ce4cf821/src/jhora/const.py",
+          "fields": [
+            "sphuta_list"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "strength-ashtakavarga-avastha",
+      "group": "derived",
+      "sequence": 4,
+      "title": "Shadbala 与 Ashtakavarga（Avastha待核）",
+      "latin": "Strength systems",
+      "count": "6 力分量 · 3 类点阵输出 · Avastha待核",
+      "tags": [
+        "Shadbala",
+        "Ashtakavarga",
+        "Avastha"
+      ],
+      "question": "两套已核计算与一项待核名称，边界分别在哪里？",
+      "summary": "Shadbala输出七曜的六类力量与合计，Ashtakavarga输出行星—Rashi点阵；Avastha在当前固定源码中没有找到可核对模块，暂不补写分类。",
+      "facts": [
+        [
+          "Shadbala",
+          "六类力量 → 合计 → Rupa → 相对所需值"
+        ],
+        [
+          "Ashtakavarga",
+          "BAV矩阵、SAV十二Rashi合计与Prastara来源层"
+        ],
+        [
+          "Avastha",
+          "当前固定快照未见实现；待补独立底本"
+        ]
+      ],
+      "status": "正式对照节点 · Avastha待核底本",
+      "shadbala_components": [
+        {
+          "index": 1,
+          "name": "Sthana Bala",
+          "focus": "位置力量"
+        },
+        {
+          "index": 2,
+          "name": "Kala Bala",
+          "focus": "时间力量"
+        },
+        {
+          "index": 3,
+          "name": "Dig Bala",
+          "focus": "方向力量"
+        },
+        {
+          "index": 4,
+          "name": "Cheshta Bala",
+          "focus": "运动力量"
+        },
+        {
+          "index": 5,
+          "name": "Naisargika Bala",
+          "focus": "自然力量"
+        },
+        {
+          "index": 6,
+          "name": "Drik Bala",
+          "focus": "关系力量"
+        }
+      ],
+      "shadbala_outputs": [
+        "六分量数组",
+        "总Virupa",
+        "Rupa = 总值÷60",
+        "strength ratio = Rupa÷所需值"
+      ],
+      "ashtakavarga_outputs": [
+        {
+          "name": "Bhinna Ashtakavarga",
+          "shape": "8 × 12",
+          "content": "太阳至土星及Lagna各自在十二Rashi的点数"
+        },
+        {
+          "name": "Samudaya Ashtakavarga",
+          "shape": "12",
+          "content": "排除Lagna行后的七曜逐Rashi合计"
+        },
+        {
+          "name": "Prastara Ashtakavarga",
+          "shape": "来源 × 对象 × 12",
+          "content": "每一点来自哪个贡献对象"
+        }
+      ],
+      "ashtakavarga_reductions": [
+        "Trikona Sodhana",
+        "Ekadhipatya Sodhana",
+        "Rashi Pinda",
+        "Graha Pinda",
+        "Sodhya Pinda"
+      ],
+      "avastha_status": {
+        "state": "待核底本",
+        "checked": "固定commit源码树与已收录知识目录",
+        "result": "未发现Avastha具名模块或函数；不从其他状态字段反推"
+      },
+      "implementation_note": "Shadbala函数只对太阳至土星七曜汇总；Ashtakavarga的点数、矩阵与Pinda是另一套输出，不能与Shadbala相加。",
+      "public_sources": [
+        {
+          "title": "PyJHora strength.py · Shadbala六分量与输出",
+          "url": "https://github.com/naturalstupid/PyJHora/blob/ca22995709bd60e371e7820a1a5efc80ce4cf821/src/jhora/horoscope/chart/strength.py",
+          "fields": [
+            "shad_bala"
+          ]
+        },
+        {
+          "title": "PyJHora ashtakavarga.py · 三类点阵与Sodhana",
+          "url": "https://github.com/naturalstupid/PyJHora/blob/ca22995709bd60e371e7820a1a5efc80ce4cf821/src/jhora/horoscope/chart/ashtakavarga.py",
+          "fields": [
+            "get_ashtaka_varga",
+            "sodhaya_pindas"
+          ]
+        },
+        {
+          "title": "PyJHora固定commit源码树 · Avastha空缺核对",
+          "url": "https://github.com/naturalstupid/PyJHora/tree/ca22995709bd60e371e7820a1a5efc80ce4cf821/src/jhora/horoscope",
+          "fields": [
+            "chart modules",
+            "source tree"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "parashari-boundary",
+      "group": "schools",
+      "sequence": 1,
+      "title": "Parashari 方法边界",
+      "latin": "Parashari",
+      "count": "4层对象 · 3条分界",
+      "tags": [
+        "宫主",
+        "Graha Drishti",
+        "Vimshottari"
+      ],
+      "question": "Parashari 方法在当前地图里负责哪些对象？",
+      "summary": "此入口把盘面位置、宫主与Graha Drishti、分盘与力量、Graha Dasha连接成一条读取链；Jaimini的Rashi关系与KP微分层不并入。",
+      "facts": [
+        [
+          "盘面",
+          "Graha、Rashi、Bhava与宫主"
+        ],
+        [
+          "派生",
+          "Varga、Yoga、Shadbala等独立输出"
+        ],
+        [
+          "时间",
+          "Graha Dasha以各自起点、顺序和层级展开"
+        ]
+      ],
+      "method_layers": [
+        {
+          "index": 1,
+          "name": "位置层",
+          "objects": [
+            "Graha",
+            "Rashi",
+            "Bhava",
+            "宫主"
+          ],
+          "output": "基础盘与宫位关系"
+        },
+        {
+          "index": 2,
+          "name": "关系层",
+          "objects": [
+            "Graha Drishti",
+            "宫主",
+            "Yoga"
+          ],
+          "output": "行星对星座、宫位和行星的关系"
+        },
+        {
+          "index": 3,
+          "name": "派生层",
+          "objects": [
+            "Varga",
+            "Shadbala",
+            "Ashtakavarga"
+          ],
+          "output": "分盘与各自的力量输出"
+        },
+        {
+          "index": 4,
+          "name": "时间层",
+          "objects": [
+            "Vimshottari",
+            "其他Graha Dasha"
+          ],
+          "output": "具名主运与下级期间"
+        }
+      ],
+      "separations": [
+        {
+          "left": "Graha Drishti",
+          "right": "Rashi Drishti",
+          "note": "前者以行星为发出者；后者以Rashi类型建立关系"
+        },
+        {
+          "left": "Varga映射",
+          "right": "KP微分层",
+          "note": "前者把30°切段后映射新Rashi；后者沿Nakshatra主星比例递归"
+        },
+        {
+          "left": "Dasha期间",
+          "right": "Transit位置",
+          "note": "前者生成期间层级；后者保存目标时刻天体位置"
+        }
+      ],
+      "implementation_note": "本节点是固定源码中的方法归档边界，不声称所有Parashari文本都采用同一实现组合。",
+      "public_sources": [
+        {
+          "title": "PyJHora house.py · 宫主与Graha Drishti",
+          "url": "https://github.com/naturalstupid/PyJHora/blob/ca22995709bd60e371e7820a1a5efc80ce4cf821/src/jhora/horoscope/chart/house.py",
+          "fields": [
+            "house_owner",
+            "graha_drishti_from_chart"
+          ]
+        },
+        {
+          "title": "PyJHora charts.py · 传统Parashara分盘方法",
+          "url": "https://github.com/naturalstupid/PyJHora/blob/ca22995709bd60e371e7820a1a5efc80ce4cf821/src/jhora/horoscope/chart/charts.py",
+          "fields": [
+            "divisional_chart",
+            "chart_method"
+          ]
+        },
+        {
+          "title": "PyJHora const.py · Dasha登记表",
+          "url": "https://github.com/naturalstupid/PyJHora/blob/ca22995709bd60e371e7820a1a5efc80ce4cf821/src/jhora/const.py",
+          "fields": [
+            "_graha_dhasa_dict",
+            "planet_dhasas"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "jaimini-boundary",
+      "group": "schools",
+      "sequence": 2,
+      "title": "Jaimini 方法边界",
+      "latin": "Jaimini",
+      "count": "8 Chara Karaka · 3类Rashi Drishti",
+      "tags": [
+        "Chara Karaka",
+        "Rashi Drishti",
+        "Chara Dasha"
+      ],
+      "question": "Jaimini 为什么需要单独保存？",
+      "summary": "固定实现用太阳至Rahu的宫内度数排序取得八个Chara Karaka，以活动、固定、双体Rashi建立三类观察关系，并另设Chara Dasha方法参数。",
+      "facts": [
+        [
+          "Karaka",
+          "太阳至Rahu按宫内度数降序分配8个可变角色"
+        ],
+        [
+          "关系",
+          "活动、固定、双体Rashi各用不同Drishti路线"
+        ],
+        [
+          "时间",
+          "Chara Dasha的起点、行进与期间算法另存版本"
+        ]
+      ],
+      "chara_karakas": [
+        {
+          "index": 1,
+          "name": "Atma Karaka",
+          "source_key": "atma_karaka"
+        },
+        {
+          "index": 2,
+          "name": "Amatya Karaka",
+          "source_key": "amatya_karaka"
+        },
+        {
+          "index": 3,
+          "name": "Bhratri Karaka",
+          "source_key": "bhratri_karaka"
+        },
+        {
+          "index": 4,
+          "name": "Maitri Karaka",
+          "source_key": "maitri_karaka"
+        },
+        {
+          "index": 5,
+          "name": "Pitri Karaka",
+          "source_key": "pitri_karaka"
+        },
+        {
+          "index": 6,
+          "name": "Putra Karaka",
+          "source_key": "putra_karaka"
+        },
+        {
+          "index": 7,
+          "name": "Jnaati Karaka",
+          "source_key": "jnaati_karaka"
+        },
+        {
+          "index": 8,
+          "name": "Dara Karaka",
+          "source_key": "dara_karaka"
+        }
+      ],
+      "rashi_drishti": [
+        {
+          "kind": "活动Rashi",
+          "rule": "观察固定Rashi，排除相邻固定Rashi"
+        },
+        {
+          "kind": "固定Rashi",
+          "rule": "观察活动Rashi，排除相邻活动Rashi"
+        },
+        {
+          "kind": "双体Rashi",
+          "rule": "观察其余三个双体Rashi"
+        }
+      ],
+      "chara_variants": [
+        "KN Rao progression／duration route",
+        "P.V.R. Narasimha Rao progression／duration route",
+        "Iranganti method 1／2与性别分支",
+        "Mindsutra route"
+      ],
+      "implementation_note": "源码角色键写作maitri_karaka，本页原样保存；Rahu的宫内度数在排序前取30°减原度数，Ketu不进入八角色排序。Chara Dasha存在多套实现路线，不能只保存一个结果。",
+      "public_sources": [
+        {
+          "title": "PyJHora house.py · Chara Karaka与Rashi Drishti",
+          "url": "https://github.com/naturalstupid/PyJHora/blob/ca22995709bd60e371e7820a1a5efc80ce4cf821/src/jhora/horoscope/chart/house.py",
+          "fields": [
+            "chara_karakas",
+            "raasi_drishti_from_chart"
+          ]
+        },
+        {
+          "title": "PyJHora chara.py · Chara Dasha方法分支",
+          "url": "https://github.com/naturalstupid/PyJHora/blob/ca22995709bd60e371e7820a1a5efc80ce4cf821/src/jhora/horoscope/dhasa/raasi/chara.py",
+          "fields": [
+            "get_dhasa_antardhasa",
+            "progression methods",
+            "duration methods"
+          ]
+        },
+        {
+          "title": "PyJHora const.py · Chara角色名",
+          "url": "https://github.com/naturalstupid/PyJHora/blob/ca22995709bd60e371e7820a1a5efc80ce4cf821/src/jhora/const.py",
+          "fields": [
+            "chara_karaka_names"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kp-star-sub-lords",
+      "group": "schools",
+      "sequence": 3,
+      "title": "KP 星主与次星主结构",
+      "latin": "KP star & sub lords",
+      "count": "249段索引 · 9主星比例 · 2条源码路线",
+      "tags": [
+        "Krishnamurti",
+        "Sub Lord",
+        "宫首"
+      ],
+      "question": "KP 怎样继续细分 Nakshatra？",
+      "summary": "目标黄经先落入Rashi与Nakshatra，再按Vimshottari九主星的7／20／6／10／7／18／16／19／17比例取得Star Lord、Sub Lord和更细层主星。",
+      "facts": [
+        [
+          "位置层",
+          "行星或宫首黄经落入Nakshatra与1—249索引"
+        ],
+        [
+          "分层",
+          "每一级按九主星120年比例继续切分"
+        ],
+        [
+          "参数",
+          "Ayanamsa、宫制、节点模式、计算路线和层数同时保存"
+        ]
+      ],
+      "lord_fractions": [
+        {
+          "lord": "Ketu",
+          "years": 7
+        },
+        {
+          "lord": "Venus",
+          "years": 20
+        },
+        {
+          "lord": "Sun",
+          "years": 6
+        },
+        {
+          "lord": "Moon",
+          "years": 10
+        },
+        {
+          "lord": "Mars",
+          "years": 7
+        },
+        {
+          "lord": "Rahu",
+          "years": 18
+        },
+        {
+          "lord": "Jupiter",
+          "years": 16
+        },
+        {
+          "lord": "Saturn",
+          "years": 19
+        },
+        {
+          "lord": "Mercury",
+          "years": 17
+        }
+      ],
+      "micro_levels": [
+        {
+          "index": 0,
+          "name": "Star Lord",
+          "input": "Nakshatra序号"
+        },
+        {
+          "index": 1,
+          "name": "Sub Lord",
+          "input": "Nakshatra内偏移"
+        },
+        {
+          "index": 2,
+          "name": "Praty",
+          "input": "Sub段内偏移"
+        },
+        {
+          "index": 3,
+          "name": "Sookshma",
+          "input": "Praty段内偏移"
+        },
+        {
+          "index": 4,
+          "name": "Praana",
+          "input": "Sookshma段内偏移"
+        },
+        {
+          "index": 5,
+          "name": "Deha",
+          "input": "Praana段内偏移"
+        }
+      ],
+      "source_routes": [
+        {
+          "name": "249字典路线",
+          "output": "KP index + Star + Sub；字典预存区间"
+        },
+        {
+          "name": "递归函数路线",
+          "output": "Star后继续1—6层；默认levels=5"
+        },
+        {
+          "name": "charts兼容路线",
+          "output": "KP index + Star + Sub + 4个继续细分层"
+        }
+      ],
+      "record_fields": [
+        "Ayanamsa模式",
+        "Bhava／cusp方法",
+        "Rahu／Ketu节点模式",
+        "249字典或迭代路线",
+        "递归层数"
+      ],
+      "implementation_note": "固定源码的kp_lords_for_longitude允许levels 1—6且默认5；charts兼容函数则在Star与Sub后固定追加4层。两条路线的输出长度不可默认等同。",
+      "public_sources": [
+        {
+          "title": "PyJHora utils.py · KP递归微层级",
+          "url": "https://github.com/naturalstupid/PyJHora/blob/ca22995709bd60e371e7820a1a5efc80ce4cf821/src/jhora/utils.py",
+          "fields": [
+            "kp_lords_for_longitude"
+          ]
+        },
+        {
+          "title": "PyJHora charts.py · KP兼容路线",
+          "url": "https://github.com/naturalstupid/PyJHora/blob/ca22995709bd60e371e7820a1a5efc80ce4cf821/src/jhora/horoscope/chart/charts.py",
+          "fields": [
+            "_get_KP_lords_from_planet_longitude",
+            "get_KP_lords_from_planet_positions"
+          ]
+        },
+        {
+          "title": "PyJHora const.py · 249区间与九主星比例",
+          "url": "https://github.com/naturalstupid/PyJHora/blob/ca22995709bd60e371e7820a1a5efc80ce4cf821/src/jhora/const.py",
+          "fields": [
+            "prasna_kp_249_dict",
+            "KP_lord_fractions"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dasha-systems-map",
+      "group": "timing",
+      "sequence": 1,
+      "title": "Dasha 实现目录与分类",
+      "latin": "Dasha systems",
+      "count": "57 个实现模块 · 4类目录",
+      "tags": [
+        "Graha Dasha",
+        "Rashi Dasha",
+        "年度 Dasha"
+      ],
+      "question": "固定源码中的 Dasha 模块怎样分类而不混成一条时间线？",
+      "summary": "固定源码树包含26个Graha模块、27个Rashi模块、2个年度模块和2个根级特殊模块；模块数量只表示实现库存，不表示流派共识或同等适用。",
+      "facts": [
+        [
+          "Graha路线",
+          "26模块；Vimshottari、Yogini、Ashtottari等"
+        ],
+        [
+          "Rashi路线",
+          "27模块；Narayana、Chara、Kalachakra等"
+        ],
+        [
+          "年度与特殊",
+          "Mudda、Patyayini及两个根级特殊模块"
+        ]
+      ],
+      "dasha_families": [
+        {
+          "id": "graha",
+          "name": "Graha Dasha",
+          "count": 26,
+          "examples": [
+            "Vimshottari",
+            "Ashtottari",
+            "Yogini",
+            "Shodasottari",
+            "Kaala",
+            "Aayu"
+          ]
+        },
+        {
+          "id": "rashi",
+          "name": "Rashi Dasha",
+          "count": 27,
+          "examples": [
+            "Narayana",
+            "Chara",
+            "Kalachakra",
+            "Mandooka",
+            "Sthira",
+            "Navamsa"
+          ]
+        },
+        {
+          "id": "annual",
+          "name": "Annual Dasha",
+          "count": 2,
+          "examples": [
+            "Mudda",
+            "Patyayini"
+          ]
+        },
+        {
+          "id": "special",
+          "name": "Root／special",
+          "count": 2,
+          "examples": [
+            "Panchasvara",
+            "Sudarsana Chakra"
+          ]
+        }
+      ],
+      "comparison_fields": [
+        {
+          "field": "起点",
+          "question": "由月宿、行星、Rashi、Tithi或年度盘哪个对象启动？"
+        },
+        {
+          "field": "顺序",
+          "question": "固定九主星序、黄道顺序、强弱顺序或方法分支？"
+        },
+        {
+          "field": "期间",
+          "question": "总周期与每段长度如何取得？"
+        },
+        {
+          "field": "层级",
+          "question": "是否展开Antardasha及更深层？"
+        },
+        {
+          "field": "年长",
+          "question": "使用哪一种Dasha year duration？"
+        },
+        {
+          "field": "变体",
+          "question": "seed、方向、循环次数与method如何登记？"
+        }
+      ],
+      "implementation_note": "57来自固定commit源码树中排除__init__.py后的模块文件计数；const.py的公开登记列表与物理文件分类并非逐项同义，因此页面保留目录计数和参数字段，不生成统一时间轴。",
+      "public_sources": [
+        {
+          "title": "PyJHora Dasha源码树 · 57个实现模块",
+          "url": "https://github.com/naturalstupid/PyJHora/tree/ca22995709bd60e371e7820a1a5efc80ce4cf821/src/jhora/horoscope/dhasa",
+          "fields": [
+            "26 graha modules",
+            "27 raasi modules",
+            "2 annual modules",
+            "2 root modules"
+          ]
+        },
+        {
+          "title": "PyJHora const.py · Dasha登记与默认参数",
+          "url": "https://github.com/naturalstupid/PyJHora/blob/ca22995709bd60e371e7820a1a5efc80ce4cf821/src/jhora/const.py",
+          "fields": [
+            "_graha_dhasa_dict",
+            "_rasi_dhasa_dict",
+            "_annual_dhasa_dict",
+            "dhasa_default_options"
+          ]
+        },
+        {
+          "title": "PyJHora Dasha README · 函数输入输出",
+          "url": "https://github.com/naturalstupid/PyJHora/blob/ca22995709bd60e371e7820a1a5efc80ce4cf821/src/jhora/horoscope/dhasa/README.md",
+          "fields": [
+            "Graha Dhasas",
+            "Rasi Dhasa"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "vimshottari-levels",
+      "group": "timing",
+      "sequence": 2,
+      "title": "Vimshottari Dasha 层级",
+      "latin": "Vimshottari dasha",
+      "count": "9主星 · 120年 · 6层深度",
+      "tags": [
+        "Mahadasha",
+        "Antardasha",
+        "月宿起点"
+      ],
+      "question": "Vimshottari 的主运与次运怎样嵌套？",
+      "summary": "九主星期间按Ketu起的固定序列组成120年；出生时所选起始对象默认取月亮，其Nakshatra决定主运，宿内已走比例决定首段已过时间。",
+      "facts": [
+        [
+          "起点",
+          "默认读取月亮黄经所在Nakshatra及宿内偏移"
+        ],
+        [
+          "层级",
+          "每个父期间按九主星年数／120继续切分"
+        ],
+        [
+          "周期",
+          "7+20+6+10+7+18+16+19+17=120年"
+        ]
+      ],
+      "lords": [
+        {
+          "index": 1,
+          "name": "Ketu",
+          "years": 7
+        },
+        {
+          "index": 2,
+          "name": "Venus",
+          "years": 20
+        },
+        {
+          "index": 3,
+          "name": "Sun",
+          "years": 6
+        },
+        {
+          "index": 4,
+          "name": "Moon",
+          "years": 10
+        },
+        {
+          "index": 5,
+          "name": "Mars",
+          "years": 7
+        },
+        {
+          "index": 6,
+          "name": "Rahu",
+          "years": 18
+        },
+        {
+          "index": 7,
+          "name": "Jupiter",
+          "years": 16
+        },
+        {
+          "index": 8,
+          "name": "Saturn",
+          "years": 19
+        },
+        {
+          "index": 9,
+          "name": "Mercury",
+          "years": 17
+        }
+      ],
+      "depths": [
+        {
+          "index": 1,
+          "name": "Mahadasha",
+          "code": "MAHA_DHASA_ONLY"
+        },
+        {
+          "index": 2,
+          "name": "Antardasha／Bhukti",
+          "code": "ANTARA"
+        },
+        {
+          "index": 3,
+          "name": "Pratyantardasha",
+          "code": "PRATYANTARA"
+        },
+        {
+          "index": 4,
+          "name": "Sookshma",
+          "code": "SOOKSHMA"
+        },
+        {
+          "index": 5,
+          "name": "Prana",
+          "code": "PRANA"
+        },
+        {
+          "index": 6,
+          "name": "Deha-antara",
+          "code": "DEHA"
+        }
+      ],
+      "formulas": [
+        {
+          "label": "首段已过",
+          "formula": "宿内偏移 ÷ 13°20′ × 当前主星年数"
+        },
+        {
+          "label": "子期间长度",
+          "formula": "父期间 × 子主星年数 ÷ 120"
+        },
+        {
+          "label": "首段起点",
+          "formula": "出生JD − 首段已过时间"
+        }
+      ],
+      "version_fields": [
+        "dhasa starting planet默认Moon，可改其他对象",
+        "seed star默认3",
+        "Antardasha有6种起主星／方向选项",
+        "Dasha year duration另有多种年长口径",
+        "可选择只展开主运或深入至第6层"
+      ],
+      "implementation_note": "120年是九主星名义年数合计；换算为具体日期还依赖year_duration。页面只展示嵌套规则，不读取真人出生资料。",
+      "public_sources": [
+        {
+          "title": "PyJHora const.py · 九主星序列、年数与六层枚举",
+          "url": "https://github.com/naturalstupid/PyJHora/blob/ca22995709bd60e371e7820a1a5efc80ce4cf821/src/jhora/const.py",
+          "fields": [
+            "vimsottari_adhipati_list",
+            "vimsottari_dict",
+            "MAHA_DHASA_DEPTH"
+          ]
+        },
+        {
+          "title": "PyJHora vimsottari.py · 起点、主运与下级比例",
+          "url": "https://github.com/naturalstupid/PyJHora/blob/ca22995709bd60e371e7820a1a5efc80ce4cf821/src/jhora/horoscope/dhasa/graha/vimsottari.py",
+          "fields": [
+            "vimsottari_dasha_start_date",
+            "vimsottari_mahadasa",
+            "_vimsottari_bhukti"
+          ]
+        },
+        {
+          "title": "PyJHora drik.py · Dasha年长口径",
+          "url": "https://github.com/naturalstupid/PyJHora/blob/ca22995709bd60e371e7820a1a5efc80ce4cf821/src/jhora/panchanga/drik.py",
+          "fields": [
+            "dhasa_year_duration"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "transit-tajaka-saham",
+      "group": "timing",
+      "sequence": 3,
+      "title": "行运、Tajaka 年度盘与 Saham 计算点",
+      "latin": "Transit, tajaka & saham",
+      "count": "2 类时间技术 · 36 个 Saham 计算点",
+      "tags": [
+        "Gochar",
+        "年度盘",
+        "Saham"
+      ],
+      "question": "真实天空比较、年度盘与盘上计算点有何区别？",
+      "summary": "行运保存目标时刻的天体位置并与本命快照分层；Tajaka用太阳回归时刻建立年度、月度和60小时盘；Saham在相关盘面上按具名A−B＋C公式生成计算点。",
+      "facts": [
+        [
+          "行运",
+          "本命位置与目标时刻位置分别保存后再比较"
+        ],
+        [
+          "Tajaka",
+          "太阳回归盘及月盘、60小时盘使用专属关系函数"
+        ],
+        [
+          "Saham",
+          "36个具名源码键；公式、昼夜分支和输入对象分别登记"
+        ]
+      ],
+      "time_routes": [
+        {
+          "id": "transit",
+          "name": "Transit／Gochar",
+          "anchor": "目标时刻JD",
+          "input": "目标时刻Graha黄经",
+          "output": "与本命快照并列的位置层",
+          "status": "固定快照无独立gochar具名模块"
+        },
+        {
+          "id": "tajaka",
+          "name": "Tajaka",
+          "anchor": "next solar date",
+          "input": "出生JD、地点、完成年数",
+          "output": "年度回归盘／月盘／60小时盘",
+          "status": "有annual_chart、monthly_chart、sixty_hour_chart"
+        },
+        {
+          "id": "saham",
+          "name": "Saham",
+          "anchor": "盘面黄经",
+          "input": "Lagna、宫位、宫主或Graha黄经",
+          "output": "0—360°具名计算点",
+          "status": "固定列表36键"
+        }
+      ],
+      "tajaka_scales": [
+        {
+          "name": "Varsha Pravesh",
+          "unit": "年",
+          "function": "annual_chart"
+        },
+        {
+          "name": "Maasa Pravesh",
+          "unit": "月",
+          "function": "monthly_chart"
+        },
+        {
+          "name": "Sixty-hour chart",
+          "unit": "2.5日",
+          "function": "sixty_hour_chart"
+        }
+      ],
+      "sahams": [
+        "punya",
+        "vidya",
+        "yasas",
+        "mitra",
+        "mahatmaya",
+        "asha",
+        "samartha",
+        "bhratri",
+        "gaurava",
+        "pithri",
+        "rajya",
+        "maathri",
+        "puthra",
+        "jeeva",
+        "karma",
+        "roga",
+        "kali",
+        "sastra",
+        "bandhu",
+        "mrithyu",
+        "paradesa",
+        "artha",
+        "paradara",
+        "vanika",
+        "karyasiddhi",
+        "vivaha",
+        "santapa",
+        "sraddha",
+        "preethi",
+        "jadya",
+        "vyaapaara",
+        "sathru",
+        "jalapatna",
+        "bandhana",
+        "apamrithyu",
+        "laabha"
+      ],
+      "formula_family": {
+        "shape": "A − B + C",
+        "branches": "部分公式按昼生／夜生交换A与B",
+        "normalization": "结果归一化至0—360°；部分函数另加30°修正"
+      },
+      "implementation_note": "源码目录把Tajaka与Saham放在transit包中，但固定快照未见独立gochar实现文件；目录位置不等于三种技术使用同一算法。Saham名称只作键索引，不展开事件判断。",
+      "public_sources": [
+        {
+          "title": "PyJHora tajaka.py · 年度、月度与60小时盘",
+          "url": "https://github.com/naturalstupid/PyJHora/blob/ca22995709bd60e371e7820a1a5efc80ce4cf821/src/jhora/horoscope/transit/tajaka.py",
+          "fields": [
+            "annual_chart",
+            "monthly_chart",
+            "sixty_hour_chart",
+            "lord_of_the_year"
+          ]
+        },
+        {
+          "title": "PyJHora saham.py · A−B＋C计算点",
+          "url": "https://github.com/naturalstupid/PyJHora/blob/ca22995709bd60e371e7820a1a5efc80ce4cf821/src/jhora/horoscope/transit/saham.py",
+          "fields": [
+            "36 saham functions"
+          ]
+        },
+        {
+          "title": "PyJHora const.py · Saham固定键列表",
+          "url": "https://github.com/naturalstupid/PyJHora/blob/ca22995709bd60e371e7820a1a5efc80ce4cf821/src/jhora/const.py",
+          "fields": [
+            "_saham_list"
+          ]
+        },
+        {
+          "title": "PyJHora transit固定源码树 · Gochar模块边界",
+          "url": "https://github.com/naturalstupid/PyJHora/tree/ca22995709bd60e371e7820a1a5efc80ce4cf821/src/jhora/horoscope/transit",
+          "fields": [
+            "tajaka.py",
+            "tajaka_yoga.py",
+            "saham.py"
+          ]
+        }
+      ]
+    }
+  ],
+  "public_sources": [
+    {
+      "title": "PyJHora",
+      "url": "https://github.com/naturalstupid/PyJHora",
+      "note": "分盘、历法与 Dasha 的实现来源；按 AGPL 保守处理。"
+    },
+    {
+      "title": "mingli-skills 印占资料",
+      "url": "https://github.com/weizeW/mingli-skills",
+      "note": "Parashari、KP 与 Jaimini 的方法范围索引；仓库说法不作为传统共识。"
+    }
+  ],
+  "boundary": "只展示对象、坐标、分盘和时间技术结构；不开放婚配评分、健康寿命、化解建议或个人预测。"
+}

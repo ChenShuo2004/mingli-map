@@ -1,0 +1,162 @@
+{
+  "schema_version": "1.0",
+  "id": "ziwei_twelve_palace_chart",
+  "title": "十二宫盘面",
+  "summary": "紫微斗数把十二个宫名依次放入十二个地支位置，形成一圈可继续承载宫干、星曜和运限的盘面坐标。宫名与地支不是永久一一绑定：命宫位置确定后，其余宫名才沿固定次序排开；身宫是叠在其中一格的标记，不是第十三宫。",
+  "palace_cycle": [
+    {"id":"soul","name":"命宫","short":"命","alias":null,"branch":"寅","index":0},
+    {"id":"parents","name":"父母宫","short":"父母","alias":"相貌宫","branch":"卯","index":1},
+    {"id":"spirit","name":"福德宫","short":"福德","alias":null,"branch":"辰","index":2},
+    {"id":"property","name":"田宅宫","short":"田宅","alias":null,"branch":"巳","index":3},
+    {"id":"career","name":"官禄宫","short":"官禄","alias":"事业宫","branch":"午","index":4},
+    {"id":"friends","name":"仆役宫","short":"仆役","alias":"交友宫","branch":"未","index":5},
+    {"id":"surface","name":"迁移宫","short":"迁移","alias":null,"branch":"申","index":6},
+    {"id":"health","name":"疾厄宫","short":"疾厄","alias":null,"branch":"酉","index":7},
+    {"id":"wealth","name":"财帛宫","short":"财帛","alias":null,"branch":"戌","index":8},
+    {"id":"children","name":"子女宫","short":"子女","alias":null,"branch":"亥","index":9},
+    {"id":"spouse","name":"夫妻宫","short":"夫妻","alias":null,"branch":"子","index":10},
+    {"id":"siblings","name":"兄弟宫","short":"兄弟","alias":null,"branch":"丑","index":11}
+  ],
+  "fixed_example": {
+    "label": "固定结构例",
+    "note": "只把命宫固定放在寅位，用来观察十二宫名怎样绕盘排开；这不是任何真人命盘。",
+    "body_palace_id": "career"
+  },
+  "field_layers": [
+    {"id":"name","label":"宫名","note":"命、父母、福德等十二个功能名称沿同一条次序循环。"},
+    {"id":"coordinate","label":"地支位置","note":"寅至丑十二个位置构成盘面坐标；固定例从寅位开始展示。"},
+    {"id":"overlay","label":"叠加字段","note":"身宫、宫干与星曜继续叠入某一宫格，不会新增第十三个宫位。"}
+  ],
+  "observation_scope": {
+    "title": "十二宫的第一层观察范围",
+    "summary": "宫名先划分要观察的生活对象或关系领域，再由同宫星曜、三方四正、运限和具体流派规则继续补充条件。",
+    "boundary": "以下是公开来源逐宫给出的入门观察范围，经压缩后只保留对象层；它不是穷尽定义，也不直接等于个人经历、结果或吉凶。财帛宫不等于财富数额，官禄宫不等于职业成败，疾厄宫更不能替代医疗判断。"
+  },
+  "observation_domains": [
+    {"palace_id":"soul","palace":"命宫","primary":"个性本质与认知偏向","note":"先观察一个人的内在取向与看待事物的方式，不从宫名直接推出完整性格。"},
+    {"palace_id":"parents","palace":"父母宫","primary":"父母、长辈与先天支持环境","note":"入口是与父母或长辈的关系及早期支持条件，不把别名“相貌宫”扩写成确定外貌结论。"},
+    {"palace_id":"spirit","palace":"福德宫","primary":"思想、喜好与精神感受","note":"观察内在感受、兴趣和精神层面的倾向，不直接判断幸福程度。"},
+    {"palace_id":"property","palace":"田宅宫","primary":"家庭、居住与积累观念","note":"可涉及家庭环境、住所和不动产态度，但不从单宫断定资产结果。"},
+    {"palace_id":"career","palace":"官禄宫","primary":"做事与工作态度","note":"重点是面对事务与工作的方式；“事业宫”是同一入口的现代名称，不等于职业成败。"},
+    {"palace_id":"friends","palace":"仆役宫","primary":"朋友圈与择友观","note":"观察与朋友、同辈或协作对象的互动范围；现代资料也常称交友宫。"},
+    {"palace_id":"surface","palace":"迁移宫","primary":"对外呈现与社交入口","note":"侧重离开熟悉环境后的表现，以及他人初识时接收到的外在面向。"},
+    {"palace_id":"health","palace":"疾厄宫","primary":"身体、体质与管理态度","note":"只保留身体相关的观察入口，不生成疾病诊断、治疗建议或健康结论。"},
+    {"palace_id":"wealth","palace":"财帛宫","primary":"财务态度、理财观与物质需求","note":"观察如何面对金钱和物质，不把宫名简化成财富多寡。"},
+    {"palace_id":"children","palace":"子女宫","primary":"子女关系与照护互动","note":"来源也延伸到桃花、合作等范围；本页先保留最直接的子女关系入口，延伸义不混入主定义。"},
+    {"palace_id":"spouse","palace":"夫妻宫","primary":"择偶观与感情态度","note":"入口是亲密关系中的选择和互动方式，不据单宫判断婚姻事件。"},
+    {"palace_id":"siblings","palace":"兄弟宫","primary":"兄弟姊妹与同辈相处模式","note":"先观察手足或近似同辈关系，不把其他派生用法混成主定义。"}
+  ],
+  "soul_body_positioning": {
+    "title": "命宫与身宫定位",
+    "summary": "月与时共同决定两个锚点：都先从寅位起正月，顺数到生月；再从这个月锚点分两路，命宫逆数生时，身宫顺数生时。当前只用固定案例解释方向，不接收出生资料。",
+    "steps": [
+      {"id":"month","label":"先定月锚点","direction":"顺数","note":"寅位作正月，从寅沿地支顺序数到固定案例中的农历月。"},
+      {"id":"soul","label":"再定位命宫","direction":"逆数","note":"从月锚点按时支序号逆行；子时留在原位，丑时逆一格，依次类推。"},
+      {"id":"body","label":"同时定位身宫","direction":"顺数","note":"从同一个月锚点按时支序号顺行；它与命宫使用同一输入，但方向相反。"}
+    ],
+    "fixed_cases": [
+      {"id":"third-month-rat","label":"三月 · 子时","month":"三月","time":"子时","month_branch":"辰","soul_branch":"辰","body_branch":"辰","note":"子时序号为零，两条路径都留在月锚点，所以命宫、身宫同在辰位。"},
+      {"id":"third-month-rabbit","label":"三月 · 卯时","month":"三月","time":"卯时","month_branch":"辰","soul_branch":"丑","body_branch":"未","note":"从辰位出发，命宫逆行三格到丑，身宫顺行三格到未。"},
+      {"id":"sixth-month-snake","label":"六月 · 巳时","month":"六月","time":"巳时","month_branch":"未","soul_branch":"寅","body_branch":"子","note":"从未位出发，两条路径各走五格，命宫到寅，身宫到子。"},
+      {"id":"eleventh-month-horse","label":"十一月 · 午时","month":"十一月","time":"午时","month_branch":"子","soul_branch":"午","body_branch":"午","note":"午时相距六格，顺行与逆行会在月锚点的对位相遇，所以命宫、身宫同在午位。"}
+    ],
+    "source_scope": "以上方向与固定案例按锁定版本 iztro 的宫位定位实现整理，用于解释这一实现的盘面装配规则；不据此宣称所有流派、闰月口径与晚子时处理完全一致。"
+  },
+  "body_palace_scope": {
+    "title": "十二时支收敛为六种身宫归属",
+    "summary": "命宫与身宫从同一个月锚点反向展开，因此两者的相对格距只由时支决定；相隔六个时辰的两支会得到同一个相对格距。十二个时支最终两两成组，身宫只会叠入命、福德、官禄、迁移、财帛、夫妻六宫之一。",
+    "formula": "身宫相对命宫的顺行格距 = 2 × 时支序号（对12取余；子时序号为0）",
+    "groups": [
+      {
+        "id": "soul",
+        "time_branches": ["子", "午"],
+        "palace": "命宫",
+        "offset": 0,
+        "relation": "命身同宫",
+        "note": "子时两路都停在月锚点；午时两路各走六格，也会在同一位置相遇。"
+      },
+      {
+        "id": "spirit",
+        "time_branches": ["丑", "未"],
+        "palace": "福德宫",
+        "offset": 2,
+        "relation": "顺行两格",
+        "note": "丑时序号为1，命身两宫相差2格；未时多走一圈中的6个时辰，归属不变。"
+      },
+      {
+        "id": "career",
+        "time_branches": ["寅", "申"],
+        "palace": "官禄宫",
+        "offset": 4,
+        "relation": "顺行四格",
+        "note": "寅、申两支相隔六个时辰，代入相对格距后都落在命宫顺行第4格。"
+      },
+      {
+        "id": "surface",
+        "time_branches": ["卯", "酉"],
+        "palace": "迁移宫",
+        "offset": 6,
+        "relation": "正对命宫",
+        "note": "两组定位路径相差6格，身宫叠在命宫的对宫位置。"
+      },
+      {
+        "id": "wealth",
+        "time_branches": ["辰", "戌"],
+        "palace": "财帛宫",
+        "offset": 8,
+        "relation": "顺行八格",
+        "note": "辰、戌两支都把身宫放到命宫顺行第8格，对应财帛宫。"
+      },
+      {
+        "id": "spouse",
+        "time_branches": ["巳", "亥"],
+        "palace": "夫妻宫",
+        "offset": 10,
+        "relation": "顺行十格",
+        "note": "巳、亥两支都把身宫放到命宫顺行第10格，对应夫妻宫。"
+      }
+    ],
+    "source_scope": "六组归属由锁定版本的命宫逆数、身宫顺数公式与十二宫固定次序机械展开；这里只说明位置可能性，不附加身宫落入各宫的性格、事件或吉凶解释。"
+  },
+  "palace_stem_assembly": {
+    "title": "宫干装配",
+    "summary": "十二宫的地支位置固定后，还要为每格配入一个天干。锁定实现先按年干分成五组，确定寅宫从哪个天干起，再沿寅、卯至丑依次顺排十天干；这会补齐每宫的干支坐标，并给五行局提供命宫天干。",
+    "steps": [
+      {"id":"year-group","label":"年干分五组","note":"甲己、乙庚、丙辛、丁壬、戊癸分别共用一个寅宫起干。"},
+      {"id":"yin-start","label":"先定寅宫天干","note":"五组依次从丙、戊、庚、壬、甲起，地支起点始终是寅。"},
+      {"id":"clockwise-fill","label":"十二格顺排","note":"从寅宫起沿地支顺序，每前进一格，天干也沿甲至癸循环前进一位。"}
+    ],
+    "branch_order": ["寅","卯","辰","巳","午","未","申","酉","戌","亥","子","丑"],
+    "stem_cycle": ["甲","乙","丙","丁","戊","己","庚","辛","壬","癸"],
+    "year_groups": [
+      {"id":"jia-ji","year_stems":["甲","己"],"yin_start":"丙","palace_stems":["丙","丁","戊","己","庚","辛","壬","癸","甲","乙","丙","丁"]},
+      {"id":"yi-geng","year_stems":["乙","庚"],"yin_start":"戊","palace_stems":["戊","己","庚","辛","壬","癸","甲","乙","丙","丁","戊","己"]},
+      {"id":"bing-xin","year_stems":["丙","辛"],"yin_start":"庚","palace_stems":["庚","辛","壬","癸","甲","乙","丙","丁","戊","己","庚","辛"]},
+      {"id":"ding-ren","year_stems":["丁","壬"],"yin_start":"壬","palace_stems":["壬","癸","甲","乙","丙","丁","戊","己","庚","辛","壬","癸"]},
+      {"id":"wu-gui","year_stems":["戊","癸"],"yin_start":"甲","palace_stems":["甲","乙","丙","丁","戊","己","庚","辛","壬","癸","甲","乙"]}
+    ],
+    "fixed_boundary": "页面只选择五组抽象年干入口，不输入具体出生年。固定结构例仍把命宫放在寅位，因此当前组的寅宫天干也就是例中的命宫天干；真实盘面需先完成历法年干与命宫定位。",
+    "source_scope": "当前按锁定版本 iztro 的五虎遁常量与宫干装配实现整理；其他来源只确认“命宫天干用五虎遁”，未据此扩写宫干飞化或个人解释。"
+  },
+  "name_variants": [
+    {"canonical":"官禄宫","variant":"事业宫","note":"两种名称指向同一宫位入口，来源用词分别保留。"},
+    {"canonical":"仆役宫","variant":"交友宫","note":"现代资料常用交友宫；程序与旧称也会写作仆役宫。"},
+    {"canonical":"父母宫","variant":"相貌宫","note":"部分资料把相貌宫作为父母宫的别称或附带观察范围，当前只保存名称差异。"}
+  ],
+  "public_sources": [
+    {"title":"iztro：十二宫名称常量","note":"锁定版本直接列出命、父母、福德、田宅、官禄、仆役、迁移、疾厄、财帛、子女、夫妻、兄弟十二宫的固定次序。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/data/constants.ts#L50-L64"},
+    {"title":"iztro：命宫与身宫定位实现","note":"锁定版本说明寅起正月、顺数至生月，并分别逆数生时定命宫、顺数生时定身宫；固定案例只按这组方向复算。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/astro/palace.ts#L27-L92"},
+    {"title":"iztro：五虎遁起干常量","note":"锁定版本列出甲己丙、乙庚戊、丙辛庚、丁壬壬、戊癸甲五组寅宫起干，页面据此生成五组十二宫干支。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/data/constants.ts#L132-L153"},
+    {"title":"iztro：十二格装配实现","note":"实现以十二次循环把宫名、地支、星曜和身宫标记装入同一组宫格，可用于核对盘面字段层次。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/astro/astro.ts#L202-L259"},
+    {"title":"iztro宫位知识：十二宫的第一层观察范围","note":"公开文档逐宫说明命、兄弟、夫妻至父母宫优先观察的对象；本页只摘要对象层，不采用其中个人断语或运限结论。","url":"https://iztro.com/learn/palace.html"},
+    {"title":"fortune-telling-skills：宫位总览","note":"锁定版本列出十二宫，并使用事业宫、交友宫等现代名称；当前只用于保存名称与入口范围，不采用其中个人断语。","url":"https://github.com/doododod/fortune-telling-skills/blob/8bcc734491ac75cfb21c1de8727c9fc3f9427b1e/ziwei-doushu/references/palaces.md#L12-L30"}
+  ],
+  "internal_review": {
+    "status": "formal_structure_node",
+    "reviewed_at": "2026-08-06",
+    "source_refs": ["github_sylarlong_iztro_2fb2030", "github_doododod_fortune_telling_skills_8bcc734"],
+    "ownership": "K-ZW.01 基础盘面",
+    "deduplication": "命宫与身宫定位决定十二宫盘面的两个锚点，十二时支的六种身宫归属是同一定位公式的完整输出，宫干装配继续为同一组宫格补入天干，十二宫观察范围则回答同一组宫名分别指向什么对象；四者都属于盘面对象，不另建卡。不并入五行局、命主身主、星曜、四化或运限。",
+    "boundary": "固定命宫在寅、身宫标记在官禄宫只用于演示字段层次；命身定位提供固定案例与十二时支的六组位置输出，宫干只提供五组抽象年干入口，宫位范围只保留来源归属明确的第一层观察对象。不接收出生资料，不生成真人盘，不把宫名直接解释成个人经历、结果或吉凶。"
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "schema_version": "1.0.0",
+  "id": "meihua_original_mutual_changed",
+  "title": "本卦、互卦与变卦",
+  "summary": "把同一组六爻拆成三种观察：本卦保留原始六爻；互卦从原卦内部抽取二至四爻与三至五爻，重新组成上下卦；变卦只翻转指定动爻。普通卦例在三套已收录实现中可以互相对照，乾、坤纯卦是否改从变卦取互仍按版本并列，不补写成统一规则。",
+  "line_order": {
+    "label": "初爻在下，上爻在上",
+    "storage": "界面按自下而上的爻位计算，绘图时从上爻向初爻显示"
+  },
+  "relations": [
+    {
+      "id": "original",
+      "label": "本卦",
+      "question": "原来的六条爻是什么？",
+      "rule": "保留上卦、下卦与六条阴阳爻，不在这一层加入解释。"
+    },
+    {
+      "id": "mutual",
+      "label": "互卦",
+      "question": "原卦内部怎样再组成一卦？",
+      "rule": "二、三、四爻组成下互卦；三、四、五爻组成上互卦。"
+    },
+    {
+      "id": "changed",
+      "label": "变卦",
+      "question": "哪一条爻发生了变化？",
+      "rule": "只翻转指定动爻：阳变阴，阴变阳；其余五爻保持不动。"
+    }
+  ],
+  "fixed_examples": [
+    {"id": "weiji", "label": "火水未济", "outer": "离", "inner": "坎", "moving_line": 3},
+    {"id": "tai", "label": "地天泰", "outer": "坤", "inner": "乾", "moving_line": 4},
+    {"id": "jiaren", "label": "风火家人", "outer": "巽", "inner": "离", "moving_line": 2},
+    {"id": "qian", "label": "乾为天", "outer": "乾", "inner": "乾", "moving_line": 1},
+    {"id": "kun", "label": "坤为地", "outer": "坤", "inner": "坤", "moving_line": 6}
+  ],
+  "version_differences": [
+    {
+      "id": "ordinary",
+      "label": "普通卦例",
+      "primary_repository": "从本卦二至五爻取互",
+      "comparison_repository": "从本卦二至五爻取互",
+      "status": "结构重合"
+    },
+    {
+      "id": "pure_qian_kun",
+      "label": "乾、坤纯卦",
+      "primary_repository": "先形成变卦，再从变卦取互",
+      "comparison_repository": "仍从本卦二至五爻取互",
+      "status": "版本分歧"
+    }
+  ],
+  "reading_boundaries": [
+    "这里展示卦形之间的生成关系，不替用户起卦。",
+    "动爻是固定示例的结构输入，不从真人时间或随机数生成。",
+    "本页不进入体用、生克、吉凶、应期或行动建议。"
+  ],
+  "public_sources": [
+    {
+      "title": "muyen/meihua-yishu 锁定本互变实现",
+      "url": "https://github.com/muyen/meihua-yishu/blob/aecdf87ebef26328c32caa65d40b2f9d273088ec/scripts/meihua_calc.py",
+      "note": "主资料库的普通本互变、乾坤特殊处理及固定测试来源；仓库规则级底本仍缺版次页码。"
+    },
+    {
+      "title": "ZZq114514/MeihuaYishu 锁定核心实现",
+      "url": "https://github.com/ZZq114514/MeihuaYishu/blob/466ee62105db599a29c25259f2ba6d10092d660c/src/meihuayishu/core.py",
+      "note": "第二套实现支持普通互卦与变卦对照，并与主资料库形成乾坤互卦分歧。"
+    },
+    {
+      "title": "梅花易数两库累计比较",
+      "url": "https://github.com/muyen/meihua-yishu/tree/aecdf87ebef26328c32caa65d40b2f9d273088ec/references",
+      "note": "仓库资料层保存六十四卦矩阵与卦形关系说明；本项目只采用可追踪的结构与版本差异。"
+    }
+  ],
+  "internal_review": {
+    "status": "formal_structure_node_with_version_difference",
+    "reviewed_at": "2026-08-09",
+    "owner": ["火华", "Codex"],
+    "source_refs": [
+      "github_muyen_meihua_yishu_aecdf87",
+      "github_zzq114514_meihuayishu_466ee62",
+      "github_deminzhang_qimen_go_4d3f58f"
+    ],
+    "deduplication": "不并入‘起卦方法’：起卦回答输入怎样得到上下卦与动爻，本页只回答已有六爻怎样生成互卦与变卦。不并入‘体用与五行’：体用需要另选观察主体并进入五行关系，本页停在卦形生成。也不重复六十四卦基础表，只复用共享卦名与八卦编码。",
+    "known_gaps": [
+      "普通互卦和变卦具有多实现重合，但规则级古籍版次与页码仍待定位。",
+      "乾、坤特殊互卦在两套实现间不一致，当前不裁定唯一版本。",
+      "第三套qimen-go只作为普通结构对照，不增加体用定义的共识票。"
+    ],
+    "boundary": "固定案例、无真人输入、无随机；只展示卦形生成关系，不输出吉凶、应期、个人解释或行动建议。"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "id": "xiaoliuren_heaven_branch_two_step_sequence",
+  "title": "天盘地支怎样隔位顺排",
+  "summary": "这套实现先把当前时支放到地盘时宫，再沿六宫顺序每前进一宫、地支前进两位。六宫走完时十二地支也正好走完一圈，因此每个宫得到一个同奇偶序列的地支。本页用戌时落大安的固定例完整展示六步。",
+  "rule": {"anchor": "时宫放入时支", "palace_step": 1, "branch_step": 2, "formula": "地支索引＝时支索引＋宫位偏移×2（模12）"},
+  "fixed_input": {"time_palace": "大安", "time_branch": "戌"},
+  "palaces": [
+    {"position":1,"palace":"大安","offset":0,"branch":"戌","element":"土"},
+    {"position":2,"palace":"留连","offset":1,"branch":"子","element":"水"},
+    {"position":3,"palace":"速喜","offset":2,"branch":"寅","element":"木"},
+    {"position":4,"palace":"赤口","offset":3,"branch":"辰","element":"土"},
+    {"position":5,"palace":"小吉","offset":4,"branch":"午","element":"火"},
+    {"position":6,"palace":"空亡","offset":5,"branch":"申","element":"金"}
+  ],
+  "checks": ["戌后前进两位是子，中间跳过亥。", "连续六次取偶数偏移，得到戌、子、寅、辰、午、申。", "这张天盘地支表随后同时供人盘六亲与神盘六神读取。"],
+  "reading_boundaries": ["隔位顺排是该作者实现的函数规则，不改写为跨版本共识。", "五行只用于下一层关系复算，不附加宫义。", "固定例不读取当前戌时。"],
+  "public_sources": [{"title": "chxb/jishiyu 锁定 getHeavenPlate 实现", "url": "https://github.com/chxb/jishiyu/blob/97b6d6d8e58c6947a86e281d5b69de1032e9bc08/js/x6ren.js", "note": "用于复算天盘地支的起点与每宫两支偏移。"}],
+  "internal_review": {"reviewed_on": "2026-08-10", "owner": ["火华", "Codex"], "status": "formal_fixed_sequence"}
+}

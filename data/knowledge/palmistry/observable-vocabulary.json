@@ -1,0 +1,27 @@
+{
+  "id": "observable-vocabulary",
+  "title": "位置、比例、形态与纹理",
+  "summary": "先用统一字段描述看见了什么：位置与方向用于定位，长度与比例用于比较，轮廓与线纹用于记录形态；无法稳定看清时保存可见状态。",
+  "dimensions": [
+    {"id": "position", "label": "位置", "question": "在哪里", "fields": ["所属部位", "相邻参照点", "起点与终点"]},
+    {"id": "direction", "label": "方向", "question": "朝哪里", "fields": ["横向或纵向", "内侧或外侧", "上行或下行"]},
+    {"id": "proportion", "label": "比例", "question": "彼此多大", "fields": ["长度", "宽度", "间距", "同图比例"]},
+    {"id": "shape", "label": "形态", "question": "轮廓怎样", "fields": ["直或曲", "宽或窄", "连续或分叉"]},
+    {"id": "texture", "label": "纹理", "question": "表面怎样", "fields": ["线纹可见度", "边界清晰度", "局部纹理"]}
+  ],
+  "comparison_rules": ["使用同一组参照点", "比例只在同一画面条件下比较", "先写数值或形态，再附传统名称", "左右或上下差异不直接写成评价"],
+  "visibility_states": [
+    {"label": "清晰可见", "action": "允许记录位置、比例与形态"},
+    {"label": "部分遮挡", "action": "只记录未遮挡区域"},
+    {"label": "超出画面", "action": "标记缺失，不补画"},
+    {"label": "分辨率不足", "action": "不记录细线和表面纹理"},
+    {"label": "光照失真", "action": "不比较颜色、明暗和肤表状态"}
+  ],
+  "comparison_images": [
+    {"label": "面部比例教学图", "image": "/assets/palmistry/ai-face-proportion-comparison.webp"},
+    {"label": "掌指比例教学图", "image": "/assets/palmistry/ai-hand-proportion-comparison.webp"}
+  ],
+  "public_sources": [
+    {"title": "NISTIR 8485：Face Image Quality Vector Assessment", "note": "用于确认姿态、曝光、遮挡、分辨率等图像缺陷需与观察结果分开记录。", "url": "https://doi.org/10.6028/NIST.IR.8485"}
+  ]
+}

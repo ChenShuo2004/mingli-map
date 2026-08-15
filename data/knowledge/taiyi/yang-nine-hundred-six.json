@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.0.0",
+  "id": "taiyi-yang-nine-hundred-six",
+  "title": "阳九百六",
+  "summary": "阳九百六在锁定实现中并不是一对单值标签，而是三条需要分开的路线：农历年支路线只返回岁计阳九支与百六支；积年路线分别进入4560／456和4320／288两组大小限；阴阳九厄表又声明九个分段。固定1552年里，四个method的年支结果都为子／丑，但积年限位不同，说明两种输入不能互相替代。仅保留周期、偏移、限序、固定复算与表结构缺口，不展示灾变、水旱、政务、军事或真人判断；命法中的行限同名函数也不并入本页。",
+  "fixed_input": "固定1552-09-24年计 · 农历壬子年 · 四个积年分支",
+  "routes": [
+    {"index":"01","name":"岁计支位","input":"农历年1552","formula":"(年+12607)分别入456／288余数，再沿各自十二支序取位","output":"阳九子 · 百六丑","status":"不读取四method积年"},
+    {"index":"02","name":"阳九限数","input":"method积年","formula":"(积年+130) mod 4560，再mod 456","output":"十个456年小限中的限序与入限年数","status":"四method可分流"},
+    {"index":"03","name":"百六限数","input":"method积年","formula":"(积年+2050) mod 4320，再mod 288","output":"十五个288年小限中的限序与入限年数","status":"四method可分流"},
+    {"index":"04","name":"九会表","input":"阳九周期位置","formula":"按九行声明终值选择当前会","output":"九行表与选择结果","status":"当前选择器未形成累计分段"}
+  ],
+  "cycles": [
+    {"id":"yang-nine","name":"阳九","large_cycle":4560,"small_cycle":456,"small_count":10,"offset":130,"formula":"(积年+130) mod 4560","note":"整除点以入限456年表示。"},
+    {"id":"hundred-six","name":"百六","large_cycle":4320,"small_cycle":288,"small_count":15,"offset":2050,"formula":"(积年+2050) mod 4320","note":"整除点以入限288年表示。"}
+  ],
+  "year_branch_result": [
+    {"name":"岁计阳九支","year":1552,"intermediate":11,"start":"寅","result":"子"},
+    {"name":"岁计百六支","year":1552,"intermediate":23,"normalized":11,"start":"卯","result":"丑"}
+  ],
+  "fixed_methods": [
+    {"method":0,"label":"太乙统宗","accumulated":10155469,"yang_remainder":479,"yang_limit":2,"yang_year":23,"hundred_remainder":1199,"hundred_limit":5,"hundred_year":47,"status":"与method 3同值"},
+    {"method":1,"label":"太乙金镜","accumulated":1938109,"yang_remainder":239,"yang_limit":1,"yang_year":239,"hundred_remainder":479,"hundred_limit":2,"hundred_year":191,"status":"两组限位均不同于method 0"},
+    {"method":2,"label":"太乙淘金歌","accumulated":10155745,"yang_remainder":755,"yang_limit":2,"yang_year":299,"hundred_remainder":1475,"hundred_limit":6,"hundred_year":35,"status":"两组限位均不同于method 0"},
+    {"method":3,"label":"太乙局","accumulated":10155469,"yang_remainder":479,"yang_limit":2,"yang_year":23,"hundred_remainder":1199,"hundred_limit":5,"hundred_year":47,"status":"与method 0同值"}
+  ],
+  "boundary_conventions": [
+    {"system":"阳九","cycle_remainder":0,"reported_limit":10,"reported_year":456,"note":"大周整除点归入第十限末年。"},
+    {"system":"阳九","cycle_remainder":456,"reported_limit":1,"reported_year":456,"note":"下一段整除点仍报第一限末年，而非第二限第一年。"},
+    {"system":"百六","cycle_remainder":0,"reported_limit":15,"reported_year":288,"note":"大周整除点归入第十五限末年。"},
+    {"system":"百六","cycle_remainder":288,"reported_limit":1,"reported_year":288,"note":"下一段整除点仍报第一限末年，而非第二限第一年。"}
+  ],
+  "nine_meetings": [
+    {"index":1,"label":"第一会","declared_terminal":106,"span_label":9},
+    {"index":2,"label":"第二会","declared_terminal":374,"span_label":9},
+    {"index":3,"label":"第三会","declared_terminal":480,"span_label":9},
+    {"index":4,"label":"第四会","declared_terminal":720,"span_label":7},
+    {"index":5,"label":"第五会","declared_terminal":720,"span_label":7},
+    {"index":6,"label":"第六会","declared_terminal":600,"span_label":5},
+    {"index":7,"label":"第七会","declared_terminal":600,"span_label":5},
+    {"index":8,"label":"第八会","declared_terminal":480,"span_label":3},
+    {"index":9,"label":"第九会","declared_terminal":480,"span_label":3}
+  ],
+  "implementation_differences": [
+    {"label":"同名结果读取两类年数","source":"岁计支位与大小限都以阳九百六命名。","implementation":"前者读取农历年并返回两支；后者读取四method积年并返回限序与入限年。","handling":"同页分为岁计支位和积年限数，不用子／丑替代限位。"},
+    {"label":"四method差异不会被360整倍数消去","source":"普通局号常让method 0／1／3同组。","implementation":"456、288、4320、4560均非360的统一约数，method 1在两组限数中与0／3分开。","handling":"固定四行逐式展示，不沿用七十二局分组。"},
+    {"label":"整除边界采用末年记法","source":"函数把余0替换为456或288。","implementation":"余456／288时限序仍按整除前一段返回，造成边界标签不直观。","handling":"单列四个边界约定，不改写程序结果。"},
+    {"label":"九会终值不是累计递增序列","source":"表内九行声明106、374、480、720、720、600、600、480、480。","implementation":"选择器逐行比较rem小于终值，720之后的600／480不会形成后续区间；大多数周期位置回退第九会。","handling":"只展示声明表并标为未闭合，不公开当前灾类选择结果。"},
+    {"label":"4560与原文OCR总数存在异文线索","source":"连接文本同时可见4560大数与OCR近似4617的句段。","implementation":"所有限数函数统一使用4560。","handling":"4560只作为锁定实现常数；4617不据OCR直接校正。"},
+    {"label":"命法行限是独立旁路","source":"命法另以性别、月干支或受气干支推阳九／百六行限。","implementation":"yangjiu_xingxian与bailiu_xingxian不由本页四method积年函数调用。","handling":"只登记接口边界，不接收出生资料，不展示个人行限。"},
+    {"label":"灾变与政务断语不纳入本节点","source":"原典和函数把限终继续连接水旱、灾变与修政语句。","implementation":"返回中含断语、临数终和水旱字段。","handling":"仅保留可复算数字结构和实现缺口。"}
+  ],
+  "reading_boundaries": [
+    {"label":"可理解","note":"阳九4560／456与百六4320／288的两组大小周期。"},
+    {"label":"可比较","note":"同一固定年里，农历年支结果不变而四method限位分流。"},
+    {"label":"待核验","note":"九会累计分段、4560／4617文本差异与整除点的传统口径。"},
+    {"label":"不作断语","note":"不展示灾类、水旱、政务、军事、真人命法或事件判断。"}
+  ],
+  "public_sources": [
+    {"title":"《太乙统宗宝鉴》阳九百六连接文本","url":"https://ctext.org/wiki.pl?chapter=306417&if=gb","note":"可定位阳九百六大小游行限与九会相关条目；自动OCR错字较多，数值需回看影像。"},
+    {"title":"《太白兵备统宗宝鉴》阳九百六连接文本","url":"https://ctext.org/wiki.pl?chapter=751759&if=gb","note":"另一连接文本可辨外卦十年、456年、内卦36年与288年等周期线索。"},
+    {"title":"kintaiyi锁定阳九百六限数实现","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/guiyun.py#L184-L274","note":"保存4560／456、4320／288、九会表与当前选择器。"},
+    {"title":"kintaiyi锁定岁计支位函数","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/config.py#L779-L804","note":"保存读取农历年的阳九支与百六支两条路线。"},
+    {"title":"kintaiyi锁定卷九结果入口","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L2320-L2323","note":"普通完整结果把四method积年传入卷九综合函数。"},
+    {"title":"kintaiyi命法同名旁路","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L1421-L1470","note":"命法另有阳九／百六行限函数，本页只据此划定接口边界。"}
+  ],
+  "internal_review": {
+    "status":"formal_yang_nine_hundred_six_cycles_and_gap_audit",
+    "reviewed_at":"2026-08-07",
+    "owner":["火华","Codex"],
+    "runtime_basis":"以已核1552年四method积年逐式计算两组偏移、余数、限序与入限年；另按锁定农历年函数复算子／丑支位",
+    "deduplication":"不并入大游与小游：卷九综合虽同时返回两者，阳九百六有独立4560／4320大小限和岁计支位。不并入年计：年计负责年字段与积年常数，本页负责这些输入进入阳九百六后的特定周期。",
+    "known_gaps":["九会表未形成累计区间","4560／4617文本差异未影像校清","整除边界口径未由独立底本验证","命法同名路线只完成接口隔离","缺少专项单元测试"],
+    "boundary":"固定历史年与机械余数，无真人输入或随机；不公开灾变、水旱、政务、军事、命法或事件判断。"
+  }
+}

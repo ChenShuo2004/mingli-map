@@ -1,0 +1,14 @@
+{
+  "id":"dream-omen-verification-boundaries","title":"占辞、梦验与禳梦不能混成一层","summary":"占辞是文本给出的兆应说法，梦验是后续叙事记录，禳梦是醒后采取的行动；三者在材料位置、时间方向和证据性质上不同。",
+  "kicker":"说法／记录／行动 · 三层边界",
+  "sections":[
+    {"label":"占辞","note":"梦后得到的解释说法","items":[{"term":"输入","detail":"梦象与时间条件"},{"term":"输出","detail":"简判或事件词"},{"term":"形态","detail":"梦书短条目、占者解释"}]},
+    {"label":"梦验","note":"后来的叙事记录","items":[{"term":"输入","detail":"既有梦与解释"},{"term":"输出","detail":"文本声称发生的后事"},{"term":"形态","detail":"经史、杂记、传记中的故事链"}]},
+    {"label":"禳梦","note":"醒后行动","items":[{"term":"输入","detail":"被材料判为恶梦的经验"},{"term":"输出","detail":"禁忌、符咒、诵念等处理"},{"term":"形态","detail":"P.3908书末专章"}]},
+    {"label":"核验字段","note":"阅读时分别核对","items":[{"term":"来源时间","detail":"占辞何时成文、梦验何时记载"},{"term":"叙事距离","detail":"亲历、转述、后世汇编"},{"term":"版本关系","detail":"原书、引书、改写与异本"}]}
+  ],
+  "relations":[{"from":"梦境材料","link":"经解释形成","to":"占辞","note":"文本中的兆应说法"},{"from":"占辞","link":"被后事叙事声称印证","to":"梦验","note":"仍是文本记录，不是实验验证"},{"from":"恶梦判断","link":"可能引出","to":"禳梦","note":"行动层不等于占辞或梦验"}],
+  "fixed_examples":[{"source":"P.3908·前十八章","dream":"分类梦象","qualifier":"对象／动作／状态","marker":"主／有／得等","outcome":"占辞","note":"条目层"},{"source":"P.3908·第二十三章","dream":"恶梦","qualifier":"醒后","marker":"—","outcome":"符咒与禁忌行动","note":"禳梦层，不是普通梦象条目"}],
+  "boundaries":["梦验是历史文本中的后事叙述，不等于现代可重复验证。","禳梦内容只作为宗教与民俗材料展示，不提供操作指引。","固定梦例应分开梦者、梦境、解释者、占辞、行动与叙事结果。"],
+  "public_sources":[{"title":"P.3908译注：正文与书末禳梦章","note":"区分前部占辞条目、时间章与末尾禳梦材料。","url":"https://www.daowen.com/lilun/1567134.html"},{"title":"数字藏经洞：P.3908馆藏页","note":"核对书末原写本影像。","url":"https://cave17.e-dunhuang.com/item/FRA.BNF.Pel%403908%40WX.Chs.html"},{"title":"《梦占逸旨》八卷影像","note":"对照外篇梦例中的解释与后事叙事。","url":"https://ctext.org/library.pl?if=gb&res=3642"}]
+}

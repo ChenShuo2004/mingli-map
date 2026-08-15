@@ -1,0 +1,27 @@
+{
+  "id": "bone-contour-surface",
+  "title": "骨形、轮廓与表面状态",
+  "summary": "同一面部位置可以分别记录骨性参照、软组织轮廓和图像表面状态；三者的观察条件不同，不能用光影或妆容替代骨形。",
+  "images": [
+    {"id": "front", "label": "正面轮廓", "image": "/assets/palmistry/ai-face-front-neutral.webp"},
+    {"id": "profile", "label": "侧面轮廓", "image": "/assets/palmistry/ai-face-profile-neutral.webp"}
+  ],
+  "layers": [
+    {"id": "bone", "label": "骨性参照", "objects": ["眉弓", "眶缘", "颧点", "鼻骨方向", "下颌角", "颏点"], "observe": ["位置", "突出程度", "左右对应", "正侧面一致性"]},
+    {"id": "contour", "label": "软组织轮廓", "objects": ["额面线", "面颊线", "鼻唇轮廓", "下颌缘", "颏下线"], "observe": ["直曲", "转折", "连续性", "前后层次"]},
+    {"id": "surface", "label": "表面状态", "objects": ["颜色", "明暗", "纹理", "痣斑", "疤痕"], "observe": ["可见范围", "边界", "对比度", "是否受光照或妆容影响"]}
+  ],
+  "confounders": [
+    {"label": "光线", "affects": ["明暗", "凹凸感", "颜色"]},
+    {"label": "焦段与距离", "affects": ["鼻部突出", "面宽", "前后比例"]},
+    {"label": "表情", "affects": ["眼周纹理", "口角", "面颊轮廓"]},
+    {"label": "妆容与修图", "affects": ["边界", "颜色", "对称感"]},
+    {"label": "年龄与姿态", "affects": ["软组织", "颌缘", "颏下线"]}
+  ],
+  "record_order": ["先写视角与光线", "定位骨性参照", "描写轮廓线", "记录表面可见状态", "附传统术语与来源"],
+  "boundaries": ["照片不能可靠代替触诊或三维测量", "皮肤颜色和纹理不用于健康诊断", "骨形术语不自动生成性格或命运结论", "修图状态未知时只记录可见画面"],
+  "public_sources": [
+    {"title": "Harvard Library《神相全编》明刻本卷一影像", "note": "用于确认相骨、相肉、相头面等传统章节的材料位置。", "url": "https://commons.wikimedia.org/wiki/File:Harvard_drs_53262204_%E7%A5%9E%E7%9B%B8%E5%85%A8%E7%B7%A8_v.1%E5%BA%8F%E3%80%81%E7%9B%AE%E9%8C%84%E3%80%81%E5%8D%B7%E4%B9%8B%E4%B8%80.pdf"},
+    {"title": "NISTIR 8485：Face Image Quality Vector Assessment", "note": "用于区分曝光、姿态、遮挡、分辨率等图像缺陷与面部本身。", "url": "https://doi.org/10.6028/NIST.IR.8485"}
+  ]
+}

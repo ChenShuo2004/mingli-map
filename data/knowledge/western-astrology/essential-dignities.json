@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.0.0",
+  "id": "western_astrology_essential_dignities",
+  "title": "必然尊贵",
+  "summary": "必然尊贵描述一颗行星因所在星座、度数与昼夜条件获得的传统位置身份。入庙、擢升、三分主、界主与面主是五层不同查表入口；落陷、弱势与游走是另一组状态。当前页面用固定例逐层匹配，不把作者的分值、软件默认表和最终判断合成一个结论。",
+  "planet_names": {
+    "Sun": "太阳",
+    "Moon": "月亮",
+    "Mercury": "水星",
+    "Venus": "金星",
+    "Mars": "火星",
+    "Jupiter": "木星",
+    "Saturn": "土星"
+  },
+  "dignity_layers": [
+    { "id": "ruler", "name": "入庙", "english": "Domicile", "source_points": 5, "input": "星座", "rule": "行星是所在星座的守护星。" },
+    { "id": "exalt", "name": "擢升", "english": "Exaltation", "source_points": 4, "input": "星座", "rule": "行星落在其擢升星座；来源表另保存擢升度数。" },
+    { "id": "triplicity", "name": "三分主", "english": "Triplicity", "source_points": 3, "input": "元素＋昼夜", "rule": "先按星座元素分组，再区分日间主、夜间主与合作主。" },
+    { "id": "term", "name": "界主", "english": "Term / Bound", "source_points": 2, "input": "星座＋度数＋界表版本", "rule": "每个星座被分成五段不等区间。" },
+    { "id": "face", "name": "面主", "english": "Face / Decan", "source_points": 1, "input": "星座＋度数＋面表版本", "rule": "每个星座按0—10°、10—20°、20—30°分成三段。" }
+  ],
+  "debility_states": [
+    { "id": "exile", "name": "落陷", "english": "Detriment / Exile", "source_points": -5, "rule": "所在星座是其入庙星座的对宫。" },
+    { "id": "fall", "name": "弱势", "english": "Fall", "source_points": -4, "rule": "所在星座是其擢升星座的对宫。" },
+    { "id": "peregrine", "name": "游走", "english": "Peregrine", "source_points": 0, "rule": "没有命中正尊贵；`flatlib`判定时排除落陷与弱势字段。" }
+  ],
+  "triplicities": [
+    { "element": "火", "signs": ["Aries", "Leo", "Sagittarius"], "day": "Sun", "night": "Jupiter", "participant": "Saturn" },
+    { "element": "土", "signs": ["Taurus", "Virgo", "Capricorn"], "day": "Venus", "night": "Moon", "participant": "Mars" },
+    { "element": "风", "signs": ["Gemini", "Libra", "Aquarius"], "day": "Saturn", "night": "Mercury", "participant": "Jupiter" },
+    { "element": "水", "signs": ["Cancer", "Scorpio", "Pisces"], "day": "Venus", "night": "Mars", "participant": "Moon" }
+  ],
+  "signs": [
+    { "id": "Aries", "name": "白羊", "symbol": "♈", "ruler": "Mars", "exalt": "Sun", "exalt_degree": 19, "exile": "Venus", "fall": "Saturn", "fall_degree": 21, "faces": ["Mars", "Sun", "Venus"], "egyptian_terms": [["Jupiter", 0, 6], ["Venus", 6, 12], ["Mercury", 12, 20], ["Mars", 20, 25], ["Saturn", 25, 30]] },
+    { "id": "Taurus", "name": "金牛", "symbol": "♉", "ruler": "Venus", "exalt": "Moon", "exalt_degree": 3, "exile": "Mars", "fall": null, "fall_degree": null, "faces": ["Mercury", "Moon", "Saturn"], "egyptian_terms": [["Venus", 0, 8], ["Mercury", 8, 14], ["Jupiter", 14, 22], ["Saturn", 22, 27], ["Mars", 27, 30]] },
+    { "id": "Gemini", "name": "双子", "symbol": "♊", "ruler": "Mercury", "exalt": null, "exalt_degree": null, "exile": "Jupiter", "fall": null, "fall_degree": null, "faces": ["Jupiter", "Mars", "Sun"], "egyptian_terms": [["Mercury", 0, 6], ["Jupiter", 6, 12], ["Venus", 12, 17], ["Mars", 17, 24], ["Saturn", 24, 30]] },
+    { "id": "Cancer", "name": "巨蟹", "symbol": "♋", "ruler": "Moon", "exalt": "Jupiter", "exalt_degree": 15, "exile": "Saturn", "fall": "Mars", "fall_degree": 28, "faces": ["Venus", "Mercury", "Moon"], "egyptian_terms": [["Mars", 0, 7], ["Venus", 7, 13], ["Mercury", 13, 19], ["Jupiter", 19, 26], ["Saturn", 26, 30]] },
+    { "id": "Leo", "name": "狮子", "symbol": "♌", "ruler": "Sun", "exalt": null, "exalt_degree": null, "exile": "Saturn", "fall": null, "fall_degree": null, "faces": ["Saturn", "Jupiter", "Mars"], "egyptian_terms": [["Jupiter", 0, 6], ["Venus", 6, 11], ["Saturn", 11, 18], ["Mercury", 18, 24], ["Mars", 24, 30]] },
+    { "id": "Virgo", "name": "处女", "symbol": "♍", "ruler": "Mercury", "exalt": "Mercury", "exalt_degree": 15, "exile": "Jupiter", "fall": "Venus", "fall_degree": 27, "faces": ["Sun", "Venus", "Mercury"], "egyptian_terms": [["Mercury", 0, 7], ["Venus", 7, 17], ["Jupiter", 17, 21], ["Mars", 21, 28], ["Saturn", 28, 30]] },
+    { "id": "Libra", "name": "天秤", "symbol": "♎", "ruler": "Venus", "exalt": "Saturn", "exalt_degree": 21, "exile": "Mars", "fall": "Sun", "fall_degree": 19, "faces": ["Moon", "Saturn", "Jupiter"], "egyptian_terms": [["Saturn", 0, 6], ["Mercury", 6, 14], ["Jupiter", 14, 21], ["Venus", 21, 28], ["Mars", 28, 30]] },
+    { "id": "Scorpio", "name": "天蝎", "symbol": "♏", "ruler": "Mars", "exalt": null, "exalt_degree": null, "exile": "Venus", "fall": "Moon", "fall_degree": 3, "faces": ["Mars", "Sun", "Venus"], "egyptian_terms": [["Mars", 0, 7], ["Venus", 7, 11], ["Mercury", 11, 19], ["Jupiter", 19, 24], ["Saturn", 24, 30]] },
+    { "id": "Sagittarius", "name": "射手", "symbol": "♐", "ruler": "Jupiter", "exalt": null, "exalt_degree": null, "exile": "Mercury", "fall": null, "fall_degree": null, "faces": ["Mercury", "Moon", "Saturn"], "egyptian_terms": [["Jupiter", 0, 12], ["Venus", 12, 17], ["Mercury", 17, 21], ["Saturn", 21, 26], ["Mars", 26, 30]] },
+    { "id": "Capricorn", "name": "摩羯", "symbol": "♑", "ruler": "Saturn", "exalt": "Mars", "exalt_degree": 28, "exile": "Moon", "fall": "Jupiter", "fall_degree": 15, "faces": ["Jupiter", "Mars", "Sun"], "egyptian_terms": [["Mercury", 0, 7], ["Jupiter", 7, 14], ["Venus", 14, 22], ["Saturn", 22, 26], ["Mars", 26, 30]] },
+    { "id": "Aquarius", "name": "水瓶", "symbol": "♒", "ruler": "Saturn", "exalt": null, "exalt_degree": null, "exile": "Sun", "fall": null, "fall_degree": null, "faces": ["Venus", "Mercury", "Moon"], "egyptian_terms": [["Mercury", 0, 7], ["Venus", 7, 13], ["Jupiter", 13, 20], ["Mars", 20, 25], ["Saturn", 25, 30]] },
+    { "id": "Pisces", "name": "双鱼", "symbol": "♓", "ruler": "Jupiter", "exalt": "Venus", "exalt_degree": 27, "exile": "Mercury", "fall": "Mercury", "fall_degree": 15, "faces": ["Saturn", "Jupiter", "Mars"], "egyptian_terms": [["Venus", 0, 12], ["Jupiter", 12, 16], ["Mercury", 16, 19], ["Mars", 19, 28], ["Saturn", 28, 30]] }
+  ],
+  "fixed_examples": [
+    { "id": "mars-aries", "planet": "Mars", "sign": "Aries", "degree": 5, "sect": "day", "label": "火星 · 白羊5°" },
+    { "id": "sun-aries", "planet": "Sun", "sign": "Aries", "degree": 19, "sect": "day", "label": "太阳 · 白羊19°" },
+    { "id": "venus-taurus", "planet": "Venus", "sign": "Taurus", "degree": 5, "sect": "day", "label": "金星 · 金牛5°" },
+    { "id": "saturn-libra", "planet": "Saturn", "sign": "Libra", "degree": 21, "sect": "day", "label": "土星 · 天秤21°" },
+    { "id": "mercury-pisces", "planet": "Mercury", "sign": "Pisces", "degree": 17, "sect": "night", "label": "水星 · 双鱼17°" },
+    { "id": "moon-gemini", "planet": "Moon", "sign": "Gemini", "degree": 5, "sect": "night", "label": "月亮 · 双子5°" }
+  ],
+  "variant_register": [
+    { "field": "界", "flatlib_default": "埃及界", "other_supported": ["托勒密界（Tetrabiblos）", "Lilly界"], "handling": "页面只运行埃及界固定样本，其他版本登记为参数。" },
+    { "field": "面", "flatlib_default": "迦勒底面", "other_supported": ["三分面"], "handling": "页面只运行迦勒底面固定样本，不能把两套面表混查。" },
+    { "field": "分值", "flatlib_default": "+5／+4／+3／+2／+1，弱势-4、落陷-5", "other_supported": ["作者正文沿用同组分值"], "handling": "分值只作为来源记号逐层显示，本页不相加成最终强弱。" }
+  ],
+  "reading_steps": [
+    { "label": "先定对象", "note": "选择哪一颗七曜，尊贵身份才有比较对象。" },
+    { "label": "再定星座", "note": "入庙、擢升、落陷与弱势先由星座关系决定。" },
+    { "label": "加入昼夜", "note": "三分主需要星座元素与日间／夜间条件。" },
+    { "label": "最后读度数", "note": "界主与面主需要星座内度数，并明确使用哪套表。" }
+  ],
+  "reading_boundaries": [
+    "固定例只用于理解查表顺序，不读取出生日期、地点、时间或真人命盘。",
+    "擢升度数与弱势度数作为来源字段显示；本页不额外赋予精确度数加分。",
+    "同一行星可以同时命中多个身份；命中不自动生成性格、事件、吉凶或能力结论。",
+    "偶然尊贵、教派、喜乐、相位、接纳互容与最终状态评估属于后续节点。"
+  ],
+  "public_sources": [
+    { "title": "fortune-telling-skills：尊贵度与互容", "url": "https://github.com/doododod/fortune-telling-skills/blob/8bcc734491ac75cfb21c1de8727c9fc3f9427b1e/astrology-chart-analysis/references/dignities-reception.md", "note": "提供五层必然尊贵、三种无力状态、Dorotheus三分主表及作者分值；没有逐表列出界与面的历史底本。" },
+    { "title": "flatlib：必然尊贵接口", "url": "https://github.com/flatangle/flatlib/blob/856d26b8bd1316ccdafe76399994696f9510de9e/flatlib/dignities/essential.py", "note": "提供入庙、擢升、三分主、界、面、落陷、弱势、游走及分值的确定性查询接口。" },
+    { "title": "flatlib：必然尊贵表", "url": "https://github.com/flatangle/flatlib/blob/856d26b8bd1316ccdafe76399994696f9510de9e/flatlib/dignities/tables.py", "note": "提供十二星座基础表、两套面表与三套界表；当前页面明确采用软件默认的迦勒底面与埃及界。" }
+  ],
+  "internal_review": {
+    "status": "formal_lookup_node_with_fixed_non_personal_examples",
+    "reviewed_at": "2026-08-09",
+    "owner": ["火华", "Codex"],
+    "source_refs": ["github_doododod_fortune_telling_skills_8bcc734", "github_flatangle_flatlib_856d26b"],
+    "deduplication": "与七曜分开：七曜定义对象，本页比较对象与星座／度数条件。与宫位分开：必然尊贵不依赖宫位编号。与相位分开：本页是单星位置身份，不是两星角距离。偶然尊贵与接纳互容不并入。",
+    "known_gaps": ["现有正文来源没有为五层尊贵逐项给出古典底本版次和页码。", "flatlib同时支持三套界与两套面，当前只验证默认表。", "合作三分主与软件评分如何跨教派使用仍需来源比较，本页只登记角色，不汇总总分。"],
+    "boundary": "固定查表教育；无真人输入、星历计算、总分裁决、性格／事件／吉凶判断或行动建议。"
+  }
+}

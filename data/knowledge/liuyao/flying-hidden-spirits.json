@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.0",
+  "id": "liuyao_flying_hidden_spirits",
+  "title": "飞神与伏神",
+  "summary": "一卦六爻未必同时出现五类六亲。传统飞伏结构会回到本卦所属卦宫的纯卦，在相同爻位找到缺少的六亲：本卦当前爻称为飞神，置于其下的本宫纯卦同位爻称为伏神。",
+  "rule_steps": [
+    {"label": "查本卦", "note": "列出六爻已经出现的六亲"},
+    {"label": "找缺项", "note": "确认五类六亲中哪些没有出现"},
+    {"label": "回本宫", "note": "读取所属卦宫的纯卦"},
+    {"label": "按位叠放", "note": "把纯卦同位爻置于本卦爻之下"}
+  ],
+  "fixed_example": {
+    "name": "风地观",
+    "palace": "乾宫",
+    "palace_element": "金",
+    "present_relatives": ["父母", "官鬼", "妻财"],
+    "missing_relatives": ["子孙", "兄弟"],
+    "pure_hexagram": "乾为天",
+    "lines": [
+      {"position": 1, "label": "初爻", "flying": {"stem_branch": "乙未", "element": "土", "relative": "父母"}, "hidden": {"stem_branch": "甲子", "element": "水", "relative": "子孙"}},
+      {"position": 2, "label": "二爻", "flying": {"stem_branch": "乙巳", "element": "火", "relative": "官鬼"}, "hidden": null},
+      {"position": 3, "label": "三爻", "flying": {"stem_branch": "乙卯", "element": "木", "relative": "妻财"}, "hidden": null},
+      {"position": 4, "label": "四爻", "flying": {"stem_branch": "辛未", "element": "土", "relative": "父母"}, "hidden": null},
+      {"position": 5, "label": "五爻", "flying": {"stem_branch": "辛巳", "element": "火", "relative": "官鬼"}, "hidden": {"stem_branch": "壬申", "element": "金", "relative": "兄弟"}},
+      {"position": 6, "label": "上爻", "flying": {"stem_branch": "辛卯", "element": "木", "relative": "妻财"}, "hidden": null}
+    ]
+  },
+  "search_order": {
+    "structural_fact": "本宫纯卦的同位映射说明伏神在哪里；是否立刻把伏神作为所取目标，则是另一层选择规则。不同资料对这一层的先后次序并不一致。",
+    "common_start": "本卦六爻没有出现所需六亲",
+    "variants": [
+      {
+        "id": "month_day_then_hidden",
+        "label": "先日月，再伏神",
+        "source_view": "《增删卜易·飞伏神章》章首旧法",
+        "steps": [
+          {"layer": "本卦", "note": "先确认六爻确实没有所需六亲"},
+          {"layer": "日月", "note": "月建或日辰按原卦宫五行被标为所需六亲时，先从此层读取"},
+          {"layer": "本宫纯卦", "note": "日月也不提供时，再按同一爻位寻找伏神"}
+        ],
+        "boundary": "这里的日月是时间层的六亲名称，不等于把日月装成卦内第七、八爻。"
+      },
+      {
+        "id": "base_changed_then_hidden",
+        "label": "先本卦与变爻",
+        "source_view": "《黄金策》引文",
+        "steps": [
+          {"layer": "本卦", "note": "先查当前六爻是否出现目标"},
+          {"layer": "变爻", "note": "再查发动后出现的变爻六亲"},
+          {"layer": "伏神", "note": "飞爻与变爻都没有目标时，才进入伏神层"}
+        ],
+        "boundary": "这一口径把变爻放在伏神之前，与只看本卦缺项的顺序不同。"
+      },
+      {
+        "id": "base_then_hidden",
+        "label": "本卦不见，再寻伏神",
+        "source_view": "《易林补遗》卷一",
+        "steps": [
+          {"layer": "本卦", "note": "本卦已有目标且不空、不陷时，不再寻伏"},
+          {"layer": "缺项", "note": "六爻完全没有所需六亲时，才转入隐藏层"},
+          {"layer": "伏神", "note": "按所属卦宫纯卦的同一位置读取"}
+        ],
+        "boundary": "该资料先设本卦能否承接的门槛，没有插入日月或变爻的统一先后。"
+      },
+      {
+        "id": "recast_instead",
+        "label": "不取伏神，另占再看",
+        "source_view": "《增删卜易》作者实践",
+        "steps": [
+          {"layer": "本卦", "note": "确认所需六亲没有出现"},
+          {"layer": "伏神结构", "note": "知道同位伏神存在，但本次不采用它"},
+          {"layer": "另占", "note": "作者记述再次占问，直到所需六亲明现"}
+        ],
+        "boundary": "这是书中作者的取舍实践，不是本项目提供的重占功能，也不被合并成通行结论。"
+      }
+    ]
+  },
+  "reading_boundary": "这里只解释缺项如何映射成伏神，并列资料对目标读取顺序的差异；不替使用者选择用神、流派或重占路径，也不据此生成事件结论。",
+  "internal_review": {
+    "status": "classical_structure_and_four_selection_orders_cross_checked",
+    "reviewed_at": "2026-08-05",
+    "source_refs": ["github_chxb_jishiyu_97b6d6d_js_6yao", "github_horace_maxwell_horosa_7405ddf_liuyao_engine", "bushi_zhengzong_scan_volume_1_pdf_page_36", "bushi_zhengzong_fushen_zhengzhuan", "zhouyi_shangzhan_ctext_854714", "zengshan_buyi_fufushen_ctext_157683", "yilin_buyi_volume_1_wikisource"],
+    "boundary": "公开缺项、同位映射、固定卦例与来源顺序差异；不自动选择用神、流派、重占或个人结论。"
+  }
+}

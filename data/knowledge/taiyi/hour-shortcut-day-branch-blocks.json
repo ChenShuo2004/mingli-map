@@ -1,0 +1,76 @@
+{
+  "schema_version":"1.0.0",
+  "id":"hour-shortcut-day-branch-blocks",
+  "title":"时计捷法的六类日支与十二时局序",
+  "summary":"《太乙指津》时计捷法把十二日支合成六对：子午日子时起1局，丑未起13局，寅申起25局，卯酉起37局，辰戌起49局，巳亥起61局；各日再随子至亥十二时顺加一局，组成六段连续十二局，恰好覆盖1—72。OCR同段多次重复，早几处把13、25、37识成11、15、17，第98页重复与六段等差结构互校后才保存为正式表。锁定method 3没有直接写六类日支，而把六十甲子切成十个连续六日块，再用块内日序×12+时支序号；完整枚举60日×12时共720个组合，与古籍捷法720／720相同，每个六日块也各覆盖1—72一次。源码另有dict与int比较的不可达条件，但实际else分支仍生成正确局号。固定1552-09-24丙戌日从子时49局走到亥时60局；程序在23:00已换成丁亥日子时61局，次日00:00仍为61局。本节点把古籍捷法、代码等价式与晚子换日约定分开，不把日期边界冒充古籍共识。",
+  "rule_layers":[
+    {"id":"day","index":"01","name":"日支分组","input":"当日地支","output":"六对之一","formula":"子午／丑未／寅申／卯酉／辰戌／巳亥","note":"只需日支即可选出十二局段。"},
+    {"id":"base","index":"02","name":"子时起局","input":"日支组","output":"1、13、25、37、49、61","formula":"1 + 12×组序","note":"六个起点相隔十二局。"},
+    {"id":"hour","index":"03","name":"时支步进","input":"子至亥时支","output":"0—11偏移","formula":"起局 + 时支序号 − 1","note":"每个时支进入下一局，双小时内不再细分。"},
+    {"id":"board","index":"04","name":"七十二局号","input":"起局 + 时支偏移","output":"1—72","formula":"六段 × 十二局","note":"得到的是局号，不等同阴阳遁、五子元总编号或宫位。"}
+  ],
+  "day_groups":[
+    {"id":"zi-wu","index":1,"branches":"子午","start":1,"end":12,"tone":"blue","example":"子日与午日共用此段"},
+    {"id":"chou-wei","index":2,"branches":"丑未","start":13,"end":24,"tone":"ochre","example":"丑日与未日共用此段"},
+    {"id":"yin-shen","index":3,"branches":"寅申","start":25,"end":36,"tone":"green","example":"寅日与申日共用此段"},
+    {"id":"mao-you","index":4,"branches":"卯酉","start":37,"end":48,"tone":"violet","example":"卯日与酉日共用此段"},
+    {"id":"chen-xu","index":5,"branches":"辰戌","start":49,"end":60,"tone":"red","example":"固定例丙戌日在此段"},
+    {"id":"si-hai","index":6,"branches":"巳亥","start":61,"end":72,"tone":"ink","example":"巳日与亥日共用此段"}
+  ],
+  "hour_branches":["子","丑","寅","卯","辰","巳","午","未","申","酉","戌","亥"],
+  "code_blocks":[
+    {"block":1,"range":"甲子—己巳","branches":"子丑寅卯辰巳","coverage":"1—72各一次"},
+    {"block":2,"range":"庚午—乙亥","branches":"午未申酉戌亥","coverage":"1—72各一次"},
+    {"block":3,"range":"丙子—辛巳","branches":"子丑寅卯辰巳","coverage":"1—72各一次"},
+    {"block":4,"range":"壬午—丁亥","branches":"午未申酉戌亥","coverage":"1—72各一次"},
+    {"block":5,"range":"戊子—癸巳","branches":"子丑寅卯辰巳","coverage":"1—72各一次"},
+    {"block":6,"range":"甲午—己亥","branches":"午未申酉戌亥","coverage":"1—72各一次"},
+    {"block":7,"range":"庚子—乙巳","branches":"子丑寅卯辰巳","coverage":"1—72各一次"},
+    {"block":8,"range":"丙午—辛亥","branches":"午未申酉戌亥","coverage":"1—72各一次"},
+    {"block":9,"range":"壬子—丁巳","branches":"子丑寅卯辰巳","coverage":"1—72各一次"},
+    {"block":10,"range":"戊午—癸亥","branches":"午未申酉戌亥","coverage":"1—72各一次"}
+  ],
+  "equivalence_audit":{
+    "classical_formula":"日支组选子时起局，再加时支偏移0—11",
+    "implementation_formula":"(六十甲子日序 − 六日块首序) × 12 + 时支序号",
+    "comparisons":720,
+    "matches":720,
+    "mismatches":0,
+    "distinct_boards":72,
+    "frequency_per_board":10,
+    "per_block":"十个六日块分别覆盖1—72各一次",
+    "dead_condition":"tiangan是dict，dgz_num是int；tiangan == dgz_num恒为false，当前结果全由else分支生成。"
+  },
+  "boundary_probes":[
+    {"datetime":"1552-09-24 00:00","day":"丙戌","hour":"戊子","board":49,"state":"same-day","note":"戌日子时起49局"},
+    {"datetime":"1552-09-24 01:00","day":"丙戌","hour":"己丑","board":50,"state":"same-day","note":"丑时加一"},
+    {"datetime":"1552-09-24 22:00","day":"丙戌","hour":"己亥","board":60,"state":"same-day","note":"戌日十二局段终点"},
+    {"datetime":"1552-09-24 23:00","day":"丁亥","hour":"庚子","board":61,"state":"rolled-day","note":"程序已换到亥日子时"},
+    {"datetime":"1552-09-25 00:00","day":"丁亥","hour":"庚子","board":61,"state":"rolled-day","note":"与前一小时保持同一子时"},
+    {"datetime":"1552-09-25 01:00","day":"丁亥","hour":"辛丑","board":62,"state":"rolled-day","note":"亥日丑时加一"}
+  ],
+  "implementation_differences":[
+    {"label":"OCR重复文本互校","source":"同一捷法在扫描文本中重复出现，早几处把13／25／37识成11／15／17；第98页保留1／13／25／37并与49／61连续","implementation":"代码输出六段连续十二局","handling":"保存OCR差异和校正依据，不把机器识别文本直接当定本。"},
+    {"label":"六类日支与十个代码块","source":"原文按子午等六对日支记忆","implementation":"六十甲子按每六日切成十块","handling":"720组合机械证明数值等价，但保留两种表达身份。"},
+    {"label":"不可达条件","source":"古籍捷法没有这条程序分支","implementation":"dict与int比较恒假，永远进入else","handling":"标记为代码缺口；不能因当前结果正确就把死条件解释成规则。"},
+    {"label":"晚子换日","source":"选定捷法只说某日子时起局，没有说明现代公历23:00的归日约定","implementation":"gangzhi在23:00切到下一日，23:00与次日00:00共用日、时干支和局号","handling":"作为锁定历法实现约定展示，不升格为原典共识。"},
+    {"label":"局号不含遁别","source":"捷法只给时计入局序号","implementation":"kook另由节气路线给阴阳遁后拼成局文","handling":"本页只解释1—72数；阴阳遁仍回到上一节点。"},
+    {"label":"局号不等于五子元总编号","source":"同章另以五子元组织五段七十二局","implementation":"method 3这里只返回元内局部数","handling":"五子元与1—360总编号仍由独立节点解释。"},
+    {"label":"双小时边界","source":"十二时从子到亥各占一算","implementation":"00:00为子，01:00与02:00同属丑；23:00又进入下一历日的子时","handling":"展示代表探针，不接收真人时间起局。"},
+    {"label":"高风险解释排除","source":"原典入局后还会继续推盘与断验","implementation":"综合接口可继续生成诸神、主客、格局和断语","handling":"范围止于日支组、时支偏移、局号与实现边界。"}
+  ],
+  "reading_boundaries":[
+    {"label":"可理解","note":"六类日支怎样把七十二局分成六段，每日十二时怎样在一段内顺行。"},
+    {"label":"可操作","note":"切换六个日支组，直接观察子至亥时对应的十二个局号。"},
+    {"label":"可复核","note":"原文重复互校、720组合等价枚举、十个六日块与6个换日探针。"},
+    {"label":"不由此推出","note":"任何吉凶、战争、天气、行动、人事、胜负或个人结果；数值等价也不证明全部版本一致。"}
+  ],
+  "public_sources":[
+    {"title":"《太乙指津》：时计捷法六类日支","url":"https://ctext.org/wiki.pl?chapter=948786&if=gb&remap=gb","note":"第98页重复保存子午1、寅申25、卯酉37、辰戌49、巳亥61的结构；丑未13由十二局等差结构及锁定实现互校。同时注明同章其他重复处的OCR错识。"},
+    {"title":"kintaiyi锁定method 3时计公式","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L419-L430","note":"六十甲子分十个六日块，块内日序乘12再加时支序号；含dict与int的不可达比较。"},
+    {"title":"kintaiyi锁定干支入口","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L342-L347","note":"_get_gangzhi缓存config.gangzhi的年、月、日、时、分干支；本页边界探针读取日与时两项。"},
+    {"title":"kintaiyi锁定干支计算","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/config.py#L466-L508","note":"固定提交的日时干支计算在23:00采用下一日干支，形成23:00与次日00:00同值边界。"},
+    {"title":"kintaiyi锁定固定例输入","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/examples/basic_usage.py#L13-L20","note":"沿用1552-09-24固定日期，扩展00、01、22、23与次日00、01六个小时探针。"}
+  ],
+  "internal_review":{"status":"formal_hour_shortcut_equivalence_audit","reviewed_at":"2026-08-06","owner":["火华","Codex"],"runtime_environment":"temporary Python venv; locked repository commit installed from source","runtime_command":"independent 60 day-ganzhi × 12 hour-branch enumeration; Taiyi._get_gangzhi/accnum/kook boundary probes","deduplication":"不并入‘时计积时多周期’：上一页解释24／60／72为何并行，本页只展开七十二入局的日支捷法。不并入‘阴阳遁输入’：本页只给数值局号，遁别仍由节气入口决定。","known_gaps":["第98页丑未十三的扫描字形仍需直接影像逐字校","23:00换日属于锁定config.gangzhi约定，其他版本尚未横向比较","不可达dict/int条件缺专项单元测试"],"boundary":"固定样本与机械枚举，无真人输入、无随机；只展示日支分组、时支偏移、局号与实现缺口。"}
+}

@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0.0",
+  "id": "three-doors-five-generals-checks",
+  "title": "三门与五将的判定结构",
+  "summary": "把‘三门具不具’与‘五将发不发’从结果短语拆成两条可核对的条件链。卷四的三门条件同时涉及太乙、天目与开休生三门，五将条件涉及始击、文昌及主客大小将之间的掩、击、囚、迫、相关；锁定实现则分别缩为‘太乙宫所临门’和‘文昌状态摘要＋主客大将是否入中五’。并列保存两层，不把程序返回冒充原典条件，也不延伸卷四的兵事结论。",
+  "fixed_input": "1552年9月24日 0时0分 · 年计",
+  "checks": [
+    {
+      "id": "three-doors",
+      "name": "三门具不具",
+      "short_name": "三门",
+      "classical_definition": "卷四明说三门指开、休、生三门，并把太乙、天目是否落在这些门下作为具不具的检查。",
+      "classical_conditions": ["太乙与天目都是检查对象", "开、生门下对应‘两门不具’的来源表述", "休门下对应‘三门不具’的来源表述"],
+      "implementation_inputs": ["太乙宫数", "当前八门动态分布", "太乙宫所临一门"],
+      "implementation_rules": [
+        {"when": "太乙宫所临门 ∈ 休、生、开", "output": "三门不具", "tone": "blocked"},
+        {"when": "太乙宫所临门 ∉ 休、生、开", "output": "三门具", "tone": "clear"}
+      ],
+      "implementation_note": "锁定threedoors只读取太乙宫所临门，没有另读天目位置；因此它复现的是更窄的程序判定，不是卷四整套条件。"
+    },
+    {
+      "id": "five-generals",
+      "name": "五将发不发",
+      "short_name": "五将",
+      "classical_definition": "卷四列出始击无掩击、文昌无囚迫、主客大小将无相关等条件，并把它们与门具、将发相连。",
+      "classical_conditions": ["始击将：无掩、击", "文昌将：无囚、迫", "主客大小将：无相关"],
+      "implementation_inputs": ["文昌状态摘要skyeyes_des", "主大将宫数", "客大将宫数"],
+      "implementation_rules": [
+        {"when": "状态摘要为空，且主、客大将都不在5宫", "output": "五将发", "tone": "clear"},
+        {"when": "主大将在5宫", "output": "主将主参不出中门，杜塞无门", "tone": "blocked"},
+        {"when": "客大将在5宫", "output": "客将客参不出中门，杜塞无门", "tone": "blocked"},
+        {"when": "其余情况", "output": "状态摘要＋五将不发", "tone": "blocked"}
+      ],
+      "implementation_note": "锁定fivegenerals不直接遍历五将关系，也不单独读取参将；参将由大将宫数生成，大将为5时参将也为5。"
+    }
+  ],
+  "method_results": [
+    {"method": 0, "label": "太乙统宗", "accumulated": 10155469, "board": "阳遁十三局", "taiyi_palace": 6, "taiyi_gate": "伤", "skyeye": "巽", "skyeye_status": "空", "host_general": 8, "host_assistant": 4, "guest_general": 9, "guest_assistant": 7, "three_doors": "三门具", "five_generals": "五将发", "status": "与金镜、太乙局相同"},
+    {"method": 1, "label": "太乙金镜", "accumulated": 1938109, "board": "阳遁十三局", "taiyi_palace": 6, "taiyi_gate": "伤", "skyeye": "巽", "skyeye_status": "空", "host_general": 8, "host_assistant": 4, "guest_general": 9, "guest_assistant": 7, "three_doors": "三门具", "five_generals": "五将发", "status": "固定例"},
+    {"method": 2, "label": "太乙淘金歌", "accumulated": 10155745, "board": "阳遁一局", "taiyi_palace": 1, "taiyi_gate": "杜", "skyeye": "申", "skyeye_status": "空", "host_general": 7, "host_assistant": 1, "guest_general": 3, "guest_assistant": 9, "three_doors": "三门具", "five_generals": "五将发", "status": "输入对象改变，两个函数仍同返回"},
+    {"method": 3, "label": "太乙局", "accumulated": 10155469, "board": "阳遁十三局", "taiyi_palace": 6, "taiyi_gate": "伤", "skyeye": "巽", "skyeye_status": "空", "host_general": 8, "host_assistant": 4, "guest_general": 9, "guest_assistant": 7, "three_doors": "三门具", "five_generals": "五将发", "status": "与统宗、金镜相同"}
+  ],
+  "layer_differences": [
+    {"label": "三门检查对象", "classical": "太乙＋天目，与开休生三门的关系", "implementation": "只取太乙宫所临一门", "handling": "程序结果旁保留‘实现返回’标签，不写成卷四条件已经全部成立。"},
+    {"label": "五将检查对象", "classical": "始击、文昌、主客大小将的掩击囚迫与相关", "implementation": "状态摘要是否为空＋主客大将是否为5", "handling": "摘要字段与宫数字段分别展示，不用‘五将’总称隐藏实际输入。"},
+    {"label": "两项是否联动", "classical": "原文把门具、将发放在同一组条件中", "implementation": "threedoors与fivegenerals是两个独立函数，后者不调用前者", "handling": "并列显示两个返回，不合成一个总通过状态。"},
+    {"label": "固定例的证明范围", "classical": "原典另有兵事用途与结果判断", "implementation": "四个method只证明当前代码在固定输入下的返回", "handling": "不展示用途断语，不把相同返回转成现实建议。"}
+  ],
+  "reading_boundaries": [
+    {"label": "可识别", "note": "三门与五将各自的原典检查对象，以及锁定函数真正读取的字段。"},
+    {"label": "可复核", "note": "固定年计四个method的太乙临门、文昌摘要、主客将宫与两个函数返回。"},
+    {"label": "不由此推出", "note": "‘具’或‘发’对真人事务、行动时机、胜负或吉凶具有现实效力。"}
+  ],
+  "public_sources": [
+    {"title": "《太乙金鏡式經》卷四：推三门具不具、推五将发不发", "url": "https://ctext.org/wiki.pl?chapter=468072&if=gb&remap=gb", "note": "第3—7条保存三门名称、太乙天目条件，以及始击、文昌、主客大小将的组合条件；来源连接四库本影像与OCR。"},
+    {"title": "kintaiyi锁定三门与五将函数", "url": "https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L1307-L1328", "note": "固定提交中threedoors与fivegenerals的实际输入、分支顺序和返回文本。"},
+    {"title": "kintaiyi锁定文昌状态摘要", "url": "https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/config.py#L45-L47", "note": "72局状态摘要表包含始击击、始击掩、囚、迫、挟等文本；空字符串也是程序分支输入。"},
+    {"title": "kintaiyi锁定主客将宫生成", "url": "https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L628-L677", "note": "主客大将由主客算取得宫数，参将再由大将宫数乘3取余生成。"},
+    {"title": "kintaiyi锁定固定例输入", "url": "https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/examples/basic_usage.py#L13-L20", "note": "固定输入1552-09-24 00:00、年计；本页在临时锁定环境复跑method 0—3。"}
+  ],
+  "internal_review": {
+    "status": "formal_classical_vs_implementation_check_node",
+    "reviewed_at": "2026-08-06",
+    "owner": ["火华", "Codex"],
+    "source_refs": ["ctext_taiyi_jinjing_vol_4", "github_kentang2017_kintaiyi_f2719d6"],
+    "runtime_environment": "temporary Python venv; locked repository commit installed from source",
+    "runtime_command": "Taiyi(1552, 9, 24, 0, 0).threedoors(0, method), fivegenerals(0, method), method=0..3",
+    "deduplication": "不并入八门固定身份页：八门页解释门的身份与动态分布，本页解释三门具不具函数如何读取其中一门。不并入主客七类关系页：关系页逐条检查掩迫关囚击格对，本页比较卷四组合条件与程序摘要判断。",
+    "known_gaps": ["三门古法中‘两门不具／三门不具’的完整计数语义仍需更多版本互校", "五将名称与卷四所列检查对象的名数关系尚未建立跨版本身份表", "锁定实现没有三门、五将函数专项测试"],
+    "boundary": "固定样本、无真人输入、无随机；只展示条件与函数返回，不公开兵事断语、择时建议、胜负或吉凶结论。"
+  }
+}

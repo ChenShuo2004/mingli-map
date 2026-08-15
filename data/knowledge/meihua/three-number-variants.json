@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.0.0",
+  "id": "meihua_three_number_variants",
+  "title": "三数起卦的版本差异",
+  "summary": "同样输入三个数，两套锁定实现都用第一数定上卦、三数总和定动爻，但下卦输入不同：主资料库只用第二数，第二套实现把第二、第三数相加。差异会让部分输入得到不同本卦，也有部分输入因取余后重新汇合。这里并列演示分叉与重合，不裁定唯一规则。",
+  "shared_steps": [
+    "第一数除八定上卦",
+    "三个数相加后除六定动爻"
+  ],
+  "variants": [
+    {"id": "primary", "label": "前两数分别定上下卦", "repository": "muyen/meihua-yishu", "lower_formula": "第二数 ÷ 8", "status": "主资料库当前实现；旧封存实验曾使用不同算法"},
+    {"id": "list-halves", "label": "后一半求和定下卦", "repository": "ZZq114514/MeihuaYishu", "lower_formula": "（第二数 + 第三数）÷ 8", "status": "数字列表从中间切分的当前实现"}
+  ],
+  "fixed_examples": [
+    {
+      "id": "three-six-nine",
+      "inputs": [3, 6, 9],
+      "moving_line": 6,
+      "primary": {"upper": "离", "lower": "坎", "hexagram": "火水未济"},
+      "comparison": {"upper": "离", "lower": "艮", "hexagram": "火山旅"},
+      "relation": "分叉"
+    },
+    {
+      "id": "six-eight-nine",
+      "inputs": [6, 8, 9],
+      "moving_line": 5,
+      "primary": {"upper": "坎", "lower": "坤", "hexagram": "水地比"},
+      "comparison": {"upper": "坎", "lower": "乾", "hexagram": "水天需"},
+      "relation": "分叉"
+    },
+    {
+      "id": "five-two-eight",
+      "inputs": [5, 2, 8],
+      "moving_line": 3,
+      "primary": {"upper": "巽", "lower": "兑", "hexagram": "风泽中孚"},
+      "comparison": {"upper": "巽", "lower": "兑", "hexagram": "风泽中孚"},
+      "relation": "取余后重合"
+    }
+  ],
+  "reading_boundaries": [
+    "版本切换只比较下卦取数对象，不把某一实现自动升级为传统正解。",
+    "Batch 4封存实验有53／60卦无法用主资料库当前算法复现，因此旧实验结果不能反向证明当前规则。",
+    "页面不接收用户数字，不生成个人卦象、吉凶、应期或行动建议。"
+  ],
+  "public_sources": [
+    {
+      "title": "muyen/meihua-yishu 锁定三数实现与测试",
+      "url": "https://github.com/muyen/meihua-yishu/blob/aecdf87ebef26328c32caa65d40b2f9d273088ec/scripts/meihua_calc.py",
+      "note": "当前实现以前两数分别定上下卦，以三数总和定动爻；相关测试同时记录与旧封存算法的断裂。"
+    },
+    {
+      "title": "ZZq114514/MeihuaYishu 锁定列表分半实现",
+      "url": "https://github.com/ZZq114514/MeihuaYishu/blob/466ee62105db599a29c25259f2ba6d10092d660c/src/meihuayishu/core.py",
+      "note": "三数列表分为前一数与后两数，导致第二、第三数之和成为下卦输入。"
+    },
+    {
+      "title": "muyen/meihua-yishu 封存实验目录",
+      "url": "https://github.com/muyen/meihua-yishu/tree/aecdf87ebef26328c32caa65d40b2f9d273088ec/experiments",
+      "note": "用于说明算法修改后的复现缺口，不把实验文本或结果作为规则底本。"
+    }
+  ],
+  "internal_review": {
+    "status": "formal_version_comparison_node_with_reproducibility_gap",
+    "reviewed_at": "2026-08-09",
+    "owner": ["火华", "Codex"],
+    "source_refs": ["github_muyen_meihua_yishu_aecdf87", "github_zzq114514_meihuayishu_466ee62"],
+    "deduplication": "不并入两数起卦：两数时两套实现重合，第三数加入后才出现下卦输入身份差异。不拆成两张版本卡：它们回答同一组输入如何被不同实现计算，必须并列才能理解。",
+    "known_gaps": ["两套实现都缺规则级古籍版次与页码。", "主资料库当前三数算法与Batch 4封存时所用旧算法不兼容。"],
+    "boundary": "固定三数案例与版本比较；无用户输入、无起卦服务、无个人结论。"
+  }
+}

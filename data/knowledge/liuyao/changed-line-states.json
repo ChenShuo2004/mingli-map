@@ -1,0 +1,149 @@
+{
+  "schema_version": "1.0",
+  "id": "liuyao_changed_line_states",
+  "title": "化墓绝空破",
+  "summary": "本爻发动并产生同位变爻后，变爻还可能因三类不同条件获得状态标签：墓、绝比较本爻五行与变爻地支；空比较占日所属旬与变支；破比较月建相冲之支与变支。四个标签共用变爻入口，但不能用同一张静态表直接判断。",
+  "status_types": [
+    {
+      "id": "tomb",
+      "label": "化墓",
+      "mark": "墓",
+      "dependency": "本爻五行 × 变爻地支",
+      "rule": "变爻地支落在本爻五行的墓位",
+      "example": {
+        "route": "离内卦三爻 → 震内卦三爻",
+        "base_branch": "亥",
+        "base_element": "水",
+        "changed_branch": "辰",
+        "changed_element": "土",
+        "context": "水墓在辰",
+        "matches": ["化墓"]
+      }
+    },
+    {
+      "id": "absolute",
+      "label": "化绝",
+      "mark": "绝",
+      "dependency": "本爻五行 × 变爻地支",
+      "rule": "变爻地支落在本爻五行的绝位",
+      "example": {
+        "route": "坤内卦三爻 → 艮内卦三爻",
+        "base_branch": "卯",
+        "base_element": "木",
+        "changed_branch": "申",
+        "changed_element": "金",
+        "context": "木绝在申",
+        "matches": ["化绝"]
+      }
+    },
+    {
+      "id": "void",
+      "label": "化空",
+      "mark": "空",
+      "dependency": "占日所属旬 × 变爻地支",
+      "rule": "变爻地支命中占日所属旬的两支空亡",
+      "example": {
+        "route": "坎内卦三爻 → 巽内卦三爻",
+        "base_branch": "午",
+        "base_element": "火",
+        "changed_branch": "酉",
+        "changed_element": "金",
+        "context": "甲戌旬，申酉空",
+        "matches": ["化空"]
+      }
+    },
+    {
+      "id": "broken",
+      "label": "化破",
+      "mark": "破",
+      "dependency": "月建 × 变爻地支",
+      "rule": "变爻地支与当月月建构成六冲，因而落在月破位",
+      "example": {
+        "route": "巽内卦三爻 → 坎内卦三爻",
+        "base_branch": "酉",
+        "base_element": "金",
+        "changed_branch": "午",
+        "changed_element": "火",
+        "context": "子月，子午相冲",
+        "matches": ["化破"]
+      }
+    }
+  ],
+  "dependency_layers": [
+    {
+      "id": "base",
+      "label": "本爻层",
+      "input": "本爻五行",
+      "joins": "变爻地支",
+      "outcomes": ["化墓", "化绝"],
+      "note": "不读取日月；同一变支要随本爻五行改变标签。"
+    },
+    {
+      "id": "day",
+      "label": "占日层",
+      "input": "日干支所属旬",
+      "joins": "变爻地支",
+      "outcomes": ["化空"],
+      "note": "先由日干支定位六旬之一，再读取该旬余下的两支。"
+    },
+    {
+      "id": "month",
+      "label": "月建层",
+      "input": "月建地支",
+      "joins": "变爻地支",
+      "outcomes": ["化破"],
+      "note": "月建的六冲支是月破位；这里不把日冲混称为月破。"
+    }
+  ],
+  "depends_on": [
+    {
+      "dataset": "growth-peak-tomb-absolute",
+      "fields": ["element_tracks[].anchors.tomb", "element_tracks[].anchors.absolute", "soil_methods[water].anchors.tomb", "soil_methods[water].anchors.absolute"],
+      "reason": "化墓与化绝只读取既有五行墓绝锚点，不另存一份相同底表。"
+    }
+  ],
+  "void_map": [
+    { "cycle": "甲子旬", "void": ["戌", "亥"] },
+    { "cycle": "甲戌旬", "void": ["申", "酉"] },
+    { "cycle": "甲申旬", "void": ["午", "未"] },
+    { "cycle": "甲午旬", "void": ["辰", "巳"] },
+    { "cycle": "甲辰旬", "void": ["寅", "卯"] },
+    { "cycle": "甲寅旬", "void": ["子", "丑"] }
+  ],
+  "month_break_map": [
+    { "month": "寅", "broken": "申" },
+    { "month": "卯", "broken": "酉" },
+    { "month": "辰", "broken": "戌" },
+    { "month": "巳", "broken": "亥" },
+    { "month": "午", "broken": "子" },
+    { "month": "未", "broken": "丑" },
+    { "month": "申", "broken": "寅" },
+    { "month": "酉", "broken": "卯" },
+    { "month": "戌", "broken": "辰" },
+    { "month": "亥", "broken": "巳" },
+    { "month": "子", "broken": "午" },
+    { "month": "丑", "broken": "未" }
+  ],
+  "overlap_example": {
+    "route": "艮内卦二爻 → 巽内卦二爻",
+    "base_branch": "午",
+    "base_element": "火",
+    "changed_branch": "亥",
+    "changed_element": "水",
+    "context": "甲子旬，戌亥空",
+    "matches": ["化绝", "化空"],
+    "explanation": "亥是火的绝位，同时又落在甲子旬的戌亥空，所以同一变爻可以在本爻层与占日层各得到一个标签。"
+  },
+  "reading_boundary": "本页只解释四类标签分别从哪些输入生成，以及标签为什么可能并存；不把墓、绝、空、破直接换成吉凶、强弱或应期，也不接收日期、起卦结果和个人问题。",
+  "internal_review": {
+    "status": "classical_maps_and_dependency_layers_cross_checked",
+    "reviewed_at": "2026-08-04",
+    "source_refs": [
+      "zengshan_buyi_wikisource_xunkong_lines_1163_1176",
+      "zengshan_buyi_wikisource_shengwang_mujue_lines_1228_1241",
+      "zengshan_buyi_wikisource_yuepo_lines_1311_1314",
+      "github_weizew_mingli_skills_c16eca0_phase4_harness"
+    ],
+    "boundary": "公开固定变爻例、墓绝表、六旬空表、月建冲支表和依赖层；来源、旺衰取舍、用神、应期与事件断语只留内部。"
+  }
+}

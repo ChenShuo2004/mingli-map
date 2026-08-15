@@ -1,0 +1,88 @@
+# 这是结构示例，不是已经核验的命理知识。
+
+sources:
+  - id: source_example_repo
+    title: 候选仓库示例
+    source_type: github_repository
+    creator: 待填写
+    url: https://github.com/example/example
+    accessed_at: 2026-08-03
+    license: 待检查
+    license_scope: 待检查
+    location: path/to/knowledge-file
+    reliability_notes: 仅用于展示记录结构
+    status: unreviewed
+
+concepts:
+  - id: concept_example
+    name: 示例概念
+    aliases: []
+    topic_ids:
+      - topic_example
+    summary: 待根据来源形成中性转述
+    prerequisite_ids: []
+    source_refs:
+      - source_example_repo
+    status: unreviewed
+
+rules:
+  - id: rule_example
+    name: 示例规则
+    inputs:
+      - 示例输入
+    conditions:
+      - 示例条件
+    outputs:
+      - 示例输出
+    scope:
+      topics:
+        - topic_example
+      viewpoint: 候选仓库采用的实现
+    source_refs:
+      - source_example_repo
+    implementation_refs:
+      - path/to/rule-file:line
+    status: unreviewed
+
+claims:
+  - id: claim_example
+    subject_id: concept_example
+    statement: 候选来源对示例概念作出的陈述
+    source_refs:
+      - source_example_repo
+    viewpoint: 候选仓库作者
+    status: source_statement
+
+relations:
+  - id: relation_example
+    from_id: concept_example
+    type: requires
+    to_id: another_concept_example
+    source_refs:
+      - source_example_repo
+    status: unreviewed
+
+visual_assets:
+  - id: visual_example_chart
+    title: 示例命盘图
+    asset_type: chart_example
+    source_refs:
+      - source_example_repo
+    original_location: path/to/example-chart.png
+    local_path: assets/sources/source_example_repo/original/example-chart.png
+    linked_record_ids:
+      - concept_example
+      - rule_example
+    caption: 用于展示视觉资产记录结构，不代表已经核验的命盘知识
+    alt_text: 示例命盘结构图
+    creator: 待确认
+    license: 待检查
+    license_scope: 待检查
+    checksum: 待下载后计算
+    generation:
+      method: 待确认
+      tool_version: 待确认
+      inputs: {}
+      reproduction_notes: 待确认
+    publication_status: internal_review_only
+    status: unreviewed

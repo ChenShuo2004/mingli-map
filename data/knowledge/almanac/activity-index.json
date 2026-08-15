@@ -1,0 +1,20 @@
+{
+  "id":"activity-index","title":"择日事项入口","summary":"择日结构先确定要查的事项，再读取与该事项有关的日、时字段；事项分类只是本站导航索引，不是古籍中的唯一分类法。",
+  "classification_identity":"知识地图导航分类",
+  "fixed_example":{
+    "date":"1986-05-29","items":[
+      {"group":"婚礼与礼仪","activities":["嫁娶","祭祀","祈福","求嗣","开光"]},
+      {"group":"出行与迁居","activities":["出行","进人口","入宅","移徙"]},
+      {"group":"营造与安置","activities":["出火","拆卸","动土","上梁","安床","安门"]},
+      {"group":"商业与凭证","activities":["开市","交易","立券","挂匾"]},
+      {"group":"种植","activities":["栽种"]},
+      {"group":"丧葬","activities":["破土","安葬"]}
+    ]
+  },
+  "entry_rule":["先写明事项名称","再确定候选日期范围","只比较同名事项在日栏与时栏中的状态","其他神煞与周期字段保留原身份"],
+  "boundaries":["六组分类由固定样本22项整理而来，不宣称为传统定本","同一事项可能在其他资料中使用异名，异名未核验前不自动合并","事项入口不接收真人资料，也不生成行动建议"],
+  "public_sources":[
+    {"title":"《协纪辨方书》卷十一·用事","note":"说明铺注可以事为经，而选择由具体事项起。","url":"https://www.shidianguji.com/book/SK1619/chapter/1l9llrr4rdde7"},
+    {"title":"lunar-javascript 锁定实现","note":"固定样本22项事项名称来自锁定版本。","url":"https://github.com/6tail/lunar-javascript/tree/4c45a59"}
+  ]
+}

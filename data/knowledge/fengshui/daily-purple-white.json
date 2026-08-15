@@ -1,0 +1,30 @@
+{
+  "id": "daily-purple-white",
+  "title": "日紫白的六段起例",
+  "summary": "所选《宝海经》版本把日紫白分为冬至后阳顺三段与夏至后阴逆三段；每段以指定节气后的甲子日为锚点，随后按日序递增或递减。",
+  "segments": [
+    {"half":"冬至后","anchor_term":"冬至","yuan":"上元","jiazi_start":1,"direction":"顺","next_day_example":"乙丑二黑"},
+    {"half":"冬至后","anchor_term":"雨水","yuan":"中元","jiazi_start":7,"direction":"顺","next_day_example":"乙丑八白"},
+    {"half":"冬至后","anchor_term":"谷雨","yuan":"下元","jiazi_start":4,"direction":"顺","next_day_example":"乙丑五黄"},
+    {"half":"夏至后","anchor_term":"夏至","yuan":"上元","jiazi_start":9,"direction":"逆","next_day_example":"乙丑八白"},
+    {"half":"夏至后","anchor_term":"处暑","yuan":"中元","jiazi_start":3,"direction":"逆","next_day_example":"乙丑二黑"},
+    {"half":"夏至后","anchor_term":"霜降","yuan":"下元","jiazi_start":6,"direction":"逆","next_day_example":"乙丑五黄"}
+  ],
+  "reading_chain": ["确定冬至后或夏至后半周","定位当前所属节气段","确定该段甲子日锚点","按干支日序顺数或逆数","值日星入中并按所选方向飞布"],
+  "fixed_day_sequence": {
+    "label":"冬至后上元段固定日序演示",
+    "anchor":"节气后甲子日以一白入中",
+    "days":[
+      {"offset":0,"ganzhi":"甲子","center_star":1,"color_name":"一白"},
+      {"offset":1,"ganzhi":"乙丑","center_star":2,"color_name":"二黑"},
+      {"offset":2,"ganzhi":"丙寅","center_star":3,"color_name":"三碧"},
+      {"offset":3,"ganzhi":"丁卯","center_star":4,"color_name":"四绿"},
+      {"offset":4,"ganzhi":"戊辰","center_star":5,"color_name":"五黄"}
+    ]
+  },
+  "version_fields": ["节气时刻算法与时区","取节气后第一个甲子日还是其他锚点","日界按午夜或子初","顺逆作用于入中序还是全盘飞布","同一节气交界日的归属"],
+  "boundaries": ["固定日序例从已经确定的甲子锚点开始，不代替公历日期到节气甲子的历法换算","本表是论文所引《宝海经》起例，不代表所有日紫白版本","必须保存中间锚点，不能只保留最后一个星数","日星结构不接入实时日期，也不用于择日或行动建议"],
+  "public_sources": [
+    {"title":"南华大学：风水场域之意象性研究","note":"保存冬至、雨水、谷雨与夏至、处暑、霜降六段甲子起星及顺逆例。","url":"https://nhuir.nhu.edu.tw/retrieve/28545/092NHU05699014-001.pdf"}
+  ]
+}

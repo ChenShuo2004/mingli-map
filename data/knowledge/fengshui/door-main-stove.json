@@ -1,0 +1,28 @@
+{
+  "id": "door-main-stove",
+  "title": "门、主、灶与两种用法",
+  "summary": "门、主、灶是传统阳宅文本中的三个空间对象；《八宅明镜》与《阳宅三要》虽共用八宫术语，却分别以坐山／年命和大门为主要起点。",
+  "objects": [
+    {"name":"门","classical_object":"宅院或建筑的主要出入口","fields":["门的位置宫位","门向","内门或外门","采用门卦或宅卦起例"]},
+    {"name":"主","classical_object":"主房、正房或主要起居房屋","fields":["主房位置","房屋坐向","高低与主次","现代映射版本"]},
+    {"name":"灶","classical_object":"灶房、炉灶位置及灶口朝向","fields":["灶所在宫位","灶口方向","灶房与炉具的层级","所用古籍版本"]}
+  ],
+  "relation_layers": [
+    {"index":1,"label":"对象身份","question":"当前记录的是门、主房还是灶"},
+    {"index":2,"label":"空间尺度","question":"宅院、建筑、房间或具体炉具"},
+    {"index":3,"label":"位置宫位","question":"对象位于哪一个八方卦宫"},
+    {"index":4,"label":"自身朝向","question":"门向、房向或灶口向哪里"},
+    {"index":5,"label":"相互关系","question":"三项与宅卦、游年及彼此怎样连接"}
+  ],
+  "method_comparison": [
+    {"method":"《八宅明镜》路径","starting_point":"住宅坐山为伏位","person_input":"保留宅主年命／命卦","relation":"宅卦、命卦与门灶等内事方位相配"},
+    {"method":"《阳宅三要》路径","starting_point":"大门所在宫为伏位","person_input":"不以年命作为主要起点","relation":"门、主、灶三宫及五行关系相配"}
+  ],
+  "modern_translation_checks": ["公寓公共入口还是入户门","主指主房、卧室还是建筑主体","灶指厨房位置、炉具位置还是灶口","开敞式厨房怎样界定边界","门与灶的朝向测量线是否一致"],
+  "boundaries": ["‘主’在古典语境多指主房或主要房屋，不直接等同住户本人","《八宅明镜》与《阳宅三要》共用八宫术语，但伏位起点和输入路径不同","院落式住宅和现代公寓的空间结构不同，映射必须声明版本","燃气、电气、通风与消防安全只依现代专业规范，不由游年星判断","本节点不提供个人住宅布置建议"],
+  "public_sources": [
+    {"title":"南华大学论文：清代《阳宅撮要》摇鞭宅法与八宅坐向研究","note":"用于确认八宅研究中房屋坐向、灶位与灶向属于分开的比较字段。","url":"https://nhuir.nhu.edu.tw/handle/987654321/26586?layout.style=mobile&locale=zh-TW"},
+    {"title":"《阳宅十书》","note":"保存门、主房、灶及大游年关系的古典文本线索。","url":"https://ctext.org/wiki.pl?chapter=413787&if=en&remap=gb"},
+    {"title":"南华大学论文：阳宅风水流派比较","note":"用于确认《阳宅三要》与其他宅法规则需要分体系保存。","url":"https://nhuir.nhu.edu.tw/retrieve/24381/097NHU05356006-001.pdf"}
+  ]
+}

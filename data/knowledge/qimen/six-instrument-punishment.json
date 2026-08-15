@@ -1,0 +1,35 @@
+{
+  "schema_version":"1.0.0",
+  "id":"qimen_six_instrument_punishment",
+  "title":"六仪击刑的六组落宫条件",
+  "summary":"六仪击刑不是看到戊己庚辛壬癸就成立，而是每个旬首所遁六仪落到一座指定宫时才形成标记。六组条件都由旬首地支与宫内地支的刑关系构成，其中壬、癸都落巽四宫，但对应辰辰自刑与寅巳相刑两条不同关系。",
+  "rows":[
+    {"instrument":"戊","xun":"甲子","target_palace":3,"palace_name":"震三宫","relation":"子卯相刑","relation_type":"无礼之刑"},
+    {"instrument":"己","xun":"甲戌","target_palace":2,"palace_name":"坤二宫","relation":"戌未相刑","relation_type":"恃势之刑"},
+    {"instrument":"庚","xun":"甲申","target_palace":8,"palace_name":"艮八宫","relation":"申寅相刑","relation_type":"无恩之刑"},
+    {"instrument":"辛","xun":"甲午","target_palace":9,"palace_name":"离九宫","relation":"午午自刑","relation_type":"自刑"},
+    {"instrument":"壬","xun":"甲辰","target_palace":4,"palace_name":"巽四宫","relation":"辰辰自刑","relation_type":"自刑"},
+    {"instrument":"癸","xun":"甲寅","target_palace":4,"palace_name":"巽四宫","relation":"寅巳相刑","relation_type":"无恩之刑"}
+  ],
+  "unmarked_palaces":[1,6,7],
+  "recognition_chain":["先找旬首","换成所遁六仪","查看该仪的当前落宫","与六组目标宫比对"],
+  "reading_boundaries":[
+    "页面只识别六仪与目标宫的组合条件，不公开性格、疾病、刑伤、诉讼等断语。",
+    "刑型名称来自当前资料的地支关系分类；同名不代表可以套用其他术数的完整解释。",
+    "坎一、乾六、兑七没有列为六仪击刑目标宫，不等于这些宫没有其他状态。"
+  ],
+  "public_sources":[
+    {"title":"mingli-skills 锁定击刑表","url":"https://github.com/weizeW/mingli-skills/blob/c16eca0/qimen-dunjia/data/jixing.json","note":"提供六仪、旬首、目标宫、刑型与关系字段。"},
+    {"title":"qimen-go 锁定 QM6YiJiXing 常量","url":"https://github.com/deminzhang/qimen-go/blob/4d3f58fa0f401b5b3a337f119138e99e90685dda/xuan/qimen_defs.go#L226-L236","note":"第二套实现保存六甲旬首到被刑地支的六组映射。"},
+    {"title":"qimenpaipan 锁定六仪击刑常量","url":"https://github.com/redrockhorse/qimenpaipan/blob/b6de54245cf7a514f59e51833dc01a87e1a3a849/qimenpaipan.py","note":"第三套实现保存相同的六仪、旬首、宫位与地支关系。"}
+  ],
+  "internal_review": {
+    "status":"formal_condition_table",
+    "reviewed_at":"2026-08-09",
+    "owner":["火华","Codex"],
+    "source_refs":["github_weizew_mingli_skills_c16eca0","github_deminzhang_qimen_go_4d3f58f","github_redrockhorse_qimenpaipan_b6de542"],
+    "deduplication":"旬首六仪身份已在值符值使页维护；本页只保存六仪到特定宫位时新增的状态条件。",
+    "known_gaps":["缺规则级古籍页码。","不进入击刑强弱及组合解释。"],
+    "boundary":"条件识别，不提供事件判断。"
+  }
+}

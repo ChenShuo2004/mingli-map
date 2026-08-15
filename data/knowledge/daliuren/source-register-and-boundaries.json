@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0.0",
+  "id": "daliuren_source_register_and_boundaries",
+  "title": "四套有效来源与使用边界",
+  "summary": "系统索引中共有五个来源名路由到大六壬，但真正提供大六壬对象、规则或可运行实现的是jishiyu、qimen-go、kinliuren与dalurenpython四套。nihaisha-tianji只有截图缺失、搜索接口和MCP能力声明审计，没有大六壬规则内容，因此保留为误路由／软件证据，不计入专题规则来源。",
+  "headline": "来源数量先去掉误路由，再分别看代码许可、内容权利与证据能力",
+  "steps": [
+    {"label": "索引表面", "value": "5 个来源名", "note": "仅表示路由命中。"},
+    {"label": "实质复核", "value": "4 套有效资料", "note": "包含大六壬表、规则或运行实现。"},
+    {"label": "规则能力", "value": "3 套可运行对照", "note": "qimen-go、kinliuren、dalurenpython。"},
+    {"label": "公开处置", "value": "原创摘要＋固定案例", "note": "不重发受限代码、长文或断语。"}
+  ],
+  "facts": [
+    {"label": "有效来源", "detail": "jishiyu、qimen-go、kinliuren、dalurenpython。"},
+    {"label": "无效规则路由", "detail": "nihaisha-tianji没有可用的大六壬规则或课例，不能用于规则交叉验证。"},
+    {"label": "共同缺口", "detail": "四套资料都没有把每个算法条件完整连接到可定位的传统版次与页码。"}
+  ],
+  "source_register": [
+    {"id": "jishiyu", "label": "chxb/jishiyu", "role": "资料表＋作者实现", "contents": "月将入口、贵人选项、天地盘、四课三传、718项课表", "rights": "源码表达AGPL-3.0意图，但LICENSE不完整且内嵌内容权利另算", "validation": "无测试套件；720表已确认缺2项", "public_use": "短字段、原创结构摘要、完整性审计"},
+    {"id": "qimen-go", "label": "deminzhang/qimen-go", "role": "第二套可运行实现", "contents": "天地盘、四课、主要取传分支、昼夜贵人与天将", "rights": "MIT作者代码；规则与内嵌解释仍需逐项来源", "validation": "与多例形成对照；日出日落仍为TODO", "public_use": "固定案例和实现比较"},
+    {"id": "kinliuren", "label": "kentang2017/kinliuren", "role": "主要可执行来源", "contents": "天地盘、四课、九法选择器、天将、派生字段与历史表", "rights": "MIT仓库代码；内嵌表与解释的内容来源另算", "validation": "17,270成功输入，但另有10组崩溃、README漂移与开放issue", "public_use": "结构、固定案例、版本演化与缺陷审计"},
+    {"id": "dalurenpython", "label": "wlhyl/dalurenpython", "role": "第三套历史实现", "contents": "天地盘、四课、三传、天将、课体与神煞目录", "rights": "仓库无许可，只能内部研究与原创比较", "validation": "8,640结构组合成功；零正式测试，精确依赖不可安装，确认两个实现缺陷", "public_use": "原创统计、固定案例和差异结论"},
+    {"id": "nihaisha-tianji", "label": "jonhnsonzz/nihaisha-tianji", "role": "不计入规则来源", "contents": "截图声明、REST搜索脚本、MCP描述符审计", "rights": "课程或书籍内容权利未解决", "validation": "仓库实际缺所称截图与资料运行面", "public_use": "仅保留软件证据审计，不支持大六壬规则"}
+  ],
+  "comparisons": [
+    {"label": "路由数量", "left": "系统命中5个来源名", "right": "实质规则来源4套", "handling": "以后以4套有效资料表述"},
+    {"label": "运行重合", "left": "三套实现可复算", "right": "规则级底本仍缺", "handling": "只提升比较置信度，不提升传统权威"},
+    {"label": "代码许可", "left": "MIT／AGPL意图／无许可", "right": "内嵌表与长文权利", "handling": "两条权利链分别审核"}
+  ],
+  "reading_boundaries": ["来源路由命中不等于来源对该专题有实质内容。", "代码许可不自动覆盖内嵌课表、解释长文、截图与书籍。", "专题公开层只使用可追踪短字段、原创摘要、固定案例和缺陷审计。"],
+  "public_sources": [
+    {"title": "jishiyu", "url": "https://github.com/chxb/jishiyu/tree/97b6d6d8e58c6947a86e281d5b69de1032e9bc08", "note": "资料表与作者实现来源。"},
+    {"title": "qimen-go", "url": "https://github.com/deminzhang/qimen-go/tree/4d3f58fa0f401b5b3a337f119138e99e90685dda", "note": "MIT可运行对照。"},
+    {"title": "kinliuren", "url": "https://github.com/kentang2017/kinliuren/tree/3ba45a9540f08269b56d81508a061c7d46938785", "note": "主要可执行来源与版本史。"},
+    {"title": "dalurenpython", "url": "https://github.com/wlhyl/dalurenpython/tree/62764a4ad2c10f5ccc34b86c8520d9f4a96ba3aa", "note": "无许可历史实现，只用于原创比较。"}
+  ],
+  "internal_review": {"reviewed_on": "2026-08-10", "owner": ["火华", "Codex"], "status": "formal_source_register_and_rights_boundary"}
+}

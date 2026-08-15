@@ -1,0 +1,20 @@
+{
+  "schema_version":"1.0",
+  "id":"moon-phases-lunar-days",
+  "title":"月相与农历日序",
+  "summary":"农历日序以朔望月组织月份，月相则由日月相对位置确定；朔、上弦、望、下弦是天文时刻，不能机械等同为每月固定某一日。",
+  "principal_phases":[
+    {"name":"朔／新月","elongation":"0°","position":"月球与太阳黄经接近"},
+    {"name":"上弦","elongation":"90°","position":"盈月半圆"},
+    {"name":"望／满月","elongation":"180°","position":"日月黄经相差约180°"},
+    {"name":"下弦","elongation":"270°","position":"亏月半圆"}
+  ],
+  "display_segments":["新月","蛾眉月","上弦月","盈凸月","满月","亏凸月","下弦月","残月"],
+  "fixed_example":{"date":"1986-05-29","lunar_date":"四月廿一","phase_segment":"亏凸月","next_change":{"date":"1986-05-30","phase_segment":"下弦月"}},
+  "boundaries":["农历初一所在民用日包含朔时刻，但朔不固定发生在00:00","望可能落在农历十五或十六等日期","八段名称是当前显示分段，不替代精确相位角"],
+  "public_sources":[
+    {"title":"香港天文台年历","note":"年历按天文时刻发布朔、上弦、望和下弦，并并列传统农历日期。","url":"https://www.hko.gov.hk/sc/gts/astron2026/almanac2026_index.htm"},
+    {"title":"香港天文台：农历月为何有廿九或三十日","note":"用于核对朔望月与农历29／30日月份的关系。","url":"https://www.hko.gov.hk/sc/%E5%A4%A9%E6%96%87%E5%8F%B0%E7%BD%91%E5%BF%97/109092/%EF%BB%BF2025%E5%B9%B4%E8%B5%B7%E8%BF%9E%E7%BB%AD%E4%BA%94%E5%B9%B4%E6%B2%A1%E6%9C%89%E5%B9%B4%E4%B8%89%E5%8D%81"},
+    {"title":"tyme4ts 1.5.2","note":"八段显示名称和固定日期样本来自锁定实现。","url":"https://github.com/6tail/tyme4ts"}
+  ]
+}

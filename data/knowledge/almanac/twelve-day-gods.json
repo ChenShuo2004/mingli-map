@@ -1,0 +1,21 @@
+{
+  "schema_version":"1.0",
+  "id":"twelve-day-gods",
+  "title":"十二天神与黄道黑道",
+  "summary":"十二天神沿固定次序循环，其中六神在当前来源中标为黄道，六神标为黑道；它与建除十二值同为十二位周期，但名称、起点和计算规则不同。",
+  "sequence":[
+    {"name":"青龙","class":"黄道"},{"name":"明堂","class":"黄道"},{"name":"天刑","class":"黑道"},{"name":"朱雀","class":"黑道"},
+    {"name":"金匮","class":"黄道"},{"name":"天德","class":"黄道"},{"name":"白虎","class":"黑道"},{"name":"玉堂","class":"黄道"},
+    {"name":"天牢","class":"黑道"},{"name":"玄武","class":"黑道"},{"name":"司命","class":"黄道"},{"name":"勾陈","class":"黑道"}
+  ],
+  "month_anchors":[
+    {"months":["寅","申"],"qinglong_day_branch":"子"},{"months":["卯","酉"],"qinglong_day_branch":"寅"},{"months":["辰","戌"],"qinglong_day_branch":"辰"},
+    {"months":["巳","亥"],"qinglong_day_branch":"午"},{"months":["午","子"],"qinglong_day_branch":"申"},{"months":["未","丑"],"qinglong_day_branch":"戌"}
+  ],
+  "fixed_example":{"date":"1986-05-29","month_branch":"巳","day_branch":"酉","qinglong_anchor":"午","steps_from_anchor":3,"result":"朱雀","class":"黑道"},
+  "boundaries":["黄道黑道是该十二神表内的分类","不能把所有吉神凶煞压成黄道黑道两类","玄武亦见元武写法，按来源保存"],
+  "public_sources":[
+    {"title":"《钦定协纪辨方书》：十二神次序","note":"保存青龙至勾陈的十二神次序及同位异名讨论。","url":"https://www.shidianguji.com/book/SK1619/chapter/1l9llqlcqlzc3"},
+    {"title":"tyme4ts 1.5.2","note":"黄道／黑道分类、月支起点和固定样本来自锁定实现。","url":"https://github.com/6tail/tyme4ts"}
+  ]
+}

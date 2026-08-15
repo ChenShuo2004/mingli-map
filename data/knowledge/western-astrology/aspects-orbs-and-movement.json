@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0.0",
+  "id": "western_astrology_aspects_orbs_and_movement",
+  "title": "相位与入出相",
+  "summary": "相位先比较两颗星的黄经角距离是否接近某个目标角；容许度说明离精确角还有多远，入相与出相再比较下一步的误差是在缩小还是扩大。当前两套来源共同保存五个主相位，`flatlib`另列八个次要相位；解释标签、容许度和运动判定继续分层。",
+  "major_aspects": [
+    {"id":"conjunction","name":"合相","english":"Conjunction","angle":0,"source_label":"融合","author_orb":"同星座"},
+    {"id":"sextile","name":"六分","english":"Sextile","angle":60,"source_label":"温和","author_orb":"±6°"},
+    {"id":"square","name":"四分","english":"Square","angle":90,"source_label":"紧张","author_orb":"±7°"},
+    {"id":"trine","name":"三分","english":"Trine","angle":120,"source_label":"和谐","author_orb":"±8°"},
+    {"id":"opposition","name":"对冲","english":"Opposition","angle":180,"source_label":"对立","author_orb":"±8°"}
+  ],
+  "minor_aspect_angles": [30,36,45,72,108,135,144,150],
+  "movement_states": [
+    {"id":"applying","label":"入相","rule":"下一步与目标角的误差更小。","fixed_error_now":3,"fixed_error_next":2},
+    {"id":"exact","label":"精确","rule":"当前角距离等于目标角。","fixed_error_now":0,"fixed_error_next":1},
+    {"id":"separating","label":"出相","rule":"下一步与目标角的误差更大。","fixed_error_now":3,"fixed_error_next":4}
+  ],
+  "geometry_steps": [
+    {"id":"distance","label":"角距离","formula":"先把两点黄经差折回0°至180°。"},
+    {"id":"target","label":"目标角","formula":"从0°、60°、90°、120°、180°中选择要比较的主相位。"},
+    {"id":"orb","label":"误差／容许度","formula":"当前角距离与目标角之差的绝对值。"},
+    {"id":"movement","label":"入相／出相","formula":"比较当前与下一步误差：缩小为入相，扩大为出相。"}
+  ],
+  "source_differences": [
+    {"field":"对象范围","fortune_telling_skills":"五个主相位","flatlib":"五个主相位，并另列八个次要角","handling":"主次相位分开展示"},
+    {"field":"容许度","fortune_telling_skills":"按相位给出同星座或±6°／±7°／±8°","flatlib":"实现中有对象与相位相关的orb列表和精确／次要相位规则","handling":"不合成一张唯一容许度表"},
+    {"field":"运动状态","fortune_telling_skills":"文字区分入相与离相","flatlib":"相位对象保存movement及主动／被动角色","handling":"本页只演示误差靠近／离开的结构"}
+  ],
+  "reading_boundaries": [
+    "固定案例只移动抽象角距离，不使用出生资料、真实日期、星历或真人行星。",
+    "来源中的融合、温和、紧张、和谐、对立是解释标签，不是事件结果或关系评分。",
+    "容许度在不同来源和对象间可能变化，本页不把作者表或软件参数宣布为唯一古典标准。",
+    "禁止、传递光、收集光、围攻及日光关系需要第三星或额外条件，暂不塞进本节点。"
+  ],
+  "public_sources": [
+    {
+      "title": "fortune-telling-skills：本命盘相位表",
+      "url": "https://github.com/doododod/fortune-telling-skills/blob/8bcc734491ac75cfb21c1de8727c9fc3f9427b1e/astrology-chart-analysis/references/natal-chart.md",
+      "note": "提供五个主相位、作者容许度、解释标签及入相／离相的文字定义；未逐项给出传统底本。"
+    },
+    {
+      "title": "flatlib：相位实现",
+      "url": "https://github.com/flatangle/flatlib/blob/856d26b8bd1316ccdafe76399994696f9510de9e/flatlib/aspects.py",
+      "note": "提供角距离、相位识别、orb、movement以及主动／被动角色的实现入口。"
+    },
+    {
+      "title": "flatlib：相位常量",
+      "url": "https://github.com/flatangle/flatlib/blob/856d26b8bd1316ccdafe76399994696f9510de9e/flatlib/const.py",
+      "note": "结构化快照从此处抽出五个主相位角与八个次要相位角。"
+    }
+  ],
+  "internal_review": {
+    "status": "formal_geometry_node_with_fixed_movement_examples",
+    "reviewed_at": "2026-08-09",
+    "owner": ["火华", "Codex"],
+    "source_refs": ["github_doododod_fortune_telling_skills_8bcc734","github_flatangle_flatlib_856d26b"],
+    "deduplication": "与七曜分开：七曜定义对象，相位定义对象间的角距离关系。与宫位和宫制分开：宫位是对象落点，宫制是宫界参数，相位不依赖宫位编号成立。与尊贵度分开：尊贵度描述单星在星座中的传统状态，相位描述两星关系。",
+    "known_gaps": [
+      "现有作者表没有逐项传统底本版次与页码。",
+      "flatlib的完整对象别容许度数值尚未进入结构化快照，本页不抄写未核参数。",
+      "固定步进只解释误差方向，不等同于完整星历速度、逆行和主动／被动角色算法。"
+    ],
+    "boundary": "固定几何演示；无真人输入、星历计算、关系评分、吉凶、事件预测或行动建议。"
+  }
+}

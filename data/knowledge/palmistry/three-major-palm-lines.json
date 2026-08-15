@@ -1,0 +1,18 @@
+{
+  "id": "three-major-palm-lines",
+  "title": "三大主线",
+  "summary": "生命线、智慧线与感情线是常见的三条检索名称；页面以所在区域、走向和可见状态定位，不采用名称暗示的寿命、智力或感情结论。",
+  "image": "/assets/palmistry/ai-left-palm-detail.webp",
+  "lines": [
+    {"id": "heart", "label": "感情线", "aliases": ["天纹", "心线"], "reference_position": "掌上部，通常由小指侧向食指侧延伸", "path": "M22 47 C38 52 57 48 72 40", "color": "red", "observe": ["起点与终点", "横向走向", "弧度", "连续性", "分支与交会"]},
+    {"id": "head", "label": "智慧线", "aliases": ["人纹", "头脑线"], "reference_position": "掌中部，常由食指与拇指间附近向小指侧横行", "path": "M69 50 C57 57 43 62 24 61", "color": "gold", "observe": ["起点关系", "横斜方向", "长度", "连续性", "分支与交会"]},
+    {"id": "life", "label": "生命线", "aliases": ["地纹"], "reference_position": "由食指与拇指间附近起，弧形环绕拇指根部向腕部", "path": "M69 49 C63 57 61 70 64 82", "color": "green", "observe": ["起点关系", "弧度", "包围范围", "连续性", "分支与交会"]}
+  ],
+  "shared_fields": ["可见度", "粗细", "深浅", "颜色受光线影响", "起止点", "走向", "断续", "岛状或链状外观", "分支", "与其他纹线交会"],
+  "record_order": ["确认左手或右手", "定位三条参考区域", "分别描记起止与走向", "记录连续性与分支", "最后附传统名称和来源"],
+  "boundaries": ["生命线不等于寿命测量", "智慧线不等于智力测验", "感情线不等于关系预测", "AI样本只用于说明大致位置，不能作为所有手掌的固定模板"],
+  "public_sources": [
+    {"title": "《神相全编》卷八公版扫描", "note": "用于索引传统论手与掌纹材料；本页不复制其中人物断语。", "url": "https://commons.wikimedia.org/wiki/File:SSID-13003395_%E7%A5%9E%E7%9B%B8%E5%85%A8%E7%B7%A8_%E5%8D%B78.pdf"},
+    {"title": "梁伟贤《麻衣相法》版本初探", "note": "用于确认论掌纹、手纹等篇目在今本与明代版本中的分布不同。", "url": "https://ccsndb.ncl.edu.tw/nclccs/pdf/01_034_004_01_05.pdf"}
+  ]
+}

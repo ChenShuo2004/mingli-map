@@ -1,0 +1,101 @@
+{
+  "schema_version": "1.0",
+  "id": "tarot_waite_minor_meanings",
+  "title": "Waite 1910小阿卡纳牌义",
+  "summary": "查看Waite为56张小阿卡纳列出的正位与逆位牌义。",
+  "edition": "Arthur Edward Waite, The Pictorial Key to the Tarot, first published 1910",
+  "image_set_ref": "rws_luciellaes_via_tarot_api_319ce18",
+  "suits": [
+    {"id":"wands","name_zh":"权杖","name_en":"Wands","mark":"杖"},
+    {"id":"cups","name_zh":"圣杯","name_en":"Cups","mark":"杯"},
+    {"id":"swords","name_zh":"宝剑","name_en":"Swords","mark":"剑"},
+    {"id":"pentacles","name_zh":"星币","name_en":"Pentacles","mark":"币"}
+  ],
+  "ranks": [
+    {"id":"ace","name_zh":"王牌","name_en":"Ace","file_number":"01","kind":"数字牌"},
+    {"id":"two","name_zh":"二","name_en":"Two","file_number":"02","kind":"数字牌"},
+    {"id":"three","name_zh":"三","name_en":"Three","file_number":"03","kind":"数字牌"},
+    {"id":"four","name_zh":"四","name_en":"Four","file_number":"04","kind":"数字牌"},
+    {"id":"five","name_zh":"五","name_en":"Five","file_number":"05","kind":"数字牌"},
+    {"id":"six","name_zh":"六","name_en":"Six","file_number":"06","kind":"数字牌"},
+    {"id":"seven","name_zh":"七","name_en":"Seven","file_number":"07","kind":"数字牌"},
+    {"id":"eight","name_zh":"八","name_en":"Eight","file_number":"08","kind":"数字牌"},
+    {"id":"nine","name_zh":"九","name_en":"Nine","file_number":"09","kind":"数字牌"},
+    {"id":"ten","name_zh":"十","name_en":"Ten","file_number":"10","kind":"数字牌"},
+    {"id":"page","name_zh":"侍从","name_en":"Page","file_number":"11","kind":"宫廷牌"},
+    {"id":"knight","name_zh":"骑士","name_en":"Knight","file_number":"12","kind":"宫廷牌"},
+    {"id":"queen","name_zh":"王后","name_en":"Queen","file_number":"13","kind":"宫廷牌"},
+    {"id":"king","name_zh":"国王","name_en":"King","file_number":"14","kind":"宫廷牌"}
+  ],
+  "meanings": {
+    "wands": {
+      "ace":{"upright":["创造","发明","事业开端","起源","诞生"],"reversed":["衰落","毁坏","失势","喜悦蒙阴"]},
+      "two":{"upright":["财富","好运","宏大","成就后的忧郁"],"reversed":["惊讶","奇遇","激动","麻烦","恐惧"]},
+      "three":{"upright":["事业","努力","贸易","发现","合作"],"reversed":["烦恼结束","逆境暂停","失望消退"]},
+      "four":{"upright":["乡居","避风港","收获","和谐","安宁"],"reversed":["繁荣","增长","幸福","美好"]},
+      "five":{"upright":["模拟争斗","竞争","奋斗","追逐财富"],"reversed":["诉讼","争执","诡计","矛盾"]},
+      "six":{"upright":["胜利","重大消息","愿望实现","希望加冕"],"reversed":["忧惧","背叛","失信","延迟"]},
+      "seven":{"upright":["勇气","辩论","谈判","竞争","占据优势"],"reversed":["困惑","窘迫","焦虑","犹豫"]},
+      "eight":{"upright":["行动","迅速","赶路","希望","临近结果"],"reversed":["嫉妒","内争","良心刺痛","家庭争吵"]},
+      "nine":{"upright":["抵抗中的力量","勇敢迎击","延迟","暂停"],"reversed":["障碍","逆境","灾祸"]},
+      "ten":{"upright":["压迫","负担","成功之重","伪装","失信"],"reversed":["阻碍","困难","阴谋"]},
+      "page":{"upright":["忠实青年","信使","消息","家庭音讯"],"reversed":["传闻","公告","坏消息","犹豫","不稳定"]},
+      "knight":{"upright":["离开","远行","迁移","改变住处"],"reversed":["破裂","分离","中断","不和"]},
+      "queen":{"upright":["友善","忠贞","亲切","荣誉","事业成功"],"reversed":["节俭","助人","反对","嫉妒","欺骗"]},
+      "king":{"upright":["诚实","友善","尽责","遗产消息"],"reversed":["严厉","克制","宽容"]}
+    },
+    "cups": {
+      "ace":{"upright":["真心之家","喜悦","满足","滋养","丰饶"],"reversed":["虚假情感","变化","不稳定","翻转"]},
+      "two":{"upright":["爱情","热情","友谊","联合","和谐"],"reversed":["激情"]},
+      "three":{"upright":["丰足","圆满","欢乐","胜利","疗愈"],"reversed":["过度享乐","迅速完成","事情告终"]},
+      "four":{"upright":["厌倦","不满","反感","想象中的烦恼"],"reversed":["新鲜事物","预兆","新知识","新关系"]},
+      "five":{"upright":["失去","仍有留存","继承未如预期","苦涩"],"reversed":["消息","联盟","亲缘","归来","错误计划"]},
+      "six":{"upright":["过去","回忆","童年","旧日快乐"],"reversed":["未来","更新","即将发生"]},
+      "seven":{"upright":["幻想","想象","沉思","不够持久"],"reversed":["欲望","意志","决定","计划"]},
+      "eight":{"upright":["离开旧事","事情衰退","重要性减弱"],"reversed":["极大喜悦","幸福","宴饮"]},
+      "nine":{"upright":["和谐","满足","安适","胜利","成功"],"reversed":["真诚","忠实","自由","失误","不完美"]},
+      "ten":{"upright":["满心安宁","圆满爱情","友谊","家园"],"reversed":["虚假安宁","愤怒","暴烈"]},
+      "page":{"upright":["勤学青年","消息","思考","沉思","应用"],"reversed":["偏好","依恋","诱惑","欺骗"]},
+      "knight":{"upright":["到来","接近","使者","提议","邀请"],"reversed":["诡计","手腕","欺诈","两面性"]},
+      "queen":{"upright":["诚实","奉献","爱心智慧","洞见","幸福"],"reversed":["身份显赫但不可信","堕落","失信"]},
+      "king":{"upright":["负责","助人","公平","艺术与科学","创造才智"],"reversed":["不诚实","两面手法","不公","丑闻","重大损失"]}
+    },
+    "swords": {
+      "ace":{"upright":["胜利","征服","强大力量","爱恨的极端"],"reversed":["力量造成灾难","孕育","增长","倍增"]},
+      "two":{"upright":["平衡","勇气","友谊","武装中的和谐"],"reversed":["欺骗","虚假","两面性","失信"]},
+      "three":{"upright":["离开","缺席","延迟","分裂","破裂"],"reversed":["心神混乱","错误","损失","失序"]},
+      "four":{"upright":["退隐","独处","休息","放逐","墓穴"],"reversed":["审慎管理","节约","预防","遗嘱"]},
+      "five":{"upright":["受辱","破坏","撤销","失名","损失"],"reversed":["同样的损失","葬礼","哀悼"]},
+      "six":{"upright":["水路旅行","路线","渡过","权宜之计"],"reversed":["声明","坦白","公开","求爱提议"]},
+      "seven":{"upright":["谋划","尝试","希望","争吵","计划或失败"],"reversed":["忠告","建议","教导","诽谤","闲谈"]},
+      "eight":{"upright":["坏消息","危机","责难","受限","冲突"],"reversed":["不安","困难","反对","意外","背叛"]},
+      "nine":{"upright":["失败","延迟","失望","绝望","欺骗"],"reversed":["怀疑","疑虑","合理恐惧","羞耻"]},
+      "ten":{"upright":["痛苦","折磨","泪水","悲伤","荒凉"],"reversed":["短暂利益","成功","恩惠","权力"]},
+      "page":{"upright":["监督","警戒","侦察","审查","机敏"],"reversed":["意外之事","毫无准备","疾病"]},
+      "knight":{"upright":["技能","勇敢","防御","敌意","战争"],"reversed":["轻率","无能","挥霍"]},
+      "queen":{"upright":["寡居","悲伤","缺席","哀悼","分离"],"reversed":["恶意","偏执","诡计","欺骗"]},
+      "king":{"upright":["判断","权力","命令","权威","法律"],"reversed":["残酷","乖张","野蛮","背信","恶意"]}
+    },
+    "pentacles": {
+      "ace":{"upright":["圆满满足","幸福","狂喜","财富","安稳"],"reversed":["财富的坏处","坏消息","巨富"]},
+      "two":{"upright":["欢乐","消遣","书信消息","障碍","忙乱"],"reversed":["勉强欢笑","假装享受","书写","文书"]},
+      "three":{"upright":["技艺","行业","熟练劳动","声望","荣耀"],"reversed":["平庸","幼稚","琐碎","软弱"]},
+      "four":{"upright":["财产稳固","紧守所有","赠礼","遗产"],"reversed":["悬而未决","延迟","反对"]},
+      "five":{"upright":["物质困难","贫困","也可指伴侣与亲和"],"reversed":["混乱","失序","毁坏","不和"]},
+      "six":{"upright":["赠予","礼物","满足","眼前繁荣"],"reversed":["欲求","贪婪","羡慕","嫉妒","幻觉"]},
+      "seven":{"upright":["金钱","生意","交换","劳作成果"],"reversed":["借贷焦虑","金钱担忧"]},
+      "eight":{"upright":["工作","雇佣","委托","手艺","技能"],"reversed":["野心落空","虚荣","贪婪","盘剥"]},
+      "nine":{"upright":["审慎","安全","成功","完成","辨别"],"reversed":["欺诈","计划落空","失信"]},
+      "ten":{"upright":["收益","财富","家庭事务","家族记录","住所"],"reversed":["机会","损失","盗窃","赌博","赠礼"]},
+      "page":{"upright":["用功","学习","学识","思考","消息"],"reversed":["挥霍","放纵","奢侈","坏消息"]},
+      "knight":{"upright":["实用","服务","责任","正直"],"reversed":["惰性","懒散","停滞","泄气"]},
+      "queen":{"upright":["富足","慷慨","华美","安全","自由"],"reversed":["邪恶","猜疑","悬念","恐惧","不信任"]},
+      "king":{"upright":["勇气","实践智慧","商业才干","数学能力","成功"],"reversed":["恶习","软弱","腐化","危险"]}
+    }
+  },
+  "public_sources": [
+    {"title":"Wikisource：Waite《The Pictorial Key to the Tarot》Part III","note":"Part III逐张列出56张小阿卡纳的牌面描述、正位与逆位含义；页面中文为简短编辑译述。","url":"https://en.wikisource.org/wiki/The_Pictorial_Key_to_the_Tarot/Part_3"},
+    {"title":"tarot-api：固定提交中的56张RWS小阿卡纳牌图","note":"页面牌面图来自固定提交public/cards目录。","url":"https://github.com/LindseyB/tarot-api/tree/319ce18f1b583035e00c63854a2a405a0088bc73/public/cards"}
+  ],
+  "internal_review": {"status":"formal_source_specific_minor_meanings_node","reviewed_at":"2026-08-06","source_refs":["wikisource_waite_pictorial_key_part3","github_lindseyb_tarot_api_319ce18"],"ownership":"K-TAROT.02 单牌资料","boundary":"只呈现Waite原书的来源特定词义，不合并现代关键词表，不生成个人牌义。"}
+}

@@ -1,0 +1,21 @@
+{
+  "id": "other-palm-lines-versions",
+  "title": "其他线纹与命名版本",
+  "summary": "主线之外的纵线、短线和腕纹名称并不统一；同一位置可能有多种名称，同一名称也可能因版本改变范围。",
+  "image": "/assets/palmistry/ai-left-palm-detail.webp",
+  "line_families": [
+    {"id": "central-vertical", "label": "掌中纵线", "common_names": ["命运线", "事业线", "玉柱纹"], "reference_position": "由腕部或掌下部向中指方向纵行", "availability": "可能缺如、断续或由掌中起", "path": "M51 81 C50 70 50 61 52 48", "color": "green"},
+    {"id": "ring-vertical", "label": "无名指下纵线", "common_names": ["太阳线", "成功线"], "reference_position": "无名指下方掌区的纵向短线或长线", "availability": "不一定出现，起点差异较大", "path": "M43 61 C43 55 43 49 42 43", "color": "gold"},
+    {"id": "little-vertical", "label": "小指下纵斜线", "common_names": ["水星线", "健康线"], "reference_position": "小指下方至掌下部的纵线或斜线", "availability": "传统名称含健康二字，不构成医学信息", "path": "M31 68 C29 59 28 53 29 45", "color": "red"},
+    {"id": "ulnar-edge", "label": "小指侧短横纹", "common_names": ["结合线", "婚姻线"], "reference_position": "小指根部与感情线之间的掌侧缘", "availability": "正面照片常难完整显示，需侧缘图", "path": "M19 44 L27 45", "color": "gold"},
+    {"id": "wrist", "label": "腕部横纹", "common_names": ["腕纹", "手颈线", "手镯纹"], "reference_position": "手掌与前臂交界处的横向屈曲纹", "availability": "数量与清晰度受腕部姿势和裁切影响", "path": "M38 86 C49 88 61 87 69 86", "color": "green"}
+  ],
+  "version_fields": ["来源书名与版本", "原文名称", "现代整理名称", "参考位置", "是否同名异位", "是否异名同位", "图中可见状态"],
+  "visibility_states": ["清晰可见", "部分可见", "断续", "与细纹交叠", "当前角度不可见", "未见"],
+  "boundaries": ["线名是检索标签，不是已验证的功能名称", "健康线不用于医学诊断", "婚姻线不用于关系次数或结果预测", "缺如、短或断续不产生个人吉凶结论"],
+  "public_sources": [
+    {"title": "《神相全编》卷八公版扫描", "note": "用于索引传统掌纹名称与位置材料。", "url": "https://commons.wikimedia.org/wiki/File:SSID-13003395_%E7%A5%9E%E7%9B%B8%E5%85%A8%E7%B7%A8_%E5%8D%B78.pdf"},
+    {"title": "Wikimedia Commons《神相全编》馆藏分类", "note": "用于区分不同馆藏、卷次与扫描版本。", "url": "https://commons.wikimedia.org/wiki/Category:%E7%A5%9E%E7%9B%B8%E5%85%A8%E7%B7%A8"},
+    {"title": "梁伟贤《麻衣相法》版本初探", "note": "用于确认论掌纹、论手背纹、手纹等内容在不同版本中分布不同。", "url": "https://ccsndb.ncl.edu.tw/nclccs/pdf/01_034_004_01_05.pdf"}
+  ]
+}

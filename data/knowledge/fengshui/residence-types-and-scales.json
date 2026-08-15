@@ -1,0 +1,22 @@
+{
+  "id": "residence-types-and-scales",
+  "title": "阴宅、阳宅与观察尺度",
+  "summary": "墓葬环境与居住环境是两类不同对象；进入具体规则以前，还要先标明观察的是区域、地块、建筑、房间还是开口。",
+  "residence_types": [
+    {"id":"yin","label":"阴宅","object":"墓葬及其周边地形","common_fields":["山水形势","穴位位置","坐向水口"]},
+    {"id":"yang","label":"阳宅","object":"供人居住或使用的建筑空间","common_fields":["外部环境","建筑坐向","门、房与灶等内部位置"]}
+  ],
+  "scales": [
+    {"index":1,"label":"区域","examples":["山脉","河流","道路","聚落"]},
+    {"index":2,"label":"地块","examples":["高低","边界","来去水","周边形体"]},
+    {"index":3,"label":"建筑","examples":["坐向","入口","整体轮廓","邻接关系"]},
+    {"index":4,"label":"房间","examples":["房间位置","功能区","内部通道"]},
+    {"index":5,"label":"开口","examples":["门","窗","通风与采光口"]}
+  ],
+  "reading_order": ["先定阴宅或阳宅","再定观察尺度","再分外部与内部","最后进入具体流派规则"],
+  "boundaries": ["阴宅规则不直接套用到房间布置","区域方向不能替代建筑坐向","现代采光、通风和结构安全属于建筑专业判断，应与传统术语分开"],
+  "public_sources": [
+    {"title":"华中师范大学学报：试论中华风水文化","note":"用于确认风水文化常分阴宅与阳宅两大对象。","url":"https://journal.ccnu.edu.cn/sk/CN/abstract/abstract2113.shtml"},
+    {"title":"清华大学学位论文：汉魏六朝风水信仰研究","note":"用于区分宅法、墓法及其历史发展。","url":"https://newetds.lib.tsinghua.edu.cn/qh/paper/summary?dbCode=ETDQH&sysId=183336"}
+  ]
+}

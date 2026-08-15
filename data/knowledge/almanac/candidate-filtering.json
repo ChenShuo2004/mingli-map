@@ -1,0 +1,31 @@
+{
+  "id":"candidate-filtering","title":"候选日筛选顺序","summary":"候选日筛选只追踪同一事项在每日宜、忌栏中的明确状态；黄黑道、建除等字段并列展示，不换算成分数。",
+  "activity":"嫁娶",
+  "window":"1986-05-27 至 1986-06-02",
+  "steps":[
+    {"index":1,"label":"固定事项","content":"本例只追踪“嫁娶”"},
+    {"index":2,"label":"固定范围","content":"连续7个民用日期"},
+    {"index":3,"label":"读取日栏","content":"分别检查每日宜与每日忌"},
+    {"index":4,"label":"保留并列字段","content":"建除、日神与黄黑道不转成总分"},
+    {"index":5,"label":"展开时槽","content":"仅对演示锚点继续读取时宜时忌"}
+  ],
+  "candidates":[
+    {"date":"1986-05-27","day":"辛未","officer":"满","day_god":"明堂","class":"黄道","day_status":"未列出"},
+    {"date":"1986-05-28","day":"壬申","officer":"平","day_god":"天刑","class":"黑道","day_status":"未列出"},
+    {"date":"1986-05-29","day":"癸酉","officer":"定","day_god":"朱雀","class":"黑道","day_status":"日宜"},
+    {"date":"1986-05-30","day":"甲戌","officer":"执","day_god":"金匮","class":"黄道","day_status":"日忌"},
+    {"date":"1986-05-31","day":"乙亥","officer":"破","day_god":"天德","class":"黄道","day_status":"未列出"},
+    {"date":"1986-06-01","day":"丙子","officer":"危","day_god":"白虎","class":"黑道","day_status":"日宜"},
+    {"date":"1986-06-02","day":"丁丑","officer":"成","day_god":"玉堂","class":"黄道","day_status":"日忌"}
+  ],
+  "status_identity":[
+    {"status":"日宜","meaning":"该版本的每日宜栏列出此事项"},
+    {"status":"日忌","meaning":"该版本的每日忌栏列出此事项"},
+    {"status":"未列出","meaning":"宜、忌栏均未列出；不补写为中性或可用"}
+  ],
+  "boundaries":["日宜不是最终推荐","未列出不等于无条件","候选表只复演锁定版本，不比较真人条件"],
+  "public_sources":[
+    {"title":"《协纪辨方书》卷十一·用事","note":"用于确立以事项为纲的检索顺序。","url":"https://www.shidianguji.com/book/SK1619/chapter/1l9llrr4rdde7"},
+    {"title":"lunar-javascript 锁定实现","note":"连续7日的干支、建除、日神、黄黑分类及嫁娶宜忌状态来自锁定版本。","url":"https://github.com/6tail/lunar-javascript/tree/4c45a59"}
+  ]
+}

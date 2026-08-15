@@ -1,0 +1,28 @@
+{
+  "id": "palm-mounts-position",
+  "title": "掌丘及其位置",
+  "summary": "掌丘是掌面隆起区域的传统位置名称，不是彼此无缝拼合的精确分区；指根、拇指根、掌侧缘与掌心可作为定位参照。",
+  "image": "/assets/palmistry/ai-left-palm-detail.webp",
+  "mounts": [
+    {"id": "jupiter", "label": "木星丘", "reference": "食指根部下方", "x": 62, "y": 39, "order": 1},
+    {"id": "saturn", "label": "土星丘", "reference": "中指根部下方", "x": 51, "y": 38, "order": 2},
+    {"id": "sun", "label": "太阳丘", "reference": "无名指根部下方", "x": 41, "y": 39, "order": 3},
+    {"id": "mercury", "label": "水星丘", "reference": "小指根部下方", "x": 30, "y": 42, "order": 4},
+    {"id": "venus", "label": "金星丘", "reference": "拇指根部、生命线弧内侧", "x": 67, "y": 66, "order": 5},
+    {"id": "moon", "label": "月丘", "reference": "小指侧掌下部", "x": 28, "y": 71, "order": 6},
+    {"id": "mars-upper", "label": "上火星丘", "reference": "小指侧掌中上部，具体边界因版本而异", "x": 28, "y": 56, "order": 7},
+    {"id": "mars-lower", "label": "下火星丘", "reference": "拇指与食指间下方，具体边界因版本而异", "x": 68, "y": 51, "order": 8},
+    {"id": "mars-plain", "label": "火星平原", "reference": "掌心中央区域", "x": 49, "y": 59, "order": 9}
+  ],
+  "observe_fields": ["区域中心", "参考边界", "隆起程度", "与相邻区域过渡", "左右对应", "光线与按压状态"],
+  "version_notes": [
+    {"label": "火星区域", "content": "常见现代整理分为上火星丘、下火星丘与火星平原，但边界和上下命名可能互换，必须附版本图。"},
+    {"label": "区域边界", "content": "掌丘是参考区域，不画成互不重叠的九块硬边界。"},
+    {"label": "隆起观察", "content": "正面单张图受光线、手掌用力和镜头角度影响，只能记录当前画面。"}
+  ],
+  "boundaries": ["掌丘名称不直接对应行星作用或人格属性", "不从隆起程度推断健康、财富或性格", "位置版本冲突并列保存，不合成唯一图"],
+  "public_sources": [
+    {"title": "《神相全编》卷八公版扫描", "note": "用于索引八卦十二宫之图及传统论手材料，不复制断语。", "url": "https://commons.wikimedia.org/wiki/File:SSID-13003395_%E7%A5%9E%E7%9B%B8%E5%85%A8%E7%B7%A8_%E5%8D%B78.pdf"},
+    {"title": "梁伟贤《麻衣相法》版本初探", "note": "用于提示传统手相材料的篇目与版本并非单一结构。", "url": "https://ccsndb.ncl.edu.tw/nclccs/pdf/01_034_004_01_05.pdf"}
+  ]
+}

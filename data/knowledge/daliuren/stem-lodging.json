@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "id": "daliuren_stem_lodging",
+  "title": "十干寄宫",
+  "summary": "四课不能直接把日干当作地盘位置读取，因此锁定实现先用十干寄宫表把日干转换为地支坐标。当前三套实现可对照这一转换结构；本页保存映射与它在第一课中的职责，不把寄宫扩写成性格或事件象意。",
+  "headline": "日干先变成可在天地盘中查找的位置",
+  "steps": [
+    {"label": "日干", "value": "甲乙丙丁戊己庚辛壬癸", "note": "四课的干侧输入。"},
+    {"label": "寄宫", "value": "寅辰巳未巳未申戌亥丑", "note": "锁定 kinliuren 实现中的十项对应。"},
+    {"label": "查天盘", "value": "寄宫 → 所乘上神", "note": "得到第一课干阳神。"}
+  ],
+  "facts": [
+    {"label": "逐项对应", "detail": "甲寅、乙辰、丙巳、丁未、戊巳、己未、庚申、辛戌、壬亥、癸丑。"},
+    {"label": "只服务坐标", "detail": "寄宫先回答‘去地盘哪里查’，不是一条独立判断结论。"},
+    {"label": "固定例", "detail": "乙日先寄辰，再取辰位所乘天盘，形成第一课上神。"}
+  ],
+  "reading_boundaries": ["当前映射来自锁定软件实现，规则级古籍页码仍待补。", "寄宫与八字十二宫、奇门寄宫不是同一个知识对象。", "页面不接受真人日干生成四课。"],
+  "public_sources": [
+    {"title": "kinliuren 十干寄宫与四课", "url": "https://github.com/kentang2017/kinliuren/blob/3ba45a9540f08269b56d81508a061c7d46938785/src/kinliuren/kinliuren.py", "note": "锁定实现保存十项寄宫映射及其在 all_sike 中的使用。"},
+    {"title": "dalurenpython 四课实现", "url": "https://github.com/wlhyl/dalurenpython/blob/62764a4ad2c10f5ccc34b86c8520d9f4a96ba3aa/shipan/shipan.py", "note": "无仓库许可；只用于结构对照。"}
+  ],
+  "internal_review": {"reviewed_on": "2026-08-10", "owner": ["火华", "Codex"], "status": "formal_mapping_with_bottom_source_gap"}
+}

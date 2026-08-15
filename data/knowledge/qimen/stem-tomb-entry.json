@@ -1,0 +1,47 @@
+{
+  "schema_version":"1.0.0",
+  "id":"qimen_stem_tomb_entry",
+  "title":"天干入墓与乙奇版本分歧",
+  "summary":"两套锁定实现都把天盘干落到指定墓支所在宫视为入墓，并给出十天干完整表。现有结构化资料把三奇与六仪拆开，但同文件口诀又多写了‘乙奇墓乾坤’，与结构表及两套实现的乙只墓戌、落乾六宫冲突，因此不能合成唯一答案。",
+  "implementation_table":[
+    {"stem":"甲","group":"六甲","tomb_branch":"未","palaces":[2]},
+    {"stem":"乙","group":"三奇","tomb_branch":"戌","palaces":[6]},
+    {"stem":"丙","group":"三奇","tomb_branch":"戌","palaces":[6]},
+    {"stem":"丁","group":"三奇","tomb_branch":"丑","palaces":[8]},
+    {"stem":"戊","group":"六仪","tomb_branch":"戌","palaces":[6]},
+    {"stem":"己","group":"六仪","tomb_branch":"丑","palaces":[8]},
+    {"stem":"庚","group":"六仪","tomb_branch":"丑","palaces":[8]},
+    {"stem":"辛","group":"六仪","tomb_branch":"辰","palaces":[4]},
+    {"stem":"壬","group":"六仪","tomb_branch":"辰","palaces":[4]},
+    {"stem":"癸","group":"六仪","tomb_branch":"未","palaces":[2]}
+  ],
+  "variant_register":[
+    {"version":"mingli-skills 结构表","乙奇":"戌 · 乾六宫","status":"结构字段只列一个宫"},
+    {"version":"同文件口诀","乙奇":"乾、坤两宫","status":"与本文件结构表冲突"},
+    {"version":"qimen-go 与 qimenpaipan","乙奇":"戌 · 乾六宫","status":"两套实现一致"}
+  ],
+  "fixed_checks":[
+    {"time":"2024-01-15 12:00","marks":["癸落坤二宫入墓","丙落乾六宫入墓"]},
+    {"time":"2024-06-21 12:00","marks":["己落艮八宫入墓"]},
+    {"time":"2024-12-21 00:00","marks":["庚落艮八宫入墓"]}
+  ],
+  "reading_boundaries":[
+    "本页识别的是天盘干与墓支宫位的结构匹配，不解释力量强弱、冲墓或吉凶。",
+    "甲不属于三奇六仪九个显式地盘对象，但两套实现都在十天干墓库常量中保存甲墓未。",
+    "乙奇乾／坤分歧原样保留；没有规则级底本前不裁定哪一项正确。"
+  ],
+  "public_sources":[
+    {"title":"mingli-skills 锁定入墓表","url":"https://github.com/weizeW/mingli-skills/blob/c16eca0/qimen-dunjia/data/rumu.json","note":"同一文件的结构表与口诀对乙奇落宫存在冲突。"},
+    {"title":"qimen-go 锁定 QMTomb 常量","url":"https://github.com/deminzhang/qimen-go/blob/4d3f58fa0f401b5b3a337f119138e99e90685dda/xuan/qimen_defs.go#L220-L225","note":"十天干各对应一个墓支；渲染按墓支所在宫匹配。"},
+    {"title":"qimenpaipan 锁定墓库常量","url":"https://github.com/redrockhorse/qimenpaipan/blob/b6de54245cf7a514f59e51833dc01a87e1a3a849/qimenpaipan.py","note":"第二套实现保存甲至癸的墓支与宫位表，乙为戌、乾六宫。"}
+  ],
+  "internal_review": {
+    "status":"formal_rule_with_variant_conflict",
+    "reviewed_at":"2026-08-09",
+    "owner":["火华","Codex"],
+    "source_refs":["github_weizew_mingli_skills_c16eca0","github_deminzhang_qimen_go_4d3f58f","github_redrockhorse_qimenpaipan_b6de542"],
+    "deduplication":"本页只登记干落墓宫的结构条件；十八局地盘和盘式页不重复保存状态规则。",
+    "known_gaps":["乙奇乾坤口诀与三份结构实现冲突。","缺规则级古籍页码。"],
+    "boundary":"保存条件与分歧，不输出入墓断语。"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id":"day-clash-sha","title":"日冲与煞方","summary":"冲与煞是两个字段：日冲取当天日支的六冲对支，煞方按日支所属的四组三合局落在东南西北之一。",
+  "rows":[
+    {"branch":"子","clash":"午","sha":"南"},{"branch":"丑","clash":"未","sha":"东"},{"branch":"寅","clash":"申","sha":"北"},{"branch":"卯","clash":"酉","sha":"西"},
+    {"branch":"辰","clash":"戌","sha":"南"},{"branch":"巳","clash":"亥","sha":"东"},{"branch":"午","clash":"子","sha":"北"},{"branch":"未","clash":"丑","sha":"西"},
+    {"branch":"申","clash":"寅","sha":"南"},{"branch":"酉","clash":"卯","sha":"东"},{"branch":"戌","clash":"辰","sha":"北"},{"branch":"亥","clash":"巳","sha":"西"}
+  ],
+  "sha_groups":[
+    {"branches":["申","子","辰"],"sha":"南"},{"branches":["亥","卯","未"],"sha":"西"},{"branches":["寅","午","戌"],"sha":"北"},{"branches":["巳","酉","丑"],"sha":"东"}
+  ],
+  "fixed_example":{"date":"1986-05-29","day":"癸酉","day_branch":"酉","clash_branch":"卯","zodiac":"兔","display":"冲兔（丁卯）","sha":"东"},
+  "boundaries":["冲支与煞方分别保存，不合成一个对象","固定页只解释字段生成，不匹配真人生肖或行动方位"],
+  "public_sources":[
+    {"title":"lunar-javascript 锁定实现","note":"十二支冲表、煞方表和固定样本来自锁定版本。","url":"https://github.com/6tail/lunar-javascript/tree/4c45a59"}
+  ]
+}

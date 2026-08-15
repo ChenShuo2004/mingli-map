@@ -1,0 +1,104 @@
+{
+  "schema_version": "1.0.0",
+  "id": "xiaoliuren_version_register",
+  "title": "七套资料版本登记",
+  "summary": "仓库现存材料可以登记为七套具名版本，但版本名称、对象数量、起课入口和字段覆盖并不相同。本节点只回答每套资料是什么、能支持哪一层比较，以及什么内容可以公开；它不按资料数量选出默认正统。",
+  "versions": [
+    {
+      "id": "mainstream-six-deity",
+      "label": "主流六神版",
+      "source_group": "Divination-Notes-Prompt",
+      "object_model": "六个掌诀位",
+      "casting_entry": "任意三数或农历月、日、时",
+      "field_coverage": ["掌诀位置", "三数接续", "月日时接续"],
+      "rights": "无复用授权；只公开原创结构摘要与来源索引"
+    },
+    {
+      "id": "daoist-nine-deity",
+      "label": "九神道门版",
+      "source_group": "Divination-Notes-Prompt",
+      "object_model": "九个神位",
+      "casting_entry": "九位循环材料",
+      "field_coverage": ["九神名称", "排位", "五行", "方位", "八卦"],
+      "rights": "无复用授权；只公开原创差异摘要与来源索引"
+    },
+    {
+      "id": "ni-haixia-account",
+      "label": "倪海厦说法",
+      "source_group": "Divination-Notes-Prompt",
+      "object_model": "六个掌诀位",
+      "casting_entry": "农历月、日、时，从大安累计",
+      "field_coverage": ["掌上记忆顺序", "月日时累计", "结果解释"],
+      "rights": "无复用授权；结果解释不进入公开层"
+    },
+    {
+      "id": "version-two",
+      "label": "版本二",
+      "source_group": "Divination-Notes-Prompt",
+      "object_model": "六个对象",
+      "casting_entry": "来源中的另一组六宫资料",
+      "field_coverage": ["五行", "方位", "宫义"],
+      "rights": "无复用授权；只保留可比较字段的原创摘要"
+    },
+    {
+      "id": "version-three",
+      "label": "版本三",
+      "source_group": "Divination-Notes-Prompt",
+      "object_model": "六神扩展属性表",
+      "casting_entry": "来源重点在六神属性展开",
+      "field_coverage": ["五行", "方位", "干支", "数字", "六煞十二宫关系"],
+      "rights": "无复用授权；不复制长段解释、案例或判断"
+    },
+    {
+      "id": "maifusha-mit",
+      "label": "maifusha 实现版",
+      "source_group": "maifusha/xiaoliuren",
+      "object_model": "六宫数据与程序化起课",
+      "casting_entry": "月、日、时接续；另有按事项改变起点的约定",
+      "field_coverage": ["六宫", "起课公式", "六神属性", "144条断辞", "42条分类解释"],
+      "rights": "MIT；本专题仍只公开当前节点所需的结构字段"
+    },
+    {
+      "id": "jishiyu-four-plate",
+      "label": "jishiyu 四盘实现",
+      "source_group": "chxb/jishiyu",
+      "object_model": "地、天、人、神四盘及五星、标记",
+      "casting_entry": "时间起课；另有数字加时支路线",
+      "field_coverage": ["六宫地盘", "天盘地支", "六亲", "动态六神", "五星", "月日时标记"],
+      "rights": "源码声明 AGPL-3.0 意图，但仓库许可证状态不完整一致；仅选择性公开原创结构摘要"
+    }
+  ],
+  "comparison_axes": [
+    "对象是六位还是九位",
+    "起课使用三数、月日时，还是另有入口约定",
+    "五行、方位、八卦、干支和数字覆盖到什么程度",
+    "来源是否允许公开复用"
+  ],
+  "reading_boundaries": [
+    "版本名是本项目为辨认来源而使用的标签，不宣称是历史上公认的流派定名。",
+    "材料多不等于更可靠；未取得独立底本前不采用多数票。",
+    "不公开复制无授权来源的长文、案例、断语与缺失图片。"
+  ],
+  "public_sources": [
+    {
+      "title": "Horace-Maxwell/divination-notes-prompt 锁定资料索引",
+      "url": "https://github.com/Horace-Maxwell/divination-notes-prompt/tree/b22ecfaafcd17782ddc0f633df163b6492b766d4",
+      "note": "无许可证；仅用于证明仓库中五套材料的存在及建立原创差异摘要。"
+    },
+    {
+      "title": "maifusha/xiaoliuren 锁定实现",
+      "url": "https://github.com/maifusha/xiaoliuren/tree/00b56579cf35b9961af5468bd2dc90f9211cc146",
+      "note": "MIT仓库；用于登记第六套具名实现及其字段覆盖。"
+    },
+    {
+      "title": "chxb/jishiyu 锁定小六壬实现",
+      "url": "https://github.com/chxb/jishiyu/tree/97b6d6d8e58c6947a86e281d5b69de1032e9bc08",
+      "note": "用于登记第七套四盘实现；只公开原创结构摘要与短字段审计。"
+    }
+  ],
+  "internal_review": {
+    "reviewed_on": "2026-08-10",
+    "owner": ["火华", "Codex"],
+    "status": "formal_source_register"
+  }
+}

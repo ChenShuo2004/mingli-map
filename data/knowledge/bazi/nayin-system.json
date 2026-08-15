@@ -1,0 +1,43 @@
+{
+  "id": "nayin-system",
+  "title": "纳音体系",
+  "summary": "纳音在六十甲子之上叠加一层五行与取象名称。六十组干支按顺序两两成组，每组共用一个名称，因此形成三十组纳音。",
+  "reading_boundary": "这里先把纳音当作一套附加分类与自然取象来理解，不把单个纳音名称直接换成人的性格或吉凶。",
+  "pairs": [
+    {"ganzhi": ["甲子", "乙丑"], "name": "海中金", "element": "金"},
+    {"ganzhi": ["丙寅", "丁卯"], "name": "炉中火", "element": "火"},
+    {"ganzhi": ["戊辰", "己巳"], "name": "大林木", "element": "木"},
+    {"ganzhi": ["庚午", "辛未"], "name": "路旁土", "element": "土"},
+    {"ganzhi": ["壬申", "癸酉"], "name": "剑锋金", "element": "金"},
+    {"ganzhi": ["甲戌", "乙亥"], "name": "山头火", "element": "火"},
+    {"ganzhi": ["丙子", "丁丑"], "name": "涧下水", "element": "水"},
+    {"ganzhi": ["戊寅", "己卯"], "name": "城头土", "element": "土"},
+    {"ganzhi": ["庚辰", "辛巳"], "name": "白蜡金", "element": "金"},
+    {"ganzhi": ["壬午", "癸未"], "name": "杨柳木", "element": "木"},
+    {"ganzhi": ["甲申", "乙酉"], "name": "井泉水", "element": "水"},
+    {"ganzhi": ["丙戌", "丁亥"], "name": "屋上土", "element": "土"},
+    {"ganzhi": ["戊子", "己丑"], "name": "霹雳火", "element": "火"},
+    {"ganzhi": ["庚寅", "辛卯"], "name": "松柏木", "element": "木"},
+    {"ganzhi": ["壬辰", "癸巳"], "name": "长流水", "element": "水"},
+    {"ganzhi": ["甲午", "乙未"], "name": "沙中金", "element": "金"},
+    {"ganzhi": ["丙申", "丁酉"], "name": "山下火", "element": "火"},
+    {"ganzhi": ["戊戌", "己亥"], "name": "平地木", "element": "木"},
+    {"ganzhi": ["庚子", "辛丑"], "name": "壁上土", "element": "土"},
+    {"ganzhi": ["壬寅", "癸卯"], "name": "金箔金", "element": "金"},
+    {"ganzhi": ["甲辰", "乙巳"], "name": "覆灯火", "element": "火"},
+    {"ganzhi": ["丙午", "丁未"], "name": "天河水", "element": "水"},
+    {"ganzhi": ["戊申", "己酉"], "name": "大驿土", "element": "土"},
+    {"ganzhi": ["庚戌", "辛亥"], "name": "钗钏金", "element": "金"},
+    {"ganzhi": ["壬子", "癸丑"], "name": "桑柘木", "element": "木"},
+    {"ganzhi": ["甲寅", "乙卯"], "name": "大溪水", "element": "水"},
+    {"ganzhi": ["丙辰", "丁巳"], "name": "沙中土", "element": "土"},
+    {"ganzhi": ["戊午", "己未"], "name": "天上火", "element": "火"},
+    {"ganzhi": ["庚申", "辛酉"], "name": "石榴木", "element": "木"},
+    {"ganzhi": ["壬戌", "癸亥"], "name": "大海水", "element": "水"}
+  ],
+  "public_sources": [
+    {"title": "《三命通会》纳音总论", "note": "纳音作为六十甲子之上的附加分类体系的总论。", "url": "https://www.luckclub.cn/bazi/005/005/"},
+    {"title": "《三命通会》论纳音取象", "note": "三十组纳音名称与自然取象的传统说明。", "url": "https://www.luckclub.cn/bazi/005/006/"},
+    {"title": "《渊海子平·论六十花甲子纳音并注解》", "note": "核对六十甲子两两成组与三十纳音的对应。", "url": "https://www.luckclub.cn/bazi/001/014/"}
+  ]
+}

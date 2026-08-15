@@ -1,0 +1,23 @@
+{
+  "id": "palm-direction-left-right",
+  "title": "手掌方向与左右手",
+  "summary": "先记录主体左右、掌面或手背、拇指侧与小指侧，再进入线纹和掌丘；画面左右不能代替主体左右。",
+  "image": "/assets/palmistry/ai-palms-pair-neutral.webp",
+  "hands": [
+    {"id": "right", "label": "主体右手", "image_side": "画面左侧", "thumb_side": "画面左缘", "little_side": "画面右缘", "x": 25, "y": 46},
+    {"id": "left", "label": "主体左手", "image_side": "画面右侧", "thumb_side": "画面右缘", "little_side": "画面左缘", "x": 75, "y": 46}
+  ],
+  "direction_pairs": ["指尖／腕部", "拇指侧／小指侧", "掌面／手背", "主体左／主体右", "画面左／画面右"],
+  "capture_checks": ["掌面朝向镜头", "五指自然展开", "指尖与腕横纹完整入镜", "手掌不过度旋转", "双手尺度和光线接近"],
+  "record_fields": ["主体侧别", "掌面或手背", "是否镜像", "画面位置", "拇指侧方向", "指尖方向", "裁切范围", "拍摄时间与光线"],
+  "version_notes": [
+    {"label": "惯用手", "content": "惯用手是独立记录字段，不能只凭左右图像推定。"},
+    {"label": "传统分工", "content": "男左女右、先天后天、过去未来等左右手分工属于不同来源的解释规则，本节点不预设。"},
+    {"label": "镜像图片", "content": "自拍或软件翻转会交换画面左右，但不会改变主体真实侧别。"}
+  ],
+  "boundaries": ["左右手只作定位，不直接对应性格、经历或命运", "不从手部图像识别身份或推断敏感属性", "侧别不明时标记待确认，不凭习惯补写"],
+  "public_sources": [
+    {"title": "NIST SP 500-271：生物特征图像交换格式", "note": "用于确认完整左掌、完整右掌及掌区侧别属于需要明示的记录字段。", "url": "https://www.nist.gov/publications/data-format-interchange-fingerprint-facial-other-biometric-information-ansinist-itl-1-0"},
+    {"title": "梁伟贤《麻衣相法》版本初探", "note": "用于确认论手、论掌纹等篇目在不同版本中的编排并不一致。", "url": "https://ccsndb.ncl.edu.tw/nclccs/pdf/01_034_004_01_05.pdf"}
+  ]
+}

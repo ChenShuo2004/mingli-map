@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0.0",
+  "id": "qimen_eight_door_seasonal_states",
+  "title": "八门的月支季令状态",
+  "summary": "八门先按自身五行分成五组，再把月支换成春、夏、四季、秋、冬，最后读取通用五行旺相休囚死矩阵。本页是由两张来源表机械合成的项目查表，不把它伪装成来源仓库已经提供的一张“八门旺衰专表”。",
+  "derivation": [
+    "从八门对象表读取门五行",
+    "从月支表读取所属季令",
+    "从五行季令矩阵读取旺、相、休、囚、死"
+  ],
+  "dependencies": [
+    {
+      "id": "qimen_eight_doors",
+      "role": "提供八门名称与五行分组"
+    },
+    {
+      "id": "qimen_seasonal_five_phase_states",
+      "role": "提供月支季令分组与五行旺相休囚死矩阵"
+    }
+  ],
+  "door_groups": [
+    {"element": "水", "doors": ["休门"]},
+    {"element": "土", "doors": ["生门", "死门"]},
+    {"element": "木", "doors": ["伤门", "杜门"]},
+    {"element": "火", "doors": ["景门"]},
+    {"element": "金", "doors": ["惊门", "开门"]}
+  ],
+  "fixed_checks": [
+    {"door": "休门", "element": "水", "month_branch": "子", "season": "冬", "state": "旺"},
+    {"door": "休门", "element": "水", "month_branch": "卯", "season": "春", "state": "休"},
+    {"door": "景门", "element": "火", "month_branch": "午", "season": "夏", "state": "旺"},
+    {"door": "开门", "element": "金", "month_branch": "午", "season": "夏", "state": "死"},
+    {"door": "生门", "element": "土", "month_branch": "酉", "season": "秋", "state": "休"}
+  ],
+  "reading_boundaries": [
+    "这是八门五行表与通用季令矩阵的项目级机械合成；来源仓库没有单独提供同形的八门月令专表。",
+    "本页不读取当前月份，只允许切换固定月支查看结构映射。",
+    "季令状态不与门迫、宫制自动合成，也不输出吉门、凶门在旺衰后的结果。",
+    "辰、未、戌、丑统一归入四季土组，暂不细分月末天数。"
+  ],
+  "public_sources": [
+    {
+      "title": "mingli-skills 锁定八门五行表",
+      "url": "https://github.com/weizeW/mingli-skills/blob/c16eca0/qimen-dunjia/data/yuandan.json",
+      "note": "提供八门名称、五行与原始宫位；本页只复用名称和五行。"
+    },
+    {
+      "title": "mingli-skills 锁定五行季令表",
+      "url": "https://github.com/weizeW/mingli-skills/blob/c16eca0/qimen-dunjia/data/wuxing.json",
+      "note": "提供月支季令分组及旺相休囚死矩阵；页面按门五行机械交叉。"
+    }
+  ],
+  "internal_review": {
+    "status": "formal_derived_lookup",
+    "reviewed_at": "2026-08-10",
+    "owner": ["火华", "Codex"],
+    "source_refs": ["github_weizew_mingli_skills_c16eca0"],
+    "deduplication": "八门对象页保存门五行，季令底表保存五行状态；本页只承担门对象到季令状态的可读交叉查表。",
+    "known_gaps": ["缺少独立八门旺衰专表与规则级古籍页码。", "没有门迫、宫制与月令的合成规则。"],
+    "boundary": "固定映射与项目推导，不输出吉凶、比例或个人判断。"
+  }
+}

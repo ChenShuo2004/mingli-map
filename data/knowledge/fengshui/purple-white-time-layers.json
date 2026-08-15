@@ -1,0 +1,20 @@
+{
+  "id": "purple-white-time-layers",
+  "title": "紫白飞星的时间层",
+  "summary": "紫白法把二十年大运、年、月、日、时分别作为入中星来源；各层都沿同一洛书路径飞布，但起星周期、顺逆方向和历法边界各不相同。",
+  "layers": [
+    {"index":1,"name":"大运盘","unit":"20年","input":"三元九运","direction_source":"所属运星入中","output":"运星九宫"},
+    {"index":2,"name":"年紫白","unit":"年","input":"三元与年份","direction_source":"甲子年锚点与逐年序列","output":"年星九宫"},
+    {"index":3,"name":"月紫白","unit":"月","input":"年支组与月序","direction_source":"正月起星与逐月序列","output":"月星九宫"},
+    {"index":4,"name":"日紫白","unit":"日","input":"节气段、甲子锚点与日序","direction_source":"冬至后顺、夏至后逆的具名版本","output":"日星九宫"},
+    {"index":5,"name":"时紫白","unit":"时辰","input":"冬夏至段、日支组与时支序","direction_source":"子时起星与时支推进的具名版本","output":"时星九宫"}
+  ],
+  "common_chain": ["确定时间尺度","按该层起例取得入中星","确认递增或递减方向","入中后沿洛书路径顺布九宫","与其他盘层并列保存，不先解释"],
+  "separate_fields": ["宅盘运星","宅盘山星","宅盘向星","年星","月星","日星","时星"],
+  "overlay_example": {"palace":"同一宫位","fields":["运星","山星","向星","年星","月星","日星","时星"],"rule":"各字段并列保存；后加入的时间层不得覆盖宅盘或其他时间层"},
+  "boundaries": ["时间层共用九星名称与洛书路径，不等于共用同一条起星公式","日、时起例采用一套可指认版本，不宣称唯一通行法","多层星数并列只说明结构，不生成住宅、方位或择时结论"],
+  "public_sources": [
+    {"title":"南华大学：风水场域之意象性研究","note":"用于确认大运及年、月、日、时紫白的五层时间结构与不同起例。","url":"https://nhuir.nhu.edu.tw/retrieve/28545/092NHU05699014-001.pdf"},
+    {"title":"《御定星历考原》卷二","note":"用于核对值年星入中后顺行九宫的结构。","url":"https://www.shidianguji.com/book/SK1618/chapter/1jurstr85mvx7"}
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "shensha-reading",
+  "title": "神煞查法示例",
+  "summary": "神煞不是一组可以直接背诵的性格标签，而是由特定干支作基准、按固定规则找到触发位置的符号系统。先辨认查法，再讨论它在整体结构中的位置。",
+  "groups": [
+    {"basis": "寅午戌", "yima": "申", "xianchi": "卯", "huagai": "戌"},
+    {"basis": "申子辰", "yima": "寅", "xianchi": "酉", "huagai": "辰"},
+    {"basis": "巳酉丑", "yima": "亥", "xianchi": "午", "huagai": "丑"},
+    {"basis": "亥卯未", "yima": "巳", "xianchi": "子", "huagai": "未"}
+  ],
+  "symbols": [
+    {"id": "yima", "label": "驿马", "rule": "取三合局所冲的地支"},
+    {"id": "xianchi", "label": "咸池", "rule": "取三合局对应的沐浴位"},
+    {"id": "huagai", "label": "华盖", "rule": "取三合局的库位"}
+  ],
+  "reading_steps": [
+    {"label": "定基准", "text": "先确认这条神煞用年支、日支、日干还是其他位置起查。"},
+    {"label": "找触发", "text": "按该条规则找到对应的天干或地支。"},
+    {"label": "查出现", "text": "再看触发字是否出现在其余柱位。"},
+    {"label": "回整体", "text": "把符号放回五行、十神、旺衰与格局中阅读。"}
+  ],
+  "reading_boundary": "《三命通会》总论提醒神煞不可拘定，轻重要通变。查法结构只能确定触发位置，不能把符号直接换成个人结论。",
+  "public_sources": [
+    {"title": "《三命通会·论驿马》", "note": "驿马查法来源。", "url": "https://www.luckclub.cn/bazi/005/035/"},
+    {"title": "《三命通会·论咸池》", "note": "咸池查法来源。", "url": "https://www.luckclub.cn/bazi/005/036/"},
+    {"title": "《三命通会·论华盖》", "note": "华盖查法来源。", "url": "https://www.luckclub.cn/bazi/005/042/"},
+    {"title": "《三命通会·论元辰》", "note": "元辰的分组与冲前冲后查法来源。", "url": "https://www.luckclub.cn/bazi/005/054/"}
+  ]
+}

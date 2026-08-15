@@ -1,0 +1,99 @@
+{
+  "schema_version": "1.0.0",
+  "id": "western_astrology_sect_and_planetary_joys",
+  "title": "教派与喜乐",
+  "summary": "教派先由太阳相对地平线的位置把整张盘分为日间盘或夜间盘，再比较七曜的日间、夜间或随条件变化身份；喜乐则是另一张固定的行星—宫位对应表。当前页面用抽象昼夜切换与十二宫固定盘面说明这两条关系，不把符合教派或落入喜乐宫直接解释成吉凶。",
+  "chart_sects": [
+    {
+      "id": "day",
+      "name": "日间盘",
+      "english": "Diurnal chart",
+      "condition": "太阳在地平线以上",
+      "source_shortcut": "当前作者资料以整宫制7—12宫作为教学入口。",
+      "in_sect": ["sun", "jupiter", "saturn"]
+    },
+    {
+      "id": "night",
+      "name": "夜间盘",
+      "english": "Nocturnal chart",
+      "condition": "太阳在地平线以下",
+      "source_shortcut": "当前作者资料以整宫制1—6宫作为教学入口。",
+      "in_sect": ["moon", "venus", "mars"]
+    }
+  ],
+  "planets": [
+    { "id": "sun", "name": "太阳", "english": "Sun", "symbol": "☉", "sect": "day", "joy_house": 9 },
+    { "id": "moon", "name": "月亮", "english": "Moon", "symbol": "☽", "sect": "night", "joy_house": 3 },
+    { "id": "mercury", "name": "水星", "english": "Mercury", "symbol": "☿", "sect": "conditional", "joy_house": 1 },
+    { "id": "venus", "name": "金星", "english": "Venus", "symbol": "♀", "sect": "night", "joy_house": 5 },
+    { "id": "mars", "name": "火星", "english": "Mars", "symbol": "♂", "sect": "night", "joy_house": 6 },
+    { "id": "jupiter", "name": "木星", "english": "Jupiter", "symbol": "♃", "sect": "day", "joy_house": 11 },
+    { "id": "saturn", "name": "土星", "english": "Saturn", "symbol": "♄", "sect": "day", "joy_house": 12 }
+  ],
+  "joy_houses": [
+    { "house": 1, "planet": "mercury", "source_theme": "生命、身体、自我" },
+    { "house": 3, "planet": "moon", "source_theme": "兄弟、短途旅行、沟通" },
+    { "house": 5, "planet": "venus", "source_theme": "子女、创造、娱乐" },
+    { "house": 6, "planet": "mars", "source_theme": "疾病、仆人、日常劳作" },
+    { "house": 9, "planet": "sun", "source_theme": "信仰、远行、哲学、神谕" },
+    { "house": 11, "planet": "jupiter", "source_theme": "友谊、希望、团体" },
+    { "house": 12, "planet": "saturn", "source_theme": "隐藏、损失、禁闭" }
+  ],
+  "relation_layers": [
+    { "id": "chart", "label": "盘的教派", "question": "太阳在地平线上还是下？", "output": "日间盘／夜间盘" },
+    { "id": "planet", "label": "行星归属", "question": "这颗行星属于日间、夜间还是条件型？", "output": "与当前盘相符／不相符／待额外条件" },
+    { "id": "joy", "label": "喜乐宫", "question": "这颗行星是否在自己的固定喜乐宫？", "output": "行星—宫位对应命中／未命中" }
+  ],
+  "source_differences": [
+    {
+      "field": "昼夜入口",
+      "author_source": "太阳在地平线以上／以下，并以整宫制7—12宫／1—6宫作教学简写。",
+      "implementation_source": "完整计算仍需要实际太阳与地平线关系。",
+      "handling": "页面只切换抽象昼夜，不接收日期、地点或宫位输入。"
+    },
+    {
+      "field": "水星教派",
+      "author_source": "登记为日／夜皆可。",
+      "implementation_source": "当前结构化快照没有核清转换条件。",
+      "handling": "水星始终显示为条件型，不强行归入任一组三星。"
+    },
+    {
+      "field": "喜乐作用",
+      "author_source": "把在喜乐宫列为增加力量的因素。",
+      "implementation_source": "`flatlib`提供`inHouseJoy`查询并把分数纳入项目评分。",
+      "handling": "公开页只显示是否命中，不继承分值或结果解释。"
+    }
+  ],
+  "reading_boundaries": [
+    "日间／夜间按钮是抽象固定状态，不读取系统时间，也不代表当前现实昼夜。",
+    "作者资料的7—12宫／1—6宫是整宫制教学简写，本页不把它升级为所有宫制的精确地平线算法。",
+    "符合教派、违反教派和喜乐命中只保存关系状态，不自动判断一颗星更吉、更凶、更强或更弱。",
+    "Hayz、晨昏性、黄道南北、阴阳星座、日光关系与偶然尊贵总分需要额外条件，留给后续节点。"
+  ],
+  "public_sources": [
+    {
+      "title": "fortune-telling-skills：本命盘解读体系",
+      "url": "https://github.com/doododod/fortune-telling-skills/blob/8bcc734491ac75cfb21c1de8727c9fc3f9427b1e/astrology-chart-analysis/references/natal-chart.md",
+      "note": "提供日间／夜间盘入口、七曜教派身份、七个喜乐宫及作者的作用描述；未逐项给出古典底本版次与页码。"
+    },
+    {
+      "title": "flatlib：偶然尊贵接口",
+      "url": "https://github.com/flatangle/flatlib/blob/856d26b8bd1316ccdafe76399994696f9510de9e/flatlib/dignities/accidental.py",
+      "note": "提供`inHouseJoy`、日光关系、晨昏性、Hayz与其他偶然状态查询；实现分值继续作为项目参数。"
+    },
+    {
+      "title": "flatlib：行星常量",
+      "url": "https://github.com/flatangle/flatlib/blob/856d26b8bd1316ccdafe76399994696f9510de9e/flatlib/const.py",
+      "note": "用于核对七曜对象标识与实现层连接，不替代教派和喜乐的历史来源。"
+    }
+  ],
+  "internal_review": {
+    "status": "formal_relation_node_with_abstract_sect_toggle_and_fixed_joy_map",
+    "reviewed_at": "2026-08-09",
+    "owner": ["火华", "Codex"],
+    "source_refs": ["github_doododod_fortune_telling_skills_8bcc734", "github_flatangle_flatlib_856d26b"],
+    "deduplication": "与七曜分开：七曜定义七个对象，本页正式承接其教派和喜乐字段。与宫位分开：宫位页维护十二宫对象，本页只保存七条喜乐对应。与必然尊贵分开：教派与喜乐属于条件／偶然状态，不是星座尊贵表。",
+    "known_gaps": ["现有作者资料没有给出教派与七个喜乐宫的逐项古典底本。", "水星教派转换条件尚未从当前锁定来源核清。", "整宫宫号简写与实际地平线在边界盘及其他宫制中的关系仍需单独验证。"],
+    "boundary": "抽象昼夜与固定宫位关系教学；无真人输入、排盘、强弱总分、吉凶、性格或事件判断。"
+  }
+}

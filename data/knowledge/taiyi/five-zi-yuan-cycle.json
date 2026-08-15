@@ -1,0 +1,56 @@
+{
+  "schema_version":"1.0.0",
+  "id":"five-zi-yuan-cycle",
+  "title":"五子元的五段七十二局与三百六十编号",
+  "summary":"《武备志》所录太乙法明确说六纪甲子布七十二局，入五子元得到三百六十之数，并以庚午积年余247为例，判作庚子元三十一局；《太乙指津》又保存甲子、丙子、戊子、庚子、壬子五元各七十二局的结构。锁定实现把同一个元内局号n展开为n、n+72、n+144、n+216、n+288五个候选总编号，再以所求年、月、日或时的干支选择其中一项；所以七十二局号、五子元名称与1至360总编号是三层不同字段。固定例中年计阳遁十三局可对应庚子元十三局、总编号229，月计阳遁十一局对应庚子元十一局、总编号227。分计改走min_five_zi_yuan后四个method全部返回空；日计method 3又因27.0浮点局号触发列表索引错误，按原始失败保存，不补造结果。",
+  "identity_layers":[
+    {"id":"local","index":"01","name":"元内局号","range":"1—72","formula":"积数 mod 72，以72承接余0","role":"五段共用局号","note":"回答每一元内部第几局；不能单独决定属于哪一元。"},
+    {"id":"yuan","index":"02","name":"五子元","range":"甲子／丙子／戊子／庚子／壬子","formula":"由同局号的五个候选干支与所求干支匹配","role":"七十二局分段","note":"五元起点在三百六十连续序列中相隔72位。"},
+    {"id":"full","index":"03","name":"五子元总编号","range":"1—360","formula":"元内局号 + 72 × 元序号","role":"锁定函数输出主体","note":"函数返回阳／阴遁加中文总编号，没有单独返回元名。"},
+    {"id":"sexagenary","index":"04","name":"六纪干支位置","range":"6 × 60 = 360","formula":"总编号按六十甲子连续展开","role":"选择五元候选的键","note":"同一元内局号的五个候选相隔72位，干支相隔12位。"}
+  ],
+  "yuan_blocks":[
+    {"index":0,"name":"甲子元","head":"甲子","range":"1—72","offset":0,"first":1,"last":72,"last_ganzhi":"乙亥"},
+    {"index":1,"name":"丙子元","head":"丙子","range":"73—144","offset":72,"first":73,"last":144,"last_ganzhi":"丁亥"},
+    {"index":2,"name":"戊子元","head":"戊子","range":"145—216","offset":144,"first":145,"last":216,"last_ganzhi":"己亥"},
+    {"index":3,"name":"庚子元","head":"庚子","range":"217—288","offset":216,"first":217,"last":288,"last_ganzhi":"辛亥"},
+    {"index":4,"name":"壬子元","head":"壬子","range":"289—360","offset":288,"first":289,"last":360,"last_ganzhi":"癸亥"}
+  ],
+  "board_checkpoints":[
+    {"board":1,"candidates":[{"yuan":"甲子元","ganzhi":"甲子","full":1},{"yuan":"丙子元","ganzhi":"丙子","full":73},{"yuan":"戊子元","ganzhi":"戊子","full":145},{"yuan":"庚子元","ganzhi":"庚子","full":217},{"yuan":"壬子元","ganzhi":"壬子","full":289}],"note":"五元起点；同为元内一局。"},
+    {"board":13,"candidates":[{"yuan":"甲子元","ganzhi":"丙子","full":13},{"yuan":"丙子元","ganzhi":"戊子","full":85},{"yuan":"戊子元","ganzhi":"庚子","full":157},{"yuan":"庚子元","ganzhi":"壬子","full":229},{"yuan":"壬子元","ganzhi":"甲子","full":301}],"note":"固定年计壬子与此行匹配到庚子元、总编号229。"},
+    {"board":60,"candidates":[{"yuan":"甲子元","ganzhi":"癸亥","full":60},{"yuan":"丙子元","ganzhi":"乙亥","full":132},{"yuan":"戊子元","ganzhi":"丁亥","full":204},{"yuan":"庚子元","ganzhi":"己亥","full":276},{"yuan":"壬子元","ganzhi":"辛亥","full":348}],"note":"六十甲子边界；元内局号尚未结束。"},
+    {"board":61,"candidates":[{"yuan":"甲子元","ganzhi":"甲子","full":61},{"yuan":"丙子元","ganzhi":"丙子","full":133},{"yuan":"戊子元","ganzhi":"戊子","full":205},{"yuan":"庚子元","ganzhi":"庚子","full":277},{"yuan":"壬子元","ganzhi":"壬子","full":349}],"note":"同一元内进入第二轮六十甲子的第一个位置。"},
+    {"board":72,"candidates":[{"yuan":"甲子元","ganzhi":"乙亥","full":72},{"yuan":"丙子元","ganzhi":"丁亥","full":144},{"yuan":"戊子元","ganzhi":"己亥","full":216},{"yuan":"庚子元","ganzhi":"辛亥","full":288},{"yuan":"壬子元","ganzhi":"癸亥","full":360}],"note":"五段终点；下一总编号重新回到甲子。"}
+  ],
+  "style_results":[
+    {"style":0,"name":"年计","ganzhi":"壬子","status":"四分支可返回","methods":[{"method":0,"board":"阳遁十三局","local":13,"full":229,"yuan":"庚子元","result":"阳遁二百二十九局","state":"ok"},{"method":1,"board":"阳遁十三局","local":13,"full":229,"yuan":"庚子元","result":"阳遁二百二十九局","state":"ok"},{"method":2,"board":"阳遁一局","local":1,"full":289,"yuan":"壬子元","result":"阳遁二百八十九局","state":"ok"},{"method":3,"board":"阳遁十三局","local":13,"full":229,"yuan":"庚子元","result":"阳遁二百二十九局","state":"ok"}]},
+    {"style":1,"name":"月计","ganzhi":"庚戌","status":"四分支同值","methods":[{"method":0,"board":"阳遁十一局","local":11,"full":227,"yuan":"庚子元","result":"阳遁二百二十七局","state":"ok"},{"method":1,"board":"阳遁十一局","local":11,"full":227,"yuan":"庚子元","result":"阳遁二百二十七局","state":"ok"},{"method":2,"board":"阳遁十一局","local":11,"full":227,"yuan":"庚子元","result":"阳遁二百二十七局","state":"ok"},{"method":3,"board":"阳遁十一局","local":11,"full":227,"yuan":"庚子元","result":"阳遁二百二十七局","state":"ok"}]},
+    {"style":2,"name":"日计","ganzhi":"丙戌","status":"method 3为浮点索引错误","methods":[{"method":0,"board":"阳遁十一局","local":11,"full":83,"yuan":"丙子元","result":"阳遁八十三局","state":"ok"},{"method":1,"board":"阳遁十一局","local":11,"full":83,"yuan":"丙子元","result":"阳遁八十三局","state":"ok"},{"method":2,"board":"阳遁十一局","local":11,"full":83,"yuan":"丙子元","result":"阳遁八十三局","state":"ok"},{"method":3,"board":"阳遁二十七点零局","local":27,"full":null,"yuan":null,"result":"TypeError：浮点局号不能作为列表索引","state":"error"}]},
+    {"style":3,"name":"时计","ganzhi":"戊子","status":"四分支可返回","methods":[{"method":0,"board":"阴遁四十九局","local":49,"full":265,"yuan":"庚子元","result":"阴遁二百六十五局","state":"ok"},{"method":1,"board":"阴遁一局","local":1,"full":145,"yuan":"戊子元","result":"阴遁一百四十五局","state":"ok"},{"method":2,"board":"阴遁十三局","local":13,"full":85,"yuan":"丙子元","result":"阴遁八十五局","state":"ok"},{"method":3,"board":"阴遁四十九局","local":49,"full":265,"yuan":"庚子元","result":"阴遁二百六十五局","state":"ok"}]},
+    {"style":4,"name":"分计","ganzhi":"壬戌","status":"四分支均返回空字符串","methods":[{"method":0,"board":"阴遁四十七局","local":47,"full":null,"yuan":null,"result":"未返回","state":"missing"},{"method":1,"board":"阴遁十一局","local":11,"full":null,"yuan":null,"result":"未返回","state":"missing"},{"method":2,"board":"阴遁十一局","local":11,"full":null,"yuan":null,"result":"未返回","state":"missing"},{"method":3,"board":"阴遁四十七局","local":47,"full":null,"yuan":null,"result":"未返回","state":"missing"}]}
+  ],
+  "layer_differences":[
+    {"label":"局号不是总编号","source":"原典案例称庚子元三十一局","implementation":"函数可能显示总编号247，而基础kook仍显示元内31局","handling":"同时列元名、元内局号和1—360总编号。"},
+    {"label":"元名由范围派生","source":"五子元按甲子、丙子、戊子、庚子、壬子五段各72局","implementation":"get_five_yuan_kook只返回遁别与中文总编号，不单列元名","handling":"元名按1—72、73—144、145—216、217—288、289—360派生，并标为本节点结构化结果。"},
+    {"label":"干支参与选择","source":"年、月、日、时案例都同时给出所求干支与入某元某局","implementation":"five_zi_yuan用所求ji_style干支在五个候选键中取值","handling":"不把总编号写成仅由七十二局号决定；同一局号有五个候选。"},
+    {"label":"阳阴遁来自基础局文","source":"五子元解决三百六十中的元与局，不在选定段另造遁别","implementation":"返回值直接复制kook文的前两个字阳遁或阴遁","handling":"遁别与五子元编号分开解释，避免误以为总编号重新计算阴阳。"},
+    {"label":"分计是独立旁路","source":"选定四计段落只直接覆盖岁、月、日、时","implementation":"分计改调用min_five_zi_yuan，先替换地支再用taiyiju-2索引；固定例四分支均匹配失败并被包装为空","handling":"不把普通five_zi_yuan外推到分计，也不把空字符串补成候选值。"},
+    {"label":"日计method 3保持失败","source":"原典日计可进入五子元，但不支持程序中的浮点局号","implementation":"method 3积日为412371.0，kook产生局数27.0，随后列表索引报TypeError","handling":"显示错误链，不改写为27或推测总编号。"},
+    {"label":"高风险解释不公开","source":"古籍案例继续连接宫位、主客、灾异与行动判断","implementation":"综合盘也会把五子元局与其他断语同屏","handling":"本节点只保存五元、六纪、局号、总编号与实现缺口。"}
+  ],
+  "reading_boundaries":[
+    {"label":"可理解","note":"五个七十二局段怎样组成三百六十总编号，以及六十甲子为什么会走满六纪。"},
+    {"label":"可操作","note":"切换元内局号检查五个干支候选，切换年、月、日、时、分查看固定实现返回。"},
+    {"label":"可复核","note":"局1、13、60、61、72五个检查点与五种时间粒度、四个method。"},
+    {"label":"不由此推出","note":"任何现实灾异、战争、行动、天气、人事或个人结果；分计空值也不表示传统上没有五子元。"}
+  ],
+  "public_sources":[
+    {"title":"《武备志》：五子元七十二局与三百六十之数","url":"https://ctext.org/wiki.pl?chapter=3064539&if=gb&remap=gb","note":"第2条明确六纪甲子布七十二局、入五子元得三百六十，并以余247判为庚子元三十一局；月、日、时段另给跨元案例。后续断语不纳入本节点。"},
+    {"title":"《太乙指津》：五元七十二局案例","url":"https://ctext.org/wiki.pl?chapter=948786&if=gb&remap=gb","note":"保存甲子、丙子、戊子、庚子、壬子五元各七十二局及岁月日时入元案例；OCR不稳处只作结构互证。"},
+    {"title":"kintaiyi锁定五子元映射","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/config.py#L539-L586","note":"five_zi_yuan建立五套72干支键与1—360值；min_five_zi_yuan另作地支替换和索引偏移。"},
+    {"title":"kintaiyi锁定五子元接口","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L500-L580","note":"get_five_yuan_kook组合基础局文遁别、ji_style干支与普通／分计两条映射；同段可见局数与纪元接口。"},
+    {"title":"kintaiyi锁定固定例输入","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/examples/basic_usage.py#L13-L20","note":"沿用1552-09-24 00:00；本页在临时锁定环境复跑五种ji_style与method 0—3。"}
+  ],
+  "internal_review":{"status":"formal_five_zi_yuan_cycle_audit","reviewed_at":"2026-08-06","owner":["火华","Codex"],"runtime_environment":"temporary Python venv; locked repository commit installed from source","runtime_command":"config.five_zi_yuan/five_zi_yuan1/min_five_zi_yuan and Taiyi.kook/get_five_yuan_kook for ji_style=0..4, method=0..3","deduplication":"不并入‘太乙数与七十二局数’：该页解释积数取1—72与同值异义，本页再用干支把元内局号定位到五个72段之一。不并入‘理天理地理人’：三年标签只依赖局号mod3，五子元还依赖干支并生成1—360总编号。不并入‘计法与版本’总览：本页展开五种ji_style的真实返回与两个失败分支。","known_gaps":["五元六纪表的影像逐字校勘尚未完成","min_five_zi_yuan的地支替换依据和taiyiju-2偏移未找到原典或专项测试","日计method 3浮点积数与局号错误尚未修复","five_zi_yuan未发现专项测试"],"boundary":"固定样本与机械枚举，无真人输入、无随机；只展示五元、六纪、元内局号、总编号、干支选择与实现缺口，不展示灾异、战争、天气、行动、人事或个人断语。"}
+}

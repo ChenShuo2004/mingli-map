@@ -1,0 +1,18 @@
+{
+  "id": "image-orientation-recording",
+  "title": "图像方向与记录条件",
+  "summary": "每张教学图先写清主体方向、画面方向、是否镜像、裁切与光照；面部正面和侧面、左手和右手不可只凭画面左右猜测。",
+  "views": [
+    {"id": "face-front", "label": "面部正面", "subject_direction": "面向镜头", "image": "/assets/palmistry/ai-face-front-neutral.webp", "checks": ["头部正立", "表情自然", "额顶至下颏完整", "左右边界可见"]},
+    {"id": "face-profile", "label": "面部侧面", "subject_direction": "明确左侧或右侧", "image": "/assets/palmistry/ai-face-profile-neutral.webp", "checks": ["侧别已标", "轮廓完整", "头部无俯仰", "不是斜侧面代替正侧面"]},
+    {"id": "palms", "label": "双掌掌面", "subject_direction": "掌心朝向镜头", "image": "/assets/palmistry/ai-palms-pair-neutral.webp", "checks": ["左右手已标", "手腕至指尖完整", "手指自然分开", "掌面无明显扭转"]}
+  ],
+  "direction_fields": ["主体左／右", "画面左／右", "掌心／手背", "正面／侧面", "镜像：是／否／未知"],
+  "capture_conditions": ["均匀光线", "纯净背景", "不使用美颜或形变滤镜", "完整保留观察边界", "同组比较保持距离与视角一致", "遮挡、模糊与过曝单独标记"],
+  "record_fields": ["样本编号", "图像用途", "主体方向", "是否镜像", "裁切范围", "像素尺寸", "光照状态", "遮挡状态", "真实／合成身份", "来源与许可", "标注版本"],
+  "boundaries": ["AI 图只说明位置、方向与记录方法", "未确认镜像时不判断左右手", "拍摄差异不能当作人体差异", "公开页面不接收或保存真人照片"],
+  "public_sources": [
+    {"title": "NIST Face Analysis Technology Evaluation：Face Image Quality", "note": "用于整理姿态、背景、遮挡、画面边界、分辨率等记录条件。", "url": "https://pages.nist.gov/frvt/html/frvt_quality.html"},
+    {"title": "CIPA：Exif 标准与版本记录", "note": "官方标准页列出当前 Exif 规范及历史版本，用于说明方向元数据与显示方向需要分开确认。", "url": "https://www.cipa.jp/e/std/std-sec.html"}
+  ]
+}

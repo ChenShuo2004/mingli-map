@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0.0",
+  "id": "xiaoliuren_casting_entry_conventions",
+  "title": "起课入口与起点约定",
+  "summary": "maifusha 实现版在 README 中把起课入口分成两类：未来时间明确的事项，依据具体类型配合歌诀起课；临时起意、时间不定的事项，从大安起课。来源没有在这段约定里给出完整的“事项类型→起点”映射，因此本节点只保存分流条件与已明确起点。",
+  "version_scope": {
+    "version": "maifusha/xiaoliuren",
+    "commit": "00b56579cf35b9961af5468bd2dc90f9211cc146",
+    "status": "作者特别约定，不代表跨版本通则"
+  },
+  "entry_routes": [
+    {
+      "id": "future-defined",
+      "condition": "未来时间明确的事项",
+      "interface_label": "后事吉凶",
+      "start_rule": "依据具体类型配合歌诀起课",
+      "known_start": null,
+      "coverage": "分流条件已明确；具体类型到起点的完整映射未由README给出"
+    },
+    {
+      "id": "spontaneous-undefined",
+      "condition": "临时起意、时间不定的事项",
+      "interface_label": "当下点拨",
+      "start_rule": "从大安起课",
+      "known_start": "大安",
+      "coverage": "分流条件与起点均明确"
+    }
+  ],
+  "interface_modes": [
+    {"label": "后事吉凶", "rule_coverage": "README有对应说明"},
+    {"label": "谋事择时", "rule_coverage": "界面分类可见；当前摘取资料未给独立起点规则"},
+    {"label": "当下点拨", "rule_coverage": "README明确从大安起"}
+  ],
+  "non_inference_rules": [
+    "不把“依据具体类型”改写成所有未来事项从同一宫起。",
+    "不从界面名称猜测谋事择时的起点。",
+    "第一批固定例从大安起，只代表当下点拨路线的教学夹具。"
+  ],
+  "reading_boundaries": [
+    "页面不让用户选择真实事项并生成起课结果。",
+    "不展示歌诀、事项结论或择时建议。",
+    "获得完整类型映射后新增证据表，不补写来源未给出的起点。"
+  ],
+  "public_sources": [
+    {
+      "title": "maifusha/xiaoliuren README 起课特别约定",
+      "url": "https://github.com/maifusha/xiaoliuren/blob/00b56579cf35b9961af5468bd2dc90f9211cc146/README.md#specification",
+      "note": "明确未来时间事项与临时起意事项使用不同入口，并明确临时起意从大安起。"
+    },
+    {
+      "title": "maifusha/xiaoliuren 锁定界面目录",
+      "url": "https://github.com/maifusha/xiaoliuren/tree/00b56579cf35b9961af5468bd2dc90f9211cc146/template/fragment",
+      "note": "用于登记后事吉凶、谋事择时与当下点拨三种界面分类；不从分类名称反推规则。"
+    }
+  ],
+  "internal_review": {
+    "reviewed_on": "2026-08-09",
+    "owner": ["火华", "Codex"],
+    "status": "formal_versioned_entry_convention"
+  }
+}

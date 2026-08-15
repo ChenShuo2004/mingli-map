@@ -1,0 +1,18 @@
+{
+  "id": "sand-and-four-emblems",
+  "title": "砂与四势",
+  "summary": "“砂”是观察中心周边可辨位置、远近和层次的山体或形体；四势用后、前、左、右四个相对方位组织围护关系。",
+  "four_emblems": [
+    {"position":"后","name":"玄武","textual_form":"垂头","relation":"位于中心后方，承接来势"},
+    {"position":"前","name":"朱雀","textual_form":"翔舞","relation":"位于中心前方，面向明堂"},
+    {"position":"左","name":"青龙","textual_form":"蜿蜒","relation":"位于中心左侧，构成侧方围护"},
+    {"position":"右","name":"白虎","textual_form":"驯俯","relation":"位于中心右侧，构成侧方围护"}
+  ],
+  "sand_fields": ["位置：前后左右","距离：近砂与远砂","高度：高低层次","连续：相接、间断与开口","形态：曲直、开合与朝背"],
+  "reading_order": ["先固定穴场朝前方向","再标后、前、左、右","再区分近远层次","最后记录开口与围合"],
+  "boundaries": ["四势是相对穴场的前后左右，不固定等于北南东西","玄武、朱雀、青龙、白虎在此是位置名称，不是四种实体动物","古籍形容词作为文本术语展示，不转换成现实吉凶断语"],
+  "public_sources": [
+    {"title":"《葬书》内篇","note":"提供玄武垂头、朱雀翔舞、青龙蜿蜒、白虎驯俯的四势文本。","url":"https://ctext.org/wiki.pl?chapter=346403&if=gb&remap=gb"},
+    {"title":"《葬经笺注》","note":"用于核对四势按左、右、前、后而非固定四方命名的注释传统。","url":"https://ctext.org/wiki.pl?chapter=343402&if=en"}
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "id":"taiyi-calculation-modes-versions-fixed-example","topic_id":"taiyi","title":"五种时间粒度与四个积年分支",
+  "summary":"把普通式盘的年、月、日、时、分五种时间粒度，与统宗、金镜、淘金歌、太乙局四个积年分支拆成两条选择轴；命法虽在CLI中同列为第六个mode，实际转入独立的taiyi_life接口，不属于普通pan()的第六种ji_style。本节点只比较固定输入的结构输出，不推荐计法或生成真人命盘。",
+  "fixed_input":"1552年9月24日 0时0分",
+  "time_granularities":[
+    {"id":"year","index":0,"label":"年计","accumulated_label":"积年数","accumulated":1938109,"board":"阳遁十三局","palace":6,"classical_anchor":"卷一目录与卷二均可定位岁计。","implementation_note":"普通pan(0, method)入口；本例使用金镜分支。","source_status":"原典与实现均可定位"},
+    {"id":"month","index":1,"label":"月计","accumulated_label":"积月数","accumulated":23257307,"board":"阳遁十一局","palace":4,"classical_anchor":"卷一目录明确列推月计、积月与月计太乙所在。","implementation_note":"普通pan(1, method)入口。","source_status":"原典与实现均可定位"},
+    {"id":"day","index":2,"label":"日计","accumulated_label":"积日数","accumulated":707883923,"board":"阳遁十一局","palace":4,"classical_anchor":"卷一目录明确列日计差法、积日及日计太乙所在。","implementation_note":"普通pan(2, method)入口。","source_status":"原典与实现均可定位"},
+    {"id":"hour","index":3,"label":"時計","accumulated_label":"积时数","accumulated":8372760049,"board":"阴遁一局","palace":9,"classical_anchor":"卷一目录明确列時計差法与阴阳二遁時計。","implementation_note":"普通pan(3, method)入口；阴阳遁读取节气分支。","source_status":"原典与实现均可定位"},
+    {"id":"minute","index":4,"label":"分计","accumulated_label":"积分数","accumulated":16047790139,"board":"阴遁十一局","palace":6,"classical_anchor":"所引卷一目录列岁、月、日、时，未见分计同名层。","implementation_note":"普通pan(4, method)入口；仓库文档称其现代扩展。","source_status":"实现层明确 · 原典同名层待核"}
+  ],
+  "life_branch":{"cli_mode":"life","mapped_index":5,"actual_route":"taiyi_life(sex, plate_ji=3或4)","ordinary_pan_route":"不会调用pan(5, method)","required_extra_input":"性别；另选時計落宫或分计落宫","boundary":"当前只保存接口分流事实，不开放输入、命盘或个人结论。"},
+  "method_branches":[
+    {"id":"tongzong","index":0,"label":"太乙统宗","base_constant":10153917,"accumulated":10155469,"remainder":13,"board":"阳遁十三局","palace":6,"position":"酉","status":"固定例输出"},
+    {"id":"gold-mirror","index":1,"label":"太乙金镜","base_constant":1936557,"accumulated":1938109,"remainder":13,"board":"阳遁十三局","palace":6,"position":"酉","status":"前述节点采用"},
+    {"id":"gold-panning","index":2,"label":"太乙淘金歌","base_constant":10154193,"accumulated":10155745,"remainder":1,"board":"阳遁一局","palace":1,"position":"乾","status":"固定例产生不同局数"},
+    {"id":"taiyi-bureau","index":3,"label":"太乙局","base_constant":10153917,"accumulated":10155469,"remainder":13,"board":"阳遁十三局","palace":6,"position":"酉","status":"固定例与统宗同值"}
+  ],
+  "interface_differences":[
+    {"label":"六个CLI mode不等于六个pan粒度","evidence":"CLI把life映射为5，但随后改调taiyi_life；taiyi_name只定义0至4。","handling":"改为五种普通式盘粒度＋独立命法。"},
+    {"label":"分计的来源层","evidence":"实现支持ji_style=4；选定原典目录只明确列至時計。","handling":"标作实现层入口，不补写成同名古法。"},
+    {"label":"未接通的方法标签","evidence":"ty_method定义index 4“太乙淘金歌時計捷法”，但accnum与CLI方法只覆盖0至3。","handling":"不计入四个可执行分支，保存为待核问题。"},
+    {"label":"具名分支不等于版本史","evidence":"名称来自锁定接口，四个名称的版本谱系未完成。","handling":"称具名实现分支，不称四大古法定论。"}
+  ],
+  "reading_boundaries":[{"label":"可比较","note":"固定时刻在五种粒度与四个分支下的积数、局数与太乙宫。"},{"label":"不推荐","note":"不判断哪种粒度或分支更准确、更权威。"},{"label":"命法隔离","note":"只说明独立接口，不接收出生资料。"}],
+  "public_sources":[
+    {"title":"《太乙金鏡式經》卷一","url":"https://ctext.org/wiki.pl?chapter=353644&if=gb&remap=gb","note":"目录可定位积年、月计、日计、時計等条目。"},
+    {"title":"《太乙金鏡式經》卷二","url":"https://ctext.org/wiki.pl?chapter=275091&if=gb&remap=gb","note":"用式说明并列岁、月、日、时。"},
+    {"title":"kintaiyi时间粒度与方法名称","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/config.py#L343-L350","note":"taiyi_name定义0至4；ty_method另留index 4标签。"},
+    {"title":"kintaiyi积数与局式实现","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L382-L532","note":"accnum为method 0至3配置常数并生成五类积数。"},
+    {"title":"kintaiyi CLI命法分流","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/cli.py#L42-L50","note":"CLI列life=5；实际life分支改调taiyi_life。"},
+    {"title":"kintaiyi命法独立接口","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L1922-L1990","note":"taiyi_life需要性别和plate_ji。"}
+  ],
+  "internal_review":{"status":"formal_structure_node","reviewed_at":"2026-08-06","owner":["火华","Codex"],"decision":"纠正六种同层计法为五种普通粒度＋独立命法，并拆开时间粒度与积年分支。"}
+}

@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0.0",
+  "id": "daliuren_noble_heavenly_generals",
+  "title": "贵人、昼夜与十二天将",
+  "summary": "贵人是十二天将排布的起点角色，不等于月将。锁定实现先依日干和昼夜选择贵人起点，再按贵人落地盘位置决定顺排或逆排十二天将。jishiyu 另外提供固定白昼、固定夜晚和男顺女逆等选项，应作为软件版本入口并列保存。",
+  "headline": "先取贵人起点，再决定十二天将沿哪一方向排",
+  "steps": [
+    {"label": "取贵人", "value": "日干 × 昼夜", "note": "昼贵、夜贵分别查表。"},
+    {"label": "落地盘", "value": "贵人落支", "note": "起点进入十二支坐标。"},
+    {"label": "判顺逆", "value": "亥子丑寅卯辰／巳午未申酉戌", "note": "jishiyu 的自动模式据落支分顺逆。"},
+    {"label": "布十二将", "value": "贵蛇雀合勾龙空虎常玄阴后", "note": "顺排或逆排一周。"}
+  ],
+  "facts": [
+    {"label": "十二将顺序", "detail": "贵人、螣蛇、朱雀、六合、勾陈、青龙、天空、白虎、太常、玄武、太阴、天后。"},
+    {"label": "昼夜实现", "detail": "qimen-go 与 kinliuren 均以卯至申为昼、酉至寅为夜；实际日出日落不在该实现内。"},
+    {"label": "入口变体", "detail": "jishiyu 可选卯酉区分、强制白昼、强制夜晚，顺逆还可切换男顺女逆。"}
+  ],
+  "comparisons": [
+    {"label": "起点对象", "left": "月将：排天盘", "right": "贵人：排天将", "handling": "两个对象严格分开"},
+    {"label": "顺逆方法", "left": "按贵人落支", "right": "男顺女逆", "handling": "具名实现并列"},
+    {"label": "昼夜来源", "left": "固定时支区间", "right": "真实日出日落", "handling": "现有代码只完成前者"}
+  ],
+  "reading_boundaries": ["天将临支的144条吉凶短语不在本页公开。", "强制昼夜与男顺女逆是软件选项，不提升为共同规则。", "页面不读取当前时刻、性别或地点。"],
+  "public_sources": [
+    {"title": "kinliuren 十二天将实现", "url": "https://github.com/kentang2017/kinliuren/blob/3ba45a9540f08269b56d81508a061c7d46938785/src/kinliuren/kinliuren.py", "note": "提供十二将顺序、昼夜贵人与顺逆实现。"},
+    {"title": "qimen-go 贵人与天将", "url": "https://github.com/deminzhang/qimen-go/blob/4d3f58fa0f401b5b3a337f119138e99e90685dda/xuan/big6.go", "note": "提供固定昼夜区间；日出日落仍为TODO。"},
+    {"title": "jishiyu 贵神入口", "url": "https://github.com/chxb/jishiyu/blob/97b6d6d8e58c6947a86e281d5b69de1032e9bc08/js/da6ren.js", "note": "提供三种贵神入口和两种顺逆选项。"}
+  ],
+  "internal_review": {"reviewed_on": "2026-08-10", "owner": ["火华", "Codex"], "status": "formal_object_and_variant_structure"}
+}

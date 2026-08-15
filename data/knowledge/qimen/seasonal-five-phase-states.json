@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0.0",
+  "id": "qimen_seasonal_five_phase_states",
+  "title": "月支季令与五行旺相休囚死",
+  "summary": "先把十二月支归入春、夏、四季、秋、冬五组，再查五行在该组中的旺、相、休、囚、死。它是后续门、星等对象读取月令状态的底表，不等于九星落宫所用的旺、相、休、囚、废特殊规则。",
+  "month_branch_groups": [
+    {"season": "春", "branches": ["寅", "卯"], "command_element": "木"},
+    {"season": "夏", "branches": ["巳", "午"], "command_element": "火"},
+    {"season": "四季", "branches": ["辰", "未", "戌", "丑"], "command_element": "土"},
+    {"season": "秋", "branches": ["申", "酉"], "command_element": "金"},
+    {"season": "冬", "branches": ["亥", "子"], "command_element": "水"}
+  ],
+  "state_order": ["旺", "相", "休", "囚", "死"],
+  "relation_guide": [
+    {"state": "旺", "relation": "当令五行与所查五行相同"},
+    {"state": "相", "relation": "当令五行生所查五行"},
+    {"state": "休", "relation": "所查五行生当令五行"},
+    {"state": "囚", "relation": "所查五行克当令五行"},
+    {"state": "死", "relation": "当令五行克所查五行"}
+  ],
+  "season_matrix": [
+    {"season": "春", "旺": "木", "相": "火", "休": "水", "囚": "金", "死": "土"},
+    {"season": "夏", "旺": "火", "相": "土", "休": "木", "囚": "水", "死": "金"},
+    {"season": "四季", "旺": "土", "相": "金", "休": "火", "囚": "木", "死": "水"},
+    {"season": "秋", "旺": "金", "相": "水", "休": "土", "囚": "火", "死": "木"},
+    {"season": "冬", "旺": "水", "相": "木", "休": "金", "囚": "土", "死": "火"}
+  ],
+  "fixed_checks": [
+    {"month_branch": "寅", "season": "春", "element": "木", "state": "旺"},
+    {"month_branch": "午", "season": "夏", "element": "金", "state": "死"},
+    {"month_branch": "戌", "season": "四季", "element": "水", "state": "死"},
+    {"month_branch": "酉", "season": "秋", "element": "水", "state": "相"},
+    {"month_branch": "子", "season": "冬", "element": "火", "state": "死"}
+  ],
+  "reading_boundaries": [
+    "四季只按来源表保存辰、未、戌、丑四个土支组，不自行补写每月末十八日等更细时间边界。",
+    "本页只回答某一五行在月支季令中的结构位置，不把旺、相、休、囚、死直接换成吉凶或成败。",
+    "九星落宫另用旺、相、休、囚、废五态；两套状态名称相近，但关系方向不能混用。"
+  ],
+  "public_sources": [
+    {
+      "title": "mingli-skills 锁定五行季令表",
+      "url": "https://github.com/weizeW/mingli-skills/blob/c16eca0/qimen-dunjia/data/wuxing.json",
+      "note": "提供十二月支到五组季令的映射，以及五组旺相休囚死矩阵；仓库称经多源核验，但缺规则级出处。"
+    }
+  ],
+  "internal_review": {
+    "status": "formal_base_matrix",
+    "reviewed_at": "2026-08-09",
+    "owner": ["火华", "Codex"],
+    "source_refs": ["github_weizew_mingli_skills_c16eca0"],
+    "deduplication": "八字专题也有季令五行节点，但本页作为奇门内部的月令底表，专门承接后续八门与九星状态，并登记与九星落宫五态的名称冲突。",
+    "known_gaps": ["来源仓库没有给出五条关系的规则级古籍页码。", "四季土月的细分起止没有进入当前结构。"],
+    "boundary": "固定月支分组与五行状态矩阵，不输出判断。"
+  }
+}

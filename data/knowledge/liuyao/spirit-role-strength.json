@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "id": "liuyao_spirit_role_strength",
+  "title": "原神忌神有力无力",
+  "summary": "原神或忌神的名称只说明它与用神的方向，不等于这条生克一定能够发生。《增删卜易》把当前旺衰、生扶、发动与变化、日辰阶段、空破墓绝以及同动关系并列为作用条件；本节点把这些条件整理成可逐项查看的门，而不把它们压成自动吉凶分数。",
+  "roles": [
+    {"id": "origin", "label": "原神", "direction": "生用神", "question": "这条生助是否有承载？", "active_label": "能生", "inactive_label": "不能生"},
+    {"id": "avoid", "label": "忌神", "direction": "克用神", "question": "这条克制是否有承载？", "active_label": "能克", "inactive_label": "不能克"}
+  ],
+  "condition_groups": [
+    {
+      "id": "current",
+      "label": "当前强弱与外援",
+      "origin_active": ["旺相，或临日月", "得日月、动爻生扶"],
+      "origin_inactive": ["休囚不动", "休囚又受日月、动爻克伤", "休囚并逢空或月破"],
+      "avoid_active": ["旺相，或临日月", "得日月、动爻生扶"],
+      "avoid_inactive": ["休囚不动", "休囚又受日月、动爻克伤", "静而逢空破"]
+    },
+    {
+      "id": "change",
+      "label": "发动与变化",
+      "origin_active": ["动化回头生", "动化进神", "旺动临空或化空，仍列待用"],
+      "origin_inactive": ["休囚动化退", "动化绝、克、破、散"],
+      "avoid_active": ["动化回头生扶", "旺动临空或化空，仍列待用"],
+      "avoid_inactive": ["衰动化退", "动化绝、破、克、散"]
+    },
+    {
+      "id": "stage",
+      "label": "日辰阶段与墓绝",
+      "origin_active": ["长生或帝旺于日辰"],
+      "origin_inactive": ["衰而逢绝", "入日墓、动墓或化墓"],
+      "avoid_active": ["长生或帝旺于日辰"],
+      "avoid_inactive": ["衰而逢绝", "入日墓、动墓或化墓"]
+    },
+    {
+      "id": "co_move",
+      "label": "同动改道",
+      "origin_active": ["原神与忌神同动时，忌神可转而生原神"],
+      "origin_inactive": [],
+      "avoid_active": ["忌神与仇神同动，得仇神生助"],
+      "avoid_inactive": ["忌神与原神同动，直接克用的路径可能改道"]
+    }
+  ],
+  "reading_order": ["先固定用神并生成角色", "再选原神或忌神", "逐组查看支持与限制条件", "保留并存条件，不换算为单一分数"],
+  "distinctions": [
+    {"label": "角色生成", "note": "回答谁是原神、谁是忌神，是方向图。"},
+    {"label": "作用门", "note": "回答已经命名的角色能否承载这条生克，是条件层。"},
+    {"label": "用神本身", "note": "原书另强调：用神若无根，即使原神有力也不能据此直接推出结果。"}
+  ],
+  "reading_boundary": "只展示来源列出的有力、无力条件及其所在层；不自动累计权重，不替用户取用神，不输出吉凶、事项或应期。",
+  "internal_review": {"status": "classical_conditions_and_locked_implementation_primitives_cross_checked", "reviewed_at": "2026-08-05", "source_refs": ["zengshan_buyi_chapter_10_wikisource", "github_horace_maxwell_horosa_liuyao_engine", "github_horace_maxwell_horosa_liuyao_duanjue"]}
+}

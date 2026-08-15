@@ -1,0 +1,335 @@
+{
+  "schema_version": "1.0.0",
+  "id": "western_astrology_fixed_stars_position_and_conjunction",
+  "title": "恒星身份、位置与合相",
+  "summary": "恒星名称、某一日期的黄道位置、亮度参数与是否靠近另一对象是四层不同知识。当前节点以作者列出的四颗恒星为入口，用锁定flatlib依赖的Swiss Ephemeris在1900、2000、2025三个固定历元复算位置，再单独演示软件怎样把视星等映射成合相容许度；来源附加的吉凶词不并入星表身份。",
+  "layers": [
+    {
+      "id": "identity",
+      "name": "恒星身份",
+      "question": "这颗星叫什么，是否存在别名或重复标识？",
+      "outputs": [
+        "英文标识",
+        "中文名",
+        "别名"
+      ]
+    },
+    {
+      "id": "position",
+      "name": "历元位置",
+      "question": "给定日期后，星历返回怎样的黄经与黄纬？",
+      "outputs": [
+        "黄经",
+        "星座度数",
+        "黄纬"
+      ]
+    },
+    {
+      "id": "magnitude",
+      "name": "亮度参数",
+      "question": "实现读取的视星等会映射成多大的项目容许度？",
+      "outputs": [
+        "视星等",
+        "flatlib容许度"
+      ]
+    },
+    {
+      "id": "relation",
+      "name": "合相关系",
+      "question": "另一对象与恒星的黄经距离是否小于该容许度？",
+      "outputs": [
+        "最近黄经距离",
+        "命中／未命中"
+      ]
+    }
+  ],
+  "epochs": [
+    {
+      "id": "1900",
+      "label": "1900-01-01",
+      "year": 1900,
+      "jd_time": "00:00 UT"
+    },
+    {
+      "id": "2000",
+      "label": "2000-01-01",
+      "year": 2000,
+      "jd_time": "00:00 UT"
+    },
+    {
+      "id": "2025",
+      "label": "2025-01-01",
+      "year": 2025,
+      "jd_time": "00:00 UT"
+    }
+  ],
+  "stars": [
+    {
+      "id": "regulus",
+      "name": "轩辕十四",
+      "english": "Regulus",
+      "catalog_alias": "alLeo",
+      "magnitude": 1.4,
+      "flatlib_orb": 7.5,
+      "author_position_note": "狮子座约0°（现代位置已进处女座）",
+      "author_keyword": "荣耀",
+      "positions": {
+        "1900": {
+          "longitude": 148.447707,
+          "latitude": 0.461518,
+          "zodiac": "狮子座 28.45°"
+        },
+        "2000": {
+          "longitude": 149.828983,
+          "latitude": 0.464813,
+          "zodiac": "狮子座 29.83°"
+        },
+        "2025": {
+          "longitude": 150.180618,
+          "latitude": 0.465621,
+          "zodiac": "处女座 0.18°"
+        }
+      }
+    },
+    {
+      "id": "spica",
+      "name": "角宿一",
+      "english": "Spica",
+      "catalog_alias": "alVir",
+      "magnitude": 0.97,
+      "flatlib_orb": 7.5,
+      "author_position_note": "天秤座约24°",
+      "author_keyword": "才华与好运",
+      "positions": {
+        "1900": {
+          "longitude": 202.449595,
+          "latitude": -2.046779,
+          "zodiac": "天秤座 22.45°"
+        },
+        "2000": {
+          "longitude": 203.83608,
+          "latitude": -2.054286,
+          "zodiac": "天秤座 23.84°"
+        },
+        "2025": {
+          "longitude": 204.189037,
+          "latitude": -2.056176,
+          "zodiac": "天秤座 24.19°"
+        }
+      }
+    },
+    {
+      "id": "algol",
+      "name": "大陵五",
+      "english": "Algol",
+      "catalog_alias": "bePer",
+      "magnitude": 2.12,
+      "flatlib_orb": 5.5,
+      "author_position_note": "金牛座约26°",
+      "author_keyword": "破坏与危险",
+      "positions": {
+        "1900": {
+          "longitude": 54.782796,
+          "latitude": 22.418744,
+          "zodiac": "金牛座 24.78°"
+        },
+        "2000": {
+          "longitude": 56.168209,
+          "latitude": 22.430062,
+          "zodiac": "金牛座 26.17°"
+        },
+        "2025": {
+          "longitude": 56.52073,
+          "latitude": 22.432926,
+          "zodiac": "金牛座 26.52°"
+        }
+      }
+    },
+    {
+      "id": "pollux",
+      "name": "北河三",
+      "english": "Pollux",
+      "catalog_alias": "beGem",
+      "magnitude": 1.14,
+      "flatlib_orb": 7.5,
+      "author_position_note": "巨蟹座约23°",
+      "author_keyword": "勇武",
+      "positions": {
+        "1900": {
+          "longitude": 111.845937,
+          "latitude": 6.676886,
+          "zodiac": "巨蟹座 21.85°"
+        },
+        "2000": {
+          "longitude": 113.217431,
+          "latitude": 6.684047,
+          "zodiac": "巨蟹座 23.22°"
+        },
+        "2025": {
+          "longitude": 113.566567,
+          "latitude": 6.685839,
+          "zodiac": "巨蟹座 23.57°"
+        }
+      }
+    }
+  ],
+  "orb_mapping": [
+    {
+      "magnitude_rule": "视星等 < 2",
+      "orb": 7.5
+    },
+    {
+      "magnitude_rule": "视星等 < 3",
+      "orb": 5.5
+    },
+    {
+      "magnitude_rule": "视星等 < 4",
+      "orb": 3.5
+    },
+    {
+      "magnitude_rule": "视星等 < 5",
+      "orb": 1.5
+    },
+    {
+      "magnitude_rule": "其他",
+      "orb": 0.5
+    }
+  ],
+  "fixed_relation_samples": [
+    {
+      "id": "regulus-inside",
+      "star": "regulus",
+      "distance": 7.4,
+      "expected": true,
+      "label": "轩辕十四 · 7.4°"
+    },
+    {
+      "id": "regulus-boundary",
+      "star": "regulus",
+      "distance": 7.5,
+      "expected": false,
+      "label": "轩辕十四 · 7.5°"
+    },
+    {
+      "id": "algol-inside",
+      "star": "algol",
+      "distance": 5.4,
+      "expected": true,
+      "label": "大陵五 · 5.4°"
+    },
+    {
+      "id": "algol-boundary",
+      "star": "algol",
+      "distance": 5.5,
+      "expected": false,
+      "label": "大陵五 · 5.5°"
+    }
+  ],
+  "catalog_inventory": {
+    "list_slots": 35,
+    "unique_ids": 34,
+    "duplicate_id": "Alcyone",
+    "alias_reason": "STAR_PLEIADES直接指向STAR_ALCYONE，列表同时放入两个常量，因此出现两个槽位、一个唯一ID。",
+    "ephemeris_files": [
+      "sefstars.txt",
+      "fixstars.cat"
+    ]
+  },
+  "calculation_chain": [
+    {
+      "label": "选择身份",
+      "note": "常量表提供英文ID；名称或别名本身不包含固定黄道度数。"
+    },
+    {
+      "label": "输入日期",
+      "note": "Julian Day进入Swiss Ephemeris固定星接口，返回该日期的黄经、黄纬和视星等。"
+    },
+    {
+      "label": "生成对象",
+      "note": "实现把星历结果转换为FixedStar对象，并从黄经派生星座位置。"
+    },
+    {
+      "label": "检查关系",
+      "note": "FixedStar.aspects只比较最近黄经距离，并要求距离严格小于由视星等映射的容许度。"
+    }
+  ],
+  "source_differences": [
+    {
+      "field": "位置的时间性",
+      "author_source": "四颗星只给约数；轩辕十四特别提示现代位置已进入处女座。",
+      "flatlib": "固定星接口必须接收日期的Julian Day，再返回当时黄经与黄纬。",
+      "handling": "用1900、2000、2025三个固定历元展示变化，不发布永久度数表。"
+    },
+    {
+      "field": "星表数量",
+      "author_source": "可选参考表列4颗。",
+      "flatlib": "常量列表有35个槽位、34个唯一ID；Alcyone与Pleiades是同一ID。",
+      "handling": "本页入口保持4颗，软件清单只登记库存与重复原因。"
+    },
+    {
+      "field": "关系条件",
+      "author_source": "当前恒星段没有定义合相算法或容许度。",
+      "flatlib": "只允许合相；容许度由视星等分档，且只比较黄经距离。",
+      "handling": "明确标为软件参数，不改写成所有古典流派的统一容许度。"
+    },
+    {
+      "field": "解释标签",
+      "author_source": "每颗恒星附一组简短吉凶或能力词。",
+      "flatlib": "对象只保存ID、位置、黄纬、视星等和关系接口，不带这些解释。",
+      "handling": "解释词留在来源陈述层，不写入星表身份和计算结果。"
+    }
+  ],
+  "reading_boundaries": [
+    "所有日期都是固定历元，不读取当前时间、出生日期、地点或真人星盘。",
+    "恒星位置由特定Swiss Ephemeris版本与星表文件复算；换历元、星表或岁差口径时结果可变化。",
+    "flatlib的亮度—容许度映射与仅黄经合相是软件参数，不宣布为唯一古典规则。",
+    "来源中的荣耀、好运、危险、勇武等词不自动附着到任何个人、事件或行动建议。"
+  ],
+  "public_sources": [
+    {
+      "title": "fortune-telling-skills：重要恒星可选参考",
+      "url": "https://github.com/doododod/fortune-telling-skills/blob/8bcc734491ac75cfb21c1de8727c9fc3f9427b1e/astrology-chart-analysis/references/natal-chart.md#%E9%87%8D%E8%A6%81%E6%81%92%E6%98%9F%E5%8F%AF%E9%80%89%E5%8F%82%E8%80%83",
+      "note": "提供四颗恒星的中文名、英文名、约略黄道位置与作者解释词。"
+    },
+    {
+      "title": "flatlib：恒星常量与列表",
+      "url": "https://github.com/flatangle/flatlib/blob/856d26b8bd1316ccdafe76399994696f9510de9e/flatlib/const.py#L171-L208",
+      "note": "提供固定星ID、Pleiades／Alcyone别名及常量列表。"
+    },
+    {
+      "title": "flatlib：Swiss Ephemeris恒星入口",
+      "url": "https://github.com/flatangle/flatlib/blob/856d26b8bd1316ccdafe76399994696f9510de9e/flatlib/ephem/swe.py#L131-L146",
+      "note": "使用日期Julian Day返回固定星黄经、黄纬与视星等。"
+    },
+    {
+      "title": "flatlib：FixedStar对象与合相条件",
+      "url": "https://github.com/flatangle/flatlib/blob/856d26b8bd1316ccdafe76399994696f9510de9e/flatlib/object.py#L228-L266",
+      "note": "提供视星等到容许度的映射及仅按黄经距离检查合相的接口。"
+    },
+    {
+      "title": "flatlib：固定星对象生成",
+      "url": "https://github.com/flatangle/flatlib/blob/856d26b8bd1316ccdafe76399994696f9510de9e/flatlib/ephem/ephem.py#L65-L76",
+      "note": "把星历返回值转换为FixedStar对象列表。"
+    }
+  ],
+  "internal_review": {
+    "status": "formal_four_star_epoch_and_implementation_relation_comparison",
+    "reviewed_at": "2026-08-09",
+    "owner": [
+      "火华",
+      "Codex"
+    ],
+    "source_refs": [
+      "github_doododod_fortune_telling_skills_8bcc734",
+      "github_flatangle_flatlib_856d26b"
+    ],
+    "computation": "pyswisseph 2.10.3.2 with flatlib locked sefstars.txt/fixstars.cat; 1900/2000/2025-01-01 00:00 UT",
+    "known_gaps": [
+      "四颗恒星解释词缺逐项古典底本、版本与页码核验。",
+      "恒星相位是否应纳入黄纬、赤纬、地平坐标或更窄容许度尚未跨流派核清。",
+      "flatlib其余30个唯一恒星ID尚未逐项核查别名、星表定位与历史用法。",
+      "作者标题把恒星与界并列，但两者没有共享同一种对象结构；界已在必然尊贵节点独立处理。"
+    ],
+    "boundary": "固定历元星表教育与实现参数比较；无实时星历、出生输入、个人合相、恒星吉凶、事件预测或行动建议。"
+  }
+}

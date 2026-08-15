@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0.0",
+  "id": "meihua_line_position_structure",
+  "title": "爻位结构",
+  "summary": "六个爻位可以分别检查阴阳是否居于奇偶位置、二五是否居中、初四二五三上是否异性相应，以及相邻阴阳之间是否形成阴承阳或阴乘阳。锁定实现明确把这套《周易》爻位学标为梅花易数中的后加结构透镜；页面只演示这些可复算关系，不采用来源中的权重、外援、风险或行动判断。",
+  "line_order": {
+    "calculation": "从初爻向上编号为一至六",
+    "display": "盘面从上爻向初爻显示",
+    "halves": "初、二、三属于下卦；四、五、上属于上卦"
+  },
+  "relation_rules": [
+    {"id": "correctness", "label": "得正／失正", "rule": "阳居一、三、五奇位或阴居二、四、六偶位为得正；其余为失正", "scope": "比较爻的阴阳与位置奇偶"},
+    {"id": "centrality", "label": "得中", "rule": "二爻是下卦中位，五爻是上卦中位", "scope": "只由位置二、五决定"},
+    {"id": "correspondence", "label": "有应／无应", "rule": "初与四、二与五、三与上配对；一阴一阳为有应，同阴或同阳为无应", "scope": "比较相隔三位的一组爻"},
+    {"id": "support-ride", "label": "承／乘", "rule": "相邻两爻中，阴在阳下称阴承阳；阴在阳上称阴乘阳", "scope": "以阴爻为主语，不另造阳乘阴或阳承阴"}
+  ],
+  "fixed_example": {
+    "id": "ge",
+    "name": "泽火革",
+    "outer": "兑",
+    "inner": "离",
+    "binary_top_to_bottom": "011101",
+    "moving_line": 1,
+    "lines": [
+      {"position": 1, "name": "初九", "polarity": "阳", "correctness": "得正", "centrality": false, "partner": 4, "correspondence": "无应", "adjacent_relation": ""},
+      {"position": 2, "name": "六二", "polarity": "阴", "correctness": "得正", "centrality": true, "partner": 5, "correspondence": "有应", "adjacent_relation": "阴乘阳"},
+      {"position": 3, "name": "九三", "polarity": "阳", "correctness": "得正", "centrality": false, "partner": 6, "correspondence": "有应", "adjacent_relation": "阴承阳"},
+      {"position": 4, "name": "九四", "polarity": "阳", "correctness": "失正", "centrality": false, "partner": 1, "correspondence": "无应", "adjacent_relation": ""},
+      {"position": 5, "name": "九五", "polarity": "阳", "correctness": "得正", "centrality": true, "partner": 2, "correspondence": "有应", "adjacent_relation": ""},
+      {"position": 6, "name": "上六", "polarity": "阴", "correctness": "得正", "centrality": false, "partner": 3, "correspondence": "有应", "adjacent_relation": "阴乘阳"}
+    ]
+  },
+  "source_boundary": {
+    "preserved": "当位、得中、相应和承乘的结构规则，以及锁定测试中的泽火革固定盘。",
+    "excluded": "最强外援、风险等级、三多凶、占卜建议、权重排序和具体事项解释。",
+    "positioning": "《周易》爻位学的跨传统补充，不是《梅花易数》原书步骤。"
+  },
+  "reading_boundaries": [
+    "页面固定使用泽火革，不接收用户卦象与动爻。",
+    "得正、得中、有应和承乘是不同关系，不能合并成一个分数。",
+    "结构标签不直接等于人物支持、关系顺逆、风险或吉凶。"
+  ],
+  "public_sources": [
+    {
+      "title": "muyen/meihua-yishu 锁定爻位结构实现",
+      "url": "https://github.com/muyen/meihua-yishu/blob/aecdf87ebef26328c32caa65d40b2f9d273088ec/scripts/meihua_calc.py#L397-L468",
+      "note": "支撑得正、得中、三组相应及承乘的确定性计算，并明确标注为后加透镜。"
+    },
+    {
+      "title": "锁定卦象关系资料",
+      "url": "https://github.com/muyen/meihua-yishu/blob/aecdf87ebef26328c32caa65d40b2f9d273088ec/references/hexagram-relationships.md#L10-L44",
+      "note": "支撑三组应爻和承乘术语；其中事项解释与权重不进入公开规则。"
+    },
+    {
+      "title": "锁定爻位盘测试",
+      "url": "https://github.com/muyen/meihua-yishu/blob/aecdf87ebef26328c32caa65d40b2f9d273088ec/tests/test_meihua_calc.py#L291-L340",
+      "note": "支撑泽火革六爻的得正、得中、相应与承乘固定结果。"
+    }
+  ],
+  "internal_review": {
+    "status": "formal_cross_tradition_position_lens",
+    "reviewed_at": "2026-08-09",
+    "owner": ["火华", "Codex"],
+    "source_refs": ["github_muyen_meihua_yishu_aecdf87"],
+    "deduplication": "本互变节点说明卦形生成，爻位结构节点说明六个位置之间的静态关系；六爻专题已有同类基础，但不与梅花易数中的后加透镜合并。",
+    "known_gaps": ["锁定实现只笼统指向《周易》义理，缺具体篇章、版次与页码。", "当前承乘只保存实现采用的两种以阴爻为主语的关系，术语史仍待专门核验。"],
+    "boundary": "只发布四类结构关系和一个固定盘；不生成权重、分数、风险或事项判断。"
+  }
+}

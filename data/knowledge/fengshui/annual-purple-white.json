@@ -1,0 +1,23 @@
+{
+  "id": "annual-purple-white",
+  "title": "年紫白的入中序列",
+  "summary": "年紫白以上元甲子一白、中元甲子四绿、下元甲子七赤为三处锚点，随后逐年递减一位；取得值年星后，再从中宫沿洛书路径顺飞八宫。",
+  "yuan_anchors": [
+    {"yuan":"上元","jiazi_year":1864,"center_star":1,"color_name":"一白"},
+    {"yuan":"中元","jiazi_year":1924,"center_star":4,"color_name":"四绿"},
+    {"yuan":"下元","jiazi_year":1984,"center_star":7,"color_name":"七赤"}
+  ],
+  "rule": {"year_step":"逐年减一","wrap":"一之后回九","palace_flight":"值年星入中后，沿中、乾、兑、艮、离、坎、坤、震、巽顺飞"},
+  "fixed_sequence": [
+    {"year":2024,"ganzhi":"甲辰","center_star":3,"color_name":"三碧"},
+    {"year":2025,"ganzhi":"乙巳","center_star":2,"color_name":"二黑"},
+    {"year":2026,"ganzhi":"丙午","center_star":1,"color_name":"一白"},
+    {"year":2027,"ganzhi":"丁未","center_star":9,"color_name":"九紫"}
+  ],
+  "version_fields": ["采用哪一轮三元甲子","年界按立春、正月初一或其他时点","交界日时所用时区","公历年份速算法的适用范围"],
+  "boundaries": ["逐年逆数的是入中星序，入中后排九宫仍沿洛书路径顺飞","固定序列用于校验字段，不附加年度方位判断","年紫白与二十年运盘是两个不同时间尺度"],
+  "public_sources": [
+    {"title":"《御定星历考原》卷二","note":"记载值年星入中宫、顺行九宫及甲子年一白入中的例子。","url":"https://www.shidianguji.com/book/SK1618/chapter/1jurstr85mvx7"},
+    {"title":"南华大学：建筑门向与玄空风水研究","note":"列出三元甲子锚点、逐年逆寻及年紫白入中表。","url":"https://nhuir.nhu.edu.tw/bitstream/987654321/25746/1/105NHU00356002-001.pdf"}
+  ]
+}

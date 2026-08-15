@@ -1,0 +1,25 @@
+{
+  "id": "hourly-purple-white",
+  "title": "时紫白的冬夏至起例",
+  "summary": "所选《宝海经》版本先分冬至后顺行与夏至后逆行，再按当日地支归入三组，取得子时起星；其余时辰依十二时支次序逐位推进。",
+  "day_branch_groups": [
+    {"branches":["子","午","卯","酉"],"winter_solstice_start":1,"winter_direction":"顺","summer_solstice_start":9,"summer_direction":"逆"},
+    {"branches":["辰","戌","丑","未"],"winter_solstice_start":7,"winter_direction":"顺","summer_solstice_start":3,"summer_direction":"逆"},
+    {"branches":["寅","申","巳","亥"],"winter_solstice_start":4,"winter_direction":"顺","summer_solstice_start":6,"summer_direction":"逆"}
+  ],
+  "fixed_sequences": [
+    {"label":"冬至后 · 子午卯酉日","stars":[1,2,3,4,5,6,7,8,9,1,2,3]},
+    {"label":"冬至后 · 辰戌丑未日","stars":[7,8,9,1,2,3,4,5,6,7,8,9]},
+    {"label":"冬至后 · 寅申巳亥日","stars":[4,5,6,7,8,9,1,2,3,4,5,6]},
+    {"label":"夏至后 · 子午卯酉日","stars":[9,8,7,6,5,4,3,2,1,9,8,7]},
+    {"label":"夏至后 · 辰戌丑未日","stars":[3,2,1,9,8,7,6,5,4,3,2,1]},
+    {"label":"夏至后 · 寅申巳亥日","stars":[6,5,4,3,2,1,9,8,7,6,5,4]}
+  ],
+  "hour_order": ["子","丑","寅","卯","辰","巳","午","未","申","酉","戌","亥"],
+  "reading_chain": ["确定冬至后或夏至后","取得当日地支","归入三组日支","读取子时起星与顺逆","沿十二时支序推进","值时星入中飞布九宫"],
+  "version_fields": ["冬夏至交界时刻与时区","子时采用早子晚子还是单一子时","日支在子初或午夜切换","时辰采用真太阳时、地方时或标准时","全盘飞布方向"],
+  "boundaries": ["本表是论文所引《宝海经》起例，不与其他时紫白版本无声合并","时支序列与钟表时段是两层字段，须另存换算口径","时星结构不接入实时时间，也不输出时辰选择或现实行动结论"],
+  "public_sources": [
+    {"title":"南华大学：风水场域之意象性研究","note":"保存冬至后三组子时起一、七、四顺行及夏至后起九、三、六逆行的时紫白规则。","url":"https://nhuir.nhu.edu.tw/retrieve/28545/092NHU05699014-001.pdf"}
+  ]
+}

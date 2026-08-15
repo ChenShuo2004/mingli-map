@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0.0",
+  "id": "daliuren_seven_hundred_twenty_table_audit",
+  "title": "“720课”为何实际是718项",
+  "summary": "jishiyu 把一张代码表标作“720课”，其预期结构可以理解为60个日柱乘12个时支，共720个键；实际清点只有718项，缺少甲申日午时与未时两个键。名称、自称数量、实际条目和算法是否正确必须分开验收，不能因为变量名写着720就把表视为完整。",
+  "headline": "先数键，再检查覆盖；表名不能代替完整性",
+  "audit": {
+    "expected": {"day_pillars": 60, "hour_branches": 12, "entries": 720},
+    "actual": {"entries": 718, "missing_keys": ["甲申午", "甲申未"]}
+  },
+  "steps": [
+    {"label": "预期维度", "value": "60 日柱 × 12 时支", "note": "若每个组合恰有一项，应为720项。"},
+    {"label": "实际清点", "value": "718 项", "note": "源码对象的实际键数。"},
+    {"label": "缺失键一", "value": "甲申午", "note": "甲申日、午时没有对应项。"},
+    {"label": "缺失键二", "value": "甲申未", "note": "甲申日、未时没有对应项。"}
+  ],
+  "facts": [
+    {"label": "覆盖率", "detail": "718／720，约99.72%；接近完整不等于完整。"},
+    {"label": "缺项范围", "detail": "两个缺项集中在同一日柱甲申，分别对应午、未两个连续时支。"},
+    {"label": "当前处置", "detail": "保存表名、预期维度、实际数量和缺项，不补造缺失课。"}
+  ],
+  "comparisons": [
+    {"label": "数量身份", "left": "来源注释与变量名：720课", "right": "实际对象键：718项", "handling": "两者同时展示"},
+    {"label": "验收结论", "left": "结构覆盖接近完整", "right": "传统课式正确性未验证", "handling": "完整性与准确性分开"}
+  ],
+  "reading_boundaries": ["本页不公开复制718条表内容。", "缺项只证明当前代码表不完整，不自动证明其余718项正确。", "不根据缺失组合生成或推测三传。"],
+  "public_sources": [
+    {"title": "jishiyu 锁定大六壬课表", "url": "https://github.com/chxb/jishiyu/blob/97b6d6d8e58c6947a86e281d5b69de1032e9bc08/js/da6ren.js", "note": "源码注释标作720课；项目清点得到718个实际键。"},
+    {"title": "jishiyu 仓库审计记录", "url": "https://github.com/chxb/jishiyu/tree/97b6d6d8e58c6947a86e281d5b69de1032e9bc08", "note": "仓库许可表达与内容权利分开；本页只发布原创完整性摘要。"}
+  ],
+  "internal_review": {"reviewed_on": "2026-08-10", "owner": ["火华", "Codex"], "status": "formal_table_completeness_audit"}
+}

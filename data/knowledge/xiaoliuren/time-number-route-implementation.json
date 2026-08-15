@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0.0",
+  "id": "xiaoliuren_time_number_route_implementation",
+  "title": "时间起课与报数起课的实现分流",
+  "summary": "同一引擎开放时间与报数两条路线。时间路线把农历月、日和时支序数依次接入六宫；报数路线跳过月宫，用数字先定日宫，再从日宫接续时支。源码写成 `num%6|6`，JavaScript 实际按位或运算，正整数会折成6或7，而不是通常理解的“余数为零时取6”。本页把路线与缺陷同时公开。",
+  "routes": [
+    {"id": "time", "label": "时间起课", "inputs": ["农历月", "农历日", "时支序数"], "earth_rule": "月从大安起；日从月宫起；时从日宫起", "fixed_input": "5／23／戌11", "fixed_result": "小吉（月）→速喜（日）→大安（时）", "status": "结构可复算"},
+    {"id": "number", "label": "报数起课", "inputs": ["任意数字", "时支序数"], "earth_rule": "月宫留空；数字结果从大安定日宫；时从日宫起", "fixed_input": "数字5／戌11", "fixed_result": "空月宫→大安（日）→小吉（时）", "status": "含位运算缺陷"}
+  ],
+  "operator_audit": {"source_expression": "num%6|6", "javascript_order": "先取余，再按位或6", "likely_intent": "num % 6 || 6", "project_decision": "保留实际执行，不替源码静默改正"},
+  "positive_integer_probe": [
+    {"num":1,"result":7},{"num":2,"result":6},{"num":3,"result":7},{"num":4,"result":6},{"num":5,"result":7},{"num":6,"result":6},
+    {"num":7,"result":7},{"num":8,"result":6},{"num":9,"result":7},{"num":10,"result":6},{"num":11,"result":7},{"num":12,"result":6}
+  ],
+  "reading_boundaries": ["报数路线只展示冻结数字5，不提供真人数字输入。", "位运算结果属于锁定代码事实，不证明作者理论意图。", "页面不以修正后的表达式替代仓库实际行为。"],
+  "public_sources": [{"title": "chxb/jishiyu 锁定小六壬引擎", "url": "https://github.com/chxb/jishiyu/blob/97b6d6d8e58c6947a86e281d5b69de1032e9bc08/js/x6ren.js", "note": "用于审计 paipan 与 getEarthPlate 的两条输入路线；不复用长段源码。"}],
+  "internal_review": {"reviewed_on": "2026-08-10", "owner": ["火华", "Codex"], "status": "formal_route_audit"}
+}

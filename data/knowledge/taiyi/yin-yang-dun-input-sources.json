@@ -1,0 +1,74 @@
+{
+  "schema_version":"1.0.0",
+  "id":"yin-yang-dun-input-sources",
+  "title":"阴阳遁的二至分界与分计输入旁路",
+  "summary":"《武备志》与《太乙秘书》在时计／时局段明确以二至分遁：冬至气应后用阳局，夏至后用阴局；《太乙金镜式经》又把阳遁从一宫顺行、阴遁从九宫逆行分开。锁定实现却按ji_style走三类入口：年、月、日计无条件标为阳遁；时计把二十四节气分成冬至起十二节与夏至起十二节，分别返回阳遁、阴遁；分计再覆盖这一步，冬半年用时干支、夏半年用日干支组合判断阴阳，已经生成的分干支不参与定遁。固定时刻1552-09-24因此同时出现年、月、日阳遁与时、分阴遁，但两项阴遁只是当次结果相同，来源并不相同。交节复核还发现1552-12-26小寒发生前，节气回退固定先退15日，跳过仅早14日的冬至而误回大雪，使时计短暂从阳遁退回阴遁；20:21小寒后才恢复阳遁。保存二至原典、五种入口、交节时刻和回退缺口，不把分计旁路写成传统定法。",
+  "rule_layers":[
+    {"id":"source","index":"01","name":"原典时计二至分遁","input":"冬至／夏至气应","output":"冬后阳遁／夏后阴遁","status":"选定原典直接支持","note":"本页只据时计、时局段建立；不自动外推到分计。"},
+    {"id":"ordinary","index":"02","name":"年、月、日实现","input":"ji_style 0／1／2","output":"固定阳遁","status":"锁定实现事实","note":"不读取节气或干支来定遁；不能仅据程序称为通行传统。"},
+    {"id":"hour","index":"03","name":"时计实现","input":"当前节气名称","output":"十二节阳／十二节阴","status":"与二至结构同层","note":"四个method只改变积数与局号，不改变时计遁别。"},
+    {"id":"minute","index":"04","name":"分计实现","input":"冬半年时干支／夏半年日干支","output":"条件组合的阴阳遁","status":"程序旁路，依据待核","note":"分干支只校正积分与局号，没有进入定遁条件。"}
+  ],
+  "season_halves":[
+    {"id":"winter","name":"冬至起半年","dun":"阳遁","terms":["冬至","小寒","大寒","立春","雨水","惊蛰","春分","清明","谷雨","立夏","小满","芒种"],"movement":"原典：阳遁一宫起、顺行","implementation":"时计直接返回阳遁；分计另行判断"},
+    {"id":"summer","name":"夏至起半年","dun":"阴遁","terms":["夏至","小暑","大暑","立秋","处暑","白露","秋分","寒露","霜降","立冬","小雪","大雪"],"movement":"原典：阴遁九宫起、逆行","implementation":"时计直接返回阴遁；分计另行判断"}
+  ],
+  "style_routes":[
+    {"style":0,"name":"年计","selector":"无","rule":"直接写阳遁","uses":"不读取节气／干支","source_status":"实现固定值"},
+    {"style":1,"name":"月计","selector":"无","rule":"直接写阳遁","uses":"不读取节气／干支","source_status":"实现固定值"},
+    {"style":2,"name":"日计","selector":"无","rule":"直接写阳遁","uses":"不读取节气／干支","source_status":"实现固定值"},
+    {"style":3,"name":"时计","selector":"节气所属半年","rule":"冬至组阳／夏至组阴","uses":"jieqi.jq返回的节气名","source_status":"原典时计结构可支持"},
+    {"style":4,"name":"分计","selector":"半年 + 干支组合","rule":"冬组看时干支；夏组看日干支","uses":"不用分干支定遁","source_status":"未找到原典直接依据"}
+  ],
+  "transition_samples":[
+    {"id":"before-summer","datetime":"1552-06-12 03:00","event":"夏至前42分钟","term":"芒种","hour_dun":"阳遁","minute_dun":"阴遁","state":"expected","note":"时计仍在冬至起半年；分计已与时计不同。"},
+    {"id":"after-summer","datetime":"1552-06-12 04:00","event":"夏至后18分钟","term":"夏至","hour_dun":"阴遁","minute_dun":"阳遁","state":"expected","note":"时计按气应切换；分计因改读日干支反向返回。"},
+    {"id":"fixed","datetime":"1552-09-24 00:00","event":"既有固定输入","term":"秋分","hour_dun":"阴遁","minute_dun":"阴遁","state":"same-output","note":"两者同为阴遁，但时计来自节气、分计来自日干支。"},
+    {"id":"before-winter","datetime":"1552-12-12 03:00","event":"冬至前18分钟","term":"大雪","hour_dun":"阴遁","minute_dun":"阴遁","state":"expected","note":"仍属夏至起半年。"},
+    {"id":"after-winter","datetime":"1552-12-12 04:00","event":"冬至后42分钟","term":"冬至","hour_dun":"阳遁","minute_dun":"阴遁","state":"expected","note":"时计按气应切回阳遁。"},
+    {"id":"short-interval-gap","datetime":"1552-12-26 00:00","event":"小寒交节日前","term":"大雪","hour_dun":"阴遁","minute_dun":"阴遁","state":"fallback-gap","note":"实际前一节应是冬至；固定退15日跳过仅早14日的冬至。"},
+    {"id":"after-minor-cold","datetime":"1552-12-26 21:00","event":"小寒后39分钟","term":"小寒","hour_dun":"阳遁","minute_dun":"阴遁","state":"recovered","note":"节气函数进入小寒后，时计恢复冬半年阳遁。"}
+  ],
+  "fixed_style_results":[
+    {"style":0,"name":"年计","selector":"固定阳遁","methods":["阳遁十三局","阳遁十三局","阳遁一局","阳遁十三局"]},
+    {"style":1,"name":"月计","selector":"固定阳遁","methods":["阳遁十一局","阳遁十一局","阳遁十一局","阳遁十一局"]},
+    {"style":2,"name":"日计","selector":"固定阳遁","methods":["阳遁十一局","阳遁十一局","阳遁十一局","阳遁二十七点零局"]},
+    {"style":3,"name":"时计","selector":"秋分属于夏至组","methods":["阴遁四十九局","阴遁一局","阴遁十三局","阴遁四十九局"]},
+    {"style":4,"name":"分计","selector":"夏组读取丙戌日","methods":["阴遁四十七局","阴遁十一局","阴遁十一局","阴遁四十七局"]}
+  ],
+  "minute_rules":[
+    {"half":"冬至组","stem_source":"时干","branch_source":"时支","first_group":"甲丙戊庚壬时干：申酉戌亥子丑为阳，其余为阴","reverse_group":"乙丁己辛癸时干反转上述结果","ignored":"分干支"},
+    {"half":"夏至组","stem_source":"日干","branch_source":"日支","first_group":"甲丙戊庚壬日干：申酉戌亥子丑为阴，其余为阳","reverse_group":"乙丁己辛癸日干反转上述结果","ignored":"分干支"}
+  ],
+  "winter_hour_matrix":[
+    {"hour":"00","ganzhi":"甲子","minute_dun":"阳遁"},{"hour":"02","ganzhi":"乙丑","minute_dun":"阴遁"},{"hour":"04","ganzhi":"丙寅","minute_dun":"阴遁"},{"hour":"06","ganzhi":"丁卯","minute_dun":"阳遁"},{"hour":"08","ganzhi":"戊辰","minute_dun":"阴遁"},{"hour":"10","ganzhi":"己巳","minute_dun":"阳遁"},{"hour":"12","ganzhi":"庚午","minute_dun":"阴遁"},{"hour":"14","ganzhi":"辛未","minute_dun":"阳遁"},{"hour":"16","ganzhi":"壬申","minute_dun":"阳遁"},{"hour":"18","ganzhi":"癸酉","minute_dun":"阴遁"},{"hour":"20","ganzhi":"甲戌","minute_dun":"阳遁"},{"hour":"22","ganzhi":"乙亥","minute_dun":"阴遁"}
+  ],
+  "summer_day_matrix":[
+    {"date":"06-18","ganzhi":"戊申","hour_dun":"阴遁","minute_dun":"阴遁"},{"date":"06-19","ganzhi":"己酉","hour_dun":"阴遁","minute_dun":"阳遁"},{"date":"06-20","ganzhi":"庚戌","hour_dun":"阴遁","minute_dun":"阴遁"},{"date":"06-21","ganzhi":"辛亥","hour_dun":"阴遁","minute_dun":"阳遁"},{"date":"06-22","ganzhi":"壬子","hour_dun":"阴遁","minute_dun":"阴遁"},{"date":"06-23","ganzhi":"癸丑","hour_dun":"阴遁","minute_dun":"阳遁"}
+  ],
+  "implementation_differences":[
+    {"label":"原典直接支撑的是时计","source":"冬至气应后阳局、夏至后阴局，且阳顺阴逆","implementation":"年、月、日也输出遁别，但固定为阳遁","handling":"只把二至规则写入时计层；其余保留为实现事实。"},
+    {"label":"同盘有两条定遁入口","source":"时局以二至为分界","implementation":"分计进入独立干支判断，覆盖此前按节气取得的遁别","handling":"时计与分计分行显示，不因同为时间细粒度而合并。"},
+    {"label":"分计不读取分干支","source":"选定原典未见分计定遁条文","implementation":"积分用分干支校正，但遁别只看日干支或时干支","handling":"本节点明确分开‘局号输入’与‘遁别输入’。"},
+    {"label":"method不改变遁别","source":"二至决定时计阴阳方向，局号另由积时入局","implementation":"四个method共用同一dun变量，只改变积数和1—72局号","handling":"固定例把四个完整局文并排，而不是只列一个结果。"},
+    {"label":"交节按气应时刻切换","source":"原典用‘气应后’而非整日名称","implementation":"夏至03:42与冬至03:18前后，时计在相邻小时正确换遁","handling":"保留精确交节时间与前后样本。"},
+    {"label":"十五日回退存在短间隔漏项","source":"冬至至小寒应连续承接","implementation":"小寒当日交节前固定先退15日，从12月26日跳到12月11日，漏掉12月12日冬至","handling":"将00:00的‘大雪／阴遁’标为节气回退缺口，不当作真实节序。"},
+    {"label":"同值不等于同来源","source":"时计由二至分阴阳","implementation":"固定例时、分皆阴，但前者看秋分，后者看丙戌日","handling":"同时显示selector，避免只读局文首字。"},
+    {"label":"高风险断语排除","source":"原典时计段常连用战争、灾异与行动判断","implementation":"综合盘继续把遁别接到位置与断语","handling":"范围止于输入、方向、局号、交节与实现缺口。"}
+  ],
+  "reading_boundaries":[
+    {"label":"可理解","note":"时计为什么在冬至与夏至气应后切换阳遁、阴遁，以及顺逆方向如何分开。"},
+    {"label":"可操作","note":"切换七个交节样本、五种ji_style与冬夏分计矩阵，查看每条定遁输入。"},
+    {"label":"可复核","note":"固定输入20个完整局文、两个交节时刻、12个冬季时干支与6个夏季日干支。"},
+    {"label":"不由此推出","note":"任何战争、灾异、行动、天气、人事、胜负或个人结果；程序阴阳遁也不等于传统版本共识。"}
+  ],
+  "public_sources":[
+    {"title":"《武备志》：时计二至分遁","url":"https://ctext.org/wiki.pl?chapter=3064539&if=gb&remap=gb","note":"‘求时计’段称冬至节后用阳遁、夏至后用阴局，并以冬至后实例展开；后续战争与灾异解释不纳入本节点。"},
+    {"title":"《太乙秘书》：时局与阴阳起宫","url":"https://ctext.org/wiki.pl?chapter=357849&if=gb&remap=gb","note":"‘时局’称冬至后阳局、夏至后阴局；相邻段保存阳遁一宫顺行、阴遁九宫逆行的结构。"},
+    {"title":"《太乙金镜式经》卷一至卷四：阴阳二遁时计","url":"https://ctext.org/wiki.pl?chapter=465956&if=gb&remap=gb","note":"保存冬夏二至、阳遁一宫顺行、阴遁九宫逆行以及阴阳二遁时计计神法；OCR不稳字句只作结构互证。"},
+    {"title":"kintaiyi锁定局式与定遁入口","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L500-L534","note":"kook显示年／月／日固定阳遁、时计按节气组、分计按日／时干支覆盖，并组合1—72局号。"},
+    {"title":"kintaiyi锁定节气回退实现","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/jieqi.py#L121-L222","note":"交节日先取当天节气时刻；若当前时刻尚未到达，再调用固定从15日前开始搜索的前节气函数。"},
+    {"title":"kintaiyi锁定固定例输入","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/examples/basic_usage.py#L13-L20","note":"沿用1552-09-24 00:00，并新增同年夏至、冬至、小寒交节前后固定样本。"}
+  ],
+  "internal_review":{"status":"formal_yin_yang_dun_input_audit","reviewed_at":"2026-08-06","owner":["火华","Codex"],"runtime_environment":"temporary Python venv; locked repository commit installed from source","runtime_command":"Taiyi.kook for ji_style=0..4 and method=0..3; jieqi.jq around 1552 summer/winter solstice and minor-cold transitions; minute route matrices","deduplication":"不并入‘五种时间粒度’总览：该页回答接口层级，本页展开同一kook内三条定遁入口。不并入‘十精阴遁冲位’：该页解释选定阴遁后的位置转换，本页只解释遁别从哪里来。","known_gaps":["分计干支组合未找到原典直接依据","年／月／日固定阳遁的版本依据未在选定原典中确认","节气回退15日造成的短间隔漏项没有专项测试","kook的五种定遁入口没有独立回归测试"],"boundary":"固定样本与机械枚举，无真人输入、无随机；只展示定遁输入、节气方向、局文与实现缺口。"}
+}

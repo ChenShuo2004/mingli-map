@@ -1,0 +1,24 @@
+{
+  "schema_version":"1.0.0","id":"qimen_duty_star_duty_door","title":"值符星与值使门",
+  "summary":"值符、值使先是两种轮值角色：时旬首所遁六仪在地盘的宫位，指出本旬由哪颗原始星成为值符星、哪扇原始门成为值使门；随后值符星与值使门按各自装盘规则移动到具体落宫。值符星、八神中的值符和‘旬首六仪’不是同一个字段。",
+  "xun_head_instruments":[{"xun":"甲子","instrument":"戊"},{"xun":"甲戌","instrument":"己"},{"xun":"甲申","instrument":"庚"},{"xun":"甲午","instrument":"辛"},{"xun":"甲辰","instrument":"壬"},{"xun":"甲寅","instrument":"癸"}],
+  "role_chain":[
+    {"order":1,"label":"找时旬首","result":"甲子、甲戌、甲申、甲午、甲辰或甲寅之一"},
+    {"order":2,"label":"换成所遁六仪","result":"戊、己、庚、辛、壬、癸之一"},
+    {"order":3,"label":"定位地盘宫","result":"该宫原始星成为值符星，原始门成为值使门"},
+    {"order":4,"label":"分别移动","result":"值符星随天盘规则，值使门随门盘规则得到最终落宫"}
+  ],
+  "fixed_examples":[
+    {"id":"split-2024-01","label":"转盘／拆补固定盘","time":"2024-01-15 12:00","xun":"甲寅","instrument":"癸","ju":"小寒下元阳5局","duty_star":"天蓬落2宫","duty_door":"休门落2宫"},
+    {"id":"flying-2024-06","label":"飞盘／茅山固定盘","time":"2024-06-21 12:00","xun":"甲午","instrument":"辛","ju":"夏至上元阴9局","duty_star":"天心落6宫","duty_door":"开门落6宫"},
+    {"id":"mingfa-2024-12","label":"鸣法／置闰固定盘","time":"2024-12-21 00:00","xun":"甲子","instrument":"戊","ju":"大雪下元阴1局","duty_star":"天蓬落1宫","duty_door":"休门落1宫"}
+  ],
+  "name_boundaries":[{"term":"值符星","identity":"九星中的轮值星"},{"term":"值使门","identity":"八门中的轮值门"},{"term":"值符神","identity":"八神／九神中的神盘对象"},{"term":"旬首六仪","identity":"六甲分别遁于戊己庚辛壬癸的映射"}],
+  "reading_boundaries":["三张盘只用于区分角色和字段，不证明三种盘式的传统正确性。","值符与值使最终落宫算法随转盘、飞盘等实现变化，本页只展示锁定结果。","不把值符、值使映射为现实人物、事项或吉凶。"],
+  "public_sources":[
+    {"title":"mingli-skills 锁定旬首六仪表","url":"https://github.com/weizeW/mingli-skills/blob/c16eca0/qimen-dunjia/data/kongwang.json","note":"提供六甲旬首到六仪的固定映射。"},
+    {"title":"qimen-go 锁定值符值使装配","url":"https://github.com/deminzhang/qimen-go/blob/4d3f58fa0f401b5b3a337f119138e99e90685dda/xuan/qimen.go","note":"提供角色确定、天盘与门盘移动及三张锁定固定盘。"},
+    {"title":"qimenpaipan 锁定值使实现","url":"https://github.com/redrockhorse/qimenpaipan/blob/b6de54245cf7a514f59e51833dc01a87e1a3a849/qimenpaipan.py#L880-L988","note":"第二套转盘实现用于对照值符星、值使门与落宫结构。"}
+  ],
+  "internal_review":{"status":"formal_role_node_with_fixed_implementation_cases","reviewed_at":"2026-08-09","owner":["火华","Codex"],"source_refs":["github_weizew_mingli_skills_c16eca0","github_deminzhang_qimen_go_4d3f58f","github_redrockhorse_qimenpaipan_b6de542"],"deduplication":"本页解释轮值角色；八神对象与盘式版本继续由各自节点维护。","known_gaps":["缺传统课例逐步复原与断言。"],"boundary":"固定盘字段说明，不替真人排盘。"}
+}

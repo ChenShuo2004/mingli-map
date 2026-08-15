@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0",
+  "id": "ziwei_soul_body_masters",
+  "title": "命主与身主",
+  "summary": "命主与身主是命盘顶层的两个星名字段，不是命宫、身宫，也不是把两颗星再安进某个宫位。锁定实现让身主固定读取生年地支；命主则存在输入口径差异：默认算法读取命宫地支，中州配置改读生年地支，而同仓生成文档也写作按生年地支。映射表相同，变化的是命主从哪一个地支取值。",
+  "branch_order": ["子","丑","寅","卯","辰","巳","午","未","申","酉","戌","亥"],
+  "mappings": [
+    {"branch":"子","soul":"贪狼","body":"火星"},
+    {"branch":"丑","soul":"巨门","body":"天相"},
+    {"branch":"寅","soul":"禄存","body":"天梁"},
+    {"branch":"卯","soul":"文曲","body":"天同"},
+    {"branch":"辰","soul":"廉贞","body":"文昌"},
+    {"branch":"巳","soul":"武曲","body":"天机"},
+    {"branch":"午","soul":"破军","body":"火星"},
+    {"branch":"未","soul":"武曲","body":"天相"},
+    {"branch":"申","soul":"廉贞","body":"天梁"},
+    {"branch":"酉","soul":"文曲","body":"天同"},
+    {"branch":"戌","soul":"禄存","body":"文昌"},
+    {"branch":"亥","soul":"巨门","body":"天机"}
+  ],
+  "algorithm_modes": [
+    {"id":"default","label":"默认算法","soul_input":"命宫地支","body_input":"生年地支","note":"命主读取命宫所在支；身主读取生年支。"},
+    {"id":"zhongzhou","label":"中州配置","soul_input":"生年地支","body_input":"生年地支","note":"命主和身主都读取生年支，但各自使用不同星名列。"}
+  ],
+  "documentation_variant": {
+    "label":"同仓生成文档",
+    "soul_input":"生年地支",
+    "body_input":"生年地支",
+    "note":"安命主诀与安身主诀下方均提示按出生年地支；这与锁定源码的默认命主入口不同，因此作为同仓发布面差异保存，不覆盖默认实现。"
+  },
+  "object_boundaries": [
+    {"label":"命主不等于命宫主星","note":"命宫主星读取实际落入命宫的十四主星，空宫时还可能借对宫；命主只从固定十二支表返回一个星名。"},
+    {"label":"身主不等于身宫","note":"身宫是叠加在十二宫之一的宫位坐标；身主是按生年支查出的星名字段，不新增第十三宫。"},
+    {"label":"星名不等于再次安星","note":"表中既有贪狼、巨门等主星，也有文昌、火星等辅星；字段只保存名称，不把对应星曜复制到某个宫格。"}
+  ],
+  "fixed_examples": [
+    {"mode":"default","soul_branch":"卯","year_branch":"巳","soul":"文曲","body":"天机","note":"命宫支卯查命主，生年支巳查身主。"},
+    {"mode":"zhongzhou","soul_branch":"卯","year_branch":"巳","soul":"武曲","body":"天机","note":"中州配置的命主改从生年支巳读取。"}
+  ],
+  "public_sources": [
+    {"title":"iztro：十二地支的命主／身主表","note":"锁定MIT源码逐支保存命主与身主两列，并注释默认命主取命宫地支、身主取生年地支。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/data/earthlyBranches.ts"},
+    {"title":"iztro：默认与中州命主入口","note":"锁定排盘代码明确在中州配置下以生年支查命主，默认则以命宫支查命主；身主始终读取生年支。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/astro/astro.ts#L180-L221"},
+    {"title":"iztro生成文档：安命主诀与安身主诀","note":"同一锁定仓库的生成文档保存两段口诀，并把命主、身主都提示为按出生年地支，作为发布面差异。","url":"https://iztro.com/learn/setup.html#_6-%E5%AE%89%E5%91%BD%E4%B8%BB%E8%AF%80"},
+    {"title":"astro_destiny_analyzer：独立查表与固定断言","note":"无LICENSE仓库的锁定实现保存同一两列映射，并测试卯／子命主及巳／子身主；仅作实现对照，不复制其代码。","url":"https://github.com/Leoricking/astro_destiny_analyzer/blob/12a9f4c870c9928f420a05fa9a7aa543e3ee9ca4/engines/ziwei.py#L439-L460"}
+  ],
+  "internal_review": {
+    "status":"formal_chart_level_name_fields_with_algorithm_input_variant",
+    "reviewed_at":"2026-08-06",
+    "source_refs":["github_sylarlong_iztro_2fb2030","github_leoricking_astro_destiny_analyzer_12a9f4c"],
+    "ownership":"K-ZW.01 基础盘面／命盘顶层字段",
+    "deduplication":"不并入十二宫盘面：命宫与身宫是坐标，命主与身主是星名字段；不并入十四主星：映射可返回禄存、文曲、文昌、火星等非十四主星；不并入辅杂星总表：本对象只处理两列查表及输入口径，不定义全体星曜分类。",
+    "rights_boundary":"iztro源码按MIT范围使用结构；无LICENSE仓库只作独立实现索引与事实对照。生成文档与默认源码入口不一致，不能包装成单一传统共识。",
+    "product_boundary":"只允许切换抽象命宫支、生年支与算法模式；不接收真人出生资料，不解释命主／身主对应的性格或吉凶。"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0.0",
+  "id": "daliuren_month_general_heaven_earth_plate",
+  "title": "月将、占时与天地盘",
+  "summary": "锁定实现把地盘与天盘都表示为十二地支循环：以占时定位地盘起点，把月将放到该位置，再依十二支次序顺布天盘。由此形成十二组地→天映射，并可反向查询天盘所临地支。月将怎样取得属于上游版本问题，不与装盘步骤混写。",
+  "headline": "月将负责天盘起点，占时负责落到地盘哪里",
+  "steps": [
+    {"label": "固定坐标", "value": "子丑寅卯辰巳午未申酉戌亥", "note": "地盘提供十二个位置。"},
+    {"label": "定位", "value": "占时落地盘", "note": "先找到占时对应的地盘位置。"},
+    {"label": "加将", "value": "月将加占时", "note": "把月将放在占时位置。"},
+    {"label": "顺布", "value": "十二支循环一周", "note": "形成十二项天盘置换。"}
+  ],
+  "facts": [
+    {"label": "固定例", "detail": "酉将、未时：未地盘乘酉，申乘戌，酉乘亥，依次循环。"},
+    {"label": "结构检查", "detail": "kinliuren 的成功样本中，天地盘始终各含十二支且互为置换。"},
+    {"label": "月将版本", "detail": "jishiyu 同时提供按节气与年月日时取余两种入口，后者只能标成作者实现。"}
+  ],
+  "comparisons": [
+    {"label": "装盘规则", "left": "月将加占时", "right": "三套实现可比较", "handling": "作为当前共同结构保存"},
+    {"label": "月将来源", "left": "节气换将", "right": "年月日时取余", "handling": "具名版本并列，不合并"}
+  ],
+  "reading_boundaries": ["本页不计算当前节气或实时月将。", "十二项置换通过只证明程序内部结构完整。", "月建十二建星属于 qimen-go 附加层，不等同天地盘本体。"],
+  "public_sources": [
+    {"title": "kinliuren 天地盘实现", "url": "https://github.com/kentang2017/kinliuren/blob/3ba45a9540f08269b56d81508a061c7d46938785/src/kinliuren/kinliuren.py", "note": "提供时支起地盘、月将起天盘的双向映射。"},
+    {"title": "qimen-go 大六壬天地盘", "url": "https://github.com/deminzhang/qimen-go/blob/4d3f58fa0f401b5b3a337f119138e99e90685dda/xuan/big6.go", "note": "提供第二套装盘结构与附加字段。"},
+    {"title": "jishiyu 月将入口", "url": "https://github.com/chxb/jishiyu/blob/97b6d6d8e58c6947a86e281d5b69de1032e9bc08/js/da6ren.js", "note": "展示节气换将与取余入口；后者未提升为共同规则。"}
+  ],
+  "internal_review": {"reviewed_on": "2026-08-10", "owner": ["火华", "Codex"], "status": "formal_implementation_structure"}
+}

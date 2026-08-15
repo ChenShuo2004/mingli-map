@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "id": "liuyao_line_harmony_states",
+  "title": "爻逢合的四种状态",
+  "summary": "六合成员相遇以后，状态还取决于哪一层在合、目标原本动还是静。《增删卜易》把静爻得日月或动爻来合称为合起，动爻逢日月合称为合绊，两动爻相合称为合好，本爻动而变出六合支称为化扶。四个名称不能只由一张六合配对表推出。",
+  "states": [
+    {"id":"rise","label":"合起","target":"静爻","source":"日月或动爻","route":["外来合支","静爻"],"arrow":"合而起","effect":"静态被合起","note":"即使原值休囚，来源说法仍赋予被扶起的意味。"},
+    {"id":"bind","label":"合绊","target":"动爻","source":"日月","route":["日月合支","动爻"],"arrow":"合而绊","effect":"发动受到牵住","note":"先保留动爻身份，再标记它被日月之合牵住。"},
+    {"id":"accord","label":"合好","target":"动爻","source":"另一动爻","route":["动爻 A","动爻 B"],"arrow":"两动相合","effect":"两条动线互相和合","note":"观察对象是两个发动爻之间的六合。"},
+    {"id":"support","label":"化扶","target":"本爻","source":"同位变爻","route":["变爻","本爻"],"arrow":"回头相合","effect":"变爻折返扶本爻","note":"箭头方向固定为同位变爻返回本爻。"}
+  ],
+  "six_harmony_pairs": ["子丑","寅亥","卯戌","辰酉","巳申","午未"],
+  "comparison": [
+    {"label":"六合成员","question":"两支是否属于固定六合对？","answer":"只确认关系存在。"},
+    {"label":"四种状态","question":"谁来合、目标动静怎样？","answer":"生成合起、合绊、合好或化扶。"},
+    {"label":"合冲转向","question":"已有合后来是否又受冲？","answer":"处理先合后冲的关系翻面。"}
+  ],
+  "reading_boundary": "只切换四种结构状态，不把诸合一概写成吉，也不接收真人卦象、事项或日期，不输出成败和应期。",
+  "internal_review": {"status":"zengshan_liuhe_chapter_and_locked_collapsed_harmony_tags_cross_checked","reviewed_at":"2026-08-05","source_refs":["zengshan_buyi_chapter_19_wikisource","github_horace_maxwell_riyue_rel_one_and_returning_harmony"]}
+}

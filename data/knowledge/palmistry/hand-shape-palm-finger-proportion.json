@@ -1,0 +1,26 @@
+{
+  "id": "hand-shape-palm-finger-proportion",
+  "title": "手形与掌指比例",
+  "summary": "手形先拆成掌部长宽、手指相对长度、拇指张角和整体轮廓；比例必须使用固定取点，不能只写长手、短手。",
+  "image": "/assets/palmistry/ai-hand-proportion-comparison.webp",
+  "measurement_lines": [
+    {"id": "palm-length", "label": "掌长", "from": "腕部掌侧横纹中点", "to": "中指掌指连接处", "observe": ["绝对长度", "与掌宽比", "左右差"]},
+    {"id": "palm-width", "label": "掌宽", "from": "食指侧掌缘", "to": "小指侧掌缘", "observe": ["最宽处", "取点高度", "与掌长比"]},
+    {"id": "middle-finger-length", "label": "中指长", "from": "中指掌指连接处", "to": "中指尖", "observe": ["与掌长比", "指节分段", "轴线"]},
+    {"id": "thumb-span", "label": "拇指展开", "from": "虎口", "to": "拇指尖", "observe": ["张角", "可达位置", "是否用力展开"]}
+  ],
+  "ratio_fields": ["掌长÷掌宽", "中指长÷掌长", "食指与无名指相对长度", "小指尖相对无名指末节位置", "拇指长与张角", "左右手同口径差异"],
+  "shape_vocabulary": [
+    {"label": "掌部轮廓", "terms": ["近方形", "近长方形", "上宽下窄", "上窄下宽"]},
+    {"label": "手指轮廓", "terms": ["整体较长", "整体较短", "粗细近似", "粗细变化明显"]},
+    {"label": "指尖外形", "terms": ["圆弧", "较平", "渐尖", "不规则"]},
+    {"label": "整体关系", "terms": ["掌长明显", "掌宽明显", "掌指接近", "左右不对称"]}
+  ],
+  "measurement_steps": ["固定掌面正向图", "标记腕横纹与指根", "分别量掌长掌宽", "量中指与拇指", "计算比例并记录取点版本"],
+  "confounders": ["相机透视", "手指屈曲", "五指张开程度", "裁切与缩放", "测量取点不同"],
+  "boundaries": ["方掌、长掌等词必须附比例依据", "五行手形等分类属于另行保存的传统版本，不由照片自动判定", "比例不用于推断职业、能力、健康或性格"],
+  "public_sources": [
+    {"title": "NIST SP 500-271：完整掌图的尺寸与掌区编码", "note": "用于建立完整掌面、上掌、下掌及侧别的图像记录口径。", "url": "https://www.nist.gov/document/approved-std-20070427-2pdf"},
+    {"title": "梁伟贤《麻衣相法》版本初探", "note": "用于确认论手等材料存在版本与篇目差异，不把现代分类当成古籍唯一结构。", "url": "https://ccsndb.ncl.edu.tw/nclccs/pdf/01_034_004_01_05.pdf"}
+  ]
+}

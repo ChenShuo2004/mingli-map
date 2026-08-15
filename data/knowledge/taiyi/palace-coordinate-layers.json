@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.0",
+  "id": "taiyi_palace_coordinate_layers",
+  "title": "九宫与十六神位",
+  "summary": "把太乙式盘中的九宫数字与外圈十六神位拆成两层坐标：数字宫回答对象归入哪个宫数，十六神位继续区分同一数字宫里的正宫与间神。固定例中的文昌在巽、始击在辰，二者都映射到九宫数字9，却不能因此视作同一位置。仅解释坐标映射、计数差异与实现边界，不把方位转写成吉凶。",
+  "fixed_example": "1552年9月24日 0时0分 · 年计 · 太乙金镜",
+  "palace_numbers": [
+    {"number": 1, "formal_position": "乾", "interstitial_position": "戌", "pair_label": "戌／乾", "fixed_objects": []},
+    {"number": 2, "formal_position": "午", "interstitial_position": "巳", "pair_label": "巳／午", "fixed_objects": []},
+    {"number": 3, "formal_position": "艮", "interstitial_position": "丑", "pair_label": "丑／艮", "fixed_objects": ["合神"]},
+    {"number": 4, "formal_position": "卯", "interstitial_position": "寅", "pair_label": "寅／卯", "fixed_objects": ["计神", "主参将"]},
+    {"number": 5, "formal_position": "中", "interstitial_position": null, "pair_label": "中", "fixed_objects": ["四神"]},
+    {"number": 6, "formal_position": "酉", "interstitial_position": "申", "pair_label": "申／酉", "fixed_objects": ["太乙"]},
+    {"number": 7, "formal_position": "坤", "interstitial_position": "未", "pair_label": "未／坤", "fixed_objects": ["客参将"]},
+    {"number": 8, "formal_position": "子", "interstitial_position": "亥", "pair_label": "亥／子", "fixed_objects": ["主大将"]},
+    {"number": 9, "formal_position": "巽", "interstitial_position": "辰", "pair_label": "辰／巽", "fixed_objects": ["文昌", "始击", "定目", "客大将"]}
+  ],
+  "sixteen_positions": [
+    {"position": "子", "type": "正宫", "palace": 8, "paired_with": "亥", "fixed_objects": ["主大将"]},
+    {"position": "丑", "type": "间神", "palace": 3, "paired_with": "艮", "fixed_objects": ["合神"]},
+    {"position": "艮", "type": "正宫", "palace": 3, "paired_with": "丑", "fixed_objects": []},
+    {"position": "寅", "type": "间神", "palace": 4, "paired_with": "卯", "fixed_objects": ["计神"]},
+    {"position": "卯", "type": "正宫", "palace": 4, "paired_with": "寅", "fixed_objects": ["主参将"]},
+    {"position": "辰", "type": "间神", "palace": 9, "paired_with": "巽", "fixed_objects": ["始击", "定目"]},
+    {"position": "巽", "type": "正宫", "palace": 9, "paired_with": "辰", "fixed_objects": ["文昌", "客大将"]},
+    {"position": "巳", "type": "间神", "palace": 2, "paired_with": "午", "fixed_objects": []},
+    {"position": "午", "type": "正宫", "palace": 2, "paired_with": "巳", "fixed_objects": []},
+    {"position": "未", "type": "间神", "palace": 7, "paired_with": "坤", "fixed_objects": []},
+    {"position": "坤", "type": "正宫", "palace": 7, "paired_with": "未", "fixed_objects": ["客参将"]},
+    {"position": "申", "type": "间神", "palace": 6, "paired_with": "酉", "fixed_objects": []},
+    {"position": "酉", "type": "正宫", "palace": 6, "paired_with": "申", "fixed_objects": ["太乙"]},
+    {"position": "戌", "type": "间神", "palace": 1, "paired_with": "乾", "fixed_objects": []},
+    {"position": "乾", "type": "正宫", "palace": 1, "paired_with": "戌", "fixed_objects": []},
+    {"position": "亥", "type": "间神", "palace": 8, "paired_with": "子", "fixed_objects": []}
+  ],
+  "coordinate_examples": [
+    {"label": "同宫数，不同神位", "left": "文昌 · 巽 · 正宫", "right": "始击 · 辰 · 间神", "shared": "都映射到九宫数字9", "note": "数字宫相同只表示进入同一宫数对，不等于十六神位同位。"},
+    {"label": "数字宫转正宫标签", "left": "主大将 · 8宫", "right": "子 · 正宫", "shared": "锁定实现以 num2gong 转写", "note": "将宫先是数字，再转成太乙式的正宫标签；不能套用普通洛书宫名。"},
+    {"label": "中五单列", "left": "四神 · 中", "right": "太乙 · 6宫／酉", "shared": "中宫没有成对间神", "note": "原典“不游中五”针对太乙行宫；不据此推出所有符号都不能到中。"}
+  ],
+  "counting_rule": {
+    "classical": "卷二说明：天目在正宫按本数行算；天目在间神，则加一数再行算，至太乙宫止。",
+    "implementation": "锁定实现把十六位、间辰列表与宫数映射保存为配置，但本固定例的主客定算直接读取阴阳七十二局查表结果。",
+    "handling": "公开原典的计数差异，同时明确固定例数值来自查表实现；不声称本节点已用十六位逐步重算出18／19／19。"
+  },
+  "model_differences": [
+    {"label": "普通洛书与太乙宫名", "evidence": "卷二先列戴九履一、左三右七等九宫常道，随后说明太乙式九宫另有差位；锁定实现把1至9标为乾、午、艮、卯、中、酉、坤、子、巽。", "handling": "使用锁定太乙宫名，不把1宫写成坎、9宫写成离。"},
+    {"label": "九个数字不等于十六个位置", "evidence": "锁定实现用八组正宫／间神共享八个外宫数字，中五另列。", "handling": "所有位置同时保存神位名、类型和宫数。"},
+    {"label": "序列不冒充复原盘图", "evidence": "代码给出十六位循环次序，但本轮没有完成不同底本图式方向与版面的图像校勘。", "handling": "交互只展示相邻序列与成对映射，不宣称复原古式盘朝向。"},
+    {"label": "不游中五的适用对象", "evidence": "卷一的八宫顺行、不游中五用于推太乙所在；锁定输出仍允许四神等其他对象出现“中”。", "handling": "不把太乙行宫规则扩大成全盘对象禁入中宫。"}
+  ],
+  "reading_boundaries": [
+    {"label": "可理解", "note": "九宫数字、正宫／间神、十六神位及其成对映射。"},
+    {"label": "可比较", "note": "固定例中的对象为什么可能宫数相同而神位不同。"},
+    {"label": "不由此推出", "note": "某个方向、宫位或神位对现实事件与个人具有吉凶效力。"}
+  ],
+  "public_sources": [
+    {"title": "《太乙金鏡式經》卷二：九宫、式体与正宫／间神", "url": "https://ctext.org/wiki.pl?chapter=275091&if=gb&remap=gb", "note": "第13至15条区分九宫常道与太乙式差位；第38至41条列十二辰、四维、八门、九宫、十二神，并说明天目在正宫与间神的计数差异。该资料为OCR连接文本，关键字形仍需回看底本影像。"},
+    {"title": "《太乙金鏡式經》卷一：顺行八宫、不游中五", "url": "https://ctext.org/wiki.pl?chapter=582866&if=gb&remap=gb", "note": "推太乙所在段把宫数顺行范围限定为八宫，并明确不游中五；本页只把它用于太乙行宫。"},
+    {"title": "kintaiyi锁定十六位与宫数配置", "url": "https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/config.py#L52-L67", "note": "固定提交列出间辰、十六位顺序、十六神名及十六位到八个外宫数字的成对映射。"},
+    {"title": "kintaiyi锁定数字宫转写", "url": "https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/config.py#L337-L347", "note": "num2gong把1至9转写为乾、午、艮、卯、中、酉、坤、子、巽；该映射属于锁定实现。"},
+    {"title": "kintaiyi锁定盘面位置输出", "url": "https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L729-L755", "note": "盘面输出把十六神位对象与经num2gong转换的数字将宫并列放入同一位置表。"}
+  ],
+  "internal_review": {
+    "status": "formal_coordinate_node_locked_implementation_with_classical_anchor",
+    "reviewed_at": "2026-08-06",
+    "owner": ["火华", "Codex"],
+    "source_refs": ["github_kentang2017_kintaiyi_f2719d6", "ctext_taiyi_jinjing_vol_1", "ctext_taiyi_jinjing_vol_2"],
+    "deduplication": "不并入‘固定年计装盘’：该页只给一个太乙落宫结果；本页解释宫数与十六神位的坐标关系。不并入‘盘面符号身份’：该页回答对象属于哪条生成支线；本页回答不同对象怎样共享或区分位置。不并入‘主客算与七类位置关系’：关系页使用坐标证据，本页定义证据所依赖的坐标层。",
+    "known_gaps": ["不同古式盘图像的方位、阅读方向与版面尚未完成底本级对照", "固定例主客定算来自锁定查表，尚未以原典逐位行算独立复核"],
+    "boundary": "固定样本、无真人输入、无随机、无方向吉凶、国运、战争、灾异或个人结论。"
+  }
+}

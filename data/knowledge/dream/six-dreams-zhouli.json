@@ -1,0 +1,34 @@
+{
+  "id": "six-dreams-zhouli",
+  "title": "《周礼》的六梦",
+  "summary": "《周礼》占梦职文列正梦、噩梦、思梦、寤梦、喜梦、惧梦六名；六梦是占梦官要辨认的梦类，不是六条固定吉凶答案。",
+  "dreams": [
+    {"index":1,"name":"正梦","zhengxuan":"无所感动，平安自梦","plain":"没有明显外在触发而形成的梦","evidence":"郑玄注释口径"},
+    {"index":2,"name":"噩梦","zhengxuan":"惊愕而梦","plain":"因惊愕而形成的梦","evidence":"郑玄注释口径"},
+    {"index":3,"name":"思梦","zhengxuan":"觉时所思念之而梦","plain":"清醒时思念延续到梦中","evidence":"郑玄注释口径"},
+    {"index":4,"name":"寤梦","zhengxuan":"觉时道之而梦","plain":"清醒时谈论的内容进入梦中","evidence":"郑玄注释口径"},
+    {"index":5,"name":"喜梦","zhengxuan":"喜悦而梦","plain":"因喜悦而形成的梦","evidence":"郑玄注释口径"},
+    {"index":6,"name":"惧梦","zhengxuan":"恐惧而梦","plain":"因恐惧而形成的梦","evidence":"郑玄注释口径"}
+  ],
+  "office_sequence": [
+    {"label":"观","content":"掌其岁时，观天地之会"},
+    {"label":"辨","content":"辨阴阳之气"},
+    {"label":"占","content":"以日月星辰占六梦之吉凶"},
+    {"label":"献","content":"季冬聘王梦，献吉梦于王"}
+  ],
+  "identity_notes": [
+    "六个名称来自《周礼》正文",
+    "各类白话含义依据郑玄注，不冒充正文原句",
+    "《周礼》同时交代天时与星辰条件，不能只摘六个名字",
+    "正文没有为六梦各配一条通用吉凶占辞"
+  ],
+  "boundaries": [
+    "六梦按梦的触发与情态分类，不等于后世按人物动物划分的梦象目录",
+    "喜梦不自动等于吉梦，惧梦也不自动等于凶梦",
+    "古代职官文本只作为历史知识，不转换为今天的占梦服务"
+  ],
+  "public_sources": [
+    {"title":"《周礼·春官宗伯·占梦》","note":"正文列占梦官职责及正、噩、思、寤、喜、惧六梦。","url":"https://ctext.org/text.pl?node=37001&if=gb"},
+    {"title":"《周礼注疏》占梦条","note":"郑玄注分别解释六梦名称，页面将正文名称与注家解释分栏。","url":"https://ctext.org/library.pl?if=gb&res=1501"}
+  ]
+}

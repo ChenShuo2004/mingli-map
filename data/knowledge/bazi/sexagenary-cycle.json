@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "id": "bazi_sexagenary_cycle",
+  "title": "六十甲子",
+  "summary": "十天干与十二地支按各自顺序同时前进，只让阴阳同类相配。两列在六十步后重新回到甲子，形成六组各十个干支的循环。",
+  "stems": ["甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸"],
+  "branches": ["子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"],
+  "xun": [
+    {"start": "甲子", "void": ["戌", "亥"]},
+    {"start": "甲戌", "void": ["申", "酉"]},
+    {"start": "甲申", "void": ["午", "未"]},
+    {"start": "甲午", "void": ["辰", "巳"]},
+    {"start": "甲辰", "void": ["寅", "卯"]},
+    {"start": "甲寅", "void": ["子", "丑"]}
+  ],
+  "public_sources": [
+    {"title": "《渊海子平·论六甲空亡》", "note": "列出六旬与每旬两个空亡地支。", "url": "https://www.luckclub.cn/bazi/001/047/"},
+    {"title": "《渊海子平·论六十花甲子纳音并注解》", "note": "保存六十甲子次序；这里只取干支循环部分。", "url": "https://www.luckclub.cn/bazi/001/014/"}
+  ],
+  "internal_review": {
+    "status": "cycle_and_six_xun_verified",
+    "reviewed_at": "2026-08-04",
+    "source_refs": ["yuanhai_ziping_sixty_jiazi", "yuanhai_ziping_six_jia_void", "wikisource_zengshan_buyi_xunkong", "github_minervaowl7_bazi_pro_65955b3"],
+    "boundary": "正式数据按两列循环规则生成六十组，并保留六旬起点；纳音名称暂不混入本节点。"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0.0",
+  "id": "xiaoliuren_five_star_and_three_mark_layers",
+  "title": "五星轮转与月日时标记",
+  "summary": "五星与月日时标记都附加在已经算好的六宫上，但锚点不同：五星从日宫起，按辅木、英火、芮土、柱金、蓬水、任空轮转；标记则分别回看月宫、日宫和时宫。二者都是展示层，不参与前面的天盘、人盘与神盘计算。",
+  "star_rule": {"anchor":"日宫", "sequence":["辅木","英火","芮土","柱金","蓬水","任空"], "note":"来源函数名仍称五星，但实际数组含六个标签，任空作为第六位"},
+  "star_rows": [
+    {"palace":"大安","star":"蓬水"},{"palace":"留连","star":"任空"},{"palace":"速喜","star":"辅木"},
+    {"palace":"赤口","star":"英火"},{"palace":"小吉","star":"芮土"},{"palace":"空亡","star":"柱金"}
+  ],
+  "mark_rows": [
+    {"palace":"大安","marks":["时"]},{"palace":"留连","marks":[]},{"palace":"速喜","marks":["日"]},
+    {"palace":"赤口","marks":[]},{"palace":"小吉","marks":["月"]},{"palace":"空亡","marks":[]}
+  ],
+  "mark_rules": ["月宫加月标记，日宫加日标记，时宫加时标记。", "三个落点重合时，同一宫可以同时保存多个标记。", "报数路线月宫为空，因此不会生成月标记。"],
+  "reading_boundaries": ["五星名称只登记顺序和落点，不采用 x6ren_info.js 的解释。", "任空是否应计作星名属于来源命名问题，本页保留实际六标签数组。", "标记只是显示计算入口，不代表阶段吉凶。"],
+  "public_sources": [{"title": "chxb/jishiyu 锁定五星与标记实现", "url": "https://github.com/chxb/jishiyu/blob/97b6d6d8e58c6947a86e281d5b69de1032e9bc08/js/x6ren.js", "note": "用于复算 getStarPlate 与 markPalaces 的输出。"}],
+  "internal_review": {"reviewed_on": "2026-08-10", "owner": ["火华", "Codex"], "status": "formal_display_layers"}
+}

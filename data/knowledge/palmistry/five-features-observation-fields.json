@@ -1,0 +1,19 @@
+{
+  "id": "five-features-observation-fields",
+  "title": "五官及其观察字段",
+  "summary": "传统五官指耳、眉、眼、鼻、口，并分别使用采听、保寿、监察、审辨、出纳等名称；本页只保留部位、组成与可观察字段。",
+  "image": "/assets/palmistry/ai-face-front-neutral.webp",
+  "features": [
+    {"id": "ears", "label": "耳", "traditional_name": "采听官", "parts": ["耳轮", "耳廓", "耳孔", "耳垂"], "observe": ["上下位置", "外轮廓", "贴面程度", "左右可见度"], "side": "双侧", "x": 16, "y": 48},
+    {"id": "brows", "label": "眉", "traditional_name": "保寿官", "parts": ["眉头", "眉身", "眉峰", "眉尾"], "observe": ["走向", "长度", "粗细", "连续性"], "side": "双侧", "x": 29, "y": 35},
+    {"id": "eyes", "label": "眼", "traditional_name": "监察官", "parts": ["内眦", "外眦", "上睑", "下睑"], "observe": ["眼裂方向", "开合状态", "间距", "遮挡"], "side": "双侧", "x": 70, "y": 42},
+    {"id": "nose", "label": "鼻", "traditional_name": "审辨官", "parts": ["山根", "鼻梁", "鼻尖", "鼻翼"], "observe": ["中轴方向", "长度", "宽度", "正侧轮廓"], "side": "中央", "x": 50, "y": 57},
+    {"id": "mouth", "label": "口", "traditional_name": "出纳官", "parts": ["上唇", "下唇", "口角", "唇沟"], "observe": ["宽度", "唇线", "口角位置", "闭合状态"], "side": "中央", "x": 50, "y": 72}
+  ],
+  "shared_fields": ["主体侧别", "位置参照", "整体尺寸", "局部组成", "轮廓方向", "可见状态", "图像条件", "标注版本"],
+  "not_equivalent": ["五官名称 ≠ 五种性格", "形态字段 ≠ 健康诊断", "左右差异 ≠ 人生评价", "传统官名 ≠ 现代解剖名称"],
+  "public_sources": [
+    {"title": "《神相全编》五官说文本", "note": "用于核对耳、眉、眼、鼻、口及五个传统官名；断语不进入本节点。", "url": "https://m.gushiwen.cn/guwen/bookv_e701f52a58c0.aspx"},
+    {"title": "Harvard Library《神相全编》明刻本卷一影像", "note": "用于回看五官图与卷一原始版面。", "url": "https://commons.wikimedia.org/wiki/File:Harvard_drs_53262204_%E7%A5%9E%E7%9B%B8%E5%85%A8%E7%B7%A8_v.1%E5%BA%8F%E3%80%81%E7%9B%AE%E9%8C%84%E3%80%81%E5%8D%B7%E4%B9%8B%E4%B8%80.pdf"}
+  ]
+}

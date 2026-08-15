@@ -1,0 +1,43 @@
+{
+  "id": "major-luck-structure",
+  "title": "大运结构",
+  "summary": "大运把月柱放回六十甲子序列，按顺行或逆行逐位展开。传统以一位统摄十年，起运时点则需另外根据节气间隔折算。",
+  "fixed_month_pillar": "丙寅",
+  "direction_rules": [
+    {
+      "group": "阳男",
+      "year_stem_polarity": "阳",
+      "gender": "男",
+      "direction": "顺行"
+    },
+    {
+      "group": "阴女",
+      "year_stem_polarity": "阴",
+      "gender": "女",
+      "direction": "顺行"
+    },
+    {
+      "group": "阴男",
+      "year_stem_polarity": "阴",
+      "gender": "男",
+      "direction": "逆行"
+    },
+    {
+      "group": "阳女",
+      "year_stem_polarity": "阳",
+      "gender": "女",
+      "direction": "逆行"
+    }
+  ],
+  "concepts": [
+    {"label": "起序", "value": "月柱", "explanation": "先找到月柱在六十甲子中的位置。"},
+    {"label": "方向", "value": "顺行或逆行", "explanation": "传统规则依年干阴阳与性别决定取前一位还是后一位。"},
+    {"label": "尺度", "value": "一位十年", "explanation": "每一步大运用一组干支表示一个十年时段。"},
+    {"label": "入运", "value": "节气折算", "explanation": "从出生时刻到相应节气的间隔，用于折算何时进入第一步。"}
+  ],
+  "boundary": "固定例只比较顺行与逆行的序列。起运时点属于另一层节气折算，不能从这条序列本身得出。",
+  "public_sources": [
+    {"title": "《三命通会·论大运》", "note": "大运顺逆、十年尺度与节气折算的传统论述。", "url": "https://www.shidianguji.com/zh/book/SK1610/chapter/1kf5v6ol1vhnp"},
+    {"title": "《渊海子平·论起大运法》", "note": "以月柱起序、分顺逆并按节气间隔折算起运的例子。", "url": "https://www.luckclub.cn/bazi/001/055/"}
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.0.0",
+  "id": "qimen_three_wonder_condition_patterns",
+  "title": "三奇得使、玉女守门与升殿条件",
+  "summary": "三奇得使与玉女守门都涉及三奇和值使门，却不是同一句话：前者查天盘乙、丙、丁是否与值使门同落一宫，后者查值使门是否落到地盘丁奇所在宫。三奇升殿则另查乙震、丙离、丁兑三组落宫，并带有门、门迫和入墓前提。",
+  "patterns": [
+    {
+      "id": "three_wonders_meet_duty",
+      "label": "三奇得使",
+      "moving_object": "天盘乙／丙／丁",
+      "target": "值使门实际落宫",
+      "condition": "任一三奇与值使门同落一宫",
+      "required_layers": ["天盘三奇", "人盘值使门"],
+      "excluded_result": "不发布临吉门、临凶门后的结果分层"
+    },
+    {
+      "id": "jade_woman_guards_gate",
+      "label": "玉女守门",
+      "moving_object": "值使门",
+      "target": "地盘丁奇所在宫",
+      "condition": "值使门实际落宫等于地盘丁奇所在宫",
+      "required_layers": ["人盘值使门", "地盘丁奇"],
+      "excluded_result": "不发布婚恋、经商、行军等事项解释"
+    },
+    {
+      "id": "three_wonders_ascend_hall",
+      "label": "三奇贵人升殿",
+      "moving_object": "天盘三奇",
+      "target": "三组指定宫位",
+      "condition": "乙落震三、丙落离九、丁落兑七",
+      "required_layers": ["天盘三奇", "九宫实际落点", "同宫八门与状态标记"],
+      "prerequisites": ["同宫为开门、休门或生门之一", "无门迫", "该奇不入墓"],
+      "excluded_result": "不发布百事、成败或行动判断"
+    }
+  ],
+  "ascend_hall_pairs": [
+    {"wonder": "乙", "palace": 3, "palace_name": "震三宫"},
+    {"wonder": "丙", "palace": 9, "palace_name": "离九宫"},
+    {"wonder": "丁", "palace": 7, "palace_name": "兑七宫"}
+  ],
+  "direction_comparison": [
+    {"pattern": "三奇得使", "subject": "天盘三奇", "lands_on": "值使门所在宫"},
+    {"pattern": "玉女守门", "subject": "值使门", "lands_on": "地盘丁奇所在宫"}
+  ],
+  "fixed_examples": [
+    {"id": "duty-example", "label": "同宫方向一", "facts": ["天盘乙落震三宫", "值使门也落震三宫"], "matched": "三奇得使"},
+    {"id": "jade-example", "label": "同宫方向二", "facts": ["地盘丁奇在兑七宫", "值使门落兑七宫"], "matched": "玉女守门"},
+    {"id": "hall-example", "label": "三层条件", "facts": ["天盘丙落离九宫", "同宫休门", "无门迫", "丙奇不入墓"], "matched": "三奇贵人升殿"}
+  ],
+  "reading_boundaries": [
+    "页面只识别对象层、落宫方向和必要前提，不采用来源中的效果、事项与吉凶文字。",
+    "三奇得使使用天盘三奇，玉女守门的目标是地盘丁奇；“奇”和“门”谁去找谁必须保留。",
+    "升殿不能只看乙震、丙离、丁兑，还要继续检查同宫门、门迫和入墓；本页不把这些前提删成一句口诀。",
+    "来源称多源一致但没有提供规则级古籍页码，当前状态是结构化来源条件。"
+  ],
+  "public_sources": [
+    {
+      "title": "mingli-skills 锁定三奇条件资料",
+      "url": "https://github.com/weizeW/mingli-skills/blob/c16eca0/qimen-dunjia/data/sanqi_xiangyi.json",
+      "note": "提供三奇得使、玉女守门与三奇贵人升殿的条件及前提；公开页只复用短条件字段。"
+    },
+    {
+      "title": "qimenpaipan 锁定三奇得使检测",
+      "url": "https://github.com/redrockhorse/qimenpaipan/blob/b6de54245cf7a514f59e51833dc01a87e1a3a849/qimenpaipan.py",
+      "note": "get_major_geju 以天盘乙丙丁与值使门宫位相等识别三奇得使。"
+    }
+  ],
+  "internal_review": {
+    "status": "formal_condition_patterns",
+    "reviewed_at": "2026-08-09",
+    "owner": ["火华", "Codex"],
+    "source_refs": ["github_weizew_mingli_skills_c16eca0", "github_redrockhorse_qimenpaipan_b6de542"],
+    "deduplication": "三奇六仪页维护对象身份，值符值使页维护轮值角色，入墓与门迫页维护状态；本页只保存三种跨层同宫条件。",
+    "known_gaps": ["玉女守门与升殿只有结构化来源表，缺第二套可执行实现。", "三种条件均缺规则级古籍页码。"],
+    "boundary": "跨层条件识别，不输出格局效果。"
+  }
+}

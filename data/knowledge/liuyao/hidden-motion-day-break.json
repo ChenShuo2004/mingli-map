@@ -1,0 +1,144 @@
+{
+  "schema_version": "1.0",
+  "id": "liuyao_hidden_motion_day_break",
+  "title": "爻逢冲的动静分流",
+  "summary": "爻被六冲关系碰到以后，先看它原本是静爻还是动爻。静爻受日冲，再按旺相、衰弱或旬空分为暗动、日破与冲空；动爻可受日辰或另一动爻来冲，但是否足以称为动散仍有争议，不能从“冲已成立”直接推出“散”。",
+  "fixed_target": { "branch": "寅", "element": "木", "day_branch": "申", "day_relation": "寅申相冲" },
+  "cases": [
+    {
+      "id": "strong",
+      "label": "旺相静爻",
+      "month_branch": "亥",
+      "month_element": "水",
+      "month_relation": "月生",
+      "prior_state": "相",
+      "is_moving": false,
+      "is_void": false,
+      "result": "暗动",
+      "note": "亥水生寅木，固定例把寅木记为有气；申日冲到静爻后标为暗动。"
+    },
+    {
+      "id": "weak",
+      "label": "休囚死静爻",
+      "month_branch": "酉",
+      "month_element": "金",
+      "month_relation": "月克",
+      "prior_state": "死",
+      "is_moving": false,
+      "is_void": false,
+      "result": "日破",
+      "note": "酉金克寅木，固定例把寅木记为无气；同一申日冲改标日破。"
+    },
+    {
+      "id": "moving",
+      "label": "本来已发动",
+      "month_branch": "亥",
+      "month_element": "水",
+      "month_relation": "月生",
+      "prior_state": "相",
+      "is_moving": true,
+      "is_void": false,
+      "result": "明动受冲",
+      "note": "暗动、日破这条分流先要求静爻；本来就是动爻时保留明动与日冲，不重新命名为暗动。"
+    },
+    {
+      "id": "void",
+      "label": "旬空静爻",
+      "month_branch": "亥",
+      "month_element": "水",
+      "month_relation": "月生",
+      "prior_state": "相 · 旬空",
+      "is_moving": false,
+      "is_void": true,
+      "result": "冲空",
+      "note": "旬空爻被日冲会进入冲空讨论；是否填实仍需结合有气、发动与来源口径，不与暗动直接混成一个标签。"
+    }
+  ],
+  "decision_checks": [
+    { "id": "clash", "label": "是否日冲", "yes": "进入分流", "no": "不进入冲后分流" },
+    { "id": "static", "label": "是否静爻", "yes": "继续看原状态", "no": "保留明动受冲" },
+    { "id": "void", "label": "是否旬空", "yes": "另记冲空", "no": "继续看旺衰" },
+    { "id": "strength", "label": "原状态是否旺相", "yes": "暗动", "no": "日破" }
+  ],
+  "comparison": [
+    { "label": "暗动", "inputs": ["日辰六冲", "静爻", "旺或相"], "structural_output": "静爻获得类似发动的作用资格" },
+    { "label": "日破", "inputs": ["日辰六冲", "静爻", "休囚死"], "structural_output": "静爻被记为冲散或日破状态" }
+  ],
+  "moving_clash_sources": [
+    {
+      "id": "day",
+      "label": "日辰来冲",
+      "source_shape": "日辰地支",
+      "target_shape": "已发动爻",
+      "relation": "日辰与动爻地支六冲",
+      "old_label": "日冲动爻，旧说称冲散"
+    },
+    {
+      "id": "moving",
+      "label": "另一动爻来冲",
+      "source_shape": "卦中另一发动爻",
+      "target_shape": "已发动爻",
+      "relation": "两发动爻地支六冲",
+      "old_label": "爻动冲爻，旧说亦称冲散"
+    }
+  ],
+  "moving_strength_branches": [
+    {
+      "id": "prosperous",
+      "label": "旺相",
+      "signal": "当令或得势",
+      "source_position": "冲之不散",
+      "public_result": "保持发动，不自动标动散",
+      "tone": "keep"
+    },
+    {
+      "id": "supported",
+      "label": "有气",
+      "signal": "仍有生扶或根气",
+      "source_position": "冲之不散",
+      "public_result": "保持发动，不自动标动散",
+      "tone": "keep"
+    },
+    {
+      "id": "weak",
+      "label": "休囚",
+      "signal": "失令或衰弱",
+      "source_position": "间有冲散，且被描述为极少",
+      "public_result": "只进入待辨，不自动标动散",
+      "tone": "review"
+    }
+  ],
+  "moving_claims": [
+    {
+      "label": "旧说命名",
+      "claim": "日辰冲动爻，或动爻冲另一爻，都可称冲散。"
+    },
+    {
+      "label": "作者反证",
+      "claim": "旺相、有气的动爻受冲不散；休囚者也只是间有。"
+    },
+    {
+      "label": "固定反例",
+      "claim": "书中以卯木动爻逢酉日相冲，说明受冲的动爻仍可能持续起作用。"
+    }
+  ],
+  "terminology_notes": [
+    "部分资料先把“日破”作为日支对冲支的固定位置，再用旺衰细分暗动与冲散；另一些资料直接把衰弱静爻受日冲称为日破。两个命名层并列保留，位置名与状态名不混为同一步。",
+    "旺相休囚死来自月令关系，但还可能受日月生扶、空破等条件修正；固定例只演示分流所需的最小输入。"
+  ],
+  "month_day_boundary": "“月建与日辰”节点只负责产生日冲关系；本节点从日冲继续读取静动、旬空与旺衰条件，二者不再重复展示同一分流图。",
+  "reading_boundary": "本页用固定关系演示静爻与动爻受冲后的条件分流，不把旺衰或冲散标签转成具体事项判断。",
+  "internal_review": {
+    "status": "merged_static_and_moving_clash_branches_cross_checked",
+    "reviewed_at": "2026-08-04",
+    "source_refs": [
+      "zengshan_buyi_wikisource_chapter_22",
+      "github_woaichiji_liuyao_d866d7d_day_break_hidden_motion",
+      "github_horace_maxwell_horosa_7d8a93e_an_dong_of",
+      "github_lusing_qimen_af07532_6yao_doc",
+      "zengshan_buyi_wikisource_chapter_23_moving_scatter",
+      "zengshan_buyi_checked_pdf_moving_scatter_chapter"
+    ],
+    "boundary": "合并原暗动日破与动爻冲散节点；公开静动入口、冲源、空亡和强弱分流，具体用神、事项、吉凶与应期留在受限层。"
+  }
+}

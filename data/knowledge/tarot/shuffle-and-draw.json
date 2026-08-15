@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "id": "tarot-shuffle-and-draw",
+  "title": "洗牌与抽牌",
+  "summary": "对照历史文本与固定程序中的洗牌、切牌、逆位和取牌方式。",
+  "versions": [
+    {"id":"waite-celtic","label":"Waite 1910","type":"凯尔特方法","medium":"实体牌","steps":["先选指示牌并正面放置","其余牌面朝下洗牌并切牌三次","从牌堆顶部依次翻出十张","按十个牌位顺序放置"],"orientation":"原段落没有要求先制造逆位。","source_url":"https://www.gutenberg.org/cache/epub/43548/pg43548-images.html#III7"},
+    {"id":"waite-alternative","label":"Waite 1910","type":"四十二张方法","medium":"实体牌","steps":["洗整副牌并把部分牌转向相反方向","由提问者用左手切牌","前四十二张分成六叠，每叠七张","重新组合后按六行七列发牌"],"orientation":"洗牌时主动转动部分牌，形成逆位。","source_url":"https://www.gutenberg.org/cache/epub/43548/pg43548-images.html#III8"},
+    {"id":"bazi-master","label":"bazi-master","type":"固定提交","medium":"程序","steps":["复制完整牌组","使用Fisher–Yates顺序交换洗牌","从洗后牌组顶部取所需张数","每张牌另以随机数决定方向"],"orientation":"随机数小于0.3时记为逆位。","source_url":"https://github.com/tytsxai/bazi-master/blob/9d9fe528c71cde787a9ffef6d1092de9e7fba85b/backend/services/tarot.service.js"},
+    {"id":"bazi-agent","label":"bazi-agent","type":"固定提交","medium":"程序","steps":["建立78张牌的索引列表","以会话与时间生成随机种子","打乱索引后取牌阵所需张数","按抽取次序对应牌位"],"orientation":"随机数不大于0.35时记为逆位。","source_url":"https://github.com/DadanLuo/bazi_agent/blob/24f0216e13730df3d2b53e413d00ca3c9f2f40b4/src/agents/tarot_tools.py"}
+  ],
+  "fixed_choices": [
+    {"label":"牌组范围","options":["完整78张","另行锁定的子牌组"],"note":"开始前确定，不在抽牌中途改变。"},
+    {"label":"方向规则","options":["只用正位","正位与逆位"],"note":"是否使用逆位属于所选流程的一部分。"},
+    {"label":"取牌次序","options":["牌堆顶部依次取牌","锁定程序打乱后依次取索引"],"note":"不同方法可以得到不同过程记录。"}
+  ],
+  "boundary":"本页比较步骤与版本，不提供可点击的洗牌、抽牌或随机数功能。",
+  "public_sources": [
+    {"title":"Project Gutenberg：Waite 1910凯尔特方法","note":"原书给出选指示牌、洗牌、切牌三次与依次发十张牌的流程。","url":"https://www.gutenberg.org/cache/epub/43548/pg43548-images.html#III7"},
+    {"title":"Project Gutenberg：Waite 1910四十二张方法","note":"原书给出转动部分牌形成逆位、左手切牌与六叠发牌的另一流程。","url":"https://www.gutenberg.org/cache/epub/43548/pg43548-images.html#III8"},
+    {"title":"bazi-master：固定提交中的洗牌与正逆位","note":"实现使用Fisher–Yates洗牌，并以0.3阈值决定逆位。","url":"https://github.com/tytsxai/bazi-master/blob/9d9fe528c71cde787a9ffef6d1092de9e7fba85b/backend/services/tarot.service.js"},
+    {"title":"bazi-agent：固定提交中的抽牌流程","note":"实现打乱78张索引，按牌阵张数取牌，并以0.35阈值决定逆位。","url":"https://github.com/DadanLuo/bazi_agent/blob/24f0216e13730df3d2b53e413d00ca3c9f2f40b4/src/agents/tarot_tools.py"}
+  ],
+  "internal_review": {"status":"formal_protocol_versions_node","reviewed_at":"2026-08-07","source_refs":["gutenberg_waite_43548","github_tytsxai_bazi_master_9d9fe52","github_dadanluo_bazi_agent_24f0216"],"ownership":"K-TAROT.06 使用方法","boundary":"只保存步骤和版本差异，不执行抽牌。"}
+}

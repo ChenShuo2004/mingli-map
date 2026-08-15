@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.0",
+  "id": "liuyao_self_response",
+  "title": "世应",
+  "summary": "世与应是同一卦中的两个相对位置。先比较内、外卦对应的天、人、地三爻阴阳同异来确定世爻，应爻再与世爻上下相隔三位；两者之间的两个位置称为间爻。解释时，世常作为当前观察立场，应作为相对一端；间爻只在确有两方与中间关系时才进入阅读，不能见其发动就一概判作阻隔。",
+  "comparison_axes": [
+    {"label": "天", "inner_position": 3, "outer_position": 6},
+    {"label": "人", "inner_position": 2, "outer_position": 5},
+    {"label": "地", "inner_position": 1, "outer_position": 4}
+  ],
+  "patterns": [
+    {"id": "all_same", "condition": "天地人全同", "shi": 6, "ying": 3, "note": "本宫"},
+    {"id": "all_different", "condition": "天地人全异", "shi": 3, "ying": 6, "note": "三世"},
+    {"id": "heaven_same", "condition": "仅天同", "shi": 2, "ying": 5, "note": "二世"},
+    {"id": "heaven_different", "condition": "仅天异", "shi": 5, "ying": 2, "note": "五世"},
+    {"id": "earth_same", "condition": "仅地同", "shi": 4, "ying": 1, "note": "四世"},
+    {"id": "earth_different", "condition": "仅地异", "shi": 1, "ying": 4, "note": "一世"},
+    {"id": "human_same", "condition": "仅人同", "shi": 4, "ying": 1, "note": "游魂"},
+    {"id": "human_different", "condition": "仅人异", "shi": 3, "ying": 6, "note": "归魂"}
+  ],
+  "interpretive_roles": [
+    {
+      "id": "shi",
+      "label": "世",
+      "role": "当前观察立场",
+      "scope": "涉及自身损益时，有资料直接以世爻为用神；世爻所临六亲仍作为另一层关系信息。"
+    },
+    {
+      "id": "ying",
+      "label": "应",
+      "role": "相对一端",
+      "scope": "常用于标记与世相对的人、方或场域；是否直接取作具体用神，还要看对象是否已有明确六亲类别。"
+    }
+  ],
+  "middle_lines": {
+    "label": "间爻",
+    "definition": "世爻与应爻之间的两个爻位",
+    "position_pairs": [
+      {"shi_ying": "初／四", "positions": [2, 3]},
+      {"shi_ying": "二／五", "positions": [3, 4]},
+      {"shi_ying": "三／上", "positions": [4, 5]}
+    ],
+    "scope_gate": "先确认问题中确有彼此两方，以及媒介、居中者或中间环节；如果没有这层结构，不因爻位处在世应之间就额外制造一个角色。",
+    "source_views": [
+      {
+        "label": "旧注",
+        "claim": "间爻发动，多解释为两方之间出现阻隔。",
+        "project_reading": "保存为传统起点，不直接当成无条件结果。"
+      },
+      {
+        "label": "《增删卜易》收窄",
+        "claim": "只在彼此两家的事情中使用，并先看间爻实际代表的媒介或中间角色。",
+        "project_reading": "先过两方结构门，再看具体关系。"
+      },
+      {
+        "label": "关系复核",
+        "claim": "间爻若生合世应可能成为助力，若克制其中一方才可能形成相应阻力。",
+        "project_reading": "发动只是入口，生、合、克及旺衰仍要继续判断。"
+      }
+    ]
+  },
+  "response_scope_variants": [
+    {
+      "label": "明确关系优先",
+      "source": "《增删卜易·用神章》",
+      "note": "对象已经能按父母、官鬼、兄弟、妻财、子孙分类时，先沿相应六亲取用，不因对象在“外部”就一律改取应爻。"
+    },
+    {
+      "label": "应爻扩展范围",
+      "source": "《卜筮正宗·世应论用神》",
+      "note": "无尊卑称呼、未深交者，以及指定的地头、山水、寺坛等，书中列为应爻的取用范围。"
+    },
+    {
+      "label": "外人取应保留意见",
+      "source": "《增删卜易》",
+      "note": "书中把朋友、外人取应称为常理，同时记录“往往多有不验”的经验保留，因此不把它整理成无条件规则。"
+    }
+  ],
+  "reading_boundary": "本页解释世应怎样定位、间爻怎样随两端生成，再并列保存世、应与间爻的解释范围；不把应爻固定等同于所有外人，不把间爻发动固定等同于阻隔，也不据这些位置输出事项结果。",
+  "internal_review": {
+    "status": "classical_positioning_middle_lines_and_interpretive_scope_cross_checked",
+    "reviewed_at": "2026-08-05",
+    "source_refs": ["github_chxb_jishiyu_97b6d6d", "bushi_zhengzong_anching_shiying", "bushi_zhengzong_shiying_yongshen_lines_954_956", "zengshan_buyi_chapter_8_and_intro", "zengshan_buyi_middle_lines_wikisource_lines_2008_2010"],
+    "boundary": "公开定位结构、世应相对角色、间爻的位置与适用门，以及应爻取用的资料范围差异；不把位置标签直接翻译为具体关系结果。"
+  }
+}

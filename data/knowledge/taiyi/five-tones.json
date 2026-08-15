@@ -1,0 +1,70 @@
+{
+  "schema_version":"1.0.0",
+  "id":"taiyi-five-tones",
+  "title":"五音",
+  "summary":"锁定实现中的宫、商、角、徵、羽不是一张单一对应表：主算、客算、定算先取个位数分音；太乙宫先换成代表地支；日支与时支再各自查支音；五音之元另保存河图数与五行。本节点把五条入口和固定年计结果并列，保留零值归一、‘比音’字段及卷次注释差异，不展示五音对应的人事、疾病、灾变、军事或行动断语。",
+  "fixed_input":"1552年9月24日 00:00 · 年计 · 丙戌日 · 戊子时",
+  "input_layers":[
+    {"id":"counts","index":"01","name":"主客定算","input":"算数个位；0按10","output":"三个算数五音","status":"普通结果已接"},
+    {"id":"yuan","index":"02","name":"五音之元","input":"河图成对数字","output":"五音、五行与元名","status":"静态映射"},
+    {"id":"taiyi","index":"03","name":"太乙宫","input":"九宫名 → 代表地支","output":"太乙五音","status":"间接映射"},
+    {"id":"day","index":"04","name":"日支","input":"日干支之支","output":"日五音","status":"独立时间入口"},
+    {"id":"hour","index":"05","name":"时支","input":"时干支之支","output":"时五音","status":"独立时间入口"}
+  ],
+  "number_pairs":[
+    {"digits":[1,2],"tone":"宫","element":"土","yuan":"天一地二"},
+    {"digits":[3,4],"tone":"徵","element":"火","yuan":"天三地四"},
+    {"digits":[5,6],"tone":"羽","element":"水","yuan":"天五地六"},
+    {"digits":[7,8],"tone":"商","element":"金","yuan":"天七地八"},
+    {"digits":[9,10],"tone":"角","element":"木","yuan":"天九地十"}
+  ],
+  "branch_groups":[
+    {"tone":"宫","element":"土","branches":["子","午"]},
+    {"tone":"徵","element":"火","branches":["丑","未","寅","申"]},
+    {"tone":"羽","element":"水","branches":["卯","酉"]},
+    {"tone":"商","element":"金","branches":["辰","戌"]},
+    {"tone":"角","element":"木","branches":["巳","亥"]}
+  ],
+  "palace_representatives":[
+    {"palace":"乾","branch":"亥","tone":"角"},{"palace":"午","branch":"午","tone":"宫"},{"palace":"艮","branch":"寅","tone":"徵"},
+    {"palace":"卯","branch":"卯","tone":"羽"},{"palace":"中","branch":"辰","tone":"商"},{"palace":"酉","branch":"酉","tone":"羽"},
+    {"palace":"坤","branch":"未","tone":"徵"},{"palace":"子","branch":"子","tone":"宫"},{"palace":"巽","branch":"巳","tone":"角"}
+  ],
+  "fixed_methods":[
+    {"method":0,"label":"太乙统宗","board":13,"home_count":18,"home_tone":"商","away_count":19,"away_tone":"角","set_count":19,"set_tone":"角","taiyi_palace":"酉","taiyi_tone":"羽","day_tone":"商","hour_tone":"宫","status":"与method 1／3同组"},
+    {"method":1,"label":"太乙金镜","board":13,"home_count":18,"home_tone":"商","away_count":19,"away_tone":"角","set_count":19,"set_tone":"角","taiyi_palace":"酉","taiyi_tone":"羽","day_tone":"商","hour_tone":"宫","status":"固定装盘所用分支"},
+    {"method":2,"label":"太乙淘金歌","board":1,"home_count":7,"home_tone":"商","away_count":13,"away_tone":"徵","set_count":13,"set_tone":"徵","taiyi_palace":"乾","taiyi_tone":"角","day_tone":"商","hour_tone":"宫","status":"局号改变算数和太乙宫音"},
+    {"method":3,"label":"太乙局","board":13,"home_count":18,"home_tone":"商","away_count":19,"away_tone":"角","set_count":19,"set_tone":"角","taiyi_palace":"酉","taiyi_tone":"羽","day_tone":"商","hour_tone":"宫","status":"与method 0／1同组"}
+  ],
+  "implementation_differences":[
+    {"label":"五条入口不能互相替代","source":"古籍目录分别列五音之数与五音之元；实现又增加太乙宫及日時支入口。","implementation":"同一次结果可同时出现主商、客角、定角、太乙羽、日商、时宫。","handling":"保留字段来源，不汇总成唯一‘本局五音’。"},
+    {"label":"算数只取个位","source":"选定文本可辨一二、三四、五六、七八、九十的成对结构。","implementation":"任意正整数先mod 10；余0承接10，负数或空值却直接改作1。","handling":"正数固定例可复算；非正数回退标为实现约定。"},
+    {"label":"‘比音’只按成对数字第二位标记","source":"当前OCR尚不足以确认该字段的完整语义。","implementation":"2、4、6、8、10返回比音=true，其余为false。","handling":"不把布尔值解释为和谐、胜负或吉凶。"},
+    {"label":"太乙宫先换代表地支","source":"代码注释称太乙所到之宫及日時支别五音。","implementation":"九宫名并非直接查音，而是乾→亥、午→午等九组代表支再入支音表。","handling":"公开内容保留中间层，避免把宫名与地支名混写。"},
+    {"label":"卷次说明存在拼接","source":"五音之数、五音之元标卷三；支音函数说明又标卷十五。","implementation":"普通结果把三类规则合并在一个wuyin_shu对象内。","handling":"按函数来源并列，不宣称全都属于同一卷同一式。"},
+    {"label":"受限解释字段不公开","source":"源码为五音另附人事、疾病、灾变、风向与军事文本。","implementation":"普通及卷十五综合接口均可派生解释。","handling":"只展示数、支、宫、音和五行结构。"}
+  ],
+  "reading_boundaries":[
+    {"label":"可理解","note":"五音之元、五组数字、五组地支与九宫代表支。"},
+    {"label":"可比较","note":"四method怎样通过局号改变主客定算和太乙宫音，日时音为何不变。"},
+    {"label":"待核验","note":"比音语义、卷三／卷十五的规则谱系、非正数回退与九宫代表支依据。"},
+    {"label":"不作断语","note":"不展示人事、疾病、灾变、风向、军事实操或真人结论。"}
+  ],
+  "public_sources":[
+    {"title":"《太乙统宗宝鉴》五音条目连接文本","url":"https://ctext.org/wiki.pl?chapter=4989633&if=gb","note":"可定位‘明五音’与相邻卷目；OCR严重不稳，数字和字形须回看影像。"},
+    {"title":"《太乙统宗宝鉴》书目与影像入口","url":"https://ctext.org/wiki.pl?if=gb&res=444363","note":"五音原典底本入口，不把自动OCR视为无误校本。"},
+    {"title":"kintaiyi锁定五音常数与映射","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/config.py#L1114-L1183","note":"保存五音数字组、五音之元、地支音及九宫代表支。"},
+    {"title":"kintaiyi锁定五音基础函数","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/config.py#L1186-L1217","note":"保存算数个位、比音、支音与五音之元返回结构。"},
+    {"title":"kintaiyi锁定五音综合函数","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/config.py#L1322-L1343","note":"把主客定算、太乙宫、日支、时支五条入口汇入一个结果对象。"},
+    {"title":"kintaiyi锁定普通结果接口","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L2283-L2291","note":"普通式盘实际传入三算、太乙宫、日支与时支。"}
+  ],
+  "internal_review":{
+    "status":"formal_five_tones_multi_input_structure",
+    "reviewed_at":"2026-08-07",
+    "owner":["火华","Codex"],
+    "runtime_basis":"固定年计三算取自已核主客算与数类节点，太乙宫取自已核年计节点；按锁定映射逐项复算",
+    "deduplication":"不并入‘主客算’：算数五音只是五条入口之一，太乙宫、日支、时支和五音之元不能由主客算页完整承接。不并入‘五运六气’：五运虽也使用宫商角徵羽作为运音，但输入是年干，概念层和生成路径不同。",
+    "known_gaps":["五音原式未逐页影像校勘","比音语义未确认","九宫代表支依据未找到独立底本","非正数回退缺少专项测试"],
+    "boundary":"固定案例、无真人输入、无随机；不公开疾病、人事、灾变、风向、军事和行动断语。"
+  }
+}

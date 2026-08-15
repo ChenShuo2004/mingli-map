@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.0.0",
+  "id": "meihua_body_use_objects",
+  "title": "体卦与用卦",
+  "summary": "体与用先回答‘观察主体是谁、发生变化的一侧是谁’，还没有进入生克结论。主资料库以本卦不动的半卦为体、含动爻的本卦半卦为用；累计比较把qimen-go的关系对象读作不动半卦配变化后的对应半卦。两种对象定义会让用卦的卦名与五行不同，因此必须先分清对象，再讨论关系。",
+  "position_rule": [
+    {"moving_lines": "初、二、三爻", "moving_half": "下卦", "body_position": "上卦", "use_position": "下卦"},
+    {"moving_lines": "四、五、上爻", "moving_half": "上卦", "body_position": "下卦", "use_position": "上卦"}
+  ],
+  "variants": [
+    {
+      "id": "original-half",
+      "label": "本卦两半分体用",
+      "repository": "muyen/meihua-yishu",
+      "body_object": "本卦中不含动爻的半卦",
+      "use_object": "本卦中含动爻的半卦",
+      "status": "主资料库当前定义"
+    },
+    {
+      "id": "changed-half",
+      "label": "不动半配变化后的对应半",
+      "repository": "deminzhang/qimen-go 累计比较口径",
+      "body_object": "本卦中不含动爻的半卦",
+      "use_object": "变卦中发生变化的对应半卦",
+      "status": "跨库对象定义分歧，待底本裁决"
+    }
+  ],
+  "fixed_examples": [
+    {
+      "id": "weiji-line-two",
+      "label": "火水未济 · 二爻动",
+      "original": {"upper": "离", "lower": "坎", "hexagram": "火水未济"},
+      "changed": {"upper": "离", "lower": "坤", "hexagram": "火地晋"},
+      "moving_line": 2,
+      "moving_half": "下卦",
+      "body": {"name": "离", "element": "火", "position": "上卦"},
+      "primary_use": {"name": "坎", "element": "水", "position": "本卦下卦"},
+      "comparison_use": {"name": "坤", "element": "土", "position": "变卦下卦"}
+    },
+    {
+      "id": "tai-line-four",
+      "label": "地天泰 · 四爻动",
+      "original": {"upper": "坤", "lower": "乾", "hexagram": "地天泰"},
+      "changed": {"upper": "震", "lower": "乾", "hexagram": "雷天大壮"},
+      "moving_line": 4,
+      "moving_half": "上卦",
+      "body": {"name": "乾", "element": "金", "position": "下卦"},
+      "primary_use": {"name": "坤", "element": "土", "position": "本卦上卦"},
+      "comparison_use": {"name": "震", "element": "木", "position": "变卦上卦"}
+    }
+  ],
+  "scope_absence": "ZZq114514/MeihuaYishu只返回本、互、变上下卦的五行元数据，没有实现体卦、用卦或体用关系，不能作为第三票。",
+  "reading_boundaries": [
+    "体与用在本页只是对象角色，不代表人、事情或现实中的某一方。",
+    "版本对照展示用卦对象如何变化，不以软件票数裁定唯一传统定义。",
+    "本页不计算生克、吉凶、旺衰、应期或个人建议。"
+  ],
+  "public_sources": [
+    {
+      "title": "muyen/meihua-yishu 锁定体用定位",
+      "url": "https://github.com/muyen/meihua-yishu/blob/aecdf87ebef26328c32caa65d40b2f9d273088ec/scripts/meihua_calc.py",
+      "note": "动爻在上则下卦为体、上卦为用；动爻在下则上卦为体、下卦为用。"
+    },
+    {
+      "title": "qimen-go 锁定梅花盘面",
+      "url": "https://github.com/deminzhang/qimen-go/blob/4d3f58fa0f401b5b3a337f119138e99e90685dda/world/meihua.go",
+      "note": "盘面并列本卦、互卦与变卦，在动爻所在半卦展示变化后的对应半卦；累计比较据此保留对象分歧。"
+    },
+    {
+      "title": "ZZq114514/MeihuaYishu 锁定五行元数据",
+      "url": "https://github.com/ZZq114514/MeihuaYishu/blob/466ee62105db599a29c25259f2ba6d10092d660c/src/meihuayishu/core.py",
+      "note": "返回六个上下卦五行字段但未实现体用，因此只证明范围缺席。"
+    }
+  ],
+  "internal_review": {
+    "status": "formal_object_definition_node_with_cross_repository_conflict",
+    "reviewed_at": "2026-08-09",
+    "owner": ["火华", "Codex"],
+    "source_refs": ["github_muyen_meihua_yishu_aecdf87", "github_deminzhang_qimen_go_4d3f58f", "github_zzq114514_meihuayishu_466ee62"],
+    "deduplication": "不并入五行关系：本页只确定体和用分别指向哪一半卦，五行页才比较两个已确定对象。不并入本互变：本互变描述卦形生成，体用是在卦形上继续指定观察角色。",
+    "known_gaps": ["主资料库与qimen-go的用卦对象定义不同，缺底本裁决。", "第二套梅花实现没有体用功能，不能形成第三份独立证据。"],
+    "boundary": "固定卦例与角色指认；无真人角色映射，无关系结论。"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0",
+  "id": "tarot-reading-review",
+  "title": "解读记录与复盘",
+  "summary": "用一份固定记录保存问题、版本、牌序和来源，再用固定案例练习与复核。",
+  "record_blocks": [
+    {"id":"context","label":"问题背景","fields":["记录日期","问题原文","时间范围"],"note":"保留当时真正写下的输入，不在事后改写。"},
+    {"id":"protocol","label":"使用规则","fields":["牌组与牌系","牌阵版本","洗牌与方向规则"],"note":"记录采用的版本，避免把不同流程混成一次结果。"},
+    {"id":"draw","label":"牌序记录","fields":["抽取次序","牌位名称","牌名与正逆位"],"note":"牌位、牌名和方向一一对应。"},
+    {"id":"reading","label":"分层笔记","fields":["可见牌面","来源牌义","放回牌位后的理解"],"note":"观察、来源陈述与当时理解分别保存。"},
+    {"id":"review","label":"之后复核","fields":["可观察事实","仍然模糊之处","来源或版本修正"],"note":"复核记录本身，不把所有后来事件强行对应到牌。"}
+  ],
+  "fixed_record": {
+    "question":"未来三个月，我可以怎样调整目前的学习计划？",
+    "time_range":"未来三个月",
+    "spread":"三张牌 · 过去／现在／未来",
+    "protocol":"完整78张 · 使用正逆位 · 固定示例",
+    "example_id":"three_card_mixed_deck_demo"
+  },
+  "review_questions": [
+    "当时使用的是哪一套牌阵与方向规则？",
+    "后来出现了哪些可以直接记录的事实？",
+    "哪些内容来自牌面，哪些来自特定作者牌义？",
+    "有没有在事后把模糊句子解释得过于准确？",
+    "来源、翻译或版本是否需要修正？"
+  ],
+  "practice_modes": [
+    {"id":"single-observation","label":"单牌观察","material":"固定一张RWS牌面","task":"先写三项可见元素，再查看来源牌义。","check":"观察里有没有混入象征或结论？","route":"/topic/tarot/major-arcana-images?card=I&mode=imagery"},
+    {"id":"same-card-position","label":"同牌异位","material":"同一张牌＋三个不同牌位","task":"只改牌位，分别写出这张牌当前负责回答什么。","check":"有没有把牌位任务误写成固定牌义？","route":"/topic/tarot/multi-card-combination"},
+    {"id":"four-suits","label":"四花色对照","material":"同一等级的四张小阿卡纳","task":"比较人物、物件、动作和场景，不先找共同象征。","check":"每条笔记能否回到具体牌面？","route":"/topic/tarot/minor-arcana-images?suit=wands&rank=two&mode=imagery"},
+    {"id":"source-rewrite","label":"来源改写","material":"一条Waite正位或逆位短义","task":"写出作者、版本、方向，再用自己的话缩成一句。","check":"有没有把作者版本改写成普遍结论？","route":"/topic/tarot/meaning-lineages"},
+    {"id":"later-review","label":"之后复核","material":"一份固定记录模板","task":"分别记录吻合、不吻合、仍模糊和需要修正的内容。","check":"有没有只留下事后看似准确的部分？","route":"/topic/tarot/interpretive-uncertainty"}
+  ],
+  "guided_case": {
+    "label": "三牌结构固定案例",
+    "question": "三张牌怎样先对应牌位，再观察整组？",
+    "cards": [
+      {"name":"魔术师","position":"过去","orientation":"upright"},
+      {"name":"隐者","position":"现在","orientation":"reversed"},
+      {"name":"世界","position":"未来","orientation":"upright"}
+    ],
+    "steps": [
+      {"label":"固定问题","task":"先保存问题与时间范围。","route":"/topic/tarot/question-framing"},
+      {"label":"对应牌位","task":"让三张牌依次对应过去、现在、未来。","route":"/topic/tarot/spread-structures?spread=three&position=1"},
+      {"label":"观察整组","task":"记录次序、方向与牌组类型，不急着形成结论。","route":"/topic/tarot/multi-card-combination"}
+    ],
+    "check": "有没有跳过牌位，直接把三条牌义拼在一起？"
+  },
+  "source_layers": [
+    {"label":"Waite 1910","note":"支持在洗牌前明确主题与时间，并把牌义放回具体条件。"},
+    {"label":"固定程序字段","note":"支持保存牌阵信息、抽到的牌、方向、牌位与汇总字段。"},
+    {"label":"学习复盘模板","note":"把之后的事实、模糊处和来源修正加入记录；这是学习工具，不是传统占卜规则。"}
+  ],
+  "boundary":"本页展示空白记录结构与固定示例，不接收或保存用户的真实问题和抽牌结果。",
+  "public_sources": [
+    {"title":"Project Gutenberg：Waite 1910主题与时间条件","note":"原书要求一定时间范围在洗牌前明确，并说明牌义需相对于当前主题与具体条件。","url":"https://www.gutenberg.org/cache/epub/43548/pg43548-images.html#III8"},
+    {"title":"bazi-agent：固定提交中的结果字段","note":"实现保存牌阵信息、抽牌记录、单牌解释、整组汇总与知识上下文。","url":"https://github.com/DadanLuo/bazi_agent/blob/24f0216e13730df3d2b53e413d00ca3c9f2f40b4/src/agents/tarot_tools.py"},
+    {"title":"bazi-master：固定提交中的抽牌结果结构","note":"实现保存牌阵类型、每张牌的次序、牌位标签、牌位说明与正逆位。","url":"https://github.com/tytsxai/bazi-master/blob/9d9fe528c71cde787a9ffef6d1092de9e7fba85b/backend/services/tarot.service.js"}
+  ],
+  "internal_review": {"status":"formal_learning_record_node","reviewed_at":"2026-08-07","source_refs":["gutenberg_waite_43548","github_dadanluo_bazi_agent_24f0216","github_tytsxai_bazi_master_9d9fe52"],"ownership":"K-TAROT.08 学习记录","boundary":"只展示模板；不收集真人数据，不把复盘写成事后验证。"}
+}

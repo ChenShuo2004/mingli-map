@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0",
+  "id": "tarot_spread_structures",
+  "title": "四种牌阵结构",
+  "summary": "查看单张、三张、五张和凯尔特十字的牌位排列。",
+  "spreads": [
+    {"id":"single","label":"单张","latin":"Single card","card_count":1,"positions":["指引"],"version_label":"bazi-agent固定示例","version_note":"本页采用1个牌位：指引","version_source":"https://github.com/DadanLuo/bazi_agent/blob/24f0216e13730df3d2b53e413d00ca3c9f2f40b4/src/core/tarot_data.py"},
+    {"id":"three","label":"三张","latin":"Three card","card_count":3,"positions":["过去","现在","未来"],"version_label":"bazi-agent固定示例","version_note":"本页采用：过去 · 现在 · 未来","version_source":"https://github.com/DadanLuo/bazi_agent/blob/24f0216e13730df3d2b53e413d00ca3c9f2f40b4/src/core/tarot_data.py"},
+    {"id":"five","label":"五张","latin":"Five card","card_count":5,"positions":["现状","挑战","建议","环境","结果"],"version_label":"bazi-agent固定示例","version_note":"本页采用：现状 · 挑战 · 建议 · 环境 · 结果","version_source":"https://github.com/DadanLuo/bazi_agent/blob/24f0216e13730df3d2b53e413d00ca3c9f2f40b4/src/core/tarot_data.py"},
+    {"id":"celtic","label":"凯尔特十字","latin":"Celtic Cross","card_count":10,"positions":["覆盖","阻碍","目标","基础","过去","近未来","自我","环境","希望与恐惧","结果"],"version_label":"可切换3个版本","version_note":"牌位名称随上方版本一起变化"}
+  ],
+  "celtic_versions": [
+    {"id":"waite_1910","label":"Waite 1910","version_note":"原书《The Pictorial Key to the Tarot》版本","source_url":"https://www.gutenberg.org/cache/epub/43548/pg43548-images.html#VII","positions":["覆盖","阻碍","目标","基础","过去","近未来","自我","环境","希望与恐惧","结果"]},
+    {"id":"bazi_master","label":"bazi-master","version_note":"bazi-master固定提交中的实现版本","source_url":"https://github.com/tytsxai/bazi-master/blob/9d9fe528c71cde787a9ffef6d1092de9e7fba85b/backend/services/tarot.service.js","positions":["现状","挑战","过去","未来","上方目标","下方根源","建议","外部影响","希望与恐惧","结果"]},
+    {"id":"bazi_agent","label":"bazi-agent","version_note":"bazi-agent固定提交中的实现版本","source_url":"https://github.com/DadanLuo/bazi_agent/blob/24f0216e13730df3d2b53e413d00ca3c9f2f40b4/src/core/tarot_data.py","positions":["现状","阻碍","潜意识","过去","可能性","近未来","自我","环境","希望与恐惧","最终结果"]}
+  ],
+  "fixed_example": {
+    "id":"three_card_position_demo",
+    "label":"三张牌固定示例",
+    "short_label":"大阿卡纳",
+    "spread_id":"three",
+    "note":"固定示例只展示牌位、单牌与正逆位怎样对应，不形成整组结论。",
+    "cards":[
+      {"position_number":1,"card_number":"I","orientation":"upright"},
+      {"position_number":2,"card_number":"IX","orientation":"reversed"},
+      {"position_number":3,"card_number":"XXI","orientation":"upright"}
+    ]
+  },
+  "fixed_mixed_example": {
+    "id":"three_card_mixed_deck_demo",
+    "label":"完整牌组固定示例",
+    "short_label":"完整牌组",
+    "spread_id":"three",
+    "note":"固定示例混合大阿卡纳与小阿卡纳，只展示牌位、单牌与正逆位怎样对应，不形成整组结论。",
+    "cards":[
+      {"position_number":1,"card_number":"I","orientation":"upright"},
+      {"position_number":2,"suit_id":"cups","rank_id":"two","orientation":"reversed"},
+      {"position_number":3,"suit_id":"pentacles","rank_id":"ten","orientation":"upright"}
+    ]
+  },
+  "card_back_asset": {
+    "local_path":"/tarot/card-back.jpg",
+    "sha256":"abbb4e5a814d12c2487dd81a2dcd5e84e2240a8b330cd25c18748fe0e368efcd",
+    "source_url":"https://github.com/Theproudcold/tarot-web/blob/7263639c36228d41270a3784c1d1fb6a6d9d4620/apps/web/public/card-back.png",
+    "license":"Apache-2.0"
+  },
+  "public_sources": [
+    {"title":"Project Gutenberg：Waite 1910 凯尔特十字","note":"原书给出十个牌位的顺序、含义和十字加四牌柱的布局。","url":"https://www.gutenberg.org/cache/epub/43548/pg43548-images.html#VII"},
+    {"title":"bazi-master：固定提交中的牌阵位置","note":"该实现提供单张、三张和凯尔特十字的位置字段。","url":"https://github.com/tytsxai/bazi-master/blob/9d9fe528c71cde787a9ffef6d1092de9e7fba85b/backend/services/tarot.service.js"},
+    {"title":"bazi-agent：固定提交中的四种牌阵","note":"该实现提供单张、三张、五张和凯尔特十字的位置字段。","url":"https://github.com/DadanLuo/bazi_agent/blob/24f0216e13730df3d2b53e413d00ca3c9f2f40b4/src/core/tarot_data.py"},
+    {"title":"tarot-web：固定提交中的牌背花纹","note":"页面牌阵位置使用该项目的牌背图作为背景；仓库采用Apache-2.0许可证。","url":"https://github.com/Theproudcold/tarot-web/blob/7263639c36228d41270a3784c1d1fb6a6d9d4620/apps/web/public/card-back.png"}
+  ],
+  "internal_review": {"status":"formal_spread_structure_node","reviewed_at":"2026-08-07","source_refs":["github_tytsxai_bazi_master_9d9fe52","github_dadanluo_bazi_agent_24f0216"],"ownership":"K-TAROT.03 牌阵与解读","boundary":"展示空牌位的数量、次序和布局；单张、三张、五张均明确标注为固定实现示例，不宣称为唯一传统版本；固定三张牌示例只说明牌位、单牌与正逆位的对应，不形成整组结论。"}
+}

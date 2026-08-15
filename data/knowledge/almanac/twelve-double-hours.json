@@ -1,0 +1,16 @@
+{
+  "id":"twelve-double-hours","title":"十二时辰与时干支","summary":"十二时辰按地支循环，每个约两小时；在民用日期页面中，跨午夜的子时被拆成00点早子与23点晚子，因此同一天会显示十三个槽位。",
+  "slots":[
+    {"slot":"早子","time":"00:00–00:59","ganzhi":"壬子","day_basis":"癸酉日"},{"slot":"丑","time":"01:00–02:59","ganzhi":"癸丑","day_basis":"癸酉日"},{"slot":"寅","time":"03:00–04:59","ganzhi":"甲寅","day_basis":"癸酉日"},
+    {"slot":"卯","time":"05:00–06:59","ganzhi":"乙卯","day_basis":"癸酉日"},{"slot":"辰","time":"07:00–08:59","ganzhi":"丙辰","day_basis":"癸酉日"},{"slot":"巳","time":"09:00–10:59","ganzhi":"丁巳","day_basis":"癸酉日"},
+    {"slot":"午","time":"11:00–12:59","ganzhi":"戊午","day_basis":"癸酉日"},{"slot":"未","time":"13:00–14:59","ganzhi":"己未","day_basis":"癸酉日"},{"slot":"申","time":"15:00–16:59","ganzhi":"庚申","day_basis":"癸酉日"},
+    {"slot":"酉","time":"17:00–18:59","ganzhi":"辛酉","day_basis":"癸酉日"},{"slot":"戌","time":"19:00–20:59","ganzhi":"壬戌","day_basis":"癸酉日"},{"slot":"亥","time":"21:00–22:59","ganzhi":"癸亥","day_basis":"癸酉日"},
+    {"slot":"晚子","time":"23:00–23:59","ganzhi":"甲子","day_basis":"实现切换到次日时干"}
+  ],
+  "stem_rule":"时支固定循环；时干由日干决定起点，再逐时顺行。锁定实现于23:00切换到次日的时干起例。",
+  "boundaries":["十二时辰是十二个支位，十三槽是民用日期页面的拆分方式","23时日界存在流派与实现差异，必须保留版本口径"],
+  "public_sources":[
+    {"title":"lunar-javascript 锁定实现","note":"1986-05-29十三个民用日期槽位及时干支来自锁定版本。","url":"https://github.com/6tail/lunar-javascript/tree/4c45a59"},
+    {"title":"《协纪辨方书》用时法","note":"用于区分日辰与时辰的关系层。","url":"https://www.shidianguji.com/book/SK1619/chapter/1l9lm1detnuof"}
+  ]
+}

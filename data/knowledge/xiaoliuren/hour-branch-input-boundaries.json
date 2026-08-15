@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0.0",
+  "id": "xiaoliuren_hour_branch_input_boundaries",
+  "title": "十二时辰输入与实现边界",
+  "summary": "maifusha 实现版把十二时辰枚举为1至12，并把这个序数接入时课公式。锁定代码同时保存了十二段显示字符串，但当前时辰识别使用同日字符串比较：子时跨午夜无法按该条件命中，未时结束值又写成15;00，造成与申时重叠和不稳定覆盖的风险。",
+  "version_scope": {
+    "version": "maifusha/xiaoliuren",
+    "commit": "00b56579cf35b9961af5468bd2dc90f9211cc146",
+    "status": "锁定实现审计，不代表传统时辰边界已独立核验"
+  },
+  "hours": [
+    {"index": 1, "branch": "子", "source_period": "23:00~01:00", "status": "跨午夜", "implementation_note": "同日字符串条件不可能同时满足>=23:00且<01:00"},
+    {"index": 2, "branch": "丑", "source_period": "01:00~03:00", "status": "同日区间", "implementation_note": "未发现当前字符串格式问题"},
+    {"index": 3, "branch": "寅", "source_period": "03:00~05:00", "status": "同日区间", "implementation_note": "未发现当前字符串格式问题"},
+    {"index": 4, "branch": "卯", "source_period": "05:00~07:00", "status": "同日区间", "implementation_note": "未发现当前字符串格式问题"},
+    {"index": 5, "branch": "辰", "source_period": "07:00~09:00", "status": "同日区间", "implementation_note": "未发现当前字符串格式问题"},
+    {"index": 6, "branch": "巳", "source_period": "09:00~11:00", "status": "同日区间", "implementation_note": "未发现当前字符串格式问题"},
+    {"index": 7, "branch": "午", "source_period": "11:00~13:00", "status": "同日区间", "implementation_note": "未发现当前字符串格式问题"},
+    {"index": 8, "branch": "未", "source_period": "13:00~15;00", "status": "格式错误", "implementation_note": "分号使15点时段仍可能满足未时上界，并与申时重叠"},
+    {"index": 9, "branch": "申", "source_period": "15:00~17:00", "status": "同日区间", "implementation_note": "15点段会与错误的未时字符串条件重叠"},
+    {"index": 10, "branch": "酉", "source_period": "17:00~19:00", "status": "同日区间", "implementation_note": "未发现当前字符串格式问题"},
+    {"index": 11, "branch": "戌", "source_period": "19:00~21:00", "status": "同日区间", "implementation_note": "固定教学例使用序数11"},
+    {"index": 12, "branch": "亥", "source_period": "21:00~23:00", "status": "同日区间", "implementation_note": "未发现当前字符串格式问题"}
+  ],
+  "implementation_paths": [
+    {
+      "id": "formula-input",
+      "label": "时课序数",
+      "behavior": "HourInt直接返回1至12的枚举值，接入月+日+时支序数-2"
+    },
+    {
+      "id": "current-hour-detection",
+      "label": "当前时辰识别",
+      "behavior": "把当前时间格式化为HH:MM，拆分区间字符串并逐项做字典序比较"
+    },
+    {
+      "id": "full-day-list",
+      "label": "整日十二时辰列表",
+      "behavior": "先按1至12排序全部枚举，再逐个计算落宫；这条路径不调用当前时辰识别"
+    }
+  ],
+  "confirmed_risks": [
+    "子时跨日区间不能用当前同日双条件直接表示。",
+    "未时15;00是确认的字符串错误，并会制造15点段重叠风险。",
+    "Go map遍历顺序不保证固定；重叠命中时最终覆盖结果可能不稳定。",
+    "仓库没有测试文件或CI，当前环境此前也未完成Go编译验收。"
+  ],
+  "reading_boundaries": [
+    "页面展示锁定字符串和实现问题，不把错误值当传统规则。",
+    "不读取设备当前时间，也不根据时辰生成落宫。",
+    "修复前不能把当前时辰自动识别视为已验证输入层。"
+  ],
+  "public_sources": [
+    {
+      "title": "maifusha/xiaoliuren 十二时辰枚举与识别",
+      "url": "https://github.com/maifusha/xiaoliuren/blob/00b56579cf35b9961af5468bd2dc90f9211cc146/pkg/calendar/dizhi.go",
+      "note": "支持1至12枚举、十二段字符串、HourInt与NowDizhi字符串比较审计。"
+    },
+    {
+      "title": "maifusha/xiaoliuren 三课与整日时辰路径",
+      "url": "https://github.com/maifusha/xiaoliuren/blob/00b56579cf35b9961af5468bd2dc90f9211cc146/internal/service/xiaoliuren.go",
+      "note": "支持时支序数进入时课公式，并确认整日列表先排序枚举、逐项计算。"
+    }
+  ],
+  "internal_review": {
+    "reviewed_on": "2026-08-09",
+    "owner": ["火华", "Codex"],
+    "status": "formal_input_and_implementation_boundary"
+  }
+}

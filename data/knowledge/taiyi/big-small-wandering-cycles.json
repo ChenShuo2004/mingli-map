@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.0.0",
+  "id": "big-small-wandering-cycles",
+  "title": "大游与小游的周期结构及实现缺口",
+  "summary": "把同名为‘游太乙’的大游、小游拆成两套周期。卷四的大游以4320年元法承接288年小周、36年一宫；小游另以240年大周、24年小周、3年一宫。锁定实现并未逐步复现这两条文字：大游加入34的偏移并可能返回空值，小游先对360取余且固定例四个分支都返回1。因此只把代码结果标为函数返回，不把8、1或空值直接解释为可靠宫位。",
+  "fixed_input": "1552年9月24日 0时0分 · 年计",
+  "cycles": [
+    {
+      "id": "big",
+      "name": "大游",
+      "classical_constants": [
+        {"label": "元法", "value": "4320年"},
+        {"label": "小周", "value": "288年"},
+        {"label": "每宫", "value": "36年"},
+        {"label": "范围", "value": "八宫，不游中五"}
+      ],
+      "classical_chain": ["积年模4320", "余数再模288", "余数除36得宫数", "从七宫顺行八宫"],
+      "implementation_chain": ["积年＋34", "模288", "大于36则除36", "小于6强制改为6", "以7、8、9、1、2、3、4、6查序号"],
+      "source_note": "卷四第16—30条同时保存大游太乙与大游天目；本节点只处理大游太乙周期，不展开天目。"
+    },
+    {
+      "id": "small",
+      "name": "小游",
+      "classical_constants": [
+        {"label": "大周", "value": "240年"},
+        {"label": "小周", "value": "24年"},
+        {"label": "每宫", "value": "3年"},
+        {"label": "范围", "value": "八宫，不游中五"}
+      ],
+      "classical_chain": ["积年模240", "余数再模24", "余数除3得宫数", "从一宫顺行八宫"],
+      "implementation_chain": ["积年模360", "按是否小于24分支", "再次取模3或24", "以1、2、3、4、6、7、8、9查序号", "查不到时回退为1"],
+      "source_note": "卷四第31—33条另列小游积年法，并说明此积年也供四神、天乙、地乙、直符使用。"
+    }
+  ],
+  "method_audit": [
+    {"method": 0, "label": "太乙统宗", "accumulated": 10155469, "board": "阳遁十三局", "big_intermediate": "(积年＋34) mod 288 = 47 → 除36后小于6 → 强制6", "big_return": "8", "small_intermediate": "积年 mod 360 = 229", "small_return": "1", "status": "函数返回，不解释为已校宫位"},
+    {"method": 1, "label": "太乙金镜", "accumulated": 1938109, "board": "阳遁十三局", "big_intermediate": "(积年＋34) mod 288 = 191 → 除36后小于6 → 强制6", "big_return": "8", "small_intermediate": "积年 mod 360 = 229", "small_return": "1", "status": "固定例"},
+    {"method": 2, "label": "太乙淘金歌", "accumulated": 10155745, "board": "阳遁一局", "big_intermediate": "(积年＋34) mod 288 = 35 → 未除36 → 查表无键35", "big_return": null, "small_intermediate": "积年 mod 360 = 145", "small_return": "1", "status": "大游函数未返回位置"},
+    {"method": 3, "label": "太乙局", "accumulated": 10155469, "board": "阳遁十三局", "big_intermediate": "与method 0同积年、同中间值", "big_return": "8", "small_intermediate": "积年 mod 360 = 229", "small_return": "1", "status": "与太乙统宗相同"}
+  ],
+  "comparison_points": [
+    {"label": "同名不等于同周期", "big": "288年周 · 36年一宫", "small": "240年周 · 3年一宫", "note": "大游与小游需要两套周期字段。"},
+    {"label": "同样避中五，起宫仍不同", "big": "卷四命起七宫", "small": "卷四命起一宫", "note": "共同范围不能代替各自的起点。"},
+    {"label": "固定输出不能直接当宫位", "big": "method 2返回空值", "small": "四分支都返回1", "note": "实现内部稳定性尚不足以把返回值提升为知识结论。"}
+  ],
+  "implementation_boundaries": [
+    {"label": "小游周数不一致", "evidence": "卷四写大周240；锁定smyo第一步使用积年模360。", "handling": "两种常数并列保存，不用代码常数覆盖原典常数。"},
+    {"label": "大游返回域不稳定", "evidence": "锁定bigyo把中间数作为键查7、8、9、1、2、3、4、6；固定method 2中间数35不在键域，返回空值。", "handling": "空值显式显示为‘未返回’，不补成任何宫。"},
+    {"label": "数字8／1的语义未闭合", "evidence": "函数字典的键像宫数，值却是1—8序号；输出字段只写‘大游／小游’，没有类型说明。", "handling": "统一称‘函数返回’，不标作八宫或一宫。"},
+    {"label": "来源断语不纳入本节点", "evidence": "卷四在大游段夹有兵事、地域与人君善恶说法。", "handling": "仅保留周期、起宫、范围、实现中间值与审校状态。"}
+  ],
+  "reading_boundaries": [
+    {"label": "可识别", "note": "大游、小游各自的原典周期、起点与共同避中五范围。"},
+    {"label": "可审计", "note": "固定输入下锁定函数的中间值、返回值和空值。"},
+    {"label": "不由此推出", "note": "任何数字返回对应现实灾异、兵事、地域或行动结果。"}
+  ],
+  "public_sources": [
+    {"title": "《太乙金鏡式經》卷四：大游与小游周期", "url": "https://ctext.org/wiki.pl?chapter=835116&if=gb&remap=gb", "note": "第16—33条保存大游4320／288／36年层次，以及小游240／24／3年层次与各自起宫。"},
+    {"title": "kintaiyi锁定大游、小游函数", "url": "https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/config.py#L795-L827", "note": "固定提交的bigyo与smyo函数，包含偏移、取模、分支、查表与回退。"},
+    {"title": "kintaiyi锁定年计输出字段", "url": "https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L2214-L2225", "note": "固定年计输出把大游、小游列为两个独立字段。"},
+    {"title": "kintaiyi锁定固定例输入", "url": "https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/examples/basic_usage.py#L13-L20", "note": "固定输入1552-09-24 00:00、年计；四个method积年沿用已复核样本。"}
+  ],
+  "internal_review": {
+    "status": "formal_big_small_wandering_cycle_audit",
+    "reviewed_at": "2026-08-06",
+    "owner": ["火华", "Codex"],
+    "runtime_environment": "temporary Python venv; locked repository commit installed from source",
+    "runtime_command": "config.bigyo/smyo(accnum), method=0..3 with the fixed yearly sample",
+    "deduplication": "不并入三基与五福：该页处理三基和五福的独立输入周期，本页处理大游、小游两套多年驻宫周期。不并入独立神序：四神、天乙、地乙、直符按七十二局表取位，本页直接读取积年并保留返回域缺口。",
+    "known_gaps": ["完整大游宫序与函数返回值语义未闭合", "大游天目未展开", "bigyo与smyo缺少专项测试", "小游240年原典常数与实现360取余尚未完成版本互证"],
+    "boundary": "固定样本、无真人输入、无随机；不展示兵事、地域、人君善恶、灾异、行动或个人结论。"
+  }
+}

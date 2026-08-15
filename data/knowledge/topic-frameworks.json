@@ -1,0 +1,178 @@
+{
+  "schema_version": "1.0",
+  "title": "专题首层框架",
+  "summary": "为总地图中尚未展开为正式细节点的十四个专题建立三个首层板块。板块只界定知识对象、内部范围与继续核验的入口，不把来源仓库中的实现直接写成传统共识。",
+  "topics": [
+    {
+      "id": "ziwei",
+      "title": "紫微斗数",
+      "latin": "Zi Wei Dou Shu",
+      "eyebrow": "先辨盘面，再看星曜怎样进入关系",
+      "description": "从盘面坐标、星曜系统与宫位关系三层进入；不同四化、庙旺和运限版本先并列，不提前合成一套标准盘。",
+      "cards": [
+        {"id":"chart-foundation","title":"基础盘面","latin":"Chart foundation","question":"十二宫、命宫与身宫先构成什么盘面？","summary":"这一板块先保存十二宫、命宫、身宫、五行局及排盘所需的时间坐标。真太阳时、城市坐标和软件回落值属于输入实现，不与紫微规则混写。","count":"宫位与坐标","tags":["十二宫","命身宫","五行局"],"scope":["十二宫与宫位坐标","命宫、身宫和五行局","排盘输入与实现边界"]},
+        {"id":"stars-transformations","title":"星曜与四化","latin":"Stars & transformations","question":"星曜安置以后，四化如何改变它们的关系？","summary":"这一板块承接十四主星、辅煞星、庙旺亮度及十干四化。不同实现中的四化表和庙旺表按版本保存，不以程序表值冒充唯一共识。","count":"星曜与版本","tags":["十四主星","庙旺","四化"],"scope":["星曜类别与基本属性","庙旺利陷的版本表","十干四化及差异"]},
+        {"id":"palaces-timing","title":"宫位关系、格局与运限","latin":"Palaces, patterns & timing","question":"三方四正、飞化、格局材料与运限怎样叠到同一张盘？","summary":"这一板块连接同宫、会照、夹宫、三方四正和跨宫飞化，再区分本命、大限、流年等时间层；格局部分只保存可复查的资料与检测器审计，不把程序命中当成传统定义。个人领域断语仍留在受限来源层。","count":"关系、格局与时间层","tags":["三方四正","飞化","格局审计","运限"],"scope":["宫位间的结构关系","飞化、跨宫网络与格局审计","本命、大限与流年层次"]}
+      ],
+      "public_sources":[{"title":"ziwei-skill 项目资料","note":"当前盘面、星曜、格局与合盘框架的来源索引之一；这里只用于确认首层分块，细则仍待逐条核验。","url":"https://github.com/shanrichard/ziwei-skill"}]
+    },
+    {
+      "id": "astrology",
+      "title": "占星",
+      "latin": "Astrology",
+      "eyebrow": "同用天体，不代表同一套规则",
+      "description": "占星保留为一个总专题，内部按西方古典、印度与中式星学三条连续路径阅读，避免把相似名词和软件界面误合成一套规则。",
+      "cards": [
+        {"id":"western-classical","title":"西方古典占星","latin":"Western classical","question":"行星、星座、宫位与相位怎样构成基本语法？","summary":"这一板块先收七颗传统行星、十二星座、十二宫及相位，再接尊贵度、接纳互容和 Lots 等古典关系。现代太阳星座模板不在这里替代整套结构。","count":"天体与宫位","tags":["行星","宫位","尊贵度"],"scope":["七颗传统行星","十二星座与十二宫","相位、尊贵度与接纳"]},
+        {"id":"vedic-traditions","title":"印度占星","latin":"Vedic traditions","question":"Parashari、KP 与 Jaimini 为什么需要分开保存？","summary":"这一板块保存三套方法各自的输入、分盘与时间技术。D9、Dasha 和 Transit 的同名界面不用于抹平方法差异。","count":"3 套方法","tags":["Parashari","KP","Jaimini"],"scope":["三种方法范围","分盘与 D9","Dasha 与行运"]},
+        {"id":"chinese-astral","title":"中式星学","latin":"Chinese astral systems","question":"黄赤盘、十二盘式与主限属于怎样的星学传统？","summary":"这一板块单列中式星学的天文历法、黄赤盘和十二盘式，并保存主限、星平合参等来源方法；不与西占或紫微斗数合并。","count":"盘式与历法","tags":["黄赤盘","十二盘式","主限"],"scope":["天文历法基础","黄赤盘与十二盘式","主限和星平合参"]}
+      ],
+      "public_sources":[{"title":"fortune-telling-skills 占星资料","note":"当前西方古典占星分块的仓库来源之一；仓库叙述只作来源说法。","url":"https://github.com/doododod/fortune-telling-skills"},{"title":"mingli-skills 项目资料","note":"当前印度占星分块的来源索引之一。","url":"https://github.com/weizeW/mingli-skills"}]
+    },
+    {
+      "id":"tarot","title":"塔罗","latin":"Tarot","eyebrow":"先认牌组，再讨论牌位与解释","description":"",
+      "cards":[
+        {"id":"deck-structure","title":"牌组结构","latin":"Deck structure","question":"78 张牌如何分成大阿卡纳与小阿卡纳？","summary":"这一板块保存22张大阿卡纳、56张小阿卡纳以及花色、序号、名称和牌面描述，先回答一副牌由什么组成。","count":"22 + 56 张","tags":["大阿卡纳","小阿卡纳","花色"],"scope":["大阿卡纳","小阿卡纳","名称与牌面字段"]},
+        {"id":"card-meanings","title":"单牌资料","latin":"Card meanings","question":"正位、逆位与图像关键词如何并列保存？","summary":"这一板块把牌名、图像元素、正逆位关键词和作者版本分开。关键词是来源陈述，不自动成为固定事件预测。","count":"正逆位版本","tags":["图像","正位","逆位"],"scope":["牌面图像元素","正位与逆位关键词","不同作者版本"]},
+        {"id":"spreads-reading","title":"牌阵与解读","latin":"Spreads & reading","question":"牌位怎样让同一张牌进入不同的问题结构？","summary":"这一板块保存单张、三张、五张与凯尔特十字等牌阵及牌位含义；固定示例只演示组合方式，不开放个人抽牌。","count":"牌阵与牌位","tags":["牌阵","牌位","固定案例"],"scope":["常见牌阵结构","牌位含义","固定牌例与解释边界"]}
+      ],
+      "public_sources":[{"title":"bazi_agent 塔罗资料","note":"当前牌组、牌义与牌阵结构的仓库来源之一；具体牌义仍需独立核验。","url":"https://github.com/DadanLuo/bazi_agent"}]
+    },
+    {
+      "id":"taiyi","title":"太乙","latin":"Taiyi","eyebrow":"先辨计法与版本，再看数如何进入式盘","description":"从计算时间层、式盘组件和主客关系三层进入。原典文本、古籍版本与现代软件实现分开保存，不把国运、战争、灾异或个人命法做成真人预测。",
+      "cards":[
+        {"id":"calculation-modes-versions","title":"计法与版本","latin":"Calculation modes & versions","question":"时间粒度、积年分支与积年取数是同一条选择轴吗？","summary":"这一板块把普通式盘的年、月、日、时、分五种时间粒度，与太乙统宗、太乙金镜、淘金歌、太乙局四个具名实现分支分开；CLI中的命法实际转入独立接口，不再作为第六种同层ji_style。卷七太乙数另以积年按七十二取数，虽与七十二局号同值，字段身份和下游用途仍分开；局号取得后，一路按每三局附着理天、理地、理人阶段，另一路以干支定位甲子至壬子五元之一，形成1至360总编号。六纪按60分段、上中下元每三纪重复、五子元按72分段，现已与程序额外生成的数元和混合纪元字符串拆开保存；阴阳遁又分为年、月、日固定值、时计二至节气入口与分计干支旁路。时计内部继续把同一积时分送24行宫、60入纪与72入局，并记录历史负日差的小时截断。原典可直接支撑岁月日时、太乙数、三年驻宫、六纪三元、五元七十二局、时计二至分遁及24／60／72三层；分计旁路、四分支版本史、治／理字形、程序数元、节气回退与负日差缺口继续分层校勘。","count":"12 个正式节点 · 5 种普通粒度 · 4 个具名分支 · 3类时计周期","tags":["年月日时分","方法分支","积年取数","三年标签","五子元","六纪三元","阴阳遁","时计周期"],"scope":["五种普通式盘时间粒度与独立命法入口","四个具名实现分支","太乙数、周纪余与七十二局数的同值异义","理天、理地、理人与三局一宫","五子元、六纪与三百六十总编号","六纪、上中下元、五子元与程序纪元字段边界","冬夏二至、时计阴阳遁与分计干支输入旁路","时计积时的24行宫、60入纪、72入局与历史日期连续性"]},
+        {"id":"board-symbol-layers","title":"式盘与符号层","latin":"Board & symbol layers","question":"积数、局数、宫位与诸神是怎样一层层进入同一张盘的？","summary":"这一板块保存从积年与纪元到阴阳遁、局数与宫位的输入链，再区分盘面对象身份、九宫与十六神位、位置神名、八门动态分布、独立诸神局序、三基五福周期、大游小游、两组十精短周期，以及十精阳遁基位转阴遁冲位的规则与实现缺口。《太乙金镜式经》可直接支撑相关对象分层；具体装盘公式、实现局表、周期起点、坐标域、阴阳转换和异常返回仍按底本及版本分开。","count":"16 个正式节点 · 生成链、对象、坐标、动态分布与周期／转换审计","tags":["积数局数","九宫十六位","盘面对象"],"scope":["积年、纪元与阴阳遁","局数、九宫、十六神位与八门","对象身份、独立局序、多种坐标周期、阴遁冲位与实现审计"]},
+        {"id":"host-guest-structure","title":"主客算与关系","latin":"Host-guest counts & relations","question":"主算、客算与定算如何从数变成盘上的关系？","summary":"这一板块展示主算、客算、定算与大将、参将怎样形成位置关系，把‘三门具不具’与‘五将发不发’拆成可核对的条件链，也区分宫阴阳×算奇偶、完整数值查类名、三才多标签条件，以及四郭固、郭杜、执提、提挟等高级组合。原典条件、程序摘要、缺失分支和固定返回分层保存，不从这些结构推出胜负、行兵、国事或灾异结论，也不接收真人输入。","count":"4 个正式节点 · 4 类三才条件 · 4 组高级组合","tags":["主算客算","三门五将","数类与组合"],"scope":["主算、客算、定算与数类名","大将、参将、三门五将与阴阳奇偶","三才条件、基础关系、高级组合与高风险解释边界"]}
+      ],
+      "public_sources":[
+        {"title":"《欽定四庫全書》本《太乙金鏡式經》","note":"中国哲学书电子化计划的原书影像入口，用于核对卷次、原文与盘式线索。","url":"https://ctext.org/library.pl?if=gb&remap=gb&res=5784"},
+        {"title":"《太乙统宗宝鉴》古籍联合目录","note":"台湾“国家图书馆”古籍目录记录，用于确认题名、版本与馆藏线索，不替代规则级校勘。","url":"https://rbook.ncl.edu.tw/NCLSearch/Search/SearchDetail?HasImage=&SourceID=1&item=66993dabc1044769a2b4c34707468ddcfDQ2OTg3OA2.X4MU6X34sChAgCnWy5DxzNzNH8e3dLsjoD1Sl2TftOQ_&page=2"},
+        {"title":"kintaiyi 锁定实现","note":"当前五种普通式盘粒度、独立命法入口、四个具名方法、盘面输出和主客关系的可执行样本；64项测试通过只证明实现内部回归。","url":"https://github.com/kentang2017/kintaiyi/tree/f2719d674adb0b4c710fb9d298283c9ccb05a545"}
+      ]
+    },
+    {
+      "id":"qimen","title":"奇门遁甲","latin":"Qi Men Dun Jia","eyebrow":"把符号、起局与装盘分开看","description":"先建立九宫符号、阴阳遁局数与排盘装配三层，确定性软件实现只作为可对照样本。",
+      "cards":[
+        {"id":"nine-palace-symbols","title":"九宫与符号","latin":"Nine-palace symbols","question":"九宫、门、星、神与天干如何同盘出现？","summary":"这一板块列出九宫、八门、九星、八神、天干与八卦的身份和盘面位置。二十四山等辅助符号单列来源，不混入核心名称表。","count":"宫门星神","tags":["九宫","八门","九星八神"],"scope":["九宫坐标","门、星、神","天干与八卦"]},
+        {"id":"yin-yang-layouts","title":"阴阳遁与局数","latin":"Yin-yang layouts","question":"节气与元局怎样进入阴遁、阳遁和局数？","summary":"这一板块比较阴遁、阳遁、十八局与七十二局等口径，并保存拆补、置闰和茅山起局法的差异。","count":"局数与版本","tags":["阴遁阳遁","节气","局数"],"scope":["阴阳遁范围","节气与上中下元","起局法版本"]},
+        {"id":"plate-assembly","title":"四盘装配","latin":"Plate assembly","question":"地盘、天盘、人盘与神盘按什么顺序装入？","summary":"这一板块承接地盘、天盘、人盘、神盘及值符值使的位置关系，再区分转盘、飞盘与其他实现范围。","count":"四盘装配","tags":["地盘天盘","值符值使","转盘飞盘"],"scope":["四盘层次","值符与值使","转盘和飞盘差异"]}
+      ],
+      "public_sources":[{"title":"qimen-go 排盘实现","note":"提供确定性排盘结构，可用于核对装盘步骤；实现内部一致不等于传统规则已获独立验证。","url":"https://github.com/deminzhang/qimen-go"}]
+    },
+    {
+      "id":"dream","title":"占梦","latin":"Oneiromancy","eyebrow":"从梦象条目，回到解释是怎样形成的","description":"把梦中对象、解释来源与固定案例分成三层，避免把文化说法、心理表述和行动建议混为事实。",
+      "cards":[
+        {"id":"dream-images","title":"梦象条目","latin":"Dream images","question":"一个梦象条目需要保存哪些可观察信息？","summary":"这一板块保存梦中对象、动作、场景、情绪与关键词，先描述出现了什么，不直接给出吉凶。","count":"对象与场景","tags":["对象","动作","情绪"],"scope":["梦中对象","动作与场景","情绪和关键词"]},
+        {"id":"interpretation-layers","title":"解释层次","latin":"Interpretation layers","question":"文化征兆与现代心理解释怎样避免互相冒充？","summary":"这一板块把传统文化说法、现代心理表述、正负向标签和作者建议拆开保存，并为每种说法保留来源身份。","count":"多种解释层","tags":["文化说法","心理表述","来源"],"scope":["传统文化说法","现代心理表述","作者标签与建议"]},
+        {"id":"examples-boundaries","title":"案例与边界","latin":"Examples & boundaries","question":"固定梦例能帮助理解什么，又不能证明什么？","summary":"这一板块用固定案例展示一个梦象如何被分层记录，同时标出个人经验差异；不接收真人梦境，不输出征兆判断或行动建议。","count":"固定案例","tags":["案例","差异","非判断"],"scope":["固定梦例结构","多解释并列","个人结论边界"]}
+      ],
+      "public_sources":[{"title":"FateAtelier 梦象资料","note":"当前56个梦象条目与多层解释字段的仓库来源；内容权利和具体说法仍待核验。","url":"https://github.com/sy-vendor/FateAtelier"}]
+    },
+    {
+      "id":"palmistry","title":"相学","latin":"Physiognomy","eyebrow":"先记录形态，再审查解释从哪里来","description":"面相、手相分别保存；第三层专门处理观察字段、图像来源与解释边界，不把视觉识别结果直接转成命运判断。",
+      "cards":[
+        {"id":"face-forms","title":"面部形态","latin":"Face forms","question":"面部区域与形态特征怎样被组织成观察字段？","summary":"这一板块保存面部区域、形态名称与观察步骤。来源规则和视觉识别输出分开，当前不公开个人图像分析。","count":"区域与形态","tags":["面部区域","形态","观察"],"scope":["面部区域","形态字段","规则来源"]},
+        {"id":"hand-forms","title":"手部形态","latin":"Hand forms","question":"主线、掌丘、手形与手指分别描述什么？","summary":"这一板块区分主线、手形、掌丘、手指和指甲等对象，避免把不同观察层压成一张吉凶表。","count":"线丘形指","tags":["主线","掌丘","手形"],"scope":["掌纹主线","掌丘和手形","手指与指甲"]},
+        {"id":"observation-evidence","title":"观察与来源","latin":"Observation & evidence","question":"图像、转载表格与解释文本怎样保留证据边界？","summary":"这一板块记录观察字段来自何处、图片是否可用、解释是否有原始出处。热链图片和权利不明转载只保留内部索引。","count":"证据与权利","tags":["图像来源","转载核验","解释边界"],"scope":["观察字段来源","图片与素材权利","解释文本的证据状态"]}
+      ],
+      "public_sources":[{"title":"HiFate-bazi 相学资料","note":"当前面相规则和视觉流程的来源索引之一；个人分析与未核权图片不进入公开交互。","url":"https://github.com/zhoudengt/HiFate-bazi"},{"title":"Destiny-Notes 相学索引","note":"补充面相、手相材料的内部分类线索。","url":"https://github.com/wx-chevalier/Destiny-Notes"}]
+    },
+    {
+      "id":"fengshui","title":"风水","latin":"Feng Shui","eyebrow":"环境、方位和时间分层进入","description":"先以环境方位为共同底座，再分别进入八宅与玄空；共享九宫或五行不等于规则可以互相替换。",
+      "cards":[
+        {"id":"environment-directions","title":"环境与方位基础","latin":"Environment & directions","question":"地形、空间、方位与五行怎样先形成共同词汇？","summary":"这一板块保存地形、空间位置、二十四山、方位及五行映射，并区分传统来源、现代设计和产品参数。","count":"空间与方位","tags":["环境","方位","二十四山"],"scope":["地形与空间","方位和二十四山","五行映射的来源层次"]},
+        {"id":"eight-mansions","title":"八宅","latin":"Eight Mansions","question":"命卦、游年与门主灶如何形成八宅关系？","summary":"这一板块保存命卦、游年、门主灶和方位关系，表值、起例与不同软件实现按版本并列。","count":"命卦与游年","tags":["命卦","游年","门主灶"],"scope":["命卦","游年方位","门主灶关系"]},
+        {"id":"flying-stars","title":"玄空与九星","latin":"Xuan Kong & stars","question":"三元九运、九星与飞布次序如何关联？","summary":"这一板块保存三元九运、九星、年盘与飞布次序。玄空规则与一般九宫数表分开，不以同名九星自动合并。","count":"九运九星","tags":["三元九运","九星","飞布"],"scope":["三元九运","九星身份","年盘与飞布次序"]}
+      ],
+      "public_sources":[{"title":"jishiyu 风水资料","note":"当前八宅、玄空与环境规则的综合仓库索引之一；具体表值仍待可靠底本复核。","url":"https://github.com/chxb/jishiyu"}]
+    },
+    {
+      "id":"mbti","title":"人格问卷","latin":"Personality Questionnaires","eyebrow":"两套材料分开读：项目问卷不是心理量表，量表结构也不是人格定论","description":"现有系统收录一套10题项目问卷和一套Johnson IPIP 120题资料。专题按题项、维度、facet、键向、翻译、实现与证据边界拆开，不把入口等同于MBTI，也不提供真人测评。",
+      "cards":[
+        {
+          "id":"questionnaire-source-map","title":"现有材料地图","latin":"Source map","question":"系统里关于人格问卷的材料究竟有几套？","summary":"目前只有两套实质材料：bazi-pro的10题项目问卷，以及Johnson IPIP-NEO-PI-R 120题资料。其他仓库出现的MBTI只是用户自填字段，不是已收录问卷。","count":"2 套实质材料","tags":["来源分层","项目问卷","IPIP"],"scope":["10题项目实现","IPIP 120题结构","排除仅作输入的MBTI字段"],"knowledge_points":["bazi-pro保存10题、三选项、两维度及后续路径排序实现。","Johnson IPIP资料保存120题、五域、30个编号facet、键向和32种翻译。","CosmicDestiny等仓库只让用户自行填写MBTI，程序不出题、不计分、不校验，因此不作为问卷知识。"],"source_refs":["github_minervaowl7_bazi_pro_65955b3","github_alheimsins_b5_johnson_120_ipip_neo_pi_r_493546d"]
+        },
+        {
+          "id":"project-ten-item-questionnaire","title":"10题项目问卷","latin":"Project ten-item questionnaire","question":"这套10题问卷实际询问了什么？","summary":"十题围绕机会、决策、投资、团队、困难、人际、职业、批评、变化与成功归因展开；每题三个选项，交替归入risk或social。","count":"10 题 · 3 选项","tags":["风险偏好","人际依赖","项目实现"],"scope":["10个题目主题","每题三选项","risk与social归属"],"knowledge_points":["risk题：不确定机会、投资态度、遇到困难、职业选择、面对变化。","social题：重大决定、团队角色、人际关系、面对批评、成功归因。","答案以0／1／2传入；这种编码只属于该项目，没有看到量表开发、常模或信效度材料。"],"source_refs":["github_minervaowl7_bazi_pro_65955b3"]
+        },
+        {
+          "id":"project-scoring-parameters","title":"项目计分参数","latin":"Project scoring parameters","question":"10个答案怎样变成风险偏好、人际依赖和类型标签？","summary":"实现输出theta_r、theta_s与profile，并用0.3和0.7作为项目阈值；这些参数只记录软件行为，不升级为通用人格标准。","count":"2 参数 · 5 标签","tags":["theta_r","theta_s","阈值"],"scope":["风险偏好参数","人际依赖参数","项目标签与默认值"],"knowledge_points":["theta_r表示风险偏好，theta_s表示人际依赖，均以0至1范围输出。","答案数量不是10时，项目返回两个0.5和“中性”，这是异常输入的fallback。","实现使用0.3与0.7切分，并出现开拓型、独行侠、稳健型、内敛型、平衡型等标签；来源材料没有提供这些阈值的心理测量依据。","两个参数还被用于排序命理流年分叉路径，这属于产品联动，不是人格测量知识。"],"source_refs":["github_minervaowl7_bazi_pro_65955b3"]
+        },
+        {
+          "id":"ipip-120-item-structure","title":"IPIP 120题结构","latin":"Johnson IPIP 120-item form","question":"120道题怎样组成一份可定位的题项集合？","summary":"锁定资料含120个稳定题ID；每题保存文本、plus或minus键向、一个域代码和一个facet编号。题目全文暂不公开复用。","count":"120 个题项ID","tags":["IPIP","题项","稳定ID"],"scope":["题项ID","题目—域—facet关系","全文复用边界"],"knowledge_points":["120题在英文与各翻译中使用一致ID，可跨语言对齐同一题。","单题结构为：id、text、keyed、domain、facet。","仓库README直链IPIP条目来源，但仓库MIT许可与IPIP题目政策、翻译权利必须分开判断。"],"source_refs":["github_alheimsins_b5_johnson_120_ipip_neo_pi_r_493546d"]
+        },
+        {
+          "id":"big-five-domain-layout","title":"五域布局","latin":"Five-domain layout","question":"N、E、O、A、C五个代码怎样分配120题？","summary":"五域各24题，合计120题。当前来源层只确认代码与题量；域的规范中文名和解释仍需接入可定位的IPIP官方来源。","count":"5 域 · 各24题","tags":["N","E","O","A","C"],"scope":["五个域代码","每域题量","域名解释待核"],"knowledge_points":["N、E、O、A、C各24题，题量完全均衡。","域分数属于测量结构，不自动产生类型标签。","现有仓库不能单独支持规范域名、常模、阈值或高低分解释，因此这些内容暂不补写。"],"source_refs":["github_alheimsins_b5_johnson_120_ipip_neo_pi_r_493546d"]
+        },
+        {
+          "id":"thirty-numbered-facets","title":"30个编号facet","latin":"Thirty numbered facets","question":"五个大域怎样继续拆成30个细分面向？","summary":"每个域含6个facet，每个facet含4题，形成5×6×4的完整结构；仓库只给facet编号，没有给出可直接采用的规范名称。","count":"30 facet · 各4题","tags":["facet","层级结构","待补名称"],"scope":["每域6个facet","每facet 4题","名称来源缺口"],"knowledge_points":["facet编号1至6在每个域内重复使用，必须与域代码组合后才唯一。","30个域内facet各有4题，总数为120。","不从题目文本反推facet名称；正式名称与解释等待IPIP官方来源。"],"source_refs":["github_alheimsins_b5_johnson_120_ipip_neo_pi_r_493546d"]
+        },
+        {
+          "id":"positive-reverse-keying","title":"正向与反向键","latin":"Positive & reverse keying","question":"plus与minus怎样影响五点作答的计分方向？","summary":"120题中65题为plus、55题为minus；键向决定五点选择的计分方向。现有仓库提供选项与键向，不提供汇总分数、阈值或诊断算法。","count":"65 plus · 55 minus","tags":["正向键","反向键","五点选项"],"scope":["键向数量","五点作答","汇总算法缺口"],"knowledge_points":["plus与minus是计分方向，不是题目内容的好坏标签。","五点选项会按键向对应相反的分值方向。","仓库API只返回问卷信息、题目、选项与合并题项，没有实现域分、facet分、常模换算或诊断。"],"source_refs":["github_alheimsins_b5_johnson_120_ipip_neo_pi_r_493546d"]
+        },
+        {
+          "id":"translation-and-id-alignment","title":"32语种与ID对齐","latin":"Translations & ID alignment","question":"多语言版本怎样确认是在表达同一组题？","summary":"锁定快照有32种语言，每种120题，题ID跨语言一致；简体中文译者在README具名Roy Jia，但署名不等于明确的再发布许可。","count":"32 语种 · 每种120题","tags":["翻译","跨语言ID","权利"],"scope":["语种清单","题ID对齐","翻译许可"],"knowledge_points":["32种语言文件均含120题，数量完整。","相同题ID可连接英文与不同翻译，而不依赖题目顺序猜测。","README译者表少于实际语种清单；每种翻译的版本、来源与权利仍需分别核验。","简体中文全文在公开使用前继续保留在来源层。"],"source_refs":["github_alheimsins_b5_johnson_120_ipip_neo_pi_r_493546d"]
+        },
+        {
+          "id":"validation-rights-and-boundaries","title":"验证、权利与解释边界","latin":"Validation, rights & boundaries","question":"目前哪些结构已经核对，哪些结论仍然不能说？","summary":"结构完整性已有程序验证，但心理测量依据、翻译权利和依赖安全尚未闭合；因此专题只帮助理解问卷结构，不开放真人测试或人格诊断。","count":"9项测试通过 · 3类卡点","tags":["结构验证","许可","非诊断"],"scope":["程序验证","依赖安全","心理测量与公开边界"],"knowledge_points":["9项AVA测试通过，覆盖题ID和语言完整性；这只验证数据结构。","锁定依赖审计报告21个漏洞，阻塞直接复用原软件。","仓库代码为MIT，但题目政策与志愿翻译权利另核。","没有常模、信度、效度、样本与官方汇总评分材料时，不输出高低分解释、类型标签、诊断或稳定人格定论。","本知识地图不接收用户作答，也不生成个人结果。"],"source_refs":["github_alheimsins_b5_johnson_120_ipip_neo_pi_r_493546d","github_minervaowl7_bazi_pro_65955b3"]
+        }
+      ],
+      "public_sources":[
+        {"title":"bazi-pro 问卷实现","note":"10题风险偏好与人际依赖项目问卷的锁定来源；没有信效度材料。","url":"https://github.com/Minervaowl7/bazi-pro"},
+        {"title":"Johnson IPIP 120题资料仓库","note":"120题、五域、facet、键向与32语种结构的锁定来源；题目与翻译权利另核。","url":"https://github.com/Alheimsins/b5-johnson-120-ipip-neo-pi-r"}
+      ]
+    },
+    {
+      "id":"meihua","title":"梅花易数","latin":"Meihua Yishu","eyebrow":"从输入取数，到卦体变化与体用关系","description":"按起卦、本互变与体用三层建立入口；版本差异和个人事项判断留待后续核验。",
+      "cards":[
+        {"id":"casting-methods","title":"起卦方法","latin":"Casting methods","question":"时间、数字与自定义输入怎样转换成上下卦和动爻？","summary":"这一板块保存不同输入的取数方法、上下卦取余与动爻规则，并列标记版本差异。","count":"输入与取余","tags":["时间起卦","数字起卦","动爻"],"scope":["输入类型","上下卦取余","动爻定位"]},
+        {"id":"original-mutual-changed","title":"本卦、互卦与变卦","latin":"Original, mutual & changed","question":"同一组爻怎样截取互卦并翻转成变卦？","summary":"这一板块保存本卦六爻、互卦截取和动爻翻转。它可共享阴阳爻基础，但不与六爻纳甲规则合并。","count":"三种卦体","tags":["本卦","互卦","变卦"],"scope":["本卦结构","互卦截取","动爻翻转"]},
+        {"id":"body-use-elements","title":"体用与五行","latin":"Body-use & elements","question":"体卦、用卦与五行生克如何连接？","summary":"这一板块保存体用定位与五行关系；旺衰、应期和个人事项解释不在首层框架中写成确定结论。","count":"体用关系","tags":["体卦","用卦","五行生克"],"scope":["体用定位","卦的五行","生克关系"]}
+      ],
+      "public_sources":[{"title":"meihua-yishu 实现","note":"当前起卦、本互变与体用结构的实现来源之一；取余和解释规则仍待逐条对照。","url":"https://github.com/muyen/meihua-yishu"}]
+    },
+    {
+      "id":"daliuren","title":"大六壬","latin":"Da Liu Ren","eyebrow":"从基础符号，进入四课三传与课式验证","description":"三个板块分别承接符号底座、生成结构和案例校验，不以项目自称数量替代实际完整性检查。",
+      "cards":[
+        {"id":"generals-foundation","title":"月将与基础符号","latin":"Generals & foundations","question":"月将、天将、贵神与寄宫先形成什么底座？","summary":"这一板块保存月将、天将、贵神、十干寄宫与天地盘关系，软件运行结果只证明具体实现行为。","count":"将神与寄宫","tags":["月将","天将","寄宫"],"scope":["月将与天将","贵神","十干寄宫与天地盘"]},
+        {"id":"four-lessons-three-transmissions","title":"四课三传","latin":"Four lessons & three transmissions","question":"四课怎样生成，三传又按什么条件被选出？","summary":"这一板块保存四课生成、三传取法与课体结构，同时保留不同实现的开放争议和异常输入。","count":"课传结构","tags":["四课","三传","课体"],"scope":["四课生成","三传取法","课体与版本差异"]},
+        {"id":"lesson-tables-cases","title":"课式表与案例","latin":"Tables & cases","question":"课式表的数量、缺项与案例怎样被实际核验？","summary":"这一板块把课式表、固定课例和运行回归分开。来源自称“720课”与实际718项的差异会原样保留。","count":"表格与回归","tags":["课式表","固定案例","完整性"],"scope":["课式表清点","缺项与版本","固定输入回归"]}
+      ],
+      "public_sources":[{"title":"kinliuren 项目","note":"提供月将、天地盘、四课三传和固定课例的可执行来源；传统准确性仍需独立来源。","url":"https://github.com/kentang2017/kinliuren"}]
+    },
+    {
+      "id":"xiaoliuren","title":"小六壬","latin":"Xiao Liu Ren","eyebrow":"相同名称下，先把版本分开","description":"按六宫起课、神将版本与解释案例建立三层；五套规则并列保存，不用多数票强行合并。",
+      "cards":[
+        {"id":"six-palaces-casting","title":"六宫与起课","latin":"Six palaces & casting","question":"时间或报数怎样沿六宫次序落到一宫？","summary":"这一板块保存六宫身份、宫位次序、时间起课与报数起课，先比较输入和落宫规则。","count":"六宫与输入","tags":["六宫","时间起课","报数"],"scope":["六宫次序","时间起课","报数起课"]},
+        {"id":"deities-versions","title":"神将与版本","latin":"Deities & versions","question":"主流六神、九神道门与其他版本差在哪里？","summary":"这一板块把主流六神、九神道门、倪海厦及其他版本分别保存，名称相近不代表规则相同。","count":"5 套版本","tags":["六神","九神","版本"],"scope":["主流六神","九神道门","其他版本对照"]},
+        {"id":"meanings-cases","title":"宫义与案例","latin":"Meanings & cases","question":"宫义、神将象意和固定课例怎样分层阅读？","summary":"这一板块保存宫义、神将象意与固定案例；吉凶、应期和个人事件结论仍在受限来源层。","count":"象意与案例","tags":["宫义","神将","固定案例"],"scope":["宫位含义","神将象意","固定课例与边界"]}
+      ],
+      "public_sources":[{"title":"Divination-Notes-Prompt 小六壬资料","note":"当前多版本小六壬分类与案例的来源索引之一。","url":"https://github.com/Horace-Maxwell/Divination-Notes-Prompt"}]
+    },
+    {
+      "id":"almanac","title":"黄历择日","latin":"Almanac & Election","eyebrow":"先分历法事实、黄历栏目与选择规则","description":"把日期计算、黄历字段与择日择时规则拆成三层，避免把可计算历法和宜忌解释混成一张表。",
+      "cards":[
+        {"id":"calendar-foundation","title":"历法与干支底座","latin":"Calendar foundation","question":"公农历、干支与节气怎样先确定日期事实？","summary":"这一板块保存公历、农历、干支、节气与换日边界，先形成可核对的历法底座。","count":"日期事实","tags":["公农历","干支","节气"],"scope":["公历与农历","干支纪日","节气和时间边界"]},
+        {"id":"almanac-fields","title":"黄历栏目","latin":"Almanac fields","question":"建除、宜忌、冲方与神方分别是什么字段？","summary":"这一板块拆开建除、宜忌、冲煞、神方与时辰栏目，字段来源与展示格式各自记录。","count":"栏目结构","tags":["建除","宜忌","冲方"],"scope":["建除十二值","宜忌栏目","冲煞与神方"]},
+        {"id":"election-rules","title":"择日与择时规则","latin":"Election rules","question":"事项、日期、时辰与方位怎样进入选择模型？","summary":"这一板块保存事件类型、日期、时辰和方位之间的规则；随机评分、错误输入和个人行动建议不作为传统知识发布。","count":"事项与时机","tags":["择日","时辰","事项"],"scope":["事项分类","日期与时辰规则","方位及项目参数"]}
+      ],
+      "public_sources":[{"title":"lunar-javascript 历法实现","note":"用于核对公农历、干支、节气与黄历字段的确定性实现；宜忌解释仍需独立核验。","url":"https://github.com/6tail/lunar-javascript"}]
+    },
+    {
+      "id":"naming","title":"姓名与数理","latin":"Names & Numerology","eyebrow":"先固定文字输入，再进入数理关系","description":"按姓名文字基础、五格、三才与八十一数理四个阶段展开；原字、字形和笔画版本先分清，姓名数理与号码能量、称骨不因都用数字就自动合并。",
+      "cards":[
+        {"id":"characters-strokes","title":"字符与笔画","latin":"Characters & strokes","question":"姓名中的字怎样被转换成可复核的笔画输入？","summary":"这一板块保存字符、字库、繁简体与笔画口径，先解决输入如何形成；缺字和字库版本单独记录。","count":"字库与笔画","tags":["字符","笔画","字库"],"scope":["字符规范","繁简与笔画口径","缺字和字库版本"]},
+        {"id":"five-grids-three-talents","title":"五格与三才","latin":"Five grids & three talents","question":"天格、人格、地格、外格与总格怎样由姓名生成？","summary":"这一板块保存五格计算、三才组合与姓名输入的依赖关系，表格和程序公式按版本对照。","count":"5 格与三才","tags":["五格","三才","姓名"],"scope":["五格计算","三才组合","输入与公式依赖"]},
+        {"id":"numerology-versions","title":"数理表与解释版本","latin":"Numerology versions","question":"81 数理表中的缺项和冲突怎样处理？","summary":"这一板块保存81数理、吉凶标签与来源版本；同一数字并列不同标签时保留冲突，不合成唯一结论。","count":"81 数理版本","tags":["81数理","版本冲突","解释边界"],"scope":["数理表值","吉凶标签版本","缺项与冲突"]}
+      ],
+      "public_sources":[{"title":"jishiyu 姓名数理资料","note":"当前姓名五格、三才、字库与数理表的来源索引之一；冲突表值不直接合并。","url":"https://github.com/chxb/jishiyu"}]
+    }
+  ],
+  "internal_review": {
+    "status": "framework_only",
+    "reviewed_at": "2026-08-06",
+    "owner": ["火华", "Codex"],
+    "decision": "专题先以可进入的首层知识板块承接来源层材料；细则、分歧和交互逐专题核验。太乙于2026-08-06接入正式内容；人格问卷于2026-08-10基于两套已验收材料展开为9个正式知识节点，其余专题仍保持各自状态。"
+  }
+}

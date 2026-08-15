@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0.0",
+  "id": "meihua_complement_inverse_hexagrams",
+  "title": "错卦与综卦",
+  "summary": "错卦把六个爻位逐一阴阳互换；综卦把整组六爻上下倒置。两者都能从既有卦形确定性生成，但锁定实现明确说明它们属于卦变之学的后加观察透镜，不是《梅花易数》原书的起卦步骤；页面因此只展示卦形操作、爻位对应与固定例，不继承来源作者的事项解释。",
+  "operations": [
+    {
+      "id": "complement",
+      "label": "错卦",
+      "operation": "六爻逐位反转",
+      "line_rule": "阳爻变阴爻，阴爻变阳爻；爻位次序保持不动",
+      "structural_question": "同一位置全部换成另一种阴阳后，卦形变成什么？"
+    },
+    {
+      "id": "inverse",
+      "label": "综卦",
+      "operation": "六爻上下倒置",
+      "line_rule": "初爻与上爻、二爻与五爻、三爻与四爻互换位置；每爻阴阳保持不动",
+      "structural_question": "把整卦旋转一百八十度后，卦形变成什么？"
+    }
+  ],
+  "inverse_position_pairs": [
+    {"original": 1, "inverse": 6},
+    {"original": 2, "inverse": 5},
+    {"original": 3, "inverse": 4}
+  ],
+  "fixed_examples": [
+    {"id": "qian", "original": "乾为天", "outer": "乾", "inner": "乾", "complement": "坤为地", "inverse": "乾为天", "note": "综卦与本卦相同"},
+    {"id": "zhun", "original": "水雷屯", "outer": "坎", "inner": "震", "complement": "火风鼎", "inverse": "山水蒙", "note": "错、综得到两个不同卦形"},
+    {"id": "jiji", "original": "水火既济", "outer": "坎", "inner": "离", "complement": "火水未济", "inverse": "火水未济", "note": "两种操作在这一例中落到同一卦形"},
+    {"id": "yi", "original": "山雷颐", "outer": "艮", "inner": "震", "complement": "泽风大过", "inverse": "山雷颐", "note": "八个自综卦之一"}
+  ],
+  "self_inverse_hexagrams": ["乾为天", "坤为地", "山雷颐", "泽风大过", "坎为水", "离为火", "风泽中孚", "雷山小过"],
+  "source_boundary": {
+    "preserved": "锁定代码中的逐位反转、整卦倒置和固定测试，以及资料页列出的三组综卦爻位对应。",
+    "excluded": "互补面、对方视角、感情、谈判、共识等解释属于来源作者的应用语言，不作为卦形生成规则发布。",
+    "positioning": "跨传统结构透镜；不是邵雍原法，也不并入本卦、互卦与变卦节点。"
+  },
+  "reading_boundaries": [
+    "页面只切换固定卦例，不替用户起卦。",
+    "错卦与综卦只说明卦形怎样生成，不自动提供人物视角或事项结论。",
+    "不把自综、错综重合或卦名关系解释为吉凶、趋势与行动建议。"
+  ],
+  "public_sources": [
+    {
+      "title": "muyen/meihua-yishu 锁定错综卦实现",
+      "url": "https://github.com/muyen/meihua-yishu/blob/aecdf87ebef26328c32caa65d40b2f9d273088ec/scripts/meihua_calc.py#L280-L288",
+      "note": "支撑逐位阴阳反转与整组六爻倒序两个确定性操作；同文件说明这是后加结构透镜。"
+    },
+    {
+      "title": "锁定卦象关系资料",
+      "url": "https://github.com/muyen/meihua-yishu/blob/aecdf87ebef26328c32caa65d40b2f9d273088ec/references/hexagram-relationships.md#L53-L80",
+      "note": "支撑定义、综卦三组爻位对应与八个自综卦名称；应用解释不进入公开规则。"
+    },
+    {
+      "title": "锁定错综卦测试",
+      "url": "https://github.com/muyen/meihua-yishu/blob/aecdf87ebef26328c32caa65d40b2f9d273088ec/tests/test_meihua_calc.py#L98-L122",
+      "note": "支撑乾、颐、屯与既济四个固定例。"
+    }
+  ],
+  "internal_review": {
+    "status": "formal_cross_tradition_structure_lens",
+    "reviewed_at": "2026-08-09",
+    "owner": ["火华", "Codex"],
+    "source_refs": ["github_muyen_meihua_yishu_aecdf87"],
+    "deduplication": "本互变节点处理原卦内部截取与指定动爻翻转；错综卦处理全爻反转与整卦倒置，输入操作不同，保留为独立关系节点。",
+    "known_gaps": ["当前只有一套锁定实现与其作者资料，缺少版本级古籍底本。", "来源给出的解释用途未获独立传统来源复核。"],
+    "boundary": "只发布卦形操作、爻位对应和固定例；解释用途保持在来源陈述层。"
+  }
+}

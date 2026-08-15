@@ -1,0 +1,177 @@
+{
+  "hexagram-body": [
+    { "title": "《卜筮正宗》卷二", "note": "保存六爻装卦的基础次序与卦体资料，可核对六个爻位和内外卦层次。", "url": "https://www.shidianguji.com/book/HY1439/chapter/1koiop3nkeebt" },
+    { "title": "《卜筮正宗》第一册扫描本", "note": "刊本“六十四卦名”及逐卦表可核对八个经卦上下相重后的六十四种名称。", "url": "https://upload.wikimedia.org/wikipedia/commons/b/b7/NLC892-GBZX0301013045-259368_%E5%8D%9C%E7%AD%AE%E6%AD%A3%E5%AE%97_%E5%8D%81%E5%9B%9B%E5%8D%B7_%E7%AC%AC1%E5%86%8A.pdf" },
+    { "title": "jishiyu 六十四卦固定映射", "note": "锁定实现保存八个三爻编码及上下卦组合到六十四卦名的完整映射，只用于核对结构和名称。", "url": "https://github.com/chxb/jishiyu/blob/97b6d6d8e58c6947a86e281d5b69de1032e9bc08/js/6yao.js" }
+  ],
+  "moving-lines-change": [
+    { "title": "《卜筮全书·启蒙节要》", "note": "第37至56行保存一背、二背、三背、三字与单、拆、重、交的对应，并说明连续六次自初爻向上记录。", "url": "https://ctext.org/wiki.pl?chapter=581378&if=gb&remap=gb" },
+    { "title": "《周易筮述》卷四", "note": "保存九、六为老阳老阴而变，七、八不变的说法。", "url": "https://zh.wikisource.org/zh-hans/%E5%91%A8%E6%98%93%E7%AD%AE%E8%BF%B0_%28%E5%9B%9B%E5%BA%AB%E5%85%A8%E6%9B%B8%E6%9C%AC%29/%E5%8D%B74" },
+    { "title": "jishiyu 三钱取爻实现", "note": "锁定代码把三枚二面结果归为少阳、少阴、老阳、老阴，并按六个位置交给排盘层；只用于核对固定映射。", "url": "https://github.com/chxb/jishiyu/blob/97b6d6d8e58c6947a86e281d5b69de1032e9bc08/js/view_ui/view_6yao.js#L10-L28" }
+  ],
+  "self-response": [
+    { "title": "《卜筮正宗》第一册扫描本", "note": "刊本中的八宫装卦表可逐卦核对世爻、应爻的标记位置。", "url": "https://upload.wikimedia.org/wikipedia/commons/b/b7/NLC892-GBZX0301013045-259368_%E5%8D%9C%E7%AD%AE%E6%AD%A3%E5%AE%97_%E5%8D%81%E5%9B%9B%E5%8D%B7_%E7%AC%AC1%E5%86%8A.pdf" },
+    { "title": "《卜筮正宗·世应论用神》", "note": "说明世为自己、应作他人的相对角色，并列出未深交者及指定地点等以应爻取用的资料范围。", "url": "https://ctext.org/wiki.pl?chapter=889452&if=gb&remap=gb" },
+    { "title": "《增删卜易》", "note": "既保存朋友、外人以应爻取用的旧法与经验保留，也定义世应之间的两个间爻，并把间爻规则收窄到确有彼此两方及中间角色的事情。", "url": "https://zh.wikisource.org/zh-hans/%E5%A2%9E%E5%88%A0%E5%8D%9C%E6%98%93" }
+  ],
+  "palace-membership": [
+    { "title": "《卜筮正宗》第一册扫描本", "note": "“六十四卦名”及逐宫装卦表用于核对六十四卦的八宫归属和游魂、归魂次序。", "url": "https://upload.wikimedia.org/wikipedia/commons/b/b7/NLC892-GBZX0301013045-259368_%E5%8D%9C%E7%AD%AE%E6%AD%A3%E5%AE%97_%E5%8D%81%E5%9B%9B%E5%8D%B7_%E7%AC%AC1%E5%86%8A.pdf" },
+    { "title": "《增删卜易·八卦各宫全图》", "note": "逐宫列出本宫、一世至五世、游魂与归魂八个位置；全书说明初至五爻续变、返四成游魂、内卦再变成归魂。", "url": "https://zh.wikisource.org/wiki/%E5%A2%9E%E5%88%AA%E5%8D%9C%E6%98%93/3/%E5%85%AB%E5%8D%A6%E5%90%84%E5%AE%AE%E5%85%A8%E5%9C%96" },
+    { "title": "jishiyu 游魂归魂识别代码", "note": "程序以八组内外卦名单标记游魂、归魂，可以核对八宫变化路径生成的结果集合。", "url": "https://github.com/chxb/jishiyu/blob/97b6d6d8e58c6947a86e281d5b69de1032e9bc08/js/6yao.js#L33-L42" }
+  ],
+  "najia-assembly": [
+    { "title": "《卜筮正宗》纳甲歌与表", "note": "第214至231行保存从下装起的歌诀、内外卦表，并区分阳卦由初向上、阴卦由上向下的装配方向。", "url": "https://ctext.org/wiki.pl?chapter=889452&if=en&remap=gb" },
+    { "title": "《卜筮正宗》第一册扫描本", "note": "刊本第21页“纳甲装卦歌”与第34页起逐卦表用于核对转录值。", "url": "https://upload.wikimedia.org/wikipedia/commons/b/b7/NLC892-GBZX0301013045-259368_%E5%8D%9C%E7%AD%AE%E6%AD%A3%E5%AE%97_%E5%8D%81%E5%9B%9B%E5%8D%B7_%E7%AC%AC1%E5%86%8A.pdf" },
+    { "title": "jishiyu 纳甲装配代码", "note": "锁定版本分别保存八卦内外天干表、地支表，并按初至上六个位置逐项装入，可核对页面的从下往上数组。", "url": "https://github.com/chxb/jishiyu/blob/97b6d6d8e58c6947a86e281d5b69de1032e9bc08/js/6yao.js#L55-L79" }
+  ],
+  "six-relatives": [
+    { "title": "《卜筮正宗》卷二", "note": "装卦资料把卦宫五行与爻支五行相对照，列出父母、兄弟、子孙、妻财、官鬼五类名称。", "url": "https://www.shidianguji.com/book/HY1439/chapter/1koiop3nkeebt" },
+    { "title": "《增删卜易·动变章》", "note": "以水天需变天水讼说明变爻六亲仍照正卦所属宫推，不随变卦宫五行改换基准。", "url": "https://zh.wikisource.org/zh-hans/%E5%A2%9E%E5%88%A0%E5%8D%9C%E6%98%93/7" },
+    { "title": "jishiyu 六亲生成实现", "note": "锁定实现保存卦宫五行、地支五行及生、克、被生、被克关系，可核对五种基准下的25种名称组合。", "url": "https://github.com/chxb/jishiyu/blob/97b6d6d8e58c6947a86e281d5b69de1032e9bc08/js/6yao.js" }
+  ],
+  "flying-hidden-spirits": [
+    { "title": "《卜筮正宗》第一册扫描本", "note": "逐卦表列出卦中缺少六亲时，从本宫纯卦同位取伏神的实例。", "url": "https://upload.wikimedia.org/wikipedia/commons/b/b7/NLC892-GBZX0301013045-259368_%E5%8D%9C%E7%AD%AE%E6%AD%A3%E5%AE%97_%E5%8D%81%E5%9B%9B%E5%8D%B7_%E7%AC%AC1%E5%86%8A.pdf" },
+    { "title": "《周易尚占》飞伏说明", "note": "保存本卦爻为飞神、本宫对应爻为伏神的同位说明。", "url": "https://ctext.org/wiki.pl?chapter=854714&if=en&remap=gb" },
+    { "title": "《增删卜易·飞伏神章》", "note": "章首保存先查日月、再寻本宫伏神的旧法；同章作者又记述不采用伏神而另占的实践，并引《黄金策》保留先查变爻的另一顺序。", "url": "https://ctext.org/wiki.pl?chapter=157683&if=en&remap=gb" },
+    { "title": "《易林补遗》卷一", "note": "保存本卦已有可用目标时不寻伏、本卦六爻缺项时再取本宫伏神的资料口径。", "url": "https://zh.wikisource.org/zh-hans/%E6%98%93%E6%9E%97%E8%A3%9C%E9%81%BA/1" }
+  ],
+  "six-spirits-sequence": [
+    { "title": "《事林广记》续集卷十一", "note": "列出六兽固定次序，并保存甲乙日起青龙的排列例。", "url": "https://zh.wikisource.org/wiki/%E4%BA%8B%E6%9E%97%E5%BB%A3%E8%A8%98/%E7%BA%8C%E9%9B%86/%E5%8D%B711" },
+    { "title": "《卜筮全书·起六神诀》", "note": "列出甲乙、丙丁、戊、己、庚辛、壬癸六组日干起点。", "url": "https://www.shidianguji.com/zh/book/HY1394/chapter/1l3wdoooukqb8" },
+    { "title": "《卜筮正宗·六兽歌断》", "note": "保存六神各自的传统提示范围，同时逐项附带临用、临忌、生用、动克等条件，说明名称不能脱离爻的关系独立判断。", "url": "https://ctext.org/wiki.pl?chapter=889452&if=en&remap=gb" },
+    { "title": "《增删卜易·六神章》", "note": "以青龙临凶、白虎遇生扶的卦例反驳固定吉凶标签，并把六神定位为附合线索。", "url": "https://zh.wikisource.org/zh-hans/%E5%A2%9E%E5%88%A0%E5%8D%9C%E6%98%93/18" }
+  ],
+  "auxiliary-markers": [
+    { "title": "《增删卜易》卷二上·星煞章", "note": "锁定版本卷二上列出天乙贵人、禄神、驿马、天喜四种查法，并明确星煞只能附和用神旺衰，不能独操祸福。", "url": "https://github.com/chxb/jishiyu/blob/97b6d6d8e58c6947a86e281d5b69de1032e9bc08/assets/books/%E5%8D%9C/%E5%A2%9E%E5%88%A0%E5%8D%9C%E6%98%93/%E5%A2%9E%E5%88%A0%E5%8D%9C%E6%98%93(%E5%8D%B7%E4%BA%8C)-%E4%B8%8A.html" },
+    { "title": "《卜筮全书》卷十四", "note": "神煞歌例保存更广的星煞名目和查表，可与《增删卜易》的删选口径比较；公开页只采用两书可核对的四项。", "url": "https://github.com/chxb/jishiyu/blob/97b6d6d8e58c6947a86e281d5b69de1032e9bc08/assets/books/%E5%8D%9C/%E5%8D%9C%E7%AD%AE%E5%85%A8%E4%B9%A6/%E5%8D%9C%E7%AD%AE%E5%85%A8%E4%B9%A6(%E5%8D%B7%E5%8D%81%E5%9B%9B).html" }
+  ],
+  "hexagram-chong-he": [
+    { "title": "《增删卜易》八宫章", "note": "列出八纯卦及天雷无妄、雷天大壮共十个六冲卦。", "url": "https://zh.wikisource.org/zh-hans/%E5%A2%9E%E5%88%AA%E5%8D%9C%E6%98%93/3" },
+    { "title": "《增删卜易》六合章", "note": "说明六合卦内外六爻的对应和合，并以天地否为例。", "url": "https://zh.wikisource.org/zh-hans/%E5%A2%9E%E5%88%AA%E5%8D%9C%E6%98%93/19" }
+  ],
+  "repeating-opposing-change": [
+    { "title": "《增删卜易》反伏章", "note": "区分内卦、外卦与全卦的反吟、伏吟范围，并保存固定卦例。", "url": "https://zh.wikisource.org/zh-hans/%E5%A2%9E%E5%88%AA%E5%8D%9C%E6%98%93/25" },
+    { "title": "《易林补遗》卷一", "note": "另从同位地支相同、相冲说明伏吟与反吟，便于保留术语层级差异。", "url": "https://zh.wikisource.org/zh-hans/%E6%98%93%E6%9E%97%E8%A3%9C%E9%81%BA/1" }
+  ],
+  "trigram-change-relations": [
+    { "title": "《增删卜易·卦变生克墓绝章》", "note": "列出变生、变克、变墓、变绝、比和，并以巽木变坎水、震木变乾金说明变后经卦五行回看原经卦的方向。", "url": "https://zh.wikisource.org/zh-hans/%E5%A2%9E%E5%88%A0%E5%8D%9C%E6%98%93/24" },
+    { "title": "《易林补遗》卷一", "note": "保存八个经卦的根支分配，并用离变乾、兑变艮等例说明怎样在变后经卦中检查原五行的墓支、绝支及空破条件。", "url": "https://zh.wikisource.org/zh-hans/%E6%98%93%E6%9E%97%E8%A3%9C%E9%81%BA/1" }
+  ],
+  "advancing-retreating-change": [
+    { "title": "《增删卜易》校对本", "note": "进退章保存木、火、金、水和土支回环的八组进神及反向八组退神。", "url": "https://data.guoxueruanjian.com/books/%E5%A2%9E%E5%88%A0%E5%8D%9C%E6%98%93%EF%BC%88%E6%A0%A1%E5%AF%B9%EF%BC%9A%E4%B8%AD%E5%9B%BD%E7%94%B7%E5%84%BF%EF%BC%89.pdf" },
+    { "title": "《卜筮全书》行人章", "note": "以寅化卯、巳化午为进，酉化申、子化亥为退，明确动爻到变爻的方向。", "url": "https://ctext.org/wiki.pl?chapter=730456&if=en&remap=gb" }
+  ],
+  "returning-change-relations": [
+    { "title": "《增删卜易》回头生克章", "note": "保存卦、爻两个层级的回头生克例，支撑“变化结果返回作用于原位”的方向。", "url": "https://zh.wikisource.org/zh-hans/%E5%A2%9E%E5%88%AA%E5%8D%9C%E6%98%93/24" },
+    { "title": "《卜筮正宗》回头克说明", "note": "另列卦变与爻变的回头作用，作为第二部古籍对照。", "url": "https://ctext.org/wiki.pl?chapter=944578&if=en&remap=gb" }
+  ],
+  "changed-line-states": [
+    { "title": "《增删卜易》", "note": "旬空、生旺墓绝与月破各章分别提供化空、化墓化绝、化破所需的旬、五行和月建条件。", "url": "https://zh.wikisource.org/zh-hant/%E5%A2%9E%E5%88%AA%E5%8D%9C%E6%98%93" }
+  ],
+  "month-day-context": [
+    { "title": "《增删卜易·日辰章》", "note": "说明日辰对卦爻产生冲、合、生、克等关系，并区分日冲后的不同状态。", "url": "https://zh.wikisource.org/zh-hans/%E5%A2%9E%E5%88%AA%E5%8D%9C%E6%98%93/17" },
+    { "title": "《增删卜易》月将章与日辰章", "note": "全书目录与正文并列月建、日辰两类直接时间来源，便于核对两者的作用范围。", "url": "https://zh.wikisource.org/zh-hant/%E5%A2%9E%E5%88%AA%E5%8D%9C%E6%98%93" },
+    { "title": "《增删卜易》卷二（上）·太岁作用范围", "note": "说明太岁司一年之令却尊而不亲，普通细事中的岁冲、岁合不能直接等同月建与日辰。", "url": "https://github.com/chxb/jishiyu/blob/97b6d6d8e58c6947a86e281d5b69de1032e9bc08/assets/books/%E5%8D%9C/%E5%A2%9E%E5%88%A0%E5%8D%9C%E6%98%93/%E5%A2%9E%E5%88%A0%E5%8D%9C%E6%98%93(%E5%8D%B7%E4%BA%8C)-%E4%B8%8A.html" },
+    { "title": "《卜筮正宗·十八问答附占验》上", "note": "第一问把年、月、日并称三传，同时比较三层时间来源与动爻的生克数量。", "url": "https://github.com/chxb/jishiyu/blob/97b6d6d8e58c6947a86e281d5b69de1032e9bc08/assets/books/%E5%8D%9C/%E5%8D%9C%E7%AD%AE%E6%AD%A3%E5%AE%97/%E5%8D%9C%E7%AD%AE%E6%AD%A3%E5%AE%97(%E5%8D%81%E5%85%AB%E9%97%AE%E7%AD%94%E9%99%84%E5%8D%A0%E9%AA%8C)-%E4%B8%8A.html" }
+  ],
+  "twelve-message-hexagrams": [
+    { "title": "《周易义丛》卷十六", "note": "逐月列出复、临、泰、大壮、夬、乾、姤、遁、否、观、剥、坤，并说明阳爻或阴爻从初爻向上逐月增加。", "url": "https://ctext.org/wiki.pl?chapter=687340&if=gb" },
+    { "title": "《周易传义大全》卷十二", "note": "在遁卦条下保存复至夬与姤至剥的阴阳消长卦列，并明确遁为六月之卦，可与完整逐月表相互核对。", "url": "https://ctext.org/wiki.pl?chapter=666532&if=gb" }
+  ],
+  "three-harmony-formations": [
+    { "title": "《增删卜易》校对本", "note": "三合章列出申子辰、亥卯未、寅午戌、巳酉丑四局及卦爻、日月补入的成局路径。", "url": "https://bingchuh.github.io/files/%E5%A2%9E%E5%88%A0%E5%8D%9C%E6%98%93.pdf" }
+  ],
+  "branch-punishment-harm": [
+    { "title": "《卜筮全书》", "note": "书中并列地支相刑、相害成员，并可与其他古籍对关系效力的不同意见相互比较。", "url": "https://ctext.org/wiki.pl?chapter=909268&if=gb" },
+    { "title": "《增删卜易》", "note": "相关章节对三刑验例持保留意见，用于呈现规则表与经验意见的边界。", "url": "https://zh.wikisource.org/zh-hant/%E5%A2%9E%E5%88%AA%E5%8D%9C%E6%98%93" }
+  ],
+  "hidden-motion-day-break": [
+    { "title": "《增删卜易·日辰章》", "note": "把静爻逢日冲后的暗动、日破，与已发动爻受冲分开讨论。", "url": "https://zh.wikisource.org/zh-hans/%E5%A2%9E%E5%88%AA%E5%8D%9C%E6%98%93/17" },
+    { "title": "《增删卜易·动散章》", "note": "记录动爻受日辰或另一动爻相冲的旧说，并保留旺相、有气时不自动称散的反证。", "url": "https://zh.wikisource.org/wiki/%E5%A2%9E%E5%88%AA%E5%8D%9C%E6%98%93/23" }
+  ],
+  "single-moving-still": [
+    { "title": "《增删卜易》", "note": "保存独发、独静的整卦动静数量结构及其用途限制。", "url": "https://zh.wikisource.org/zh-hant/%E5%A2%9E%E5%88%AA%E5%8D%9C%E6%98%93" },
+    { "title": "《卜筮正宗》", "note": "另保存独发、独静及暗动口径，作为定义范围的对照。", "url": "https://ctext.org/wiki.pl?chapter=909268&if=gb" }
+  ],
+  "four-spirit-roles": [
+    { "title": "《增删卜易·用神章》", "note": "按父母、官鬼、兄弟、妻财、子孙五类列出人物与事物的取用范围，说明取用先由观察对象与自身的关系决定。", "url": "https://zh.wikisource.org/zh-hans/%E5%A2%9E%E5%88%A0%E5%8D%9C%E6%98%93/8" },
+    { "title": "《卜筮正宗·用神分类定例》", "note": "在五类六亲之外另列世应取用，并用庇护、驱使、同辈等关系解释为什么不同对象归入同一类。", "url": "https://ctext.org/wiki.pl?chapter=889452&if=gb&remap=gb" },
+    { "title": "《增删卜易·元神忌神衰旺章》", "note": "围绕已经确定的用神，说明元神生用、忌神克用及仇神与原忌之间的生克方向。", "url": "https://zh.wikisource.org/wiki/%E5%A2%9E%E5%88%AA%E5%8D%9C%E6%98%93/10" }
+  ],
+  "harmony-clash-turn": [
+    { "title": "《卜筮正宗》卷五", "note": "把合处逢冲、冲中逢合分为卦变、日月介入和动变介入三类来源。", "url": "https://www.shidianguji.com/book/HY0057/chapter/1lpdfpdr8oqhb" },
+    { "title": "《增删卜易·日辰章》", "note": "保存合住遇日建冲开的关系变化，并对受冲是否必散保留条件。", "url": "https://zh.wikisource.org/zh-hans/%E5%A2%9E%E5%88%AA%E5%8D%9C%E6%98%93/17" }
+  ],
+  "month-hexagram-body": [
+    { "title": "《卜筮正宗》扫描整理本", "note": "“安月卦身诀”写明阳世从子、阴世从午起，并从初爻数到世爻。", "url": "https://www.xuanxuecenter.com/files/bu_shi_zheng_zong.pdf" },
+    { "title": "《卜筮正宗》第一册扫描本", "note": "刊本用于核对口诀原貌和月卦身条目位置。", "url": "https://upload.wikimedia.org/wikipedia/commons/b/b7/NLC892-GBZX0301013045-259368_%E5%8D%9C%E7%AD%AE%E6%AD%A3%E5%AE%97_%E5%8D%81%E5%9B%9B%E5%8D%B7_%E7%AC%AC1%E5%86%8A.pdf" }
+  ],
+  "self-body-methods": [
+    { "title": "《断易天机》世身起例", "note": "列出子午初、丑未二至巳亥六的第一套地支到爻位映射。", "url": "https://www.cafengshuinet.com/m/show_detail.php?id=1061" },
+    { "title": "《断易天机》另一套起例", "note": "另录亥子初、丑戌二至巳午六的映射，用于并列四支上的分歧。", "url": "https://www.luckclub.cn/liuyao/006/004/" },
+    { "title": "《卜筮正宗》扫描整理本", "note": "“辟卜筮全书世身之谬”转录起例同时批评其替代世爻的用途。", "url": "https://www.xuanxuecenter.com/files/bu_shi_zheng_zong.pdf" }
+  ],
+  "growth-peak-tomb-absolute": [
+    { "title": "《增删卜易·生旺墓绝章》", "note": "列出生、旺、墓、绝四个锚点，区分日辰、另一动爻与同位变爻三种来源，并保留土寄生两说。", "url": "https://zh.wikisource.org/zh-hans/%E5%A2%9E%E5%88%AA%E5%8D%9C%E6%98%93/26%E5%8F%881" },
+    { "title": "《增删卜易》卷二（上）·随鬼入墓章", "note": "比较旧说的多个随墓入口，并以占验把核心收回世爻或用神、旺衰生扶及墓支是否被破。", "url": "https://github.com/chxb/jishiyu/blob/97b6d6d8e58c6947a86e281d5b69de1032e9bc08/assets/books/%E5%8D%9C/%E5%A2%9E%E5%88%A0%E5%8D%9C%E6%98%93/%E5%A2%9E%E5%88%A0%E5%8D%9C%E6%98%93(%E5%8D%B7%E4%BA%8C)-%E4%B8%8A.html" },
+    { "title": "《卜筮正宗·十八问答附占验》上", "note": "以原神生扶的反例说明入墓标签不能跳过用神与完整作用关系。", "url": "https://github.com/chxb/jishiyu/blob/97b6d6d8e58c6947a86e281d5b69de1032e9bc08/assets/books/%E5%8D%9C/%E5%8D%9C%E7%AD%AE%E6%AD%A3%E5%AE%97/%E5%8D%9C%E7%AD%AE%E6%AD%A3%E5%AE%97(%E5%8D%81%E5%85%AB%E9%97%AE%E7%AD%94%E9%99%84%E5%8D%A0%E9%AA%8C)-%E4%B8%8A.html" }
+  ],
+  "void-substance-conditions": [
+    { "title": "《增删卜易·旬空章》", "note": "列出旺、动、生扶等不以空论的条件，以及月破、安静无助等空态条件，并讨论出空、填实、冲空。", "url": "https://zh.wikisource.org/wiki/%E5%A2%9E%E5%88%AA%E5%8D%9C%E6%98%93/26" }
+  ],
+  "timing-triggers": [
+    { "title": "《增删卜易》卷一（下）·各门类应期总注", "note": "集中列出静逢值冲、动逢值合，以及旺衰、墓合、月破、旬空、进退等状态对应的时间关系和远近尺度。", "url": "https://github.com/chxb/jishiyu/blob/97b6d6d8e58c6947a86e281d5b69de1032e9bc08/assets/books/%E5%8D%9C/%E5%A2%9E%E5%88%A0%E5%8D%9C%E6%98%93/%E5%A2%9E%E5%88%A0%E5%8D%9C%E6%98%93(%E5%8D%B7%E4%B8%80)-%E4%B8%8B.html" },
+    { "title": "《卜筮正宗》下卷", "note": "以“空要值日、破要填合、冲待合、合待冲”概括状态与时间门，并在月破、旬空等条目中补充远近尺度及有无支撑的条件。", "url": "https://github.com/chxb/jishiyu/blob/97b6d6d8e58c6947a86e281d5b69de1032e9bc08/assets/books/%E5%8D%9C/%E5%8D%9C%E7%AD%AE%E6%AD%A3%E5%AE%97/%E5%8D%9C%E7%AD%AE%E6%AD%A3%E5%AE%97-%E4%B8%8B.html" }
+  ],
+  "month-break-state-gates": [
+    { "title": "《增删卜易》月破章", "note": "区分静、动、变等载体，反对把月破一概视为无用，并列出出月、值日与合日等时间门。", "url": "https://zh.wikisource.org/zh-hans/%E5%A2%9E%E5%88%AA%E5%8D%9C%E6%98%93" },
+    { "title": "《增删卜易》应期总注", "note": "以月破遇合及后来填实说明破态可以随时间条件变化。", "url": "https://zh.wikisource.org/zh-hans/%E5%A2%9E%E5%88%AA%E5%8D%9C%E6%98%93/26%E5%8F%883" }
+  ],
+  "two-present-selection": [
+    { "title": "《增删卜易》两现章", "note": "定义同一用神两处出现，先列传统优先项，再用占验反例保留另一候选。", "url": "https://zh.wikisource.org/zh-hans/%E5%A2%9E%E5%88%AA%E5%8D%9C%E6%98%93" }
+  ],
+  "spirit-role-strength": [
+    { "title": "《增删卜易·元神忌神衰旺章》", "note": "分别列元神能生、不能生与忌神能克、不能克的条件，并提醒用神自身仍需单独观察。", "url": "https://zh.wikisource.org/wiki/%E5%A2%9E%E5%88%AA%E5%8D%9C%E6%98%93/10" }
+  ],
+  "multi-moving-chain": [
+    { "title": "《卜筮正宗》多动关系说明", "note": "保存忌神克用而原神同时发动时，作用改道为忌神转生原神的“贪生忘克”路径。", "url": "https://ctext.org/wiki.pl?chapter=801184&if=gb&remap=gb" },
+    { "title": "《卜筮全书》卷四", "note": "另保存多动关系及贪合忘克线索，用于对照多来源箭头怎样接续或改道。", "url": "https://ctext.org/wiki.pl?chapter=695113&if=gb&remap=gb" }
+  ],
+  "action-source-layers": [
+    {
+      "title": "《增删卜易》四处生克冲合说明",
+      "note": "以固定目标爻依次说明月建、日辰、卦中动爻与同位变爻四类作用来源，并明确变爻返回本爻的方向。",
+      "url": "https://zh.wikisource.org/zh-hans/%E5%A2%9E%E5%88%AA%E5%8D%9C%E6%98%93"
+    },
+    {
+      "title": "《增删卜易》卷二（上）·太岁作用范围",
+      "note": "在四类常见来源之外补充太岁，并明确它必须先经过年度、远期或少数大事的范围门。",
+      "url": "https://github.com/chxb/jishiyu/blob/97b6d6d8e58c6947a86e281d5b69de1032e9bc08/assets/books/%E5%8D%9C/%E5%A2%9E%E5%88%A0%E5%8D%9C%E6%98%93/%E5%A2%9E%E5%88%A0%E5%8D%9C%E6%98%93(%E5%8D%B7%E4%BA%8C)-%E4%B8%8A.html"
+    },
+    {
+      "title": "《卜筮正宗·十八问答附占验》上",
+      "note": "第一问以三传说明年、月、日都可能进入作用比较，但不等于三者权限完全相同。",
+      "url": "https://github.com/chxb/jishiyu/blob/97b6d6d8e58c6947a86e281d5b69de1032e9bc08/assets/books/%E5%8D%9C/%E5%8D%9C%E7%AD%AE%E6%AD%A3%E5%AE%97/%E5%8D%9C%E7%AD%AE%E6%AD%A3%E5%AE%97(%E5%8D%81%E5%85%AB%E9%97%AE%E7%AD%94%E9%99%84%E5%8D%A0%E9%AA%8C)-%E4%B8%8A.html"
+    },
+    {
+      "title": "Horosa 锁定六爻关系实现",
+      "note": "锁定版本分别保存月日环境、动爻状态与旺衰作用条件，只用于核对现代实现怎样拆分输入；它没有完整覆盖太岁范围门。",
+      "url": "https://github.com/Horace-Maxwell/Horosa-Web-App-comprehensively-improved-MacOS/blob/f8275b32d39388ab6060af09c20f37a63d08795d/Horosa-Web/astrostudyui/src/components/gua/liuyaoDuanJue.js"
+    }
+  ],
+  "flying-hidden-relations": [
+    { "title": "《卜筮正宗》第一册扫描本", "note": "逐卦表提供飞神、伏神同位叠放的底本结构。", "url": "https://upload.wikimedia.org/wikipedia/commons/b/b7/NLC892-GBZX0301013045-259368_%E5%8D%9C%E7%AD%AE%E6%AD%A3%E5%AE%97_%E5%8D%81%E5%9B%9B%E5%8D%B7_%E7%AC%AC1%E5%86%8A.pdf" },
+    { "title": "《卜筮正宗》飞伏生克整理文本", "note": "用于核对飞来生伏、伏去生飞、飞来克伏、伏去克飞及比和等方向线索。", "url": "https://ctext.org/wiki.pl?chapter=801184&if=gb&remap=gb" }
+  ],
+  "seasonal-strength-by-month": [
+    { "title": "《增删卜易·四时旺相章》", "note": "逐月列出值月、同类、月令所生及其余五行的旺相休囚层次，并保存季月余气说明。", "url": "https://zh.wikisource.org/zh-hans/%E5%A2%9E%E5%88%AA%E5%8D%9C%E6%98%93/15%E5%8F%88" },
+    { "title": "《卜筮全书·黄金策》", "note": "另以四时旺相休囚说明月令与五行状态的关系，作为第二部古籍对照。", "url": "https://ctext.org/wiki.pl?chapter=428169&if=gb&remap=gb" }
+  ],
+  "moving-static-permissions": [
+    { "title": "《增删卜易·动变章》", "note": "区分静爻之间的旺衰作用与动爻对静爻的作用，说明关系存在后仍需判断箭头能否通过。", "url": "https://zh.wikisource.org/zh-hans/%E5%A2%9E%E5%88%AA%E5%8D%9C%E6%98%93/14" },
+    { "title": "《卜筮全书·黄金策》", "note": "保存旺静、休囚静与发动爻之间的作用优先次序，用于核对动静权限边界。", "url": "https://ctext.org/wiki.pl?chapter=428169&if=gb&remap=gb" }
+  ],
+  "line-harmony-states": [
+    { "title": "《增删卜易》六合章", "note": "按静爻、动爻、日月与变爻来源区分合起、合绊、合好和化扶四种状态。", "url": "https://zh.wikisource.org/zh-hans/%E5%A2%9E%E5%88%AA%E5%8D%9C%E6%98%93/19" }
+  ]
+}

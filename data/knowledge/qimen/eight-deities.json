@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "id": "qimen_eight_deities",
+  "title": "八神对象与版本边界",
+  "summary": "当前基础表的八神为值符、螣蛇、太阴、六合、白虎、玄武、九地、九天。它们没有像门、星那样固定绑定九个原始宫位，而是在神盘中随排布规则进入八个位置；不同实现还会出现腾／螣字形、阴阳顺序以及九神、太常等差异。",
+  "items": ["值符","螣蛇","太阴","六合","白虎","玄武","九地","九天"],
+  "base_sequence": ["值符","螣蛇","太阴","六合","白虎","玄武","九地","九天"],
+  "variant_register": [
+    {"variant":"字形","examples":["螣蛇","腾蛇"],"handling":"保留来源写法，搜索可互通"},
+    {"variant":"阴阳遁顺序","examples":["阳遁序列","阴遁序列"],"handling":"第二套实现分列，后续装盘版本节点再展开"},
+    {"variant":"八神／九神","examples":["八神","加入太常的九神"],"handling":"qimen-go飞盘与鸣法可见九神结构，不并入基础八神唯一表"}
+  ],
+  "reading_boundaries": ["本页不采用八神吉凶或象意。", "值符作为八神名称与值符星这一轮值角色需要分开阅读。", "基础八神表不代表飞盘、鸣法等版本都使用同一集合。"],
+  "public_sources": [
+    {"title":"mingli-skills 锁定元旦盘","url":"https://github.com/weizeW/mingli-skills/blob/c16eca0/qimen-dunjia/data/yuandan.json","note":"提供一套八神名称与基础顺序；仓库缺明确许可证，只作事实索引。"},
+    {"title":"qimenpaipan 锁定八神实现","url":"https://github.com/redrockhorse/qimenpaipan/blob/b6de54245cf7a514f59e51833dc01a87e1a3a849/qimenpaipan.py#L989-L1019","note":"实现阴阳遁两套顺序，以时干宫为值符宫旋转。"},
+    {"title":"qimen-go 锁定多盘式实现","url":"https://github.com/deminzhang/qimen-go/blob/4d3f58fa0f401b5b3a337f119138e99e90685dda/xuan/qimen.go","note":"飞盘与鸣法存在九神／太常结构，证明基础八神不能覆盖全部版本。"}
+  ],
+  "internal_review":{"status":"formal_object_node_with_variant_register","reviewed_at":"2026-08-09","owner":["火华","Codex"],"source_refs":["github_weizew_mingli_skills_c16eca0","github_redrockhorse_qimenpaipan_b6de542","github_deminzhang_qimen_go_4d3f58f"],"deduplication":"保存对象集合与版本差异，不复制装盘算法。","boundary":"不输出神义与现实判断。"}
+}

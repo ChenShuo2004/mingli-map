@@ -1,0 +1,87 @@
+{
+  "schema_version": "1.0",
+  "id": "liuyao_auxiliary_markers",
+  "title": "星煞",
+  "summary": "星煞是从占日干支或占时季节另外查出的辅助标记，不等于按日干逐爻排列的六神。《增删卜易》从大量旧名目中只保留天乙贵人、禄神、驿马、天喜四种经验项，同时明确：它们只能附着在已经确定的爻上帮助观察，不能越过用神、旺衰和生克关系单独决定结果。",
+  "markers": [
+    {
+      "id": "tianyi",
+      "name": "天乙贵人",
+      "basis": "占日天干",
+      "scope": "十个日干各对应两个地支；在卦中找到相应地支，才算该标记落到这一爻。",
+      "groups": [
+        { "input": "甲戊", "output": ["丑", "未"] },
+        { "input": "乙己", "output": ["子", "申"] },
+        { "input": "丙丁", "output": ["亥", "酉"] },
+        { "input": "壬癸", "output": ["卯", "巳"] },
+        { "input": "庚辛", "output": ["午", "寅"] }
+      ],
+      "reading_note": "这里只得到“哪些地支带有贵人标记”，不等于所临爻自动有利。"
+    },
+    {
+      "id": "lu",
+      "name": "禄神",
+      "basis": "占日天干",
+      "scope": "十个日干各对应一个地支；丙戊同在巳，丁己同在午。",
+      "groups": [
+        { "input": "甲", "output": ["寅"] },
+        { "input": "乙", "output": ["卯"] },
+        { "input": "丙戊", "output": ["巳"] },
+        { "input": "丁己", "output": ["午"] },
+        { "input": "庚", "output": ["申"] },
+        { "input": "辛", "output": ["酉"] },
+        { "input": "壬", "output": ["亥"] },
+        { "input": "癸", "output": ["子"] }
+      ],
+      "reading_note": "禄神是日干到地支的固定查表，不替代该爻原有的六亲和生克状态。"
+    },
+    {
+      "id": "yima",
+      "name": "驿马",
+      "basis": "占日地支",
+      "scope": "先把日支归入四组三合成员，再由该组查一个驿马地支。",
+      "groups": [
+        { "input": "申子辰", "output": ["寅"] },
+        { "input": "巳酉丑", "output": ["亥"] },
+        { "input": "寅午戌", "output": ["申"] },
+        { "input": "亥卯未", "output": ["巳"] }
+      ],
+      "reading_note": "驿马可提示移动相关线索，但仍需先确认它落在哪一爻、该爻是否与当前问题有关。"
+    },
+    {
+      "id": "tianxi",
+      "name": "天喜",
+      "basis": "占时季节",
+      "scope": "按春夏秋冬四季各取一个地支；季节边界依项目现有月令口径，不在本节点另造历法。",
+      "groups": [
+        { "input": "春", "output": ["戌"] },
+        { "input": "夏", "output": ["丑"] },
+        { "input": "秋", "output": ["辰"] },
+        { "input": "冬", "output": ["未"] }
+      ],
+      "reading_note": "即使查得天喜，也要继续看该地支是否月破、空亡、受克或确与用神发生关系。"
+    }
+  ],
+  "reading_order": [
+    { "label": "选基准", "note": "先分清该项取占日天干、占日地支还是季节。" },
+    { "label": "查地支", "note": "由固定表得到一个或两个目标地支。" },
+    { "label": "落到爻", "note": "检查目标地支是否实际出现在本卦、动变或相关位置。" },
+    { "label": "回到主轴", "note": "最后仍以用神、旺衰、生克、动静等关系判断它有没有参与。" }
+  ],
+  "source_difference": {
+    "bushi_quanshu": "《卜筮全书》卷十四集中列出大量吉神、凶煞及用途，是“广收名目”的资料层。",
+    "zengshan_buyi": "《增删卜易》星煞章只称四项有经验，同时又说它们不能独操祸福，甚至不用亦可。",
+    "publication_choice": "公开页保留四种查法和两书方法差异；其余名目先作为资料索引，不扩成固定吉凶标签。"
+  },
+  "reading_boundary": "本节点解释四种星煞怎样从时间基准查到地支，以及它们在六爻阅读中的辅助层级；不输入个人日期，不自动起卦，不把任何星煞名称直接换算为事件或吉凶结论。",
+  "internal_review": {
+    "status": "four_retained_markers_and_method_boundary_cross_checked",
+    "reviewed_at": "2026-08-05",
+    "source_refs": [
+      "zengshan_buyi_chapter_33_locked_text",
+      "bushi_quanshu_juan_14_locked_text",
+      "github_chxb_jishiyu_97b6d6d_book_corpus"
+    ],
+    "boundary": "只公开《增删卜易》明确保留的四项查法，并以《卜筮全书》核对查表；不发布大量神煞清单、固定用途断语和脱离用神旺衰的吉凶标签。"
+  }
+}

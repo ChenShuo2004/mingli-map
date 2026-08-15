@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0.0",
+  "id": "xiaoliuren_dynamic_god_branch_mapping",
+  "title": "神盘六神怎样由天盘地支取得",
+  "summary": "既有资料中常见的是六宫直接关联六个神煞；chxb/jishiyu 的神盘却先铺天盘地支，再由每个地支查六神。于是六神随时宫和时支移动，不能覆盖成固定的“某宫永远对应某神”。本页保存六组地支映射与一个完整固定快照。",
+  "branch_groups": [
+    {"branches":["寅","卯"],"god":"青龙"},{"branches":["巳","午"],"god":"朱雀"},{"branches":["丑","辰"],"god":"勾陈"},
+    {"branches":["未","戌"],"god":"腾蛇"},{"branches":["申","酉"],"god":"白虎"},{"branches":["亥","子"],"god":"玄武"}
+  ],
+  "fixed_rows": [
+    {"palace":"大安","branch":"戌","god":"腾蛇"},{"palace":"留连","branch":"子","god":"玄武"},{"palace":"速喜","branch":"寅","god":"青龙"},
+    {"palace":"赤口","branch":"辰","god":"勾陈"},{"palace":"小吉","branch":"午","god":"朱雀"},{"palace":"空亡","branch":"申","god":"白虎"}
+  ],
+  "comparison": {"existing_node":"六宫、神煞与主题宫名字段", "existing_model":"宫位→固定神煞短字段", "current_model":"天盘地支→动态六神", "decision":"建立关系边，不合并字段"},
+  "reading_boundaries": ["六神只保存名称映射，不复制来源中的长篇神义。", "动态神盘与固定宫神表属于不同对象模型。", "页面不从六神生成事项判断。"],
+  "public_sources": [{"title": "chxb/jishiyu 锁定 getGodPlate 实现", "url": "https://github.com/chxb/jishiyu/blob/97b6d6d8e58c6947a86e281d5b69de1032e9bc08/js/x6ren.js", "note": "用于复算十二地支到六神的动态映射。"}],
+  "internal_review": {"reviewed_on": "2026-08-10", "owner": ["火华", "Codex"], "status": "formal_dynamic_mapping"}
+}

@@ -1,0 +1,29 @@
+{
+  "id": "centerline-adjacent-and-boundaries",
+  "title": "正向、兼向与正替边界",
+  "summary": "每山15°都有中心线和两条7.5°边界；原始读数先区分正中、偏向相邻山和分界，再按所选玄空版本判断采用下卦或替卦。几何区间固定，兼向阈值、替星表与交界处理须随版本保存。",
+  "sector_model": {"width":15,"half_width":7.5,"center":"山位中心度数","left_boundary":"中心−7.5°","right_boundary":"中心＋7.5°"},
+  "positions": [
+    {"label":"正中","relation":"读数位于山位中心线","record":"记录山名与中心度数"},
+    {"label":"偏左／偏右","relation":"仍在本山15°区间内，但向相邻山移动","record":"记录原始度数与偏移方向"},
+    {"label":"分界线","relation":"落在两山共同边界附近","record":"保留误差范围，不强行归入单一山位"}
+  ],
+  "fixed_examples": [
+    {"bearing":0,"mountain":"子","offset":0,"reading":"子山中心线"},
+    {"bearing":6,"mountain":"子","offset":6,"reading":"子山内，向癸山一侧偏移"},
+    {"bearing":7.5,"mountain":"子／癸","offset":7.5,"reading":"两山分界"},
+    {"bearing":15,"mountain":"癸","offset":0,"reading":"癸山中心线"}
+  ],
+  "methods": [
+    {"id":"direct","name":"下卦","aliases":["正向","正针"],"input":"坐向落在所选版本的中央区间","operation":"按本山的常规阴阳与山向盘规则飞布"},
+    {"id":"substitute","name":"替卦","aliases":["替星","兼向替卦"],"input":"坐向落在所选版本的边缘区间","operation":"按所选替星表和顺逆规则建立山向盘"}
+  ],
+  "selected_threshold_example": {"status":"单一研究版本示例，不代表通行唯一标准","sector_width":"每山15°","direct_zone":"中央9°","substitute_zones":"左右外侧各3°"},
+  "version_fields": ["原始度数与读数误差","所属山位及中心线","偏离中心线角度","兼向及下卦替卦阈值","替星表来源","三元龙阴阳与顺逆版本","交界线处置","采用的针盘或分金层"],
+  "boundaries": ["15°区间和7.5°几何边界可统一计算，兼向阈值不能假定全流派一致","接近分界时测量误差可能改变山位归属，应同时保存原始度数","替卦会改变排盘输入或查表路径，不是在下卦结果上追加解释","本节点不发布可用、不可用或吉凶分金表"],
+  "public_sources": [
+    {"title":"南华大学论文：建筑门向与玄空风水研究","note":"用于确认每宫45°、每山15°的基础分区。","url":"https://nhuir.nhu.edu.tw/bitstream/987654321/25746/1/105NHU00356002-001.pdf"},
+    {"title":"罗经方位层初探","note":"用于确认分金层与天地人盘存在多种细分系统，不能把一种阈值写成通则。","url":"https://lawdata.com.tw/tw/detail.aspx?no=475293"},
+    {"title":"辅仁大学：三元玄空之替卦研究","note":"作为替卦方法与流派差异的继续核验入口。","url":"https://ndltd.ncl.edu.tw/cgi-bin/gs32/gsweb.cgi/login?o=dnclcdr&s=id%3D%22106FJU01183008%22.&searchmode=basic"}
+  ]
+}

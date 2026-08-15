@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0.0",
+  "id": "xiaoliuren_fixed_input_casting_replay",
+  "title": "固定输入逐步落宫",
+  "summary": "用农历五月、二十三日、戌时序数十一复演同一具名公式：月课累计数到第5位落小吉，日课累计到第27位落速喜，时课累计到第37位回到大安。固定例只显示中间位置怎样累积，不沿用来源材料对事情结果的判断。",
+  "version_scope": {
+    "version": "maifusha/xiaoliuren",
+    "commit": "00b56579cf35b9961af5468bd2dc90f9211cc146"
+  },
+  "fixed_input": {
+    "lunar_month": 5,
+    "lunar_day": 23,
+    "hour_branch": "戌",
+    "hour_branch_index": 11,
+    "start_palace": "大安"
+  },
+  "replay": [
+    { "step": 1, "label": "月课", "one_based_cumulative_position": 5, "zero_based_index": 4, "palace": "小吉" },
+    { "step": 2, "label": "日课", "one_based_cumulative_position": 27, "zero_based_index": 2, "palace": "速喜" },
+    { "step": 3, "label": "时课", "one_based_cumulative_position": 37, "zero_based_index": 0, "palace": "大安" }
+  ],
+  "checks": [
+    "第5位按六宫顺序为小吉。",
+    "第27位除六余3，对应第三位速喜。",
+    "第37位除六余1，回到第一位大安。"
+  ],
+  "excluded_source_claims": [
+    "事情能否成功",
+    "前中后阶段的吉凶",
+    "五行生克推断",
+    "应期与行动建议"
+  ],
+  "reading_boundaries": [
+    "日期字段是冻结教材，不代表今天。",
+    "不允许修改输入生成个人结果。",
+    "三个落宫只用于核对公式与循环。"
+  ],
+  "public_sources": [
+    {
+      "title": "maifusha/xiaoliuren 锁定起课实现",
+      "url": "https://github.com/maifusha/xiaoliuren/tree/00b56579cf35b9961af5468bd2dc90f9211cc146",
+      "note": "固定例由锁定公式重新计算；未复制其他无授权来源的案例文字或判断。"
+    }
+  ],
+  "internal_review": {
+    "reviewed_on": "2026-08-09",
+    "owner": ["火华", "Codex"],
+    "status": "formal_fixed_example"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "id": "liuyao_single_moving_still",
+  "title": "独发与独静",
+  "summary": "独发与独静都要先统计六爻的动静分布：六爻中只有一爻发动称独发，五爻发动而仅一爻不动称独静。它们描述的是整卦的聚焦形状，不替代用神、旺衰或其他关系判断。",
+  "patterns": [
+    { "id": "single-moving", "label": "独发", "count": "1 动 5 静", "focus_position": 3, "moving_positions": [3], "note": "唯一发动的是三爻，其余五爻保持安静。" },
+    { "id": "single-still", "label": "独静", "count": "5 动 1 静", "focus_position": 3, "moving_positions": [1, 2, 4, 5, 6], "note": "唯一安静的是三爻，其余五爻都已发动。" },
+    { "id": "all-still", "label": "六爻皆静", "count": "0 动 6 静", "focus_position": null, "moving_positions": [], "note": "没有唯一焦点，不属于独发或独静。" },
+    { "id": "all-moving", "label": "六爻皆动", "count": "6 动 0 静", "focus_position": null, "moving_positions": [1, 2, 3, 4, 5, 6], "note": "没有唯一不动之爻，不属于独静。" }
+  ],
+  "counting_rules": [
+    { "label": "先数明动", "note": "老阴、老阳形成的动爻直接计入发动数。" },
+    { "label": "暗动另列口径", "note": "有资料把六爻皆静而其中一爻被日冲暗动也称独发；页面把它作为扩展口径，不与明动统计混写。" },
+    { "label": "多一个就失去独字", "note": "两爻或更多发动不再称独发；两爻或更多安静也不再称独静。" }
+  ],
+  "evidence_boundary": [
+    { "label": "结构定义一致", "note": "传统资料对一动五静、五动一静的基本计数一致。" },
+    { "label": "用途存在保留", "note": "有资料强调可作为应期线索，也明确反对舍弃核心关系、只凭独发独静决定结果。" },
+    { "label": "暗动计入有扩展", "note": "部分整理把唯一暗动纳入独发；实现时应显式标记口径。" }
+  ],
+  "existing_boundary": "“动爻与变卦”解释单个爻怎样翻转；本节点统计六爻整体的动静数量，并识别唯一发动或唯一安静的位置。",
+  "reading_boundary": "本页只展示固定六线样本、计数与口径分歧，不接收起卦结果，也不凭独发独静输出个人判断。",
+  "internal_review": { "status": "classical_definition_and_locked_implementations_cross_checked", "reviewed_at": "2026-08-04", "source_refs": ["zengshan_buyi_chapter_31", "bushi_zhengzong_question_15", "github_maiernte_gitbook_zengshan_80984bb", "github_seanding1998_liuyao_frv_011a204"] }
+}

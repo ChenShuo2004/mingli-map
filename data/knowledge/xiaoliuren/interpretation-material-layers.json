@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0.0",
+  "id": "xiaoliuren_interpretation_material_layers",
+  "title": "宫义资料分层与公开边界",
+  "summary": "maifusha 实现版的 SQLite 资料不是一张统一宫义表，而是六宫属性6条、断辞144条、分类解释42条三层材料。页面公开它们的结构、数量、分类和使用边界，但不公开复制断辞与个人事项结论。",
+  "version_scope": {
+    "version": "maifusha/xiaoliuren",
+    "commit": "00b56579cf35b9961af5468bd2dc90f9211cc146",
+    "database_status": "SQLite三表可读；仓库无测试与CI，数据可读不等于解释已核验"
+  },
+  "layers": [
+    {
+      "id": "palace_attributes",
+      "label": "六宫属性",
+      "record_count": 6,
+      "distribution": "每宫1条",
+      "fields": ["名称", "吉凶标签", "神煞", "五行", "八卦", "十二宫", "排位数", "宫位数", "方位", "所主", "释义"],
+      "public_disposition": "只公开已进入版本比较的身份与短属性字段；吉凶、所主和释义不直接传导"
+    },
+    {
+      "id": "formula_sentences",
+      "label": "断辞资料",
+      "record_count": 144,
+      "distribution": "六宫各24条",
+      "fields": ["六神ID", "断辞句"],
+      "public_disposition": "只公开数量、分布与来源索引；句子留在受限研究层"
+    },
+    {
+      "id": "topic_explanations",
+      "label": "分类解释",
+      "record_count": 42,
+      "distribution": "六宫各7条；七类各6条",
+      "fields": ["六神ID", "事项类型", "解释句"],
+      "public_disposition": "只公开分类目录与数量；解释句和个人结论不公开"
+    }
+  ],
+  "topic_categories": [
+    {"name": "运势", "record_count": 6, "public_status": "仅目录"},
+    {"name": "财富", "record_count": 6, "public_status": "仅目录"},
+    {"name": "感情", "record_count": 6, "public_status": "仅目录"},
+    {"name": "事业", "record_count": 6, "public_status": "仅目录"},
+    {"name": "身体", "record_count": 6, "public_status": "仅目录"},
+    {"name": "神鬼", "record_count": 6, "public_status": "仅目录"},
+    {"name": "行人", "record_count": 6, "public_status": "仅目录"}
+  ],
+  "publication_gates": [
+    {
+      "status": "可公开",
+      "items": ["表名与数据层次", "记录数量与均匀分布", "字段名称", "七类目录", "来源链接与权利状态"]
+    },
+    {
+      "status": "只作索引",
+      "items": ["144条断辞的逐条位置", "42条解释的逐条位置", "吉凶、所主、释义字段的存在"]
+    },
+    {
+      "status": "不进入页面",
+      "items": ["健康、财富、感情与行动结论", "神鬼判断", "应期和确定性结果", "替真人选择或下判断"]
+    }
+  ],
+  "reading_boundaries": [
+    "MIT代码许可不自动证明数据库文字、图片和截图的逐项来源权利。",
+    "资料结构完整不等于内容已经由独立底本核验。",
+    "未来获得可核来源时逐条增加证据，不从现有数量推断共识。"
+  ],
+  "public_sources": [
+    {
+      "title": "maifusha/xiaoliuren 锁定仓库",
+      "url": "https://github.com/maifusha/xiaoliuren/tree/00b56579cf35b9961af5468bd2dc90f9211cc146",
+      "note": "SQLite三表结构与记录数量来源；代码为MIT，数据库文字和视觉素材仍需逐项权利审查。"
+    },
+    {
+      "title": "maifusha/xiaoliuren LICENSE",
+      "url": "https://github.com/maifusha/xiaoliuren/blob/00b56579cf35b9961af5468bd2dc90f9211cc146/LICENSE",
+      "note": "用于确认仓库代码许可；不把许可外推到来源未明的嵌入内容。"
+    }
+  ],
+  "internal_review": {
+    "reviewed_on": "2026-08-09",
+    "owner": ["火华", "Codex"],
+    "status": "formal_corpus_structure_and_publication_boundary"
+  }
+}

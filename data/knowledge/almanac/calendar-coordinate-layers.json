@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "id": "calendar-coordinate-layers",
+  "title": "一天的多重日期坐标",
+  "summary": "黄历中的一天同时带有公历日期、农历日期、年/月/日/时干支、节气位置与时辰；这些字段共享同一时刻，但生成依据不同。",
+  "fixed_example": {
+    "label": "固定样本",
+    "instant": "1986-05-29 00:00:00",
+    "layers": [
+      {"id":"solar","label":"公历","value":"1986年5月29日","basis":"民用日期"},
+      {"id":"lunar","label":"农历","value":"四月廿一","basis":"朔望月序"},
+      {"id":"year","label":"年干支","value":"丙寅","basis":"六十干支"},
+      {"id":"month","label":"月干支","value":"癸巳","basis":"节气月序"},
+      {"id":"day","label":"日干支","value":"癸酉","basis":"连续日序"},
+      {"id":"hour","label":"时支","value":"子时","basis":"十二时辰"}
+    ]
+  },
+  "field_relations": [
+    {"from":"同一时刻","to":"公历／农历","relation":"两种日期表达"},
+    {"from":"同一时刻","to":"年、月、日、时干支","relation":"四层周期标记"},
+    {"from":"太阳黄经","to":"二十四节气","relation":"每15°一个节气位置"}
+  ],
+  "public_sources": [
+    {"title":"香港天文台：二十四节气","note":"用于核对二十四节气、黄经与农历中气的关系。","url":"https://www.hko.gov.hk/sc/gts/time/24solarterms.htm"},
+    {"title":"香港天文台：天干与地支","note":"用于核对干支循环及年、月、日、时四层干支表达。","url":"https://www.hko.gov.hk/en/gts/time/stemsandbranches.htm"},
+    {"title":"lunar-javascript 锁定实现","note":"固定样本的公历、农历与干支字段来自已验收实现；实现结果不替代传统来源。","url":"https://github.com/6tail/lunar-javascript/tree/4c45a59"}
+  ]
+}

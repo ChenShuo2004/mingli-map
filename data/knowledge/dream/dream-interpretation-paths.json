@@ -1,0 +1,16 @@
+{
+  "id":"dream-interpretation-paths","title":"梦象与占辞之间有哪些解释路径","summary":"研究者从敦煌梦书与梦例中整理出延续、类比、显著属性、对立、谐音和拆字等路径；它们解释文本怎样连接，不保证每条占辞都能复原。",
+  "kicker":"6条解释路径 · 文本分析层",
+  "sections":[
+    {"label":"直接延续","note":"梦中行动在结果中延续","items":[{"term":"动作延续","detail":"耕作、登临、渡水等动作被接到现实事件"},{"term":"状态延续","detail":"整乱、生长、坠落等状态被保留"}]},
+    {"label":"相似与类比","note":"按形态或功能连接","items":[{"term":"长物→长久","detail":"从共同属性建立联系"},{"term":"上升→升迁","detail":"从空间方向类比身份变化"}]},
+    {"label":"显著属性","note":"复合梦象由一项属性主导","items":[{"term":"颜色","detail":"颜色必须与对象组合"},{"term":"材质／生熟／完整性","detail":"衣食器物的显著限定"}]},
+    {"label":"对立与反转","note":"梦中情形与结果方向相反","items":[{"term":"哭泣→喜庆","detail":"来源中的反向条目"},{"term":"疾病／丧事→吉事","detail":"不能用常识直读"}]},
+    {"label":"谐音借义","note":"从语音相近转义","items":[{"term":"鹿／禄","detail":"以同音连接身份词"},{"term":"材／财","detail":"器物名转向财物词"}]},
+    {"label":"拆字与重组","note":"从字形部件推解释","items":[{"term":"增减部件","detail":"拆开梦中对象对应的字"},{"term":"重新组合","detail":"把部件组成另一结果词"}]}
+  ],
+  "relations":[{"from":"普通短条目","link":"可能使用","to":"延续／类比／属性／反转","note":"仍须由具体文本验证"},{"from":"复杂梦例","link":"可能使用","to":"谐音／拆字／多法并用","note":"属于解释叙事，不等于梦书显式规则"}],
+  "fixed_examples":[{"source":"P.3908·舟车桥市谷章","dream":"乘车行","qualifier":"动作延续","marker":"—","outcome":"得官","note":"直接延续：梦中行动被接到现实身份变化"},{"source":"敦煌梦书研究所归纳","dream":"登临／上升","qualifier":"空间方向","marker":"—","outcome":"升迁","note":"相似与类比：由空间方向连接身份变化"},{"source":"P.3908·人身梳镜章","dream":"镜","qualifier":"明／暗","marker":"—","outcome":"吉／凶","note":"显著属性：同一对象由明暗状态分流"},{"source":"敦煌梦书研究所归纳","dream":"哭泣","qualifier":"结果反向","marker":"—","outcome":"喜庆","note":"对立与反转：不能按日常情绪直接读取"},{"source":"敦煌梦书研究所举S.620例","dream":"鹿","qualifier":"语音","marker":"—","outcome":"禄","note":"谐音借义：以同音连接身份词"},{"source":"《晋书·王濬传》","dream":"三刀，又益一刀","qualifier":"州字加益","marker":"—","outcome":"益州","note":"拆字与重组：解释者把字形部件组成地名"}],
+  "boundaries":["六条路径是研究分析分类，不是P.3908六个原章目。","不能为每条短占辞补造作者未写出的解释理由。","谐音和拆字依赖古代语言文字环境，不按现代普通话机械套用。"],
+  "public_sources":[{"title":"湯浅邦弘：敦煌本《新集周公解梦书》研究","note":"研究直接、间接、谐音、拆字及多法并用的解释方式。","url":"https://hdl.handle.net/11094/6009"},{"title":"P.3908译注与文书诠释","note":"公开译注页面保存相关研究译文和例证。","url":"https://www.daowen.com/lilun/1567134.html"},{"title":"《梦占逸旨》八卷影像","note":"用于对照古法篇与外篇梦例，OCR不能替代影像。","url":"https://ctext.org/library.pl?if=gb&res=3642"},{"title":"《晋书·王濬传》","note":"保存“三刀为州、又益一刀为益州”的拆字解释。","url":"https://zh.wikisource.org/zh-hans/%E6%99%89%E6%9B%B8/%E5%8D%B7042"}]
+}

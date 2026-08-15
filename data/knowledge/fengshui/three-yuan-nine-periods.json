@@ -1,0 +1,10 @@
+{
+  "id":"three-yuan-nine-periods","title":"三元九运纪年表","summary":"三元分上元、中元、下元，每元六十年；每元包含三运，每运二十年，九运合为一百八十年。此表只负责1864至2043年的纪年区间与运星编号，九星固定身份另见九星节点。",
+  "cycle":{"yuan_count":3,"years_per_yuan":60,"periods_per_yuan":3,"years_per_period":20,"total_periods":9,"total_years":180},
+  "periods":[
+    {"period":1,"yuan":"上元","years":"1864—1883","period_star_number":1},{"period":2,"yuan":"上元","years":"1884—1903","period_star_number":2},{"period":3,"yuan":"上元","years":"1904—1923","period_star_number":3},{"period":4,"yuan":"中元","years":"1924—1943","period_star_number":4},{"period":5,"yuan":"中元","years":"1944—1963","period_star_number":5},{"period":6,"yuan":"中元","years":"1964—1983","period_star_number":6},{"period":7,"yuan":"下元","years":"1984—2003","period_star_number":7},{"period":8,"yuan":"下元","years":"2004—2023","period_star_number":8},{"period":9,"yuan":"下元","years":"2024—2043","period_star_number":9}
+  ],
+  "version_fields":["采用哪一轮纪年","换运按公历年、立春或其他时点","建筑所属运按建成、启用或重大改造中的哪一项"],
+  "boundaries":["本表锁定沈氏三元九运；谈氏两元八运另作版本，不并入同一周期表","年份区间是所选纪年版本，不自动解决具体交界日时","本节点只保存运星编号；九星名称、五行与洛书路径由九星节点负责"],
+  "public_sources":[{"title":"《御定星历考原》卷二","note":"提供一白至九紫、上中下三元及一百八十年一周的结构。","url":"https://www.shidianguji.com/zh/book/SK1618/chapter/1jurstr85mvx7"},{"title":"南华大学：风水场域之意象性研究","note":"表4-3列出三元九运、九星、八卦、五行与1864—2043年区间。","url":"https://nhuir.nhu.edu.tw/retrieve/28545/092NHU05699014-001.pdf"},{"title":"韩国风水研究：玄空风水的两种时间体系","note":"用于区分沈氏三元九运与谈氏两元八运。","url":"https://kiss.kstudy.com/Detail/Ar?key=3935245"}]
+}

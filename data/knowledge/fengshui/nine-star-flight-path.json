@@ -1,0 +1,8 @@
+{
+  "id":"nine-star-flight-path","title":"九星与洛书飞布路径","summary":"九星以一至九为循环序数，固定身份与洛书路径在本节点统一保存；飞布依次经过中、乾、兑、艮、离、坎、坤、震、巽，顺飞递增，逆飞递减。",
+  "stars":[{"number":1,"color_name":"一白","star":"贪狼","element":"水"},{"number":2,"color_name":"二黑","star":"巨门","element":"土"},{"number":3,"color_name":"三碧","star":"禄存","element":"木"},{"number":4,"color_name":"四绿","star":"文曲","element":"木"},{"number":5,"color_name":"五黄","star":"廉贞","element":"土"},{"number":6,"color_name":"六白","star":"武曲","element":"金"},{"number":7,"color_name":"七赤","star":"破军","element":"金"},{"number":8,"color_name":"八白","star":"左辅","element":"土"},{"number":9,"color_name":"九紫","star":"右弼","element":"火"}],
+  "flight_path":[{"step":1,"palace":"中","direction":"中央","luoshu_number":5},{"step":2,"palace":"乾","direction":"西北","luoshu_number":6},{"step":3,"palace":"兑","direction":"正西","luoshu_number":7},{"step":4,"palace":"艮","direction":"东北","luoshu_number":8},{"step":5,"palace":"离","direction":"正南","luoshu_number":9},{"step":6,"palace":"坎","direction":"正北","luoshu_number":1},{"step":7,"palace":"坤","direction":"西南","luoshu_number":2},{"step":8,"palace":"震","direction":"正东","luoshu_number":3},{"step":9,"palace":"巽","direction":"东南","luoshu_number":4}],
+  "movement":[{"label":"顺飞","rule":"入中星起，沿固定路径逐宫加一；九之后回到一"},{"label":"逆飞","rule":"入中星起，沿固定路径逐宫减一；一之前回到九"}],
+  "boundaries":["固定路径说明星数怎样移动，不说明现实结果","玄空九星与八宅八游星名称有部分重合，但不是同一张关系表","九星固定身份保存在本节点；三元九运节点只保存纪年与运星编号","星的编号、名称、五行、入中盘与落宫位置分别保存"],
+  "public_sources":[{"title":"《御定星历考原》卷二","note":"用于核对九星的洛书本宫。","url":"https://www.shidianguji.com/zh/book/SK1618/chapter/1jurstr85mvx7"},{"title":"南华大学：建筑门向与玄空风水研究","note":"用于核对中宫至巽宫的九宫飞布路径及顺逆飞概念。","url":"https://nhuir.nhu.edu.tw/bitstream/987654321/25746/1/105NHU00356002-001.pdf"}]
+}

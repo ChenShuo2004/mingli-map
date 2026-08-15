@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0.0",
+  "id": "meihua_early_heaven_number_mapping",
+  "title": "先天八卦数与取余",
+  "summary": "梅花易数的数字起卦先把整数压缩到一至八，再按乾一、兑二、离三、震四、巽五、坎六、艮七、坤八落到八卦。除八余零不写成零卦，而由八承接为坤；动爻另用除六取余，余零由六承接。这个节点只解释数怎样落到卦与爻，不执行真人起卦。",
+  "trigram_numbers": [
+    {"number": 1, "name": "乾", "symbol": "☰", "image": "天", "code": "111"},
+    {"number": 2, "name": "兑", "symbol": "☱", "image": "泽", "code": "011"},
+    {"number": 3, "name": "离", "symbol": "☲", "image": "火", "code": "101"},
+    {"number": 4, "name": "震", "symbol": "☳", "image": "雷", "code": "001"},
+    {"number": 5, "name": "巽", "symbol": "☴", "image": "风", "code": "110"},
+    {"number": 6, "name": "坎", "symbol": "☵", "image": "水", "code": "010"},
+    {"number": 7, "name": "艮", "symbol": "☶", "image": "山", "code": "100"},
+    {"number": 8, "name": "坤", "symbol": "☷", "image": "地", "code": "000"}
+  ],
+  "remainder_rules": [
+    {"target": "上卦或下卦", "divisor": 8, "zero_carry": 8, "formula": "数 ÷ 8，取余；余 0 按 8"},
+    {"target": "动爻", "divisor": 6, "zero_carry": 6, "formula": "总数 ÷ 6，取余；余 0 按 6"}
+  ],
+  "fixed_examples": [
+    {"input": 3, "remainder": 3, "result": "离"},
+    {"input": 8, "remainder": 0, "normalized": 8, "result": "坤"},
+    {"input": 9, "remainder": 1, "result": "乾"},
+    {"input": 16, "remainder": 0, "normalized": 8, "result": "坤"},
+    {"input": 18, "moving_remainder": 0, "moving_normalized": 6, "moving_result": "上爻"}
+  ],
+  "reading_boundaries": [
+    "本页选择的数字来自固定示例，不接收姓名、时间、随机数或真人问题。",
+    "先天八卦数负责数字到八卦的映射，不等于六十四卦卦序。",
+    "取余只生成结构位置，不生成吉凶、体用、应期或行动建议。"
+  ],
+  "public_sources": [
+    {
+      "title": "muyen/meihua-yishu 锁定数卦映射实现",
+      "url": "https://github.com/muyen/meihua-yishu/blob/aecdf87ebef26328c32caa65d40b2f9d273088ec/scripts/meihua_calc.py",
+      "note": "保存先天八卦数、除八余零按八及除六余零按六的实现与测试入口；规则级古籍版次页码仍待补。"
+    },
+    {
+      "title": "ZZq114514/MeihuaYishu 锁定八卦常量",
+      "url": "https://github.com/ZZq114514/MeihuaYishu/blob/466ee62105db599a29c25259f2ba6d10092d660c/src/meihuayishu/constants.py",
+      "note": "第二套实现保存相同的八卦数、卦符与三爻结构，可作实现重合对照。"
+    }
+  ],
+  "internal_review": {
+    "status": "formal_foundation_node_with_two_implementation_overlap",
+    "reviewed_at": "2026-08-09",
+    "owner": ["火华", "Codex"],
+    "source_refs": ["github_muyen_meihua_yishu_aecdf87", "github_zzq114514_meihuayishu_466ee62"],
+    "deduplication": "不并入两数或三数起卦：本页只保存共用的数到卦、总数到动爻落点；具体输入怎样组成上卦、下卦与总数由后续规则节点承接。",
+    "known_gaps": ["两套实现重合只能证明程序口径一致，不能替代规则级传统底本。"],
+    "boundary": "固定数值演示、无真人输入、无随机；只解释映射与取余。"
+  }
+}

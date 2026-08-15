@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "id": "ziwei_major_star_anchors",
+  "title": "主星锚点",
+  "summary": "主星锚点把五行局数与农历日接成一条可复算的定位链：先补到可被局数整除，再用商数确定基础位置，按补数奇偶修正紫微位置，最后由紫微的镜像关系得到天府。两颗锚星确定后，继续在同一主星安置页按组内间距展开十四主星。",
+  "branch_cycle": ["寅","卯","辰","巳","午","未","申","酉","戌","亥","子","丑"],
+  "bureau_options": [
+    {"id":"water-2","label":"水二局","number":2},
+    {"id":"wood-3","label":"木三局","number":3},
+    {"id":"metal-4","label":"金四局","number":4},
+    {"id":"earth-5","label":"土五局","number":5},
+    {"id":"fire-6","label":"火六局","number":6}
+  ],
+  "rule_steps": [
+    {"id":"fill","label":"补到整除","note":"从0开始寻找最小补数，使农历日加补数后可以被局数整除。"},
+    {"id":"quotient","label":"取得商数","note":"用补后的日期除以局数；以寅为第0格时，先取商数减1作为基础位置。"},
+    {"id":"parity","label":"按奇偶修正","note":"补数为偶数时顺行补数格，为奇数时逆行补数格，得到紫微锚点。"},
+    {"id":"mirror","label":"镜出天府","note":"天府不是固定在紫微对宫；在寅起十二格坐标中，以两端回折的镜像关系取得。"}
+  ],
+  "fixed_examples": [
+    {"id":"wood-day-27","label":"木三局 · 二十七日","bureau":3,"day":27,"offset":0,"quotient":9,"base_branch":"戌","direction":"原位","ziwei":"戌","tianfu":"午","note":"27可直接被3整除，不需要补数；商9对应寅起第8格戌。"},
+    {"id":"fire-day-13","label":"火六局 · 十三日","bureau":6,"day":13,"offset":5,"quotient":3,"base_branch":"辰","direction":"逆行5格","ziwei":"亥","tianfu":"巳","note":"13加5成为18，除以6得3；补数为奇数，从基础辰位逆行5格到亥。"},
+    {"id":"earth-day-6","label":"土五局 · 初六","bureau":5,"day":6,"offset":4,"quotient":2,"base_branch":"卯","direction":"顺行4格","ziwei":"未","tianfu":"酉","note":"6加4成为10，除以5得2；补数为偶数，从基础卯位顺行4格到未。"}
+  ],
+  "anchor_mirror": [
+    {"ziwei":"寅","tianfu":"寅"},{"ziwei":"卯","tianfu":"丑"},{"ziwei":"辰","tianfu":"子"},{"ziwei":"巳","tianfu":"亥"},
+    {"ziwei":"午","tianfu":"戌"},{"ziwei":"未","tianfu":"酉"},{"ziwei":"申","tianfu":"申"},{"ziwei":"酉","tianfu":"未"},
+    {"ziwei":"戌","tianfu":"午"},{"ziwei":"亥","tianfu":"巳"},{"ziwei":"子","tianfu":"辰"},{"ziwei":"丑","tianfu":"卯"}
+  ],
+  "implementation_differences": [
+    {"id":"locked","label":"本页锁定版本","inputs":"五行局数 + 农历日","method":"补到整除，再按补数奇偶修正","comparison":"发布150格关系；只代表锁定实现。"},
+    {"id":"alternate-remainder","label":"另一商余实现","inputs":"五行局数 + 农历日","method":"整除与不整除直接套两条商余式","comparison":"与本页150格中137格不同；底本页码未给出，保持并列。"},
+    {"id":"simplified","label":"简化实现","inputs":"月份 + 农历日，或只用农历日","method":"省略五行局，天府再固定加6格","comparison":"输入和镜像规则均不同，不能作为同一算法的补充来源。"}
+  ],
+  "public_sources": [
+    {"title":"iztro：紫微与天府起点算法","note":"锁定版本完整保存补数、整除、商数、奇偶修正和天府镜像关系，并给出三个固定例；本页150格由这条规则机械生成。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/star/location.ts#L16-L95"},
+    {"title":"iztro：锚点固定断言","note":"锁定测试对多组日期、时辰与闰月设置断言紫微和天府起点；测试只支持实现内部一致，不等于跨流派共识。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/__tests__/star/star.test.ts#L22-L139"},
+    {"title":"tianji：另一套商余实现","note":"该实现同样读取农历日和五行局，却使用另一组整除／余数公式；逐格结果与锁定版本大量不同，故作为差异版本并列。","url":"https://github.com/Ficere/tianji/blob/d674635c810b167c616df5fd607418a38d290315/scripts/fortune_calc.py#L1127-L1189"},
+    {"title":"bazi-master：省略五行局的简化定位","note":"该实现以月份位置加农历日定位紫微，再固定加6得到天府；输入链与本页不同，不能合并为同一规则。","url":"https://github.com/tytsxai/bazi-master/blob/9d9fe528c71cde787a9ffef6d1092de9e7fba85b/backend/services/ziwei.service.js#L61-L63"},
+    {"title":"ziwei-mcp：明确标注为简化计算","note":"该实现只以农历日循环定位紫微，并把天府固定加6；源码自己注明实际应使用更复杂公式，作为简化边界证据。","url":"https://github.com/SiwuXue/ziwei-mcp/blob/a84f6f053fde5484c8199983e3b7e71e42d6fa40/src/core/chart-generator.js#L456-L480"}
+  ],
+  "internal_review": {
+    "status": "formal_rule_node_implementation_scope_with_variants",
+    "reviewed_at": "2026-08-05",
+    "source_refs": ["github_sylarlong_iztro_2fb2030","github_ficere_tianji_d674635","github_tytsxai_bazi_master_9d9fe52","github_siwuxue_ziwei_mcp_a84f6f0"],
+    "ownership": "K-ZW.05 星曜体系与庙旺",
+    "deduplication": "不并入五行局：五行局只生成2至6的参数，本节点新增农历日、补数奇偶与两颗星位输出；不并入十四主星：十四主星只读取紫微／天府锚点并按两组固定间距展开。",
+    "boundary": "页面允许在五类局与初一至三十之间切换以理解固定关系，不接收公历生日、时辰或真人资料，不生成完整命盘；锁定实现与其他实现的差异并列保存，不以测试数量或仓库数量决定传统共识。"
+  }
+}

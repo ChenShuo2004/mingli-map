@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0",
+  "id": "liuyao_six_spirits_sequence",
+  "title": "六神",
+  "summary": "六神（也称六兽）是一层按爻位附加的辅助符号。六个名称始终按青龙、朱雀、勾陈、螣蛇、白虎、玄武循环；日干只决定初爻起点。每个名称还可提示一组传统象义，但必须结合所临爻、动静与生克关系，不能单凭名称判断吉凶。",
+  "fixed_order": ["青龙", "朱雀", "勾陈", "螣蛇", "白虎", "玄武"],
+  "stem_groups": [
+    { "id": "jia-yi", "stems": "甲乙", "start": "青龙", "lines": ["青龙", "朱雀", "勾陈", "螣蛇", "白虎", "玄武"] },
+    { "id": "bing-ding", "stems": "丙丁", "start": "朱雀", "lines": ["朱雀", "勾陈", "螣蛇", "白虎", "玄武", "青龙"] },
+    { "id": "wu", "stems": "戊", "start": "勾陈", "lines": ["勾陈", "螣蛇", "白虎", "玄武", "青龙", "朱雀"] },
+    { "id": "ji", "stems": "己", "start": "螣蛇", "lines": ["螣蛇", "白虎", "玄武", "青龙", "朱雀", "勾陈"] },
+    { "id": "geng-xin", "stems": "庚辛", "start": "白虎", "lines": ["白虎", "玄武", "青龙", "朱雀", "勾陈", "螣蛇"] },
+    { "id": "ren-gui", "stems": "壬癸", "start": "玄武", "lines": ["玄武", "青龙", "朱雀", "勾陈", "螣蛇", "白虎"] }
+  ],
+  "line_labels": ["初爻", "二爻", "三爻", "四爻", "五爻", "上爻"],
+  "symbolic_clues": [
+    {
+      "id": "qinglong",
+      "name": "青龙",
+      "keywords": ["喜庆", "财禄"],
+      "explanation": "常被用来补充喜庆、财禄一类线索。",
+      "condition_note": "《六兽歌断》同时说明：临用可作助意；若落在仇神、忌神一侧，青龙之名也不能把关系改成有利。"
+    },
+    {
+      "id": "zhuque",
+      "name": "朱雀",
+      "keywords": ["言语", "文书", "口舌"],
+      "explanation": "常被用来补充言语、文书与口舌一类线索。",
+      "condition_note": "古籍把文印、口舌并列保存，并要求继续看所临之爻及其生克方向，不能见朱雀便直接判为争执。"
+    },
+    {
+      "id": "gouchen",
+      "name": "勾陈",
+      "keywords": ["田土", "牵连", "迟滞"],
+      "explanation": "常被用来补充田土、牵连与迟滞一类线索。",
+      "condition_note": "《六兽歌断》以“生用”与“为忌”分开处理：名称提示观察范围，关系方向才决定它怎样参与。"
+    },
+    {
+      "id": "tengshe",
+      "name": "螣蛇",
+      "keywords": ["惊疑", "怪异", "梦寐"],
+      "explanation": "常被用来补充惊疑、怪异与梦寐一类线索。",
+      "condition_note": "相关断语还会附带所临六亲、生克、空冲等条件；这里保留象义范围，不把旧式事件断语直接当成结果。"
+    },
+    {
+      "id": "baihu",
+      "name": "白虎",
+      "keywords": ["伤损", "病丧"],
+      "explanation": "常被用来补充伤损、病丧一类线索。",
+      "condition_note": "《六兽歌断》既写动克，也写生身时“便不同”；所以白虎不能脱离作用方向成为固定凶判。"
+    },
+    {
+      "id": "xuanwu",
+      "name": "玄武",
+      "keywords": ["暗昧", "欺隐", "盗失"],
+      "explanation": "常被用来补充暗昧、欺隐与盗失一类线索。",
+      "condition_note": "古籍同样区分生世与临仇忌：先确认所临角色和作用关系，再决定这组线索是否相关。"
+    }
+  ],
+  "reading_order": [
+    {"label": "定位", "note": "先按日干把六神排到六个爻位。"},
+    {"label": "所临", "note": "再看该名称落在哪一爻、哪一六亲或角色上。"},
+    {"label": "条件", "note": "最后检查动静、生克及与用神、世爻的关系。"}
+  ],
+  "reading_boundary": "这里只说明六神的固定排法、传统象义提示域及其使用条件；不要求输入日期，不把青龙、白虎等名称直接换算为吉凶，也不提供事件或个人结果。",
+  "internal_review": {
+    "status": "classical_sequence_symbolic_clues_and_condition_boundary_cross_checked",
+    "reviewed_at": "2026-08-05",
+    "source_refs": [
+      "shilin_guangji_xuji_juan_11_wikisource",
+      "bushi_quanshu_qi_liushen_jue_shidian",
+      "bushi_zhengzong_liushou_geduan_ctext_lines_355_361",
+      "zengshan_buyi_chapter_18_wikisource",
+      "github_chxb_jishiyu_97b6d6d_js_6yao",
+      "github_horace_maxwell_horosa_7405ddf_guazhan_help"
+    ],
+    "boundary": "公开名称、起点分组、固定次序、爻位映射，以及有古籍条件约束的象义提示域；不公开脱离所临爻与生克关系的吉凶标签、旧式事件断语或个人占断。"
+  }
+}

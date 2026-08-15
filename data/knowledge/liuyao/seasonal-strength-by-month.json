@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0",
+  "id": "liuyao_seasonal_strength_by_month",
+  "title": "月令旺相休囚与余气",
+  "summary": "月建不仅与爻形成生克冲合，还为五行提供当月状态。《增删卜易》逐月列出值月地支为旺、同五行另一支为次、月令所生五行为相，其余归入休囚；辰未戌丑四个季月还保留上一季五行的余气线索。这里按十二个月展开来源表，不把旺相休囚直接翻译成结果。",
+  "months": [
+    {"branch":"寅","month":"正月","season":"春","element":"木","ruling":"寅木","companion":["卯木"],"generated":"火","residual":null,"note":"寅木当令，卯木次之。"},
+    {"branch":"卯","month":"二月","season":"春","element":"木","ruling":"卯木","companion":["寅木"],"generated":"火","residual":null,"note":"卯木当令，寅木次之。"},
+    {"branch":"辰","month":"三月","season":"季春","element":"土","ruling":"辰土","companion":["丑土","未土"],"generated":"金","residual":"木","note":"辰土旺，丑未土次；木虽衰，仍留余气。"},
+    {"branch":"巳","month":"四月","season":"夏","element":"火","ruling":"巳火","companion":["午火"],"generated":"土","residual":null,"note":"巳火当令，午火次之。"},
+    {"branch":"午","month":"五月","season":"夏","element":"火","ruling":"午火","companion":["巳火"],"generated":"土","residual":null,"note":"午火当令，巳火次之。"},
+    {"branch":"未","month":"六月","season":"季夏","element":"土","ruling":"未土","companion":["辰土","戌土"],"generated":"金","residual":"火","note":"未土旺，辰戌土次；火虽衰，仍留余气。"},
+    {"branch":"申","month":"七月","season":"秋","element":"金","ruling":"申金","companion":["酉金"],"generated":"水","residual":null,"note":"申金当令，酉金次之。"},
+    {"branch":"酉","month":"八月","season":"秋","element":"金","ruling":"酉金","companion":["申金"],"generated":"水","residual":null,"note":"酉金当令，申金次之。"},
+    {"branch":"戌","month":"九月","season":"季秋","element":"土","ruling":"戌土","companion":["丑土","未土"],"generated":"金","residual":"金","note":"戌土旺，丑未土次；上一季金与土所生之相同位。"},
+    {"branch":"亥","month":"十月","season":"冬","element":"水","ruling":"亥水","companion":["子水"],"generated":"木","residual":null,"note":"亥水当令，子水次之。"},
+    {"branch":"子","month":"十一月","season":"冬","element":"水","ruling":"子水","companion":["亥水"],"generated":"木","residual":null,"note":"子水当令，亥水次之。"},
+    {"branch":"丑","month":"十二月","season":"季冬","element":"土","ruling":"丑土","companion":["辰土","戌土"],"generated":"金","residual":"水","note":"丑土旺，辰戌土次；水虽衰，仍留余气。"}
+  ],
+  "state_layers": [
+    {"id":"ruling","label":"旺","question":"哪一支正在值月？","meaning":"月建本支当令。"},
+    {"id":"companion","label":"次","question":"同五行另一支在哪里？","meaning":"同五行但不等同于值月本支。"},
+    {"id":"generated","label":"相","question":"月令生出哪一行？","meaning":"当令五行所生者为相。"},
+    {"id":"residual","label":"余气","question":"季月还留下哪一季？","meaning":"辰未戌丑承接上一季；戌月金又与相同位。"},
+    {"id":"rest","label":"休囚","question":"其余五行怎样保存？","meaning":"原章合称休囚，不再拆成自动吉凶。"}
+  ],
+  "distinctions": [
+    {"label":"月日关系","note":"回答月建、日辰与某一爻形成生克冲合中的哪一种。"},
+    {"label":"月令状态","note":"回答某个月里哪些五行处于旺、相、余气或休囚。"},
+    {"label":"五态细分","note":"另一种整理把其余关系细分为休、囚、死；《增删卜易》本章仍合称休囚。"}
+  ],
+  "reading_boundary": "只切换固定十二月表，展示状态来自哪里；不读取当前日期，不给爻累计分数，也不输出旺衰总断、吉凶或应期。",
+  "internal_review": {"status":"classical_month_table_and_locked_five_state_function_cross_checked","reviewed_at":"2026-08-05","source_refs":["zengshan_buyi_chapter_15_you_wikisource","bushi_quanshu_huangjince_ctext_428169","github_horace_maxwell_wangshuai_by_month_and_yuqi"]}
+}

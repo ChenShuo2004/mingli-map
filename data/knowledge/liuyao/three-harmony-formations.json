@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.0",
+  "id": "liuyao_three_harmony_formations",
+  "title": "三合局",
+  "summary": "六爻三合局把三个地支成员组合成木、火、金、水四局。它不只核对成员是否出现，还要记录成员来自本卦动爻、静爻、变爻还是日月；因此同一组三支可以处于成局、缺一待补或受空破阻隔等不同状态。",
+  "formations": [
+    { "id": "water", "label": "水局", "element": "水", "branches": [{ "branch": "申", "stage": "生" }, { "branch": "子", "stage": "旺" }, { "branch": "辰", "stage": "墓" }] },
+    { "id": "fire", "label": "火局", "element": "火", "branches": [{ "branch": "寅", "stage": "生" }, { "branch": "午", "stage": "旺" }, { "branch": "戌", "stage": "墓" }] },
+    { "id": "wood", "label": "木局", "element": "木", "branches": [{ "branch": "亥", "stage": "生" }, { "branch": "卯", "stage": "旺" }, { "branch": "未", "stage": "墓" }] },
+    { "id": "metal", "label": "金局", "element": "金", "branches": [{ "branch": "巳", "stage": "生" }, { "branch": "酉", "stage": "旺" }, { "branch": "丑", "stage": "墓" }] }
+  ],
+  "source_paths": [
+    {
+      "id": "three-moving",
+      "label": "三爻俱动",
+      "status": "成局路径",
+      "members": [
+        { "branch": "申", "source": "本卦动爻" },
+        { "branch": "子", "source": "本卦动爻" },
+        { "branch": "辰", "source": "本卦动爻" }
+      ],
+      "result": "申子辰三支齐备，三个成员都来自发动的本卦爻。"
+    },
+    {
+      "id": "inner-change",
+      "label": "内卦动变",
+      "status": "成局路径",
+      "members": [
+        { "branch": "丑", "source": "初爻本支" },
+        { "branch": "巳", "source": "初爻变支" },
+        { "branch": "酉", "source": "三爻动支" }
+      ],
+      "result": "初、三爻发动，本支与变支共同补齐巳酉丑。"
+    },
+    {
+      "id": "calendar-fill",
+      "label": "日月补入",
+      "status": "来源组合",
+      "members": [
+        { "branch": "寅", "source": "月建" },
+        { "branch": "午", "source": "本卦动爻" },
+        { "branch": "戌", "source": "本卦静爻" }
+      ],
+      "result": "三支来自不同层；古籍实例会把月建与卦中爻合看。"
+    },
+    {
+      "id": "missing-one",
+      "label": "虚一待用",
+      "status": "尚未齐备",
+      "members": [
+        { "branch": "寅", "source": "本卦动爻" },
+        { "branch": "午", "source": "本卦动爻" },
+        { "branch": "戌", "source": "缺一成员", "missing": true }
+      ],
+      "result": "只到两支时先保留缺口，待后来月日补入第三支。"
+    }
+  ],
+  "classical_paths": [
+    { "label": "一卦三爻俱动", "scope": "本卦", "note": "三个成员都由动爻提供。" },
+    { "label": "两动一静", "scope": "本卦", "note": "章首列为成局路径；同章后文对“两爻动”的说法存在语义张力，使用时应保留版本说明。" },
+    { "label": "初、三爻动并取变爻", "scope": "内卦", "note": "本支与变支共同组成三支。" },
+    { "label": "四、上爻动并取变爻", "scope": "外卦", "note": "与内卦路径相同，但发生在外卦。" }
+  ],
+  "state_checks": [
+    { "id": "complete", "label": "成员齐备", "question": "四局中的三支是否都已取得？", "note": "缺一支时只记录缺口，不把两支直接显示为完整三合局。" },
+    { "id": "source", "label": "来源可追", "question": "每支来自动爻、静爻、变爻还是日月？", "note": "这一步把六爻成局与八字里静态查看四柱地支区分开。" },
+    { "id": "blocked", "label": "状态受阻", "question": "成员是否落入旬空、月破或入墓？", "note": "古籍把这类情况另记为待填实或待冲开，不等同于成员从未出现。" }
+  ],
+  "implementation_variants": [
+    { "label": "完整路径口径", "note": "逐一保存本卦、动爻、变爻和日月来源，再判断齐备与受阻状态。" },
+    { "label": "本卦扫描口径", "note": "部分开源实现只扫描本卦六支是否齐现，并要求至少一支发动；它无法覆盖变爻或日月补入。" },
+    { "label": "静态候选口径", "note": "另有实现把本卦三支齐现先列为候选，再用是否发动标注强弱；这属于实现简化，不与古籍路径合并为唯一规则。" }
+  ],
+  "terminology_boundary": "八字地支关系节点也保存四组三合成员，但它面对四柱地支的静态关系网；本节点独立之处是追踪六爻本卦、动爻、变爻与日月怎样共同提供成员，并区分完整、待补与受阻。",
+  "reading_boundary": "本页只解释三合局的成员、来源路径和结构状态，不接收起卦结果，不选择用神，也不把合局换成吉凶、应期或个人事件判断。",
+  "internal_review": {
+    "status": "classical_chapter_and_locked_implementations_cross_checked",
+    "reviewed_at": "2026-08-04",
+    "source_refs": [
+      "zengshan_buyi_pdf_sanhe_chapter_page_35",
+      "bushi_quanshu_wikisource_sanhe_definition",
+      "github_woaichiji_liuyao_d866d7d_sanhe",
+      "github_horace_maxwell_horosa_7d8a93e_liuyao_engine",
+      "github_asterayx_hexgram_7ee0626_najia_engine"
+    ],
+    "boundary": "公开四局成员、生旺墓位置、来源路径、缺一与受阻状态及实现差异；用神、旺衰取舍、吉凶、应期和事件断语留在受限层。"
+  }
+}

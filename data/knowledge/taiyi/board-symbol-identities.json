@@ -1,0 +1,84 @@
+{
+  "id": "taiyi-board-symbol-identities",
+  "topic_id": "taiyi",
+  "title": "盘面符号身份",
+  "summary": "把固定年计式盘里的名称按中枢与岁时、二目、计与合、将、游行神五组拆开，说明每个对象在生成链中的位置、固定例输出及其来源层。原典称谓、软件字段和后世解释不压成一张无差别的诸神表。",
+  "fixed_example": "1552年9月24日 0时0分 · 年计 · 太乙金镜",
+  "role_groups": [
+    {
+      "id": "center-time",
+      "label": "中枢与岁时",
+      "question": "谁先确定式盘的时间与中枢？",
+      "members": [
+        {"id":"taiyi","name":"太乙","fixed_value":"六宫 · 酉","classical_identity":"卷二在“五将”段称“太乙监将”；运式顺序先定太乙所在宫。","implementation_role":"锁定实现分别输出数值宫位“太乙落宫”与十六神位标签“太乙”。","status":"原典身份与实现字段均可定位"},
+        {"id":"taisui","name":"太岁","fixed_value":"子","classical_identity":"卷二把“详太岁所在”列为运式第一步，用来继续求计神。","implementation_role":"锁定实现按年、月、日、时等计法取相应干支的地支；本例年计取年支子。","status":"依赖起点"}
+      ]
+    },
+    {
+      "id": "two-eyes",
+      "label": "主客二目",
+      "question": "哪两个对象分别进入主、客算？",
+      "members": [
+        {"id":"wenchang","name":"文昌","fixed_value":"巽","classical_identity":"卷二“五将”段称下目、文昌将、属主；同卷运式段又出现“天目”称谓。","implementation_role":"锁定实现的函数注释直接写“文昌(天目)”，并按阴阳遁与局数查表取位。","status":"称谓层需要并列"},
+        {"id":"shiji","name":"始击","fixed_value":"辰","classical_identity":"卷二称上目、始击将、属客。","implementation_role":"锁定实现按阴阳遁与七十二局查表给出始击落位。","status":"客目身份可互证"}
+      ]
+    },
+    {
+      "id": "counting-anchors",
+      "label": "计、合与定目",
+      "question": "哪些位置负责把岁时与二目接入算数？",
+      "members": [
+        {"id":"jishen","name":"计神","fixed_value":"寅","classical_identity":"卷二运式第四步先详计神，以知主客计。","implementation_role":"锁定实现从太岁出发，按阳遁或阴遁使用两张相反方向映射表。","status":"生成依赖明确"},
+        {"id":"heshen","name":"合神","fixed_value":"丑","classical_identity":"所引原典段落没有给出可直接对应的独立身份定义。","implementation_role":"锁定实现从太岁通过固定映射取得合神；它随后参与定目计算。","status":"原典身份待继续校勘"},
+        {"id":"dingmu","name":"定目","fixed_value":"辰","classical_identity":"本次卷二装盘段没有把定目列入主客二目的同一组。","implementation_role":"锁定实现以文昌、合神与太岁三者的相对次序生成定目，再由定目进入定算。","status":"先作为实现对象保存"}
+      ]
+    },
+    {
+      "id": "generals",
+      "label": "主客诸将",
+      "question": "算数怎样继续生成将宫？",
+      "members": [
+        {"id":"host-general","name":"主大将／主参将","fixed_value":"8宫／4宫","classical_identity":"卷二“五将”段明确列主大将；参将不在该段的五将枚举中。","implementation_role":"主大将由主算18取宫，主参将再由大将宫数乘三取余生成。","status":"大将与参将分层"},
+        {"id":"guest-general","name":"客大将／客参将","fixed_value":"9宫／7宫","classical_identity":"卷二“五将”段明确列客大将；参将不在该段的五将枚举中。","implementation_role":"客大将由客算19取宫，客参将再由大将宫数乘三取余生成。","status":"大将与参将分层"}
+      ]
+    },
+    {
+      "id": "wandering-spirits",
+      "label": "另行推步的神",
+      "question": "哪些输出不属于主客二目与将的同一生成支线？",
+      "members": [
+        {"id":"four-spirit","name":"四神","fixed_value":"中","classical_identity":"卷四另列“推四神太乙法”，使用自身积年与入纪、入宫步骤。","implementation_role":"锁定年计结果把四神作为独立位置字段输出。","status":"独立推步对象"},
+        {"id":"heaven-earth-yi","name":"天乙／地乙","fixed_value":"巳／乾","classical_identity":"卷四分别列出天乙、地乙相关推法，并与四神、直符并置。","implementation_role":"锁定实现把天乙、地乙保存为两个独立位置字段。","status":"不并入二目"},
+        {"id":"zhifu","name":"直符","fixed_value":"巽","classical_identity":"卷四另列“推直符太乙法”。","implementation_role":"锁定年计结果把直符作为独立位置字段输出。","status":"独立推步对象"}
+      ]
+    }
+  ],
+  "dependency_paths": [
+    {"label":"岁时支线","nodes":["太岁","计神"],"note":"卷二与锁定实现都把太岁放在计神之前；具体映射属于实现层。"},
+    {"label":"主客支线","nodes":["文昌／始击","主算／客算","主客大将","主客参将"],"note":"原典支持二目到主客算、再到大将的顺序；参将生成公式来自锁定实现。"},
+    {"label":"定算支线","nodes":["文昌 + 合神 + 太岁","定目","定算"],"note":"这是锁定实现中的依赖链，本次不标作卷二统一术语。"},
+    {"label":"另行推步","nodes":["四神／天乙／地乙／直符","各自位置"],"note":"卷四为这些对象另列推法，不把它们塞进主客二目支线。"}
+  ],
+  "terminology_differences": [
+    {"label":"二目称谓","classical":"上目＝始击＝属客；下目＝文昌＝属主","implementation":"文昌函数注释写作“文昌(天目)”","handling":"保留上／下目与天目两套称谓层，不把“天目”直接改写成唯一标准名。"},
+    {"label":"五将与输出将字段","classical":"太乙监将、上下二目、主客大将合称五将","implementation":"另输出主客大将与主客参将，并把文昌、始击作为位置字段","handling":"五将是原典分组；大将／参将是实现输出层，两者不按名称数量强行一一对应。"}
+  ],
+  "reading_boundaries": [
+    {"label":"对象身份","note":"回答名称属于哪条生成支线、固定例落在哪里。"},
+    {"label":"来源层","note":"分别标明原典称谓、锁定实现字段与待校勘处。"},
+    {"label":"不在本页","note":"不展开神煞性质、主客胜负、灾异、战争或个人命运判断。"}
+  ],
+  "public_sources": [
+    {"title":"《太乙金鏡式經》卷二：五将、十六神与运式次序","url":"https://ctext.org/wiki.pl?chapter=275091&if=gb&remap=gb","note":"第3至12条区分太乙监将、上下二目及主客大将；第38至41条列式体层次与八步运式。本节点是OCR连接文本，关键字形仍需回看影像。"},
+    {"title":"《太乙金鏡式經》卷四：另行推步的神","url":"https://ctext.org/wiki.pl?chapter=835116&if=gb&remap=gb","note":"卷四分别列小游、四神、天乙与直符等推法，支持把它们从主客二目支线中分出。"},
+    {"title":"kintaiyi锁定位置与算将实现","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L348-L710","note":"固定提交中的太岁、计神、文昌、合神、太乙、始击、定目及主客定算／将函数。"},
+    {"title":"kintaiyi锁定年计输出字段","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L1958-L1983","note":"固定提交把诸神、二目、主客将、三类算与计合定目并列为独立字段。"}
+  ],
+  "internal_review": {
+    "status": "formal_structure_node",
+    "reviewed_at": "2026-08-06",
+    "owner": ["火华", "Codex"],
+    "decision": "新增为式盘与符号层的第二个正式节点。以固定例确认对象身份与依赖，不把古籍分组、软件字段和预测解释合并。",
+    "known_gaps": ["合神与定目的原典身份仍需扩展底本校勘", "天乙、地乙、四神、直符本轮只确认独立推步和位置字段，不公开性质断语"]
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "id": "bazi_twelve_growth_stages",
+  "title": "十二长生",
+  "summary": "十二长生把一股五行之气放进十二个连续阶段中观察。阳干顺行，阴干逆行，每个天干从自己的长生地支起步。",
+  "presentation_rule": "公开页面按《渊海子平》表列生成十干十二阶段。阶段名称先作为循环位置理解，不直接简化为固定吉凶。",
+  "consensus_scope": {
+    "status": "classical_supported_variant_adopted",
+    "adopted": [
+      "十二阶段的名称与循环顺序",
+      "阳干顺行、阴干逆行",
+      "庚长生于巳，辛长生于子"
+    ],
+    "basis": [
+      "《渊海子平》",
+      "《三命通会》",
+      "《千里命稿》"
+    ],
+    "preserved_alternative": "mystilight 的庚长生申、辛长生卯版本保留在来源层和比较层，待追溯上游。",
+    "not_consensus": "不能把长生、帝旺固定解释为吉，也不能把衰、病、死、绝固定解释为凶。"
+  },
+  "branches": ["子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"],
+  "stages": ["长生", "沐浴", "冠带", "临官", "帝旺", "衰", "病", "死", "墓", "绝", "胎", "养"],
+  "stem_paths": [
+    { "stem": "甲", "polarity": "阳", "start_branch": "亥", "direction": "顺行" },
+    { "stem": "乙", "polarity": "阴", "start_branch": "午", "direction": "逆行" },
+    { "stem": "丙", "polarity": "阳", "start_branch": "寅", "direction": "顺行" },
+    { "stem": "丁", "polarity": "阴", "start_branch": "酉", "direction": "逆行" },
+    { "stem": "戊", "polarity": "阳", "start_branch": "寅", "direction": "顺行" },
+    { "stem": "己", "polarity": "阴", "start_branch": "酉", "direction": "逆行" },
+    { "stem": "庚", "polarity": "阳", "start_branch": "巳", "direction": "顺行" },
+    { "stem": "辛", "polarity": "阴", "start_branch": "子", "direction": "逆行" },
+    { "stem": "壬", "polarity": "阳", "start_branch": "申", "direction": "顺行" },
+    { "stem": "癸", "polarity": "阴", "start_branch": "卯", "direction": "逆行" }
+  ],
+  "public_sources": [
+    {"title": "《渊海子平·论天干生旺死绝》", "note": "十天干长生起点与十二阶段映射的主要依据。", "url": "https://www.luckclub.cn/bazi/001/015/"},
+    {"title": "《三命通会·论五行旺相休囚死并寄生十二宫》", "note": "同篇并论寄生十二宫，用于核对十二阶段的传统语境。", "url": "https://www.luckclub.cn/bazi/005/021/"}
+  ],
+  "internal_review": {
+    "status": "classical_table_selected_variant_preserved",
+    "reviewed_at": "2026-08-03",
+    "source_refs": [
+      "github_mystilight_mystilight_8char_45fb1a8",
+      "github_minervaowl7_bazi_pro_65955b3",
+      "yuan_hai_zi_ping_tian_gan_sheng_wang_si_jue",
+      "san_ming_tong_hui_vol_2_twelve_palaces"
+    ]
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.0.0",
+  "id": "taiyi-nine-palace-gods",
+  "title": "九宫贵神",
+  "summary": "九宫贵神先以积年余数决定一位直事神，再让直事神进入中宫，其余八神按编号平移到洛书九宫。它与‘九星’共享九宫语境，却不是天蓬至天英或文曲至玄冥两套星名；与三旗重名的青龙、太阴也只是两套对象中的同名项。本节点展示九名、九种直事状态、两组固定分布和程序闭合检查，不展示各神所主、祭祀、灾异或行动判断。",
+  "fixed_input": "1552年9月24日 00:00 · 年计 · 四个积年分支",
+  "palaces": [
+    {"number": 1, "palace": "坎"}, {"number": 2, "palace": "坤"}, {"number": 3, "palace": "震"},
+    {"number": 4, "palace": "巽"}, {"number": 5, "palace": "中"}, {"number": 6, "palace": "乾"},
+    {"number": 7, "palace": "兑"}, {"number": 8, "palace": "艮"}, {"number": 9, "palace": "离"}
+  ],
+  "gods": [
+    {"number": 1, "name": "太乙"}, {"number": 2, "name": "摄提"}, {"number": 3, "name": "轩辕"},
+    {"number": 4, "name": "招摇"}, {"number": 5, "name": "天符"}, {"number": 6, "name": "青龙"},
+    {"number": 7, "name": "咸池"}, {"number": 8, "name": "太阴"}, {"number": 9, "name": "天乙"}
+  ],
+  "calculation_steps": [
+    {"index": "01", "name": "取小周余", "formula": "(积年 mod 360 + 3) mod 9；余0记9", "output": "余1—9"},
+    {"index": "02", "name": "定直事神", "formula": "按1、9、8、7、6、5、4、3、2逆序取神号", "output": "一位直事贵神"},
+    {"index": "03", "name": "直事入中", "formula": "偏移 = (5 − 直事神号) mod 9", "output": "直事神落中五"},
+    {"index": "04", "name": "其余飞布", "formula": "九神编号共同加同一偏移并回绕1—9", "output": "九宫各得一神"}
+  ],
+  "direct_states": [
+    {"remainder": 1, "god_number": 1, "god": "太乙"},
+    {"remainder": 2, "god_number": 9, "god": "天乙"},
+    {"remainder": 3, "god_number": 8, "god": "太阴"},
+    {"remainder": 4, "god_number": 7, "god": "咸池"},
+    {"remainder": 5, "god_number": 6, "god": "青龙"},
+    {"remainder": 6, "god_number": 5, "god": "天符"},
+    {"remainder": 7, "god_number": 4, "god": "招摇"},
+    {"remainder": 8, "god_number": 3, "god": "轩辕"},
+    {"remainder": 9, "god_number": 2, "god": "摄提"}
+  ],
+  "fixed_methods": [
+    {"method": 0, "label": "太乙统宗", "accumulated": 10155469, "remainder": 7, "direct": "招摇", "distribution": {"坎": "天乙", "坤": "太乙", "震": "摄提", "巽": "轩辕", "中": "招摇", "乾": "天符", "兑": "青龙", "艮": "咸池", "离": "太阴"}, "status": "与method 1／3同分布"},
+    {"method": 1, "label": "太乙金镜", "accumulated": 1938109, "remainder": 7, "direct": "招摇", "distribution": {"坎": "天乙", "坤": "太乙", "震": "摄提", "巽": "轩辕", "中": "招摇", "乾": "天符", "兑": "青龙", "艮": "咸池", "离": "太阴"}, "status": "与method 0相差360整倍数"},
+    {"method": 2, "label": "太乙淘金歌", "accumulated": 10155745, "remainder": 4, "direct": "咸池", "distribution": {"坎": "轩辕", "坤": "招摇", "震": "天符", "巽": "青龙", "中": "咸池", "乾": "太阴", "兑": "天乙", "艮": "太乙", "离": "摄提"}, "status": "余数与全盘分布改变"},
+    {"method": 3, "label": "太乙局", "accumulated": 10155469, "remainder": 7, "direct": "招摇", "distribution": {"坎": "天乙", "坤": "太乙", "震": "摄提", "巽": "轩辕", "中": "招摇", "乾": "天符", "兑": "青龙", "艮": "咸池", "离": "太阴"}, "status": "与method 0同式同值"}
+  ],
+  "mechanical_checks": [
+    {"label": "九宫完整", "result": "每种固定分布恰有坎、坤、震、巽、中、乾、兑、艮、离九宫。"},
+    {"label": "九神唯一", "result": "每种固定分布九神各出现一次，没有重名覆盖或缺神。"},
+    {"label": "直事入中", "result": "余1—9九种状态逐项验证，所选直事神都被偏移到中五。"},
+    {"label": "周期收敛", "result": "最终只取mod 9；外层mod 360保留来源步骤，但不改变程序结果。"}
+  ],
+  "implementation_differences": [
+    {"label": "九宫贵神不等于九星", "source": "早期礼制文本也列太乙、摄提、轩辕、招摇、天符、青龙、咸池、太阴、天一九名。", "implementation": "锁定实现另有太乙九星与文昌九星，两者使用天蓬至天英、文曲至玄冥等名称。", "handling": "保留‘九宫贵神’独立节点；链接九宫坐标，不并入‘九星’。"},
+    {"label": "天乙／天一字形并存", "source": "《全唐文》连接文本写天一；锁定卷十实现写天乙。", "implementation": "_NINE_GODS第九名固定为天乙。", "handling": "主体按锁定实现写天乙，来源异名明确待版本校勘。"},
+    {"label": "外层360对结果冗余", "source": "函数说明先取周纪余，再加宫盈差三入九。", "implementation": "因360可被9整除，(积年 mod 360 +3) mod9与(积年+3) mod9相同。", "handling": "保留四步来源结构，同时说明程序可约简，避免误称两个独立周期。"},
+    {"label": "直事序不是九神编号顺序", "source": "连接文本列余一太乙、余二天乙，继而太阴、咸池等逆序。", "implementation": "程序用[1,9,8,7,6,5,4,3,2]索引九神。", "handling": "九种余数—直事映射完整公开，不让读者自行倒推。"},
+    {"label": "同名青龙、太阴属于不同对象层", "source": "三旗也称太岁青龙旗、太阴黑旗。", "implementation": "九宫贵神的青龙、太阴随直事偏移飞布九宫，不按三旗公式落地支。", "handling": "重名项保留，身份和坐标类型不合并。"},
+    {"label": "所主与祭祀不进入本节点", "source": "古代礼制及卷十下游继续附加所主、祭祀与灾异解释。", "implementation": "普通结果只返回余数、直事神与分布；卷十综合接口可继续组合解释。", "handling": "本节点止于名称、直事、入中与九宫分布。"}
+  ],
+  "reading_boundaries": [
+    {"label": "可理解", "note": "九名如何由一位直事神入中，再整体飞布九宫。"},
+    {"label": "可比较", "note": "method 0／1／3的招摇入中与method 2的咸池入中如何改变全盘。"},
+    {"label": "待核验", "note": "卷十逐页影像、天乙／天一版本字形及钩宫飞行原式。"},
+    {"label": "不作断语", "note": "不展示各神所主、祭祀、灾异、战争、地域或真人判断。"}
+  ],
+  "public_sources": [
+    {"title": "《太乙统宗宝鉴》九宫贵神连接文本", "url": "https://ctext.org/wiki.pl?chapter=306417&if=gb", "note": "可定位九宫贵神纪年／所在等条目；OCR严重不稳，公式须回看影像。"},
+    {"title": "《太乙统宗宝鉴》卷十目录连接文本", "url": "https://ctext.org/wiki.pl?chapter=258102&if=gb", "note": "列出九宫贵神、钩宫飞行及三旗相邻条目。"},
+    {"title": "《全唐文》九宫贵神名目", "url": "https://ctext.org/wiki.pl?chapter=261290&if=gb", "note": "保存九名与宫序的较早礼制文本；其中第九名写天一，只用于名称互证。"},
+    {"title": "《太乙统宗宝鉴》书目与影像入口", "url": "https://ctext.org/wiki.pl?if=gb&res=444363", "note": "卷十底本导航，不把自动OCR当作无误校本。"},
+    {"title": "kintaiyi锁定九宫贵神实现", "url": "https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/config.py#L895-L1020", "note": "保存九宫名、九神名、直事序、入中偏移与九宫分布。"},
+    {"title": "kintaiyi锁定普通结果接口", "url": "https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L2265-L2271", "note": "普通式盘把积年传入九宫贵神函数。"}
+  ],
+  "internal_review": {
+    "status": "formal_nine_palace_gods_direct_and_distribution",
+    "reviewed_at": "2026-08-07",
+    "owner": ["火华", "Codex"],
+    "runtime_basis": "固定四method积年取自已核年计节点，按锁定直事序和偏移公式逐项复算；余1—9全部验证直事入中",
+    "deduplication": "不并入九星：九名、周期和返回字段均不同。不并入三旗：重名青龙、太阴不共享公式或坐标类型。不并入九宫与十六神位：该页定义坐标，本页解释飞布在坐标上的一组对象。",
+    "known_gaps": ["卷十原式未逐页影像校勘", "天乙／天一字形未裁定", "钩宫飞行术缺少独立版本互证", "缺少仓库专项测试"],
+    "boundary": "固定积年、无真人输入、无随机；不公开所主、祭祀、灾异、军事、地域和行动断语。"
+  }
+}

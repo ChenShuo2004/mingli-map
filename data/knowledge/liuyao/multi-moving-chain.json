@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "id": "liuyao_multi_moving_chain",
+  "title": "多动爻作用链",
+  "summary": "卦中有多个动爻时，不能只画一条“忌神克用神”的直线。另一动爻可能接续相生、接续相克、截断原神、制住忌神，也可能使忌神因转去生或合别爻而暂时忘克。作用路径需要按触发关系重新排列。",
+  "fixed_nodes": [
+    {"id": "source", "label": "介入动爻"},
+    {"id": "role", "label": "原神／忌神"},
+    {"id": "use", "label": "用神"}
+  ],
+  "routes": [
+    {"id": "continued_birth", "label": "接续相生", "trigger": "另一动爻生原神", "path": ["介入动爻", "原神", "用神"], "relations": ["生", "生"], "result": "生助形成两段连续路径"},
+    {"id": "origin_blocked", "label": "原神被克", "trigger": "另一动爻克原神", "path": ["介入动爻", "原神", "用神"], "relations": ["克", "生"], "result": "用神的直接生源先受制"},
+    {"id": "continued_restraint", "label": "接续相克", "trigger": "另一动爻生忌神", "path": ["介入动爻", "忌神", "用神"], "relations": ["生", "克"], "result": "克制形成两段连续路径"},
+    {"id": "avoid_controlled", "label": "忌神受制", "trigger": "另一动爻克忌神", "path": ["介入动爻", "忌神", "用神"], "relations": ["克", "克"], "result": "直接克用的来源先被制"},
+    {"id": "greedy_birth", "label": "贪生忘克", "trigger": "忌神转而生同动原神", "path": ["忌神", "原神", "用神"], "relations": ["生", "生"], "result": "原来的克用箭头改道为接续生用"},
+    {"id": "greedy_harmony", "label": "贪合忘克", "trigger": "忌神与另一动爻或日辰相合", "path": ["忌神", "合住", "用神"], "relations": ["合", "原拟克"], "result": "克用路径被合关系牵住，单独保留为来源规则"}
+  ],
+  "principles": [
+    {"label": "动静入口", "note": "单个静爻与动爻先判断作用能否成立；多动关系再处理多个发动来源的接续。"},
+    {"label": "箭头重排", "note": "先识别谁生谁、谁克谁或谁相合，再看原来的直达路径是否被接续或截断。"},
+    {"label": "不做总断", "note": "一条路径成立不代表整卦只有这一条关系，更不直接等于事项结果。"}
+  ],
+  "reading_boundary": "固定三个结构位置演示六种作用路线；不输入真人卦、不汇总多个路线为吉凶，也不把现代实现的数值权重当作古法。",
+  "internal_review": {"status": "ctext_classical_rule_and_locked_chain_engine_cross_checked", "reviewed_at": "2026-08-05", "source_refs": ["bushi_zhengzong_ctext_chapter_801184", "bushi_quanshu_ctext_chapter_695113", "github_horace_maxwell_horosa_suijinfu_chain"]}
+}

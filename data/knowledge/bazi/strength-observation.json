@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "id": "bazi_strength_observation",
+  "title": "旺衰观察",
+  "summary": "旺衰不是只看月令，也不是把若干因素换算成一张通用分数表。月令、根气与全局助制共同描述日主在完整结构中的状态。",
+  "axes": [
+    {"id": "timing", "label": "得时", "anchor": "月令", "question": "日主是否处在有利的季节环境？", "explanation": "月令提供全局气候与当令之气，是重要起点，但不是唯一结论。"},
+    {"id": "root", "label": "得地", "anchor": "根气", "question": "日主在地支中是否有根或得到承接？", "explanation": "根气要结合地支所藏与位置观察，不能只数同类字的多少。"},
+    {"id": "support", "label": "得势", "anchor": "全局", "question": "其余干支总体在帮助、泄耗还是克制？", "explanation": "生扶、泄耗与克制会彼此牵动，合冲也可能改变原有连接。"}
+  ],
+  "reading_sequence": ["先看月令提供的季节起点", "再看日主是否有根、有无承接", "最后把全局的助、泄、耗、克放在一起观察"],
+  "boundaries": [
+    {"title": "得令不等于必旺", "explanation": "月令有利时，其他位置仍可能持续泄耗或克制。"},
+    {"title": "失令不等于必弱", "explanation": "失令时，根气与全局生扶仍可能形成支持。"},
+    {"title": "极端状态不能机械反推", "explanation": "传统文本提醒，旺极、衰极与一般旺弱的处理逻辑并不相同。"}
+  ],
+  "public_sources": [
+    {"title": "《滴天髓·衰旺》", "note": "支持将一般旺衰与旺极、衰极分开阅读，不机械反推。", "url": "https://zh.wikisource.org/wiki/%E6%BB%B4%E5%A4%A9%E9%AB%93/12"},
+    {"title": "《滴天髓阐微·通神论衰旺》", "note": "支持月令为重要起点，但仍需结合根气和全局助制。", "url": "https://www.luckclub.cn/zhongyi/027/017/"},
+    {"title": "《千里命稿·强弱篇》", "note": "从得时、得势、得地等条件讨论强弱观察。", "url": "https://www.luckclub.cn/bazi/003/008/"}
+  ],
+  "internal_review": {
+    "status": "framework_verified_numeric_models_rejected",
+    "reviewed_at": "2026-08-04",
+    "source_refs": ["wikisource_ditiansui_shuaiwang", "luckclub_ditiansui_chanwei_shuaiwang", "github_minervaowl7_bazi_pro_65955b3"],
+    "boundary": "公开得时、得地、得势的观察框架和非单因子边界；仓库中的权重、分值与旺衰阈值只留在来源实现层。"
+  }
+}

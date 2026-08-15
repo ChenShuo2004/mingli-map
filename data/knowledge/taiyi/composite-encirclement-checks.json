@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0.0",
+  "id": "composite-encirclement-checks",
+  "title": "四郭固、郭杜、执提与提挟的组合条件",
+  "summary": "卷三在掩、迫、关、囚、击、格、对等基础位置关系之后，继续给出四郭固、郭杜、执提／提格、提挟／挟闭等组合条件。它们会同时读取太乙、文昌、始击、主客大小将或开生二门，不能简化成单个同宫、相邻或对宫标签。锁定shi_geju只部分覆盖四郭固，未设置郭杜与挟闭专门分支；执提实现检查所有开、生门而非原文的值事门语境，提挟实现则缩成文昌与始击分居太乙两侧。本页只公开输入对象、组合步骤与覆盖缺口，不保留原文和函数返回中的胜负、举事、军国与灾异判断。",
+  "fixed_input": "1552年9月24日 0时0分 · 年计",
+  "families": [
+    {"id":"four-enclosure-solid","name":"四郭固","latin":"Four Enclosures fixed","objects":["文昌或客目","太乙","主客大小将"],"classical_condition":"文昌囚太乙宫并有大小将相关；原文另列客目临太乙及客方将相关的入口。","implementation_condition":"分两支：文昌映射宫=太乙宫且主大=主参；或始击映射宫=太乙宫，并继续检查客大、客参与主将的同宫关系。","coverage":"部分覆盖","tone":"partial","steps":["先检查文昌或始击是否临太乙宫","再检查指定大小将是否同宫","两个条件同时成立才生成四郭固"],"gap":"原典OCR第二支主体仍需回看影像；实现第二支混合客方与主方将，暂不视作唯一古法。"},
+    {"id":"enclosure-blocked","name":"郭杜","latin":"Enclosures blocked","objects":["客参","文昌","主客大将","基础关系标签"],"classical_condition":"卷三列客参将与文昌并、主大将与客大将并，并兼掩、迫、关、格、提挟等条件。","implementation_condition":"shi_geju没有郭杜键，也没有把上述多项条件汇总成专门分支。","coverage":"未实现专门分支","tone":"missing","steps":["先检查两组对象并位","再检查是否兼有基础关系","满足复合条件后才形成郭杜"],"gap":"本节点只保存原典结构，不根据相邻函数自行补算郭杜。"},
+    {"id":"grasp-lift","name":"执提／提格","latin":"Grasp & lift","objects":["值事开门或生门","太乙","同宫／对宫"],"classical_condition":"卷三先说开、生二门合冲，随后以开门或生门为值事门举例：与太乙合称执，与太乙相对称提格。","implementation_condition":"从八门分布找到开门与生门，逐一检查是否与太乙同宫或在太乙对宫，不再检查哪一门值事。","coverage":"实现扩大检查主体","tone":"broadened","steps":["定位动态开门与生门","与太乙比较同宫或对宫","同宫标执，对宫标提格"],"gap":"实现没有读取八门值事门，不能用其返回覆盖原文值事门限定。"},
+    {"id":"pincer","name":"提挟／挟闭","latin":"Pincer & closure","objects":["文昌","始击","主客大小将","太乙／间神"],"classical_condition":"卷三列一将或两将与太乙形成挟持，又列二目临间神、二将拱太乙并挟二目的挟闭结构。","implementation_condition":"仅在文昌、始击都不临太乙时，以十六位环判断二目是否分居太乙两侧；没有检查四将，也没有挟闭键。","coverage":"实现简化且缺一支","tone":"simplified","steps":["原典先区分目、将与太乙或间神","再判断将是否拱挟相关对象","实现只保留二目跨太乙两侧"],"gap":"提挟实现条件与原典主体不等价；挟闭没有专门实现。"}
+  ],
+  "coverage_matrix": [
+    {"label":"四郭固","classical_parts":2,"implementation_parts":2,"status":"两支均有代码，但第二支主体映射待校"},
+    {"label":"郭杜","classical_parts":2,"implementation_parts":0,"status":"无专门返回键"},
+    {"label":"执提／提格","classical_parts":2,"implementation_parts":2,"status":"同宫／对宫均覆盖，但未限值事门"},
+    {"label":"提挟／挟闭","classical_parts":2,"implementation_parts":1,"status":"提挟被简化，挟闭缺失"}
+  ],
+  "method_results": [
+    {"method":0,"label":"太乙统宗","accumulated":10155469,"board":"阳遁十三局","taiyi":6,"doors":"开9 · 生7","advanced_hits":[],"other_hits":["主参内宫迫","客参外宫迫"],"status":"未命中四组高级组合"},
+    {"method":1,"label":"太乙金镜","accumulated":1938109,"board":"阳遁十三局","taiyi":6,"doors":"开9 · 生7","advanced_hits":[],"other_hits":["主参内宫迫","客参外宫迫"],"status":"固定例"},
+    {"method":2,"label":"太乙淘金歌","accumulated":10155745,"board":"阳遁一局","taiyi":1,"doors":"开9 · 生7","advanced_hits":["提格（开门与太乙对宫）"],"other_hits":["主参囚","客参格","客参内宫迫"],"status":"唯一命中高级组合的分支"},
+    {"method":3,"label":"太乙局","accumulated":10155469,"board":"阳遁十三局","taiyi":6,"doors":"开9 · 生7","advanced_hits":[],"other_hits":["主参内宫迫","客参外宫迫"],"status":"与统宗、金镜相同"}
+  ],
+  "layer_differences": [
+    {"label":"高级组合不是第八种基础关系","classical":"四组规则会串联目、将、门与太乙，并可继续引用掩迫关格","implementation":"shi_geju把它们与基础关系放在同一个结果字典","handling":"本节点单独展示组合链，并链接回基础位置关系语义。"},
+    {"label":"郭杜没有实现返回","classical":"卷三给出对象并位与兼具关系的复合条件","implementation":"没有郭杜键或汇总判断","handling":"标作原典有定义、锁定实现缺分支，不用其他命中代填。"},
+    {"label":"执提的值事门限定","classical":"举例明确读取开门或生门何者值事","implementation":"同时遍历动态开门和生门","handling":"method 2只称实现命中提格，不反写为原典条件已经完整成立。"},
+    {"label":"提挟主体被改写","classical":"核心条件包含一将／两将与太乙、二目或间神的拱挟","implementation":"只用文昌与始击相对太乙的两侧位置","handling":"保留为简化实现，不把二目分侧等同古法全条件。"},
+    {"label":"解释文字不公开","classical":"各段附举事、胜败、兵事与灾异判断","implementation":"返回字符串也附带行动与结果措辞","handling":"公开数据只保留条件名、输入对象、覆盖状态与固定命中证据。"}
+  ],
+  "reading_boundaries": [
+    {"label":"可识别","note":"四组高级组合分别读取哪些目、将、门与宫位关系。"},
+    {"label":"可复核","note":"锁定shi_geju覆盖了哪些分支，以及固定四个method是否命中。"},
+    {"label":"待校勘","note":"四郭固第二支OCR主体、郭杜完整断句及提挟各变体。"},
+    {"label":"不由此推出","note":"任何现实双方、行动时机、战争结果、国事、灾异或个人吉凶。"}
+  ],
+  "public_sources": [
+    {"title":"《太乙金鏡式經》卷三：四郭固、郭杜、执提与提挟","url":"https://ctext.org/wiki.pl?chapter=791210&if=gb&remap=gb","note":"第16至23条连续保存四郭固、郭杜、执提／提格、提挟／挟闭条件；OCR关键主体仍须回看影像。"},
+    {"title":"kintaiyi锁定高级组合检查","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L2080-L2163","note":"shi_geju实现提挟、执／提格与四郭固，未发现郭杜或挟闭专门分支。"},
+    {"title":"kintaiyi锁定八门动态分布","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L1353-L1382","note":"执提实现从动态八门表查找开门、生门所在宫。"},
+    {"title":"kintaiyi锁定固定例输入","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/examples/basic_usage.py#L13-L20","note":"固定输入1552-09-24 00:00、年计；本页在临时锁定环境复跑method 0—3。"}
+  ],
+  "internal_review": {
+    "status":"formal_composite_relation_audit","reviewed_at":"2026-08-06","owner":["火华","Codex"],"source_refs":["ctext_taiyi_jinjing_vol_3","github_kentang2017_kintaiyi_f2719d6"],"runtime_environment":"temporary Python venv; locked repository commit installed from source","runtime_command":"Taiyi(1552, 9, 24, 0, 0).shi_geju/geteightdoors(0, method), method=0..3","deduplication":"不并入‘主客算与七类位置关系’：该页定义单个同宫、邻宫、对宫标签，本页处理多个基础关系与多个对象共同成立的高级组合。不并入‘三门与五将’：该页返回具／不具、发／不发，本页读取具体目将门宫的组合形状。","known_gaps":["四郭固与郭杜OCR需回看卷三影像","shi_geju未发现专项测试","提挟实现的二目分侧算法与原典将—目拱挟关系不等价"],"boundary":"固定样本、无真人输入、无随机；本节点只展示组合条件、实现覆盖和固定命中，不公开胜负、举事、军国、灾异或吉凶断语。"
+  }
+}

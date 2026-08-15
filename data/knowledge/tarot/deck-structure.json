@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0",
+  "id": "tarot_deck_structure",
+  "title": "78张牌组结构",
+  "summary": "以 Rider–Waite–Smith 体系为固定样本，一副78张塔罗牌可先拆成22张大阿卡纳与56张小阿卡纳；小阿卡纳再由权杖、圣杯、宝剑、星币四个花色组成，每个花色都有10张数字牌与4张宫廷牌。本页只建立牌的身份与层级，不把牌名直接翻译成事件，也不提供抽牌。",
+  "deck": {"total":78,"major_count":22,"minor_count":56,"minor_suit_count":4,"cards_per_suit":14},
+  "image_set": {
+    "id": "rws_luciellaes_via_tarot_api_319ce18",
+    "label": "Rider–Waite–Smith 牌面扫描",
+    "base_path": "/tarot/rws/",
+    "dimensions": "300 × 527 px",
+    "file_count": 78,
+    "repository": "https://github.com/LindseyB/tarot-api/tree/319ce18f1b583035e00c63854a2a405a0088bc73/public/cards",
+    "upstream": "https://luciellaes.itch.io/rider-waite-smith-tarot-cards-cc0",
+    "credit": "Luciella Elisabeth Scarlett（扫描清理、缩放与边框加工）",
+    "rights_note": "上游允许个人或商业使用，并说明正面图来自原始RWS牌的Wikipedia扫描；正文只明确将牌背设计释为CC0，同时要求使用者自行判断所在法域的原作公版状态，因此不把78张正面图简写为整套CC0。"
+  },
+  "major_arcana": [
+    {"number":"0","name_zh":"愚人","name_en":"The Fool","image":"TheFool.png"},{"number":"I","name_zh":"魔术师","name_en":"The Magician","image":"TheMagician.png"},{"number":"II","name_zh":"女祭司","name_en":"The High Priestess","image":"TheHighPriestess.png"},{"number":"III","name_zh":"皇后","name_en":"The Empress","image":"TheEmpress.png"},{"number":"IV","name_zh":"皇帝","name_en":"The Emperor","image":"TheEmperor.png"},{"number":"V","name_zh":"教皇","name_en":"The Hierophant","image":"TheHierophant.png"},{"number":"VI","name_zh":"恋人","name_en":"The Lovers","image":"TheLovers.png"},{"number":"VII","name_zh":"战车","name_en":"The Chariot","image":"TheChariot.png"},{"number":"VIII","name_zh":"力量","name_en":"Strength","image":"Strength.png"},{"number":"IX","name_zh":"隐者","name_en":"The Hermit","image":"TheHermit.png"},{"number":"X","name_zh":"命运之轮","name_en":"Wheel of Fortune","image":"WheelOfFortune.png"},{"number":"XI","name_zh":"正义","name_en":"Justice","image":"Justice.png"},{"number":"XII","name_zh":"倒吊人","name_en":"The Hanged Man","image":"TheHangedMan.png"},{"number":"XIII","name_zh":"死神","name_en":"Death","image":"Death.png"},{"number":"XIV","name_zh":"节制","name_en":"Temperance","image":"Temperance.png"},{"number":"XV","name_zh":"恶魔","name_en":"The Devil","image":"TheDevil.png"},{"number":"XVI","name_zh":"高塔","name_en":"The Tower","image":"TheTower.png"},{"number":"XVII","name_zh":"星星","name_en":"The Star","image":"TheStar.png"},{"number":"XVIII","name_zh":"月亮","name_en":"The Moon","image":"TheMoon.png"},{"number":"XIX","name_zh":"太阳","name_en":"The Sun","image":"TheSun.png"},{"number":"XX","name_zh":"审判","name_en":"Judgement","image":"Judgement.png"},{"number":"XXI","name_zh":"世界","name_en":"The World","image":"TheWorld.png"}
+  ],
+  "minor_arcana": {
+    "ranks": [
+      {"id":"ace","name_zh":"王牌","name_en":"Ace","kind":"数字牌"},{"id":"two","name_zh":"二","name_en":"Two","kind":"数字牌"},{"id":"three","name_zh":"三","name_en":"Three","kind":"数字牌"},{"id":"four","name_zh":"四","name_en":"Four","kind":"数字牌"},{"id":"five","name_zh":"五","name_en":"Five","kind":"数字牌"},{"id":"six","name_zh":"六","name_en":"Six","kind":"数字牌"},{"id":"seven","name_zh":"七","name_en":"Seven","kind":"数字牌"},{"id":"eight","name_zh":"八","name_en":"Eight","kind":"数字牌"},{"id":"nine","name_zh":"九","name_en":"Nine","kind":"数字牌"},{"id":"ten","name_zh":"十","name_en":"Ten","kind":"数字牌"},{"id":"page","name_zh":"侍从","name_en":"Page","kind":"宫廷牌"},{"id":"knight","name_zh":"骑士","name_en":"Knight","kind":"宫廷牌"},{"id":"queen","name_zh":"王后","name_en":"Queen","kind":"宫廷牌"},{"id":"king","name_zh":"国王","name_en":"King","kind":"宫廷牌"}
+    ],
+    "suits": [
+      {"id":"wands","name_zh":"权杖","name_en":"Wands","mark":"杖","aliases":["棍棒","手杖"]},{"id":"cups","name_zh":"圣杯","name_en":"Cups","mark":"杯","aliases":["杯"]},{"id":"swords","name_zh":"宝剑","name_en":"Swords","mark":"剑","aliases":["剑"]},{"id":"pentacles","name_zh":"星币","name_en":"Pentacles","mark":"币","aliases":["钱币","五芒星币"]}
+    ]
+  },
+  "version_notes": [
+    {"label":"本页固定顺序","title":"Rider–Waite–Smith","note":"力量为VIII、正义为XI；愚人标作0，世界标作XXI。"},{"label":"更早常见顺序","title":"力量与正义对调","note":"Waite在原书中明确说明，他把通常编号VIII的正义与力量互换。编号差异应随牌系保存。"},{"label":"中文编辑层","title":"译名不是牌面原字段","note":"中文名只用于识别；同一花色可见权杖／棍棒、星币／钱币等译法，英文名同时保留。"}
+  ],
+  "reading_boundaries": [
+    {"label":"身份层","title":"牌名、编号、花色与点数","note":"本页完整承接78张牌的分组与名称。"},{"label":"图像层","title":"牌面元素与版本画法","note":"同名牌在不同牌系里会改变画面，后续按具体牌系和图像权利单独处理。"},{"label":"解释层","title":"正逆位、牌位与组合","note":"牌义属于作者与传统的解释，不由牌组名单自动推出。"}
+  ],
+  "public_sources": [
+    {"title":"tarot-api：固定提交中的78张RWS牌图","note":"使用该提交public/cards目录中的78张300×527 PNG；导入后已逐张与来源层SHA-256清单对账一致。","url":"https://github.com/LindseyB/tarot-api/tree/319ce18f1b583035e00c63854a2a405a0088bc73/public/cards"},{"title":"LuciellaES：RWS牌图加工与使用说明","note":"作者说明图片来自Wikipedia的原始RWS扫描，经清理、缩放和加边框，并允许个人或商业使用；正文只明确牌背CC0，正面图仍要求使用者自行判断原作公版状态。","url":"https://luciellaes.itch.io/rider-waite-smith-tarot-cards-cc0"},{"title":"Project Gutenberg：《The Illustrated Key to the Tarot》四花色结构","note":"原书列出22张大阿卡纳与四个小阿卡纳花色，并说明每花色含10张数字牌及King、Queen、Knight、Page四张宫廷牌。","url":"https://www.gutenberg.org/cache/epub/43548/pg43548-images.html#I3"},{"title":"Project Gutenberg：RWS大阿卡纳顺序","note":"原书逐张列出大阿卡纳，并明确说明力量与通常编号VIII的正义互换；也把愚人列为Zero、世界列为Twenty-one。","url":"https://www.gutenberg.org/cache/epub/43548/pg43548-images.html#II2"},{"title":"大英博物馆：19世纪Etteilla完整78张牌组","note":"馆藏记录提供另一副完整78张塔罗实物，并列出cups、coins、clubs、swords四种花色，帮助确认78张结构并不只见于RWS。","url":"https://www.britishmuseum.org/collection/object/P_1982-U-4593-1-78"},{"title":"大英博物馆：Visconti–Sforza牌组复制件","note":"馆藏说明该78张复制组对应15世纪早期塔罗牌组，并记录原件缺牌与后补情况；用于提示完整结构与历史实物留存要分开理解。","url":"https://www.britishmuseum.org/collection/object/P_1976-0131-25-1-78"}
+  ],
+  "internal_review": {"status":"formal_identity_structure_node_rws_sample_with_sourced_images","reviewed_at":"2026-08-06","source_refs":["github_lindseyb_tarot_api_319ce18","github_dadanluo_bazi_agent_24f0216"],"ownership":"K-TAROT.01 牌组结构","deduplication":"不并入单牌资料：图像观察与牌义分别新增牌系、作者和解释条件；不并入牌阵：牌阵新增牌位与组合关系。","boundary":"公开层使用固定提交中可追溯的78张RWS牌面图，完整记录上游加工与权利说明；不复用权利链未闭合的牌义，不开放抽牌。"}
+}

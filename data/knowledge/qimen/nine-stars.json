@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0.0",
+  "id": "qimen_nine_stars",
+  "title": "九星对象与中宫处理",
+  "summary": "九星为天蓬、天芮、天冲、天辅、天禽、天心、天柱、天任、天英，对应一至九宫的原始位置。转盘实现常把中五宫的天禽寄随其他宫位，因此可见的转动序列只有八项；‘九星对象’与‘八宫转动’并不矛盾。",
+  "items": [
+    {"name":"天蓬","home_palace":1,"element":"水"}, {"name":"天芮","home_palace":2,"element":"土"},
+    {"name":"天冲","home_palace":3,"element":"木"}, {"name":"天辅","home_palace":4,"element":"木"},
+    {"name":"天禽","home_palace":5,"element":"土","special":"中宫对象；寄宫方式依盘式配置"},
+    {"name":"天心","home_palace":6,"element":"金"}, {"name":"天柱","home_palace":7,"element":"金"},
+    {"name":"天任","home_palace":8,"element":"土"}, {"name":"天英","home_palace":9,"element":"火"}
+  ],
+  "eight_position_rotation": ["天蓬","天任","天冲","天辅","天英","天芮","天柱","天心"],
+  "center_variants": [
+    {"source":"mingli-skills 元旦盘","handling":"天禽原宫为五，数据另记寄二宫"},
+    {"source":"qimenpaipan 当前实现","handling":"中宫寄坤，天禽随天芮；新旧版本对中宫干显示仍有差异"},
+    {"source":"qimen-go","handling":"可配置中宫寄坤或阳艮阴坤，不应合成唯一口径"}
+  ],
+  "reading_boundaries": ["本页不采用九星吉凶、旺衰或象意标签。", "天禽怎样寄宫属于盘式版本，不以一个实现覆盖其他版本。", "原始宫位不等于具体时局落宫。"],
+  "public_sources": [
+    {"title":"mingli-skills 锁定元旦盘","url":"https://github.com/weizeW/mingli-skills/blob/c16eca0/qimen-dunjia/data/yuandan.json","note":"提供九星名称、五行、原始宫位与八项排列顺序。"},
+    {"title":"qimenpaipan 锁定九星与寄宫实现","url":"https://github.com/redrockhorse/qimenpaipan/blob/b6de54245cf7a514f59e51833dc01a87e1a3a849/qimenpaipan.py#L880-L936","note":"保存当前转盘实现的天禽随天芮及中宫干显示。"},
+    {"title":"qimen-go 锁定盘式实现","url":"https://github.com/deminzhang/qimen-go/blob/4d3f58fa0f401b5b3a337f119138e99e90685dda/xuan/qimen.go","note":"实现多种中宫寄法；结构可运行不等于传统版本已经裁定。"}
+  ],
+  "internal_review":{"status":"formal_object_node_with_center_variants","reviewed_at":"2026-08-09","owner":["火华","Codex"],"source_refs":["github_weizew_mingli_skills_c16eca0","github_redrockhorse_qimenpaipan_b6de542","github_deminzhang_qimen_go_4d3f58f"],"deduplication":"九星身份与四盘装配分开，中宫版本仅作指路。","boundary":"不输出星义、旺衰或真人判断。"}
+}

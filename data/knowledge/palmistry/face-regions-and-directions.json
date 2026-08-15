@@ -1,0 +1,22 @@
+{
+  "id": "face-regions-and-directions",
+  "title": "面部区域与方位",
+  "summary": "面部先按正面、侧面与局部参照点定位；额、眉眼、鼻颧、口周和下颏是观察区域，不直接等同于传统宫位或人物结论。",
+  "views": [
+    {"id": "front", "label": "正面", "image": "/assets/palmistry/ai-face-front-neutral.webp", "use": "比较左右、上下与中央区域", "checks": ["头部正立", "双眼近水平", "鼻梁居中", "发际与下颏完整"]},
+    {"id": "profile", "label": "侧面", "image": "/assets/palmistry/ai-face-profile-neutral.webp", "use": "观察额、鼻、唇与颏的前后轮廓", "checks": ["明确左侧或右侧", "无明显俯仰", "耳前与下颌线可见", "不与斜侧面混用"]}
+  ],
+  "regions": [
+    {"id": "forehead", "label": "额部", "range": "发际至眉上", "fields": ["高度", "宽度", "发际边界", "额面轮廓"], "x": 50, "y": 18},
+    {"id": "brow-eye", "label": "眉眼区", "range": "眉弓、眼眶与眼周", "fields": ["眉位", "眼裂方向", "眼间距", "眶周边界"], "x": 50, "y": 37},
+    {"id": "nose-cheek", "label": "鼻颧区", "range": "山根至鼻底、两侧颧部", "fields": ["鼻梁方向", "鼻翼宽度", "颧点位置", "中面宽度"], "x": 50, "y": 54},
+    {"id": "mouth", "label": "口周区", "range": "人中、唇与口角", "fields": ["人中边界", "唇线", "口角位置", "鼻唇距离"], "x": 50, "y": 70},
+    {"id": "chin-jaw", "label": "颏颌区", "range": "下唇下方至下颏、下颌两侧", "fields": ["颏点", "下颌角", "颌缘", "下面宽度"], "x": 50, "y": 84}
+  ],
+  "direction_pairs": ["主体左／主体右", "中央／外侧", "上方／下方", "前方／后方", "近端／远端"],
+  "boundaries": ["画面左右不能替代主体左右", "侧面轮廓不用于正面比例", "头发、妆容和遮挡分别记录", "区域名称只负责定位"],
+  "public_sources": [
+    {"title": "Harvard Library《神相全编》明刻本卷一影像", "note": "用于核对传统面部总图、十二宫图、三停图与五官图的材料身份。", "url": "https://commons.wikimedia.org/wiki/File:Harvard_drs_53262204_%E7%A5%9E%E7%9B%B8%E5%85%A8%E7%B7%A8_v.1%E5%BA%8F%E3%80%81%E7%9B%AE%E9%8C%84%E3%80%81%E5%8D%B7%E4%B9%8B%E4%B8%80.pdf"},
+    {"title": "NIST Face Analysis Technology Evaluation：Face Image Quality", "note": "用于限定正面姿态、遮挡、裁切和清晰度等图像条件。", "url": "https://pages.nist.gov/frvt/html/frvt_quality.html"}
+  ]
+}

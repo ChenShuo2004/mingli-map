@@ -1,0 +1,20 @@
+{
+  "schema_version":"1.0",
+  "id":"daily-nine-stars",
+  "title":"每日九星",
+  "summary":"每日九星使用一白至九紫的九位名称循环；当前实现以冬至、夏至附近的甲子日为转折组织顺逆序，因此必须标成日星算法版本，不能与年星、月星或玄空飞星合并。",
+  "stars":[
+    {"number":1,"name":"一白","element":"水"},{"number":2,"name":"二黑","element":"土"},{"number":3,"name":"三碧","element":"木"},
+    {"number":4,"name":"四绿","element":"木"},{"number":5,"name":"五黄","element":"土"},{"number":6,"name":"六白","element":"金"},
+    {"number":7,"name":"七赤","element":"金"},{"number":8,"name":"八白","element":"土"},{"number":9,"name":"九紫","element":"火"}
+  ],
+  "implementation_cycle":{"version":"tyme4ts 1.5.2","anchors":["冬至附近甲子日","夏至附近甲子日","下一冬至附近甲子日"],"movement":"冬至段顺行，夏至段逆行；转折由锁定实现计算"},
+  "fixed_sequence":[
+    {"date":"1986-05-26","star":"一白水"},{"date":"1986-05-27","star":"二黑土"},{"date":"1986-05-28","star":"三碧木"},{"date":"1986-05-29","star":"四绿木"},{"date":"1986-05-30","star":"五黄土"},{"date":"1986-05-31","star":"六白金"},{"date":"1986-06-01","star":"七赤金"},{"date":"1986-06-02","star":"八白土"},{"date":"1986-06-03","star":"九紫火"}
+  ],
+  "boundaries":["这里只保存每日九星","方位与星义不由本节点推出","不同历书算法需另存版本"],
+  "public_sources":[
+    {"title":"lunar-javascript 黄历字段实现","note":"确认黄历实现中存在年、月、日、时等不同九星入口。","url":"https://github.com/6tail/lunar-javascript/tree/4c45a59"},
+    {"title":"tyme4ts 1.5.2","note":"九星名、五行、冬夏至转折算法与九日固定样本来自锁定实现。","url":"https://github.com/6tail/tyme4ts"}
+  ]
+}

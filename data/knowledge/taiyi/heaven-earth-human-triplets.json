@@ -1,0 +1,55 @@
+{
+  "schema_version":"1.0.0",
+  "id":"heaven-earth-human-triplets",
+  "title":"七十二局的理天、理地、理人三年标签",
+  "summary":"《太乙秘书》所录版本称太乙每位住三年，第一年治天、第二年治地、第三年治人；三年才移一宫，八个外宫走完一轮为二十四年。锁定实现把这三个阶段写作理天、理地、理人，并按局数从1至72连续重复24组；太乙阳遁每三局在1、2、3、4、6、7、8、9宫顺行，阴遁则按9、8、7、6、4、3、2、1宫逆行，二十四局后重启同一驻宫序列。因此三年标签回答一组中的第几年，太乙宫位回答这一组三局驻在哪里，两者相关但不是同一字段。仅展示局号、阶段与驻宫结构，不公开原典随三年附带的天象、地变、人事或行动解释。",
+  "phase_labels":[
+    {"id":"heaven","index":1,"implementation":"理天","classical":"治天","formula":"(局数－1) mod 3 = 0","role":"每组三局的第一局","tone":"heaven"},
+    {"id":"earth","index":2,"implementation":"理地","classical":"治地","formula":"(局数－1) mod 3 = 1","role":"每组三局的第二局","tone":"earth"},
+    {"id":"human","index":3,"implementation":"理人","classical":"治人","formula":"(局数－1) mod 3 = 2","role":"每组三局的第三局","tone":"human"}
+  ],
+  "palace_tracks":[
+    {"id":"yang","name":"阳遁驻宫序列","direction":"顺行八个外宫","palaces":[1,2,3,4,6,7,8,9],"expanded":"1×3 → 2×3 → 3×3 → 4×3 → 6×3 → 7×3 → 8×3 → 9×3","note":"局1—24走完一轮；局25与49分别从1宫重启。"},
+    {"id":"yin","name":"阴遁驻宫序列","direction":"逆行八个外宫","palaces":[9,8,7,6,4,3,2,1],"expanded":"9×3 → 8×3 → 7×3 → 6×3 → 4×3 → 3×3 → 2×3 → 1×3","note":"局1—24走完一轮；局25与49分别从9宫重启。"}
+  ],
+  "cycle_blocks":[
+    {"cycle":1,"range":"局1—24","triplets":"第1—8组","yang_start":"1宫","yin_start":"9宫"},
+    {"cycle":2,"range":"局25—48","triplets":"第9—16组","yang_start":"1宫","yin_start":"9宫"},
+    {"cycle":3,"range":"局49—72","triplets":"第17—24组","yang_start":"1宫","yin_start":"9宫"}
+  ],
+  "boundary_triplets":[
+    {"range":"局1—3","group":1,"yang_palace":1,"yin_palace":9,"labels":["理天","理地","理人"],"status":"七十二局起点"},
+    {"range":"局22—24","group":8,"yang_palace":9,"yin_palace":1,"labels":["理天","理地","理人"],"status":"第一轮驻宫终点"},
+    {"range":"局25—27","group":9,"yang_palace":1,"yin_palace":9,"labels":["理天","理地","理人"],"status":"第二轮驻宫重启"},
+    {"range":"局46—48","group":16,"yang_palace":9,"yin_palace":1,"labels":["理天","理地","理人"],"status":"第二轮驻宫终点"},
+    {"range":"局49—51","group":17,"yang_palace":1,"yin_palace":9,"labels":["理天","理地","理人"],"status":"第三轮驻宫重启"},
+    {"range":"局70—72","group":24,"yang_palace":9,"yin_palace":1,"labels":["理天","理地","理人"],"status":"七十二局终点"}
+  ],
+  "method_results":[
+    {"method":0,"label":"太乙统宗","accumulated":10155469,"board":"阳遁十三局","board_number":13,"phase":"理天","palace":6,"group":5,"status":"第5组三局的第一局"},
+    {"method":1,"label":"太乙金镜","accumulated":1938109,"board":"阳遁十三局","board_number":13,"phase":"理天","palace":6,"group":5,"status":"积年不同，局号、阶段与驻宫同method 0"},
+    {"method":2,"label":"太乙淘金歌","accumulated":10155745,"board":"阳遁一局","board_number":1,"phase":"理天","palace":1,"group":1,"status":"第1组三局的第一局"},
+    {"method":3,"label":"太乙局","accumulated":10155469,"board":"阳遁十三局","board_number":13,"phase":"理天","palace":6,"group":5,"status":"与method 0完全相同"}
+  ],
+  "layer_differences":[
+    {"label":"治／理字形版本","classical":"《太乙秘书》所录正文作治天、治地、治人","implementation":"kook返回理天、理地、理人","handling":"本节点标题沿用现有程序标签，同时明确列出原典字形，不擅自判为同一底本的讹误。"},
+    {"label":"阶段不是宫位","classical":"第一、第二、第三年分别标记三年驻宫内的次序","implementation":"kook的年字段与ty的宫位字段分开返回","handling":"阶段用三色标签，宫位另列；不把理天解释成某个固定宫。"},
+    {"label":"三局一宫","classical":"每位住三年，三年移一宫","implementation":"ty的每个宫数连续重复三次","handling":"把连续三局合为一个驻宫组，保留局号仍是1至72。"},
+    {"label":"二十四与七十二","classical":"八个外宫乘每宫三年，形成二十四年的驻宫轮次","implementation":"24项驻宫表整体重复三次覆盖72局","handling":"展示三段24局，不把24年轮次与72局全表当成同一周期名。"},
+    {"label":"中五不游","classical":"所录段落说明不入中宫，中五寄七宫后按八宫计算","implementation":"阳阴两套ty序列都跳过5宫","handling":"驻宫轨道只列1、2、3、4、6、7、8、9八个外宫。"},
+    {"label":"高风险解释不公开","classical":"原典在三年阶段后续接天象、地变与人事描述","implementation":"局表只保留阶段标签，没有必要复制相关断语","handling":"范围止于结构关系，不展示现实事件、行动或个人结论。"}
+  ],
+  "reading_boundaries":[
+    {"label":"可理解","note":"局数怎样每三局重复理天、理地、理人，以及三局为什么共用一个太乙宫。"},
+    {"label":"可比较","note":"阳遁与阴遁的驻宫方向、24局重启点和原典治／实现理的字形差异。"},
+    {"label":"可复核","note":"六个边界组三局、四个固定年计method与中五缺席。"},
+    {"label":"不由此推出","note":"三年标签对应的现实天象、地变、人事、战争、行动或任何个人结果。"}
+  ],
+  "public_sources":[
+    {"title":"《太乙秘书》：太乙每位住三年","url":"https://ctext.org/wiki.pl?chapter=357849&if=gb&remap=gb","note":"所录段落说明第一年治天、第二年治地、第三年治人，三年移一宫，并说明跳过中宫后的二十四年轮次；后续断语不纳入本节点。"},
+    {"title":"kintaiyi锁定局数与三年标签实现","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L500-L532","note":"kook以局数1至72映射[理天、理地、理人]重复24次，并与局文、积数分字段返回。"},
+    {"title":"kintaiyi锁定太乙阴阳驻宫表","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L571-L580","note":"ty让每个外宫连续重复三次，阳遁按1、2、3、4、6、7、8、9，阴遁反向，并把24项整体重复三次。"},
+    {"title":"kintaiyi锁定固定例输入","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/examples/basic_usage.py#L13-L20","note":"固定输入1552-09-24 00:00、年计；本页在临时锁定环境复跑method 0—3。"}
+  ],
+  "internal_review":{"status":"formal_heaven_earth_human_triplet_audit","reviewed_at":"2026-08-06","owner":["火华","Codex"],"runtime_environment":"temporary Python venv; locked repository commit installed from source","runtime_command":"Taiyi.kook/ty(ji_style=0, method=0..3) plus mechanical expansion of 72 board numbers","deduplication":"不并入‘太乙数与七十二局数’：该页解释1至72如何取数与字段身份，本页解释局数取得以后怎样生成三年阶段与驻宫组。不并入‘固定年计装盘’：该页只用单个固定时刻展示生成链，本页展开全部24组三局和三个24局轮次。不并入五子元：五子元还涉及干支与年月日时分的不同映射，需另行审计。","known_gaps":["治／理字形差异尚待影像与其他底本校勘","原典所说二十四年轮次与后世七十二局表的历史衔接尚未完成版本史核验","kook与ty未发现覆盖全部72局的专项测试"],"boundary":"固定样本与机械枚举，无真人输入、无随机；只展示局号、阶段、驻宫与版本边界，不展示天象、地变、人事、战争、行动或个人断语。"}
+}

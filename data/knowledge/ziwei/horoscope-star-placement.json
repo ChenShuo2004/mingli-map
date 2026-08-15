@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.0",
+  "id": "ziwei_horoscope_star_placement",
+  "title": "iztro六层动态星曜安置",
+  "summary": "锁定实现把天魁、天钺、文昌、文曲、禄存、擎羊、陀罗、天马、红鸾、天喜这十颗动态星曜复用于本命、大限、流年、流月、流日与流时六个作用域：位置由该层的天干、地支查出，名称再换成无前缀、运、流、月、日或时。只有流年层额外加入年解，因此其余五层各10颗，流年为11颗。",
+  "branch_order": ["子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"],
+  "scopes": [
+    {"id":"origin","label":"本命","prefix":"","count":10,"example":"天魁 · 文昌 · 禄存","note":"源码允许用同一入口生成本命原名，但本命完整星曜仍由各类安星节点负责；本页只用它对照六层命名。"},
+    {"id":"decadal","label":"大限","prefix":"运","count":10,"example":"运魁 · 运昌 · 运禄","note":"读取当前大限的天干与地支，十颗星统一改用“运”前缀。"},
+    {"id":"yearly","label":"流年","prefix":"流","count":11,"example":"流魁 · 流昌 · 流禄 · 年解","note":"十颗共用流耀加上年解；年解只在这一层出现，且名称不写作“流年解”。"},
+    {"id":"monthly","label":"流月","prefix":"月","count":10,"example":"月魁 · 月昌 · 月禄","note":"v2.4.4以后使用同一组十星和该层干支，不额外加入年解。"},
+    {"id":"daily","label":"流日","prefix":"日","count":10,"example":"日魁 · 日昌 · 日禄","note":"位置仍由该层干支映射，作用域标签改为daily。"},
+    {"id":"hourly","label":"流时","prefix":"时","count":10,"example":"时魁 · 时昌 · 时禄","note":"六层中最细的时间作用域；名称前缀变化不代表另造一套星曜身份。"}
+  ],
+  "core_stars": [
+    {"id":"tiankui","base":"天魁","short":"魁","type":"soft","input":"天干"},
+    {"id":"tianyue","base":"天钺","short":"钺","type":"soft","input":"天干"},
+    {"id":"wenchang","base":"文昌","short":"昌","type":"soft","input":"天干"},
+    {"id":"wenqu","base":"文曲","short":"曲","type":"soft","input":"天干"},
+    {"id":"lucun","base":"禄存","short":"禄","type":"lucun","input":"天干"},
+    {"id":"qingyang","base":"擎羊","short":"羊","type":"tough","input":"天干"},
+    {"id":"tuoluo","base":"陀罗","short":"陀","type":"tough","input":"天干"},
+    {"id":"tianma","base":"天马","short":"马","type":"tianma","input":"地支"},
+    {"id":"hongluan","base":"红鸾","short":"鸾","type":"flower","input":"地支"},
+    {"id":"tianxi","base":"天喜","short":"喜","type":"flower","input":"地支"}
+  ],
+  "input_groups": [
+    {"id":"stem-seven","label":"层天干决定7颗","stars":["天魁","天钺","文昌","文曲","禄存","擎羊","陀罗"],"note":"魁钺、昌曲与禄羊陀使用三组天干映射；同一层只查一次天干，但三组表不能彼此替代。"},
+    {"id":"branch-three","label":"层地支决定3颗","stars":["天马","红鸾","天喜"],"note":"天马按地支三合组取位，红鸾由卯起逆数，天喜固定在红鸾对宫。"},
+    {"id":"yearly-one","label":"流年地支额外决定1颗","stars":["年解"],"note":"年解只在yearly作用域加入；大限、流月、流日与流时不因为使用地支而自动拥有年解。"}
+  ],
+  "stem_table": [
+    {"stem":"甲","tiankui":"丑","tianyue":"未","wenchang":"巳","wenqu":"酉","lucun":"寅","qingyang":"卯","tuoluo":"丑"},
+    {"stem":"乙","tiankui":"子","tianyue":"申","wenchang":"午","wenqu":"申","lucun":"卯","qingyang":"辰","tuoluo":"寅"},
+    {"stem":"丙","tiankui":"亥","tianyue":"酉","wenchang":"申","wenqu":"午","lucun":"巳","qingyang":"午","tuoluo":"辰"},
+    {"stem":"丁","tiankui":"亥","tianyue":"酉","wenchang":"酉","wenqu":"巳","lucun":"午","qingyang":"未","tuoluo":"巳"},
+    {"stem":"戊","tiankui":"丑","tianyue":"未","wenchang":"申","wenqu":"午","lucun":"巳","qingyang":"午","tuoluo":"辰"},
+    {"stem":"己","tiankui":"子","tianyue":"申","wenchang":"酉","wenqu":"巳","lucun":"午","qingyang":"未","tuoluo":"巳"},
+    {"stem":"庚","tiankui":"丑","tianyue":"未","wenchang":"亥","wenqu":"卯","lucun":"申","qingyang":"酉","tuoluo":"未"},
+    {"stem":"辛","tiankui":"午","tianyue":"寅","wenchang":"子","wenqu":"寅","lucun":"酉","qingyang":"戌","tuoluo":"申"},
+    {"stem":"壬","tiankui":"卯","tianyue":"巳","wenchang":"寅","wenqu":"子","lucun":"亥","qingyang":"子","tuoluo":"戌"},
+    {"stem":"癸","tiankui":"卯","tianyue":"巳","wenchang":"卯","wenqu":"亥","lucun":"子","qingyang":"丑","tuoluo":"亥"}
+  ],
+  "branch_table": [
+    {"branch":"子","tianma":"寅","hongluan":"卯","tianxi":"酉","nianjie":"戌"},
+    {"branch":"丑","tianma":"亥","hongluan":"寅","tianxi":"申","nianjie":"酉"},
+    {"branch":"寅","tianma":"申","hongluan":"丑","tianxi":"未","nianjie":"申"},
+    {"branch":"卯","tianma":"巳","hongluan":"子","tianxi":"午","nianjie":"未"},
+    {"branch":"辰","tianma":"寅","hongluan":"亥","tianxi":"巳","nianjie":"午"},
+    {"branch":"巳","tianma":"亥","hongluan":"戌","tianxi":"辰","nianjie":"巳"},
+    {"branch":"午","tianma":"申","hongluan":"酉","tianxi":"卯","nianjie":"辰"},
+    {"branch":"未","tianma":"巳","hongluan":"申","tianxi":"寅","nianjie":"卯"},
+    {"branch":"申","tianma":"寅","hongluan":"未","tianxi":"丑","nianjie":"寅"},
+    {"branch":"酉","tianma":"亥","hongluan":"午","tianxi":"子","nianjie":"丑"},
+    {"branch":"戌","tianma":"申","hongluan":"巳","tianxi":"亥","nianjie":"子"},
+    {"branch":"亥","tianma":"巳","hongluan":"辰","tianxi":"戌","nianjie":"亥"}
+  ],
+  "fixed_example": {
+    "label":"抽象层干支：甲子",
+    "stem":"甲",
+    "branch":"子",
+    "common_positions":[
+      {"id":"tiankui","branch":"丑"},{"id":"tianyue","branch":"未"},{"id":"wenchang","branch":"巳"},{"id":"wenqu","branch":"酉"},{"id":"lucun","branch":"寅"},{"id":"qingyang","branch":"卯"},{"id":"tuoluo","branch":"丑"},{"id":"tianma","branch":"寅"},{"id":"hongluan","branch":"卯"},{"id":"tianxi","branch":"酉"}
+    ],
+    "yearly_extra":{"name":"年解","branch":"戌"},
+    "note":"甲与子只是可切换的抽象层干支，不是出生年或目标日期。十颗星在六层使用相同位置公式；层级只改变名称前缀，流年再加一颗年解。"
+  },
+  "boundaries": [
+    {"label":"流耀不是本命星覆盖层","note":"动态星曜作为对应scope的附加数组进入宫位，不会删除或改写本命主星、辅星与杂曜。"},
+    {"label":"名称前缀不是新星种","note":"运魁、流魁、月魁、日魁、时魁共享天魁的定位表，只是时间作用域不同。"},
+    {"label":"流年独有年解","note":"代码只在scope等于yearly时加入年解；不能把它复制到大限、流月、流日或流时。"},
+    {"label":"页面只演示层干支","note":"不接收出生日期、目标日期或性别，不计算实际运限，也不解释动态星曜的事件、吉凶或应期。"}
+  ],
+  "public_sources": [
+    {"title":"iztro：六层流耀生成入口","note":"锁定源码列出六个scope的十组名称，并明确只有流年层额外加入年解。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/star/horoscopeStar.ts#L12-L125"},
+    {"title":"iztro：魁钺与禄羊陀马定位","note":"锁定定位源码保存天干查魁钺、禄羊陀及地支三合组查天马的完整表值，当前与本命辅星节点共用同一实现来源。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/star/location.ts#L91-L226"},
+    {"title":"iztro：红鸾天喜定位","note":"红鸾由卯起逆数，天喜固定落在红鸾对宫；二者共同读取当前层地支。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/star/location.ts#L393-L410"},
+    {"title":"iztro：年解定位","note":"年解按地支从戌逆数；流耀入口另外把它限制在yearly作用域。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/star/location.ts#L739-L757"},
+    {"title":"iztro：流昌流曲天干表","note":"锁定实现把十天干分别映射到文昌、文曲位置，供六种作用域共同调用。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/star/location.ts#L812-L864"},
+    {"title":"iztro：流月流日流时流耀版本记录","note":"v2.4.4新增流月、流日、流时流耀，说明当前六层支持并非早期版本一直具备。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/CHANGELOG.md#L30-L46"}
+  ],
+  "internal_review": {
+    "status":"formal_dynamic_star_placement_node_locked_implementation",
+    "reviewed_at":"2026-08-06",
+    "source_refs":["github_sylarlong_iztro_2fb2030"],
+    "ownership":"K-ZW.07 运限层次",
+    "deduplication":"不并入十四辅星安置：后者只处理本命14颗辅星的月、时、生年干支输入，本对象处理六个时间scope复用的10颗动态星名及流年独有年解；不并入运限层次：后者回答六层怎样定位及共享哪些字段，本对象回答每层stars字段具体装入哪些星、由哪一类层干支定位；不并入生年四化：四化是层天干附加的四种标记，不是流耀数组。",
+    "boundary":"只开放六种scope、10＋1颗动态星、10干与12支位置表及抽象层干支切换；不接收真人资料，不生成实际运限，不输出事件、吉凶或应期。"
+  }
+}

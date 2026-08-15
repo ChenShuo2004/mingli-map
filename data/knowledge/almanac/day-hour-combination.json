@@ -1,0 +1,26 @@
+{
+  "id":"day-hour-combination","title":"日与时的组合","summary":"日栏先回答某事项是否进入当天事项表，时栏再回答各时槽怎样列出该事项；日与时是两层条件，不能互相覆盖。",
+  "fixed_example":{"date":"1986-05-29","day":"癸酉","activity":"嫁娶","day_status":"日宜"},
+  "slots":[
+    {"slot":"早子","ganzhi":"壬子","god":"司命","class":"黄道","activity_status":"时宜"},
+    {"slot":"丑","ganzhi":"癸丑","god":"勾陈","class":"黑道","activity_status":"时宜"},
+    {"slot":"寅","ganzhi":"甲寅","god":"青龙","class":"黄道","activity_status":"时宜"},
+    {"slot":"卯","ganzhi":"乙卯","god":"明堂","class":"黄道","activity_status":"诸事不宜"},
+    {"slot":"辰","ganzhi":"丙辰","god":"天刑","class":"黑道","activity_status":"时宜"},
+    {"slot":"巳","ganzhi":"丁巳","god":"朱雀","class":"黑道","activity_status":"时宜"},
+    {"slot":"午","ganzhi":"戊午","god":"金匮","class":"黄道","activity_status":"时宜"},
+    {"slot":"未","ganzhi":"己未","god":"天德","class":"黄道","activity_status":"时宜"},
+    {"slot":"申","ganzhi":"庚申","god":"白虎","class":"黑道","activity_status":"时宜"},
+    {"slot":"酉","ganzhi":"辛酉","god":"玉堂","class":"黄道","activity_status":"时宜"},
+    {"slot":"戌","ganzhi":"壬戌","god":"天牢","class":"黑道","activity_status":"时宜"},
+    {"slot":"亥","ganzhi":"癸亥","god":"玄武","class":"黑道","activity_status":"时宜"},
+    {"slot":"晚子","ganzhi":"甲子","god":"天牢","class":"黑道","activity_status":"时宜"}
+  ],
+  "combination_rule":["先保存日级事项状态","再保存时槽事项状态","“诸事不宜”作为该时槽的通用忌项单独标记","黄黑分类仍与事项状态并列"],
+  "counts":{"slots":13,"hour_recommends":12,"universal_avoid":1},
+  "boundaries":["12个时宜槽不是现实中的12个推荐时间","卯时没有逐字列出嫁娶为忌，但原始时忌为诸事不宜","早子与晚子继续按民用日期槽区分"],
+  "public_sources":[
+    {"title":"《协纪辨方书》用时法","note":"用于区分日辰与时辰的判断层。","url":"https://www.shidianguji.com/book/SK1619/chapter/1l9lm1detnuof"},
+    {"title":"lunar-javascript 锁定实现","note":"13槽时神、黄黑分类及嫁娶时宜状态来自锁定版本。","url":"https://github.com/6tail/lunar-javascript/tree/4c45a59"}
+  ]
+}

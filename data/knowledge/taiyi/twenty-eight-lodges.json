@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0.0",
+  "id": "taiyi-twenty-eight-lodges",
+  "title": "二十八宿",
+  "summary": "太乙程序里的二十八宿不是一个单一字段：固定宿序提供共同坐标，十六神位各有锚宿，太岁宿按年推进，始击宿再把太岁宿、始击神位和锚宿合成，值日宿则另走节气与日距表。本节点把这几条路线拆开，并明确排除命法中以天体黄经换宿的另一套接口；宿名只作结构坐标，不公开对应的灾异、战争或地域断语。",
+  "fixed_input": "1552年9月24日 00:00 · 年计 · 秋分后",
+  "lodges": ["角", "亢", "氐", "房", "心", "尾", "箕", "斗", "牛", "女", "虚", "危", "室", "壁", "奎", "娄", "胃", "昴", "毕", "觜", "参", "井", "鬼", "柳", "星", "张", "翼", "轸"],
+  "sequence_groups": [
+    {"index":"01—07","name":"第一段","lodges":["角","亢","氐","房","心","尾","箕"]},
+    {"index":"08—14","name":"第二段","lodges":["斗","牛","女","虚","危","室","壁"]},
+    {"index":"15—21","name":"第三段","lodges":["奎","娄","胃","昴","毕","觜","参"]},
+    {"index":"22—28","name":"第四段","lodges":["井","鬼","柳","星","张","翼","轸"]}
+  ],
+  "identity_layers": [
+    {"id":"sequence","index":"01","name":"固定宿序","value":"角 → … → 轸","role":"所有宿数与轮转的共同28位坐标","status":"代码明列"},
+    {"id":"anchors","index":"02","name":"神位锚宿","value":"16神位 → 16个宿","role":"给始击等盘面对象一个起算宿","status":"代码明列"},
+    {"id":"year","index":"03","name":"太岁宿","value":"年数 mod 28","role":"提供当年宿序锚点","status":"实现公式"},
+    {"id":"shiji","index":"04","name":"始击宿","value":"太岁宿 + 始击神位","role":"把年宿和七十二局中的始击位置合成","status":"实现公式"},
+    {"id":"daily","index":"05","name":"值日宿","value":"节气锚点 + 日距","role":"独立回答当日值宿，不读取局号","status":"实现表；有周长疑点"}
+  ],
+  "position_anchors": [
+    {"position":"子","lodge":"虚"},{"position":"丑","lodge":"斗"},{"position":"艮","lodge":"牛"},{"position":"寅","lodge":"尾"},
+    {"position":"卯","lodge":"房"},{"position":"辰","lodge":"亢"},{"position":"巽","lodge":"角"},{"position":"巳","lodge":"翼"},
+    {"position":"午","lodge":"星"},{"position":"未","lodge":"鬼"},{"position":"坤","lodge":"井"},{"position":"申","lodge":"参"},
+    {"position":"酉","lodge":"昴"},{"position":"戌","lodge":"娄"},{"position":"乾","lodge":"奎"},{"position":"亥","lodge":"室"}
+  ],
+  "routes": [
+    {"id":"year","name":"太岁宿","input":"农历年；十一／十二月另看当前节气字符串","formula":"(年 + 15) mod 28；特定年末分支改用年−1","output":"一个年宿","note":"它不是值日宿；换年条件混用农历月和节气，需要专项边界测试。"},
+    {"id":"shiji","name":"始击宿","input":"太岁宿 + 始击所在十六神位","formula":"神位序号加入太岁宿序号，再从该神位锚宿轮转取值","output":"一个始击宿","note":"method只通过七十二局改变始击神位，不直接改变宿序。"},
+    {"id":"daily","name":"值日宿","input":"当前节气 + 距该节气日数","formula":"从24个节气锚宿／锚点进入宿宽展开表","output":"一个值日宿","note":"28个宽度合计378，却以360作回绕阈值，不能当作已经校准的天文黄道度数。"},
+    {"id":"life","name":"命法入宿","input":"天体黄经 + 年度宿度表","formula":"黄经减固定偏移后按28个宿度累计判断","output":"天体所在宿／十二次支","note":"属于命法天文接口，不进入普通太乙式盘的三条宿路线。"}
+  ],
+  "fixed_methods": [
+    {"method":0,"label":"太乙统宗","board":13,"year_lodge":"翼","shiji_position":"辰","position_ordinal":6,"anchor_lodge":"亢","shiji_lodge":"尾","status":"与method 1／3同组"},
+    {"method":1,"label":"太乙金镜","board":13,"year_lodge":"翼","shiji_position":"辰","position_ordinal":6,"anchor_lodge":"亢","shiji_lodge":"尾","status":"与method 0／3同组"},
+    {"method":2,"label":"太乙淘金歌","board":1,"year_lodge":"翼","shiji_position":"坤","position_ordinal":11,"anchor_lodge":"井","shiji_lodge":"氐","status":"局号不同，始击宿随之改变"},
+    {"method":3,"label":"太乙局","board":13,"year_lodge":"翼","shiji_position":"辰","position_ordinal":6,"anchor_lodge":"亢","shiji_lodge":"尾","status":"与method 0／1同组"}
+  ],
+  "implementation_differences": [
+    {"label":"三种宿不是同一个时间尺度","evidence":"太岁宿读年，始击宿还读局中始击位置，值日宿读节气与日距。","handling":"分别显示，不用一个‘二十八宿’字段覆盖三者。"},
+    {"label":"值日宿表长与回绕阈值不一致","evidence":"28个宿宽数字合计378；函数却在num>360时减360，并仍在378项展开表中索引。","handling":"保留程序结果路线，同时把378／360标作待核，不解释为天文精度。"},
+    {"label":"太岁宿年界尚未闭合","evidence":"实现先取农历年与月，再仅以当前节气是否恰为‘立春’决定年末是否减一年。","handling":"公开公式和混合边界，不声称它符合某一传统换年法。"},
+    {"label":"普通式盘与命法天文换宿分离","evidence":"黄经、年度宿度插值和十二次映射位于另一组函数；普通结果页输出的是值日、太岁和始击宿。","handling":"本节点只说明接口关系，不把天体实测能力并入式盘。"},
+    {"label":"宿断语不进入公开知识层","evidence":"仓库另有太岁值宿、始击值宿及始击加临二十八舍的灾异军事文本。","handling":"只保留字段存在和来源索引，不展示或改写断语。"}
+  ],
+  "reading_boundaries": [
+    {"label":"可理解","note":"28宿固定顺序、16个锚宿及太岁宿／始击宿／值日宿的不同输入。"},
+    {"label":"可比较","note":"四method因局号不同怎样改变始击位置和始击宿。"},
+    {"label":"待核验","note":"值日宿378项展开与360回绕、太岁宿立春边界、古籍逐宿锚点。"},
+    {"label":"不作断语","note":"不展示宿所主的灾异、疾病、战争、地域或真人事件。"}
+  ],
+  "public_sources": [
+    {"title":"《太乙镜式经》卷五至卷十：始击加临诸舍","url":"https://ctext.org/wiki.pl?chapter=367760&if=gb","note":"连接文本可定位始击临舍条目；OCR把‘二十八舍’识成不稳字形，须回看影像。"},
+    {"title":"《太乙统宗宝鉴》书目与影像入口","url":"https://ctext.org/wiki.pl?if=gb&res=444363","note":"作为卷六始击加临二十八舍的底本入口；正文OCR不作为无误校本。"},
+    {"title":"kintaiyi锁定宿序与十六神位锚宿","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/config.py#L43-L49","note":"明列28宿顺序与16神位到宿的映射。"},
+    {"title":"kintaiyi锁定值日宿函数","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/config.py#L622-L644","note":"保存宿宽、24节气锚点、日距与360回绕实现。"},
+    {"title":"kintaiyi锁定始击宿公式","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L587-L621","note":"保存始击位置、锚宿、太岁宿序号到始击宿的组合链。"},
+    {"title":"kintaiyi锁定太岁宿公式","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L951-L965","note":"保存农历年、年末月份与立春字符串的混合换宿条件。"},
+    {"title":"kintaiyi锁定普通结果字段","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L2225-L2231","note":"普通式盘同时输出值日宿、太岁宿与始击宿，并另连受限断语字段。"}
+  ],
+  "internal_review": {
+    "status":"formal_twenty_eight_lodges_structure_with_runtime_formula_audit",
+    "reviewed_at":"2026-08-07",
+    "owner":["火华","Codex"],
+    "runtime_basis":"锁定提交源码逐式复算；仓库完整运行下载中断，固定方法结果由已核年计局号及锁定sf_num公式独立复算",
+    "deduplication":"不并入‘十六神位’：神位页定义位置与宫数，本页只复用16个位置作为锚宿入口。不并入‘式盘’：式盘页解释对象装配，本页区分三条宿生成路线。不并入‘典籍’：典籍页给来源导航，本页保存可核公式和实现缺口。",
+    "known_gaps":["值日宿固定时刻尚待锁定环境完整运行","太岁宿立春前后专项测试未建立","卷六二十八舍原文尚未逐页影像校勘"],
+    "boundary":"固定案例、无真人输入、无随机；不公开逐宿灾异、疾病、军事、地域和行动断语。"
+  }
+}

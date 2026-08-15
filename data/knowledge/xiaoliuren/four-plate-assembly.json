@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "id": "xiaoliuren_four_plate_assembly",
+  "title": "四盘与附加层怎样逐层装配",
+  "summary": "chxb/jishiyu 的具名实现不是只算一个落宫：它先取得月、日、时三个地盘落点，再以时宫和时支铺天盘地支，随后生成六亲、六神、五星与月日时标记。本页只保存六层依赖顺序，把它当作作者实现的对象模型，不升级为所有小六壬版本的共同盘式。",
+  "implementation": {"label": "chxb/jishiyu 四盘实现", "commit": "97b6d6d8e58c6947a86e281d5b69de1032e9bc08", "source_file": "js/x6ren.js", "status": "特定作者实现"},
+  "layers": [
+    {"order": 1, "id": "earth", "label": "地盘", "input": "月数、日数、时支序数", "output": "月宫、日宫、时宫", "depends_on": "六宫固定循环"},
+    {"order": 2, "id": "heaven", "label": "天盘", "input": "时宫、时支", "output": "六宫各配一个地支", "depends_on": "地盘时宫"},
+    {"order": 3, "id": "people", "label": "人盘", "input": "天盘地支、时宫", "output": "自身与五类六亲", "depends_on": "天盘"},
+    {"order": 4, "id": "god", "label": "神盘", "input": "天盘地支", "output": "六宫各配一个六神", "depends_on": "天盘"},
+    {"order": 5, "id": "star", "label": "五星", "input": "日宫", "output": "五颗星与任空轮转", "depends_on": "地盘日宫"},
+    {"order": 6, "id": "marks", "label": "标记", "input": "月宫、日宫、时宫", "output": "月、日、时标签", "depends_on": "地盘三落点"}
+  ],
+  "fixed_input": {"month": 5, "day": 23, "hour_branch": "戌", "hour_index": 11, "month_palace": "小吉", "day_palace": "速喜", "time_palace": "大安"},
+  "output_fields": ["zhi 天盘地支", "gong 六宫宫名", "liuqin 六亲", "shen 六神", "wuxing 固定宫五行", "xing 五星", "marks 月日时标记"],
+  "reading_boundaries": ["四盘、五星和标记是该锁定实现的装配模型，不代表六套既有资料都含有这些层。", "页面只复演冻结输入，不读取当前时间或接收报数。", "字段只用于理解计算依赖，不生成吉凶、应期或事项判断。"],
+  "public_sources": [{"title": "chxb/jishiyu 锁定小六壬引擎", "url": "https://github.com/chxb/jishiyu/blob/97b6d6d8e58c6947a86e281d5b69de1032e9bc08/js/x6ren.js", "note": "许可声明与仓库许可证状态不完整一致；本页仅作原创结构摘要和短字段索引。"}],
+  "internal_review": {"reviewed_on": "2026-08-10", "owner": ["火华", "Codex"], "status": "formal_implementation_structure"}
+}

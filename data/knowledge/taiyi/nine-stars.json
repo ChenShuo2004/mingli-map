@@ -1,0 +1,54 @@
+{
+  "schema_version":"1.0.0",
+  "id":"taiyi-nine-stars",
+  "title":"太乙九星与文昌九星",
+  "summary":"锁定仓库把卷六名下的九星拆成两套：太乙九星以900／90／10年为周期，命起天蓬；文昌九星以2700／270／30年为周期，命起文曲。两者的星名、直事字段、年数尺度和宫位实现都不同。仅解释周期、名称与固定输出，并公开太乙九星宫名注释冲突、文昌九星分布未使用计算宫位等缺口，不展示星所主、分野吉凶或真人结论。",
+  "fixed_input":"1552年9月24日 00:00 · 年计 · 壬年",
+  "systems":[
+    {"id":"taiyi","name":"太乙九星","stars":["天蓬","天芮","天冲","天辅","天禽","天心","天柱","天任","天英"],"large_cycle":900,"small_cycle":90,"rate":10,"direct_label":"直符九星","start":"命起天蓬，按十年一星顺行","implementation_output":["星周余","直符九星","入星宫年数","九星分布"],"status":"函数已接普通结果；底本逐式待校"},
+    {"id":"wenchang","name":"文昌九星","stars":["文曲","玄凤","明维","昭摇","立华","华明","玄武","玄冥","雄明"],"large_cycle":2700,"small_cycle":270,"rate":30,"direct_label":"直事文昌星","start":"命起一宫文曲，按三十年一星顺行","implementation_output":["宫周余","直事文昌星","入宫年数","文昌九星分布"],"status":"直事已算；动态分布未闭合"}
+  ],
+  "fixed_methods":[
+    {"method":0,"label":"太乙统宗","accumulated":10155469,"taiyi_remainder":49,"taiyi_direct":"天禽","taiyi_years_in":9,"wenchang_remainder":229,"wenchang_direct":"玄冥","wenchang_years_in":19,"status":"太乙同0／1／3；文昌同0／3"},
+    {"method":1,"label":"太乙金镜","accumulated":1938109,"taiyi_remainder":49,"taiyi_direct":"天禽","taiyi_years_in":9,"wenchang_remainder":49,"wenchang_direct":"玄凤","wenchang_years_in":19,"status":"九十同余，但二百七十不同余"},
+    {"method":2,"label":"太乙淘金歌","accumulated":10155745,"taiyi_remainder":55,"taiyi_direct":"天心","taiyi_years_in":5,"wenchang_remainder":235,"wenchang_direct":"玄冥","wenchang_years_in":25,"status":"两套直事均保留独立余数"},
+    {"method":3,"label":"太乙局","accumulated":10155469,"taiyi_remainder":49,"taiyi_direct":"天禽","taiyi_years_in":9,"wenchang_remainder":229,"wenchang_direct":"玄冥","wenchang_years_in":19,"status":"与method 0完全同值"}
+  ],
+  "cycle_steps":[
+    {"system":"太乙九星","step":"积年 → mod 900 → mod 90","result":"1—90星周余；余0承接90","next":"每10年换一星"},
+    {"system":"太乙九星","step":"(星周余−1) ÷ 10","result":"0—8星序","next":"天蓬起顺取直符"},
+    {"system":"文昌九星","step":"积年 → mod 2700 → mod 270","result":"1—270宫周余；余0承接270","next":"每30年换一星"},
+    {"system":"文昌九星","step":"(宫周余−1) ÷ 30","result":"0—8星序","next":"文曲起顺取直事"}
+  ],
+  "distribution_audit":[
+    {"label":"两套九星不能合成一表","source_statement":"卷六目录和代码注释分别列太乙九星与文昌九星。","implementation":"两函数使用不同星名、周期、直事字段和输出键。","handling":"同一节点内分成两套系统，不拆成两个入口，也不互换星名。"},
+    {"label":"太乙九星宫名注释与代码坐标冲突","source_statement":"注释写‘一蓬乾、二芮离……’，固定星表却把天蓬记为数字1。","implementation":"通用洛书表把数字1映射为坎；直接调用不传年干时因此得到坎而非注释中的乾。","handling":"只公开冲突，不选择一边改写另一边。"},
+    {"label":"年干宫对所有年份都生效","source_statement":"函数说明写‘六甲之年’直符加年干之宫。","implementation":"普通结果每年都传入年干，函数只要有year_gan就覆盖固定星宫。","handling":"固定例按程序显示壬干入口；传统适用范围继续待底本校勘。"},
+    {"label":"文昌九星分布没有使用算出的宫位","source_statement":"说明称直事后其余星顺行九宫。","implementation":"循环计算了gong变量，却用每颗星的固定分野宫作为字典键；direct_idx不改变分布。","handling":"直事星与入宫年数可读，九星动态分布标为未闭合。"},
+    {"label":"仓库自审与同提交源码发生状态漂移","source_statement":"自审文档仍称卷六太乙九星完全未纳入。","implementation":"同一锁定提交的config与普通结果已经存在两套九星函数和输出字段。","handling":"把文档视为较早状态记录，不据此否认代码，也不据代码反推自审已更新。"},
+    {"label":"解释性断语与分野不公开","source_statement":"源码为九星另附所主、州域分野及吉凶说明。","implementation":"普通结果可返回相关文本。","handling":"本节点只保留名称、周期、余数、直事和实现差异。"}
+  ],
+  "reading_boundaries":[
+    {"label":"可理解","note":"太乙九星与文昌九星的两套名称、900／90／10与2700／270／30周期。"},
+    {"label":"可比较","note":"四method为什么可能在90同余，却在270不同余。"},
+    {"label":"待核验","note":"卷六公式逐字、六甲年适用范围、太乙九星固定宫名和文昌动态排布。"},
+    {"label":"不作断语","note":"不展示九星所主、分野吉凶、灾异军事或真人结论。"}
+  ],
+  "public_sources":[
+    {"title":"《太乙统宗宝鉴》书目与影像入口","url":"https://ctext.org/wiki.pl?if=gb&res=444363","note":"卷六底本入口；OCR需与影像互校，不摘录受限断语。"},
+    {"title":"kintaiyi卷目覆盖自审","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/docs/%E5%8F%A4%E7%B1%8D%E6%9C%AA%E7%B4%8D%E5%85%A5%E5%85%A7%E5%AE%B9%E5%88%86%E6%9E%90.md#L35-L40","note":"卷六条目记录太乙九星、文昌九星与始击加临二十八舍，同时仍称九星未纳入。"},
+    {"title":"kintaiyi锁定太乙九星常数与星表","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/config.py#L1020-L1053","note":"保存两套九星名、周期注释、固定星宫与年干宫表。"},
+    {"title":"kintaiyi锁定太乙九星函数","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/config.py#L1056-L1081","note":"保存90年星周、十年星率、直符和九宫分布实现。"},
+    {"title":"kintaiyi锁定文昌九星函数","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/config.py#L1084-L1113","note":"保存270年宫周、三十年宫率及未使用gong变量的分布循环。"},
+    {"title":"kintaiyi锁定普通结果接口","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L2269-L2278","note":"普通结果同时传入积年和年干，返回太乙九星与文昌九星。"}
+  ],
+  "internal_review":{
+    "status":"formal_two_nine_star_systems_with_implementation_audit",
+    "reviewed_at":"2026-08-07",
+    "owner":["火华","Codex"],
+    "runtime_basis":"按锁定函数逐式复算四个已核年计积年数；完整仓库下载中断，未把未运行的分布字段写成已验结果",
+    "deduplication":"不并入‘八门’：九星的名称与900／2700周期不是八门固定身份或值事门。不并入‘九宫与十六神位’：坐标页只定义宫位，本页审计两套九星怎样使用宫位。不拆为‘太乙九星’和‘文昌九星’两个节点：二者共同回答卷六九星系统的对照问题，页内双系统足以完整承接。",
+    "known_gaps":["卷六九星原式未逐页影像校勘","六甲年干加宫适用范围未确定","太乙固定宫注释与洛书映射冲突未解决","文昌动态分布变量未接入","九星缺少专项测试"],
+    "boundary":"固定年计、无真人输入、无随机；不公开星所主、州域分野、吉凶、灾异和军事断语。"
+  }
+}

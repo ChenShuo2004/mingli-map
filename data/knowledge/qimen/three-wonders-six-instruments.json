@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0.0",
+  "id": "qimen_three_wonders_six_instruments",
+  "title": "三奇六仪与固定序列",
+  "summary": "奇门地盘使用九个天干对象：乙、丙、丁称三奇，戊、己、庚、辛、壬、癸称六仪。排布时采用戊、己、庚、辛、壬、癸、丁、丙、乙这一固定序列；对象分类与排布顺序是两件事，不能按“三奇在前、六仪在后”自行重排。",
+  "categories": [
+    {"id": "three-wonders", "label": "三奇", "items": ["乙", "丙", "丁"], "role": "三个具名天干对象"},
+    {"id": "six-instruments", "label": "六仪", "items": ["戊", "己", "庚", "辛", "壬", "癸"], "role": "六个具名天干对象"}
+  ],
+  "earth_plate_sequence": ["戊", "己", "庚", "辛", "壬", "癸", "丁", "丙", "乙"],
+  "sequence_note": "这条序列用于十八局地盘排布；‘三奇／六仪’回答身份，序列回答装盘次序。",
+  "reading_boundaries": [
+    "本页不扩写十干象意、三奇格局或十干克应。",
+    "甲不在九项地盘序列中；旬首与甲所遁六仪的关系留给值符值使与起局节点。",
+    "固定序列得到第二套排盘实现的相同代码口径支持，但仍不等于已有规则级古籍页码。"
+  ],
+  "public_sources": [
+    {"title": "mingli-skills 锁定十八局表", "url": "https://github.com/weizeW/mingli-skills/blob/c16eca0/qimen-dunjia/data/dipan_18ju.json", "note": "保存九项固定序列及阴阳十八局完整表；仓库自称多源核验但没有逐项页码。"},
+    {"title": "qimenpaipan 锁定地盘奇仪实现", "url": "https://github.com/redrockhorse/qimenpaipan/blob/b6de54245cf7a514f59e51833dc01a87e1a3a849/qimenpaipan.py#L852-L879", "note": "第二套实现同样以局数为戊起宫并按固定序列排布。"}
+  ],
+  "internal_review": {"status": "formal_object_and_sequence_node", "reviewed_at": "2026-08-09", "owner": ["火华", "Codex"], "source_refs": ["github_weizew_mingli_skills_c16eca0", "github_redrockhorse_qimenpaipan_b6de542"], "deduplication": "对象身份与十八局结果分开；本页不复制18张宫位表。", "known_gaps": ["尚缺规则级传统底本页码。"], "boundary": "只解释对象和固定序列。"}
+}

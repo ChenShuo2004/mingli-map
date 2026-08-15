@@ -1,0 +1,20 @@
+{
+  "id":"fixed-selection-replay","title":"固定案例择日复盘","summary":"固定案例把事项入口、候选日状态、日时组合和版本边界串成一次可复查过程；它选择演示锚点，不选择现实中的最佳日期。",
+  "input":{"activity":"嫁娶","window":"1986-05-27 至 1986-06-02","version":"lunar-javascript 4c45a59","personal_data":"不使用"},
+  "stages":[
+    {"index":1,"label":"事项入口","result":"只追踪嫁娶"},
+    {"index":2,"label":"七日扫描","result":"2日列入日宜、2日列入日忌、3日未列出"},
+    {"index":3,"label":"演示锚点","result":"沿用1986-05-29；不是最佳日判断"},
+    {"index":4,"label":"时槽展开","result":"12槽列入时宜，卯时为诸事不宜"},
+    {"index":5,"label":"冲突复核","result":"朱雀黑道与日宜并列；明堂黄道与诸事不宜并列"},
+    {"index":6,"label":"版本封口","result":"结果只属于锁定实现与固定样本"}
+  ],
+  "audit_counts":{"days":7,"day_recommends":2,"day_avoids":2,"day_unlisted":3,"hour_slots":13,"hour_recommends":12,"hour_universal_avoid":1},
+  "output":"结构复盘完成；不输出推荐日期、推荐时辰或个人结论。",
+  "boundaries":["演示锚点不等于筛选胜出","没有加入生肖、本命、地点、建筑坐向或现代日程条件","固定案例用于检查字段关系，不用于实际决策"],
+  "public_sources":[
+    {"title":"《协纪辨方书》卷十一·用事","note":"用于确定从事项进入的阅读顺序。","url":"https://www.shidianguji.com/book/SK1619/chapter/1l9llrr4rdde7"},
+    {"title":"《协纪辨方书》用日法","note":"用于说明不同日法与宜忌需要参看而非机械总分。","url":"https://www.shidianguji.com/book/SK1619/chapter/1l9lm1detni1b"},
+    {"title":"lunar-javascript 锁定实现","note":"七日状态和十三时槽复盘来自锁定版本。","url":"https://github.com/6tail/lunar-javascript/tree/4c45a59"}
+  ]
+}

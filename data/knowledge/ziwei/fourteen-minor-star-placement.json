@@ -1,0 +1,120 @@
+{
+  "schema_version": "1.0",
+  "id": "ziwei_fourteen_minor_star_placement",
+  "title": "iztro十四辅星安置",
+  "summary": "锁定实现把十四辅星拆成五类输入链：生月安左辅右弼，时支安昌曲与空劫，年干安魁钺及禄羊陀，年支安天马，年支再与时支共同安火铃。这里的“十四”是该实现的 minorStars 数据层，不等于只列六吉六煞，也不把杂曜或四条十二神循环并入同一张总表。",
+  "branch_order": ["寅","卯","辰","巳","午","未","申","酉","戌","亥","子","丑"],
+  "time_branch_order": ["子","丑","寅","卯","辰","巳","午","未","申","酉","戌","亥"],
+  "input_groups": [
+    {"id":"month","label":"农历生月","input_count":12,"stars":["左辅","右弼"],"rule":"左辅从辰起正月顺行，右弼从戌起正月逆行。"},
+    {"id":"time","label":"时支","input_count":12,"stars":["文昌","文曲","地空","地劫"],"rule":"昌曲分别从戌逆、辰顺；空劫都从亥起，地空逆、地劫顺。"},
+    {"id":"stem","label":"生年天干","input_count":10,"stars":["天魁","天钺","禄存","擎羊","陀罗"],"rule":"魁钺与禄存查年干表；擎羊固定在禄存后一位，陀罗固定在前一位。"},
+    {"id":"branch","label":"生年地支","input_count":12,"stars":["天马"],"rule":"按四组三合年支查四马地，天马只落寅、申、巳、亥。"},
+    {"id":"branch-time","label":"生年支＋时支","input_count":48,"stars":["火星","铃星"],"rule":"先由年支三合组确定子时起点，再随时支顺行。"}
+  ],
+  "month_table": [
+    {"month":1,"left_assistant":"辰","right_assistant":"戌"},
+    {"month":2,"left_assistant":"巳","right_assistant":"酉"},
+    {"month":3,"left_assistant":"午","right_assistant":"申"},
+    {"month":4,"left_assistant":"未","right_assistant":"未"},
+    {"month":5,"left_assistant":"申","right_assistant":"午"},
+    {"month":6,"left_assistant":"酉","right_assistant":"巳"},
+    {"month":7,"left_assistant":"戌","right_assistant":"辰"},
+    {"month":8,"left_assistant":"亥","right_assistant":"卯"},
+    {"month":9,"left_assistant":"子","right_assistant":"寅"},
+    {"month":10,"left_assistant":"丑","right_assistant":"丑"},
+    {"month":11,"left_assistant":"寅","right_assistant":"子"},
+    {"month":12,"left_assistant":"卯","right_assistant":"亥"}
+  ],
+  "time_table": [
+    {"branch":"子","wenchang":"戌","wenqu":"辰","dikong":"亥","dijie":"亥"},
+    {"branch":"丑","wenchang":"酉","wenqu":"巳","dikong":"戌","dijie":"子"},
+    {"branch":"寅","wenchang":"申","wenqu":"午","dikong":"酉","dijie":"丑"},
+    {"branch":"卯","wenchang":"未","wenqu":"未","dikong":"申","dijie":"寅"},
+    {"branch":"辰","wenchang":"午","wenqu":"申","dikong":"未","dijie":"卯"},
+    {"branch":"巳","wenchang":"巳","wenqu":"酉","dikong":"午","dijie":"辰"},
+    {"branch":"午","wenchang":"辰","wenqu":"戌","dikong":"巳","dijie":"巳"},
+    {"branch":"未","wenchang":"卯","wenqu":"亥","dikong":"辰","dijie":"午"},
+    {"branch":"申","wenchang":"寅","wenqu":"子","dikong":"卯","dijie":"未"},
+    {"branch":"酉","wenchang":"丑","wenqu":"丑","dikong":"寅","dijie":"申"},
+    {"branch":"戌","wenchang":"子","wenqu":"寅","dikong":"丑","dijie":"酉"},
+    {"branch":"亥","wenchang":"亥","wenqu":"卯","dikong":"子","dijie":"戌"}
+  ],
+  "stem_table": [
+    {"stem":"甲","tiankui":"丑","tianyue":"未","lucun":"寅","qingyang":"卯","tuoluo":"丑"},
+    {"stem":"乙","tiankui":"子","tianyue":"申","lucun":"卯","qingyang":"辰","tuoluo":"寅"},
+    {"stem":"丙","tiankui":"亥","tianyue":"酉","lucun":"巳","qingyang":"午","tuoluo":"辰"},
+    {"stem":"丁","tiankui":"亥","tianyue":"酉","lucun":"午","qingyang":"未","tuoluo":"巳"},
+    {"stem":"戊","tiankui":"丑","tianyue":"未","lucun":"巳","qingyang":"午","tuoluo":"辰"},
+    {"stem":"己","tiankui":"子","tianyue":"申","lucun":"午","qingyang":"未","tuoluo":"巳"},
+    {"stem":"庚","tiankui":"丑","tianyue":"未","lucun":"申","qingyang":"酉","tuoluo":"未"},
+    {"stem":"辛","tiankui":"午","tianyue":"寅","lucun":"酉","qingyang":"戌","tuoluo":"申"},
+    {"stem":"壬","tiankui":"卯","tianyue":"巳","lucun":"亥","qingyang":"子","tuoluo":"戌"},
+    {"stem":"癸","tiankui":"卯","tianyue":"巳","lucun":"子","qingyang":"丑","tuoluo":"亥"}
+  ],
+  "year_branch_groups": [
+    {"id":"fire","branches":["寅","午","戌"],"tianma":"申","huoxing_zi_start":"丑","lingxing_zi_start":"卯"},
+    {"id":"water","branches":["申","子","辰"],"tianma":"寅","huoxing_zi_start":"寅","lingxing_zi_start":"戌"},
+    {"id":"metal","branches":["巳","酉","丑"],"tianma":"亥","huoxing_zi_start":"卯","lingxing_zi_start":"戌"},
+    {"id":"wood","branches":["亥","卯","未"],"tianma":"巳","huoxing_zi_start":"酉","lingxing_zi_start":"戌"}
+  ],
+  "type_layers": [
+    {"type":"soft","label":"soft","stars":["左辅","右弼","文昌","文曲","天魁","天钺"],"note":"锁定代码把这6颗标为soft。"},
+    {"type":"tough","label":"tough","stars":["地空","地劫","火星","铃星","擎羊","陀罗"],"note":"锁定代码把这6颗标为tough。"},
+    {"type":"lucun","label":"lucun","stars":["禄存"],"note":"禄存单列，不塞入soft或tough。"},
+    {"type":"tianma","label":"tianma","stars":["天马"],"note":"天马单列，不塞入soft或tough。"}
+  ],
+  "identity_profiles": [
+    {"star":"左辅","yin_yang":"阳","element":"戊土","division":"—","huaqi":"助力","palace_role":"—"},
+    {"star":"右弼","yin_yang":"阴","element":"癸水","division":"—","huaqi":"助力","palace_role":"—"},
+    {"star":"天魁","yin_yang":"阳","element":"丙火","division":"南斗助星","huaqi":"贵人","palace_role":"—"},
+    {"star":"天钺","yin_yang":"阴","element":"丁火","division":"南斗助星","huaqi":"贵人","palace_role":"—"},
+    {"star":"文昌","yin_yang":"阳","element":"庚金","division":"南斗之星","huaqi":"文贵","palace_role":"—"},
+    {"star":"文曲","yin_yang":"阴","element":"癸水","division":"南斗之星","huaqi":"文华","palace_role":"—"},
+    {"star":"地空","yin_yang":"阴","element":"丁火","division":"二十八星宿","huaqi":"空亡之气","palace_role":"—"},
+    {"star":"地劫","yin_yang":"阳","element":"丙火","division":"二十八星宿","huaqi":"劫煞之气","palace_role":"—"},
+    {"star":"火星","yin_yang":"阳","element":"丙火","division":"南斗浮星","huaqi":"暴烈之气","palace_role":"—"},
+    {"star":"铃星","yin_yang":"阴","element":"丁火","division":"南斗浮星","huaqi":"刚烈之气","palace_role":"—"},
+    {"star":"陀罗","yin_yang":"阴","element":"辛金","division":"北斗浮星","huaqi":"忌","palace_role":"—"},
+    {"star":"擎羊","yin_yang":"阳","element":"庚金／丙火","division":"北斗浮星","huaqi":"刑","palace_role":"—"},
+    {"star":"天马","yin_yang":"阳","element":"丙火","division":"中天星系","huaqi":"驿马","palace_role":"迁移主"},
+    {"star":"禄存","yin_yang":"阴","element":"己土","division":"北斗第三星","huaqi":"财富","palace_role":"财帛主"}
+  ],
+  "identity_boundary": "五项字段是iztro文档作者整理的传统身份标签；空白资料保留为“—”，不补写别名、性格、概率、建议或吉凶结论。",
+  "fixed_example": {
+    "label":"抽象组合例",
+    "lunar_month":1,
+    "time_branch":"卯",
+    "year_stem":"壬",
+    "year_branch":"辰",
+    "results":[
+      {"star":"左辅","branch":"辰","input":"正月"},{"star":"右弼","branch":"戌","input":"正月"},
+      {"star":"文昌","branch":"未","input":"卯时"},{"star":"文曲","branch":"未","input":"卯时"},
+      {"star":"地空","branch":"申","input":"卯时"},{"star":"地劫","branch":"寅","input":"卯时"},
+      {"star":"天魁","branch":"卯","input":"壬干"},{"star":"天钺","branch":"巳","input":"壬干"},
+      {"star":"禄存","branch":"亥","input":"壬干"},{"star":"擎羊","branch":"子","input":"壬干"},{"star":"陀罗","branch":"戌","input":"壬干"},
+      {"star":"天马","branch":"寅","input":"辰支"},{"star":"火星","branch":"巳","input":"辰支＋卯时"},{"star":"铃星","branch":"丑","input":"辰支＋卯时"}
+    ]
+  },
+  "boundaries": [
+    {"label":"十四辅星不等于十四主星","note":"主星需要紫微、天府锚点再展开两条星系；本对象使用月、时、年干支五类输入独立安置。"},
+    {"label":"十四辅星不等于六吉六煞","note":"锁定数据层另含禄存与天马两个单列类型；六颗soft和六颗tough只是其中十二颗。"},
+    {"label":"安置不等于亮度、四化或星义","note":"本页只回答星名落在哪一支；亮度查表与少数辅星四化由既有节点承接，不在这里输出解释和吉凶。"},
+    {"label":"输入分界仍须显式","note":"生年干支受yearDivide配置影响，生月受闰月修正影响；这里直接切换抽象输入，不替用户处理真人日期。"}
+  ],
+  "public_sources": [
+    {"title":"iztro：十四辅星汇总入口","note":"锁定MIT源码明确生成14颗辅星，并给出每颗星的数据类型、亮度与可能四化字段。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/star/minorStar.ts"},
+    {"title":"iztro：五类辅星定位函数","note":"锁定定位源码保存左右、昌曲、魁钺、禄羊陀马、空劫与火铃的输入、口诀注释和索引算法。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/star/location.ts#L98-L345"},
+    {"title":"iztro：定位表固定断言","note":"测试覆盖禄羊陀马、魁钺、左右、昌曲、空劫与火铃；断言证明锁定实现内部一致，不自动升级为跨流派传统共识。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/__tests__/star/location.test.ts#L73-L681"},
+    {"title":"紫微研习社：十四辅曜资料入口","note":"文档作者逐星列出阴阳、五行、斗分、化气及少量传统宫位角色；本页只摘录五类身份字段。","url":"https://iztro.com/learn/minor-star.html"}
+  ],
+  "internal_review": {
+    "status":"formal_minor_star_placement_node_locked_implementation",
+    "reviewed_at":"2026-08-06",
+    "source_refs":["github_sylarlong_iztro_2fb2030"],
+    "ownership":"K-ZW.05 星曜体系与庙旺／辅星安置",
+    "deduplication":"不并入十四主星：两者输入链与定位方法不同；不并入星曜亮度：亮度只查星名×地支状态，不生成位置；不并入生年四化：四化只给星曜附加禄权科忌，不安置十四星；不建立总星曜节点，杂曜37／38／40数量冲突继续保留。",
+    "rights_boundary":"仅按iztro锁定MIT源码整理实现结构；口诀注释未取得独立底本页码，测试只证明作者实现稳定。",
+    "product_boundary":"只切换抽象生月、时支、年干与年支，展示14个固定落支；不接收公历生日、性别、地点或真人资料，不生成完整命盘，不解释星义和吉凶。"
+  }
+}

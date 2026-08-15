@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0.0",
+  "id": "four-independent-spirits-sequences",
+  "title": "四神、天乙、地乙与直符的独立局序",
+  "summary": "把四神、天乙、地乙、直符从主客二目支线中取出，观察锁定实现怎样用同一个七十二局数读取四条不同的三年一位序列。卷四为四神、天乙和直符分别保存推步文字，所引段落没有给出地乙的同等正文；因此原典锚点、实现局表与待校缺口并列保存，不把四条代码序列改写成统一古法。",
+  "fixed_input": "1552年9月24日 0时0分 · 年计",
+  "objects": [
+    {"id":"four-spirit","name":"四神","classical_anchor":"卷四第34—36条另立‘推四神太乙法’，以入纪年三除后推宫。","source_status":"原典有独立推法","implementation_sequence":["乾","午","艮","卯","中","酉","坤","子","巽","巳","申","寅"]},
+    {"id":"heaven-yi","name":"天乙","classical_anchor":"卷四第37—39条另立天乙推法，写作‘天以太乙’，以六宫为起点。","source_status":"原典有独立推法","implementation_sequence":["酉","坤","子","巽","巳","申","寅","乾","午","艮","卯","中"]},
+    {"id":"earth-yi","name":"地乙","classical_anchor":"卷四第31条只说小游积年法与四神、天乙、地乙、直符同用；所引OCR段落未见地乙独立条目。","source_status":"原典公式待继续校勘","implementation_sequence":["巽","巳","申","寅","乾","午","艮","卯","中","酉","坤","子"]},
+    {"id":"direct-talisman","name":"直符","classical_anchor":"卷四第40—42条另立直符推法，以五宫为起点，并接三宫。","source_status":"原典有独立推法","implementation_sequence":["中","酉","坤","子","巽","巳","申","寅","乾","午","艮","卯"]}
+  ],
+  "implementation_chain": [
+    {"step":1,"label":"取得当前局数","note":"锁定实现先复用当前计法与method分支生成的七十二局‘数’。"},
+    {"step":2,"label":"读取四条独立序列","note":"四个函数分别读取four_god、sky_yi、earth_yi、zhi_fu配置，不互相派生。"},
+    {"step":3,"label":"每三局保持一位","note":"配置中的每个位置连续出现三次，36项形成12组位置，再循环覆盖72局。"},
+    {"step":4,"label":"并列写入盘面字段","note":"输出把四神、天乙、地乙、直符保存为四个独立位置字段。"}
+  ],
+  "method_results": [
+    {"method":0,"label":"太乙统宗","accumulated":10155469,"board":"阳遁十三局","kook":13,"positions":{"四神":"中","天乙":"巳","地乙":"乾","直符":"巽"},"status":"与金镜、太乙局相同"},
+    {"method":1,"label":"太乙金镜","accumulated":1938109,"board":"阳遁十三局","kook":13,"positions":{"四神":"中","天乙":"巳","地乙":"乾","直符":"巽"},"status":"固定例"},
+    {"method":2,"label":"太乙淘金歌","accumulated":10155745,"board":"阳遁一局","kook":1,"positions":{"四神":"乾","天乙":"酉","地乙":"巽","直符":"中"},"status":"局数不同，四项同时换位"},
+    {"method":3,"label":"太乙局","accumulated":10155469,"board":"阳遁十三局","kook":13,"positions":{"四神":"中","天乙":"巳","地乙":"乾","直符":"巽"},"status":"与统宗、金镜相同"}
+  ],
+  "sequence_examples": [
+    {"range":"局1—3","index":0,"note":"四条序列都读取第一组，但起点各不相同。"},
+    {"range":"局13—15","index":4,"note":"固定十三局读取第五组：四神中、天乙巳、地乙乾、直符巽。"},
+    {"range":"局34—36","index":11,"note":"第一轮末组；局37又从各自第一组重新开始。"}
+  ],
+  "source_differences": [
+    {"label":"原典按积年与入纪推步","evidence":"卷四分别写大周、纪数、入纪年、三除与起宫。","handling":"不把古籍步骤缩写为‘查七十二局表’。"},
+    {"label":"锁定实现直接按局数查表","evidence":"四个函数用kook返回的局数，分别索引四条36项配置并循环到72局。","handling":"此处称为锁定实现局序，不宣称与卷四逐步等价。"},
+    {"label":"地乙正文锚点不足","evidence":"选定卷四OCR仅在‘同用’括注中出现地乙，没有同等独立推法段。","handling":"地乙实现序列照实展示，古籍公式标为待继续校勘。"},
+    {"label":"原典所主说法不进入交互","evidence":"卷四夹有兵革、灾荒、胜负等来源陈述。","handling":"本节点只保留身份、步骤、局序和固定结果。"}
+  ],
+  "reading_boundaries": [
+    {"label":"可识别","note":"四个对象的独立身份、实现序列及原典锚点状态。"},
+    {"label":"可复算","note":"固定输入四个method分支的局数与四项落位。"},
+    {"label":"不由此推出","note":"任一对象落在某位会导致兵事、灾异或现实行动结果。"}
+  ],
+  "public_sources": [
+    {"title":"《太乙金鏡式經》卷四：小游与另行推步诸神","url":"https://ctext.org/wiki.pl?chapter=835116&if=gb&remap=gb","note":"第31—42条保存共用积年线索，并分别列四神、天乙与直符推法；所引段落未见地乙同等独立正文。"},
+    {"title":"kintaiyi锁定四条位置配置","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/config.py#L35-L43","note":"固定提交保存four_god、sky_yi、earth_yi、zhi_fu四条36项配置。"},
+    {"title":"kintaiyi锁定四个位置函数","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L974-L990","note":"四个函数分别以七十二局数索引各自配置并循环。"},
+    {"title":"kintaiyi锁定年计输出字段","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L2190-L2235","note":"固定年计输出把四神、天乙、地乙、直符列为四个独立字段。"}
+  ],
+  "internal_review": {
+    "owner":"火华、Codex",
+    "reviewed_on":"2026-08-06",
+    "boundary":"只做知识结构与固定例，不接收真人时间，不输出国运、战争、灾异或行动判断。",
+    "dedup":"不重复盘面符号身份节点；本节点回答四个对象在锁定实现中如何沿独立局序落位。",
+    "gaps":["地乙在选定卷四OCR中的独立推法仍待版本级校勘。","卷四算法与锁定局表是否逐项等价尚未完成全周期复算。"]
+  }
+}

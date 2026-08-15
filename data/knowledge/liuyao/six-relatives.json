@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0",
+  "id": "liuyao_six_relatives",
+  "title": "六亲",
+  "summary": "六亲不是每个爻固定自带的名称。先确定本卦所属卦宫的五行，再比较各爻所纳地支的五行；同我、我生、我克、克我、生我分别生成兄弟、子孙、妻财、官鬼、父母。动爻变出新地支后，变爻仍沿用原卦宫五行作为“我”，不能改按变卦所属宫重新命名。",
+  "palace_elements": [
+    {"element": "金", "palaces": ["乾", "兑"]},
+    {"element": "木", "palaces": ["震", "巽"]},
+    {"element": "水", "palaces": ["坎"]},
+    {"element": "火", "palaces": ["离"]},
+    {"element": "土", "palaces": ["艮", "坤"]}
+  ],
+  "line_elements": [
+    {"element": "木", "branches": "寅、卯"},
+    {"element": "火", "branches": "巳、午"},
+    {"element": "土", "branches": "辰、戌、丑、未"},
+    {"element": "金", "branches": "申、酉"},
+    {"element": "水", "branches": "亥、子"}
+  ],
+  "relations": [
+    {"relation": "同我", "label": "兄弟", "short": "兄"},
+    {"relation": "我生", "label": "子孙", "short": "孙"},
+    {"relation": "我克", "label": "妻财", "short": "财"},
+    {"relation": "克我", "label": "官鬼", "short": "官"},
+    {"relation": "生我", "label": "父母", "short": "父"}
+  ],
+  "examples": [
+    {"palace": "乾宫", "base_element": "金", "branch": "申", "branch_element": "金", "relation": "同我", "relative": "兄弟"},
+    {"palace": "乾宫", "base_element": "金", "branch": "亥", "branch_element": "水", "relation": "我生", "relative": "子孙"},
+    {"palace": "乾宫", "base_element": "金", "branch": "卯", "branch_element": "木", "relation": "我克", "relative": "妻财"},
+    {"palace": "乾宫", "base_element": "金", "branch": "午", "branch_element": "火", "relation": "克我", "relative": "官鬼"},
+    {"palace": "乾宫", "base_element": "金", "branch": "辰", "branch_element": "土", "relation": "生我", "relative": "父母"}
+  ],
+  "generation_matrix": [
+    {"base_element": "金", "outcomes": {"木": "妻财", "火": "官鬼", "土": "父母", "金": "兄弟", "水": "子孙"}},
+    {"base_element": "木", "outcomes": {"木": "兄弟", "火": "子孙", "土": "妻财", "金": "官鬼", "水": "父母"}},
+    {"base_element": "水", "outcomes": {"木": "子孙", "火": "妻财", "土": "官鬼", "金": "父母", "水": "兄弟"}},
+    {"base_element": "火", "outcomes": {"木": "父母", "火": "兄弟", "土": "子孙", "金": "妻财", "水": "官鬼"}},
+    {"base_element": "土", "outcomes": {"木": "官鬼", "火": "父母", "土": "兄弟", "金": "子孙", "水": "妻财"}}
+  ],
+  "changed_line_rule": {
+    "label": "变爻六亲仍照正卦",
+    "baseline": "原卦所属卦宫五行",
+    "steps": [
+      {"label": "保留原宫", "note": "先保存本卦的八宫归属与宫五行，动爻变化不替换这个基准。"},
+      {"label": "读取本爻", "note": "用原宫五行与本爻地支五行生成变化前的六亲。"},
+      {"label": "读取变爻", "note": "仍用同一个原宫五行，与变爻地支五行生成变化后的六亲。"}
+    ],
+    "fixed_example": {
+      "base_hexagram": "水天需",
+      "changed_hexagram": "天水讼",
+      "palace": "坤宫",
+      "palace_element": "土",
+      "transitions": [
+        {"position": "上爻", "base_branch": "子", "base_element": "水", "base_relative": "妻财", "changed_branch": "戌", "changed_element": "土", "changed_relative": "兄弟"},
+        {"position": "四爻", "base_branch": "申", "base_element": "金", "base_relative": "子孙", "changed_branch": "午", "changed_element": "火", "changed_relative": "父母"},
+        {"position": "三爻", "base_branch": "辰", "base_element": "土", "base_relative": "兄弟", "changed_branch": "午", "changed_element": "火", "changed_relative": "父母"},
+        {"position": "初爻", "base_branch": "子", "base_element": "水", "base_relative": "妻财", "changed_branch": "寅", "changed_element": "木", "changed_relative": "官鬼"}
+      ]
+    }
+  },
+  "reading_boundary": "六亲在这里表示相对于原卦宫五行的关系名称，并展示本爻到变爻的名称转换；不展开人物指代、用神选择、持世断语或事件吉凶。",
+  "internal_review": {
+    "status": "five_by_five_generation_and_changed_line_matrix_cross_checked",
+    "reviewed_at": "2026-08-04",
+    "source_refs": ["github_chxb_jishiyu_97b6d6d_wuxing_liuqin_mapping", "zengshan_buyi_six_relatives", "zengshan_buyi_wikisource_chapter_7_changed_relatives", "bushi_zhengzong_ctext_909268"],
+    "boundary": "公开五种卦宫基准、25种生成结果与125种本变五行转换；人物指代、用神选择、持世断语和事件结果不在本页重复。"
+  }
+}

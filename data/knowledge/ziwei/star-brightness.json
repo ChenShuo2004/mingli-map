@@ -1,0 +1,94 @@
+{
+  "schema_version": "1.0",
+  "id": "ziwei_star_brightness",
+  "title": "iztro星曜亮度表",
+  "summary": "星曜亮度把“哪颗星”与“落在哪个地支位”作为两个输入，从二维表中读取庙、旺、得、利、平、不、陷之一。当前公开十四主星与文昌、文曲、火星、铃星、擎羊、陀罗共20星240格默认表；其中232格有亮度标签，擎羊、陀罗共8格是源码明确保存的无亮度数据空值，不补成任何等级。",
+  "branch_order": ["寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥", "子", "丑"],
+  "levels": [
+    {"id":"miao","label":"庙","display_score":"+3"},
+    {"id":"wang","label":"旺","display_score":"+2"},
+    {"id":"de","label":"得","display_score":"+1"},
+    {"id":"li","label":"利","display_score":"0"},
+    {"id":"ping","label":"平","display_score":"-1"},
+    {"id":"bu","label":"不","display_score":"-2"},
+    {"id":"xian","label":"陷","display_score":"-3"}
+  ],
+  "major_star_rows": [
+    {"star":"紫微","group":"紫微星系","values":["旺","旺","得","旺","庙","庙","旺","旺","得","旺","平","庙"]},
+    {"star":"天机","group":"紫微星系","values":["得","旺","利","平","庙","陷","得","旺","利","平","庙","陷"]},
+    {"star":"太阳","group":"紫微星系","values":["旺","庙","旺","旺","旺","得","得","陷","不","陷","陷","不"]},
+    {"star":"武曲","group":"紫微星系","values":["得","利","庙","平","旺","庙","得","利","庙","平","旺","庙"]},
+    {"star":"天同","group":"紫微星系","values":["利","平","平","庙","陷","不","旺","平","平","庙","旺","不"]},
+    {"star":"廉贞","group":"紫微星系","values":["庙","平","利","陷","平","利","庙","平","利","陷","平","利"]},
+    {"star":"天府","group":"天府星系","values":["庙","得","庙","得","旺","庙","得","旺","庙","得","庙","庙"]},
+    {"star":"太阴","group":"天府星系","values":["旺","陷","陷","陷","不","不","利","不","旺","庙","庙","庙"]},
+    {"star":"贪狼","group":"天府星系","values":["平","利","庙","陷","旺","庙","平","利","庙","陷","旺","庙"]},
+    {"star":"巨门","group":"天府星系","values":["庙","庙","陷","旺","旺","不","庙","庙","陷","旺","旺","不"]},
+    {"star":"天相","group":"天府星系","values":["庙","陷","得","得","庙","得","庙","陷","得","得","庙","庙"]},
+    {"star":"天梁","group":"天府星系","values":["庙","庙","庙","陷","庙","旺","陷","得","庙","陷","庙","旺"]},
+    {"star":"七杀","group":"天府星系","values":["庙","旺","庙","平","旺","庙","庙","庙","庙","平","旺","庙"]},
+    {"star":"破军","group":"天府星系","values":["得","陷","旺","平","庙","旺","得","陷","旺","平","庙","旺"]}
+  ],
+  "minor_star_rows": [
+    {"star":"文昌","group":"文曜","values":["陷","利","得","庙","陷","利","得","庙","陷","利","得","庙"]},
+    {"star":"文曲","group":"文曜","values":["平","旺","得","庙","陷","旺","得","庙","陷","旺","得","庙"]},
+    {"star":"火星","group":"火铃","values":["庙","利","陷","得","庙","利","陷","得","庙","利","陷","得"]},
+    {"star":"铃星","group":"火铃","values":["庙","利","陷","得","庙","利","陷","得","庙","利","陷","得"]},
+    {"star":"擎羊","group":"羊陀","values":["","陷","庙","","陷","庙","","陷","庙","","陷","庙"]},
+    {"star":"陀罗","group":"羊陀","values":["陷","","庙","陷","","庙","陷","","庙","陷","","庙"]}
+  ],
+  "matrix_inventory": {
+    "stars":20,
+    "branches":12,
+    "cells":240,
+    "labeled_cells":232,
+    "empty_cells":8,
+    "empty_display":"—",
+    "empty_meaning":"类型定义称空字符串或undefined为没有亮度数据；它不是第八种亮度等级。"
+  },
+  "empty_value_audit": [
+    {"star":"擎羊","empty_branches":["寅","巳","申","亥"],"labeled_pattern":"卯／午／酉／子为陷，辰／未／戌／丑为庙","note":"四个空值均位于每三格循环的第一格。"},
+    {"star":"陀罗","empty_branches":["卯","午","酉","子"],"labeled_pattern":"寅／巳／申／亥为陷，辰／未／戌／丑为庙","note":"四个空值均位于擎羊标为陷的列。"}
+  ],
+  "reading_chain": [
+    {"id":"star","label":"选择星曜","note":"先确定要查询的星曜；身份名单仍由“十四主星”节点承接。"},
+    {"id":"branch","label":"对齐地支位","note":"十二列固定从寅开始，宫位地支只提供矩阵坐标。"},
+    {"id":"state","label":"读取亮度","note":"行列交点返回一个标签，不由页面另行计算。"}
+  ],
+  "scope_notes": [
+    {"label":"当前公开范围","value":"20 × 12","note":"十四主星加六颗辅星共240格；232格有标签，8格显示为无亮度数据。"},
+    {"label":"辅星扩展","value":"6 星 · 72格","note":"文昌、文曲、火星、铃星均为12个非空标签；擎羊、陀罗各有4个源码空值。"},
+    {"label":"版本能力","value":"可覆盖","note":"读取函数优先采用配置表，否则回到默认表，所以具体值必须绑定版本。"}
+  ],
+  "open_conflict": {
+    "star":"太阴",
+    "branch":"酉",
+    "default_value":"不",
+    "status":"上游 issue 仍开放",
+    "claim":"issue #270 认为此值与项目“日月并明”文档发生冲突。",
+    "handling":"保留锁定默认值，同时展示未决质疑；在底本或上游修订明确前不自行改表。"
+  },
+  "boundaries": [
+    {"label":"不是星曜身份","note":"十四主星与十四辅星节点回答“有哪些星、怎样安置”；亮度必须再输入地支位。"},
+    {"label":"不是宫位名称","note":"十二宫盘面提供坐标与字段，亮度读取的是星曜落到该坐标后的状态。"},
+    {"label":"空值不是新等级","note":"页面以“—”显示源码空字符串，只表示没有亮度数据，不替换为平、不、陷或其他标签。"},
+    {"label":"不是吉凶结论","note":"页面只呈现表值、空值和版本冲突，不把单一亮度标签扩写成人生判断。"}
+  ],
+  "public_sources": [
+    {"title":"iztro：星曜亮度默认表","note":"锁定版本明确十二列从寅开始，并保存十四主星完整168格及六颗辅星的亮度数组。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/data/stars.ts#L4-L100"},
+    {"title":"iztro：简体中文亮度标签","note":"把七个内部键对应为庙、旺、得、利、平、不、陷。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/i18n/locales/zh-CN/brightness.ts#L1-L9"},
+    {"title":"iztro：英文数值显示","note":"同一组内部键在英文界面显示为+3至-3；本页只用它说明源内展示次序，不把分数当成吉凶评分。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/i18n/locales/en-US/brightness.ts#L1-L9"},
+    {"title":"iztro：按星曜与宫位读取亮度","note":"实现优先读配置覆盖，否则回到默认表，并以宫位索引返回对应标签。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/utils/index.ts#L67-L83"},
+    {"title":"iztro issue #270：太阴酉宫争议","note":"开放 issue 指出默认表的太阴酉宫值与项目文档冲突；当前未有关闭结论，故并列保存。","url":"https://github.com/SylarLong/iztro/issues/270"},
+    {"title":"iztro：亮度字段的空值定义","note":"星曜类型定义明确：没有亮度数据时，brightness字段为“空字符串或者undefined”，支持把羊陀8个空格显示为无数据而非新等级。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/data/types/star.ts#L1-L25"},
+    {"title":"iztro：空字符串翻译行为","note":"翻译函数遇到空字符串时直接返回空字符串，不会把它映射成庙旺七级中的任一标签。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/i18n/index.ts#L44-L56"}
+  ],
+  "internal_review": {
+    "status":"formal_state_matrix_20_stars_with_explicit_empty_data_and_open_conflict",
+    "reviewed_at":"2026-08-06",
+    "source_refs":["github_sylarlong_iztro_2fb2030"],
+    "ownership":"K-ZW.05 星曜体系与庙旺",
+    "deduplication":"不并入十四主星或十四辅星安置：两者承接身份、分组与安置输入，本对象新增宫位地支这一独立输入和20×12状态矩阵；六颗辅星与主星使用同一STARS_INFO表和getBrightness读取函数，因此补入原对象而不另建卡；不并入十二宫盘面：宫位只提供列坐标；不并入生年四化：四化读取年干，亮度读取地支位。",
+    "boundary":"公开十四主星168格与六颗辅星72格；羊陀8个空字符串只显示为无亮度数据，不补成等级，也不据三格循环推断传统规则。页面不接收出生信息、不安星、不以亮度直接作吉凶判断。"
+  }
+}

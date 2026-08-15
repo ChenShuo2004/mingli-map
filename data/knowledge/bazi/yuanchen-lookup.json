@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "bazi_yuanchen_lookup",
+  "title": "元辰查法",
+  "summary": "元辰不是只找年支相冲的一步表。原法先找年支冲位，再结合年干阴阳与男女分组，决定取冲位前一支还是后一支。",
+  "branches": ["子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"],
+  "rules": [
+    {"group": "阳男 / 阴女", "direction": "冲前一位", "step": 1},
+    {"group": "阴男 / 阳女", "direction": "冲后一位", "step": -1}
+  ],
+  "fixed_examples": [
+    {"year_pillar": "甲子", "gender": "男", "polarity": "阳", "opposite": "午", "yuanchen": "未", "group": "阳男"},
+    {"year_pillar": "乙丑", "gender": "男", "polarity": "阴", "opposite": "未", "yuanchen": "午", "group": "阴男"}
+  ],
+  "reading_boundary": "这里只解释查法结构。元辰不能脱离完整结构直接换成个人性格、事件或吉凶判断。",
+  "internal_review": {
+    "status": "primary_text_rule_transcribed",
+    "reviewed_at": "2026-08-04",
+    "source_refs": ["sanming_tonghui_lun_yuanchen_luckclub_005_054"],
+    "boundary": "正式页只发布查法、原文固定例子与阅读边界，不发布固定吉凶断语。"
+  }
+}

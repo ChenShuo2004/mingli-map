@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "id": "liuyao_trigram_change_relations",
+  "title": "经卦变化关系",
+  "summary": "动爻使内卦或外卦的三爻组合改变后，可以把变化前后的两个经卦放在同一层比较。这不是本爻与同位变爻的关系：一条资料路径比较变后经卦五行怎样返回作用于原经卦，另一条路径按变后经卦的根支检查原经卦五行是否遇墓、绝。两条路径来源不同，标签可以并存，不能压成一个吉凶结论。",
+  "trigrams": [
+    {"id": "qian", "name": "乾", "element": "金", "roots": ["戌", "亥"]},
+    {"id": "dui", "name": "兑", "element": "金", "roots": ["酉"]},
+    {"id": "li", "name": "离", "element": "火", "roots": ["午"]},
+    {"id": "zhen", "name": "震", "element": "木", "roots": ["卯"]},
+    {"id": "xun", "name": "巽", "element": "木", "roots": ["辰", "巳"]},
+    {"id": "kan", "name": "坎", "element": "水", "roots": ["子"]},
+    {"id": "gen", "name": "艮", "element": "土", "roots": ["丑", "寅"]},
+    {"id": "kun", "name": "坤", "element": "土", "roots": ["未", "申"]}
+  ],
+  "element_cycles": {
+    "generating": ["木火", "火土", "土金", "金水", "水木"],
+    "controlling": ["木土", "土水", "水火", "火金", "金木"]
+  },
+  "depends_on": [
+    {
+      "dataset": "growth-peak-tomb-absolute",
+      "fields": ["element_tracks[].anchors.tomb", "element_tracks[].anchors.absolute", "soil_methods[water].anchors.tomb", "soil_methods[water].anchors.absolute"],
+      "reason": "经卦变化只读取既有五行墓绝锚点，不另存一份相同底表。"
+    }
+  ],
+  "relation_labels": [
+    {"id": "changed_generates", "label": "变生", "condition": "变后经卦五行生原经卦五行", "example": "巽木 → 坎水：水回生木"},
+    {"id": "changed_controls", "label": "变克", "condition": "变后经卦五行克原经卦五行", "example": "震木 → 乾金：金回克木"},
+    {"id": "same_element", "label": "比和", "condition": "两个不同经卦五行相同", "example": "乾金 → 兑金"},
+    {"id": "reverse", "label": "反向关系", "condition": "若是原经卦生或克变后经卦，只记录实际方向，不倒写成变生、变克", "example": "离火 → 艮土：火生土"}
+  ],
+  "source_views": [
+    {
+      "source": "《增删卜易·卦变生克墓绝章》",
+      "focus": "五行返回作用",
+      "note": "明确列出变生、变克、变墓、变绝、比和，并以巽木变坎水、震木变乾金说明变后五行回看原经卦的方向。"
+    },
+    {
+      "source": "《易林补遗·易林总断》",
+      "focus": "八卦根支中的墓绝",
+      "note": "把子、丑寅、卯、辰巳、午、未申、酉、戌亥分配给八个经卦，再检查原经卦五行的墓支、绝支是否落入变后经卦。"
+    },
+    {
+      "source": "两书共同限制",
+      "focus": "不能只看标签",
+      "note": "内卦或外卦必须实际发生变化；墓绝还需核对空、破、冲开等条件，页面因此只保存关系，不把来源断语直接作为结果。"
+    }
+  ],
+  "fixed_examples": [
+    {"base": "巽", "changed": "坎", "matches": ["变生"]},
+    {"base": "震", "changed": "乾", "matches": ["变克"]},
+    {"base": "离", "changed": "乾", "matches": ["变墓", "变绝"]},
+    {"base": "兑", "changed": "艮", "matches": ["变墓", "变绝"], "condition_note": "原书例继续用旬空、日冲检查墓绝是否真实成立。"},
+    {"base": "震", "changed": "坤", "matches": ["变墓", "变绝"], "condition_note": "原书只在发生变化的内卦或外卦层读取。"}
+  ],
+  "reading_boundary": "本页用八个经卦形成56组实际变化，分开演示五行返回方向与根支墓绝两条资料路径；不把它们混入同位变爻，也不由任何标签输出事项、吉凶或应期。",
+  "internal_review": {
+    "status": "two_classical_trigram_change_frameworks_cross_checked",
+    "reviewed_at": "2026-08-05",
+    "source_refs": ["zengshan_buyi_wikisource_chapter_24_lines_112_119", "yilin_buyi_wikisource_volume_1_lines_152_165"],
+    "boundary": "公开八卦五行、根支、56组实际变化及两书的不同判断轴；来源断语、个人卦象和结果判断不进入公开层。"
+  }
+}

@@ -1,0 +1,1538 @@
+{
+  "schema_version": "1.0",
+  "topic": "daliuren",
+  "fixed_lesson": {
+    "month_general": "酉",
+    "divination_time": "未",
+    "day_pillar": "乙卯",
+    "four_lessons": ["午／乙", "申／午", "巳／卯", "未／巳"],
+    "three_transmissions": ["申", "戌", "子"],
+    "xun": "甲寅旬",
+    "void_branches": ["子", "丑"]
+  },
+  "source_catalog": {
+    "liuren_complete": {
+      "title": "《六壬大全》",
+      "url": "https://zh.wikisource.org/zh/六壬大全",
+      "note": "天地盘、四课、三传、贵神与课体的传统汇编"
+    },
+    "liuren_complete_pdf": {
+      "title": "《六壬大全》影印本",
+      "url": "https://archive.org/details/02094045.cn",
+      "note": "十干寄宫、九宗门与课体原文"
+    },
+    "liuren_objects": {
+      "title": "《六壬大全·物类课》",
+      "url": "https://www.shidianguji.com/book/SK2676/chapter/1kf7np9cm0a5m",
+      "note": "类神、六亲、旺衰与神将的组合阅读"
+    },
+    "liuren_year_life": {
+      "title": "《六壬大全·官爵课》",
+      "url": "https://www.shidianguji.com/book/SK2676/chapter/1kf7nn698o3f8",
+      "note": "年命、行年、驿马、空亡与旺相的传统用例"
+    },
+    "liuren_year_progression_rule": {
+      "title": "《六壬大全·繁昌课》",
+      "url": "https://ctext.org/wiki.pl?chapter=510298&if=gb&remap=gb",
+      "note": "男一岁起丙寅、女一岁起壬申及顺逆计数的原文与年龄实例"
+    },
+    "liuren_year_progression_variants": {
+      "title": "《六壬粹言·辨非十则》",
+      "url": "https://ctext.org/wiki.pl?chapter=732190&if=gb&remap=gb",
+      "note": "固定起点法与六甲旬首变起说的辨析"
+    },
+    "wuxing_seasonal_states": {
+      "title": "《三命通会·论五行时地分野吉凶》",
+      "url": "https://ctext.org/wiki.pl?chapter=17423&if=gb&remap=gb",
+      "note": "春夏秋冬与四季月的五行旺相休囚死次序"
+    },
+    "liuren_guide": {
+      "title": "《六壬指南·指掌赋》",
+      "url": "https://zh.wikisource.org/wiki/六壬指南/2",
+      "note": "日辰、四课阴阳与人事定位"
+    },
+    "liuren_three_transmission_guide": {
+      "title": "三传演进逻辑（现代教学整理）",
+      "url": "https://www.qingnang.cc/wiki/liuren/kechuan/sanchuan",
+      "note": "初中末传起因、过程与归宿的常用教学读法，不作为古法唯一解释"
+    },
+    "liuren_complete_spirits_generals": {
+      "title": "《六壬大全·神将释》",
+      "url": "https://zh.wikisource.org/zh/六壬大全/2",
+      "note": "十二神、十二月将与十二天将的名称、次序及所主范围"
+    },
+    "liuren_complete_relations": {
+      "title": "《六壬大全·歌赋》",
+      "url": "https://zh.wikisource.org/wiki/六壬大全/3",
+      "note": "日辰、三传生克、首尾关系与救应层次"
+    },
+    "liuren_noble_table": {
+      "title": "《御定星历考原·天乙贵人》",
+      "url": "https://www.shidianguji.com/mid-page/7352635351481008154",
+      "note": "贵人歌诀及昼暮逐干起例"
+    },
+    "liuren_noble_variants": {
+      "title": "《大六壬辨疑·贵人起例图解》",
+      "url": "https://www.guoxuemi.com/a/22437lgpd/283055w.html",
+      "note": "另一套阳贵、阴贵逐干表及版本辨析"
+    },
+    "liuren_complete_full_bureaus": {
+      "title": "《六壬大全·全局课》",
+      "url": "https://zh.wikisource.org/zh-hans/六壬大全_(四库全书本)/卷08",
+      "note": "三传三合所成五行全局及五个格名"
+    },
+    "liuren_complete_interval_transmission": {
+      "title": "《六壬大全·间传课》",
+      "url": "https://www.shidianguji.com/book/SK1599/chapter/1k1lql3rdjsij",
+      "note": "三传间一位递进及顺逆间传定义"
+    },
+    "liuren_jingwei_movement": {
+      "title": "《六壬经纬·格局》",
+      "url": "https://ctext.org/wiki.pl?chapter=467849&if=gb&remap=gb",
+      "note": "连茹、进茹与退茹的连续支序"
+    },
+    "liuren_jingwei_states": {
+      "title": "《六壬经纬·神煞》",
+      "url": "https://ctext.org/wiki.pl?chapter=786766&if=gb&remap=gb",
+      "note": "十干所取长生、沐浴、冠带、临官、帝旺等十二阶段"
+    },
+    "liuren_bifa_directions": {
+      "title": "《六壬大全·毕法赋》卷十一",
+      "url": "https://www.zhaosir.online/DocumentPage.aspx?did=32",
+      "note": "支传干与干传支的初末传归向定义及固定例"
+    },
+    "liuren_cuiyan_yincong": {
+      "title": "《六壬粹言·毕法补谈格例》",
+      "url": "https://ctext.org/wiki.pl?chapter=372859&if=gb&remap=gb",
+      "note": "初末传前后夹引干神、支神的引从结构"
+    },
+    "liuren_complete_warfare": {
+      "title": "《六壬大全·殃咎课》",
+      "url": "https://ctext.org/wiki.pl?chapter=611073&if=gb&remap=gb",
+      "note": "将克神为外战、神克将为内战的方向定义"
+    },
+    "liuren_complete_six_decades": {
+      "title": "《六壬大全·闭口课》",
+      "url": "https://ctext.org/wiki.pl?chapter=510298&if=gb&remap=gb",
+      "note": "六旬旬首、旬尾及旬尾加旬首的闭口结构"
+    },
+    "liuren_complete_day_markers": {
+      "title": "《六壬大全·日干神煞表》",
+      "url": "https://ctext.org/wiki.pl?chapter=64230&if=gb&remap=gb",
+      "note": "十干所取日德、日禄与羊刃逐干表"
+    },
+    "liuren_complete_pincer": {
+      "title": "《六壬大全·殃咎课》",
+      "url": "https://ctext.org/wiki.pl?chapter=611073&if=gb&remap=gb",
+      "note": "用神下坐克、上受天将克的夹克结构"
+    },
+    "liuren_complete_tombs": {
+      "title": "《六壬大全·墓》",
+      "url": "https://ctext.org/wiki.pl?chapter=64230&if=gb&remap=gb",
+      "note": "十干墓支及乘墓、坐墓、入墓等位置关系"
+    },
+    "liuren_complete_cross_carriage": {
+      "title": "《六壬大全·毕法赋》卷十一",
+      "url": "https://ctext.org/wiki.pl?chapter=650448&if=gb&remap=gb",
+      "note": "干与支上神、支与干上神的交车关系及固定例"
+    },
+    "liuren_spirit_offices": {
+      "title": "《六壬大全·十二神释》",
+      "url": "https://ctext.org/wiki.pl?chapter=732070&if=gb&remap=gb",
+      "note": "十二神的地支、五行与所主事项"
+    },
+    "liuren_general_homes": {
+      "title": "《六壬大全·十二将释》",
+      "url": "https://ctext.org/wiki.pl?chapter=732070&if=gb&remap=gb",
+      "note": "十二天将各自的本家干支与五行"
+    },
+    "liuren_branch_relations": {
+      "title": "《六壬大全·合害刑冲》",
+      "url": "https://ctext.org/wiki.pl?chapter=64230&if=gb&remap=gb",
+      "note": "地支六合、六害、六冲及六壬所用三刑方向"
+    },
+    "liuren_stem_combinations": {
+      "title": "《六壬大全·合》",
+      "url": "https://ctext.org/wiki.pl?chapter=64230&if=gb&remap=gb",
+      "note": "甲己至戊癸五组干合、五合名目及合与刑破害叠见的阅读次序"
+    },
+    "liuren_clash_break": {
+      "title": "《六壬大全·冲破课》",
+      "url": "https://ctext.org/wiki.pl?chapter=319649&if=gb&remap=gb",
+      "note": "六冲、六破方向以及破与刑、合同时成立的原例"
+    },
+    "liuren_shehai_counting": {
+      "title": "《六壬大全·涉害课》",
+      "url": "https://ctext.org/wiki.pl?chapter=350312&if=gb&remap=gb",
+      "note": "候选从地盘历数归本家、逐位计克及复等取先的涉害法"
+    },
+    "liuren_shehai_mengzhong": {
+      "title": "《六壬指南注解·心印赋》",
+      "url": "https://ctext.org/wiki.pl?chapter=149687&if=gb&remap=gb",
+      "note": "不逐位计克而直接依孟、仲、季取用的另一套涉害口径"
+    },
+    "liuren_bifa_hundred_rules": {
+      "title": "《六壬大全·毕法赋》卷十一",
+      "url": "https://ctext.org/wiki.pl?chapter=650448&if=gb&remap=gb",
+      "note": "毕法一百条正文次序及各条所概括的课传结构"
+    },
+    "liuren_pattern_examples": {
+      "title": "《六壬直指御定》",
+      "url": "https://ctext.org/wiki.pl?chapter=97981&if=gb&remap=gb",
+      "note": "同一课并列取传课体、复合格名与毕法条目的传统课例"
+    }
+  },
+  "nodes": [
+    {
+      "id": "structure-reading-map",
+      "role": "guide",
+      "group": "导读",
+      "title": "从一张完整课式读懂大六壬",
+      "latin": "A complete lesson",
+      "question": "月将、天地盘、四课、三传和天将怎样连成同一张课式？",
+      "summary": "以酉将、未时、乙卯日为固定课例，沿“装盘—取传—标注—阅读”四段主轴认识整套对象；每一段都连接到具体知识节点。",
+      "headline": "同一组输入，依次生成天地盘、四课、三传，再叠加六亲、天将与状态。",
+      "count": "1 张固定课式 · 4 段主轴 · 39 个节点",
+      "tags": ["完整课式", "学习顺序", "固定课例"],
+      "search_terms": ["大六壬入门", "课式结构", "四课三传"],
+      "kind": "guide",
+      "steps": [
+        {"label": "装盘", "value": "十二月将与十二神职司 → 酉将加未时 → 天地盘", "note": "先由太阳过宫确定月将，再认识该神所主类别，并建立十二支的上下盘对应。"},
+        {"label": "取传", "value": "四课 → 初中末三传", "note": "先看课内生克，按九宗门定初传，再沿天盘递取中末传。"},
+        {"label": "标注", "value": "贵人起例、天将职司与五行本家、神将内外战与夹克、六亲、六旬、日德日禄与神煞", "note": "把不同来源的标记分别附着到支、课或传，不能混成一种标签。"},
+        {"label": "阅读", "value": "三传生克、全局、行度、归向、引从、十二长生、墓位、日辰主客、交车、合冲害刑、课体、类神、年命", "note": "先看三传内部与日辰两侧，再把支间关系、结构、所问对象、时令状态和人的时间坐标合看。"}
+      ],
+      "facts": [
+        {"label": "输入", "detail": "月将、占时与日干支是装盘和起四课的直接入口。"},
+        {"label": "骨架", "detail": "天地盘提供坐标，四课提供关系，三传提供先后次序。"},
+        {"label": "叠层", "detail": "天将、六亲、旺衰、空马与年命各有自己的附着对象。"}
+      ],
+      "source_refs": ["liuren_complete"]
+    },
+    {
+      "id": "month-general-and-time",
+      "group": "一 · 装盘",
+      "title": "月将与占时",
+      "latin": "Month general & time",
+      "question": "两个地支怎样决定天盘相对地盘转过多少位？",
+      "summary": "地盘十二支固定不动，把月将加在占时所在的地盘位上，其余十一支随之依序排布，形成整张天盘。",
+      "headline": "月将是天盘的起点，占时是它落入地盘的位置。",
+      "count": "2 个输入 · 1 条加临规则",
+      "tags": ["月将", "占时", "加临"],
+      "search_terms": ["月将加时", "酉将未时", "天盘起点"],
+      "kind": "plate",
+      "steps": [
+        {"label": "月将", "value": "酉", "note": "本例要放入地盘的天盘起始支。"},
+        {"label": "占时", "value": "未", "note": "本例承接月将的地盘位置。"},
+        {"label": "加临", "value": "天盘酉加地盘未", "note": "从这一对开始，天地两盘各按十二支次序排满。"}
+      ],
+      "facts": [
+        {"label": "加临", "detail": "“月将加占时”是上下盘对位规则，不是把两个支合成一个新符号。"},
+        {"label": "位移", "detail": "月将与占时相差几位，整张天盘就相对地盘平移几位。"},
+        {"label": "结果", "detail": "结果是十二组天地支对应，而不是单独一个月将位置。"}
+      ],
+      "source_refs": ["liuren_complete"]
+    },
+    {
+      "id": "twelve-month-generals",
+      "group": "一 · 装盘",
+      "title": "十二月将与十二神职司",
+      "latin": "Month generals & spirit offices",
+      "question": "登明、河魁等十二神怎样同时对应月将时段、地支、五行与所主事项？",
+      "summary": "十二月将就是十二神按太阳躔度逆布的取用方式。每一神固定对应一个地支、五行和所主范围；中气表回答何时取哪一神，职司表回答该神进入课传后指向哪类事项。",
+      "headline": "同一组十二神，先查中气与地支，再查五行与职司。",
+      "count": "12 个神名 · 12 个中气入口 · 12 组职司",
+      "tags": ["十二月将", "十二神", "职司"],
+      "search_terms": ["登明", "河魁", "从魁", "月将表", "十二神类象"],
+      "kind": "month_generals",
+      "steps": [
+        {"label": "正月将", "value": "雨水后 · 登明亥", "note": "太阳躔娵訾。"},
+        {"label": "二至六月", "value": "河魁戌 → 从魁酉 → 传送申 → 小吉未 → 胜光午", "note": "分别从春分、谷雨、小满、夏至、大暑后起。"},
+        {"label": "七至十一月", "value": "太乙巳 → 天罡辰 → 太冲卯 → 功曹寅 → 大吉丑", "note": "分别从处暑、秋分、霜降、小雪、冬至后起。"},
+        {"label": "十二月将", "value": "大寒后 · 神后子", "note": "太阳躔元枵。"}
+      ],
+      "month_generals": [
+        {"month": "正月", "term": "雨水", "name": "登明", "branch": "亥"},
+        {"month": "二月", "term": "春分", "name": "河魁", "branch": "戌"},
+        {"month": "三月", "term": "谷雨", "name": "从魁", "branch": "酉"},
+        {"month": "四月", "term": "小满", "name": "传送", "branch": "申"},
+        {"month": "五月", "term": "夏至", "name": "小吉", "branch": "未"},
+        {"month": "六月", "term": "大暑", "name": "胜光", "branch": "午"},
+        {"month": "七月", "term": "处暑", "name": "太乙", "branch": "巳"},
+        {"month": "八月", "term": "秋分", "name": "天罡", "branch": "辰"},
+        {"month": "九月", "term": "霜降", "name": "太冲", "branch": "卯"},
+        {"month": "十月", "term": "小雪", "name": "功曹", "branch": "寅"},
+        {"month": "十一月", "term": "冬至", "name": "大吉", "branch": "丑"},
+        {"month": "十二月", "term": "大寒", "name": "神后", "branch": "子"}
+      ],
+      "spirit_offices": [
+        {"name": "登明", "branch": "亥", "element": "水", "role": "征召·阴私", "scope": "争讼、狱囚、沉溺、亡失"},
+        {"name": "河魁", "branch": "戌", "element": "土", "role": "印绶·聚众", "scope": "诈欺、奴婢逃亡、虚耗、旧事重来"},
+        {"name": "从魁", "branch": "酉", "element": "金", "role": "金刀·信息", "scope": "阴私、解散、赏赐、奴婢"},
+        {"name": "传送", "branch": "申", "element": "金", "role": "道路·信耗", "scope": "疾病、行人、车马、刀兵"},
+        {"name": "小吉", "branch": "未", "element": "土", "role": "酒食·婚姻", "scope": "祠祀、姨姑、医药、井泉"},
+        {"name": "胜光", "branch": "午", "element": "火", "role": "文书·官事", "scope": "光怪、丝绵、道路、田宅"},
+        {"name": "太乙", "branch": "巳", "element": "火", "role": "口舌·怪异", "scope": "斗争、忧惊、飞祸、赏赐"},
+        {"name": "天罡", "branch": "辰", "element": "土", "role": "斗讼·田宅", "scope": "死丧、狱讼、官府、争斗"},
+        {"name": "太冲", "branch": "卯", "element": "木", "role": "驿马·船车", "scope": "林木、门户、舟车、雷雨"},
+        {"name": "功曹", "branch": "寅", "element": "木", "role": "木器·文书", "scope": "婚姻、财帛、官吏、林木"},
+        {"name": "大吉", "branch": "丑", "element": "土", "role": "田宅·园圃", "scope": "斗争、长者、桥梁、车牛"},
+        {"name": "神后", "branch": "子", "element": "水", "role": "阴私·妇女", "scope": "暗昧、盗贼、逃亡、胎产"}
+      ],
+      "facts": [
+        {"label": "十二神", "detail": "《六壬大全》说明月将即十二神按太阳躔度逆布的用法。"},
+        {"label": "切换点", "detail": "本表以雨水、春分等十二个中气后的过宫为入口，不以农历初一直接切换。"},
+        {"label": "装盘关系", "detail": "先由时段得到月将支，再把该支加在占时地盘位上。"}
+      ],
+      "source_refs": ["liuren_complete_spirits_generals", "liuren_spirit_offices"]
+    },
+    {
+      "id": "heaven-earth-plate",
+      "group": "一 · 装盘",
+      "title": "天地盘",
+      "latin": "Heaven & earth plates",
+      "question": "天盘和地盘各自保存什么，怎样读一组上下对应？",
+      "summary": "地盘保存固定的十二支方位，天盘保存月将加占时后的移动序列；读盘时以地盘某位为下、该位所乘天盘为上。",
+      "headline": "地盘是固定坐标，天盘是叠在坐标上的十二支置换。",
+      "count": "12 个地盘位 · 12 个天盘支",
+      "tags": ["天地盘", "上神", "地盘位"],
+      "search_terms": ["天盘地盘", "地支对应", "上神"],
+      "kind": "plate",
+      "steps": [
+        {"label": "地盘", "value": "子丑寅卯辰巳午未申酉戌亥", "note": "十二个位置固定。"},
+        {"label": "天盘", "value": "寅卯辰巳午未申酉戌亥子丑", "note": "本例相对地盘前移两位。"},
+        {"label": "读法", "value": "地盘卯上见巳", "note": "卯是下位，巳是该位的天盘上神。"}
+      ],
+      "facts": [
+        {"label": "地盘", "detail": "地盘的十二支次序不因课例改变。"},
+        {"label": "天盘", "detail": "天盘保持十二支原有次序，只改变与地盘的对位。"},
+        {"label": "上神", "detail": "查询一个地盘位所承接的天盘支，就是在该位取上神。"}
+      ],
+      "source_refs": ["liuren_complete"]
+    },
+    {
+      "id": "stem-lodging",
+      "group": "一 · 装盘",
+      "title": "十干寄宫",
+      "latin": "Stem lodging",
+      "question": "日干怎样转换成可以在十二支盘上查询的位置？",
+      "summary": "十干先按固定表寄入地支宫位，日干由此获得盘上坐标；再查该宫所乘天盘，才能建立干侧两课。",
+      "headline": "甲寅、乙辰、丙戊巳、丁己未、庚申、辛戌、壬亥、癸丑。",
+      "count": "10 天干 · 8 个寄宫位",
+      "tags": ["十干寄宫", "日干", "寄宫表"],
+      "search_terms": ["乙寄辰", "甲寄寅", "辛寄戌"],
+      "kind": "lodging",
+      "steps": [
+        {"label": "日干", "value": "乙", "note": "固定课例的日干。"},
+        {"label": "寄宫", "value": "辰", "note": "按寄宫表，乙寄辰。"},
+        {"label": "上神", "value": "午", "note": "本例地盘辰位所乘天盘为午。"}
+      ],
+      "facts": [
+        {"label": "共宫", "detail": "丙与戊同寄巳，丁与己同寄未，所以十干只占八个寄宫位。"},
+        {"label": "用途", "detail": "寄宫解决的是天干如何进入地支盘坐标的问题。"},
+        {"label": "本例", "detail": "乙寄辰，辰上见午，因此第一课为午／乙。"}
+      ],
+      "source_refs": ["liuren_complete_pdf"]
+    },
+    {
+      "id": "four-lessons",
+      "group": "一 · 装盘",
+      "title": "四课",
+      "latin": "Four lessons",
+      "question": "干侧两课和支侧两课怎样从天地盘连续取出？",
+      "summary": "第一课从日干寄宫取上神，第二课再以上神落地盘取其上神；第三课从日支取上神，第四课同样承接第三课上神再取一次。",
+      "headline": "四课是两条各取两次上神的链：干侧一、二课，支侧三、四课。",
+      "count": "2 条链 · 4 课",
+      "tags": ["四课", "干阳干阴", "支阳支阴"],
+      "search_terms": ["第一课", "第二课", "四课怎么排"],
+      "kind": "four_lessons",
+      "steps": [
+        {"label": "一课", "value": "午／乙", "note": "乙寄辰，辰上见午。"},
+        {"label": "二课", "value": "申／午", "note": "地盘午上见申。"},
+        {"label": "三课", "value": "巳／卯", "note": "日支卯上见巳。"},
+        {"label": "四课", "value": "未／巳", "note": "地盘巳上见未。"}
+      ],
+      "facts": [
+        {"label": "书写", "detail": "本图统一把上神写在前、下神写在后，例如午／乙。"},
+        {"label": "干侧", "detail": "第一课以日干为下，第二课承接第一课上神。"},
+        {"label": "支侧", "detail": "第三课以日支为下，第四课承接第三课上神。"}
+      ],
+      "source_refs": ["liuren_complete"]
+    },
+    {
+      "id": "lesson-five-phase-relations",
+      "group": "二 · 取传",
+      "title": "四课中的生克关系",
+      "latin": "Relations inside the lessons",
+      "question": "每一课的上神与下神之间可能出现哪些五行方向？",
+      "summary": "把每一课拆成上、下两项后，先标出下克上、上克下、同类、下生上或上生下；取传首先关心其中的贼克关系。",
+      "headline": "同样是相克，方向不同就分别叫“下贼上”和“上克下”。",
+      "count": "5 类关系 · 2 个克向",
+      "tags": ["下贼上", "上克下", "生克"],
+      "search_terms": ["四课生克", "贼克", "比和"],
+      "kind": "relations",
+      "steps": [
+        {"label": "下贼上", "value": "下神克上神", "note": "先取这一方向的课作为贼课候选。"},
+        {"label": "上克下", "value": "上神克下神", "note": "没有下贼上时，再看这一方向的克课。"},
+        {"label": "比和", "value": "上下同五行", "note": "没有产生克向候选。"},
+        {"label": "相生", "value": "下生上／上生下", "note": "保留方向，但不直接成为贼克候选。"}
+      ],
+      "facts": [
+        {"label": "先后", "detail": "贼克法先看下贼上；全课无下贼上，才转看上克下。"},
+        {"label": "候选", "detail": "一课出现克向，只是产生候选；多个候选还要继续筛选。"},
+        {"label": "五行", "detail": "木克土、土克水、水克火、火克金、金克木。"}
+      ],
+      "source_refs": ["liuren_complete_pdf"]
+    },
+    {
+      "id": "three-transmissions-nine-methods",
+      "group": "二 · 取传",
+      "title": "三传与九宗门",
+      "latin": "Three transmissions & nine methods",
+      "question": "九种取传法怎样共同解决初传从哪里开始？",
+      "summary": "九宗门是贼克、比用、涉害、遥克、昴星、别责、八专、伏吟、返吟九类取传路线；它们先确定初传，中传和末传再沿天盘递取。",
+      "headline": "九宗门主要解决“初传取谁”，三传则保存初、中、末的次序。",
+      "count": "9 种取法 · 3 传",
+      "tags": ["九宗门", "初传", "中末传"],
+      "search_terms": ["三传", "九宗门", "取传法"],
+      "kind": "decision",
+      "steps": [
+        {"label": "直接贼克", "value": "贼克 → 比用 → 涉害", "note": "候选从一到多逐层筛选。"},
+        {"label": "无贼克", "value": "遥克 → 昴星／别责／八专", "note": "按课数、克向与盘面条件进入不同路线。"},
+        {"label": "特殊盘", "value": "伏吟／返吟", "note": "天地盘同位或冲转时进入自己的取法。"},
+        {"label": "三传", "value": "初 → 中 → 末", "note": "确定初传后，再按所乘天盘递取后两传。"}
+      ],
+      "facts": [
+        {"label": "九法", "detail": "九个名称不是九个并排按钮，而是由盘面条件逐层触发。"},
+        {"label": "初传", "detail": "取传法首先在四课或特殊条件中确定发用之神。"},
+        {"label": "中末", "detail": "中传取初传所乘之神，末传再取中传所乘之神。"}
+      ],
+      "source_refs": ["liuren_complete_pdf"]
+    },
+    {
+      "id": "zeike-biyong-shehai",
+      "group": "二 · 取传",
+      "title": "贼克、比用与涉害",
+      "latin": "Zeike, biyong & shehai",
+      "question": "普通贼克出现一个或多个候选时，怎样继续筛到初传？",
+      "summary": "贼克先取唯一克向；候选不唯一时，以与日干阴阳同类者作比用筛选；仍不唯一，再比较涉害深浅，必要时再看孟仲季。",
+      "headline": "三个名称是一条递进筛选链，不是三种可以随意挑选的算法。",
+      "count": "3 层筛选 · 4 个常见课名",
+      "tags": ["贼克", "比用", "涉害"],
+      "search_terms": ["重审", "元首", "知一", "见机"],
+      "kind": "funnel",
+      "shehai_methods": [
+        {"id": "counting", "name": "逐位计克法", "source": "《六壬大全》", "rule": "候选上神从当前地盘位顺历至自身本家，沿途数能克它或被它所克的干支位；数多者涉害深。", "tie": "克数仍相等：先取孟位上神，无孟取仲；孟仲季再等，阳日取干上神、阴日取支上神所代表的先见者。"},
+        {"id": "mengzhong", "name": "孟仲季法", "source": "《六壬指南》", "rule": "不逐位累加克数，直接在候选所临地盘中先取孟位；孟位无克贼，再取仲位。", "tie": "同为孟或同为仲时，再依四课中先见者取用。"}
+      ],
+      "shehai_examples": [
+        {"id": "dingmao", "day": "丁卯日", "name": "一重与五重", "candidates": [
+          {"upper": "丑", "lower": "卯", "path": "卯 → 辰中乙 → … → 丑本家", "hits": ["乙木"], "count": 1},
+          {"upper": "亥", "lower": "丑", "path": "丑 → 辰／戊／未／己／戌 → 亥本家", "hits": ["辰土", "戊土", "未土", "己土", "戌土"], "count": 5}
+        ], "result": "亥加丑五重，较丑加卯一重为深，取亥发用。"},
+        {"id": "gengzi", "day": "庚子日", "name": "二重与一重", "candidates": [
+          {"upper": "午", "lower": "庚", "path": "庚 → 酉／辛 → 午本家", "hits": ["酉金", "辛金"], "count": 2},
+          {"upper": "戌", "lower": "子", "path": "子 → 癸 → 戌本家", "hits": ["癸水"], "count": 1}
+        ], "result": "午加庚二重，较戌加子一重为深，取午发用。"}
+      ],
+      "meng_zhong_ji": [
+        {"level": "孟", "branches": "寅、申、巳、亥", "lesson": "见机", "priority": 1},
+        {"level": "仲", "branches": "子、午、卯、酉", "lesson": "察微", "priority": 2},
+        {"level": "季", "branches": "辰、戌、丑、未", "lesson": "无孟仲时才进入比较", "priority": 3}
+      ],
+      "steps": [
+        {"label": "贼克", "value": "先下贼上，后上克下", "note": "唯一候选可直接作为初传；下贼上常标重审，上克下常标元首。"},
+        {"label": "比用", "value": "候选与日干比阴阳", "note": "多候选中只余一个同类者，取之并常标知一。"},
+        {"label": "涉害", "value": "比较候选沿途所受克数", "note": "取涉害较深者；相等时还要继续比较落位。"},
+        {"label": "孟仲季", "value": "寅申巳亥 → 子午卯酉 → 辰戌丑未", "note": "涉害相等时按孟、仲、季次序继续定夺。"}
+      ],
+      "facts": [
+        {"label": "重审", "detail": "四课中只有一课下贼上，以上神发用。"},
+        {"label": "元首", "detail": "全课无下贼上而只有一课上克下，以上神发用。"},
+        {"label": "知一", "detail": "克课多见时，以与日干阴阳同类的一课上神发用。"}
+      ],
+      "source_refs": ["liuren_shehai_counting", "liuren_shehai_mengzhong", "liuren_complete_pdf"]
+    },
+    {
+      "id": "special-transmission-routes",
+      "group": "二 · 取传",
+      "title": "遥克、昴星、别责与八专",
+      "latin": "Remote and reduced-lesson methods",
+      "question": "四课没有普通贼克时，四条补足路线分别看什么条件？",
+      "summary": "遥克看日干与四课上神之间的远克；昴星用于四课俱全而无克；别责用于三课无克；八专用于干支同位而只成两课。",
+      "headline": "四条路线分别由远克、四课无克、三课无克和两课无克触发。",
+      "count": "4 条路线 · 4 组入口",
+      "tags": ["遥克", "昴星", "别责", "八专"],
+      "search_terms": ["蒿矢", "弹射", "虎视", "八专"],
+      "kind": "routes",
+      "route_rules": [
+        {"id": "remote", "name": "遥克", "entry": "四课无直接贼克", "initial_yang": "先取上神克日干；没有才取日干克上神", "initial_yin": "先取上神克日干；没有才取日干克上神", "middle": "初传上神", "final": "中传上神", "key": "多候选再按阳日用阳、阴日用阴比用", "labels": "神克日为蒿矢；日克神为弹射"},
+        {"id": "maoxing", "name": "昴星", "entry": "四课俱全、无克、无遥克", "initial_yang": "取地盘酉位的天盘上神", "initial_yin": "取天盘酉所临的地盘下神", "middle": "阳日取支上神；阴日取干上神", "final": "阳日取干上神；阴日取支上神", "key": "阳仰视、阴俯视；中末次序相反", "labels": "阳日常称虎视，阴日常称冬蛇掩目"},
+        {"id": "biezhe", "name": "别责", "entry": "四课不全而成三课，且无克无遥", "initial_yang": "取日干五合之干的寄宫上神", "initial_yin": "取日支所属三合局中位于日支之前的支", "middle": "干上神", "final": "仍取干上神", "key": "阳日查干合，阴日查支前三合", "labels": "刚三柔六，共九课"},
+        {"id": "bazhuan", "name": "八专", "entry": "干支同位只成两课，无克；不论遥克", "initial_yang": "从第一课上神起，连本位顺数三位", "initial_yin": "从第四课上神起，连本位逆数三位", "middle": "干上神", "final": "仍取干上神", "key": "有克仍用贼克；无克才用八专", "labels": "阳顺三，阴逆三"}
+      ],
+      "steps": [
+        {"label": "遥克", "value": "四课无克，日干与上神有远克", "note": "上神克日干称蒿矢，日干克上神称弹射；多候选仍先比用。"},
+        {"label": "昴星", "value": "四课俱全，无遥克", "note": "阳日取酉上神为初传，阴日取酉下神为初传，中末传另按日干支取。"},
+        {"label": "别责", "value": "四课只有三课且无克", "note": "阳日以干合之干寄宫上神发用，阴日以支前三合发用；中末皆归干上神。"},
+        {"label": "八专", "value": "干支同位，只成两课且无克", "note": "阳日从第一课上神顺数三位，阴日从第四课上神逆数三位；中末皆归干上神。"}
+      ],
+      "facts": [
+        {"label": "遥克", "detail": "这里比较的是日干与四课上神，不是每课上下神之间的直接克。"},
+        {"label": "课数", "detail": "昴星、别责、八专的重要分界是四课、三课、两课是否齐备。"},
+        {"label": "阴阳日", "detail": "昴星、别责与八专的具体发用位置都要区分阳日和阴日。"}
+      ],
+      "source_refs": ["liuren_complete_pdf"]
+    },
+    {
+      "id": "fuyin-fanyin",
+      "group": "二 · 取传",
+      "title": "伏吟与返吟",
+      "latin": "Fuyin & fanyin",
+      "question": "天地盘同位和六冲对位时，取传为什么要另走特殊路线？",
+      "summary": "月将与占时相同，天地盘重合为伏吟；月将与占时相冲，天地盘形成六冲对位为返吟。两者先识别盘面，再分别按有克、无克及刑冲条件取传。",
+      "headline": "伏吟是十二支上下同位，返吟是十二支上下成六冲。",
+      "count": "2 种盘面 · 多个子路",
+      "tags": ["伏吟", "返吟", "同位与冲"],
+      "search_terms": ["伏吟课", "返吟课", "反吟"],
+      "kind": "mirror",
+      "decision_paths": [
+        {"id": "fuyin-overcome", "name": "伏吟有克", "entry": "天地盘同位，四课仍见贼克", "initial": "从有克之课发用", "middle": "取初传所刑之支", "final": "再取中传所刑之支", "exception": "遇自刑时不能原地重复，转入日辰换取与取冲规则"},
+        {"id": "fuyin-none", "name": "伏吟无克", "entry": "天地盘同位，四课无克", "initial": "阳日取干上神，阴日取支上神", "middle": "依次取初传所刑；初传自刑则改取另一侧日辰上神", "final": "取中传所刑；中传再自刑则取其冲支", "exception": "刑有方向，不能把朋刑末位反向接回首位"},
+        {"id": "fanyin-overcome", "name": "返吟有克", "entry": "天地盘逐位相冲，四课见贼克", "initial": "仍从有克之课发用", "middle": "取初传在天盘上的上神，即其冲支", "final": "再取中传上神，返回初传一侧", "exception": "三传会形成两支往返，不能套用常格的单向递进想象"},
+        {"id": "fanyin-none", "name": "返吟无克", "entry": "限丁、己、辛的丑日或未日六课", "initial": "丑日取登明亥；未日取太乙巳", "middle": "取支上神", "final": "取干上神", "exception": "《六壬大全》称井栏；常见课体名为无依"}
+      ],
+      "steps": [
+        {"label": "伏吟入口", "value": "月将＝占时", "note": "天地盘十二支逐位重合。"},
+        {"label": "伏吟取传", "value": "有克仍取克；无克再按日干阴阳、自刑与三刑展开", "note": "无克时并非直接重复同一支。"},
+        {"label": "返吟入口", "value": "月将冲占时", "note": "天地盘十二支逐位相冲。"},
+        {"label": "返吟取传", "value": "有克依返吟贼克；无克依驿马等条件展开", "note": "常见课名包括无依。"}
+      ],
+      "facts": [
+        {"label": "同位", "detail": "伏吟的结构标志是子见子、丑见丑，直到亥见亥。"},
+        {"label": "相冲", "detail": "返吟的结构标志是子午、丑未、寅申、卯酉、辰戌、巳亥上下相见。"},
+        {"label": "优先识别", "detail": "同位或冲转改变了取传入口，所以应在普通无克补法前辨认。"}
+      ],
+      "source_refs": ["liuren_complete_pdf"]
+    },
+    {
+      "id": "three-transmission-stages",
+      "group": "二 · 取传",
+      "title": "初传、中传与末传",
+      "latin": "Initial, middle & final transmission",
+      "question": "发用确定以后，中传和末传怎样递取，三个位次又分别承接什么阶段？",
+      "summary": "初传即发用，由九宗门选出；常格以初传所临天盘上神为中传，再以中传所临天盘上神为末传。起因、过程、归宿是常用阅读框架，不反过来决定三传。",
+      "headline": "初传由四课发用，中末沿天盘递取；生成次第与阶段读法分开。",
+      "count": "1 个发用 · 2 次递取 · 3 个阶段",
+      "tags": ["发用", "初中末传", "递取"],
+      "search_terms": ["初传中传末传", "三传递取", "发用"],
+      "kind": "transmission_stages",
+      "steps": [
+        {"label": "初传", "value": "九宗门从四课定发用", "note": "固定例取申为初传。"},
+        {"label": "中传", "value": "查初传所临天盘上神", "note": "固定例地盘申上见戌，故中传为戌。"},
+        {"label": "末传", "value": "再查中传所临天盘上神", "note": "固定例地盘戌上见子，故末传为子。"},
+        {"label": "阶段", "value": "初机 → 转折 → 归宿", "note": "这是常用教学读法，不是生成三传的公式。"}
+      ],
+      "facts": [
+        {"label": "生成链", "detail": "发用为初传，初传上神为中传，中传上神为末传。"},
+        {"label": "特殊路线", "detail": "昴星、别责、八专、伏吟、返吟另有中末传规则，不能用常格递取覆盖。"},
+        {"label": "阶段读法", "detail": "以初、中、末观察起因、过程、归宿，是阅读位次的常用框架。"}
+      ],
+      "source_refs": ["liuren_complete", "liuren_three_transmission_guide"]
+    },
+    {
+      "id": "noble-heavenly-generals",
+      "group": "三 · 标注",
+      "title": "贵人与十二天将",
+      "latin": "Noble one & twelve generals",
+      "question": "贵人怎样成为十二天将落入天地盘的起点？",
+      "summary": "先由日干和昼夜取贵人所在支，再依贵人落支判断顺布或逆布，按贵人、螣蛇、朱雀、六合、勾陈、青龙、天空、白虎、太常、玄武、太阴、天后排满十二支。",
+      "headline": "贵人定起点，顺逆定方向，十二天将按固定次序铺满一周。",
+      "count": "1 个起点 · 2 个方向 · 12 天将",
+      "tags": ["贵人", "十二天将", "顺逆"],
+      "search_terms": ["贵蛇雀合", "昼贵夜贵", "天将顺布"],
+      "kind": "generals",
+      "direction_rules": [
+        {"direction": "顺布", "earth_branches": "亥子丑寅卯辰", "position": "天门之前、地户之后", "sequence": "贵蛇雀合勾龙空虎常玄阴后"},
+        {"direction": "逆布", "earth_branches": "巳午未申酉戌", "position": "地户之前、天门之后", "sequence": "贵后阴玄常虎空龙勾合雀蛇"}
+      ],
+      "steps": [
+        {"label": "取贵人", "value": "日干 × 昼夜", "note": "同一日干的昼贵与夜贵可以落在不同支。"},
+        {"label": "定方向", "value": "贵人落支 → 顺布或逆布", "note": "顺逆是空间排布方向，不会改变十二将自身次序。"},
+        {"label": "排十二将", "value": "贵蛇雀合勾龙空虎常玄阴后", "note": "从贵人开始依次占据十二支。"}
+      ],
+      "facts": [
+        {"label": "次序", "detail": "贵、蛇、雀、合、勾、龙、空、虎、常、玄、阴、后是固定序列。"},
+        {"label": "起点", "detail": "天乙贵人既是序列第一将，也是整圈天将排布的锚点。"},
+        {"label": "落盘", "detail": "天将是附着在天盘支上的另一层对象，不等同于天盘十二支。"}
+      ],
+      "source_refs": ["liuren_complete"]
+    },
+    {
+      "id": "day-night-noble-tables",
+      "group": "三 · 标注",
+      "title": "旦暮贵人与阴阳贵",
+      "latin": "Day-night noble tables",
+      "question": "同一个日干的贵人为什么会有两支，古籍中的两套起例又差在哪里？",
+      "summary": "通行旦暮贵诀把十干分成五组，前支用于昼贵、后支用于夜贵；《大六壬辨疑》另存逐干分配的阳贵、阴贵表。两表在甲、丁、己、庚、癸等干上并不完全相同，排课时必须先确定采用哪套起例。",
+      "headline": "先选起例版本，再以日干查两贵；不能把两张表拼成一张。",
+      "count": "10 个日干 · 2 个贵人位 · 2 套起例",
+      "tags": ["昼贵夜贵", "阴阳贵", "贵人起例"],
+      "search_terms": ["甲戊庚牛羊", "昼贵夜贵表", "贵人版本"],
+      "kind": "noble_tables",
+      "steps": [
+        {"label": "通行旦暮贵诀", "value": "甲戊庚牛羊 · 乙己鼠猴乡", "note": "同组日干共用一对地支，前一支为昼贵，后一支为夜贵。"},
+        {"label": "其余三组", "value": "丙丁猪鸡 · 壬癸蛇兔 · 六辛马虎", "note": "依次对应亥酉、巳卯、午寅。"},
+        {"label": "《大六壬辨疑》", "value": "阳贵、阴贵逐干分配", "note": "甲、戊、庚不再全用同一对，阴阳两表分别逐干查取。"}
+      ],
+      "noble_tables": [
+        {
+          "id": "common",
+          "label": "通行旦暮贵",
+          "first_label": "昼贵",
+          "second_label": "夜贵",
+          "rows": [
+            {"stem": "甲", "first": "丑", "second": "未"}, {"stem": "乙", "first": "子", "second": "申"},
+            {"stem": "丙", "first": "亥", "second": "酉"}, {"stem": "丁", "first": "亥", "second": "酉"},
+            {"stem": "戊", "first": "丑", "second": "未"}, {"stem": "己", "first": "子", "second": "申"},
+            {"stem": "庚", "first": "丑", "second": "未"}, {"stem": "辛", "first": "午", "second": "寅"},
+            {"stem": "壬", "first": "巳", "second": "卯"}, {"stem": "癸", "first": "巳", "second": "卯"}
+          ]
+        },
+        {
+          "id": "bianyi",
+          "label": "《大六壬辨疑》",
+          "first_label": "阳贵",
+          "second_label": "阴贵",
+          "rows": [
+            {"stem": "甲", "first": "未", "second": "丑"}, {"stem": "乙", "first": "申", "second": "子"},
+            {"stem": "丙", "first": "酉", "second": "亥"}, {"stem": "丁", "first": "亥", "second": "酉"},
+            {"stem": "戊", "first": "丑", "second": "未"}, {"stem": "己", "first": "子", "second": "申"},
+            {"stem": "庚", "first": "丑", "second": "未"}, {"stem": "辛", "first": "寅", "second": "午"},
+            {"stem": "壬", "first": "卯", "second": "巳"}, {"stem": "癸", "first": "巳", "second": "卯"}
+          ]
+        }
+      ],
+      "facts": [
+        {"label": "通行表", "detail": "甲戊庚共用丑未，乙己共用子申，丙丁共用亥酉，壬癸共用巳卯，辛用午寅。"},
+        {"label": "版本差", "detail": "《大六壬辨疑》把阳贵与阴贵逐干重排；例如甲为未／丑，辛为寅／午。"},
+        {"label": "使用顺序", "detail": "先确定采用旦暮贵还是另一套阴阳贵起例，再查日干；贵人落支确定后才进入十二天将顺逆排布。"}
+      ],
+      "source_refs": ["liuren_noble_table", "liuren_noble_variants"]
+    },
+    {
+      "id": "mounted-spirit-general-relations",
+      "group": "三 · 标注",
+      "title": "乘神与天将",
+      "latin": "Mounted spirit & general",
+      "question": "同一位置上的天盘支、天将和地盘支，为什么不能当成一个标签？",
+      "summary": "天盘支是乘神，十二天将附着其上，地盘支提供所临位置。传统论述先看乘神五行与日干的生克旺衰，再看天将身份及其所乘之神；天将不能脱离乘神固定论吉凶。",
+      "headline": "乘神提供五行主体，天将提供将名，地盘提供所临位置。",
+      "count": "1 个天盘支 · 1 个天将 · 1 个地盘位",
+      "tags": ["乘神", "天将", "所临地盘"],
+      "search_terms": ["天将乘神", "贵人乘亥子", "天盘地盘天将"],
+      "kind": "mounted_general",
+      "steps": [
+        {"label": "乘神", "value": "天盘十二支", "note": "以支的五行与日干建立生克关系。"},
+        {"label": "天将", "value": "贵蛇雀合勾龙空虎常玄阴后", "note": "天将依贵人起点和顺逆附着到天盘支。"},
+        {"label": "所加", "value": "地盘十二位", "note": "记录乘神落在哪一个固定地盘位置。"},
+        {"label": "合读", "value": "乘神 × 天将 × 地盘", "note": "三层同时保留，不把将名替代支的五行。"}
+      ],
+      "facts": [
+        {"label": "原例", "detail": "《六壬大全》举贵人属土而乘亥子之例，生克仍从所乘亥子之水论。"},
+        {"label": "变义", "detail": "同一天将乘不同天盘支，五行关系随乘神改变。"},
+        {"label": "三层", "detail": "乘神、天将、地盘位置是同位叠加的三个对象，不是三个近义名。"}
+      ],
+      "source_refs": ["liuren_complete"]
+    },
+    {
+      "id": "spirit-general-inner-outer-war",
+      "group": "三 · 标注",
+      "title": "神将内战与外战",
+      "latin": "Inner & outer conflict",
+      "question": "乘神与所乘天将发生五行相克时，为什么要按克制方向分成内战与外战？",
+      "summary": "同位的天盘支称神，附着其上的十二天将称将。将的五行克乘神为外战，乘神五行克天将为内战；两者只描述神将同位相克的方向，不能与四课上下克混为一类。",
+      "headline": "先分清谁克谁：将克神为外战，神克将为内战。",
+      "count": "2 个同位对象 · 2 个相克方向",
+      "tags": ["内战", "外战", "神将相克"],
+      "search_terms": ["六壬内战外战", "神克将", "将克神"],
+      "kind": "spirit_general_war",
+      "war_examples": [
+        {"id": "outer", "name": "外战", "spirit": "寅", "spirit_element": "木", "general": "白虎", "general_element": "金", "direction": "将 → 神", "relation": "金克木"},
+        {"id": "inner", "name": "内战", "spirit": "亥", "spirit_element": "水", "general": "朱雀", "general_element": "火", "direction": "神 → 将", "relation": "水克火"},
+        {"id": "same", "name": "比和", "spirit": "卯", "spirit_element": "木", "general": "六合", "general_element": "木", "direction": "神 ＝ 将", "relation": "同为木"}
+      ],
+      "steps": [
+        {"label": "外战", "value": "天将五行克乘神五行", "note": "《六壬大全》直接定义为将克神。"},
+        {"label": "内战", "value": "乘神五行克天将五行", "note": "《六壬大全》直接定义为神克将。"},
+        {"label": "无战", "value": "相生或比和", "note": "没有五行相克方向时，不套内战、外战名。"}
+      ],
+      "facts": [
+        {"label": "比较对象", "detail": "这里只比较同一位置的乘神与天将，不比较地盘支，也不比较四课上下神。"},
+        {"label": "方向", "detail": "白虎金乘寅木是将克神；朱雀火乘亥水是神克将。"},
+        {"label": "阅读层级", "detail": "内战、外战是在乘神与天将已经分别标定之后增加的一条关系。"}
+      ],
+      "source_refs": ["liuren_complete_warfare"]
+    },
+    {
+      "id": "double-pincer-over-under",
+      "group": "三 · 标注",
+      "title": "上下夹克",
+      "latin": "Double pincer",
+      "question": "一个用神怎样同时受到下方地盘支与上方天将的两面克制？",
+      "summary": "夹克以天盘用神为中心：它下临的地盘支克它，同时所乘天将的五行也克它，才形成上下夹克。只发生其中一面相克，不能称夹克。",
+      "headline": "用神居中，下受地盘克、上受天将克，两面同时成立。",
+      "count": "1 个中心 · 2 个克制来源",
+      "tags": ["夹克", "用神", "上下两面"],
+      "search_terms": ["六壬夹克", "用神上下夹克", "午加亥玄武"],
+      "kind": "double_pincer",
+      "pincer_examples": [
+        {"id": "both", "name": "上下夹克", "general": "玄武", "general_element": "水", "spirit": "午", "spirit_element": "火", "earth": "亥", "earth_element": "水", "upper_relation": "水克火", "lower_relation": "水克火"},
+        {"id": "lower", "name": "只有下克", "general": "六合", "general_element": "木", "spirit": "午", "spirit_element": "火", "earth": "子", "earth_element": "水", "upper_relation": "木生火", "lower_relation": "水克火"},
+        {"id": "upper", "name": "只有上克", "general": "玄武", "general_element": "水", "spirit": "午", "spirit_element": "火", "earth": "寅", "earth_element": "木", "upper_relation": "水克火", "lower_relation": "木生火"}
+      ],
+      "steps": [
+        {"label": "中心", "value": "发用的天盘乘神", "note": "先确定被上下比较的同一个用神。"},
+        {"label": "下克", "value": "所临地盘支克用神", "note": "比较地盘支五行与乘神五行。"},
+        {"label": "上克", "value": "所乘天将克用神", "note": "再比较天将五行与乘神五行。"}
+      ],
+      "facts": [
+        {"label": "原例", "detail": "《六壬大全》以午加亥、上乘玄武为例：亥水从下克午火，玄武水又从上克午火。"},
+        {"label": "成立条件", "detail": "上下两条克制必须指向同一个用神；只有上克或只有下克都不成立。"},
+        {"label": "与内外战不同", "detail": "内外战只比较乘神与天将；夹克还必须加入用神所临的地盘支。"}
+      ],
+      "source_refs": ["liuren_complete_pincer"]
+    },
+    {
+      "id": "heavenly-generals-offices",
+      "group": "三 · 标注",
+      "title": "十二天将的职司、五行与本家",
+      "latin": "General offices, elements & homes",
+      "question": "贵人、螣蛇、朱雀等十二天将各自所主何事，它们的本家与五行又怎样参与神将生克？",
+      "summary": "十二天将各有职司、本家和本五行。职司指出观察类别；本家五行用于比较天将与所乘天盘支的生克。两类属性都要与乘神、日干、旺衰和落位合读。",
+      "headline": "同一个天将，职司回答所主何事，本家与五行回答它怎样参与生克。",
+      "count": "12 个将名 · 12 组职司 · 12 个本家",
+      "tags": ["十二天将", "职司", "本家五行"],
+      "search_terms": ["天将类象", "朱雀文书", "青龙属木", "白虎属金", "天将本家"],
+      "kind": "general_offices",
+      "steps": [
+        {"label": "贵人", "value": "诏命、官禄、尊长", "note": "天将之主。"},
+        {"label": "前五", "value": "螣蛇、朱雀、六合、勾陈、青龙", "note": "依次涵盖惊异、文信、和合、争留、财喜等类别。"},
+        {"label": "相对位", "value": "天空", "note": "常见虚空、不实、奴仆与市井等类别。"},
+        {"label": "后五", "value": "白虎、太常、玄武、太阴、天后", "note": "依次涵盖威伤、礼食、盗失、阴私、妇女恩泽等类别。"}
+      ],
+      "general_offices": [
+        {"name": "贵人", "position": "主将", "role": "诏命官禄", "scope": "尊长、官府、文章、钱财与喜庆"},
+        {"name": "螣蛇", "position": "前一", "role": "惊异变化", "scope": "火光、怪梦、惊恐、口舌与虚誉"},
+        {"name": "朱雀", "position": "前二", "role": "文书信息", "scope": "公文、私信、口舌、词讼与火烛"},
+        {"name": "六合", "position": "前三", "role": "和合交易", "scope": "婚姻、契约、媒介、交易与变迁"},
+        {"name": "勾陈", "position": "前四", "role": "争讼留连", "scope": "官讼、拘系、田宅、印信与迟滞"},
+        {"name": "青龙", "position": "前五", "role": "财帛升迁", "scope": "官府、书契、舟车、婚庆与宴会"},
+        {"name": "天空", "position": "相对", "role": "虚空诈伪", "scope": "奴仆、市井、空言、私契与脱空"},
+        {"name": "白虎", "position": "后五", "role": "威权道路", "scope": "兵戈、信息、疾病、死丧与血光"},
+        {"name": "太常", "position": "后四", "role": "礼仪衣食", "scope": "酒食、衣帛、印绶、田园与婚礼"},
+        {"name": "玄武", "position": "后三", "role": "盗失阴私", "scope": "盗贼、失脱、奸诈、梦想与离别"},
+        {"name": "太阴", "position": "后二", "role": "阴私财帛", "scope": "妇女、金银、婚姻、暗助与蔽匿"},
+        {"name": "天后", "position": "后一", "role": "妇女恩泽", "scope": "宫庭、婚姻、胎产、赏赦与庆贺"}
+      ],
+      "general_elements": [
+        {"name": "贵人", "home": "己丑", "element": "土"},
+        {"name": "螣蛇", "home": "丁巳", "element": "火"},
+        {"name": "朱雀", "home": "丙午", "element": "火"},
+        {"name": "六合", "home": "乙卯", "element": "木"},
+        {"name": "勾陈", "home": "戊辰", "element": "土"},
+        {"name": "青龙", "home": "甲寅", "element": "木"},
+        {"name": "天空", "home": "戊戌", "element": "土"},
+        {"name": "白虎", "home": "庚申", "element": "金"},
+        {"name": "太常", "home": "己未", "element": "土"},
+        {"name": "玄武", "home": "癸亥", "element": "水"},
+        {"name": "太阴", "home": "辛酉", "element": "金"},
+        {"name": "天后", "home": "壬子", "element": "水"}
+      ],
+      "facts": [
+        {"label": "职司", "detail": "将名提供一组对象范围，不等于已经得出吉凶结论。"},
+        {"label": "条件", "detail": "同一天将在旺相、生扶、刑克、休囚和不同乘神下会呈现不同侧面。"},
+        {"label": "位置", "detail": "天将是否入四课、三传、日辰或年命，决定它是否成为当前问题的主要观察点。"}
+      ],
+      "source_refs": ["liuren_complete_spirits_generals", "liuren_general_homes"]
+    },
+    {
+      "id": "six-relatives-hidden-stems",
+      "group": "三 · 标注",
+      "title": "六亲与遁干",
+      "latin": "Six relations & hidden stems",
+      "question": "三传中的每一支怎样同时获得六亲和旬内遁干？",
+      "summary": "六亲以日干为“我”，按传支五行与日干的生克关系标父母、兄弟、子孙、妻财、官鬼；遁干则把本日所在旬的十天干依次配到十个有值地支。",
+      "headline": "六亲来自五行关系，遁干来自六甲旬序；两套标签来源不同。",
+      "count": "5 类六亲 · 10 位旬遁",
+      "tags": ["六亲", "遁干", "三传"],
+      "search_terms": ["三传六亲", "旬遁", "乙卯日六亲"],
+      "kind": "labels",
+      "stem_elements": [
+        {"stem": "甲", "element": "木"}, {"stem": "乙", "element": "木"},
+        {"stem": "丙", "element": "火"}, {"stem": "丁", "element": "火"},
+        {"stem": "戊", "element": "土"}, {"stem": "己", "element": "土"},
+        {"stem": "庚", "element": "金"}, {"stem": "辛", "element": "金"},
+        {"stem": "壬", "element": "水"}, {"stem": "癸", "element": "水"}
+      ],
+      "branch_elements": [
+        {"branch": "子", "element": "水"}, {"branch": "丑", "element": "土"},
+        {"branch": "寅", "element": "木"}, {"branch": "卯", "element": "木"},
+        {"branch": "辰", "element": "土"}, {"branch": "巳", "element": "火"},
+        {"branch": "午", "element": "火"}, {"branch": "未", "element": "土"},
+        {"branch": "申", "element": "金"}, {"branch": "酉", "element": "金"},
+        {"branch": "戌", "element": "土"}, {"branch": "亥", "element": "水"}
+      ],
+      "steps": [
+        {"label": "父母", "value": "生我", "note": "以日干为参照，生助日干的五行为父母。"},
+        {"label": "兄弟", "value": "同我", "note": "与日干同五行。"},
+        {"label": "子孙", "value": "我生", "note": "由日干所生的五行。"},
+        {"label": "妻财／官鬼", "value": "我克／克我", "note": "日干所克为妻财，克日干者为官鬼。"}
+      ],
+      "facts": [
+        {"label": "固定例", "detail": "乙卯日在甲寅旬；申、戌、子三传的遁干依次为庚、壬、空。"},
+        {"label": "六亲", "detail": "乙属木：申金为官鬼，戌土为妻财，子水为父母。"},
+        {"label": "旬遁", "detail": "甲寅旬由寅起甲、卯乙，顺至亥癸；子丑落空，因此无旬内遁干。"}
+      ],
+      "source_refs": ["liuren_objects", "liuren_complete"]
+    },
+    {
+      "id": "six-decades-head-tail",
+      "group": "三 · 标注",
+      "title": "六旬、旬首与旬尾",
+      "latin": "Six decades, heads & tails",
+      "question": "六十甲子怎样分成六个十日区间，旬首、旬尾和旬空又怎样从同一旬序产生？",
+      "summary": "六十甲子按六个甲日分成甲子、甲戌、甲申、甲午、甲辰、甲寅六旬。每旬从甲所在支起，十位后止于癸所在支；余下两支为旬空。旬尾加旬首而发用时，又形成闭口结构。",
+      "headline": "每旬由甲开头、癸收尾；十支有干，两支落空。",
+      "count": "6 旬 · 10 个有值支 · 2 个空支",
+      "tags": ["六甲旬", "旬首旬尾", "闭口"],
+      "search_terms": ["六旬", "旬首", "旬尾", "旬尾加旬首"],
+      "kind": "six_decades",
+      "decades": [
+        {"name": "甲子旬", "head": "子", "tail": "酉", "void": "戌亥"},
+        {"name": "甲戌旬", "head": "戌", "tail": "未", "void": "申酉"},
+        {"name": "甲申旬", "head": "申", "tail": "巳", "void": "午未"},
+        {"name": "甲午旬", "head": "午", "tail": "卯", "void": "辰巳"},
+        {"name": "甲辰旬", "head": "辰", "tail": "丑", "void": "寅卯"},
+        {"name": "甲寅旬", "head": "寅", "tail": "亥", "void": "子丑"}
+      ],
+      "steps": [
+        {"label": "旬首", "value": "甲所配地支", "note": "六个旬首依次为子、戌、申、午、辰、寅。"},
+        {"label": "旬尾", "value": "癸所配地支", "note": "从旬首顺配十干，第十位即旬尾。"},
+        {"label": "旬空", "value": "旬内未配到的两支", "note": "十干配十支后，十二支余二。"},
+        {"label": "闭口", "value": "旬尾加旬首而发用", "note": "这是首尾在课式中的特定叠合，不等于所有旬都自动成为闭口。"}
+      ],
+      "facts": [
+        {"label": "共同根基", "detail": "旬空、旬内遁干、旬首六仪与旬尾闭口都依赖同一组六旬边界。"},
+        {"label": "固定例", "detail": "《六壬大全》举甲申日巳加申发用：巳为甲申旬旬尾，申为旬首。"},
+        {"label": "条件", "detail": "知道某日属于哪一旬，只能得到首、尾和空支；闭口还要检查旬尾是否加旬首并发用。"}
+      ],
+      "source_refs": ["liuren_complete_six_decades"]
+    },
+    {
+      "id": "void-and-horses",
+      "group": "三 · 标注",
+      "title": "旬空与丁马、月马、日马",
+      "latin": "Void & horse markers",
+      "question": "空亡和三种马为什么必须分开标明它们各自的取值入口？",
+      "summary": "旬空由日柱所属六甲旬确定两支缺位；丁马由旬内丁干所临支取，月马以月支所属三合局取驿马，日马以日支所属三合局取驿马。",
+      "headline": "空亡看旬，丁马看旬遁，月马看月支，日马看日支。",
+      "count": "6 旬 · 3 种马的入口",
+      "tags": ["旬空", "丁马", "月马日马"],
+      "search_terms": ["空亡", "驿马", "甲寅旬子丑空"],
+      "kind": "markers",
+      "steps": [
+        {"label": "旬空", "value": "甲寅旬 → 子丑空", "note": "十个干只能配十个支，旬内未轮到的两支为空。"},
+        {"label": "丁马", "value": "甲寅旬 → 丁临巳", "note": "沿旬序找到丁干所在支，本例丁马为巳。"},
+        {"label": "月马", "value": "由月支三合局查马", "note": "申子辰马寅，寅午戌马申，巳酉丑马亥，亥卯未马巳。"},
+        {"label": "日马", "value": "卯属亥卯未局 → 马在巳", "note": "固定例乙卯日的日马是巳。"}
+      ],
+      "facts": [
+        {"label": "空支", "detail": "甲子旬戌亥空、甲戌旬申酉空、甲申旬午未空、甲午旬辰巳空、甲辰旬寅卯空、甲寅旬子丑空。"},
+        {"label": "三合马", "detail": "每组三合局的驿马都落在与该局首支相冲的位置。"},
+        {"label": "分栏", "detail": "丁马、月马、日马可能重合，也可能不同；名称必须随入口一起保存。"}
+      ],
+      "source_refs": ["liuren_year_life", "liuren_complete"]
+    },
+    {
+      "id": "shensha-reference-layers",
+      "group": "三 · 标注",
+      "title": "常用标记的取值入口",
+      "latin": "Reference layers of common markers",
+      "question": "太岁、岁破、日德、日马、旬空与丁马分别从哪一层干支取值？",
+      "summary": "本页只收录已有完整表的常用标记：岁层查太岁与岁破，月层查月建与月破，日干层查日德、日禄与羊刃，日支层查日冲、日害与日马，六甲旬层查旬空与丁马。",
+      "headline": "五个取值入口各用自己的查表，查得后再标回盘中地支。",
+      "count": "5 类入口 · 12 种常用标记",
+      "tags": ["岁煞", "日干日支", "月煞与旬煞"],
+      "search_terms": ["六壬神煞", "岁神煞", "日干神煞", "旬煞"],
+      "kind": "shensha_layers",
+      "marker_tables": {
+        "year": [
+          {"basis": "子", "primary": "子", "secondary": "午"}, {"basis": "丑", "primary": "丑", "secondary": "未"}, {"basis": "寅", "primary": "寅", "secondary": "申"}, {"basis": "卯", "primary": "卯", "secondary": "酉"},
+          {"basis": "辰", "primary": "辰", "secondary": "戌"}, {"basis": "巳", "primary": "巳", "secondary": "亥"}, {"basis": "午", "primary": "午", "secondary": "子"}, {"basis": "未", "primary": "未", "secondary": "丑"},
+          {"basis": "申", "primary": "申", "secondary": "寅"}, {"basis": "酉", "primary": "酉", "secondary": "卯"}, {"basis": "戌", "primary": "戌", "secondary": "辰"}, {"basis": "亥", "primary": "亥", "secondary": "巳"}
+        ],
+        "month": [
+          {"basis": "子", "primary": "子", "secondary": "午"}, {"basis": "丑", "primary": "丑", "secondary": "未"}, {"basis": "寅", "primary": "寅", "secondary": "申"}, {"basis": "卯", "primary": "卯", "secondary": "酉"},
+          {"basis": "辰", "primary": "辰", "secondary": "戌"}, {"basis": "巳", "primary": "巳", "secondary": "亥"}, {"basis": "午", "primary": "午", "secondary": "子"}, {"basis": "未", "primary": "未", "secondary": "丑"},
+          {"basis": "申", "primary": "申", "secondary": "寅"}, {"basis": "酉", "primary": "酉", "secondary": "卯"}, {"basis": "戌", "primary": "戌", "secondary": "辰"}, {"basis": "亥", "primary": "亥", "secondary": "巳"}
+        ],
+        "branch": [
+          {"basis": "子", "primary": "午", "secondary": "未", "third": "寅"}, {"basis": "丑", "primary": "未", "secondary": "午", "third": "亥"}, {"basis": "寅", "primary": "申", "secondary": "巳", "third": "申"}, {"basis": "卯", "primary": "酉", "secondary": "辰", "third": "巳"},
+          {"basis": "辰", "primary": "戌", "secondary": "卯", "third": "寅"}, {"basis": "巳", "primary": "亥", "secondary": "寅", "third": "亥"}, {"basis": "午", "primary": "子", "secondary": "丑", "third": "申"}, {"basis": "未", "primary": "丑", "secondary": "子", "third": "巳"},
+          {"basis": "申", "primary": "寅", "secondary": "亥", "third": "寅"}, {"basis": "酉", "primary": "卯", "secondary": "戌", "third": "亥"}, {"basis": "戌", "primary": "辰", "secondary": "酉", "third": "申"}, {"basis": "亥", "primary": "巳", "secondary": "申", "third": "巳"}
+        ],
+        "xun": [
+          {"basis": "甲子旬", "primary": "戌亥", "secondary": "卯"}, {"basis": "甲戌旬", "primary": "申酉", "secondary": "丑"}, {"basis": "甲申旬", "primary": "午未", "secondary": "亥"},
+          {"basis": "甲午旬", "primary": "辰巳", "secondary": "酉"}, {"basis": "甲辰旬", "primary": "寅卯", "secondary": "未"}, {"basis": "甲寅旬", "primary": "子丑", "secondary": "巳"}
+        ]
+      },
+      "marker_table_labels": {
+        "year": {"basis": "年支", "primary": "太岁", "secondary": "岁破"},
+        "month": {"basis": "月建", "primary": "月建", "secondary": "月破"},
+        "branch": {"basis": "日支", "primary": "日冲", "secondary": "日害", "third": "日马"},
+        "xun": {"basis": "六甲旬", "primary": "旬空", "secondary": "丁马"}
+      },
+      "steps": [
+        {"label": "岁层", "value": "太岁、岁破 ← 年支", "note": "以所占之年为取值基准。"},
+        {"label": "日干层", "value": "日德、日禄、羊刃等 ← 日干", "note": "十干各有对应表。"},
+        {"label": "日支层", "value": "支马、支刑、支冲、支害 ← 日支", "note": "以当日地支所属关系取值。"},
+        {"label": "月层", "value": "月建、月破 ← 月建", "note": "月建取本支，月破取其冲支。"},
+        {"label": "旬层", "value": "旬空、丁马 ← 六甲旬", "note": "先确定日柱属于哪一旬。"}
+      ],
+      "facts": [
+        {"label": "多重附着", "detail": "同一地支可以同时承接来自年、月、日与旬的多个标记。"},
+        {"label": "已有例", "detail": "旬空、丁马、月马、日马正是四种不同入口的具体例子。"},
+        {"label": "使用次序", "detail": "先保留神煞的取值基准与落支，再与课传位置和生克状态合看。"}
+      ],
+      "source_refs": ["liuren_complete", "liuren_complete_day_markers", "liuren_complete_six_decades"]
+    },
+    {
+      "id": "day-virtue-lu-blade",
+      "group": "三 · 标注",
+      "title": "日德、日禄与羊刃",
+      "latin": "Day virtue, lu & blade",
+      "question": "同一个日干怎样分别查出日德、日禄与羊刃三种落支？",
+      "summary": "日德、日禄、羊刃都从当日日干起查，但各用一张独立逐干表。同一日干可能出现重合，也可能分落三支；它们是附着到地支位置的三种标记，不替代该支原有的五行、乘将与旺衰。",
+      "headline": "入口同为日干，日德、日禄、羊刃仍须分表取值。",
+      "count": "10 个日干 · 3 张逐干表",
+      "tags": ["日德", "日禄", "羊刃"],
+      "search_terms": ["六壬日德", "六壬日禄", "六壬羊刃"],
+      "kind": "day_markers",
+      "day_markers": [
+        {"stem": "甲", "virtue": "寅", "lu": "寅", "blade": "卯"},
+        {"stem": "乙", "virtue": "申", "lu": "卯", "blade": "辰"},
+        {"stem": "丙", "virtue": "巳", "lu": "巳", "blade": "午"},
+        {"stem": "丁", "virtue": "亥", "lu": "午", "blade": "未"},
+        {"stem": "戊", "virtue": "巳", "lu": "巳", "blade": "午"},
+        {"stem": "己", "virtue": "寅", "lu": "午", "blade": "未"},
+        {"stem": "庚", "virtue": "申", "lu": "申", "blade": "酉"},
+        {"stem": "辛", "virtue": "巳", "lu": "酉", "blade": "戌"},
+        {"stem": "壬", "virtue": "亥", "lu": "亥", "blade": "子"},
+        {"stem": "癸", "virtue": "巳", "lu": "子", "blade": "丑"}
+      ],
+      "steps": [
+        {"label": "日德", "value": "按十干查德神落支", "note": "例如甲日德在寅，乙日德在申。"},
+        {"label": "日禄", "value": "按十干查禄神落支", "note": "例如甲禄寅、乙禄卯。"},
+        {"label": "羊刃", "value": "按十干查刃神落支", "note": "《六壬大全》表列甲卯、乙辰、丙午等。"}
+      ],
+      "facts": [
+        {"label": "同源不同表", "detail": "三种标记都从日干取值，但不能由其中一表推代另一表。"},
+        {"label": "可能重合", "detail": "甲、丙、戊、庚、壬五干的日德与日禄同支；其他日干不必同支。"},
+        {"label": "落盘以后", "detail": "查得地支后，再看它是否落在四课、三传、日辰或年命等关键位置。"}
+      ],
+      "source_refs": ["liuren_complete_day_markers"]
+    },
+    {
+      "id": "transmission-relations-and-rescue",
+      "group": "四 · 阅读",
+      "title": "三传之间的生克与救应",
+      "latin": "Relations and rescue across transmissions",
+      "question": "初传、中传、末传相互生克时，怎样判断事情是在延续、转折还是得到制救？",
+      "summary": "三传不只是三个时间位置，还形成首尾与递次关系。传统歌赋分别观察初传克末、末传克初、母传子与子传母、初凶后吉与初吉后凶；若传中出现德神、生神或能制约凶神者称为传内有救，日辰与年命上的救助则另列。",
+      "headline": "先看初末和递次生克，再分清救应来自传内、日辰还是年命。",
+      "count": "2 组首尾方向 · 2 类递生 · 3 层救应",
+      "tags": ["三传生克", "首尾", "救神"],
+      "search_terms": ["三传相救", "初传克末传", "母传子", "用死终生"],
+      "kind": "transmission_relations",
+      "steps": [
+        {"label": "初末相制", "value": "初克末／末克初", "note": "同为相克，方向不同；末传能制初传时常作为后段制救观察。"},
+        {"label": "递次相生", "value": "母传子／子传母", "note": "前者顺生，后者逆生，记录力量沿三传流动的方向。"},
+        {"label": "传内有救", "value": "德神、生神或末传制初", "note": "救应直接出现在三传链中。"},
+        {"label": "传外有救", "value": "日辰上神／年命上神", "note": "救助来自三传之外，必须另标来源。"}
+      ],
+      "relations": [
+        {"label": "初传克末", "from": "初", "to": "末", "reading": "前因压住归结，原文谓凶势加重"},
+        {"label": "末传克初", "from": "末", "to": "初", "reading": "后段反制起因，可作传内之救"},
+        {"label": "母传子", "from": "生我者", "to": "我所生", "reading": "顺生，力量向后递出"},
+        {"label": "子传母", "from": "我所生", "to": "生我者", "reading": "逆生，力量回求其源"},
+        {"label": "初凶后吉", "from": "初", "to": "末", "reading": "事情后段转好"},
+        {"label": "初吉后凶", "from": "初", "to": "末", "reading": "事情后段转坏"}
+      ],
+      "facts": [
+        {"label": "首尾", "detail": "初传与末传的关系用于观察开端能否被后段承接、制约或逆转。"},
+        {"label": "传内传外", "detail": "三传自身出现制救，与日辰或年命遥制三传，不是同一层救应。"},
+        {"label": "条件合读", "detail": "救应仍需同时检查所乘天将、旺衰、刑杀与空亡，不能只见一个相克箭头。"}
+      ],
+      "source_refs": ["liuren_complete_relations", "liuren_guide"]
+    },
+    {
+      "id": "three-transmission-five-phase-bureaus",
+      "group": "四 · 阅读",
+      "title": "三传五行全局",
+      "latin": "Five-phase full bureaus",
+      "question": "三传成三合局时，为什么分别叫润下、炎上、曲直、从革与稼穑？",
+      "summary": "三传若由同一三合五行的三支组成，称为全局课。申子辰为水局润下，寅午戌为火局炎上，亥卯未为木局曲直，巳酉丑为金局从革；三传落在辰戌丑未四季土支中成局，名稼穑。",
+      "headline": "先核对三传成员是否成局，再把五行与全局格名对应。",
+      "count": "5 个全局名 · 4 组三合 · 1 组四季土",
+      "tags": ["全局课", "三合局", "润下炎上"],
+      "search_terms": ["曲直课", "从革课", "稼穑课", "三传三合"],
+      "kind": "full_bureaus",
+      "steps": [
+        {"label": "水局", "value": "申 · 子 · 辰 → 润下", "note": "三支分别为水的生、旺、墓。"},
+        {"label": "火局", "value": "寅 · 午 · 戌 → 炎上", "note": "三支分别为火的生、旺、墓。"},
+        {"label": "木局", "value": "亥 · 卯 · 未 → 曲直", "note": "三支分别为木的生、旺、墓。"},
+        {"label": "金局", "value": "巳 · 酉 · 丑 → 从革", "note": "三支分别为金的生、旺、墓。"},
+        {"label": "土局", "value": "辰 · 戌 · 丑 · 未 → 稼穑", "note": "三传由四季土支取足成局。"}
+      ],
+      "five_phase_bureaus": [
+        {"element": "水", "name": "润下", "members": ["申", "子", "辰"], "structure": "生 · 旺 · 墓"},
+        {"element": "火", "name": "炎上", "members": ["寅", "午", "戌"], "structure": "生 · 旺 · 墓"},
+        {"element": "木", "name": "曲直", "members": ["亥", "卯", "未"], "structure": "生 · 旺 · 墓"},
+        {"element": "金", "name": "从革", "members": ["巳", "酉", "丑"], "structure": "生 · 旺 · 墓"},
+        {"element": "土", "name": "稼穑", "members": ["辰", "戌", "丑", "未"], "example_transmissions": ["辰", "戌", "丑"], "structure": "三传由辰戌丑未四季土支中取三；固定示例为辰 → 戌 → 丑"}
+      ],
+      "facts": [
+        {"label": "成立条件", "detail": "全局名称来自三传成员的五行组合，不由日干、天将或所问事项单独命名。"},
+        {"label": "四正局", "detail": "水、火、木、金四局都由对应五行的长生、帝旺、墓三支组成。"},
+        {"label": "土局", "detail": "土无独立三合组，以辰戌丑未四季土支中的三传组合另名稼穑。"}
+      ],
+      "source_refs": ["liuren_complete_full_bureaus"]
+    },
+    {
+      "id": "transmission-movement-patterns",
+      "group": "四 · 阅读",
+      "title": "连茹与间传",
+      "latin": "Adjacent and interval transmissions",
+      "question": "三传每次前进一支或隔一支，怎样分成进茹、退茹、顺间与逆间？",
+      "summary": "连茹看三传是否沿十二支连续相接：顺行一位称进茹，逆行一位称退茹。间传则每次隔一位递取，也就是每步跨两支，并按方向分为顺间与逆间。",
+      "headline": "只比较三传的支序步距与方向：相邻为连茹，隔一位为间传。",
+      "count": "2 种步距 · 2 个方向 · 4 类行度",
+      "tags": ["连茹", "进茹退茹", "顺逆间传"],
+      "search_terms": ["三传行度", "间传课", "进茹课", "退茹课"],
+      "kind": "movement_patterns",
+      "steps": [
+        {"label": "进茹", "value": "子 → 丑 → 寅", "note": "沿十二支顺行，每次前进一位。"},
+        {"label": "退茹", "value": "寅 → 丑 → 子", "note": "沿十二支逆行，每次后退一位。"},
+        {"label": "顺间", "value": "子 → 寅 → 辰", "note": "顺行时每次隔一位，步距为二。"},
+        {"label": "逆间", "value": "辰 → 寅 → 子", "note": "逆行时每次隔一位，步距为二。"}
+      ],
+      "movement_patterns": [
+        {"id": "advance", "name": "进茹", "direction": "顺行", "step": 1, "sequence": ["子", "丑", "寅"]},
+        {"id": "retreat", "name": "退茹", "direction": "逆行", "step": 1, "sequence": ["寅", "丑", "子"]},
+        {"id": "forward_interval", "name": "顺间", "direction": "顺行", "step": 2, "sequence": ["子", "寅", "辰"]},
+        {"id": "reverse_interval", "name": "逆间", "direction": "逆行", "step": 2, "sequence": ["辰", "寅", "子"]}
+      ],
+      "facts": [
+        {"label": "连茹", "detail": "三传在十二支环上相邻连续，方向决定称进茹或退茹。"},
+        {"label": "间传", "detail": "《六壬大全》以“间一位递作三传”定义间传，并分顺间十二格、逆间十二格。"},
+        {"label": "识别方法", "detail": "先把初、中、末标到十二支环，再比较初到中、中到末的固定步距；格名不改变三传本身。"}
+      ],
+      "source_refs": ["liuren_jingwei_movement", "liuren_complete_interval_transmission"]
+    },
+    {
+      "id": "twelve-growth-stages",
+      "group": "四 · 阅读",
+      "title": "十二长生",
+      "latin": "Twelve growth stages",
+      "question": "长生、帝旺、墓、绝等十二个阶段怎样随日干落到十二支？",
+      "summary": "十二长生把一个日干的五行之气依次标为长生、沐浴、冠带、临官、帝旺、衰、病、死、墓、绝、胎、养。阳干从各自长生支顺行，阴干从各自长生支逆行，因此同一地支对不同日干会得到不同阶段。",
+      "headline": "先以日干找到长生起点，再按阳顺阴逆排满十二支。",
+      "count": "10 个日干 · 12 个阶段 · 2 个方向",
+      "tags": ["十二长生", "阳顺阴逆", "生旺墓绝"],
+      "search_terms": ["长生沐浴冠带", "日干十二运", "墓绝胎养"],
+      "kind": "growth_stages",
+      "steps": [
+        {"label": "十二阶段", "value": "长生 → 沐浴 → 冠带 → 临官 → 帝旺 → 衰 → 病 → 死 → 墓 → 绝 → 胎 → 养", "note": "阶段次序固定。"},
+        {"label": "阳干", "value": "甲丙戊庚壬 · 顺排", "note": "从长生所在支沿十二支顺行。"},
+        {"label": "阴干", "value": "乙丁己辛癸 · 逆排", "note": "从长生所在支沿十二支逆行。"}
+      ],
+      "growth_starts": [
+        {"stem": "甲", "start": "亥", "direction": "顺"}, {"stem": "乙", "start": "午", "direction": "逆"},
+        {"stem": "丙", "start": "寅", "direction": "顺"}, {"stem": "丁", "start": "酉", "direction": "逆"},
+        {"stem": "戊", "start": "寅", "direction": "顺"}, {"stem": "己", "start": "酉", "direction": "逆"},
+        {"stem": "庚", "start": "巳", "direction": "顺"}, {"stem": "辛", "start": "子", "direction": "逆"},
+        {"stem": "壬", "start": "申", "direction": "顺"}, {"stem": "癸", "start": "卯", "direction": "逆"}
+      ],
+      "growth_stage_order": ["长生", "沐浴", "冠带", "临官", "帝旺", "衰", "病", "死", "墓", "绝", "胎", "养"],
+      "facts": [
+        {"label": "查表主语", "detail": "十二长生以日干为起点、以地支为落点，不等同于春木旺、夏火旺的月令旺相表。"},
+        {"label": "方向", "detail": "阳干顺排、阴干逆排；例如甲长生在亥，乙长生在午。"},
+        {"label": "合读", "detail": "盘中支取得阶段后，还要与六亲、生克、旺相休囚、天将及所处课传位置合读。"}
+      ],
+      "source_refs": ["liuren_jingwei_states", "liuren_guide"]
+    },
+    {
+      "id": "mounted-seated-mutual-tombs",
+      "group": "四 · 阅读",
+      "title": "乘墓、坐墓与互墓",
+      "latin": "Mounted, seated & mutual tombs",
+      "question": "已知十干墓支以后，墓支落在日辰上方、下方或交叉位置时分别怎样命名？",
+      "summary": "墓支在日干或日支上方，称乘墓；日干寄宫或日支落在墓支上方，称坐墓；日上见支墓、支上见日墓，称互墓。三者使用同一套墓支，却比较不同的上下位置。",
+      "headline": "墓支相同，落在日辰上方、下方或交叉位置，结构名称不同。",
+      "count": "10 干墓支 · 3 种位置关系",
+      "tags": ["乘墓", "坐墓", "干支互墓"],
+      "search_terms": ["六壬乘墓", "六壬坐墓", "干支互墓"],
+      "kind": "tomb_positions",
+      "tomb_table": [
+        {"stem": "甲", "tomb": "未"}, {"stem": "乙", "tomb": "戌"}, {"stem": "丙", "tomb": "戌"}, {"stem": "丁", "tomb": "丑"}, {"stem": "戊", "tomb": "戌"},
+        {"stem": "己", "tomb": "丑"}, {"stem": "庚", "tomb": "丑"}, {"stem": "辛", "tomb": "辰"}, {"stem": "壬", "tomb": "辰"}, {"stem": "癸", "tomb": "未"}
+      ],
+      "tomb_examples": [
+        {"id": "mounted", "name": "干支乘墓", "day": "丙寅", "left_top": "戌", "left_bottom": "丙", "left_note": "日墓在上", "right_top": "未", "right_bottom": "寅", "right_note": "支墓在上"},
+        {"id": "seated", "name": "干支坐墓", "day": "丙寅", "left_top": "巳", "left_bottom": "戌", "left_note": "干寄巳坐戌墓", "right_top": "寅", "right_bottom": "未", "right_note": "寅坐未墓"},
+        {"id": "mutual", "name": "干支互墓", "day": "甲申", "left_top": "丑", "left_bottom": "甲", "left_note": "日上见支墓", "right_top": "未", "right_bottom": "申", "right_note": "支上见日墓"}
+      ],
+      "steps": [
+        {"label": "乘墓", "value": "墓神在日辰上方", "note": "例如丙寅日，丙上戌、寅上未。"},
+        {"label": "坐墓", "value": "日辰落在墓支上方", "note": "例如丙寅日，巳加戌、寅加未。"},
+        {"label": "互墓", "value": "日上见支墓、支上见日墓", "note": "例如甲申日，干上丑、支上未。"}
+      ],
+      "facts": [
+        {"label": "先查墓支", "detail": "甲癸墓未，乙丙戊墓戌，丁己庚墓丑，辛壬墓辰。"},
+        {"label": "再看位置", "detail": "乘墓看墓神覆盖日辰，坐墓看日辰落入墓位，互墓看日墓与支墓交叉换位。"},
+        {"label": "与十二长生的关系", "detail": "十二长生确定某日干的墓支；本节点只处理墓支进入课式后的空间关系。"}
+      ],
+      "source_refs": ["liuren_complete_tombs"]
+    },
+    {
+      "id": "stem-branch-transmission-directions",
+      "group": "四 · 阅读",
+      "title": "干传支与支传干",
+      "latin": "Stem-branch transmission directions",
+      "question": "初传从日侧或辰侧起，末传归到另一侧时，怎样读出三传的往来方向？",
+      "summary": "支传干是初传从支上神起、末传归到干上神；干传支则相反，初传从干上神起、末传归到支上神。它比较的是三传首尾与日辰两侧的重合，不是单看初传属于第一至第四课。",
+      "headline": "把初传与末传分别对照干上神、支上神，方向才会成立。",
+      "count": "2 个日辰锚点 · 2 条归向",
+      "tags": ["支传干", "干传支", "三传归向"],
+      "search_terms": ["彼求我事支传干", "我求彼事干传支", "三传首尾"],
+      "kind": "transmission_directions",
+      "steps": [
+        {"label": "支传干", "value": "支上神＝初传 → 干上神＝末传", "note": "《毕法赋》以癸酉日巳酉丑为例。"},
+        {"label": "干传支", "value": "干上神＝初传 → 支上神＝末传", "note": "《毕法赋》以丁亥日酉亥丑为例。"}
+      ],
+      "direction_examples": [
+        {"id": "branch_to_stem", "name": "支传干", "day": "癸酉", "stem_upper": "丑", "branch_upper": "巳", "transmissions": ["巳", "酉", "丑"], "start": "支上神", "end": "干上神"},
+        {"id": "stem_to_branch", "name": "干传支", "day": "丁亥", "stem_upper": "酉", "branch_upper": "丑", "transmissions": ["酉", "亥", "丑"], "start": "干上神", "end": "支上神"}
+      ],
+      "facts": [
+        {"label": "支传干", "detail": "初传等于支上神而末传等于干上神，三传由辰侧归向日侧。"},
+        {"label": "干传支", "detail": "初传等于干上神而末传等于支上神，三传由日侧归向辰侧。"},
+        {"label": "成立检查", "detail": "必须同时核对初传起点与末传终点；只见初传从某一课发用，不能单独命名归向。"}
+      ],
+      "source_refs": ["liuren_bifa_directions"]
+    },
+    {
+      "id": "front-back-guiding",
+      "group": "四 · 阅读",
+      "title": "前后引从",
+      "latin": "Front-back guiding",
+      "question": "初传、末传怎样在同一个干神或支神的前后形成夹引？",
+      "summary": "引从以干上神或支上神为中心：初传居中心之前为“引”，末传居中心之后为“从”，两传从前后夹住同一目标。中心是干上神时为引从干神，中心是支上神时为引从支神。",
+      "headline": "引从不是三传从一侧走到另一侧，而是初末传夹住同一个中心。",
+      "count": "1 个中心 · 2 个夹位 · 2 类目标",
+      "tags": ["引从课", "初末夹拱", "干神支神"],
+      "search_terms": ["前后引从", "引从干神", "引从支神", "夹拱"],
+      "kind": "front_back_guiding",
+      "steps": [
+        {"label": "引从干神", "value": "初传在干上神之前 · 末传在其后", "note": "例如癸酉日，干上午，初未、末巳夹午。"},
+        {"label": "引从支神", "value": "初传在支上神之前 · 末传在其后", "note": "例如甲子日，支上亥，初子、末戌夹亥。"}
+      ],
+      "guiding_examples": [
+        {"id": "stem_center", "name": "引从干神", "day": "癸酉", "target": "干上神", "center": "午", "initial": "未", "final": "巳"},
+        {"id": "branch_center", "name": "引从支神", "day": "甲子", "target": "支上神", "center": "亥", "initial": "子", "final": "戌"}
+      ],
+      "facts": [
+        {"label": "中心", "detail": "被夹的是干上神或支上神，不是抽象的日干、日支文字。"},
+        {"label": "两侧", "detail": "初传位于中心的前一支，末传位于中心的后一支，形成前引后从。"},
+        {"label": "与归向不同", "detail": "干传支、支传干连接两个不同锚点；引从则由初末传共同夹住一个锚点。"}
+      ],
+      "source_refs": ["liuren_cuiyan_yincong"]
+    },
+    {
+      "id": "day-branch-subject-object",
+      "group": "四 · 阅读",
+      "title": "日辰与主客定位",
+      "latin": "Day stem, branch & subject-object",
+      "question": "日干、日支及其阴阳二课怎样建立人事、内外与主客观察轴？",
+      "summary": "日干侧与日支侧各有阳神、阴神两课。传统常以日为人、辰为事，以干侧承接外、动、尊，以支侧承接内、静、宅；进入军争等占类时，主客还会随先动后应等约定变化。",
+      "headline": "日与辰先分两侧，阳神与阴神再展开四课；主客必须连同占类读取。",
+      "count": "2 个基准侧 · 4 个课位 · 多组观察轴",
+      "tags": ["日辰", "主客", "内外动静"],
+      "search_terms": ["六壬日辰", "日为人辰为事", "主客定位"],
+      "kind": "subject_object",
+      "steps": [
+        {"label": "日阳", "value": "第一课 · 日上神", "note": "固定例午／乙，是日干侧第一层。"},
+        {"label": "日阴", "value": "第二课 · 日阳上神", "note": "固定例申／午，是日干侧第二层。"},
+        {"label": "辰阳", "value": "第三课 · 辰上神", "note": "固定例巳／卯，是日支侧第一层。"},
+        {"label": "辰阴", "value": "第四课 · 辰阳上神", "note": "固定例未／巳，是日支侧第二层。"}
+      ],
+      "facts": [
+        {"label": "两侧", "detail": "《六壬指南》以日为人、辰为事，并把四课分为日上、日阴、辰上、辰阴。"},
+        {"label": "观察轴", "detail": "尊卑、动静、内外、人事等对应属于读课轴，不改变四课生成方法。"},
+        {"label": "主客异例", "detail": "军争类资料既有日干为客、日支为主的规定，也有先动者为客等取法，应随占类注明。"}
+      ],
+      "source_refs": ["liuren_guide", "liuren_complete"]
+    },
+    {
+      "id": "cross-carriage-relations",
+      "group": "四 · 阅读",
+      "title": "日辰交车关系",
+      "latin": "Cross-carriage relations",
+      "question": "为什么交车要把日干与支上神、日支与干上神交叉比较，而不是各看本侧？",
+      "summary": "交车把日辰两侧交叉连接：日支与干上神形成一条关系，日干或其寄宫与支上神形成另一条关系。两条都作六合称交车相合；同理还可分别观察交生、交脱、交克、交刑、交冲与交害。",
+      "headline": "不是干看干上、支看支上，而是两条线交叉相接。",
+      "count": "2 个日辰基点 · 2 条交叉关系",
+      "tags": ["交车", "交车相合", "日辰交叉"],
+      "search_terms": ["六壬交车", "交车相合", "交车脱"],
+      "kind": "cross_carriage",
+      "cross_examples": [
+        {"id": "combine", "name": "交车相合", "day": "乙丑", "stem_base": "辰", "stem_base_label": "乙寄辰", "stem_upper": "子", "branch_base": "丑", "branch_upper": "酉", "left_relation": "子丑六合", "right_relation": "辰酉六合"},
+        {"id": "drain", "name": "交车相脱", "day": "壬午", "stem_base": "壬", "stem_base_label": "日干壬水", "stem_upper": "未", "branch_base": "午", "branch_upper": "寅", "left_relation": "午生未", "right_relation": "壬生寅"}
+      ],
+      "steps": [
+        {"label": "第一条交叉线", "value": "日支 ↔ 干上神", "note": "例如乙丑日，丑与干上子作六合。"},
+        {"label": "第二条交叉线", "value": "日干／寄宫 ↔ 支上神", "note": "乙寄辰，与支上酉作六合。"},
+        {"label": "命名", "value": "两线合看生、合、脱、克、刑、冲、害", "note": "关系名称来自交叉后的实际五行或地支关系。"}
+      ],
+      "facts": [
+        {"label": "交车相合", "detail": "《六壬大全》定义为日干与支上神、日支与干上神交互作六合。"},
+        {"label": "固定例", "detail": "乙丑日干上子、支上酉：子合丑，酉合乙所寄之辰，两条交叉线都成立。"},
+        {"label": "与本侧关系不同", "detail": "日上神与日干、支上神与日支仍是本侧关系；只有跨到对侧比较才叫交车。"}
+      ],
+      "source_refs": ["liuren_complete_cross_carriage"]
+    },
+    {
+      "id": "lesson-patterns",
+      "group": "四 · 阅读",
+      "title": "课体的层级与多标签",
+      "latin": "Pattern layers & multiple labels",
+      "question": "课体名称怎样概括一张课已经出现的结构？",
+      "summary": "课体是对取传方式或盘面组合的命名：重审、元首、知一、涉害等名称直接来自候选与筛选结构，伏吟、返吟等则来自天地盘关系。",
+      "headline": "课体名称来自不同结构层；同一课可以同时拥有多个标签。",
+      "count": "多类结构名 · 4 个典型来源",
+      "tags": ["课体", "重审", "元首"],
+      "search_terms": ["六壬课体", "知一课", "伏吟课"],
+      "kind": "patterns",
+      "pattern_families": [
+        {"id": "transmission", "name": "取传课体", "basis": "初传怎样产生", "members": ["重审", "元首", "知一", "涉害", "遥克", "昴星", "别责", "八专"], "links": ["zeike-biyong-shehai", "special-transmission-routes"]},
+        {"id": "plate", "name": "盘面课体", "basis": "天地盘整体怎样对位", "members": ["伏吟", "返吟"], "links": ["fuyin-fanyin"]},
+        {"id": "transmission_shape", "name": "三传结构", "basis": "三传的五行、步距与首尾关系", "members": ["润下", "炎上", "曲直", "从革", "稼穑", "进茹", "退茹", "间传"], "links": ["three-transmission-five-phase-bureaus", "transmission-movement-patterns", "transmission-relations-and-rescue"]},
+        {"id": "day_branch", "name": "日辰关系格", "basis": "干支两侧及初末传怎样相接", "members": ["交车", "干传支", "支传干", "前后引从"], "links": ["cross-carriage-relations", "stem-branch-transmission-directions", "front-back-guiding"]},
+        {"id": "mounted_state", "name": "神将与状态格", "basis": "乘神、天将、墓空等怎样叠加", "members": ["内战", "外战", "上下夹克", "乘墓", "坐墓", "互墓", "闭口"], "links": ["spirit-general-inner-outer-war", "double-pincer-over-under", "mounted-seated-mutual-tombs", "six-decades-head-tail"]}
+      ],
+      "multi_label_examples": [
+        {"day": "壬辰日第五局", "labels": ["重审", "励德", "狡童"], "detail": "取传名、贵人位置格与神将组合名并列。"},
+        {"day": "庚子日第八局", "labels": ["重审", "铸印", "芜淫", "寡宿"], "detail": "同一课可同时命中取传、三传组合与关系格。"},
+        {"day": "戊子日第四局", "labels": ["涉害", "元胎"], "detail": "涉害说明初传筛选，元胎另说明三传支序。"}
+      ],
+      "steps": [
+        {"label": "重审", "value": "一课下贼上", "note": "由贼克的方向与唯一性命名。"},
+        {"label": "元首", "value": "无贼而一课上克下", "note": "同样来自直接贼克结构。"},
+        {"label": "知一／涉害", "value": "多候选经比用或涉害筛出", "note": "名称记录的是初传如何在多个候选中产生。"},
+        {"label": "伏吟／返吟", "value": "天地盘同位／冲位", "note": "名称直接概括整张盘的上下关系。"}
+      ],
+      "facts": [
+        {"label": "层级", "detail": "同一课可以同时拥有取传法名称、盘面名称和其他结构名称。"},
+        {"label": "依据", "detail": "判断课体要回到四课、天地盘或取传步骤，不能只看三传三个字。"},
+        {"label": "作用", "detail": "课体把反复出现的结构压缩成可检索、可比较的名称。"}
+      ],
+      "source_refs": ["liuren_complete", "liuren_complete_pdf", "liuren_pattern_examples"]
+    },
+    {
+      "id": "bifa-hundred-rules-index",
+      "group": "四 · 阅读",
+      "title": "《毕法赋》关系索引",
+      "latin": "Bifa hundred-rule index",
+      "question": "《毕法赋》一百条怎样连接到盘面、三传、日辰、神将、墓空与类神，而不是被当成一百句孤立断语？",
+      "summary": "《毕法赋》按一百条短句压缩课传结构。索引先按所检查的对象分段，再把已经建立独立知识页的条目连回原对象；条目标题只作结构入口，不直接替代完整条件。",
+      "headline": "先按对象找到相关条目，再回到盘面核对成立条件；赋句是索引，不是脱离课式的结论。",
+      "count": "100 条正文次序 · 5 个结构区 · 28 条现有节点连接",
+      "tags": ["毕法赋", "一百法", "关系索引"],
+      "search_terms": ["前后引从升迁吉", "交车相合交关利", "初遭夹克不由己", "将逢内战"],
+      "kind": "bifa_index",
+      "bifa_sections": [
+        {"id": "one", "range": "01—20", "name": "首尾、禄鬼与空亡", "objects": "引从、三传首尾、禄、鬼、财、脱、空、进退"},
+        {"id": "two", "range": "21—40", "name": "日辰交接与三传流向", "objects": "交车、干支归向、递生互克、闭口、太阳玄武"},
+        {"id": "three", "range": "41—60", "name": "贵人、禄马与盘面阻隔", "objects": "禄马、三奇、昼夜贵、天门鬼户、网罗、用破"},
+        {"id": "four", "range": "61—80", "name": "墓、神将与人宅关系", "objects": "干支乘墓、白虎、互伤、刑害、互生互旺、绝死"},
+        {"id": "five", "range": "81—100", "name": "墓空合战与类神边界", "objects": "传墓、六合、夹克、内战、坐墓、丁马、空亡、类神"}
+      ],
+      "bifa_rules": [
+        "前后引从升迁吉", "首尾相见始终宜", "帘幕贵人高甲第", "催官使者赴官期", "六阳数足须公用", "六阴相继尽昏迷", "旺禄临身徒妄作", "权摄不正禄临支", "避难逃生须弃旧", "朽木难雕别作为",
+        "众鬼虽彰全不畏", "虽忧狐假虎威仪", "鬼贼当时无畏忌", "传财太旺反财亏", "脱上逢脱防虚诈", "空上乘空事莫追", "进茹空亡宜退步", "踏脚空亡进用宜", "胎财生气妻怀孕", "胎财死气损胎推",
+        "交车相合交关利", "上下皆合两心齐", "彼求我事支传干", "我求彼事干传支", "金日逢丁凶祸动", "水日逢丁财动之", "传财化鬼财休觅", "传鬼化财钱险危", "眷属丰盈居狭宅", "屋宅宽广致人衰",
+        "三传递生人举荐", "三传互克众人欺", "有始无终难变易", "苦去甘来乐里悲", "人宅受脱俱招盗", "干支皆败事倾颓", "末助初兮三等讼", "闭口卦体两般推", "太阳照武宜擒贼", "后合占婚岂用媒",
+        "富贵干支逢禄马", "尊崇传内遇三奇", "害贵讼直作曲断", "课传俱贵转无依", "昼夜贵加求两贵", "贵人差迭事参差", "贵虽在狱宜临干", "鬼乘天乙乃神祇", "两贵受克难干贵", "二贵皆空虚喜期",
+        "魁度天门关隔定", "罡塞鬼户任谋为", "两蛇夹墓凶难免", "虎视逢虎力难施", "所谋多拙逢网罗", "天网自裹己招非", "费有余而得不足", "用破身心无所归", "华盖覆日人昏晦", "太阳射宅屋光辉",
+        "干乘墓虎无占病", "支乘墓虎有伏尸", "彼此全伤防两损", "夫妇芜淫各有私", "干墓并关人宅废", "支坟财并旅程稽", "受虎克神为病症", "制鬼之位乃良医", "虎乘遁鬼殃非浅", "鬼临三四讼灾随",
+        "病符克宅全家患", "丧吊全逢挂缟衣", "前后逼迫难进退", "空空如也事休追", "宾主不投刑在上", "彼此猜忌害相随", "互生俱生凡事益", "互旺皆旺坐谋宜", "干支值绝凡谋决", "人宅皆死各衰羸",
+        "传墓入墓分憎爱", "不行传者考初时", "万事喜忻三六合", "合中犯杀蜜中砒", "初遭夹克不由己", "将逢内战所谋危", "人宅坐墓甘招晦", "干支乘墓各昏迷", "任信丁马须言动", "来去俱空岂动宜",
+        "虎临干鬼凶速速", "龙加生气吉迟迟", "妄用三传灾福异", "喜惧空亡乃妙机", "六爻现卦防其克", "旬内空亡逐类推", "所筮不入仍凭类", "非占现类勿言之", "常问不应逢吉象", "已灾凶逃返无疑"
+      ],
+      "bifa_links": [
+        {"number": 1, "title": "前后引从升迁吉", "node": "front-back-guiding", "object": "初末传夹住干上神或支上神"},
+        {"number": 2, "title": "首尾相见始终宜", "node": "transmission-relations-and-rescue", "object": "初末传与课中锚点"},
+        {"number": 7, "title": "旺禄临身徒妄作", "node": "day-virtue-lu-blade", "object": "日禄落点"},
+        {"number": 16, "title": "空上乘空事莫追", "node": "void-and-horses", "object": "上下空亡叠见"},
+        {"number": 17, "title": "进茹空亡宜退步", "node": "transmission-movement-patterns", "object": "进茹与空亡"},
+        {"number": 21, "title": "交车相合交关利", "node": "cross-carriage-relations", "object": "两条日辰交叉线作合"},
+        {"number": 23, "title": "彼求我事支传干", "node": "stem-branch-transmission-directions", "object": "支上神发用、末归干上神"},
+        {"number": 24, "title": "我求彼事干传支", "node": "stem-branch-transmission-directions", "object": "干上神发用、末归支上神"},
+        {"number": 31, "title": "三传递生人举荐", "node": "transmission-relations-and-rescue", "object": "三传递次相生"},
+        {"number": 32, "title": "三传互克众人欺", "node": "transmission-relations-and-rescue", "object": "三传互相克制"},
+        {"number": 38, "title": "闭口卦体两般推", "node": "six-decades-head-tail", "object": "旬首旬尾与玄武太阴两路"},
+        {"number": 41, "title": "富贵干支逢禄马", "node": "void-and-horses", "object": "日辰位置的禄与马"},
+        {"number": 45, "title": "昼夜贵加求两贵", "node": "day-night-noble-tables", "object": "昼贵与夜贵叠见"},
+        {"number": 61, "title": "干乘墓虎无占病", "node": "mounted-seated-mutual-tombs", "object": "干上墓神与白虎"},
+        {"number": 63, "title": "彼此全伤防两损", "node": "day-branch-subject-object", "object": "日辰两侧互伤"},
+        {"number": 75, "title": "宾主不投刑在上", "node": "branch-combine-clash-harm-punishment", "object": "干支上神见刑"},
+        {"number": 76, "title": "彼此猜忌害相随", "node": "branch-combine-clash-harm-punishment", "object": "日辰两侧见害"},
+        {"number": 77, "title": "互生俱生凡事益", "node": "day-branch-subject-object", "object": "干支与上神互生或俱生"},
+        {"number": 81, "title": "传墓入墓分憎爱", "node": "mounted-seated-mutual-tombs", "object": "墓神入三传或传神入墓"},
+        {"number": 83, "title": "万事喜忻三六合", "node": "branch-combine-clash-harm-punishment", "object": "三合与六合"},
+        {"number": 84, "title": "合中犯杀蜜中砒", "node": "branch-combine-clash-harm-punishment", "object": "合与刑冲破害叠见"},
+        {"number": 85, "title": "初遭夹克不由己", "node": "double-pincer-over-under", "object": "初传上下夹克"},
+        {"number": 86, "title": "将逢内战所谋危", "node": "spirit-general-inner-outer-war", "object": "乘神克所乘天将"},
+        {"number": 87, "title": "人宅坐墓甘招晦", "node": "mounted-seated-mutual-tombs", "object": "日辰坐墓"},
+        {"number": 88, "title": "干支乘墓各昏迷", "node": "mounted-seated-mutual-tombs", "object": "墓神乘日辰"},
+        {"number": 89, "title": "任信丁马须言动", "node": "void-and-horses", "object": "旬内丁马"},
+        {"number": 96, "title": "旬内空亡逐类推", "node": "six-decades-head-tail", "object": "旬空与所占类神"},
+        {"number": 97, "title": "所筮不入仍凭类", "node": "category-symbols", "object": "所问类神未入课传时的定位"}
+      ],
+      "numbering_note": "当前所据卷十一正文在第五十一条后直接出现两次“第五十三法”，未见第五十二法；索引保留底本文字次序，不擅自补造缺句。",
+      "facts": [
+        {"label": "不是课体总表", "detail": "一百法混合了盘面关系、神将状态、墓空、类神与条件组合，不等于一百种互斥课体。"},
+        {"label": "一条可连多层", "detail": "例如“合中犯杀”必须同时回查合、刑冲破害与具体落点。"},
+        {"label": "先核条件", "detail": "索引只帮助找到检查对象；是否成立仍要回到四课、三传、日辰、天将与旬序。"}
+      ],
+      "source_refs": ["liuren_bifa_hundred_rules"]
+    },
+    {
+      "id": "fixed-lesson-review",
+      "group": "四 · 阅读",
+      "title": "固定课式综合复盘",
+      "latin": "Fixed-lesson review",
+      "question": "酉将、未时、乙卯日这一张固定课，怎样把装盘、取传、旬遁、六亲、空亡、墓与行度串成一条可复核链？",
+      "summary": "固定课由酉将加未时得到天盘顺移两位，四课中只有申加午为下贼上，因此以申发用，递取戌、子。乙卯属甲寅旬，三传遁干为庚、壬、空，六亲为官鬼、妻财、父母；末传子空，中传戌又是乙日墓。",
+      "headline": "每一个结论都回指它的输入和中间步骤；没有年、月或起贵版本的字段不强行补齐。",
+      "count": "3 个输入 · 4 课 · 3 传 · 9 项可复核标记",
+      "tags": ["固定课式", "综合复盘", "乙卯日"],
+      "search_terms": ["酉将未时乙卯日", "申戌子三传", "甲寅旬固定课"],
+      "kind": "fixed_review",
+      "review_stages": [
+        {"id": "plate", "name": "装盘", "input": "酉将加未时", "result": "天盘相对地盘顺移两位", "evidence": "未位见酉，其余十一位依次排布"},
+        {"id": "lessons", "name": "四课", "input": "乙寄辰、日支卯", "result": "午／乙　申／午　巳／卯　未／巳", "evidence": "干侧、支侧各连续取两层上神"},
+        {"id": "initial", "name": "取初传", "input": "四课逐课比较五行", "result": "第二课申加午下贼上", "evidence": "其余三课均为下生上；唯一贼取申发用，课体重审"},
+        {"id": "transmissions", "name": "递取三传", "input": "初传申", "result": "申 → 戌 → 子", "evidence": "申上见戌，戌上见子；每次隔一支，为顺间"},
+        {"id": "labels", "name": "六亲与旬遁", "input": "乙木日、甲寅旬", "result": "申官鬼庚　戌妻财壬　子父母空", "evidence": "五行关系与旬内十干分别计算"},
+        {"id": "states", "name": "状态标记", "input": "乙卯日、甲寅旬", "result": "初传申为日德；中传戌为乙日墓；末传子为空", "evidence": "分别查日德表、十干墓表与旬空表"},
+        {"id": "stem_relation", "name": "遁干关系", "input": "日干乙、初传遁干庚", "result": "乙庚构成仁义合", "evidence": "命中天干五合中的乙庚一组"}
+      ],
+      "unresolved_fields": [
+        {"field": "旺相休囚死", "missing": "占月／季令", "reason": "月将酉不等于直接给出当前季令。"},
+        {"field": "岁层与月层神煞", "missing": "所占年支与月建", "reason": "固定输入只有月将、占时和日柱。"},
+        {"field": "十二天将完整落盘", "missing": "采用哪套贵人起例", "reason": "旦暮贵人与阴阳贵属于不同起例；未指定起例时，十二天将落盘保持未定。"},
+        {"field": "本命与行年", "missing": "出生年支、年龄与性别口径", "reason": "固定课不是个人占例。"}
+      ],
+      "facts": [
+        {"label": "可复算", "detail": "每一阶段只使用此前已经给出的字段，不从结果反推输入。"},
+        {"label": "多层并存", "detail": "同一个申同时是初传、金、官鬼、遁庚与日德；这些身份来自不同规则。"},
+        {"label": "不补未知", "detail": "缺少年、月、起贵版本与个人年命时，对应层保持未定。"}
+      ],
+      "source_refs": ["liuren_complete", "liuren_complete_pdf", "liuren_complete_day_markers", "liuren_complete_tombs"]
+    },
+    {
+      "id": "category-symbols",
+      "group": "四 · 阅读",
+      "title": "类神与占类的定位方法",
+      "latin": "Locating category symbols",
+      "question": "所问事项怎样在盘中找到对应的观察对象？",
+      "summary": "占类先限定问题属于人物、财物、出行、疾病等哪一类；类神再把该类事项对应到六亲、地支、天将或其他盘中对象，并观察它实际落在哪里。",
+      "headline": "六类固定示例演示同一方法：先定占类，再找类神，最后查它在盘中的落点。",
+      "count": "事项分类 · 盘中对象 · 实际落点",
+      "tags": ["类神", "占类", "取用"],
+      "search_terms": ["六壬类神", "物类课", "占事取用"],
+      "kind": "categories",
+      "category_index": [
+        {"id": "documents", "name": "文书信息", "relative": "父母", "spirit": "功曹寅／胜光午", "general": "朱雀", "marker": "类神是否入课、入传", "focus": "父母取文书层，功曹与胜光取神名物类，朱雀取公文、书信与言语职司。"},
+        {"id": "trade", "name": "财物交易", "relative": "妻财", "spirit": "从魁酉", "general": "青龙／六合／太阴", "marker": "财类落点与交合关系", "focus": "妻财先定财类，青龙看财帛书契，六合看交易媒介，太阴看金银与隐蔽保管。"},
+        {"id": "travel", "name": "道路行人", "relative": "所问人物对应六亲", "spirit": "传送申／太冲卯", "general": "白虎／青龙", "marker": "驿马、道路神是否入传", "focus": "人物身份先由六亲定位，再查传送、太冲与驿马；天将补充道路、车马或信息层。"},
+        {"id": "property", "name": "田宅居处", "relative": "日支与宅侧", "spirit": "大吉丑／天罡辰", "general": "勾陈／太常", "marker": "支上神、课传与墓库", "focus": "日支保存宅侧坐标，大吉、天罡与勾陈、太常分别提供田宅、土功、田园等物类入口。"},
+        {"id": "authority", "name": "尊长官府", "relative": "父母／官鬼", "spirit": "河魁戌", "general": "贵人／勾陈", "marker": "干支两侧与贵人落点", "focus": "六亲区分尊长或官府关系，贵人与勾陈再标出官府、印信、拘系等不同职司。"},
+        {"id": "marriage", "name": "婚姻媒介", "relative": "按所问对象另定六亲", "spirit": "小吉未", "general": "六合／天后／太常", "marker": "六合、三合与课传位置", "focus": "小吉、六合、天后、太常都可进入婚姻类，但分别来自神名、天将与关系层，不能合成一个标签。"}
+      ],
+      "selection_checks": ["先把所问事项缩到一个占类", "六亲、十二神、天将分别查找", "记录类神落在天地盘、四课或三传何处", "最后叠加旺衰、空破与日辰关系"],
+      "steps": [
+        {"label": "占类", "value": "先把问题归入具体事项", "note": "同一张课面对不同问题，观察对象并不相同。"},
+        {"label": "类神", "value": "找到事项对应的六亲、支或天将", "note": "类神是一种映射，不是新的盘层。"},
+        {"label": "落点", "value": "检查类神在四课、三传、天地盘何处出现", "note": "是否入传、乘何将、临何地要分别记录。"},
+        {"label": "同看", "value": "再合旺衰、空破与日辰关系", "note": "类神本身只确定观察对象。"}
+      ],
+      "facts": [
+        {"label": "人物", "detail": "六亲常用来区分父母、同辈、子孙、财与官鬼等关系角色。"},
+        {"label": "物类", "detail": "传统物类材料还会把地支、五行与天将对应到更具体的事物类别。"},
+        {"label": "位置", "detail": "同一类神落在初传、中传、末传或只在课中出现，空间位置不同。"}
+      ],
+      "source_refs": ["liuren_objects", "liuren_complete_spirits_generals", "liuren_spirit_offices"]
+    },
+    {
+      "id": "seasonal-strength-day-relations",
+      "group": "四 · 阅读",
+      "title": "旺衰、日辰与盘中关系",
+      "latin": "Seasonal strength & day relations",
+      "question": "一个盘中对象被选中后，还要从哪些关系判断它当前的状态？",
+      "summary": "先以时令给五行标旺、相、休、囚、死，再看对象与日干、日支以及其他盘中支之间的生克、合、冲、刑、害；这些关系描述状态，不改变它原来的身份。",
+      "headline": "对象是谁、它在哪里、它当前有何状态，是三件不同的事。",
+      "count": "5 种时令状态 · 多类支干关系",
+      "tags": ["旺相休囚死", "日辰", "合冲刑害"],
+      "search_terms": ["六壬旺衰", "日辰关系", "春木旺"],
+      "kind": "states",
+      "seasonal_matrix": [
+        {"id": "spring", "season": "春", "months": "寅卯月", "states": [{"element": "木", "state": "旺"}, {"element": "火", "state": "相"}, {"element": "水", "state": "休"}, {"element": "金", "state": "囚"}, {"element": "土", "state": "死"}]},
+        {"id": "summer", "season": "夏", "months": "巳午月", "states": [{"element": "火", "state": "旺"}, {"element": "土", "state": "相"}, {"element": "木", "state": "休"}, {"element": "水", "state": "囚"}, {"element": "金", "state": "死"}]},
+        {"id": "autumn", "season": "秋", "months": "申酉月", "states": [{"element": "金", "state": "旺"}, {"element": "水", "state": "相"}, {"element": "土", "state": "休"}, {"element": "火", "state": "囚"}, {"element": "木", "state": "死"}]},
+        {"id": "winter", "season": "冬", "months": "亥子月", "states": [{"element": "水", "state": "旺"}, {"element": "木", "state": "相"}, {"element": "金", "state": "休"}, {"element": "土", "state": "囚"}, {"element": "火", "state": "死"}]},
+        {"id": "earth", "season": "四季", "months": "辰戌丑未月", "states": [{"element": "土", "state": "旺"}, {"element": "金", "state": "相"}, {"element": "火", "state": "休"}, {"element": "木", "state": "囚"}, {"element": "水", "state": "死"}]}
+      ],
+      "relation_layers": [
+        {"id": "stem", "label": "日干参照", "objects": "六亲、生克", "detail": "对象与日干的生克先确定六亲关系；这条线属于干侧参照。"},
+        {"id": "branch", "label": "日支参照", "objects": "支侧、合冲刑害", "detail": "日支承接支侧四课，并与对象检查六合、六冲、六害与刑。"},
+        {"id": "plate", "label": "盘中支参照", "objects": "上下、课传、支间关系", "detail": "同一支还要记录所临地盘、是否入课传，以及与其他盘中支的关系。"}
+      ],
+      "steps": [
+        {"label": "春", "value": "木旺、火相、水休、金囚、土死", "note": "五行状态随季令轮转。"},
+        {"label": "日干", "value": "确定六亲并承接干侧四课", "note": "与对象的生克关系以日干为重要参照。"},
+        {"label": "日支", "value": "承接支侧四课并参与合冲刑害", "note": "日支不是日干的重复标签。"},
+        {"label": "盘中支", "value": "合、冲、刑、害、生、克", "note": "同一对象可以同时拥有多条关系。"}
+      ],
+      "facts": [
+        {"label": "旺衰", "detail": "旺相休囚死以季令为参照，表示五行处在不同阶段。"},
+        {"label": "日辰", "detail": "日干与日支共同构成占日，但在起课和关系判断中承担不同作用。"},
+        {"label": "叠加", "detail": "六亲、天将、旺衰、空亡与合冲可以同时附着在同一支上，彼此不互相替代。"}
+      ],
+      "source_refs": ["wuxing_seasonal_states", "liuren_objects", "liuren_year_life"]
+    },
+    {
+      "id": "stem-five-combinations",
+      "group": "四 · 阅读",
+      "title": "天干五合",
+      "latin": "Five stem combinations",
+      "question": "日干、旬遁或课传中出现两个天干时，怎样查出它们是否构成五合？",
+      "summary": "十天干按甲己、乙庚、丙辛、丁壬、戊癸分成五组。大六壬先确认两个干实际出现在哪个位置，再记录五合；合可以与克、刑、破、害等关系同时存在，不能用合名覆盖其他结构。",
+      "headline": "先找到两个实际天干，再查五组固定配对；五合是关系，不是新的盘层。",
+      "count": "10 干 · 5 组固定配对 · 3 类常见落点",
+      "tags": ["天干五合", "干合", "旬遁"],
+      "search_terms": ["甲己合", "乙庚合", "丙辛合", "丁壬合", "戊癸合"],
+      "kind": "stem_combinations",
+      "stem_combinations": [
+        {"id": "jiaji", "left": "甲", "right": "己", "name": "中正合"},
+        {"id": "yigeng", "left": "乙", "right": "庚", "name": "仁义合"},
+        {"id": "bingsin", "left": "丙", "right": "辛", "name": "威权合"},
+        {"id": "dingren", "left": "丁", "right": "壬", "name": "淫泆合"},
+        {"id": "wugui", "left": "戊", "right": "癸", "name": "无情合"}
+      ],
+      "stem_locations": [
+        {"label": "日干", "detail": "占日自身的天干，是比较干合时最先固定的参照。"},
+        {"label": "旬内遁干", "detail": "课传地支在所属六甲旬中取得的遁干，可以与日干或另一遁干比较。"},
+        {"label": "寄宫所指之干", "detail": "别责等取法会调用日干五合，但仍须经过寄宫规则找到实际上神。"}
+      ],
+      "facts": [
+        {"label": "固定五组", "detail": "甲己、乙庚、丙辛、丁壬、戊癸之外，不另立第六组干合。"},
+        {"label": "落点先行", "detail": "仅知道两个字相合还不够，必须同时保存它们是日干、遁干还是取法中调用的合干。"},
+        {"label": "关系可叠加", "detail": "《六壬大全》明确保存合与刑、破、害并见的结构，不能见合就删除其他关系。"}
+      ],
+      "source_refs": ["liuren_stem_combinations", "liuren_complete_cross_carriage"]
+    },
+    {
+      "id": "branch-combine-clash-harm-punishment",
+      "group": "四 · 阅读",
+      "title": "地支的合、冲、害、刑与破",
+      "latin": "Branch combinations and conflicts",
+      "question": "课传中的两个地支怎样查出合、冲、害、刑、破，并保留同时成立的多条关系？",
+      "summary": "六合、六冲、六害各有六组固定配对；六破在《六壬大全》中按午破卯、酉破子等方向读取；刑还要区分自刑、互刑和单向朋刑。同一对支可能既破又合或既破又刑，必须并列保存。",
+      "headline": "先逐表查关系，再保留全部命中；同一对支可以同时有破、合或刑。",
+      "count": "6 合 · 6 冲 · 6 害 · 6 破 · 4 组刑",
+      "tags": ["六合", "六冲", "六害", "三刑", "六破"],
+      "search_terms": ["地支六合", "地支六冲", "六害", "三刑方向", "六破"],
+      "kind": "branch_relations",
+      "branch_relations": {
+        "combine": [["子", "丑"], ["寅", "亥"], ["卯", "戌"], ["辰", "酉"], ["巳", "申"], ["午", "未"]],
+        "clash": [["子", "午"], ["丑", "未"], ["寅", "申"], ["卯", "酉"], ["辰", "戌"], ["巳", "亥"]],
+        "harm": [["子", "未"], ["丑", "午"], ["寅", "巳"], ["卯", "辰"], ["申", "亥"], ["酉", "戌"]],
+        "break": [["午", "卯"], ["酉", "子"], ["辰", "丑"], ["戌", "未"], ["亥", "寅"], ["申", "巳"]],
+        "punishment": [
+          {"type": "自刑", "members": "辰、午、酉、亥", "path": "各自刑自身"},
+          {"type": "互刑", "members": "子、卯", "path": "子 ↔ 卯"},
+          {"type": "朋刑", "members": "丑、戌、未", "path": "丑 → 戌 → 未"},
+          {"type": "朋刑", "members": "寅、巳、申", "path": "寅 → 巳 → 申"}
+        ]
+      },
+      "relation_stack_examples": [
+        {"pair": "亥 → 寅", "relations": ["破", "六合"], "detail": "亥破寅；寅亥又是六合，所以原文称先破后合。"},
+        {"pair": "申 → 巳", "relations": ["破", "六合"], "detail": "申破巳；巳申又是六合，同样属于破、合叠见。"},
+        {"pair": "戌 → 未", "relations": ["破", "朋刑"], "detail": "戌破未；朋刑链又有戌刑未，所以原文称先破后刑。"}
+      ],
+      "facts": [
+        {"label": "六合", "detail": "子丑、寅亥、卯戌、辰酉、巳申、午未相合；《六壬大全》称合为和顺之神。"},
+        {"label": "冲害", "detail": "六冲是十二支相对之位；六害虽为固定六组，但上加下与下加上的具体读法可不同。"},
+        {"label": "刑的方向", "detail": "底本明确丑能刑戌、戌能刑未，寅能刑巳、巳能刑申，并反对把末位反向连回首位。"}
+      ],
+      "source_refs": ["liuren_branch_relations", "liuren_clash_break"]
+    },
+    {
+      "id": "birth-year-and-progression",
+      "group": "四 · 阅读",
+      "title": "本命与行年",
+      "latin": "Birth year & annual progression",
+      "question": "人的固定出生坐标和逐年移动坐标怎样进入同一张课？",
+      "summary": "本命通常取出生年支，是相对固定的人身坐标；行年按年龄逐年移位，是随时间变化的坐标。两者可落入天地盘、四课或三传位置，与课中对象建立关系。",
+      "headline": "本命固定，行年逐岁移动；二者都要先落盘，再谈与课式的关系。",
+      "count": "1 个固定坐标 · 1 条逐年序列",
+      "tags": ["本命", "行年", "年命"],
+      "search_terms": ["六壬年命", "本命支", "行年怎么排"],
+      "kind": "year_life",
+      "progression_rule": {
+        "name": "固定起点法",
+        "male": {"label": "男", "start": "丙寅", "direction": "顺行"},
+        "female": {"label": "女", "start": "壬申", "direction": "逆行"},
+        "examples": [
+          {"sex": "男", "age": 1, "pillar": "丙寅"},
+          {"sex": "男", "age": 49, "pillar": "甲寅"},
+          {"sex": "女", "age": 1, "pillar": "壬申"},
+          {"sex": "女", "age": 34, "pillar": "己亥"}
+        ]
+      },
+      "variant_rule": {
+        "name": "六甲旬首变起说",
+        "status": "《六壬粹言》列作辨非对象",
+        "examples": [
+          {"birth_xun": "甲戌旬", "male_start": "丙子", "female_start": "壬午"},
+          {"birth_xun": "甲申旬", "male_start": "丙戌", "female_start": "壬辰"}
+        ]
+      },
+      "steps": [
+        {"label": "本命", "value": "出生年支", "note": "同一人在不同占课中通常保持不变。"},
+        {"label": "行年", "value": "随岁数逐年移动的地支", "note": "不同传统对起点和男女顺逆有具体表法。"},
+        {"label": "落盘", "value": "查本命、行年所临天盘与天将", "note": "先找到坐标及其上神。"},
+        {"label": "关联", "value": "再看是否入课、入传及与日辰关系", "note": "年命不是另起一张独立的课。"}
+      ],
+      "facts": [
+        {"label": "固定与流动", "detail": "本命用于保存出生年的固定支，行年用于保存当前年龄对应的移动支。"},
+        {"label": "附着", "detail": "本命和行年进入既有天地盘，读取各自所临之神与关系。"},
+        {"label": "顺逆表", "detail": "行年的起点、顺逆与年龄口径须随采用的传统表一起保存。"}
+      ],
+      "source_refs": ["liuren_year_progression_rule", "liuren_year_progression_variants", "liuren_year_life", "liuren_complete"]
+    }
+  ]
+}

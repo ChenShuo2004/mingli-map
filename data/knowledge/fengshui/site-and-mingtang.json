@@ -1,0 +1,23 @@
+{
+  "id": "site-and-mingtang",
+  "title": "穴与明堂",
+  "summary": "“穴”是形势关系的观察中心，“明堂”是相对位于其前方、由周边形体和水势共同界定的开敞空间；二者必须放在同一局部空间中理解。",
+  "site_fields": [
+    {"label":"中心","meaning":"山水与围护关系共同指向的位置"},
+    {"label":"后方","meaning":"来势进入中心的连接方向"},
+    {"label":"前方","meaning":"由中心向外展开的空间"},
+    {"label":"左右","meaning":"中心两侧的围护与开合"}
+  ],
+  "mingtang_layers": [
+    {"label":"小明堂（内明堂）","meaning":"紧邻中心前方的局部空间"},
+    {"label":"中明堂","meaning":"左右围护之内的主要空间"},
+    {"label":"大明堂（外明堂）","meaning":"更外层、连接远处山水的空间"}
+  ],
+  "relation_order": ["先设观察中心","再确定相对前方","再看左右边界","最后记录水在其中的来去"],
+  "boundaries": ["穴是关系中心，不等同于任意地图坐标点","明堂是相对空间概念，不等同于所有开阔地或建筑大厅","阴宅、聚落与阳宅所用尺度不同，不能直接复制同一尺寸标准"],
+  "public_sources": [
+    {"title":"《葬书》内篇","note":"用于确认穴场须放在来势、止处和四周形势关系中理解。","url":"https://ctext.org/wiki.pl?chapter=346403&if=gb&remap=gb"},
+    {"title":"《人子须知》论明堂","note":"用于区分小明堂、中明堂与大明堂（内外明堂）的层次名称。","url":"https://ctext.org/wiki.pl?chapter=194555&if=gb&remap=gb"},
+    {"title":"武汉大学学报：风水的空间观","note":"用于确认明堂、水口共同组织局部形局的研究表述。","url":"https://ch.whu.edu.cn/cn/article/pdf/preview/4283.pdf"}
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "id": "liuyao_twelve_message_hexagrams",
+  "title": "十二消息卦",
+  "summary": "十二消息卦把十二个月建与十二个固定卦形相配：从子月复卦的一阳开始，阳爻逐月自下而上增加，至巳月乾卦为六阳；再从午月姤卦的一阴开始，阴爻同样自下而上增加，至亥月坤卦为六阴。它保存的是月份、卦形与阴阳消长的循环关系。",
+  "reading_order": "lines 数组始终按初爻到上爻保存；页面绘制时由上爻向下显示。",
+  "records": [
+    { "id": "zi-fu", "branch": "子", "month": "十一月", "name": "复", "symbol": "䷗", "lines": ["yang", "yin", "yin", "yin", "yin", "yin"], "yang_count": 1, "phase": "阳爻递增", "change": "初爻由阴转阳", "note": "一阳从初爻出现，循环由此进入阳爻递增的一半。" },
+    { "id": "chou-lin", "branch": "丑", "month": "十二月", "name": "临", "symbol": "䷒", "lines": ["yang", "yang", "yin", "yin", "yin", "yin"], "yang_count": 2, "phase": "阳爻递增", "change": "二爻续为阳", "note": "初、二两爻为阳，上四爻仍为阴。" },
+    { "id": "yin-tai", "branch": "寅", "month": "正月", "name": "泰", "symbol": "䷊", "lines": ["yang", "yang", "yang", "yin", "yin", "yin"], "yang_count": 3, "phase": "阳爻递增", "change": "三爻续为阳", "note": "下三爻全阳、上三爻全阴，阴阳各占三爻。" },
+    { "id": "mao-dazhuang", "branch": "卯", "month": "二月", "name": "大壮", "symbol": "䷡", "lines": ["yang", "yang", "yang", "yang", "yin", "yin"], "yang_count": 4, "phase": "阳爻递增", "change": "四爻续为阳", "note": "阳爻推进到外卦第一爻。" },
+    { "id": "chen-guai", "branch": "辰", "month": "三月", "name": "夬", "symbol": "䷪", "lines": ["yang", "yang", "yang", "yang", "yang", "yin"], "yang_count": 5, "phase": "阳爻递增", "change": "五爻续为阳", "note": "只余上爻为阴。" },
+    { "id": "si-qian", "branch": "巳", "month": "四月", "name": "乾", "symbol": "䷀", "lines": ["yang", "yang", "yang", "yang", "yang", "yang"], "yang_count": 6, "phase": "六阳完成", "change": "上爻续为阳", "note": "六爻皆阳，阳爻递增半环在此完成。" },
+    { "id": "wu-gou", "branch": "午", "month": "五月", "name": "姤", "symbol": "䷫", "lines": ["yin", "yang", "yang", "yang", "yang", "yang"], "yang_count": 5, "phase": "阴爻递增", "change": "初爻由阳转阴", "note": "一阴从初爻出现，循环转入阴爻递增的一半。" },
+    { "id": "wei-dun", "branch": "未", "month": "六月", "name": "遁", "symbol": "䷠", "lines": ["yin", "yin", "yang", "yang", "yang", "yang"], "yang_count": 4, "phase": "阴爻递增", "change": "二爻续为阴", "note": "初、二两爻为阴，上四爻仍为阳。" },
+    { "id": "shen-pi", "branch": "申", "month": "七月", "name": "否", "symbol": "䷋", "lines": ["yin", "yin", "yin", "yang", "yang", "yang"], "yang_count": 3, "phase": "阴爻递增", "change": "三爻续为阴", "note": "下三爻全阴、上三爻全阳，阴阳各占三爻。" },
+    { "id": "you-guan", "branch": "酉", "month": "八月", "name": "观", "symbol": "䷓", "lines": ["yin", "yin", "yin", "yin", "yang", "yang"], "yang_count": 2, "phase": "阴爻递增", "change": "四爻续为阴", "note": "阴爻推进到外卦第一爻。" },
+    { "id": "xu-bo", "branch": "戌", "month": "九月", "name": "剥", "symbol": "䷖", "lines": ["yin", "yin", "yin", "yin", "yin", "yang"], "yang_count": 1, "phase": "阴爻递增", "change": "五爻续为阴", "note": "只余上爻为阳。" },
+    { "id": "hai-kun", "branch": "亥", "month": "十月", "name": "坤", "symbol": "䷁", "lines": ["yin", "yin", "yin", "yin", "yin", "yin"], "yang_count": 0, "phase": "六阴完成", "change": "上爻续为阴", "note": "六爻皆阴；下一步回到子月复卦，初爻重新出现一阳。" }
+  ],
+  "structure_notes": [
+    { "label": "每月只变一爻", "note": "相邻两个月建之间只有一个爻位改变，改变顺序始终由初爻向上爻推进。" },
+    { "label": "两段各走六步", "note": "复至乾是阳爻由一到六，姤至坤是阴爻由一到六；两段在十二个月建上闭合成环。" },
+    { "label": "月建不是公历月份", "note": "页面保存传统月序与地支配对，不把正月直接换成公历一月，也不读取今天日期。" }
+  ],
+  "reading_boundary": "只展示十二个月建、十二卦形和阴阳爻逐月消长；不把单月卦名用于真人判断，也不由卦形推导气候、吉凶或事项结果。",
+  "internal_review": {
+    "status": "classical_mapping_verified_modern_lecture_claims_separated",
+    "reviewed_at": "2026-08-05",
+    "source_refs": [
+      "ctext_zhouyi_yicong_687340",
+      "ctext_zhouyi_chuanyi_daquan_666532",
+      "github_horace_maxwell_divination_notes_twelve_message_hexagrams"
+    ]
+  }
+}

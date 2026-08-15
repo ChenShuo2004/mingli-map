@@ -1,0 +1,23 @@
+{
+  "id": "dream-reading-map",
+  "title": "占梦从哪里开始",
+  "summary": "先分清梦、梦象、占辞与梦验，再沿典籍、梦象分类、占辞形成和历史梦例继续阅读；不同来源的梦类和占法不预先合并。",
+  "stages": [
+    {"id":"foundation","label":"占梦基础","note":"五层对象与阅读顺序、梦境记录、六梦与梦类版本","card_ids":["scope-and-objects","dream-record-fields","six-dreams-zhouli","dream-classification-versions"]},
+    {"id":"texts","label":"典籍与流变","note":"先秦两汉材料、敦煌写本与明代综合梦书","card_ids":["dream-text-timeline","pre-qin-dream-narratives","han-bibliography-dream-books","dunhuang-dream-manuscripts","mengzhan-yizhi-structure"]},
+    {"id":"images","label":"梦象分类","note":"从总表进入天象、山水、空间、人物、身体、禽兽、器物与动作等梦象","card_ids":["dream-image-index","dream-images-sky-weather","dream-images-land-water-fire","dream-images-buildings-roads","dream-images-people-kinship","dream-images-body-life-illness","dream-images-animals-plants","dream-images-clothing-tools-food","dream-images-actions-rituals"]},
+    {"id":"interpretation","label":"占辞形成","note":"条目结构、状态动作、时间条件、结果词、解释路径与来源冲突","card_ids":["dream-interpretation-index","dream-entry-grammar","dream-qualifiers-and-contrast","dream-time-conditions","dream-outcome-vocabulary","dream-interpretation-paths","dream-version-conflicts","dream-omen-verification-boundaries"]},
+    {"id":"cases","label":"梦例与占后叙事","note":"叙事链、人物角色、梦后行动、梦验距离与四个固定梦例","card_ids":["dream-case-index","dream-case-actions","dream-case-verification","dream-case-fuyue","dream-case-jinggong","dream-case-boji","dream-case-wangjun"]},
+    {"id":"boundaries","label":"相邻体系","note":"占梦边界、医梦、宗教梦与现代梦研究分别保存","card_ids":["dream-boundary-index","dream-medical-traditions","dream-religious-traditions","dream-modern-research"]}
+  ],
+  "reading_chain": ["梦境材料","梦类","梦象","占辞","梦验记录"],
+  "boundaries": [
+    "导读展示当前工作顺序，不宣称六阶段是所有古代梦书共有的原始目录",
+    "专题只整理知识关系，不接收真人梦境或生成征兆判断",
+    "相邻体系分别取证，不用一套解释覆盖全部梦材料"
+  ],
+  "public_sources": [
+    {"title":"《周礼·春官宗伯·占梦》","note":"保存占梦官、岁时、阴阳、日月星辰与六梦的关系。","url":"https://ctext.org/text.pl?node=37001&if=gb"},
+    {"title":"《潜夫论·梦列》","note":"保存十梦分类及占梦材料对梦类、梦象和验应的讨论。","url":"https://ctext.org/qian-fu-lun/meng-lie/zhs"}
+  ]
+}

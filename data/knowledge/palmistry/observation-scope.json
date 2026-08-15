@@ -1,0 +1,21 @@
+{
+  "id": "observation-scope",
+  "title": "观察对象与公开边界",
+  "summary": "相学资料先分面部与手部，再把原始图像、可见形态、传统术语和来源说法分层保存；观察记录不自动产生人物结论。",
+  "objects": [
+    {"id": "face", "label": "面部", "fields": ["区域", "方位", "比例", "轮廓", "表面状态"], "image": "/assets/palmistry/ai-face-front-neutral.webp"},
+    {"id": "hand", "label": "手部", "fields": ["左右手", "掌指比例", "线纹", "掌丘", "手指与指甲"], "image": "/assets/palmistry/ai-palms-pair-neutral.webp"}
+  ],
+  "record_layers": [
+    {"label": "图像层", "content": "原图、视角、方向、裁切与画面条件"},
+    {"label": "观察层", "content": "位置、比例、形态、纹理与可见状态"},
+    {"label": "术语层", "content": "传统名称、适用部位与版本身份"},
+    {"label": "来源层", "content": "原文说法、出处、版本与核验状态"}
+  ],
+  "public_includes": ["固定 AI 教学样本", "可观察部位与记录字段", "术语的位置关系", "来源与版本差异"],
+  "public_excludes": ["真人身份识别", "种族、性别等敏感属性推断", "医疗与健康诊断", "寿命、性格、婚姻、财运等个人判断"],
+  "image_note": "图像均为 AI 生成的教学样本，不对应真实人物。",
+  "public_sources": [
+    {"title": "NIST Face Analysis Technology Evaluation：Face Image Quality", "note": "用于确认姿态、裁切、遮挡、背景与清晰度属于图像质量条件；不用于相学解释。", "url": "https://pages.nist.gov/frvt/html/frvt_quality.html"}
+  ]
+}

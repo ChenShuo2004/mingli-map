@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0",
+  "id": "liuyao_void_substance_conditions",
+  "title": "旬空",
+  "summary": "旬空先由日旬指出两支缺位，再分两层阅读：当前看空支是否仍有旺、动、生扶等支撑；随后看它是否因跨旬、同支时间或相冲时间进入出空、填实、冲空。状态与恢复不能压成一个‘空亡解除’结果。",
+  "fixed_context": {"xun": "甲子旬", "void_branches": ["戌", "亥"], "focus": "亥"},
+  "xun_table": [
+    {"xun": "甲子旬", "void_branches": ["戌", "亥"]},
+    {"xun": "甲戌旬", "void_branches": ["申", "酉"]},
+    {"xun": "甲申旬", "void_branches": ["午", "未"]},
+    {"xun": "甲午旬", "void_branches": ["辰", "巳"]},
+    {"xun": "甲辰旬", "void_branches": ["寅", "卯"]},
+    {"xun": "甲寅旬", "void_branches": ["子", "丑"]}
+  ],
+  "condition_groups": [
+    {
+      "id": "supported",
+      "label": "悬空待用",
+      "meaning": "空支仍有可被承接的结构条件",
+      "conditions": [
+        {"id": "prosperous", "label": "旺相", "signal": "目标爻旺相", "source_words": "旺不为空", "display": "不以到底全空论"},
+        {"id": "moving", "label": "发动", "signal": "目标爻已经发动", "source_words": "动不为空", "display": "动而不以空废"},
+        {"id": "assisted", "label": "受生扶", "signal": "日建或动爻生扶", "source_words": "有日建动爻生扶者不为空", "display": "有支撑，等待后续承接"},
+        {"id": "hidden-strong", "label": "伏而旺相", "signal": "伏神落空但自身旺相", "source_words": "伏而旺相皆不为空", "display": "伏藏不等于到底全空"}
+      ]
+    },
+    {
+      "id": "empty",
+      "label": "空态加深",
+      "meaning": "空支同时失去支撑或另受损伤",
+      "conditions": [
+        {"id": "month-broken", "label": "兼月破", "signal": "旬空又被月建冲", "source_words": "月破为空", "display": "空与破叠加"},
+        {"id": "still-alone", "label": "有气不动", "signal": "虽有气但保持安静", "source_words": "有气不动亦为空", "display": "有气与发动仍须分开"},
+        {"id": "opposed-hurt", "label": "反伏被克", "signal": "反伏结构中再受克", "source_words": "爻反伏而被克为空", "display": "关系反复又受伤"},
+        {"id": "seasonal-true", "label": "季节真空", "signal": "春土、夏金、秋木、冬火", "source_words": "真空为为空", "display": "作者列出的季节真空"}
+      ]
+    }
+  ],
+  "seasonal_true_void": [
+    {"season": "春", "element": "土"},
+    {"season": "夏", "element": "金"},
+    {"season": "秋", "element": "木"},
+    {"season": "冬", "element": "火"}
+  ],
+  "recovery_paths": [
+    {"id": "leave", "label": "出空", "trigger": "当前旬结束", "marker": "下一旬", "question": "空支是否离开本旬范围？", "note": "甲子旬结束后，原先的戌亥不再是下一旬的空支。"},
+    {"id": "fill", "label": "填实", "trigger": "同支时间到来", "marker": "亥日／月／年", "question": "时间支是否与空支相同？", "note": "固定亥空样本遇亥日、亥月或亥年，记为同支填实。"},
+    {"id": "clash", "label": "冲空", "trigger": "相冲之支到来", "marker": "巳日／月／年", "question": "时间支是否与空支六冲？", "note": "亥与巳相冲，巳时间到来形成冲空路径；它与同支填实方向不同。"}
+  ],
+  "distinctions": [
+    {"label": "旬空定位", "difference": "回答哪一旬缺哪两支，使用六旬固定表。"},
+    {"label": "当前状态", "difference": "回答目标支落空后，当前是否仍有旺、动、生扶等支撑。"},
+    {"label": "后续恢复", "difference": "回答空支后来怎样随旬序、同支或对冲时间改变。"}
+  ],
+  "source_positions": [
+    {"label": "作者删繁", "position": "《增删卜易·旬空章》先列诸书繁多空名，再把常用判断收束为有支撑与失支撑两侧。", "public_use": "页面不把十二个旧名都做成并列终局。"},
+    {"label": "现代实现", "position": "锁定实现以旬空为入口，再用休囚／月破、动静、生扶和临日月合成真空／假空。", "public_use": "只作为条件组合的可执行样本；其合并算法不冒充古籍原句。"}
+  ],
+  "reading_boundary": "本页固定甲子旬亥空，分别展示当前条件和后续时间路径，不自动合并为具体事项或应期。",
+  "internal_review": {"status": "corrected_source_text_and_merged_void_state_recovery_cross_checked", "reviewed_at": "2026-08-05", "source_refs": ["zengshan_buyi_wikisource_chapter_26_void", "zengshan_buyi_checked_pdf_void_chapter", "github_horace_maxwell_horosa_7d8a93e_void_kind", "zengshan_buyi_chapter_10_void_recovery", "github_weizew_mingli_skills_c16eca0_void_recovery"]}
+}

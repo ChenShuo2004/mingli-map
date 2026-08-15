@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "id": "liuyao_two_present_selection",
+  "title": "用神两现与取舍反例",
+  "summary": "同一目标六亲在卦中出现两处时，古法给出一组看似明确的优先项：取旺相、动、不破、不空、不伤者。《增删卜易》紧接着用案例说明，应验有时反落在旬空或月破的一爻。这个节点保存候选比较、古法优先和作者反例三层，不把任一优先表做成自动删除另一候选的算法。",
+  "fixed_target": {"label": "父母爻", "candidate_a": "二爻父母", "candidate_b": "五爻父母", "note": "只用固定同类双现结构，不从问事类型替用户取用神。"},
+  "comparison_axes": [
+    {"id": "strength", "label": "旺相／休囚", "a": "旺相", "b": "休囚", "old_preference": "取旺相", "counter": "优先项只是一条古法，仍须保留另一候选的实际状态。"},
+    {"id": "motion", "label": "动／静", "a": "发动", "b": "安静", "old_preference": "取动爻", "counter": "动静可形成优先，但不能独自证明另一爻无关。"},
+    {"id": "month_break", "label": "不破／月破", "a": "不破", "b": "月破", "old_preference": "取不破", "counter": "原书明确记录舍不破而用月破的反例。"},
+    {"id": "void", "label": "不空／旬空", "a": "不空", "b": "旬空", "old_preference": "取不空", "counter": "原书明确记录舍不空而用旬空的反例。"},
+    {"id": "harm", "label": "不伤／被伤", "a": "不受伤", "b": "受克伤", "old_preference": "取不伤", "counter": "受伤与否是比较轴，不应被压成无条件删除规则。"}
+  ],
+  "claim_layers": [
+    {"label": "对象事实", "claim": "同一目标六亲在本卦中出现两处。", "project_use": "先保留两个候选位置。"},
+    {"label": "古法优先", "claim": "旺相、动、不破、不空、不伤通常被列为优先。", "project_use": "显示比较方向，但不自动删掉另一处。"},
+    {"label": "作者反例", "claim": "应验有时落在旬空或月破的一处。", "project_use": "明确阻止把优先表写成必然答案。"},
+    {"label": "实现扩张", "claim": "锁定实现把多条优先项排成顺序算法，并加入持世、近世和数值评分。", "project_use": "这些新增次序只作现代实现差异，不回写成古籍共识。"}
+  ],
+  "distinctions": [
+    {"label": "用神原忌仇", "difference": "在目标已经固定后生成四角色关系网。"},
+    {"label": "用神两现", "difference": "同一目标角色在两个爻位同时出现，问题是候选比较与取舍争议。"},
+    {"label": "独发独静", "difference": "统计整卦唯一动或唯一静，不要求两个爻属于同一目标六亲。"}
+  ],
+  "reading_boundary": "本页固定父母爻两现，只展示五个比较轴、古法优先与原书反例；不接收问事类型，不替用户选主用神，不输出吉凶、事项和应期。",
+  "internal_review": {"status": "wikisource_pdf_and_locked_priority_engine_cross_checked", "reviewed_at": "2026-08-05", "source_refs": ["zengshan_buyi_wikisource_two_present_chapter", "zengshan_buyi_checked_pdf_two_present", "github_jygldj_wx_1f8d4b5_two_present_engine"]}
+}

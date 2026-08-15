@@ -1,0 +1,14 @@
+{
+  "id":"hour-gods","title":"时神与黄道黑道","summary":"每个时支位置各有当值时神及黄道／黑道分类；它与时辰宜忌是并列字段，黄道时也可能出现具体忌项。",
+  "slots":[
+    {"slot":"早子","ganzhi":"壬子","god":"司命","class":"黄道"},{"slot":"丑","ganzhi":"癸丑","god":"勾陈","class":"黑道"},{"slot":"寅","ganzhi":"甲寅","god":"青龙","class":"黄道"},{"slot":"卯","ganzhi":"乙卯","god":"明堂","class":"黄道"},
+    {"slot":"辰","ganzhi":"丙辰","god":"天刑","class":"黑道"},{"slot":"巳","ganzhi":"丁巳","god":"朱雀","class":"黑道"},{"slot":"午","ganzhi":"戊午","god":"金匮","class":"黄道"},{"slot":"未","ganzhi":"己未","god":"天德","class":"黄道"},
+    {"slot":"申","ganzhi":"庚申","god":"白虎","class":"黑道"},{"slot":"酉","ganzhi":"辛酉","god":"玉堂","class":"黄道"},{"slot":"戌","ganzhi":"壬戌","god":"天牢","class":"黑道"},{"slot":"亥","ganzhi":"癸亥","god":"玄武","class":"黑道"},{"slot":"晚子","ganzhi":"甲子","god":"天牢","class":"黑道"}
+  ],
+  "counterexample":{"slot":"卯","god":"明堂","class":"黄道","hour_avoids":["诸事不宜"],"point":"黄道／黑道分类不能替代时辰宜忌表"},
+  "boundaries":["早子与晚子因日界口径可能出现不同当值神","黄道黑道是分类字段，不是时辰总分"],
+  "public_sources":[
+    {"title":"lunar-javascript 锁定实现","note":"十三槽时神、黄黑道分类及卯时反例来自锁定版本。","url":"https://github.com/6tail/lunar-javascript/tree/4c45a59"},
+    {"title":"《协纪辨方书》用时法","note":"明确时家吉凶神不应一概拘泥。","url":"https://www.shidianguji.com/book/SK1619/chapter/1l9lm1detnuof"}
+  ]
+}

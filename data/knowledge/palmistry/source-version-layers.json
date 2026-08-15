@@ -1,0 +1,34 @@
+{
+  "id": "source-version-layers",
+  "title": "古籍、现代整理与图像版本",
+  "summary": "古籍原页、书目与版本研究、现代术语整理、教学图像和研究线索承担不同作用；它们可以互相连接，但不能互相替代。",
+  "source_layers": [
+    {"id": "historical-scan", "order": 1, "label": "古籍原页", "identity": "馆藏刻本、抄本或公版扫描", "supports": ["原文用字", "篇目与卷次", "原图布局", "该版本实际包含的内容"], "does_not_support": ["所有版本一致", "现代名称等同原名", "传统断语已经验证"], "status": "优先回到具体页"},
+    {"id": "bibliography", "order": 2, "label": "书目与版本研究", "identity": "目录记录、馆藏元数据、版本论文", "supports": ["成书与刊刻身份", "篇目增删", "版本先后与差异", "责任者信息"], "does_not_support": ["替代原页逐字核对", "替某一流派作唯一裁定"], "status": "负责版本关系"},
+    {"id": "modern-index", "order": 3, "label": "现代术语整理", "identity": "现代教材、辞表或主题索引", "supports": ["常用检索名", "位置导航", "同义词汇总", "阅读顺序"], "does_not_support": ["冒充古籍原词", "自动合并不同流派", "省略现代改名"], "status": "必须标明整理身份"},
+    {"id": "teaching-image", "order": 4, "label": "教学图像", "identity": "AI生成样本、重绘定位图、比例示意图", "supports": ["方向说明", "位置参照", "比例取点", "结构展开"], "does_not_support": ["真人事实", "古籍原图身份", "个体诊断或命运判断"], "status": "标明生成或重绘"},
+    {"id": "secondary-retelling", "order": 5, "label": "二手转述", "identity": "大众文章、转载、未核转录或摘录", "supports": ["发现常用名称", "寻找可能出处", "比较流行说法"], "does_not_support": ["替代古籍原页", "保证引文准确", "作为唯一知识依据"], "status": "需要继续追溯引用路径"}
+  ],
+  "comparison_axes": [
+    {"label": "材料身份", "question": "原页、研究、整理、图示还是线索？"},
+    {"label": "版本坐标", "question": "书名、卷次、刊刻、馆藏与整理时间是什么？"},
+    {"label": "内容粒度", "question": "支持原字、位置、术语、版本关系还是阅读导航？"},
+    {"label": "权利状态", "question": "公版、明确许可、仅可链接还是尚未确认？"},
+    {"label": "公开用途", "question": "可以展示、可以短引、只能索引还是需要待核？"}
+  ],
+  "version_case": {
+    "title": "固定版本例：同题相书并非同一内容结构",
+    "items": [
+      {"label": "Harvard 明刻《神相全编》", "version": "十二卷、首一卷；明代刻本", "use": "核对具体卷页与篇目位置"},
+      {"label": "宝翰楼《神相全编》", "version": "1786年刊本；另有分卷扫描", "use": "与其他馆藏并列，不默认页次相同"},
+      {"label": "《麻衣相法》版本研究", "version": "现代学术论文比较今本与明代版本", "use": "说明论手、掌纹等篇目存在重排与增删"}
+    ]
+  },
+  "connection_rules": ["先确定材料身份，再摘录知识点", "原页负责原文，版本研究负责差异说明", "现代名称与古籍名称并列，不回写为同一词", "教学标注必须能追到文字依据", "权利不明材料只保存链接与研究线索", "来源冲突时并列记录各自版本，不擅自裁成唯一结论"],
+  "boundaries": ["扫描清晰度不等于版本权威性", "出现于古籍不等于已经得到现代验证", "现代整理方便阅读，但不能隐去改名、重排与删节", "AI图像不作为真人样本或历史图像", "引用或复用前分别检查文本、图像与代码权利"],
+  "public_sources": [
+    {"title": "Harvard馆藏《神相全编》明刻本卷二、卷三", "note": "馆藏元数据标明十二卷、首一卷及明代刻本身份，并提供Harvard IIIF来源。", "url": "https://commons.wikimedia.org/wiki/File:Harvard_drs_53262204_%E7%A5%9E%E7%9B%B8%E5%85%A8%E7%B7%A8_v.2%E5%8D%B7%E4%B9%8B%E4%BA%8C%E3%80%81%E5%8D%B7%E4%B9%8B%E4%B8%89.pdf"},
+    {"title": "宝翰楼《神相全编》目录公版扫描", "note": "文件页标明1786年刊本身份与公版扫描状态。", "url": "https://commons.wikimedia.org/wiki/File:SSID-13003396_%E7%A5%9E%E7%9B%B8%E5%85%A8%E7%B7%A8_%E7%9B%AE%E9%8C%84.pdf"},
+    {"title": "梁伟贤《麻衣相法》版本初探", "note": "比较今本与明代刊本的篇目、卷次和内容差异。", "url": "https://ccsndb.ncl.edu.tw/nclccs/pdf/01_034_004_01_05.pdf"}
+  ]
+}

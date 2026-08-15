@@ -1,0 +1,31 @@
+{
+  "id": "life-trigram-groups",
+  "title": "命卦与东西四命",
+  "summary": "命卦是《八宅明镜》等年命体系按出生年、三元和传统男女起例得到的卦宫；坎、离、震、巽归东四命，乾、坤、艮、兑归西四命，中宫五按起例另行寄宫。",
+  "number_map": [
+    {"number":1,"trigram":"坎","group":"东四命"},{"number":2,"trigram":"坤","group":"西四命"},{"number":3,"trigram":"震","group":"东四命"},{"number":4,"trigram":"巽","group":"东四命"},{"number":5,"trigram":"中","group":"寄宫"},{"number":6,"trigram":"乾","group":"西四命"},{"number":7,"trigram":"兑","group":"西四命"},{"number":8,"trigram":"艮","group":"西四命"},{"number":9,"trigram":"离","group":"东四命"}
+  ],
+  "three_yuan_anchors": [
+    {"period":"上元甲子","male_start":"坎一","female_start":"中五"},
+    {"period":"中元甲子","male_start":"巽四","female_start":"坤二"},
+    {"period":"下元甲子","male_start":"兑七","female_start":"艮八"}
+  ],
+  "movement": [
+    {"category":"传统男命起例","direction":"九宫逆行","center_rule":"得中宫寄坤"},
+    {"category":"传统女命起例","direction":"九宫顺行","center_rule":"得中宫寄艮"}
+  ],
+  "fixed_example": {
+    "label":"1986丙寅年固定演示",
+    "anchor":"1984下元甲子",
+    "year_boundary":"已按所选年界归入下元丙寅年，与甲子锚点相隔两年",
+    "traditional_male":{"start":"下元甲子起兑七","movement":"逆行两位到中五，再寄坤","result":"坤二","group":"西四命"},
+    "traditional_female":{"start":"下元甲子起艮八","movement":"顺行两位","result":"坎一","group":"东四命"},
+    "note":"同一出生年按两种传统起例沿相反方向移动；示例只演示三元起点、移动和寄宫，不作个人判断。"
+  },
+  "required_fields": ["出生年采用的历法身份","上元、中元或下元","传统男命或女命起例","顺行或逆行","中宫寄宫规则","使用古籍起例或现代简化式"],
+  "boundaries": ["固定例先锁定1986年为下元丙寅年，只演示传统起例的移动和寄宫","公历元旦、立春或农历年作为出生年边界时结果可能不同，须随来源保存","现代简化公式常限定世纪，不能脱离适用年份当作通则","传统男女二分是历史公式字段，不代表现代性别认同或能力差异","命卦只说明传统分类，不输出个人吉凶"],
+  "public_sources": [
+    {"title":"南华大学：风水场域之意象性研究","note":"逐项提供三元男女起宫、顺逆行、中宫寄宫及东西四命分组。","url":"https://nhuir.nhu.edu.tw/retrieve/28545/092NHU05699014-001.pdf"},
+    {"title":"南华大学论文：传统阳宅风水观的主要流派","note":"用于确认命卦按出生年推算并分东四命、西四命。","url":"https://nhuir.nhu.edu.tw/retrieve/27257/090NHU00259002-002.pdf"}
+  ]
+}

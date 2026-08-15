@@ -1,0 +1,17 @@
+{
+  "id":"rule-conflicts","title":"规则冲突怎样保存","summary":"看似相反的字段先判断是否属于同一对象、同一尺度和同一版本；只有三者都相同才进入直接冲突，其他情况按字段或尺度并列。",
+  "decision_axes":["对象身份","时间尺度","来源版本"],
+  "cases":[
+    {"id":"parallel-day-fields","label":"同日不同字段","left":"朱雀／黑道","right":"嫁娶列入日宜","identity":"日神分类 × 日级事项","handling":"并列保存","reason":"分类字段不等于事项栏"},
+    {"id":"parallel-hour-fields","label":"同时不同字段","left":"明堂／黄道","right":"诸事不宜","identity":"时神分类 × 时级事项","handling":"并列保存","reason":"黄黑分类不能替代时宜忌"},
+    {"id":"cross-scale","label":"日时尺度不同","left":"嫁娶列入日宜","right":"卯时诸事不宜","identity":"日级事项 × 时级事项","handling":"按尺度分层","reason":"日栏不能覆盖具体时槽"},
+    {"id":"version-split","label":"同字段版本不同","left":"癸日福神正西","right":"癸日福神东北","identity":"同一日干福神方位","handling":"版本并列","reason":"保留两张来源表，不静默选一"},
+    {"id":"direct-conflict","label":"同对象同尺度同版本","left":"同一事项列入宜","right":"同一事项列入忌","identity":"直接字段冲突","handling":"标记待核验","reason":"不以数量、黄黑道或自设权重自动裁决"}
+  ],
+  "flow":["先比对象身份","再比时间尺度","再比来源版本","确认直接冲突后标记待核验"],
+  "boundaries":["没有直接冲突不代表已经得到择日结论","本站不建立吉神加分、凶煞扣分模型","来源没有给出裁决方法时不替来源补写"],
+  "public_sources":[
+    {"title":"《协纪辨方书》序","note":"记录历家说法聚讼、旧本互相矛盾及订正背景。","url":"https://www.shidianguji.com/book/SK1619/chapter/1l9lljq9b7zsw"},
+    {"title":"《协纪辨方书》用日法","note":"强调日神吉凶须与宜忌参看并辨别轻重取舍。","url":"https://www.shidianguji.com/book/SK1619/chapter/1l9lm1detni1b"}
+  ]
+}

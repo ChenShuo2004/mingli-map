@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0",
+  "id": "liuyao_returning_change_relations",
+  "title": "回头生克冲合",
+  "summary": "回头关系描述同一爻位上的反向作用：本爻发动后产生变爻，再由变爻回看本爻。变爻五行生本爻称回头生，克本爻称回头克；变支与本支相冲称回头冲，相合称回头合。",
+  "relation_types": [
+    {
+      "id": "generate",
+      "label": "回头生",
+      "mark": "生",
+      "axis": "五行",
+      "definition": "变爻五行生本爻五行",
+      "example": { "base_branch": "寅", "base_element": "木", "changed_branch": "子", "changed_element": "水", "matches": ["回头生"] }
+    },
+    {
+      "id": "control",
+      "label": "回头克",
+      "mark": "克",
+      "axis": "五行",
+      "definition": "变爻五行克本爻五行",
+      "example": { "base_branch": "子", "base_element": "水", "changed_branch": "辰", "changed_element": "土", "matches": ["回头克"] }
+    },
+    {
+      "id": "clash",
+      "label": "回头冲",
+      "mark": "冲",
+      "axis": "地支",
+      "definition": "变支与本支构成六冲",
+      "example": { "base_branch": "子", "base_element": "水", "changed_branch": "午", "changed_element": "火", "matches": ["回头冲"] }
+    },
+    {
+      "id": "combine",
+      "label": "回头合",
+      "mark": "合",
+      "axis": "地支",
+      "definition": "变支与本支构成六合",
+      "example": { "base_branch": "卯", "base_element": "木", "changed_branch": "戌", "changed_element": "土", "matches": ["回头合"] }
+    }
+  ],
+  "axes": [
+    {
+      "id": "element",
+      "label": "五行轴",
+      "asks": "变爻五行怎样作用于本爻五行？",
+      "outcomes": ["回头生", "回头克"],
+      "note": "只按变对本的生克方向命名，不把本爻对变爻的作用倒置。"
+    },
+    {
+      "id": "branch",
+      "label": "地支轴",
+      "asks": "变支与本支是否成六冲或六合？",
+      "outcomes": ["回头冲", "回头合"],
+      "note": "冲合与五行生克是两条判断轴，可以同时成立。"
+    }
+  ],
+  "overlap_example": {
+    "base_branch": "子",
+    "base_element": "水",
+    "changed_branch": "丑",
+    "changed_element": "土",
+    "matches": ["回头克", "回头合"],
+    "explanation": "丑土回克子水，同时子丑又属于六合，所以同一组本变地支可以保留两个标签。"
+  },
+  "relation_sources": [
+    { "source": "月建", "direction": "月建 → 爻", "called_returning": false },
+    { "source": "日辰", "direction": "日辰 → 爻", "called_returning": false },
+    { "source": "卦中他爻", "direction": "另一动爻 → 爻", "called_returning": false },
+    { "source": "同位变爻", "direction": "变爻 → 本爻", "called_returning": true }
+  ],
+  "reading_boundary": "这里只解释变爻为什么会对同位本爻形成回头生、克、冲、合，不根据标签输出吉凶、应期或事件结果，也不开放起卦和个人判断。",
+  "internal_review": {
+    "status": "classical_direction_and_locked_implementation_cross_checked",
+    "reviewed_at": "2026-08-04",
+    "source_refs": [
+      "zengshan_buyi_wikisource_general_introduction_lines_435_463",
+      "zengshan_buyi_wikisource_chapter_11_24_26",
+      "bushi_zhengzong_ctext_eighteen_discussions",
+      "github_horace_maxwell_horosa_7d8a93e_liuyao_dongbian"
+    ],
+    "boundary": "公开变对本的折返方向、五行与地支双轴、标签重叠及关系来源层；旺衰、用神、喜忌、应期和事件断语留在受限层。"
+  }
+}

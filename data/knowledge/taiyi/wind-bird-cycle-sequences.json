@@ -1,0 +1,45 @@
+{
+  "schema_version":"1.0.0",
+  "id":"wind-bird-cycle-sequences",
+  "title":"飞鸟与三风、五风、八风的周期序列",
+  "summary":"《太乙金镜式经》卷七把飞鸟、三风、五风、八风分成四条积年周期：飞鸟小周九并从一宫起，三风小周九且明列三、七、二、六、一、五、九、四、八，五风小周二十九并按一、三、五、七、九、二、四、六、八循环，八风称小周九但OCR只列二、三、五、六、七、八、九、一八个宫数。锁定实现与这些条件并不一致：飞鸟改为模八且余零返回字符串“坤”，三风表缺五宫并改变首项，八风以四宫替换五宫，五风在二十九整除支路可返回10至28等九宫域外数字。仅展示周期、序列、类型与固定样本，不公开风鸟合宫后的天象、战争或胜负解释。",
+  "fixed_input":"1552年9月24日 0时0分 · 年计",
+  "objects":[
+    {"id":"flying-bird","name":"飞鸟","classical_cycle":"小周9","classical_sequence":["起1宫","顺行九宫"],"implementation_cycle":"积年 mod 8","implementation_sequence":[1,8,3,4,9,2,7,6],"status":"周期数不同","tone":"different","zero_branch":"余0直接返回字符串‘坤’；其他余数返回宫数。"},
+    {"id":"three-wind","name":"三风","classical_cycle":"小周9","classical_sequence":[3,7,2,6,1,5,9,4,8],"implementation_cycle":"积年 mod 9","implementation_sequence":[7,2,6,1,3,9,4,8],"status":"缺5宫且首项不同","tone":"different","zero_branch":"余0先反复除9，再取模9；返回1至8中的数字。"},
+    {"id":"five-wind","name":"五风","classical_cycle":"小周29","classical_sequence":[1,3,5,7,9,2,4,6,8],"implementation_cycle":"积年 mod 29 后再按mod 9查表","implementation_sequence":[1,3,5,7,9,2,4,6,8],"status":"常规序列同形 · 整除支路越界","tone":"unstable","zero_branch":"余0反复除29后直接mod 29；例如积年290返回10，num2gong无法映射。"},
+    {"id":"eight-wind","name":"八风","classical_cycle":"小周9","classical_sequence":[2,3,5,6,7,8,9,1],"implementation_cycle":"积年 mod 9","implementation_sequence":[2,3,4,6,7,8,9,1],"status":"原典5宫／实现4宫","tone":"different","zero_branch":"余0先反复除9，再取模9；OCR九周却只列8个宫数，原典序列本身待影像校。"}
+  ],
+  "method_results":[
+    {"method":0,"label":"太乙统宗","accumulated":10155469,"board":"阳遁十三局","remainders":{"飞鸟":5,"三风":4,"五风":17,"八风":4},"positions":{"飞鸟":9,"三风":1,"五风":6,"八风":6},"status":"与太乙局相同"},
+    {"method":1,"label":"太乙金镜","accumulated":1938109,"board":"阳遁十三局","remainders":{"飞鸟":5,"三风":4,"五风":10,"八风":4},"positions":{"飞鸟":9,"三风":1,"五风":1,"八风":6},"status":"同局数不代表五风同位"},
+    {"method":2,"label":"太乙淘金歌","accumulated":10155745,"board":"阳遁一局","remainders":{"飞鸟":1,"三风":1,"五风":3,"八风":1},"positions":{"飞鸟":1,"三风":7,"五风":5,"八风":2},"status":"四项同时换位"},
+    {"method":3,"label":"太乙局","accumulated":10155469,"board":"阳遁十三局","remainders":{"飞鸟":5,"三风":4,"五风":17,"八风":4},"positions":{"飞鸟":9,"三风":1,"五风":6,"八风":6},"status":"与统宗完全相同"}
+  ],
+  "boundary_samples":[
+    {"input":8,"object":"飞鸟","intermediate":"8 mod 8 = 0","return":"坤","mapped":"num2gong(坤) → 空","status":"返回类型由数字变为字符串"},
+    {"input":9,"object":"三风／八风","intermediate":"整除9后得到1","return":"三风1 · 八风1","mapped":"均可映射九宫","status":"特殊分支仍在九宫域"},
+    {"input":290,"object":"五风","intermediate":"290 ÷ 29 = 10","return":"10","mapped":"num2gong(10) → 空","status":"返回九宫域外数字"},
+    {"input":10155469,"object":"固定method 0／3","intermediate":"四个余数均非0","return":"9 · 1 · 6 · 6","mapped":"四项可映射","status":"固定例未触发异常不等于函数完整"}
+  ],
+  "layer_differences":[
+    {"label":"飞鸟周期8／9冲突","classical":"卷七明确写小周九、起一宫、顺行九宫","implementation":"flybird使用积年mod 8并列8个非中宫值","handling":"并列保存，不用程序八值表改写原典小周九。"},
+    {"label":"三风序列缺五宫","classical":"三、七、二、六、一、五、九、四、八共9项","implementation":"七、二、六、一、三、九、四、八共8项","handling":"本节点分别显示完整序列，不把两表错位对齐。"},
+    {"label":"八风原典也有计数疑点","classical":"称小周九，但OCR只列二、三、五、六、七、八、九、一八项","implementation":"同为8项，却以四替换五","handling":"标作原典影像待校与实现差异两个问题，不能相互证明。"},
+    {"label":"五风整除分支越界","classical":"小周二十九后仍以九宫序列周而复始","implementation":"整除29时可直接返回10至28","handling":"越界值保留为空映射，不补成相邻宫。"},
+    {"label":"高风险解释不公开","classical":"各段附风雨、日月、云气等合宫说明","implementation":"另有飞鸟助战函数返回胜负文字","handling":"本节点只保存周期与位置，不展示天象、战争、行动或胜负结论。"}
+  ],
+  "reading_boundaries":[
+    {"label":"可识别","note":"四个对象各自使用的周期、起点与序列。"},
+    {"label":"可复核","note":"固定四个method的余数、函数返回与三个异常分支。"},
+    {"label":"待校勘","note":"飞鸟顺行九宫的逐宫表、八风第4／5宫字形及五风29周完整推步。"},
+    {"label":"不由此推出","note":"任何现实天象、气候、战争、胜负、灾异或个人结果。"}
+  ],
+  "public_sources":[
+    {"title":"《太乙金鏡式經》卷七：飞鸟与三、五、八风","url":"https://ctext.org/wiki.pl?chapter=469355&if=gb&remap=gb","note":"第13及17至21条列四者的小周、起宫与序列；来源连接四库影像，八风关键字形仍待回看。"},
+    {"title":"kintaiyi锁定风鸟周期函数","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/config.py#L694-L738","note":"固定提交的flybird、threewind、fivewind、eightwind定义周期、序列与整除分支。"},
+    {"title":"kintaiyi锁定九宫转换函数","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/config.py#L337-L339","note":"num2gong只接受1至9；字符串坤和10至28均返回空。"},
+    {"title":"kintaiyi锁定固定例输入","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/examples/basic_usage.py#L13-L20","note":"固定输入1552-09-24 00:00、年计；本页在临时锁定环境复跑method 0—3。"}
+  ],
+  "internal_review":{"status":"formal_wind_bird_cycle_audit","reviewed_at":"2026-08-06","owner":["火华","Codex"],"runtime_environment":"temporary Python venv; locked repository commit installed from source","runtime_command":"config.flybird/threewind/fivewind/eightwind(accnum), method=0..3 plus boundary inputs 8, 9, 290","deduplication":"不并入四神、天乙、地乙与直符：该页四对象按七十二局表独立换位，本页四对象直接读取积年余数且存在周期和返回域审计。不并入大游小游：游太乙有多年驻宫周期，本页是短周期风鸟序列。","known_gaps":["卷七OCR八风序列只有8项","飞鸟原典逐宫顺序未从文本展开","四函数未发现专项测试"],"boundary":"固定样本、无真人输入、无随机；本节点不展示天象、风雨、战争、助战、灾异或胜负断语。"}
+}

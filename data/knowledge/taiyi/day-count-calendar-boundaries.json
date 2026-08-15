@@ -1,0 +1,100 @@
+{
+  "schema_version": "1.0",
+  "id": "day-count-calendar-boundaries",
+  "title": "日计",
+  "summary": "日计不是把月计结果简单加一天。《太乙金镜式经》先由积月、月法与日法求积日和小余，再以360、72、24、3分出周纪、局数与太乙驻宫；《武备志》所录路线则先把闰月数并回月实，再以日平会换算积日，并用庚午正月初六实例得到壬子元二十三局。锁定实现没有复演这两条历法链：method 0至2都以1900年6月19日为公历日差锚点，加同一个708010920常数；method 0还把结果校正到日干支的1至60序号。method 3另以农历年和农历日近似累计，未纳入月序，导致每逢农历初一积数可倒退。日差函数又把带小时的负数直接向零取整，使1900年前同一日期内积日提前变化；method 0叠加晚子换日校正后还可能一次跳60。本节点把原典积日、实现大数、局号、宫位、日干支与日界分层保存，不把测试通过当成历法正确。",
+  "fixed_input": "固定复核：1552年9月24日、2000年9月24日与2023年闰二月边界；均为只读样本",
+  "identity_layers": [
+    {"id":"accumulated","index":"01","name":"积日原数","question":"从所采用的历法起点累计到第几日？","note":"是纪、局与行宫的共同输入；不同底本或程序分支可以使用不同起点。"},
+    {"id":"cycle","index":"02","name":"周期余数","question":"积日进入360、72、24与60后分别回答什么？","note":"360用于周纪范围，72用于局号，24接太乙小周，60用于日辰或入纪；这些余数不能合并成一个字段。"},
+    {"id":"board","index":"03","name":"局号与宫位","question":"日计积数怎样成为局号和太乙所在？","note":"局号按72读取；宫位还要经过24取余与三日一宫的轨道。"},
+    {"id":"boundary","index":"04","name":"日界约定","question":"积日应该在什么时候加一？","note":"原典日计按日数推进；锁定实现还受到公历小时、负日差截断与23时干支换日影响。"}
+  ],
+  "source_routes": [
+    {"id":"golden-mirror","name":"《太乙金镜式经》积日路线","chain":["积月","月法乘之","日法而一","积日与小余","360／72／24／3"],"status":"卷一正文可定位","note":"日法、月法、朔策与小余保留原文数值；OCR与版本未完成逐字互校前，不把常数改写成现代天数。"},
+    {"id":"wubeizhi","name":"《武备志》日平会路线","chain":["月实","闰月数并入","日平会相乘","积日","入纪与入局"],"status":"公式与庚午实例可定位","note":"平会数与闰法属于该版本的历法路线，不与金镜常数静默合并。"},
+    {"id":"implementation","name":"锁定程序日差路线","chain":["公历日差","708010920常数","可选日干支校正","mod72局号","mod24宫轨"],"status":"固定commit可运行","note":"method 3不走公历日差，改用农历年与农历日近似式，因此单列。"}
+  ],
+  "classical_example": {
+    "label": "《武备志》隆庆庚午正月初六例",
+    "construction": "承接月计所得月实13755，先求闰月数422并入为14177月；减一后以日平会相乘，得到积日418625日78分56秒。原文先以360除得余305，对应己巳年十二月三十；再加正月初六六算得311，进入壬子元二十三局。",
+    "steps": [
+      {"index":"01","label":"月实","value":"13,755月","note":"沿用同章月计庚午正月的月实。"},
+      {"index":"02","label":"并闰","value":"+422月 = 14,177月","note":"闰余零数不足一闰者舍去。"},
+      {"index":"03","label":"积日","value":"418,625日78分56秒","note":"由月总数减一后乘日平会。"},
+      {"index":"04","label":"所求日","value":"余311算","note":"余305再加正月初六六算。"},
+      {"index":"05","label":"入局","value":"壬子元23局","note":"四个72共288，311−288=23。"}
+    ],
+    "boundary": "实例后续主客吉凶与官职断语不纳入本节点；本页只保留积日、余数与局号链。"
+  },
+  "implementation_methods": [
+    {"method":0,"label":"太乙统宗","formula":"公历日差 + 708010920，再校正使mod60等于当日日干支序号","input_clock":"公历日期小时 + 日干支","fixed_accumulated":707883923,"fixed_board":"阳遁十一局","fixed_palace":4,"status":"同日可因小时与晚子换日改变"},
+    {"method":1,"label":"太乙金镜","formula":"公历日差 + 708010920","input_clock":"公历日期小时","fixed_accumulated":707883923,"fixed_board":"阳遁十一局","fixed_palace":4,"status":"1900年前受负日差向零截断影响"},
+    {"method":2,"label":"太乙淘金歌","formula":"公历日差 + 708010920","input_clock":"公历日期小时","fixed_accumulated":707883923,"fixed_board":"阳遁十一局","fixed_palace":4,"status":"当前与method 1机械同值"},
+    {"method":3,"label":"太乙局","formula":"round((农历年−423)×235／19×29.5306 + 农历日)","input_clock":"农历年 + 农历日","fixed_accumulated":412371,"fixed_board":"阳遁二十七点零局","fixed_palace":1,"status":"浮点局号且月首可倒退"}
+  ],
+  "time_audits": [
+    {
+      "id":"historical-day","name":"1552年同一日","question":"日计是否在整天内保持不变？",
+      "samples":[
+        {"time":"09-24 00:00","lunar":"九月初七","day_ganzhi":"丙戌","values":[707883923,707883923,707883923,412371],"boards":[11,11,11,27],"note":"四分支基准。"},
+        {"time":"09-24 12:00","lunar":"九月初七","day_ganzhi":"丙戌","values":[707883983,707883924,707883924,412371],"boards":[71,12,12,27],"note":"负日差向零截断令method 1／2提前加1；method 0为维持丙戌序号再跳60。"},
+        {"time":"09-24 23:00","lunar":"九月初七","day_ganzhi":"丁亥","values":[707883924,707883924,707883924,412371],"boards":[12,12,12,27],"note":"干支入口已换日，前三支落到次日值。"},
+        {"time":"09-25 00:00","lunar":"九月初八","day_ganzhi":"丁亥","values":[707883924,707883924,707883924,412372],"boards":[12,12,12,28],"note":"method 3在农历日加一时才推进。"}
+      ]
+    },
+    {
+      "id":"modern-day","name":"2000年同一日","question":"正日差是否消除所有小时干扰？",
+      "samples":[
+        {"time":"09-24 00:00","lunar":"八月廿七","day_ganzhi":"乙酉","values":[708047542,708047542,708047542,576021],"boards":[46,46,46,21],"note":"method 0至2同值。"},
+        {"time":"09-24 23:00","lunar":"八月廿七","day_ganzhi":"丙戌","values":[708047543,708047542,708047542,576021],"boards":[47,46,46,21],"note":"公历日差未变，只有method 0随23时日干支提前加一。"},
+        {"time":"09-25 00:00","lunar":"八月廿八","day_ganzhi":"丙戌","values":[708047543,708047543,708047543,576022],"boards":[47,47,47,22],"note":"午夜后三条日差分支和农历日分支各加一。"}
+      ]
+    },
+    {
+      "id":"lunar-boundary","name":"2023年农历月界","question":"method 3是否形成连续积日？",
+      "samples":[
+        {"time":"03-21 00:00","lunar":"二月三十","day_ganzhi":"戊寅","values":[708055755,708055755,708055755,584425],"boards":[51,51,51,1],"note":"平二月末。"},
+        {"time":"03-22 00:00","lunar":"闰二月初一","day_ganzhi":"己卯","values":[708055756,708055756,708055756,584396],"boards":[52,52,52,44],"note":"前三支+1；method 3因农历日30→1倒退29。"},
+        {"time":"04-19 00:00","lunar":"闰二月廿九","day_ganzhi":"丁未","values":[708055784,708055784,708055784,584424],"boards":[8,8,8,72],"note":"闰月末。"},
+        {"time":"04-20 00:00","lunar":"三月初一","day_ganzhi":"戊申","values":[708055785,708055785,708055785,584396],"boards":[9,9,9,44],"note":"前三支+1；method 3再次倒退28，证明公式未纳入月序。"}
+      ]
+    }
+  ],
+  "layer_differences": [
+    {"label":"积日起点","classical":"由积月、闰法与朔策／日平会换算","implementation":"method 0—2改用1900-06-19公历日差与固定常数","handling":"两条路线并列，不宣称程序大数复原了任一古法。"},
+    {"label":"四分支身份","classical":"选定原典没有四个同名method","implementation":"0—2常数机械同值；3另用农历近似式","handling":"方法名保留为软件版本标签。"},
+    {"label":"日内稳定性","classical":"日计以所求日推进","implementation":"传入小时令负日差截断与23时干支换日进入积日","handling":"同日00／12／23时并排显示，不选一个值掩盖差异。"},
+    {"label":"闰月处理","classical":"《武备志》把闰月数并回月实","implementation":"0—2依赖连续公历日差；3只读农历年和日","handling":"闰月边界显示连续支与倒退支。"},
+    {"label":"整数类型","classical":"积日、余数与局数按算数叙述","implementation":"method 3经round返回浮点，局号显示27.0等值","handling":"保留浮点身份，不静默改成整数。"}
+  ],
+  "reading_boundaries": [
+    {"label":"固定样本","note":"不接收真人日期；三个年份只用于显示周期、日界和实现断点。"},
+    {"label":"原文常数","note":"金镜日法、月法、朔策和小余先照录；版本与OCR未互校前不重算成唯一现代数值。"},
+    {"label":"实现返回","note":"运行结果证明锁定代码实际返回什么，不证明它符合传统历法。"},
+    {"label":"日界分歧","note":"23时换干支、午夜换公历日和农历初一是三种边界，不擅自合并。"},
+    {"label":"内容范围","note":"只展示积日、周期、局号、宫位与边界；不展示原典实例所附人事、官职或吉凶断语。"}
+  ],
+  "public_sources": [
+    {"title":"《太乙金镜式经》卷一：推日计差法、积日与日计太乙所在","url":"https://ctext.org/wiki.pl?chapter=353644&if=gb&remap=gb","note":"第30至36条保存日法、月法、积日、小余、梁天监三年实例、日计太乙与计神推法；影像页30至33可回看。"},
+    {"title":"《武备志》：求日计","url":"https://ctext.org/wiki.pl?chapter=3064539&if=gb&remap=gb","note":"第336至340项保存闰法、日平会、庚午正月初六积日与壬子元二十三局实例；后续断语不纳入本节点。"},
+    {"title":"kintaiyi锁定日计积数实现","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L381-L419","note":"固定提交显示1900-06-19日差、三支同值常数、method 0日干支校正与method 3农历年日近似式。"},
+    {"title":"kintaiyi锁定局号、纪与宫轨实现","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L500-L580","note":"日计固定阳遁，局号按72取余，宫轨按24项三局驻宫表读取。"},
+    {"title":"kintaiyi日差函数","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L312-L318","note":"日差接收小时并直接int化，负数向零截断造成1900年前同一公历日内提前加一。"}
+  ],
+  "source_refs": [
+    "《太乙金镜式经》卷一，四库全书影像页30—33",
+    "《武备志》卷首求日计，影像页86—88",
+    "kentang2017/kintaiyi@f2719d674adb0b4c710fb9d298283c9ccb05a545"
+  ],
+  "internal_review": {
+    "status": "formal_day_count_calendar_audit",
+    "reviewed_at": "2026-08-06",
+    "owner": ["火华", "Codex"],
+    "runtime_environment": "temporary Python venv; locked repository commit installed from source",
+    "runtime_command": "Taiyi.accnum/kook/ty/getepoch for ji_style=2, method=0..3 across 1552, 2000 and 2023 boundary probes",
+    "deduplication": "不并入五计总览：总览只辨入口，不能承接积日公式、周期与日界。不并入月计：月计解释农历数字月与节气月干支双时钟，日计另有积月转积日、闰月并入、日差锚点与日内稳定性。不并入时计：时计一日十二算并以二至定遁，日计一日一算且锁定实现固定阳遁。",
+    "known_gaps": ["金镜日法／月法常数仍待影像与另一版本逐字互校", "《武备志》平会分秒记法与积日小数尚未独立历算复原", "锁定实现method 0日干支60校正、负日差截断和method 3月首倒退未有专项测试", "日计天目正文标题在选定OCR中疑作月计天目，待影像核字"],
+    "boundary": "固定历法样本，无真人输入；只公开积日、周期、局号、宫位、日干支与边界，不公开原典实例的人事、官职、灾异或吉凶断语。"
+  }
+}

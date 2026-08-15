@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0.0",
+  "id": "three-talents-structural-tags",
+  "title": "三才足数与无天、无地、无人条件",
+  "summary": "把cal_des中的三才足数、无天、无地、无人从灾异断语中剥离，只保留数值条件。卷六明确列无天为1—9、无地为1—4及11—14、21—24、31—34，无人为10、20、30、40；锁定实现的无天、无人条件与此一致，但无地使用‘个位小于5’，额外把四个整十数纳入，令它们同时出现无地与无人。三才足数则是程序添加的条件标签，选定卷六段没有给出同名完备数表。",
+  "fixed_input": "1552年9月24日 0时0分 · 年计",
+  "tags": [
+    {"id": "complete", "name": "三才足数", "classical_condition": "选定卷六段先定义三才为天地人，但未列出同名完备数表。", "implementation_condition": "数 > 10，且个位 > 5", "classical_numbers": [], "implementation_numbers": [16,17,18,19,26,27,28,29,36,37,38,39], "status": "实现标签 · 原典同名条件待校", "tone": "implementation"},
+    {"id": "no-heaven", "name": "无天", "classical_condition": "算中无十；卷六逐项列1—9。", "implementation_condition": "数 < 10", "classical_numbers": [1,2,3,4,5,6,7,8,9], "implementation_numbers": [1,2,3,4,5,6,7,8,9], "status": "两层数集一致", "tone": "aligned"},
+    {"id": "no-earth", "name": "无地", "classical_condition": "算中无五；卷六列尾数1—4的四组数。", "implementation_condition": "数 mod 10 < 5", "classical_numbers": [1,2,3,4,11,12,13,14,21,22,23,24,31,32,33,34], "implementation_numbers": [1,2,3,4,10,11,12,13,14,20,21,22,23,24,30,31,32,33,34,40], "status": "实现多出四个整十数", "tone": "different"},
+    {"id": "no-human", "name": "无人", "classical_condition": "卷六逐项列10、20、30、40。", "implementation_condition": "数 mod 10 = 0", "classical_numbers": [10,20,30,40], "implementation_numbers": [10,20,30,40], "status": "两层数集一致", "tone": "aligned"}
+  ],
+  "overlap_cases": [
+    {"label": "无天＋无地", "numbers": [1,2,3,4], "classical": "四个数同时出现在卷六无天、无地列举中", "implementation": "num<10与余数<5同时成立", "handling": "保留双标签；四类不是互斥单选。"},
+    {"label": "无地＋无人", "numbers": [10,20,30,40], "classical": "卷六把四个整十数列为无人，未列入无地数集", "implementation": "余数0既小于5又等于0，两个if连续命中", "handling": "标作实现额外重叠，不回写为原典共识。"},
+    {"label": "无结构标签", "numbers": [15,25,35], "classical": "不在卷六三类‘无’的列举中", "implementation": "不满足四个结构if，cal_des仍可能另查numdict", "handling": "这里只写无结构标签，不等于没有任何输出。"}
+  ],
+  "method_results": [
+    {"method": 0, "label": "太乙统宗", "accumulated": 10155469, "board": "阳遁十三局", "counts": [{"role":"主算","value":18,"tags":["三才足数"]},{"role":"客算","value":19,"tags":["三才足数"]},{"role":"定算","value":19,"tags":["三才足数"]}], "status": "与金镜、太乙局相同"},
+    {"method": 1, "label": "太乙金镜", "accumulated": 1938109, "board": "阳遁十三局", "counts": [{"role":"主算","value":18,"tags":["三才足数"]},{"role":"客算","value":19,"tags":["三才足数"]},{"role":"定算","value":19,"tags":["三才足数"]}], "status": "固定例"},
+    {"method": 2, "label": "太乙淘金歌", "accumulated": 10155745, "board": "阳遁一局", "counts": [{"role":"主算","value":7,"tags":["无天"]},{"role":"客算","value":13,"tags":["无地"]},{"role":"定算","value":13,"tags":["无地"]}], "status": "三算进入两种不同结构标签"},
+    {"method": 3, "label": "太乙局", "accumulated": 10155469, "board": "阳遁十三局", "counts": [{"role":"主算","value":18,"tags":["三才足数"]},{"role":"客算","value":19,"tags":["三才足数"]},{"role":"定算","value":19,"tags":["三才足数"]}], "status": "与统宗、金镜相同"}
+  ],
+  "layer_differences": [
+    {"label": "四类条件不是单选", "classical": "卷六无天与无地数集在1—4重叠", "implementation": "cal_des用四个连续if，不是if／elif", "handling": "1—4显示无天＋无地，保留多标签结构。"},
+    {"label": "整十数的无地差异", "classical": "10、20、30、40只列入无人", "implementation": "余数0<5，先命中无地，再命中无人", "handling": "四个整十数显示实现双标签，并标出与原典不同。"},
+    {"label": "三才足数来源层不同", "classical": "选定段落定义天地人及三类缺项，未直接列三才足数数表", "implementation": "固定条件生成12个三才足数", "handling": "此处称实现条件，不用补集推导成古法。"},
+    {"label": "结构标签与数类名并行", "classical": "三才段与长短、五音等术分条出现", "implementation": "cal_des最后还从numdict追加纯阴、上和等类名", "handling": "本页只处理三才结构标签；数类名留在上一节点。"},
+    {"label": "灾异文字不公开", "classical": "无天、无地、无人后接天象、地变、人事说明", "implementation": "cal_des把这些说明拼入返回文本", "handling": "公开数据只保存标签名、数集与条件，不保存结果断语。"}
+  ],
+  "reading_boundaries": [
+    {"label": "可识别", "note": "四类实现条件、原典三类缺项数集及两个重叠区域。"},
+    {"label": "可复核", "note": "1—40每个数会得到哪些结构标签，以及固定四分支的三算结果。"},
+    {"label": "待校勘", "note": "三才足数的原典同名数表与不同版本条件。"},
+    {"label": "不由此推出", "note": "任何标签对真人天灾、地变、人事、健康、胜负或吉凶具有现实效力。"}
+  ],
+  "public_sources": [
+    {"title": "《太乙金鏡式經》卷六：推三才以占天地人", "url": "https://ctext.org/wiki.pl?chapter=80794&if=gb&remap=gb", "note": "第17条定义三才为天地人，并逐项列出无天、无地、无人数集；来源连接四库本影像与OCR。"},
+    {"title": "kintaiyi锁定三才结构条件", "url": "https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/config.py#L349-L360", "note": "固定提交的cal_des以四个连续if生成三才足数、无天、无地、无人，并继续叠加numdict类名。"},
+    {"title": "kintaiyi锁定主客定算表", "url": "https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/config.py#L109-L114", "note": "固定四分支使用阳遁十三局[18,19,19]与阳遁一局[7,13,13]作为本页条件输入。"},
+    {"title": "kintaiyi锁定固定例输入", "url": "https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/examples/basic_usage.py#L13-L20", "note": "固定输入1552-09-24 00:00、年计；本页在临时锁定环境复跑method 0—3。"}
+  ],
+  "internal_review": {
+    "status": "formal_three_talents_structural_tag_audit",
+    "reviewed_at": "2026-08-06",
+    "owner": ["火华", "Codex"],
+    "source_refs": ["ctext_taiyi_jinjing_vol_6", "github_kentang2017_kintaiyi_f2719d6"],
+    "runtime_environment": "temporary Python venv; locked repository commit installed from source",
+    "runtime_command": "config.cal_des and Taiyi(...).home_cal/away_cal/set_cal(0, method), method=0..3",
+    "deduplication": "不并入十类数名与空缺值：上一页处理numdict按完整数值查单一类名，本页处理cal_des四个可叠加if。不并入宫阴阳与算奇偶：该页输入太乙宫属性，本页完全不读取太乙宫。",
+    "known_gaps": ["三才足数的古籍同名完备数表未在选定卷六段找到", "无地整十数差异需检查其他版本是否存在异文", "cal_des未发现专项测试"],
+    "boundary": "固定样本、无真人输入、无随机；本节点只展示结构条件与重叠，不公开天象、地变、人事、灾异、健康、胜负或吉凶断语。"
+  }
+}

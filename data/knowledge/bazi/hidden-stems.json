@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "id": "bazi_hidden_stems",
+  "title": "地支藏干",
+  "summary": "在八字的干支关系中，每个地支对应一个主气天干；部分地支还兼藏一至两个天干。",
+  "presentation_rule": "公开页面只区分主气与兼藏。兼藏数组不表达强弱次序。",
+  "consensus_scope": {
+    "status": "accepted_members_disputed_ranking",
+    "accepted": [
+      "十二地支各自的主气天干",
+      "十二地支所包含的兼藏天干成员"
+    ],
+    "disputed": [
+      "丑中癸辛的中气、余气标签",
+      "午中己的中气或余气标签",
+      "未中丁乙的中气、余气标签",
+      "申中壬戊的中气、余气标签"
+    ],
+    "preservation_rule": "争议版本继续保存在来源层和比较层；正式层不显示兼藏排序。"
+  },
+  "records": [
+    { "branch": "子", "season_position": "仲", "main_stem": "癸", "additional_stems": [] },
+    { "branch": "丑", "season_position": "季", "main_stem": "己", "additional_stems": ["癸", "辛"] },
+    { "branch": "寅", "season_position": "孟", "main_stem": "甲", "additional_stems": ["丙", "戊"] },
+    { "branch": "卯", "season_position": "仲", "main_stem": "乙", "additional_stems": [] },
+    { "branch": "辰", "season_position": "季", "main_stem": "戊", "additional_stems": ["乙", "癸"] },
+    { "branch": "巳", "season_position": "孟", "main_stem": "丙", "additional_stems": ["戊", "庚"] },
+    { "branch": "午", "season_position": "仲", "main_stem": "丁", "additional_stems": ["己"] },
+    { "branch": "未", "season_position": "季", "main_stem": "己", "additional_stems": ["丁", "乙"] },
+    { "branch": "申", "season_position": "孟", "main_stem": "庚", "additional_stems": ["壬", "戊"] },
+    { "branch": "酉", "season_position": "仲", "main_stem": "辛", "additional_stems": [] },
+    { "branch": "戌", "season_position": "季", "main_stem": "戊", "additional_stems": ["辛", "丁"] },
+    { "branch": "亥", "season_position": "孟", "main_stem": "壬", "additional_stems": ["甲"] }
+  ],
+  "public_sources": [
+    {"title": "《千里命稿·地支篇》", "note": "逐支列出地支所藏天干，可核对十二地支的藏干成员。", "url": "https://www.luckclub.cn/bazi/003/005/"},
+    {"title": "《千里命稿·人元篇》", "note": "从“人元”角度说明地支中所藏天干。", "url": "https://www.luckclub.cn/bazi/003/006/"}
+  ],
+  "internal_review": {
+    "status": "cross_checked_members_disputed_ranking",
+    "reviewed_at": "2026-08-03",
+    "source_refs": [
+      "github_mystilight_mystilight_8char_45fb1a8",
+      "github_minervaowl7_bazi_pro_65955b3",
+      "ctext_san_ming_tong_hui_siku_vol_2_ren_yuan",
+      "ming_li_tan_yuan_vol_2_zhi_cang_ren_yuan",
+      "li_hai_ji_di_zhi_cang_gan"
+    ]
+  }
+}

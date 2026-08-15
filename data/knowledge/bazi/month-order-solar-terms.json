@@ -1,0 +1,29 @@
+{
+  "id": "month-order-solar-terms",
+  "title": "月令与节气",
+  "summary": "八字中的月令用十二地支表示节令月，不等同于公历月。二十四节气中，十二个“节”作为月令分界，十二个“中气”位于各月之中。",
+  "months": [
+    {"branch": "寅", "order": "正月", "starts_at": "立春", "middle_term": "雨水"},
+    {"branch": "卯", "order": "二月", "starts_at": "惊蛰", "middle_term": "春分"},
+    {"branch": "辰", "order": "三月", "starts_at": "清明", "middle_term": "谷雨"},
+    {"branch": "巳", "order": "四月", "starts_at": "立夏", "middle_term": "小满"},
+    {"branch": "午", "order": "五月", "starts_at": "芒种", "middle_term": "夏至"},
+    {"branch": "未", "order": "六月", "starts_at": "小暑", "middle_term": "大暑"},
+    {"branch": "申", "order": "七月", "starts_at": "立秋", "middle_term": "处暑"},
+    {"branch": "酉", "order": "八月", "starts_at": "白露", "middle_term": "秋分"},
+    {"branch": "戌", "order": "九月", "starts_at": "寒露", "middle_term": "霜降"},
+    {"branch": "亥", "order": "十月", "starts_at": "立冬", "middle_term": "小雪"},
+    {"branch": "子", "order": "十一月", "starts_at": "大雪", "middle_term": "冬至"},
+    {"branch": "丑", "order": "十二月", "starts_at": "小寒", "middle_term": "大寒"}
+  ],
+  "distinctions": [
+    {"label": "月支", "explanation": "寅至丑的十二支循环，表示月令次序。"},
+    {"label": "节", "explanation": "立春、惊蛰等十二个分界点，到节后进入下一月令。"},
+    {"label": "中气", "explanation": "雨水、春分等十二个节气，与“节”相间排列。"}
+  ],
+  "reading_boundary": "表中展示固定次序，不把节气硬套成每年相同的公历日期；具体交节时刻需查当年历表。",
+  "public_sources": [
+    {"title": "香港天文台：二十四节气", "note": "解释十二个中气与十二个节气相间排列，并属于十二地支月。", "url": "https://www.hko.gov.hk/sc/gts/time/24solarterms.htm"},
+    {"title": "《千里命稿·起例问答》", "note": "列出十二月的月支次序与换月所用的十二个“节”。", "url": "https://www.luckclub.cn/bazi/003/003/"}
+  ]
+}

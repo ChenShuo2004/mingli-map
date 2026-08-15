@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "id": "liuyao_flying_hidden_relations",
+  "title": "飞伏生克与伏神显隐",
+  "summary": "飞神与伏神按同一爻位叠放以后，还要另外读取两层关系：飞伏之间是谁生谁、谁克谁或比和，以及伏神自身受到哪些支持与限制。传统资料与现代实现常把这些条件直接换成可用分，本节点改为并列显示关系方向和条件账本。",
+  "relations": [
+    {"id": "fly_birth_hidden", "label": "飞来生伏", "flying": "飞神", "verb": "生", "hidden": "伏神", "direction": "down", "note": "显层向隐层提供生助。"},
+    {"id": "hidden_birth_fly", "label": "伏去生飞", "flying": "飞神", "verb": "生", "hidden": "伏神", "direction": "up", "note": "隐层向显层生出，来源常另标为泄。"},
+    {"id": "fly_control_hidden", "label": "飞来克伏", "flying": "飞神", "verb": "克", "hidden": "伏神", "direction": "down", "note": "显层直接制约隐层。"},
+    {"id": "hidden_control_fly", "label": "伏去克飞", "flying": "飞神", "verb": "克", "hidden": "伏神", "direction": "up", "note": "隐层反向制约显层。"},
+    {"id": "same_element", "label": "飞伏比和", "flying": "飞神", "verb": "同", "hidden": "伏神", "direction": "level", "note": "两层五行相同，只记录比和。"}
+  ],
+  "condition_ledger": {
+    "support": ["伏神旺相", "伏神临长生、帝旺或临官", "飞神生伏神", "伏神克飞神", "飞神衰弱"],
+    "constraint": ["飞神克伏神", "伏神逢旬空", "伏神逢月破", "伏神入墓", "伏神逢绝"]
+  },
+  "reading_steps": ["先用飞神与伏神节点完成缺项和同位叠放", "再判定飞伏五行方向", "分别记录伏神的支持与限制", "保留并存条件，不自动裁成可用或不可用"],
+  "distinctions": [
+    {"label": "飞神与伏神", "note": "解决缺少的六亲从本宫纯卦哪一爻补入。"},
+    {"label": "飞伏生克", "note": "解决同位叠放后，两层之间的五行箭头。"},
+    {"label": "伏神显隐", "note": "汇集伏神自身与日月、旺衰、空破墓绝有关的支持和限制。"}
+  ],
+  "reading_boundary": "只查看飞伏五种方向和伏神条件账本；不输入真人卦、不选择用神、不把现代评分移植为传统结论，也不输出事项判断。",
+  "internal_review": {"status": "classical_scan_ctext_and_locked_flying_hidden_engine_cross_checked", "reviewed_at": "2026-08-05", "source_refs": ["bushi_zhengzong_ctext_chapter_801184", "nlc_bushi_zhengzong_scan_volume_1", "github_horace_maxwell_horosa_feifu_fushen"]}
+}

@@ -1,0 +1,134 @@
+{
+  "schema_version": "1.0",
+  "id": "ziwei_heaven_earth_human_rearrangement",
+  "title": "iztro天地人盘重排模型",
+  "summary": "锁定实现把天、地、人盘定义为三种盘面入口：天盘直接保留原命宫，地盘把原身宫干支改作命宫，人盘把原福德宫干支改作命宫。地、人盘不是只换一个名称；新锚点会重新生成宫名、五行局、主星、长生、大限与小限等字段，同时保留或选择性调整另一部分星曜字段。这里记录的是具体软件版本的重排模型，不宣称三盘定义已成为各流派共同口径。",
+  "modes": [
+    {
+      "id": "heaven",
+      "name": "天盘",
+      "anchor": "原命宫",
+      "action": "直接返回原盘",
+      "note": "未指定 earth 或 human 时，锁定实现不调用重排函数，原命宫与原盘字段继续生效。"
+    },
+    {
+      "id": "earth",
+      "name": "地盘",
+      "anchor": "原身宫干支",
+      "action": "以身宫改立命宫",
+      "note": "先从原盘找到身宫，取该宫的天干、地支作为新命宫锚点，再进入同一套重排函数。"
+    },
+    {
+      "id": "human",
+      "name": "人盘",
+      "anchor": "原福德宫干支",
+      "action": "以福德宫改立命宫",
+      "note": "先从原盘找到福德宫，取该宫的天干、地支作为新命宫锚点，再进入同一套重排函数。"
+    }
+  ],
+  "rearrangement_chain": [
+    {
+      "id": "base",
+      "label": "先生成原盘",
+      "note": "日期、时支、性别、闰月与算法配置先生成一张完整基础盘。"
+    },
+    {
+      "id": "anchor",
+      "label": "按模式选择锚点",
+      "note": "天盘沿用原命宫；地盘读取原身宫干支；人盘读取原福德宫干支。"
+    },
+    {
+      "id": "rearrange",
+      "label": "以新干支重排",
+      "note": "地、人盘把选中的干支传入重排函数，作为新的命宫起点。"
+    },
+    {
+      "id": "return",
+      "label": "返回同一盘对象",
+      "note": "实现直接改写并返回原盘对象；它不是把三张完整盘同时并列保存。"
+    }
+  ],
+  "field_audit": [
+    {
+      "id": "recomputed",
+      "label": "明确重算",
+      "tone": "primary",
+      "fields": ["命宫地支与十二宫名", "五行局", "十四主星", "长生十二神", "大限", "小限年龄"],
+      "note": "这些字段在重排函数中由新命宫干支重新取得或逐宫覆盖。"
+    },
+    {
+      "id": "selective",
+      "label": "选择性调整",
+      "tone": "accent",
+      "fields": ["身宫标记", "天才", "天伤", "天使"],
+      "note": "身宫标记随新命宫关系重新定位；三颗杂曜只在旧位与新位之间增删。"
+    },
+    {
+      "id": "retained",
+      "label": "函数中未整组重算",
+      "tone": "muted",
+      "fields": ["宫格固定干支坐标", "十四辅星数组", "其余杂曜数组", "博士／岁前／将前十二神"],
+      "note": "重排函数没有对这些字段执行整组替换；这只是源码边界，不等于传统规则主张它们一定不变。"
+    }
+  ],
+  "fixed_tests": [
+    {
+      "id": "earth-test",
+      "mode": "地盘",
+      "input_label": "锁定测试例 A",
+      "configuration": "中州算法 · 固定公历日／时支／性别",
+      "new_soul_palace": "丁卯",
+      "bureau": "火六局",
+      "major_star": "天相",
+      "decadal": "6–15岁",
+      "note": "测试同时断言命宫索引、干支、第一颗主星、五行局与首段大限。"
+    },
+    {
+      "id": "human-test",
+      "mode": "人盘",
+      "input_label": "锁定测试例 B",
+      "configuration": "中州算法 · 固定公历日／时支／性别",
+      "new_soul_palace": "丙寅",
+      "bureau": "火六局",
+      "major_star": "太阳",
+      "decadal": "6–15岁",
+      "note": "测试用另一时支读取原福德宫干支，并断言重排后的命宫与下游字段。"
+    }
+  ],
+  "known_boundaries": [
+    "源码把天、地、人盘作为 astroType 的三个枚举值，但锁定学习文档未提供三盘传统定义、流派出处或古籍页码。",
+    "测试证明固定输入下函数输出与仓库断言一致，只能说明该版本实现可复现，不能替代传统底本核验。",
+    "重排函数直接修改同一盘对象；页面用三种模式并列解释结构，不模拟同时持有三张真人命盘。",
+    "晚子时、默认／中州算法与闰月配置会进入原盘输入层；本页不把任何一种配置指定为唯一传统标准。"
+  ],
+  "public_sources": [
+    {
+      "title": "iztro：三种盘型声明",
+      "note": "锁定类型文件把 AstroType 限定为 heaven、earth、human 三种值。",
+      "url": "https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/data/types/astro.ts#L172"
+    },
+    {
+      "title": "iztro：天地人盘入口分支",
+      "note": "入口函数说明地盘读取身宫干支、人盘读取福德宫干支，其他情况直接返回天盘。",
+      "url": "https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/astro/astro.ts#L450-L484"
+    },
+    {
+      "title": "iztro：盘面重排函数",
+      "note": "锁定函数列出新锚点进入后重算、选择性调整与保留的字段边界。",
+      "url": "https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/astro/astro.ts#L338-L441"
+    },
+    {
+      "title": "iztro：地盘与人盘固定测试",
+      "note": "测试断言两种模式下的命宫干支、主星、五行局、长生或大限字段。",
+      "url": "https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/__tests__/astro/astro.test.ts#L1004-L1095"
+    }
+  ],
+  "internal_review": {
+    "status": "formal_implementation_structure_node",
+    "reviewed_at": "2026-08-06",
+    "source_refs": ["github_sylarlong_iztro_2fb2030"],
+    "ownership": "K-ZW.01 基础盘面",
+    "deduplication": "不并入十二宫盘面：后者定义原盘宫名、命身宫与宫干坐标，本对象会换用身宫或福德宫干支重新立命并连带重算多个下游字段；不并入五行局：五行局只是被重算的一个输出；不并入运限层次：大限、小限只是重排结果的一部分，流年到流时的时间作用域并未定义三盘模式。",
+    "boundary": "正式化的是锁定实现的三模式入口、重排字段清单与固定测试证据，不是传统流派共识；不接收出生资料，不生成三盘，不解释地盘、人盘的性格、事件、吉凶或优先级。"
+  }
+}

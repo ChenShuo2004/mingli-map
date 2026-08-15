@@ -1,0 +1,15 @@
+{
+  "id":"dream-version-conflicts","title":"同一梦象为何会有不同占辞","summary":"P.3908常可与P.2829、P.3105、P.3281、P.3571、P.3685、S.620、S.2222对校；同象可能出现增词、细化、改向甚至相反结果。",
+  "kicker":"主本＋异本 · 不合并成唯一答案",
+  "sections":[
+    {"label":"措辞增减","note":"结果方向近似，细节不同","items":[{"term":"简判→具体事件","detail":"一本文字仅言吉，另一本补财、官或亲属"},{"term":"程度变化","detail":"吉、大吉、吉利等表达不同"}]},
+    {"label":"对象细化","note":"另一版本增加限定","items":[{"term":"病人／普通人","detail":"主体身份改变条目范围"},{"term":"颜色／动作／位置","detail":"补入决定分流的限定词"}]},
+    {"label":"结果改向","note":"同一梦象出现不同事件词","items":[{"term":"梳头","detail":"P.3908为百事散，P.3281为通"},{"term":"新衣","detail":"P.3908为疾病，P.3281为宜官"}]},
+    {"label":"相反判断","note":"不能静默平均","items":[{"term":"墓上生树","detail":"S.620同卷可见凶与富贵两说"},{"term":"歌舞","detail":"P.3908与P.3281结果方向不同"}]},
+    {"label":"释读问题","note":"差异未必都是传统分歧","items":[{"term":"俗字／缺字","detail":"字形难辨造成不同校录"},{"term":"断句／错抄","detail":"条目边界与重复仍需判断"}]}
+  ],
+  "relations":[{"from":"主本条目","link":"并列","to":"异本条目","note":"保留写本编号"},{"from":"差异","link":"先区分","to":"传统异说／校录问题","note":"不急于裁定原因"},{"from":"多个版本","link":"不合成","to":"统一占辞","note":"冲突本身就是知识"}],
+  "fixed_examples":[{"source":"P.3908 ↔ P.3281","dream":"梳头","qualifier":"同象","marker":"—","outcome":"散／通","note":"结果改向"},{"source":"P.3908 ↔ P.3281","dream":"穿新衣","qualifier":"同象","marker":"—","outcome":"疾病／宜官","note":"结果对象不同"},{"source":"P.3908 ↔ P.3281、S.620","dream":"沐浴","qualifier":"同象","marker":"—","outcome":"百事吉／病解除","note":"简判与具体事件并列"}],
+  "boundaries":["异文先保存书号与原章，不用多数票决定哪一条正确。","同卷重复不自动当作抄写错误，也不自动当作两个流派。","现代通行《周公解梦》不因书名相近而默认属于同一版本链。"],
+  "public_sources":[{"title":"P.3908译注与多写本对校","note":"逐条列出P.2829、P.3105、P.3281、P.3571、P.3685、S.620、S.2222等异文。","url":"https://www.daowen.com/lilun/1567134.html"},{"title":"敦煌本S.5900与P.3908校释札记","note":"说明校勘、词义与断句差异仍需继续修订。","url":"https://m.fx361.com/news/2019/0305/6418426.html"},{"title":"数字藏经洞：P.3908馆藏页","note":"回到具体写本影像核查。","url":"https://cave17.e-dunhuang.com/item/FRA.BNF.Pel%403908%40WX.Chs.html"}]
+}

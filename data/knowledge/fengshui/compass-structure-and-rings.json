@@ -1,0 +1,31 @@
+{
+  "id": "compass-structure-and-rings",
+  "title": "罗盘基本结构与常见盘层",
+  "summary": "风水罗盘以磁针确定磁方位，以十字线读取空间轴线，再由同心盘层承载二十四山及各流派规则；先认识共用部件和代表性层序，再按具体制式核对专用盘层。",
+  "components": [
+    {"index":1,"label":"外盘／方盘","role":"承托圆盘，并提供固定十字线或边线"},
+    {"index":2,"label":"天池","role":"中央磁针与基准线所在区域"},
+    {"index":3,"label":"内盘／圆盘","role":"可转动的同心圆盘面"},
+    {"index":4,"label":"二十四山层","role":"把一周方位分为二十四个山位"},
+    {"index":5,"label":"其他盘层","role":"按三合、三元或综合盘保存不同规则"}
+  ],
+  "reading_order": ["放置并固定观察轴线","让磁针稳定","校准天池基准线","读取十字线所压山位","注明所用盘层与版本"],
+  "representative_ring_order": [
+    {"index":1,"position":"中心","layer":"天池与磁针","reading":"磁方位与基准线"},
+    {"index":2,"position":"基础刻度层","layer":"周天度数","reading":"0°至360°方位"},
+    {"index":3,"position":"共用方位层","layer":"二十四山","reading":"八宫各分三山，每山15°"},
+    {"index":4,"position":"专用规则层","layer":"三合、三元或综合盘层","reading":"按所用制式读取，不跨盘套用"},
+    {"index":5,"position":"外框","layer":"外盘与十字线","reading":"把现场轴线投射到内盘读数"}
+  ],
+  "layer_families": [
+    {"label":"共用基础","items":["磁针","360°方位","二十四山"]},
+    {"label":"三合盘常见","items":["地盘正针","人盘中针","天盘缝针"]},
+    {"label":"三元盘常见","items":["先后天卦位","二十四山阴阳","元运相关盘层"]}
+  ],
+  "boundaries": ["罗盘是多层信息载体，不是每一圈都用于同一任务","同名盘层在不同制式中仍须核对排列与用途","磁针读数、地图真北和传统规则应分别记录"],
+  "public_sources": [
+    {"title":"南华大学论文：建筑门向与玄空风水研究","note":"用于核对天池、内盘、外盘、十字线及二十四山层的结构说明。","url":"https://nhuir.nhu.edu.tw/bitstream/987654321/25746/1/105NHU00356002-001.pdf"},
+    {"title":"罗经方位层初探","note":"用于确认罗经方位层包含天地人盘及多种分金层，不同层承担不同用途。","url":"https://lawdata.com.tw/tw/detail.aspx?no=475293"},
+    {"title":"黄山市政府：万安罗盘","note":"用于确认传统徽盘的制作、磁针安装与文化遗产背景。","url":"https://www.huangshan.gov.cn/zwgk/public/6615714/11222684.html"}
+  ]
+}

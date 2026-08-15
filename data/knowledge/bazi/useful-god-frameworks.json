@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "id": "bazi_useful_god_frameworks",
+  "title": "用神辨义",
+  "summary": "不同资料所说的“用神”可能不是同一件事。比较结论前，应先辨认它是在谈格局枢纽、旺衰平衡、寒暖燥湿，还是解决局中阻滞。",
+  "frameworks": [
+    {"id": "pattern", "label": "格局用神", "starts_from": "月令与结构", "asks": "什么关系使格局成立？", "explanation": "以月令为入口，观察所藏、透出与全局配合，用神是结构中的关键作用。"},
+    {"id": "balance", "label": "扶抑用神", "starts_from": "日主旺衰", "asks": "怎样调节偏强或偏弱？", "explanation": "先判断日主状态，再讨论生扶、泄耗或克制，但不能把判断压缩成固定分数。"},
+    {"id": "climate", "label": "调候取用", "starts_from": "寒暖燥湿", "asks": "当令环境首先需要什么？", "explanation": "从月令气候与日干状态出发，区分先用、次用、佐用和条件用。", "related_node": "tiaohou-selection"},
+    {"id": "remedy", "label": "病药与通关", "starts_from": "局中阻滞", "asks": "哪里失衡，什么关系能疏通？", "explanation": "把明显的冲突或阻滞视作“病”，再寻找制约、转化或通关的关系。"}
+  ],
+  "comparison_rule": "先确认资料使用哪一种定义，再比较它选择了什么。不同框架可能同时观察同一命局，但不能把各自的答案直接合并成唯一用神。",
+  "public_sources": [
+    {"title": "《子平真诠·论用神》", "note": "格局取用与月令入口的主要依据；页内译注也列出扶抑、病药、调候与通关等常见取用语境。", "url": "https://www.luckclub.cn/bazi/002/010/"},
+    {"title": "《子平真诠·论用神变化》", "note": "说明用神会随月令藏干、透出与会合而变化，不是静态标签。", "url": "https://www.luckclub.cn/bazi/002/012/"},
+    {"title": "《滴天髓·衰旺》", "note": "扶抑语境所依赖的旺衰与极端状态辨析。", "url": "https://zh.wikisource.org/wiki/%E6%BB%B4%E5%A4%A9%E9%AB%93/12"},
+    {"title": "《穷通宝鉴》全书目录", "note": "调候取用的连续月令材料入口。", "url": "https://www.luckclub.cn/bazi/004/"}
+  ],
+  "internal_review": {
+    "status": "definitions_separated_cross_tradition_open",
+    "reviewed_at": "2026-08-04",
+    "source_refs": ["ziping_zhenquan_lunyongshen", "ziping_zhenquan_lunyongshen_bianhua", "wikisource_ditiansui_shuaiwang", "bazi_tiaohou_selection", "github_minervaowl7_bazi_pro_65955b3"],
+    "boundary": "四种常见阅读框架不是唯一分类；把格局、旺衰与调候混合成单一查表，会遮蔽各自不同的起点与问题。"
+  }
+}

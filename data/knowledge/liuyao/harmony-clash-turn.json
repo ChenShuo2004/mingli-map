@@ -1,0 +1,153 @@
+{
+  "schema_version": "1.0",
+  "id": "liuyao_harmony_clash_turn",
+  "title": "合处逢冲与冲中逢合",
+  "summary": "合处逢冲与冲中逢合记录的不是两张静态关系表，而是关系发生转向：原先处于合的卦或爻，后来被冲的来源介入；原先处于冲的卦或爻，后来又得到合的来源。两种转向都可能来自卦级变化、日月介入或动爻变出新的关系。",
+  "turns": [
+    {
+      "id": "harmony-to-clash",
+      "label": "合处逢冲",
+      "short": "合 → 冲",
+      "before": "先有合",
+      "after": "后见冲",
+      "question": "原来的合，后来从哪里被冲开？",
+      "tone": "open"
+    },
+    {
+      "id": "clash-to-harmony",
+      "label": "冲中逢合",
+      "short": "冲 → 合",
+      "before": "先有冲",
+      "after": "后见合",
+      "question": "原来的冲，后来从哪里得到合？",
+      "tone": "close"
+    }
+  ],
+  "source_modes": [
+    {
+      "id": "hexagram",
+      "label": "卦级变化",
+      "layer": "本卦 → 变卦",
+      "question": "整卦分类是否发生翻转？"
+    },
+    {
+      "id": "time",
+      "label": "日月介入",
+      "layer": "月建／日辰 → 爻",
+      "question": "时间支是否作用于原关系的一端？"
+    },
+    {
+      "id": "changed",
+      "label": "动变介入",
+      "layer": "动爻 → 同位变爻",
+      "question": "一爻发动后是否变出反向关系？"
+    }
+  ],
+  "samples": {
+    "harmony-to-clash": [
+      {
+        "source_id": "hexagram",
+        "before_nodes": ["本卦"],
+        "before_relation": "六合卦",
+        "intervention": "动爻完成卦变",
+        "after_nodes": ["变卦"],
+        "after_relation": "六冲卦",
+        "caption": "卦级分类从六合转为六冲。"
+      },
+      {
+        "source_id": "time",
+        "before_nodes": ["寅", "亥"],
+        "before_relation": "六合",
+        "intervention": "申日／月冲寅",
+        "after_nodes": ["申", "寅"],
+        "after_relation": "六冲",
+        "caption": "寅亥原本相合，申从时间层冲到寅。"
+      },
+      {
+        "source_id": "changed",
+        "before_nodes": ["寅", "亥"],
+        "before_relation": "六合",
+        "intervention": "亥爻发动化巳",
+        "after_nodes": ["巳", "亥"],
+        "after_relation": "回头冲",
+        "caption": "寅亥原本相合，亥动化巳后，巳返回冲亥。"
+      }
+    ],
+    "clash-to-harmony": [
+      {
+        "source_id": "hexagram",
+        "before_nodes": ["本卦"],
+        "before_relation": "六冲卦",
+        "intervention": "动爻完成卦变",
+        "after_nodes": ["变卦"],
+        "after_relation": "六合卦",
+        "caption": "卦级分类从六冲转为六合。"
+      },
+      {
+        "source_id": "time",
+        "before_nodes": ["子", "午"],
+        "before_relation": "六冲",
+        "intervention": "丑日／月合子",
+        "after_nodes": ["子", "丑"],
+        "after_relation": "六合",
+        "caption": "子午原本相冲，丑从时间层与子相合。"
+      },
+      {
+        "source_id": "changed",
+        "before_nodes": ["子", "午"],
+        "before_relation": "六冲",
+        "intervention": "午爻发动化未",
+        "after_nodes": ["未", "午"],
+        "after_relation": "回头合",
+        "caption": "子午原本相冲，午动化未后，未返回合午。"
+      }
+    ]
+  },
+  "distinctions": [
+    {
+      "label": "静态冲合",
+      "mark": "看现在",
+      "note": "只回答两支或一卦当前属于冲还是合。"
+    },
+    {
+      "label": "关系转向",
+      "mark": "看先后",
+      "note": "先保存原关系，再指出哪一种来源带来反向关系。"
+    },
+    {
+      "label": "双标签并见",
+      "mark": "看两轴",
+      "note": "同一组本变地支同时命中不同关系轴，不等于发生了先后转向。"
+    }
+  ],
+  "source_positions": [
+    {
+      "label": "三路对称表",
+      "position": "《卜筮正宗》把两种转向各分为卦变、日月和动变三路。",
+      "public_use": "页面据此建立二乘三的关系转盘。"
+    },
+    {
+      "label": "冲合不必一刀切",
+      "position": "《增删卜易》既保存合被冲开，也提醒旺相、合住待冲开等条件不能统一解释为散。",
+      "public_use": "页面只确认关系如何转向，不把转向直接翻译成结果。"
+    },
+    {
+      "label": "实现常只覆盖一角",
+      "position": "锁定代码有的只比较六冲卦与六合卦，有的只查日辰对合爻的冲。",
+      "public_use": "简化扫描保留为实现差异，不冒充完整三路。"
+    }
+  ],
+  "reading_boundary": "本页使用固定关系样本，只展示先后状态和来源层，不接收起卦、日期或真人事项，也不采用古籍中的婚姻、疾病、财务、吉凶和应期结论。",
+  "internal_review": {
+    "status": "classical_symmetric_routes_and_locked_implementations_cross_checked",
+    "reviewed_at": "2026-08-04",
+    "source_refs": [
+      "bushi_zhengzong_volume_5_chapter_15",
+      "zengshan_buyi_chapter_17_and_pdf_page_68",
+      "bushi_quanshu_hechu_fengchong",
+      "github_horace_maxwell_horosa_7d8a93e_hechufengchong",
+      "github_ycczkl_najia_core_2e66f13_global_analysis"
+    ],
+    "boundary": "公开两种转向、三类来源和资料差异；个人事项、用神、旺衰、吉凶、应期与事件断语留在受限层。"
+  }
+}

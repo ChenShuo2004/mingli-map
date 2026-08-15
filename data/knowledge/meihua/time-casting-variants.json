@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.0.0",
+  "id": "meihua_time_casting_variants",
+  "title": "时间起卦的版本差异",
+  "summary": "时间起卦的共同骨架是把农历年项、月、日相加定上卦，再加时支序数定下卦与动爻；真正分歧在年项和23时日界。主资料库与qimen-go使用年支序数，第二套梅花实现直接使用农历年整数；主资料库又在23时把农历日推进一天，第二套实现保持当日。页面冻结时间数值，只比较输入对象，不读取今天。",
+  "common_formula": [
+    {"target": "上卦", "formula": "年项 + 月数 + 日数", "divisor": 8},
+    {"target": "下卦", "formula": "上卦总数 + 时支序数", "divisor": 8},
+    {"target": "动爻", "formula": "上卦总数 + 时支序数", "divisor": 6}
+  ],
+  "variants": [
+    {
+      "id": "primary",
+      "label": "年支序数＋23时推次日",
+      "repository": "muyen/meihua-yishu",
+      "year_term": "农历年支序数，一至十二",
+      "late_zi": "23:00进入次日子时，日数推进一天",
+      "status": "当前实现与49项测试一致，规则级底本仍待定位"
+    },
+    {
+      "id": "comparison",
+      "label": "农历年整数＋23时不换日",
+      "repository": "ZZq114514/MeihuaYishu",
+      "year_term": "农历年整数",
+      "late_zi": "23:00映射为子时，但日期保持当日",
+      "status": "与主资料库存在两项确定性分歧"
+    },
+    {
+      "id": "qimen-go",
+      "label": "年支序数的第三套结构对照",
+      "repository": "deminzhang/qimen-go",
+      "year_term": "农历年支序数",
+      "late_zi": "当前只用于年项与加总公式对照，不增加日界结论",
+      "status": "上卦、下卦和动爻加总方式与主资料库重合"
+    }
+  ],
+  "fixed_examples": [
+    {
+      "id": "normal-hour",
+      "label": "巳时 · 年项分歧",
+      "lunar": {"year": 2026, "year_branch": "午", "year_branch_number": 7, "month": 6, "day": 7, "hour_branch": "巳", "hour_branch_number": 6, "hour": "10:00"},
+      "primary": {"upper_sum": 20, "lower_sum": 26, "upper": "震", "lower": "兑", "moving_line": 2, "hexagram": "雷泽归妹"},
+      "comparison": {"upper_sum": 2039, "lower_sum": 2045, "upper": "艮", "lower": "巽", "moving_line": 5, "hexagram": "山风蛊"},
+      "isolates": "同一月、日、时支下，年支序数与年整数使上下卦和动爻全部不同"
+    },
+    {
+      "id": "late-zi",
+      "label": "23时 · 年项与日界叠加",
+      "lunar": {"year": 2026, "year_branch": "午", "year_branch_number": 7, "month": 6, "day": 7, "hour_branch": "子", "hour_branch_number": 1, "hour": "23:00"},
+      "primary": {"effective_day": 8, "upper_sum": 21, "lower_sum": 22, "upper": "巽", "lower": "坎", "moving_line": 4, "hexagram": "风水涣"},
+      "comparison": {"effective_day": 7, "upper_sum": 2039, "lower_sum": 2040, "upper": "艮", "lower": "坤", "moving_line": 6, "hexagram": "山地剥"},
+      "isolates": "这组结果同时包含年项与23时日界差异，不能只归因于其中一项"
+    }
+  ],
+  "calendar_boundary": {
+    "finding": "主资料库自带农历表与6tail lunar-python在1900至2099年的73,019日中有150日不同；第二套实现也有120日不同。",
+    "decision": "固定页直接使用已声明的农历数值，不把跨实现历法差异裁定为哪一方正确。"
+  },
+  "reading_boundaries": [
+    "页面不读取系统时间，也不把今天或用户生日代入公式。",
+    "固定农历数值用于隔离公式差异，不证明其中一套是传统唯一口径。",
+    "时间输入只生成卦形位置，不输出流年、应期、吉凶或个人事项。"
+  ],
+  "public_sources": [
+    {
+      "title": "muyen/meihua-yishu 锁定时间起卦实现",
+      "url": "https://github.com/muyen/meihua-yishu/blob/aecdf87ebef26328c32caa65d40b2f9d273088ec/scripts/meihua_calc.py",
+      "note": "支撑年支数、月日时加总、23时推日及固定测试。"
+    },
+    {
+      "title": "ZZq114514/MeihuaYishu 锁定时间起卦实现",
+      "url": "https://github.com/ZZq114514/MeihuaYishu/blob/466ee62105db599a29c25259f2ba6d10092d660c/src/meihuayishu/core.py",
+      "note": "支撑农历年整数入数；其calendar模块把23时映射为子时但不推进日期。"
+    },
+    {
+      "title": "qimen-go 锁定梅花时间入口",
+      "url": "https://github.com/deminzhang/qimen-go/blob/4d3f58fa0f401b5b3a337f119138e99e90685dda/cmd/meihua/main.go",
+      "note": "以农历年支序数、月、日、时支生成上下卦与动爻，作为第三套结构对照。"
+    }
+  ],
+  "internal_review": {
+    "status": "formal_version_comparison_node_with_calendar_boundary",
+    "reviewed_at": "2026-08-09",
+    "owner": ["火华", "Codex"],
+    "source_refs": ["github_muyen_meihua_yishu_aecdf87", "github_zzq114514_meihuayishu_466ee62", "github_deminzhang_qimen_go_4d3f58f"],
+    "deduplication": "不并入两数或三数起卦：时间起卦增加农历年项、月日、时支与23时日界。也不并入卦气旺衰：日期在本页负责生成卦形，旺衰节点另讨论日期如何确定时令。",
+    "known_gaps": ["年项与23时日界缺规则级古籍版次页码。", "三套历法实现存在跨日差异，当前不裁定。"],
+    "boundary": "固定农历数值、无当前时间、无真人输入；只比较时间字段如何进入公式。"
+  }
+}

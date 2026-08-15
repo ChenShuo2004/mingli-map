@@ -1,0 +1,31 @@
+{
+  "id": "dream-text-timeline",
+  "title": "占梦材料怎样流变",
+  "summary": "现存占梦知识不是一部书连续传下来的，而是卜辞、经史梦例、职官与书目、敦煌写本、明代汇编等不同材料层累形成。",
+  "periods": [
+    {"order":1,"period":"晚商","anchor":"殷墟甲骨卜辞·《合集》21534","material":"王室占卜档案","survives":"《合集》21534为子组卜辞，研究者据此识别“梦龙”材料；其他梦占内容仍须逐片落实到编号与释文版本。","form":"刻辞"},
+    {"order":2,"period":"先秦传世文献","anchor":"《诗经》《尚书》《左传》","material":"诗歌、诰命与历史叙事","survives":"保存梦象、占梦者、解释、行动与事后叙述的不同组合。","form":"梦例"},
+    {"order":3,"period":"两汉","anchor":"《周礼》传本、《汉书·艺文志》《潜夫论》","material":"职官条文、书目与梦论","survives":"保存六梦、梦书著录和十梦等分类线索；书目中的梦书多已不存。","form":"制度／书目／梦论"},
+    {"order":4,"period":"晚唐五代前后","anchor":"敦煌梦书写本","material":"按梦象编排的实用抄本","survives":"可见章目、占文、时日条件与禳梦内容，也可比较多个残卷与完卷。","form":"写本梦书"},
+    {"order":5,"period":"明代","anchor":"陈士元《梦占逸旨》","material":"梦论与历代梦例汇编","survives":"以内篇讨论梦论，外篇汇集梦例，形成可核对的八卷综合文本。","form":"综合梦书"}
+  ],
+  "transformations": [
+    {"from":"贞问档案","to":"经史叙事","change":"梦从占卜事项进入人物与事件叙述"},
+    {"from":"零散梦例","to":"分类与书目","change":"梦开始被命名、分组和著录"},
+    {"from":"著录书名","to":"写本条目","change":"现存材料可以直接看到章目和逐条占文"},
+    {"from":"实用条目","to":"综合汇编","change":"梦论、古法与历代梦例被并置整理"}
+  ],
+  "boundaries": [
+    "时间轴表示现存材料形态，不表示占梦只在这些时代存在。",
+    "传世文献的成书、编定与叙述事件年代需要分别记录。",
+    "后出的梦书不能倒填为商周占梦的原貌。"
+  ],
+  "public_sources": [
+    {"title":"中国国家博物馆：甲骨记忆","note":"说明殷墟甲骨作为商代王室占卜档案的材料身份。","url":"https://m.chnmuseum.cn/fw/zx_1010/gbxw/201911/t20191119_170999.shtml"},
+    {"title":"宋镇豪：《甲骨文中梦与占梦》简介","note":"中国社会科学院历史所简介明确指出“梦龙”材料见《合集》21534。","url":"https://www.xianqin.org/xr_html/articles/kychg/414.html"},
+    {"title":"中央研究院：《甲骨文合集材料来源表》","note":"提供《合集》编号的查询规则与材料来源核对入口。","url":"https://xiaoxue.iis.sinica.edu.tw/obm"},
+    {"title":"《汉书·艺文志》","note":"保存杂占类梦书著录、卷数与类序。","url":"https://ctext.org/han-shu/yi-wen-zhi/zh"},
+    {"title":"数字藏经洞：P.3908","note":"保存写本编号、题名、材质与收藏地。","url":"https://cave17.e-dunhuang.com/item/FRA.BNF.Pel%403908%40WX.Chs.html"},
+    {"title":"《梦占逸旨》影像入口","note":"提供明代八卷本影像，用于核对卷次和正文。","url":"https://ctext.org/library.pl?if=gb&res=3642"}
+  ]
+}

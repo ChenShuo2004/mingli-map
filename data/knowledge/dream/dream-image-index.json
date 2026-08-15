@@ -1,0 +1,41 @@
+{
+  "id": "dream-image-index",
+  "title": "梦象分类总表",
+  "summary": "以八个检索入口整理梦中对象，并用对象、动作、状态、位置／关系四类字段继续拆分；索引名称不改写古代梦书的原章目。",
+  "facets": [
+    {"label":"对象","question":"梦见什么","examples":["日月","山水","门户","亲属","身体","禽兽","衣食"]},
+    {"label":"动作","question":"发生什么","examples":["升落","出入","登涉","追逐","穿脱","拜祭"]},
+    {"label":"状态","question":"呈现怎样","examples":["明暗","盈缺","清浊","新旧","生死","枯荣"]},
+    {"label":"位置／关系","question":"在哪里、与谁相连","examples":["在天","入屋","近身","上下","内外","人与物"]}
+  ],
+  "categories": [
+    {"id":"dream-images-sky-weather","label":"天象、日月与风雨","key_terms":["天","日","月","星","云","雷","雨","风"]},
+    {"id":"dream-images-land-water-fire","label":"山川、水火与土地","key_terms":["地","山","石","水","河","井","火","林木"]},
+    {"id":"dream-images-buildings-roads","label":"房屋、门户与道路","key_terms":["宅","屋","门","楼阁","道路","桥","舟","车"]},
+    {"id":"dream-images-people-kinship","label":"人物、身份与亲属","key_terms":["帝王","官吏","父母","兄弟","夫妻","僧道","亡人","盗贼"]},
+    {"id":"dream-images-body-life-illness","label":"身体、生死与疾病","key_terms":["头面","眼口","手足","血骨","疾病","死亡","尸体","棺墓"]},
+    {"id":"dream-images-animals-plants","label":"禽兽、虫鱼与草木","key_terms":["龙蛇","六畜","禽鸟","鱼虫","树木","竹","花","果"]},
+    {"id":"dream-images-clothing-tools-food","label":"衣物、器具与饮食","key_terms":["衣冠","鞋带","镜梳","刀剑","钱帛","谷物","酒","饭食"]},
+    {"id":"dream-images-actions-rituals","label":"梦中动作：行走、追逐、争斗与仪式","key_terms":["行走","登涉","追逃","争斗","拜祭","斋诵","奏乐"]}
+  ],
+  "source_matrix": [
+    {"source":"P.3908《新集周公解梦书》","role":"保存23个原章目","coverage":"天文、地理、山林草木、水火盗贼、人物生活、动物器物、生死时间与禳梦"},
+    {"source":"《梦占逸旨》外篇","role":"保存分类梦例","coverage":"按日月、山水、草木、食衣等对象汇集旧例"}
+  ],
+  "cross_rules": [
+    "先按主要对象进入一类，再用动作、状态和位置／关系细分。",
+    "一个梦象含两个主要对象时保留跨类链接，不删去其中一边。",
+    "时间章、占辞和禳解另作条件或行动层，不混进对象词表。",
+    "梦象索引只记录梦中出现的对象和关系，不录入吉凶、应期或个人判断。"
+  ],
+  "boundaries": [
+    "八类名称是阅读检索层，不宣称是P.3908或《梦占逸旨》的原始八分法。",
+    "词表用于定位材料；同一词在不同版本中的占辞仍须分别保存。",
+    "复合梦象按对象与动作拆开，不用单个关键词替代完整条目。"
+  ],
+  "public_sources": [
+    {"title":"数字藏经洞：P.3908馆藏页","note":"核对写本编号、题名、材质、收藏地与影像入口。","url":"https://cave17.e-dunhuang.com/item/FRA.BNF.Pel%403908%40WX.Chs.html"},
+    {"title":"《梦占逸旨》八卷影像","note":"核对外篇分类梦例及原文。","url":"https://ctext.org/library.pl?if=gb&res=3642"},
+    {"title":"大阪大学：《梦占逸旨》外篇研究","note":"支撑外篇以分类汇集梦例为主的材料身份。","url":"https://ir.library.osaka-u.ac.jp/repo/ouka/all/11517/mrp_038-065.pdf"}
+  ]
+}

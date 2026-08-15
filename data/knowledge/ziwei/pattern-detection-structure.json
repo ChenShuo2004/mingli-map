@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.0",
+  "id": "ziwei_pattern_detection_structure",
+  "title": "格局资料与检测器审计",
+  "summary": "本页不是一张已经核验完成的格局表，而是对格局资料与检测器的审计：比较三份程序材料怎样把宫位、星曜、四化、亮度和跨宫关系组合成候选命中，并区分检测函数、文案目录和运行输出三种口径。程序命中不等于传统定义已获验证，也不生成个人格局结论。",
+  "pipeline": [
+    {"id":"facts","label":"读取盘面事实","inputs":["目标宫位","星曜与四化","亮度状态","三方四正"],"note":"只读取已经由上游节点形成的结构字段。"},
+    {"id":"scope","label":"限定检测范围","inputs":["命宫／指定宫","同宫／对宫／会照","地支限制"],"note":"同名格局可能因适用宫位和关系范围不同而不是同一条规则。"},
+    {"id":"conditions","label":"逐层检查条件","inputs":["必须条件","加分条件","破格条件"],"note":"三类条件必须分开；文案中提到不等于代码真的执行。"},
+    {"id":"evidence","label":"保留命中证据","inputs":["规则ID","触发字段","来源版本","未命中原因"],"note":"输出应是可复查记录，不是未经核验的传统结论。"}
+  ],
+  "source_inventories": [
+    {"id":"bazi_pro","label":"bazi-pro","commit":"65955b3","primary_count":42,"primary_unit":"检测函数（含主入口）","secondary":"每条返回必须／加分／破格字段","reachability":"未做全域可达性声明","status":"项目实现，未验证为传统共识","note":"42是patterns.py中抽取到的函数数，不能与另一项目的文案条目或运行输出名相加。"},
+    {"id":"ziwei_skill","label":"ziwei-skill","commit":"3de335f","primary_count":52,"primary_unit":"格局文案定义","secondary":"46项被检测器引用","reachability":"6项无命中路径","status":"项目实现；仓库无LICENSE正文","note":"目录里存在不代表运行时可达；六个孤立ID继续留在来源层。"},
+    {"id":"renhuai","label":"ziwei-doushu","commit":"88194a4","primary_count":41,"primary_unit":"patterns.push检测路径","secondary":"3,456盘观察到52个输出名称","reachability":"16盘无任何命中","status":"同源iztro适配；分支扫描非古籍验证","note":"一条路径可产生多个命名变体，故41条推送路径与52个输出名称并不矛盾。"}
+  ],
+  "sample_comparison": {
+    "title":"紫府同宫",
+    "purpose":"只用同名项演示为什么必须下钻到条件，不公开其吉凶文案。",
+    "implementations":[
+      {"source":"bazi-pro","scope":"命宫","required":["命宫同时有紫微、天府","命宫地支为寅或申"],"bonus":["三方四正会吉星（返回字段）"],"breaking":["三方四正会煞星（返回字段）"],"execution_note":"实际函数先检查命宫主星与寅／申支；加分和破格目前作为返回描述保存，未见参与是否命中的分支。"},
+      {"source":"ziwei-skill","scope":"检测器引用的文案ID","required":["紫微、天府同宫"],"bonus":[],"breaking":[],"execution_note":"现有提取证明文案定义被检测器引用，但不能仅凭标题补出与bazi-pro相同的命宫和寅／申限制。"}
+    ]
+  },
+  "condition_dimensions": [
+    {"id":"scope","label":"适用范围","question":"只查命宫、指定宫，还是任一宫？","examples":["命宫","指定宫","任一宫"]},
+    {"id":"relation","label":"空间关系","question":"星曜必须同宫，还是夹、对宫或会照也算？","examples":["同宫","夹宫","对宫","三方会照"]},
+    {"id":"required","label":"必须星曜","question":"哪些星曜或标记缺一不可？","examples":["主星","辅曜","四化"]},
+    {"id":"branch","label":"地支限制","question":"同样组合是否只在特定地支成立？","examples":["不限地支","寅／申","来源逐项保存"]},
+    {"id":"state","label":"状态要求","question":"是否要求亮度、吉曜或煞曜状态？","examples":["亮度","加分项","煞曜条件"]},
+    {"id":"breaking","label":"破格条件","question":"哪些条件使名称不再成立，哪些只降低评价？","examples":["否决条件","减分条件","仅作说明"]},
+    {"id":"evidence","label":"命中证据","question":"检测器能否返回触发宫位、字段与来源版本？","examples":["规则ID","触发字段","来源提交"]}
+  ],
+  "publication_gate": [
+    {"step":1,"label":"标题只作索引","note":"古籍或文档出现一个名称，不等于已经取得完整条件。"},
+    {"step":2,"label":"条件拆成维度","note":"按范围、关系、星曜、地支、状态与破格分别记录。"},
+    {"step":3,"label":"异说并列","note":"同名条件不同时保留来源版本，不投票合并。"},
+    {"step":4,"label":"输出可复查证据","note":"公开规则必须能指出触发字段与版本；否则继续停在导航层。"},
+    {"step":5,"label":"止于结构命中","note":"不接真人资料，也不把名称翻译成财富、婚姻、健康或寿夭结论。"}
+  ],
+  "classical_navigation": {
+    "status":"文档站整理本导航；底本版次与文本权利尚未独立核清",
+    "use_boundary":"只公开卷次与篇名索引，不摘录断语，不以篇名反推检测条件。",
+    "total_sections":51,
+    "volumes":[
+      {"id":"ancient-book-1","label":"古籍卷一","section_count":18,"url":"https://iztro.com/learn/ancientBook-1.html","sections":["太微赋","形性赋","星垣论","斗数准绳","斗数发微论","重补斗数彀率","增补太微赋","斗数骨随赋","女命骨髓赋","定富贵贫贱十等论","十二宫诸星得地合格诀","十二宫诸星失陷破格诀","十二宫诸星得地富贵论","十二宫诸星失陷贫贱论","定富局","定贵局","定贫贱局","定杂局"]},
+      {"id":"ancient-book-2","label":"古籍卷二","section_count":13,"url":"https://iztro.com/learn/ancientBook-2.html","sections":["安星诀补充","命宫","兄弟宫","夫妻宫","子女宫","财帛宫","疾厄宫","迁移宫","奴仆宫","官禄宫","田宅宫","福德宫","父母宫"]},
+      {"id":"ancient-book-3","label":"古籍卷三","section_count":20,"url":"https://iztro.com/learn/ancientBook-3.html","sections":["谈星要论","论人命入格","论格星数高下","论男女命同异","论小儿命","定小儿生时诀","论人生时安命吉凶","论人生时要审的确","论小儿克亲","论命先贫后富","论大限十年祸福何如","论二限太岁吉凶","论行限分南北斗","论流年太岁吉凶星杀","论阴骘延寿","论羊陀迭并","论七杀重逢","论大小限星辰过十二宫遇十二支所忌诀","论立命行限宫歌","论诸星同垣各司所宜分别富贵贫贱夭寿"]}
+    ]
+  },
+  "count_boundaries": [
+    {"label":"函数数","value":"42","note":"代码中的检测函数单位，包含主入口。"},
+    {"label":"文案定义数","value":"52 = 46 + 6","note":"目录覆盖与调用可达性单位。"},
+    {"label":"推送路径数","value":"41","note":"另一实现中产生结果对象的代码路径。"},
+    {"label":"实测输出名","value":"52","note":"3,456盘有界扫描观察值，不是格局全集。"}
+  ],
+  "known_defects": [
+    {"label":"字段层级错位","note":"ziwei-doushu至少一组加分条件把化禄／化权／化科标签放进星名集合查找，使对应加分不可达。"},
+    {"label":"覆盖率被产品目标影响","note":"ziwei-doushu明说加入基础格局，让普通盘也能识别1至3项；覆盖率因此包含产品策略，不代表传统分类自然分布。"},
+    {"label":"同名不能投票","note":"多个仓库使用相同格局名，只能证明标签重合；宫位、地支、同宫／会照和破格条件仍需逐项比较。"}
+  ],
+  "boundaries": [
+    {"label":"命中不是验证","note":"程序条件成立只说明某实现返回了一个标签，不能证明条件来自可靠底本或得到流派共识。"},
+    {"label":"目录不是规则","note":"只有名称和文案、却没有调用路径的条目继续标为孤立定义，不补写成可执行规则。"},
+    {"label":"不接收真人盘","note":"页面只切换来源口径和抽象条件，不读取出生资料，也不输出财富、婚姻、健康或寿夭判断。"}
+  ],
+  "public_sources": [
+    {"title":"bazi-pro：紫微格局检测实现","note":"锁定版本提供42个检测函数及必须、加分、破格字段；本页仅引用结构与紫府同宫的条件示例。","url":"https://github.com/Minervaowl7/bazi-pro/blob/65955b332fcd76ea74125a2791ff8a3c38d934e1/bazi_pro/core/ziwei/patterns.py"},
+    {"title":"ziwei-skill：格局文案与检测器","note":"锁定版本含52项文案定义；项目提取确认46项被调用、6项无命中路径。仓库仅在README和package.json声明MIT，未附LICENSE正文。","url":"https://github.com/shanrichard/ziwei-skill/blob/3de335f0c3bad398adc3e29d2a912261e7ec02e5/lib/engine/patterns.js"},
+    {"title":"ziwei-doushu：格局检测路径","note":"锁定版本有41条patterns.push路径；3,456盘扫描观察到52个输出名，并暴露字段层级不可达问题。","url":"https://github.com/Renhuai123/ziwei-doushu/blob/88194a404242bfe5c6d5cc512e4117e3e245cdd5/lib/ziwei/patterns.ts"},
+    {"title":"ziwei-doushu：收录与运行审计","note":"项目收录记录保存3,456盘扫描、覆盖策略、同源关系与已确认缺陷；公开页面不复用其中个人断语。","url":"https://github.com/Renhuai123/ziwei-doushu/tree/88194a404242bfe5c6d5cc512e4117e3e245cdd5"},
+    {"title":"紫微研习社：古籍卷一导航","note":"仅索引18个篇名；文档站整理本的底本版次与文本权利仍待独立核验。","url":"https://iztro.com/learn/ancientBook-1.html"},
+    {"title":"紫微研习社：古籍卷二导航","note":"仅索引13个篇名；不复制宫位断语。","url":"https://iztro.com/learn/ancientBook-2.html"},
+    {"title":"紫微研习社：古籍卷三导航","note":"仅索引20个篇名；不从篇名补写格局或运限规则。","url":"https://iztro.com/learn/ancientBook-3.html"}
+  ],
+  "internal_review": {
+    "status":"formal_detection_audit_structure_not_traditional_pattern_catalog",
+    "reviewed_at":"2026-08-06",
+    "source_refs":["github_minervaowl7_bazi_pro_65955b3","github_shanrichard_ziwei_skill_3de335f","github_renhuai123_ziwei_doushu_88194a4"],
+    "ownership":"K-ZW.03 格局与检测规则；公开导航归入宫位关系与运限的组合层",
+    "deduplication":"不并入星曜、四化、亮度或三方四正：那些节点提供输入事实，本节点观察跨对象条件怎样组成检测路径；不按格局名称拆节点，因同名实现条件尚未逐项核验。",
+    "boundary":"只公开检测流程、数量口径、同名条件差异和实现缺陷；不公开仓库中的个人断语，不把程序命中升格为传统共识。"
+  }
+}

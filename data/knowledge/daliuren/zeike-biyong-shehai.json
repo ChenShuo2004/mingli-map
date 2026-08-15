@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0.0",
+  "id": "daliuren_zeike_biyong_shehai",
+  "title": "贼克、比用与涉害",
+  "summary": "这三个名称不是并列的三种随意选择：先从四课寻找下贼上或上克下，只有一个候选时可形成重审或元首路径；多个候选再比较与日干阴阳同类的比用条件，仍不能唯一时才进入涉害深浅及孟仲季等继续筛选。",
+  "headline": "候选从一变多时，筛选层才逐级加深",
+  "steps": [
+    {"label": "贼克", "value": "下贼上／上克下", "note": "先找到直接相克课。"},
+    {"label": "单一候选", "value": "重审／元首", "note": "标签来自相克方向与实现分类。"},
+    {"label": "多个候选", "value": "比用／知一", "note": "比较候选与日干阴阳同类。"},
+    {"label": "仍有多个", "value": "涉害深浅", "note": "继续比较经过的克害层次。"},
+    {"label": "继续分型", "value": "孟 · 仲 · 季", "note": "现有实现还产生见机、察微等标签。"}
+  ],
+  "facts": [
+    {"label": "扫描覆盖", "detail": "dalurenpython 的8,640组扫描覆盖重审2,976、元首1,452、知一1,296、涉害804等实现标签。"},
+    {"label": "涉害争议", "detail": "kinliuren issue #9曾报告深浅或日期异常，作者称已修但议题未形成独立课例闭环。"},
+    {"label": "名称边界", "detail": "数字覆盖量用于检查代码路径，不代表传统课式出现概率。"}
+  ],
+  "reading_boundaries": ["不根据扫描数量判断哪种课更重要。", "涉害、孟仲季的细则仍需可定位底本。", "所有标签只描述取传路径，不输出事项结论。"],
+  "public_sources": [
+    {"title": "kinliuren 贼克、比用与涉害", "url": "https://github.com/kentang2017/kinliuren/blob/3ba45a9540f08269b56d81508a061c7d46938785/src/kinliuren/kinliuren.py", "note": "提供三层选择器与 issue 关联实现。"},
+    {"title": "dalurenpython 贼克至涉害", "url": "https://github.com/wlhyl/dalurenpython/blob/62764a4ad2c10f5ccc34b86c8520d9f4a96ba3aa/shipan/shipan.py#L462-L633", "note": "无仓库许可；只采用原创结构摘要和扫描计数。"}
+  ],
+  "internal_review": {"reviewed_on": "2026-08-10", "owner": ["火华", "Codex"], "status": "formal_branch_structure_with_open_issue"}
+}

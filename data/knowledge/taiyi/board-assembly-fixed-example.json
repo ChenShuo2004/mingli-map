@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0",
+  "id": "taiyi_board_assembly_fixed_example",
+  "title": "式盘与符号层",
+  "summary": "用一个锁定的年计样本，观察公历时刻怎样先进入积年数，再取七十二局的余数，最后生成太乙落宫、文昌、始击和主客算等盘面锚点。这里只公开可复算的生成链与对象身份；胜负、国运、灾异和个人解释不从这些数字直接推出。",
+  "fixed_input": {
+    "date": "1552-09-24",
+    "time": "00:00",
+    "display": "1552年9月24日 0时0分",
+    "lunar_date": "1552年九月初七",
+    "calculation_mode": "年计",
+    "calculation_mode_index": 0,
+    "method": "太乙金镜",
+    "method_index": 1,
+    "locked_commit": "f2719d674adb0b4c710fb9d298283c9ccb05a545"
+  },
+  "calculation_chain": [
+    {"id":"accumulated-years","label":"积年数","value":"1,938,109","formula":"1,936,557 + 1,552 = 1,938,109","note":"锁定金镜实现以1,936,557为公元换算常数，加当前农历年。以公元724年回代，得到原典在开元十二年列出的1,937,281积年检查点。","source_layer":"锁定代码 + 原典检查点"},
+    {"id":"board-number","label":"七十二局","value":"阳遁十三局","formula":"1,938,109 ÷ 72，余 13","note":"锁定实现把积年数对72取余；余数为0时记作72局。年计在该实现中固定进入阳遁分支。","source_layer":"锁定代码实现"},
+    {"id":"taiyi-palace","label":"太乙落宫","value":"六宫","formula":"第13局 → 八宫三年一移的第五段 → 6","note":"原典卷一说明用二十四小周再以三约为宫数，顺行八宫而不游中五。锁定实现将七十二局预排成每宫三局的落宫序列，第13局落六宫。","source_layer":"原典结构 + 锁定映射"}
+  ],
+  "board_anchors": [
+    {"id":"epoch","label":"纪元","value":"第四纪第四戊子元","role":"时间层级"},
+    {"id":"governance","label":"三才年","value":"理天","role":"局数分类"},
+    {"id":"taiyi","label":"太乙","value":"6 · 酉","role":"落宫数与十六神位"},
+    {"id":"wenchang","label":"文昌（天目）","value":"巽","role":"主算起点"},
+    {"id":"shiji","label":"始击（客目）","value":"辰","role":"客算起点"},
+    {"id":"jishen","label":"计神","value":"寅","role":"主客计入口"},
+    {"id":"heshen","label":"合神","value":"丑","role":"盘面关系锚点"},
+    {"id":"dingmu","label":"定目","value":"辰","role":"定算起点"}
+  ],
+  "host_guest_structure": [
+    {"id":"host","label":"主","count":18,"general":8,"assistant":4,"note":"主算由文昌所在位向太乙宫行算；本页只保存数与将宫。"},
+    {"id":"guest","label":"客","count":19,"general":9,"assistant":7,"note":"客算由始击所在位进入；不展开胜负断语。"},
+    {"id":"fixed","label":"定","count":19,"general":null,"assistant":null,"note":"定算与定目分属数值和盘面起点；不与主客算合并。"}
+  ],
+  "classical_sequence": ["先详太岁所在","再定太乙所在宫","置天目、文昌与始击","置计神","由天地二目求主客算","由算数定主客大将之宫"],
+  "implementation_differences": [
+    {"field":"太乙位标签","readme":"兑","locked_runtime":"酉","status":"文档与运行输出不同","handling":"公开固定例以锁定运行结果“酉”为实现事实，不把它与八卦“兑”强行合并。"},
+    {"field":"第五柱分干支","readme":"甲子","locked_runtime":"壬戌","status":"文档与运行输出不同","handling":"分干支不参与本页年计生成链；差异保留，不用README值覆盖实际运行值。"}
+  ],
+  "reading_boundaries": [
+    {"label":"可复算","note":"日期、金镜积年数、七十二余数、局式与锁定宫位输出。"},
+    {"label":"原典支撑","note":"积年、七十二元法、二十四小周、三年一宫、不游中五与八步装盘顺序。"},
+    {"label":"不由此证明","note":"该式盘对历史事件、战争胜负、灾异或个人命运具有预测效力。"}
+  ],
+  "public_sources": [
+    {"title":"《太乙金鏡式經》卷一","note":"原典页列出开元十二年的积年检查点，以及360、72、24、3层取数和“顺行八宫，不游中五”。该资料属OCR连接文本，可回看四库本影像。","url":"https://ctext.org/wiki.pl?chapter=582866&if=gb&remap=gb"},
+    {"title":"《太乙金鏡式經》卷二","note":"原典页的“运式之仪有八”按顺序连接太岁、太乙宫、天目、计神、主客算与将宫。","url":"https://ctext.org/wiki.pl?chapter=275091&if=gb&remap=gb"},
+    {"title":"kintaiyi锁定积年与局数实现","note":"固定commit中`accnum`、`kook`与`ty`直接生成本页的积年数、第13局与六宫。","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L383-L596"},
+    {"title":"kintaiyi锁定固定例输入","note":"固定例输入1552-09-24 00:00、年计和金镜积年法。","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/examples/basic_usage.py#L13-L20"}
+  ],
+  "internal_review": {
+    "status": "formal_structure_node_locked_implementation_with_classical_anchor",
+    "reviewed_at": "2026-08-06",
+    "owner": ["火华", "Codex"],
+    "source_refs": ["github_kentang2017_kintaiyi_f2719d6", "ctext_taiyi_jinjing_vol_1", "ctext_taiyi_jinjing_vol_2"],
+    "runtime_command": "Taiyi(1552, 9, 24, 0, 0).pan(0, 1)",
+    "runtime_environment": "temporary Python venv; locked repository commit installed from source",
+    "deduplication": "不并入‘计法与版本’：该页回答有哪些计法；本页回答一个锁定计法怎样生成盘面锚点。不并入‘主客算与关系’：本页仅展示三类算与将宫的输出身份，不定义关系标签或断语。",
+    "boundary": "固定输入、无真人数据、无随机、无国运战争灾异与个人结论；README与锁定运行差异显式公开。"
+  }
+}

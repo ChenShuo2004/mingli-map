@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0",
+  "id": "liuyao_hexagram_chong_he",
+  "title": "六冲与六合",
+  "summary": "六冲卦与六合卦是纳甲完成后的卦级关系分类。把内卦三爻与外卦三个对应位置逐一比较：初爻对四爻、二爻对五爻、三爻对上爻；三组地支全部相冲称六冲卦，三组全部相合称六合卦。",
+  "position_pairs": [
+    { "inner": "初爻", "outer": "四爻" },
+    { "inner": "二爻", "outer": "五爻" },
+    { "inner": "三爻", "outer": "上爻" }
+  ],
+  "classes": [
+    {
+      "id": "chong",
+      "label": "六冲卦",
+      "relation": "冲",
+      "count": 10,
+      "hexagrams": [
+        { "name": "乾为天", "inner": "乾", "outer": "乾", "pairs": [["子", "午"], ["寅", "申"], ["辰", "戌"]] },
+        { "name": "坎为水", "inner": "坎", "outer": "坎", "pairs": [["寅", "申"], ["辰", "戌"], ["午", "子"]] },
+        { "name": "艮为山", "inner": "艮", "outer": "艮", "pairs": [["辰", "戌"], ["午", "子"], ["申", "寅"]] },
+        { "name": "震为雷", "inner": "震", "outer": "震", "pairs": [["子", "午"], ["寅", "申"], ["辰", "戌"]] },
+        { "name": "巽为风", "inner": "巽", "outer": "巽", "pairs": [["丑", "未"], ["亥", "巳"], ["酉", "卯"]] },
+        { "name": "离为火", "inner": "离", "outer": "离", "pairs": [["卯", "酉"], ["丑", "未"], ["亥", "巳"]] },
+        { "name": "坤为地", "inner": "坤", "outer": "坤", "pairs": [["未", "丑"], ["巳", "亥"], ["卯", "酉"]] },
+        { "name": "兑为泽", "inner": "兑", "outer": "兑", "pairs": [["巳", "亥"], ["卯", "酉"], ["丑", "未"]] },
+        { "name": "天雷无妄", "inner": "震", "outer": "乾", "pairs": [["子", "午"], ["寅", "申"], ["辰", "戌"]] },
+        { "name": "雷天大壮", "inner": "乾", "outer": "震", "pairs": [["子", "午"], ["寅", "申"], ["辰", "戌"]] }
+      ]
+    },
+    {
+      "id": "he",
+      "label": "六合卦",
+      "relation": "合",
+      "count": 8,
+      "hexagrams": [
+        { "name": "雷地豫", "inner": "坤", "outer": "震", "pairs": [["未", "午"], ["巳", "申"], ["卯", "戌"]] },
+        { "name": "地雷复", "inner": "震", "outer": "坤", "pairs": [["子", "丑"], ["寅", "亥"], ["辰", "酉"]] },
+        { "name": "泽水困", "inner": "坎", "outer": "兑", "pairs": [["寅", "亥"], ["辰", "酉"], ["午", "未"]] },
+        { "name": "水泽节", "inner": "兑", "outer": "坎", "pairs": [["巳", "申"], ["卯", "戌"], ["丑", "子"]] },
+        { "name": "火山旅", "inner": "艮", "outer": "离", "pairs": [["辰", "酉"], ["午", "未"], ["申", "巳"]] },
+        { "name": "山火贲", "inner": "离", "outer": "艮", "pairs": [["卯", "戌"], ["丑", "子"], ["亥", "寅"]] },
+        { "name": "天地否", "inner": "坤", "outer": "乾", "pairs": [["未", "午"], ["巳", "申"], ["卯", "戌"]] },
+        { "name": "地天泰", "inner": "乾", "outer": "坤", "pairs": [["子", "丑"], ["寅", "亥"], ["辰", "酉"]] }
+      ]
+    }
+  ],
+  "reading_boundary": "这里只说明纳甲后的三组对应爻怎样形成卦级分类，不把六冲、六合直接解释成事件结果，也不提供起卦或个人占断。",
+  "internal_review": {
+    "status": "classical_definition_and_two_implementations_cross_checked",
+    "reviewed_at": "2026-08-04",
+    "source_refs": [
+      "zengshan_buyi_wikisource_chapter_3_19_20",
+      "github_chxb_jishiyu_97b6d6d_js_6yao",
+      "github_horace_maxwell_horosa_7405ddf_liuyao_engine",
+      "github_deminzhang_qimen_go_4d3f58f_liuyao_defs"
+    ],
+    "boundary": "公开分类、三组对应位置、18卦清单与固定关系样本；冲合断语、用神判断和个人事件结论留在受限层。"
+  }
+}

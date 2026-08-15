@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0",
+  "id": "ziwei_monthly_doujun_sequence",
+  "title": "流月斗君序列",
+  "summary": "流月斗君序列回答的是“流年正月从哪一宫起”：先把流年地支放入寅起的十二宫坐标，逆数出生月，再按出生时支顺数，得到正月锚点；二月至十二月每月顺行一宫。当前只展示抽象输入、锁定实现的索引公式与闰月后半修正，不接收真人出生资料，不生成流月事件或吉凶。",
+  "palace_branch_order": ["寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥", "子", "丑"],
+  "hour_branch_order": ["子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"],
+  "lunar_months": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+  "inputs": [
+    {"id":"year_branch","label":"流年地支","coordinate":"寅起宫位索引","note":"先由运限年界口径得到当前流年支，再转成寅=0、卯=1…丑=11的宫位索引。"},
+    {"id":"birth_month","label":"出生农历月","coordinate":"1—12","note":"从流年支所在宫逆数到出生月；索引公式直接使用1至12的月数。"},
+    {"id":"birth_hour","label":"出生时支","coordinate":"子起时支索引","note":"把逆数所在宫当作子时，再顺数到出生时支；子=0、丑=1…亥=11。"},
+    {"id":"target_month","label":"目标农历月","coordinate":"1—12","note":"正月停在斗君锚点，之后每增一月顺行一宫。"}
+  ],
+  "formula_steps": [
+    {"id":"year_index","label":"定流年起点","expression":"Y = 流年支在寅起十二宫中的索引","note":"宫位坐标以寅为0，不是子起的地支原始下标。"},
+    {"id":"effective_birth_month","label":"修正生月","expression":"B = 出生月 + 出生闰月后半加值","note":"锁定实现仅在出生于闰月且农历日>15时加1。"},
+    {"id":"first_month_anchor","label":"求正月斗君","expression":"A = mod12(Y − B + H + 1)","note":"H为子起时支索引；“−B+1”对应从流年起点逆数生月。"},
+    {"id":"target_month","label":"推到目标月","expression":"M = mod12(A + T′ − 1)","note":"T′为目标月加目标闰月后半修正；正月与A同宫。"}
+  ],
+  "leap_month_rules": [
+    {"side":"出生端","condition":"出生月为闰月且农历日>15","addition":1,"effect":"有效生月加1，正月锚点逆移一宫。"},
+    {"side":"目标端","condition":"目标月为闰月且农历日>15","addition":1,"effect":"有效目标月加1，当月位置顺移一宫。"}
+  ],
+  "fixed_examples": [
+    {"id":"locked_test_2000","label":"锁定测试折算","year_branch":"卯","birth_month":7,"birth_hour":"寅","target_month":7,"birth_leap_addition":0,"target_leap_addition":0,"first_month_branch":"亥","target_branch":"巳","target_index":3,"note":"对应锁定测试的2000-08-16寅时生与2023-08-19目标日；实现断言monthly.index=3。"},
+    {"id":"zero_anchor","label":"子年正月子时","year_branch":"子","birth_month":1,"birth_hour":"子","target_month":1,"birth_leap_addition":0,"target_leap_addition":0,"first_month_branch":"子","target_branch":"子","target_index":10,"note":"生月与目标月都为正月，子时不新增偏移，锚点保留在流年子位。"},
+    {"id":"birth_leap_shift","label":"出生闰月后半","year_branch":"午","birth_month":2,"birth_hour":"卯","target_month":1,"birth_leap_addition":1,"target_leap_addition":0,"first_month_branch":"未","target_branch":"未","target_index":5,"note":"有效生月由2变3；与不加值时的申位相比，正月锚点逆移到未位。"},
+    {"id":"target_leap_shift","label":"目标闰月后半","year_branch":"子","birth_month":1,"birth_hour":"子","target_month":2,"birth_leap_addition":0,"target_leap_addition":1,"first_month_branch":"子","target_branch":"寅","target_index":0,"note":"目标二月后半按月数3读取；在子位锚点上顺行两宫到寅位。"}
+  ],
+  "field_separation": [
+    {"field":"monthly.index","meaning":"流月宫位索引","source":"斗君及目标月顺行公式","note":"用于在本命十二宫底盘上重排当月宫名。"},
+    {"field":"monthly.heavenlyStem / earthlyBranch","meaning":"目标月干支","source":"目标日期的干支转换","note":"它不是由monthly.index换成的宫位地支；本页不计算月干。"}
+  ],
+  "boundaries": [
+    {"label":"不同于运限层次","note":"“运限层次”回答六层各自有哪些字段；本节点只展开其中流月层的三输入锚点与十二月序列。"},
+    {"label":"宫位支不是月支","note":"页面显示的寅卯等是流月宫落在底盘的物理位，不得写成当月干支。"},
+    {"label":"早晚子时的日界在上游","note":"本公式只读取星盘已保存的出生时支；晚子时是否换日不在本节点裁决。"},
+    {"label":"不发布月干通则","note":"古诀资料与锁定实现对月干的入口不完全是同一个问题，且资料中明示有五虎遁与宫干等取法差异；当前只发布宫位序列。"},
+    {"label":"不是排盘或流月解读","note":"交互只使用抽象地支、月数与布尔修正，不接收日期、性别、姓名，不输出事件、应期或吉凶。"}
+  ],
+  "public_sources": [
+    {"title":"iztro：安子斗诀","note":"学习文档把斗君定义为流月正月，并记录从流年岁建逆数生月、再顺数生时的口诀。","url":"https://iztro.com/learn/setup.html#_45-安子斗诀"},
+    {"title":"iztro：流月宫位索引实现","note":"锁定源码将流年宫位索引、出生月、出生时支、目标月及两端闰月加值合成monthlyIndex。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/astro/FunctionalAstrolabe.ts#L127-L143"},
+    {"title":"iztro：宫位与地支索引换算","note":"锁定工具明确十二宫以寅为第一宫，地支索引需减去寅的原始下标。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/utils/index.ts#L34-L64"},
+    {"title":"iztro：锁定运限固定断言","note":"2000-08-16寅时的固定星盘在2023-08-19返回流年索引1、流月索引3，用于核对本页折算例。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/__tests__/astro/astro.test.ts#L10-L115"},
+    {"title":"iztro：闰月流月修复记录","note":"更改记录把出生闰月与流月闰月的索引修正保存为实现变更，而非默认成无争议通则。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/CHANGELOG.md#L7-L69"}
+  ],
+  "internal_review": {
+    "status":"formal_monthly_anchor_sequence_node_locked_implementation",
+    "reviewed_at":"2026-08-06",
+    "source_refs":["github_sylarlong_iztro_2fb2030"],
+    "ownership":"K-ZW.07 运限层次",
+    "deduplication":"不并入“运限层次”：后者只保存六层作用域、共有字段与边界，本对象新增流年支、出生月、出生时支到正月锚点的三输入算法及十二月顺行序列；不并入“小限岁序”：小限按生年支与性别逐岁循环，本对象按流年支、生月与生时逐月循环。",
+    "boundary":"仅发布正月斗君、目标月索引、十二月序列与锁定闰月后半分支；月干流派差异、年界换算、早晚子时日界、真人排盘与流月解释全部排除。"
+  }
+}

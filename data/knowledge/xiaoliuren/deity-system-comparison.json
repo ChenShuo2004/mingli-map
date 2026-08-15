@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0.0",
+  "id": "xiaoliuren_deity_system_comparison",
+  "title": "六神与九神不是同一张表",
+  "summary": "仓库材料同时出现六位系统和九位系统。九神道门版保留前六个同名对象，又增加病符、桃花、天德，并为九位配置另一套神名、八卦、五行与方位；因此它不能被处理成六宫表后面补三条宫义。",
+  "systems": [
+    {
+      "id": "six-position",
+      "label": "六位系统",
+      "position_count": 6,
+      "positions": [
+        {"position": 1, "name": "大安"},
+        {"position": 2, "name": "留连"},
+        {"position": 3, "name": "速喜"},
+        {"position": 4, "name": "赤口"},
+        {"position": 5, "name": "小吉"},
+        {"position": 6, "name": "空亡"}
+      ],
+      "scope": "多套六宫材料共享这六个名称，但属性和起课口径仍需逐版本登记。"
+    },
+    {
+      "id": "nine-position-daoist",
+      "label": "九神道门版",
+      "position_count": 9,
+      "positions": [
+        {"position": 1, "name": "大安", "deity": "三清", "trigram": "震", "element": "木", "direction": "正东"},
+        {"position": 2, "name": "留连", "deity": "文昌", "trigram": "巽", "element": "木", "direction": "东南"},
+        {"position": 3, "name": "速喜", "deity": "雷祖", "trigram": "离", "element": "火", "direction": "正南"},
+        {"position": 4, "name": "赤口", "deity": "将帅", "trigram": "兑", "element": "金", "direction": "正西"},
+        {"position": 5, "name": "小吉", "deity": "真武", "trigram": "坎", "element": "水", "direction": "正北"},
+        {"position": 6, "name": "空亡", "deity": "玉皇", "trigram": "中", "element": "土", "direction": "内"},
+        {"position": 7, "name": "病符", "deity": "后土", "trigram": "坤", "element": "土", "direction": "西南"},
+        {"position": 8, "name": "桃花", "deity": "城隍", "trigram": "艮", "element": "土", "direction": "东北"},
+        {"position": 9, "name": "天德", "deity": "紫微", "trigram": "乾", "element": "金", "direction": "西北"}
+      ],
+      "scope": "这里只保存该无授权来源可辨认的对象结构，不复用其断法。"
+    }
+  ],
+  "shared_names": ["大安", "留连", "速喜", "赤口", "小吉", "空亡"],
+  "nine_only_names": ["病符", "桃花", "天德"],
+  "non_merge_rules": [
+    "共享名称只证明标签相同，不证明五行、方位、神名或解释相同。",
+    "六位循环的第六位之后回到第一位；九位系统还有第七至第九位，循环长度不同。",
+    "页面切换系统时整表切换，不把九神字段写回六宫节点。"
+  ],
+  "reading_boundaries": [
+    "不解释病符、桃花、天德对个人事件的含义。",
+    "不把九神道门版称作六神版的高级或完整形态。",
+    "无授权来源只公开短字段和原创比较，不复制原文段落。"
+  ],
+  "public_sources": [
+    {
+      "title": "Horace-Maxwell/divination-notes-prompt 锁定资料索引",
+      "url": "https://github.com/Horace-Maxwell/divination-notes-prompt/tree/b22ecfaafcd17782ddc0f633df163b6492b766d4",
+      "note": "无许可证；用于定位六位与九位两套对象结构，页面内容为本项目原创字段整理。"
+    }
+  ],
+  "internal_review": {
+    "reviewed_on": "2026-08-09",
+    "owner": ["火华", "Codex"],
+    "status": "formal_version_comparison"
+  }
+}

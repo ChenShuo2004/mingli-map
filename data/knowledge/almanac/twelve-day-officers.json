@@ -1,0 +1,14 @@
+{
+  "schema_version":"1.0",
+  "id":"twelve-day-officers",
+  "title":"建除十二值",
+  "summary":"建除十二值以月支和日支的相对位置形成十二位循环：与月支同支的日为建，其后按地支顺序依次为除、满、平、定、执、破、危、成、收、开、闭。",
+  "sequence":["建","除","满","平","定","执","破","危","成","收","开","闭"],
+  "generation":{"anchor":"日支与月支相同","anchor_value":"建","step":"日支每顺行一位，值名顺行一位","cycle_length":12},
+  "fixed_example":{"date":"1986-05-29","month_branch":"巳","day_branch":"酉","offset":4,"result":"定"},
+  "boundaries":["十二值是日序标签，不等于十二天神","事项宜忌另由具体来源连接","月支口径变化会改变起点"],
+  "public_sources":[
+    {"title":"《钦定协纪辨方书》：建除十二神","note":"用于确认建除十二神作为独立循环及其传统来源入口。","url":"https://www.shidianguji.com/book/SK1619/chapter/1l9llprtufyus"},
+    {"title":"tyme4ts 1.5.2","note":"固定样本按月支与日支之差复算为定日；仅代表锁定实现。","url":"https://github.com/6tail/tyme4ts"}
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "schema_version":"1.0.0","id":"western_astrology_transits_position_set_comparison","title":"行运位置集合比较","summary":"行运的最小结构是两套位置集合：固定本命时刻的对象位置与固定目标时刻的对象位置。当前节点只比较跨集合的黄经角距离、主相位类型、容许度和入／出相状态；flatlib没有专门行运模块，而是由Chart、星历和相位接口拼成。",
+  "concept_cards":[
+    {"id":"natal","name":"本命位置集合","tag":"固定基线","summary":"对象ID与本命黄经保持不变，作为跨时刻比较的被动集合。","details":["2000-01-01 12:00 UT","七曜固定样本"]},
+    {"id":"target","name":"目标位置集合","tag":"真实时刻","summary":"用目标Datetime重新计算七曜位置与速度，不旋转本命盘。","details":["2004-06-30 12:00 UT","同一固定地点"]},
+    {"id":"geometry","name":"跨集合几何","tag":"五个主相位","summary":"每组关系保存目标角、实际误差与实现运动状态。","details":["合相0°","六分60°","四分90°","三分120°","对冲180°"]},
+    {"id":"coverage","name":"实现覆盖","tag":"底层积木","summary":"当前仓库无transits专门模块；页面组合Chart和aspects接口。","details":["不等同于事件触发器","不自动读取时间主星"]}
+  ],
+  "fixed_samples":[
+    {"id":"jupiter-moon","label":"行运木星—本命月亮","input":"163.284° ↔ 223.324°","output":"六分60° · 误差0.040°","note":"实现标记Exact"},
+    {"id":"sun-sun","label":"行运太阳—本命太阳","input":"99.023° ↔ 280.369°","output":"对冲180° · 误差1.346°","note":"实现标记Separative"},
+    {"id":"sun-saturn","label":"行运太阳—本命土星","input":"99.023° ↔ 40.396°","output":"六分60° · 误差1.373°","note":"实现标记Applicative"},
+    {"id":"saturn-moon","label":"行运土星—本命月亮","input":"105.769° ↔ 223.324°","output":"三分120° · 误差2.446°","note":"实现标记Applicative"},
+    {"id":"mars-venus","label":"行运火星—本命金星","input":"124.177° ↔ 241.566°","output":"三分120° · 误差2.611°","note":"实现标记Applicative"},
+    {"id":"mercury-jupiter","label":"行运水星—本命木星","input":"112.293° ↔ 25.253°","output":"四分90° · 误差2.960°","note":"实现标记Applicative"}
+  ],
+  "comparisons":[
+    {"field":"计算结构","left":"作者称实时天象与本命盘互动","right":"实现需要分别建立目标Chart与本命Chart再跨集合求相位","handling":"保存两套位置，不把目标位置覆盖本命位置。"},
+    {"field":"实现层级","left":"作者把行运列为独立预测技术","right":"flatlib没有专门predictives/transits模块","handling":"标为底层积木可拼装，不标成专门模块。"},
+    {"field":"解释范围","left":"作者给出触发、机遇、考验等事件词","right":"代码只返回位置、速度、相位与运动状态","handling":"页面停在几何关系。"}
+  ],
+  "reading_boundaries":["所有本命与目标时刻均为固定夹具，不读取当前时间或用户数据。","相位命中不等于事件发生。","作者的外行星分类与事件词不进入七曜固定样本。","入相／出相标签沿用锁定相位接口，不升级为预测确定性。"],
+  "public_sources":[
+    {"type":"参考资料","title":"fortune-telling-skills：行运","url":"https://github.com/doododod/fortune-telling-skills/blob/8bcc734491ac75cfb21c1de8727c9fc3f9427b1e/astrology-chart-analysis/references/predictive-techniques.md#%E8%A1%8C%E8%BF%90transits","note":"提供行运作为实时天象与本命盘互动的作者定义；事件词不继承。"},
+    {"type":"实现资料","title":"flatlib：Chart位置集合","url":"https://github.com/flatangle/flatlib/blob/856d26b8bd1316ccdafe76399994696f9510de9e/flatlib/chart.py","note":"为本命时刻和目标时刻分别生成对象位置集合。"},
+    {"type":"实现资料","title":"flatlib：相位接口","url":"https://github.com/flatangle/flatlib/blob/856d26b8bd1316ccdafe76399994696f9510de9e/flatlib/aspects.py","note":"提供跨对象角距离、容许度、方向和入相／离相状态。"}
+  ],
+  "internal_review":{"excluded_claims":["外部触发器","事件发生","个人行运","实时天象读取"]}
+}

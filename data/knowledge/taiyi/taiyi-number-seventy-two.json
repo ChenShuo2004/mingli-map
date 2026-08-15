@@ -1,0 +1,53 @@
+{
+  "schema_version":"1.0.0",
+  "id":"taiyi-number-seventy-two",
+  "title":"太乙数与七十二局数的同值异义",
+  "summary":"《太乙金镜式经》卷七把“太乙数”称为五子元七十二之数，并令积年按太乙局法七十二去之、从一算起。锁定实现的shijing_shu先取积年mod 360为“周纪余”，再取mod 72并以72承接余0；同一仓库的kook也直接以积年mod 72并以72承接余0生成局数。由于360正好是72的五倍，两条实现对同一积年会得到相同的1至72数值，但一个字段用于卷十八十精数层，另一个用于阴阳遁局数层，不能因数值相同而把知识身份合并。仅展示取数链、同值证明、固定样本与边界，不公开原典和实现附带的风雨、日晕、云气或行动解释。",
+  "fixed_input":"1552年9月24日 0时0分 · 年计",
+  "number_layers":[
+    {"id":"accumulated","index":"01","name":"积年数","range":"正整数输入","role":"共同输入","note":"四个method可给出不同积年常数；本页不重新定义积年算法。"},
+    {"id":"cycle-rem","index":"02","name":"周纪余","range":"0—359","role":"实现中间值","note":"shijing_shu新增的mod 360层；选定卷七太乙数段未明列这一中间字段。"},
+    {"id":"taiyi-number","index":"03","name":"太乙数／十精数","range":"1—72","role":"卷七取数对象","note":"余0按72展示；实现字段名“十精数”与卷七标题“太乙数”不同。"},
+    {"id":"board-number","index":"04","name":"七十二局数","range":"1—72","role":"装盘局号","note":"kook用同一积年余数生成阴阳遁第几局，并继续关联理天、理地、理人。"}
+  ],
+  "formulas":[
+    {"id":"classical","label":"卷七太乙数","formula":"积年 ÷ 72 → 不尽之数，从一算起","output":"太乙数 1—72","tone":"source","note":"原文称‘五子元七十二之数’并引用‘太乙局法’，但用途仍另列为太乙数。"},
+    {"id":"implementation-number","label":"锁定shijing_shu","formula":"r360 = 积年 mod 360；数 = r360 mod 72 or 72","output":"周纪余0—359 + 十精数1—72","tone":"implementation","note":"360是72的五倍，所以第二步数值等于直接对积年取mod 72。"},
+    {"id":"implementation-board","label":"锁定kook","formula":"局数 = 积年 mod 72 or 72","output":"局数1—72 + 阴阳遁与三年类型","tone":"implementation","note":"局数与十精数同值，但下游字段和知识用途不同。"}
+  ],
+  "method_results":[
+    {"method":0,"label":"太乙统宗","accumulated":10155469,"cycle_remainder":229,"taiyi_number":13,"board_number":13,"board":"阳遁十三局","status":"两数同值"},
+    {"method":1,"label":"太乙金镜","accumulated":1938109,"cycle_remainder":229,"taiyi_number":13,"board_number":13,"board":"阳遁十三局","status":"积年不同，中间余数与结果同method 0"},
+    {"method":2,"label":"太乙淘金歌","accumulated":10155745,"cycle_remainder":145,"taiyi_number":1,"board_number":1,"board":"阳遁一局","status":"两数同值"},
+    {"method":3,"label":"太乙局","accumulated":10155469,"cycle_remainder":229,"taiyi_number":13,"board_number":13,"board":"阳遁十三局","status":"与method 0完全相同"}
+  ],
+  "boundary_samples":[
+    {"input":71,"cycle_remainder":71,"taiyi_number":71,"board_number":71,"transition":"周期末前一算","status":"两实现同值"},
+    {"input":72,"cycle_remainder":72,"taiyi_number":72,"board_number":72,"transition":"mod72为0，以72承接","status":"不显示为0局／0数"},
+    {"input":73,"cycle_remainder":73,"taiyi_number":1,"board_number":1,"transition":"七十二周期重启","status":"两实现同值"},
+    {"input":359,"cycle_remainder":359,"taiyi_number":71,"board_number":71,"transition":"三百六十边界前","status":"周纪余与最终数不同"},
+    {"input":360,"cycle_remainder":0,"taiyi_number":72,"board_number":72,"transition":"mod360为0、mod72亦为0","status":"中间值0，最终值72"},
+    {"input":361,"cycle_remainder":1,"taiyi_number":1,"board_number":1,"transition":"三百六十周期重启","status":"两实现同值"}
+  ],
+  "identity_differences":[
+    {"label":"同值不等于同一字段","left":"太乙数／实现十精数：卷七另立‘推太乙数法’","right":"七十二局数：kook生成阳遁／阴遁第几局","handling":"以两列并排，不把其中一个当成另一个的别名。"},
+    {"label":"周纪余不是太乙数","left":"周纪余保留0—359，例如固定method 0为229","right":"太乙数再次取72余数，固定method 0为13","handling":"两步都显示，防止把229误作局数或太乙数。"},
+    {"label":"太乙数不是主客定算","left":"太乙数由积年按72取数，范围1—72","right":"主算、客算、定算来自七十二局表，现有固定值与数类表主要落在1—40","handling":"不接入十类数名，也不把13自动标作主客定算类别。"},
+    {"label":"实现字段名与原典标题不同","left":"卷七标题与正文均称‘太乙数’","right":"yunqi.py返回字段称‘十精数’","handling":"标题保留原典名称，同时标出实现字段名，暂不裁定两名可完全互换。"},
+    {"label":"三百六十层不改变最终余数","left":"卷七本段直接说以七十二去积年","right":"实现先mod360再mod72；因360=72×5，最终数与直接mod72相同","handling":"将360层标为实现中间值，不伪装成必需的独立换算。"},
+    {"label":"高风险解释不公开","left":"卷七把30、40、50及与太乙、天目、飞鸟等关系连接到风雨晕气","right":"锁定_shu_duanyu继续返回相关判断文本","handling":"本节点只保留数值结构；不显示风雨、云气、天象、灾异或行动结论。"}
+  ],
+  "reading_boundaries":[
+    {"label":"可理解","note":"积年如何经过360中间余数与72余数得到1至72的太乙数。"},
+    {"label":"可比较","note":"太乙数与七十二局数为什么数值相同而用途、字段和下游关系不同。"},
+    {"label":"可复核","note":"四个固定method及71、72、73、359、360、361六个周期边界。"},
+    {"label":"不由此推出","note":"任何现实天气、天象、灾异、战争、地域、行动或个人结果。"}
+  ],
+  "public_sources":[
+    {"title":"《太乙金鏡式經》卷七：推太乙数法","url":"https://ctext.org/wiki.pl?chapter=469355&if=gb&remap=gb","note":"第22至23条称太乙数为五子元七十二之数，并说明积年按太乙局法七十二去之、从一算起；后续风雨晕气内容不纳入本节点。"},
+    {"title":"kintaiyi锁定太乙数实现","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/yunqi.py#L112-L135","note":"固定提交的shijing_shu先取mod360，再取mod72并以72承接余0；同文件的断语函数仅用于确认高风险内容边界。"},
+    {"title":"kintaiyi锁定七十二局实现","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L500-L532","note":"kook直接以积年mod72 or 72生成局数，并附阴阳遁、理天理地理人和积数。"},
+    {"title":"kintaiyi锁定固定例输入","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/examples/basic_usage.py#L13-L20","note":"固定输入1552-09-24 00:00、年计；本页在临时锁定环境复跑method 0—3与六个周期边界。"}
+  ],
+  "internal_review":{"status":"formal_taiyi_number_identity_audit","reviewed_at":"2026-08-06","owner":["火华","Codex"],"runtime_environment":"temporary Python venv; locked repository commit installed from source","runtime_command":"yunqi.shijing_shu(accnum) and Taiyi.kook residue comparison, method=0..3 plus inputs 71,72,73,359,360,361","deduplication":"不并入‘固定年计装盘’：该页把余数用于局数、阴阳遁和太乙落宫；本页专门解释太乙数为何与局数同值但不是同一知识字段。不并入‘主客定算的十类数名’：三算来自局表且另有1—40类别映射，太乙数直接从积年按72取数。不并入两页十精周期：那些本节点生成九个附属对象的位置，本页生成一个1—72数值。","known_gaps":["五子元一词与三百六十中间层的版本关系尚未完成多底本校勘","卷七‘命起一算数外’的逐字断句仍待影像复核","shijing_shu未发现专项测试"],"boundary":"固定样本、无真人输入、无随机；本节点不展示风雨、日晕、云气、灾异、战争、地域、行动或个人断语。"}
+}

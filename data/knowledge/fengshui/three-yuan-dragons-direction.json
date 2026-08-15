@@ -1,0 +1,23 @@
+{
+  "id": "three-yuan-dragons-direction",
+  "title": "三元龙与顺逆飞",
+  "summary": "二十四山在每个卦宫内依次分为地元龙、天元龙、人元龙；山、向起星进入中宫后，须查起星本宫中同一元龙的山位阴阳，阳顺飞、阴逆飞。",
+  "mountains": [
+    {"palace":"坎","mountain":"壬","dragon":"地元龙","polarity":"阳"},{"palace":"坎","mountain":"子","dragon":"天元龙","polarity":"阴"},{"palace":"坎","mountain":"癸","dragon":"人元龙","polarity":"阴"},
+    {"palace":"艮","mountain":"丑","dragon":"地元龙","polarity":"阴"},{"palace":"艮","mountain":"艮","dragon":"天元龙","polarity":"阳"},{"palace":"艮","mountain":"寅","dragon":"人元龙","polarity":"阳"},
+    {"palace":"震","mountain":"甲","dragon":"地元龙","polarity":"阳"},{"palace":"震","mountain":"卯","dragon":"天元龙","polarity":"阴"},{"palace":"震","mountain":"乙","dragon":"人元龙","polarity":"阴"},
+    {"palace":"巽","mountain":"辰","dragon":"地元龙","polarity":"阴"},{"palace":"巽","mountain":"巽","dragon":"天元龙","polarity":"阳"},{"palace":"巽","mountain":"巳","dragon":"人元龙","polarity":"阳"},
+    {"palace":"离","mountain":"丙","dragon":"地元龙","polarity":"阳"},{"palace":"离","mountain":"午","dragon":"天元龙","polarity":"阴"},{"palace":"离","mountain":"丁","dragon":"人元龙","polarity":"阴"},
+    {"palace":"坤","mountain":"未","dragon":"地元龙","polarity":"阴"},{"palace":"坤","mountain":"坤","dragon":"天元龙","polarity":"阳"},{"palace":"坤","mountain":"申","dragon":"人元龙","polarity":"阳"},
+    {"palace":"兑","mountain":"庚","dragon":"地元龙","polarity":"阳"},{"palace":"兑","mountain":"酉","dragon":"天元龙","polarity":"阴"},{"palace":"兑","mountain":"辛","dragon":"人元龙","polarity":"阴"},
+    {"palace":"乾","mountain":"戌","dragon":"地元龙","polarity":"阴"},{"palace":"乾","mountain":"乾","dragon":"天元龙","polarity":"阳"},{"palace":"乾","mountain":"亥","dragon":"人元龙","polarity":"阳"}
+  ],
+  "lookup_steps": ["从实际坐山或向首取得元龙类别","在运盘相应宫位读取起星数","回到该星的洛书本宫","在本宫选同一元龙山位","按该山阴阳决定阳顺、阴逆"],
+  "polarity_sets": {"yang":["乾","坤","艮","巽","甲","庚","丙","壬","寅","申","巳","亥"],"yin":["子","午","卯","酉","辰","戌","丑","未","乙","辛","丁","癸"]},
+  "boundaries": ["不能直接拿实际坐山本身的阴阳决定起星顺逆，必须回查起星本宫的同元龙山位","三元龙用于玄空挨星，不等同三合盘的地盘、人盘、天盘","兼向、替卦与五黄寄宫另有版本规则，本表只呈现下卦基础链"],
+  "public_sources": [
+    {"title":"南华大学：建筑门向与玄空风水研究","note":"用于核对二十四山、三元龙和山向挨星的基础结构。","url":"https://nhuir.nhu.edu.tw/bitstream/987654321/25746/1/105NHU00356002-001.pdf"},
+    {"title":"三元二十四山阴阳盘","note":"提供八宫中地、天、人三元龙及阴阳的完整对应表。","url":"https://www.davidyek.com/yifengshui/-sanyuan-yinyang-24-mountains-plate"},
+    {"title":"元龙与玄空挨星顺逆","note":"用于核对每宫三山的元龙位置，以及由同元龙山位判断顺逆的步骤。","url":"https://www.108s.tw/article/info/289"}
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0.0",
+  "id": "daliuren_special_transmission_routes",
+  "title": "遥克至八专的特殊分流",
+  "summary": "当普通贼克路径不能直接确定初传时，现有实现继续检查遥克、昴星、别责与八专。它们各自依赖不同条件：日干与课上神的隔位相克、日干阴阳、四课是否完备、干支是否同位及有无克等，不能压成一条‘无克就按顺序任选’的规则。",
+  "headline": "四条路线分别回答四种不同的结构缺口",
+  "steps": [
+    {"label": "遥克", "value": "日干 ↔ 课上神", "note": "无直接贼克后检查隔位相克。"},
+    {"label": "昴星", "value": "虎视／冬蛇掩目", "note": "继续依日干阴阳等条件分支。"},
+    {"label": "别责", "value": "四课不备", "note": "课数不足且无前序取法时进入具名实现。"},
+    {"label": "八专", "value": "干支同位等条件", "note": "有克仍回普通路径，无克才进入特殊取法。"}
+  ],
+  "facts": [
+    {"label": "实现覆盖", "detail": "dalurenpython 扫描产生遥克780、虎视48、冬蛇掩目144、别责108、八专192组标签。"},
+    {"label": "八专争议", "detail": "kinliuren issue #15涉及八专日期集合与方法次序，当前没有闭环。"},
+    {"label": "术语原样", "detail": "kinliuren 中的蒿矢11等工程后缀不直接建为知识本体。"}
+  ],
+  "reading_boundaries": ["四条路线不共享同一组触发条件。", "八专开放争议必须保留，不静默选择一个实现。", "课体解释长文不进入公开页面。"],
+  "public_sources": [
+    {"title": "kinliuren 特殊取传分支", "url": "https://github.com/kentang2017/kinliuren/blob/3ba45a9540f08269b56d81508a061c7d46938785/src/kinliuren/kinliuren.py", "note": "提供遥克、昴星、别责、八专的作者实现。"},
+    {"title": "qimen-go 特殊取传分支", "url": "https://github.com/deminzhang/qimen-go/blob/4d3f58fa0f401b5b3a337f119138e99e90685dda/xuan/big6.go", "note": "用于固定案例和分支对照。"},
+    {"title": "dalurenpython 特殊取传分支", "url": "https://github.com/wlhyl/dalurenpython/blob/62764a4ad2c10f5ccc34b86c8520d9f4a96ba3aa/shipan/shipan.py#L634-L727", "note": "无仓库许可；只引用结构和审计计数。"}
+  ],
+  "internal_review": {"reviewed_on": "2026-08-10", "owner": ["火华", "Codex"], "status": "formal_variant_routes_with_bazhuan_dispute"}
+}

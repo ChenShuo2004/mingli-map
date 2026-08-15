@@ -1,0 +1,16 @@
+{
+  "id":"daily-auspicious-directions","title":"喜神、福神与财神方位","summary":"喜神、福神与财神是三个按日干查表的神方字段；福神至少并存两套表，不能在数据层静默覆盖。",
+  "rows":[
+    {"stem":"甲","joy":"东北","fortune_v1":"东南","fortune_v2":"正北","wealth":"东北"},{"stem":"乙","joy":"西北","fortune_v1":"东南","fortune_v2":"西南","wealth":"东北"},
+    {"stem":"丙","joy":"西南","fortune_v1":"正东","fortune_v2":"西北","wealth":"西南"},{"stem":"丁","joy":"正南","fortune_v1":"正东","fortune_v2":"东南","wealth":"西南"},
+    {"stem":"戊","joy":"东南","fortune_v1":"正北","fortune_v2":"东北","wealth":"正北"},{"stem":"己","joy":"东北","fortune_v1":"正南","fortune_v2":"正北","wealth":"正北"},
+    {"stem":"庚","joy":"西北","fortune_v1":"西南","fortune_v2":"西南","wealth":"正东"},{"stem":"辛","joy":"西南","fortune_v1":"西南","fortune_v2":"西北","wealth":"正东"},
+    {"stem":"壬","joy":"正南","fortune_v1":"西北","fortune_v2":"东南","wealth":"正南"},{"stem":"癸","joy":"东南","fortune_v1":"正西","fortune_v2":"东北","wealth":"正南"}
+  ],
+  "fixed_example":{"date":"1986-05-29","day_stem":"癸","joy":"东南","fortune_v1":"正西","fortune_v2":"东北","wealth":"正南"},
+  "boundaries":["三类神方共用日干输入，但不是同一张表","福神版本一与版本二并列展示","方位采用八方名称，不读取用户位置"],
+  "public_sources":[
+    {"title":"lunar-javascript 锁定实现","note":"喜神、两套福神、财神十干表与固定样本来自锁定版本。","url":"https://github.com/6tail/lunar-javascript/tree/4c45a59"},
+    {"title":"《协纪辨方书》九神总论","note":"用于说明神名与方位、五行等起例并非同一种生成法。","url":"https://www.shidianguji.com/zh/book/SK1619/chapter/1l9llqbf62plv"}
+  ]
+}

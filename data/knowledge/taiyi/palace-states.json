@@ -1,0 +1,87 @@
+{
+  "schema_version": "1.0",
+  "id": "palace-states",
+  "title": "宫位状态",
+  "summary": "宫位取得数字与名称以后，还会叠加三种不同状态：当前节气把八个外围宫排成旺、相、胎、没、死、囚、休、废；太乙落宫读取一组固定的九宫身份；太乙、二目与四将若落在一、九、四六或二八宫，又会得到绝阳、绝阴、绝气或易气标签。三层分别读取时间、太乙宫和诸神位置，不能合成一个吉凶等级。",
+  "fixed_input": "固定样本：1552-09-24 00:00 · 年计 · 秋分 · 四个积年分支",
+  "layers": [
+    {"index":"01","name":"节气旺衰","input":"当前节气所属的三节气组","output":"八宫依次取得旺、相、胎、没、死、囚、休、废","status":"时间层"},
+    {"index":"02","name":"九宫身份","input":"太乙所在的1—9宫","output":"宫名、别名与固定气象描述","status":"落宫层"},
+    {"index":"03","name":"阴阳绝易","input":"太乙、天目、始击与主客四将的宫位","output":"绝阳、绝阴、绝气、易气的位置标签","status":"组合层"}
+  ],
+  "seasonal_blocks": [
+    {"terms":["春分","清明","谷雨"],"start_palace":3},
+    {"terms":["立夏","小满","芒种"],"start_palace":4},
+    {"terms":["夏至","小暑","大暑"],"start_palace":9},
+    {"terms":["立秋","处暑","白露"],"start_palace":2},
+    {"terms":["秋分","寒露","霜降"],"start_palace":7},
+    {"terms":["立冬","小雪","大雪"],"start_palace":6},
+    {"terms":["冬至","小寒","大寒"],"start_palace":1},
+    {"terms":["立春","雨水","惊蛰"],"start_palace":8}
+  ],
+  "state_order": ["旺","相","胎","没","死","囚","休","废"],
+  "fixed_seasonal_map": [
+    {"palace":7,"display":"坤","state":"旺"},
+    {"palace":6,"display":"酉／兑","state":"相"},
+    {"palace":1,"display":"乾","state":"胎"},
+    {"palace":8,"display":"子／坎","state":"没"},
+    {"palace":3,"display":"艮","state":"死"},
+    {"palace":4,"display":"卯／震","state":"囚"},
+    {"palace":9,"display":"巽","state":"休"},
+    {"palace":2,"display":"午／离","state":"废"}
+  ],
+  "palace_identities": [
+    {"number":1,"display":"乾","trigram":"乾","alias":"天门","structural_note":"起首与天位"},
+    {"number":2,"display":"午","trigram":"离","alias":"明堂","structural_note":"南方明位"},
+    {"number":3,"display":"艮","trigram":"艮","alias":"—","structural_note":"三阳交接"},
+    {"number":4,"display":"卯","trigram":"震","alias":"—","structural_note":"阳气展开"},
+    {"number":5,"display":"中","trigram":"中","alias":"枢纽","structural_note":"斡旋八方；太乙不居"},
+    {"number":6,"display":"酉","trigram":"兑","alias":"—","structural_note":"阴气敷施"},
+    {"number":7,"display":"坤","trigram":"坤","alias":"—","structural_note":"阳转纯阴"},
+    {"number":8,"display":"子","trigram":"坎","alias":"端门","structural_note":"南北正位"},
+    {"number":9,"display":"巽","trigram":"巽","alias":"—","structural_note":"东南入位"}
+  ],
+  "jueyi_groups": [
+    {"name":"绝阳","palaces":["1宫 · 乾"],"structural_note":"阴极转向阳的一端"},
+    {"name":"绝阴","palaces":["9宫 · 巽"],"structural_note":"阳极转向阴的一端"},
+    {"name":"绝气","palaces":["4宫 · 卯／震","6宫 · 酉／兑"],"structural_note":"阴阳交接后的渐衰位"},
+    {"name":"易气","palaces":["2宫 · 午／离","8宫 · 子／坎"],"structural_note":"阴阳相易的交接位"}
+  ],
+  "fixed_methods": [
+    {"method":0,"label":"太乙统宗","board":13,"taiyi":"6宫 · 酉／兑","seasonal_state":"相","jueyi_hits":["绝阴：天目、始击、客大","绝气：太乙、主参","易气：主大"],"status":"与method 1／3同盘"},
+    {"method":1,"label":"太乙金镜","board":13,"taiyi":"6宫 · 酉／兑","seasonal_state":"相","jueyi_hits":["绝阴：天目、始击、客大","绝气：太乙、主参","易气：主大"],"status":"固定示例分支"},
+    {"method":2,"label":"太乙淘金歌","board":1,"taiyi":"1宫 · 乾","seasonal_state":"胎","jueyi_hits":["绝阳：太乙、主参","绝阴：客参","绝气：天目"],"status":"局号与落宫分流"},
+    {"method":3,"label":"太乙局","board":13,"taiyi":"6宫 · 酉／兑","seasonal_state":"相","jueyi_hits":["绝阴：天目、始击、客大","绝气：太乙、主参","易气：主大"],"status":"与method 0／1同盘"}
+  ],
+  "implementation_differences": [
+    {"label":"三层输入不能互换","source":"卷二目录把九宫所主、九宫通变、阴阳绝易分别列项","implementation":"程序又从节气模块另取八宫旺衰","handling":"并列三层，不把旺衰状态当作宫名或绝易标签。"},
+    {"label":"旺衰只排外围八宫","source":"当前函数的状态序列只有八项","implementation":"中五宫不进入旺相胎没死囚休废轮转","handling":"九宫身份仍显示中宫，但季节状态表不补造中宫值。"},
+    {"label":"节气三项共用一个起点","source":"二十四节气被切成八组三项","implementation":"每组只由首个节气确定旺位，再顺排八状态","handling":"固定秋分样本也适用于寒露、霜降，不写成每日变化。"},
+    {"label":"九宫表混有解释文字","source":"锁定表同时保存宫名、分野、所主和通变","implementation":"普通结果会根据太乙与始击等位置触发解释","handling":"本节点只提取宫位身份和中性气象，分野回到“分野”页，事件断语不显示。"},
+    {"label":"绝易是对象命中表","source":"一、九、四六、二八分别固定为四类位置","implementation":"程序把太乙、天目、始击与主客四将逐一投进这些集合","handling":"同一盘可同时命中多类；不压成单一好坏等级。"},
+    {"label":"格局布尔值属于下游解释","source":"绝易位置本身可独立列出","implementation":"函数另读取是否存在格局并生成加强断语","handling":"公开节点保留位置命中，格局组合回到“复合关系”，加强断语排除。"}
+  ],
+  "reading_boundaries": [
+    {"label":"保留","note":"节气分组、八状态顺序、九宫身份、四类绝易位置、固定样本与实现缺口。"},
+    {"label":"复用","note":"宫位坐标沿用“十六神位”，州国映射沿用“分野”，组合格局沿用“复合关系”。"},
+    {"label":"不输出","note":"宫位所主的军政灾异、吉凶等级、举事建议、地域判断和真人结论。"}
+  ],
+  "public_sources": [
+    {"title":"《太乙统宗宝鉴》馆藏文本入口","url":"https://ctext.org/wiki.pl?if=gb&res=444363","note":"卷二相关篇目包括九宫所主、九宫通变与阴阳绝易；当前本节点只把它作为底本入口，关键字句仍待影像逐字校勘。"},
+    {"title":"kintaiyi锁定节气旺衰函数","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/jieqi.py#L420-L433","note":"显示八组三节气、八宫起点和旺相胎没死囚休废的轮转实现。"},
+    {"title":"kintaiyi锁定九宫与绝易实现","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/config.py#L3802-L4037","note":"保存九宫表、四类固定宫位、参与对象及触发逻辑；代码注释声明来源为《太乙统宗宝鉴》卷二。"},
+    {"title":"kintaiyi锁定普通式盘接口","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L2157-L2431","note":"普通式盘同时输出八宫旺衰，并把九宫所主和阴阳绝易收在神将所主综合字段中。"},
+    {"title":"kintaiyi二十卷覆盖自审","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/docs/%E5%8F%A4%E7%B1%8D%E6%9C%AA%E7%B4%8D%E5%85%A5%E5%85%A7%E5%AE%B9%E5%88%86%E6%9E%90.md","note":"用于确认卷二篇目和仓库覆盖状态；作者自审不是古籍规则的独立证据。"}
+  ],
+  "internal_review": {
+    "status":"formal_palace_state_audit",
+    "reviewed_at":"2026-08-09",
+    "owner":["火华","Codex"],
+    "source_refs":["ctext_taiyi_tongzong_baojian","github_kentang2017_kintaiyi_f2719d6"],
+    "runtime_environment":"temporary Python venv; locked repository commit installed from source",
+    "runtime_command":"Taiyi(1552,9,24,0,0) with jieqi.gong_wangzhuai, config.nine_palace_suozhu and config.yinyang_jueyi for method=0..3",
+    "deduplication":"不并入‘十六神位’：该页定义坐标，本页解释坐标取得以后怎样叠加时间状态、固定身份和对象命中。不并入‘分野’：九宫表中的州国字段由分野页维护，本页不重复抄表。不并入‘复合关系’：绝易是固定宫位集合，复合关系由多个目将门宫条件组成。",
+    "known_gaps":["节气旺衰函数未标出独立古籍出处","九宫所主和阴阳绝易的底本影像尚未逐字校勘","九宫表中中性气象与事件断语的分界仍需其他版本互校","相关函数未发现专项测试"],
+    "boundary":"固定样本、无真人输入、无随机；本节点只展示节气状态、宫位身份、绝易位置和实现边界。"
+  }
+}

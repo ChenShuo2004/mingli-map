@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "id": "tarot-consultation-ethics",
+  "title": "咨询边界与伦理",
+  "summary": "用五种常见情境判断何时继续、改写问题、转交专业人士、保护资料或停止。",
+  "principles": [
+    {"id":"autonomy","label":"选择权","short":"由当事人决定","note":"提供可考虑的方向，不替当事人下命令，也不把结果写成必然。"},
+    {"id":"scope","label":"专业范围","short":"知道何时转交","note":"医疗、法律、金融和心理等问题应由相应的合格专业人士处理。"},
+    {"id":"privacy","label":"隐私与同意","short":"先说明怎样记录","note":"问题、记录和可识别资料保持保密；公开案例前取得同意并去除身份信息。"},
+    {"id":"subject","label":"问题对象","short":"只处理来询者","note":"涉及未在场第三方的提问，改写为来询者可以观察、决定或行动的部分。"},
+    {"id":"stop","label":"停止权","short":"双方都可以停止","note":"当事人拒绝或无法继续时，应尊重决定；提供者也可说明原因并结束。"}
+  ],
+  "situations": [
+    {"id":"relationship","label":"第三方关系","question":"他现在到底爱不爱我？","action":"改写","action_tone":"reframe","response":"我在这段关系中可以观察哪些事实，并怎样表达自己的需要？","reason":"把问题从读取未在场者的内心，改回当事人能够观察与决定的范围。","source_ids":["tabi"]},
+    {"id":"medical","label":"医疗判断","question":"这次检查结果会不会有问题？","action":"转交","action_tone":"refer","response":"检查结果与治疗选择交由合格医疗专业人士解释。","reason":"塔罗不能替代诊断、治疗或专业风险判断。","source_ids":["tabi","hkta"]},
+    {"id":"recording","label":"保存记录","question":"可以把这次问题和牌面公开成案例吗？","action":"先取得同意","action_tone":"protect","response":"说明保存目的与用途，取得同意，并删除能够识别个人的信息。","reason":"保密不仅是“不说出去”，也包括记录、存储和公开时的处理。","source_ids":["hkta","tarosophy"]},
+    {"id":"decision","label":"重大决定","question":"牌是不是要求我必须立刻辞职？","action":"保留选择权","action_tone":"continue","response":"把牌面当作一个观察角度，再结合现实信息评估可选方案。","reason":"解释可以提供方向，但决定仍由当事人负责。","source_ids":["hkta"]},
+    {"id":"withdraw","label":"不想继续","question":"我听到这里不舒服，可以停下吗？","action":"停止","action_tone":"stop","response":"可以停止，不需要为了完成牌阵继续。","reason":"拒绝和退出应被尊重；无法妥善完成时，提供者也应清楚结束。","source_ids":["tabi","hkta"]}
+  ],
+  "linked_nodes": [
+    {"label":"如何提出问题","note":"把第三方问题改回自己的观察与行动。","route":"/topic/tarot/question-framing"},
+    {"label":"解读记录与复盘","note":"保存版本、同意范围与之后的来源修正。","route":"/topic/tarot/reading-review"},
+    {"label":"塔罗解读步骤总览","note":"在开始前确认范围，过程中保留停止权。","route":"/topic/tarot/reading-workflow"}
+  ],
+  "version_note":"这些条目是三个专业组织公开规范的交叉整理；具体执业、未成年人和资料处理义务仍受所在地法律及组织规则约束。",
+  "boundary":"本页帮助初学者识别咨询边界，不提供法律意见，也不接收或判断真实个案。",
+  "public_sources": [
+    {"id":"tabi","title":"TABI：Aims and Ethics","note":"支撑保密、平等尊重、适时转介专业人士、第三方问题改写或拒绝，以及无法继续时退出。","url":"https://tabi.org.uk/about-us/aims-and-ethics/"},
+    {"id":"hkta","title":"香港专业塔罗协会：专业守则及实务","note":"支撑知情与自决、隐私和资料用途、专业资格区分、拒绝服务的权利及利益冲突边界。","url":"https://hktarot.org.hk/code-of-ethics"},
+    {"id":"tarosophy","title":"Tarosophy Code","note":"支撑尊重个体、保密、记录前告知、说明实践范围与安全风险处理。","url":"https://www.tarotassociation.net/tarosophy-code/"}
+  ],
+  "internal_review": {"status":"formal_consultation_boundary_node","reviewed_at":"2026-08-07","source_refs":["tabi_aims_ethics","hkta_code_ethics","tarosophy_code"],"ownership":"K-TAROT.09 使用边界","boundary":"组织规范并列归纳，不充当所在地法律意见；不接收真实个案。"}
+}

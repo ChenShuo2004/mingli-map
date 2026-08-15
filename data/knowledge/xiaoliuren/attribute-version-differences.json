@@ -1,0 +1,94 @@
+{
+  "schema_version": "1.0.0",
+  "id": "xiaoliuren_attribute_version_differences",
+  "title": "五行与方位的版本分歧",
+  "summary": "同名宫位不保证属性相同。三套可对照材料在大安、速喜、赤口、小吉、空亡上有较多相似字段，但留连出现木／东南、水／北方、土／四角三种明显不同的配置；相似项与冲突项都按来源并列，不据多数票合并。",
+  "versions": [
+    {"id": "daoist-nine-deity", "label": "九神道门版", "rights": "无复用授权"},
+    {"id": "version-two", "label": "版本二", "rights": "无复用授权"},
+    {"id": "maifusha-mit", "label": "maifusha 实现版", "rights": "MIT"}
+  ],
+  "palaces": [
+    {
+      "name": "大安",
+      "values": [
+        {"version_id": "daoist-nine-deity", "element": "木", "direction": "正东"},
+        {"version_id": "version-two", "element": "木", "direction": "东方"},
+        {"version_id": "maifusha-mit", "element": "木", "direction": "东方"}
+      ],
+      "comparison": "三套字段接近，但仍保留各自措辞。"
+    },
+    {
+      "name": "留连",
+      "values": [
+        {"version_id": "daoist-nine-deity", "element": "木", "direction": "东南"},
+        {"version_id": "version-two", "element": "水", "direction": "北方"},
+        {"version_id": "maifusha-mit", "element": "土", "direction": "四角"}
+      ],
+      "comparison": "三套五行和方位均不同，是不能合并成默认属性的核心样本。"
+    },
+    {
+      "name": "速喜",
+      "values": [
+        {"version_id": "daoist-nine-deity", "element": "火", "direction": "正南"},
+        {"version_id": "version-two", "element": "火", "direction": "南方"},
+        {"version_id": "maifusha-mit", "element": "火", "direction": "南方"}
+      ],
+      "comparison": "三套字段接近。"
+    },
+    {
+      "name": "赤口",
+      "values": [
+        {"version_id": "daoist-nine-deity", "element": "金", "direction": "正西"},
+        {"version_id": "version-two", "element": "金", "direction": "西方"},
+        {"version_id": "maifusha-mit", "element": "金", "direction": "西方"}
+      ],
+      "comparison": "三套字段接近。"
+    },
+    {
+      "name": "小吉",
+      "values": [
+        {"version_id": "daoist-nine-deity", "element": "水", "direction": "正北"},
+        {"version_id": "version-two", "element": "木", "direction": "来源摘取段未见明确方位"},
+        {"version_id": "maifusha-mit", "element": "水", "direction": "北方"}
+      ],
+      "comparison": "版本二的五行与另外两套不同，方位字段暂缺，不补写。"
+    },
+    {
+      "name": "空亡",
+      "values": [
+        {"version_id": "daoist-nine-deity", "element": "土", "direction": "内"},
+        {"version_id": "version-two", "element": "土", "direction": "中央"},
+        {"version_id": "maifusha-mit", "element": "土", "direction": "中央"}
+      ],
+      "comparison": "五行相同，方位措辞仍分开保存。"
+    }
+  ],
+  "comparison_rules": [
+    "相同：只表示当前抽取字段相近，不表示整套版本相同。",
+    "冲突：并列展示来源值，不以两票对一票决定正确值。",
+    "缺失：明确写出未见字段，不从相邻版本补齐。"
+  ],
+  "reading_boundaries": [
+    "本页只比较对象属性，不展示吉凶、应期、疾病、财富、婚恋或行动结论。",
+    "版本二与九神道门版无公开复用授权，页面使用短字段与原创比较。",
+    "后续找到可核底本时新增证据列，不覆盖现有来源记录。"
+  ],
+  "public_sources": [
+    {
+      "title": "Horace-Maxwell/divination-notes-prompt 锁定资料索引",
+      "url": "https://github.com/Horace-Maxwell/divination-notes-prompt/tree/b22ecfaafcd17782ddc0f633df163b6492b766d4",
+      "note": "无许可证；用于定位九神道门版与版本二的短字段，比较文字为本项目原创。"
+    },
+    {
+      "title": "maifusha/xiaoliuren 锁定六神表",
+      "url": "https://github.com/maifusha/xiaoliuren/tree/00b56579cf35b9961af5468bd2dc90f9211cc146",
+      "note": "MIT仓库；用于对照六神五行与方位字段。"
+    }
+  ],
+  "internal_review": {
+    "reviewed_on": "2026-08-09",
+    "owner": ["火华", "Codex"],
+    "status": "formal_attribute_comparison"
+  }
+}

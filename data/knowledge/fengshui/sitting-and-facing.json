@@ -1,0 +1,22 @@
+{
+  "id": "sitting-and-facing",
+  "title": "坐山与向首",
+  "summary": "坐与向是一条穿过观察中心的相反轴线：坐山记录背后方向，向首记录面对方向；两者相差180°，共同组成一条完整坐向。",
+  "axis_fields": [
+    {"label":"观察中心","meaning":"坐向轴线穿过的立极点"},
+    {"label":"坐山","meaning":"由中心指向背后的一端"},
+    {"label":"向首","meaning":"由中心指向面对的一端"},
+    {"label":"轴线","meaning":"坐山与向首相差180°的同一直线"}
+  ],
+  "opposite_pairs": [["子","午"],["癸","丁"],["丑","未"],["艮","坤"],["寅","申"],["甲","庚"],["卯","酉"],["乙","辛"],["辰","戌"],["巽","乾"],["巳","亥"],["丙","壬"]],
+  "examples": [
+    {"sitting":"子","facing":"午","sitting_degree":0,"facing_degree":180,"name":"坐子向午"},
+    {"sitting":"卯","facing":"酉","sitting_degree":90,"facing_degree":270,"name":"坐卯向酉"},
+    {"sitting":"巽","facing":"乾","sitting_degree":135,"facing_degree":315,"name":"坐巽向乾"}
+  ],
+  "boundaries": ["朝向必须连同坐山一起记录，单写一个山位容易丢失轴线方向","建筑正门、采光面、道路方向和罗盘向首不必天然等同，应先说明采用哪条轴线","坐向命名只说明方位，不直接推出八宅或玄空结论"],
+  "public_sources": [
+    {"title":"南华大学论文：建筑门向与玄空风水研究","note":"用于核对二十四山两两相对及罗盘十字线定坐向的说明。","url":"https://nhuir.nhu.edu.tw/bitstream/987654321/25746/1/105NHU00356002-001.pdf"},
+    {"title":"暨南大学学报：潮汕祠堂‘十八样’的布局营造及其成因","note":"用于确认传统建筑研究中以二十四山向记录房屋朝向。","url":"https://journal.ujn.edu.cn/rc-pub/front/front-article/download/74706895/lowqualitypdf/%C3%83%C2%A6%C3%82%C2%BD%C3%82%C2%AE%C3%83%C2%A6%C3%82%C2%B1%C3%A2%E2%82%AC%C2%A2%C3%83%C2%A7%C3%82%C2%A5%C3%82%C2%A0%C3%83%C2%A5%C3%82%C2%A0%C3%A2%E2%82%AC%C5%A1%C3%83%C2%A2%C3%A2%E2%80%9A%C2%AC%C3%85%E2%80%9C%C3%83%C2%A5%C3%82%C2%8D%C3%82%C2%81%C3%83%C2%A5%C3%A2%E2%82%AC%C2%A6%C3%82%C2%AB%C3%83%C2%A6%C3%82%C2%A0%C3%82%C2%B7%C3%83%C2%A2%C3%A2%E2%80%9A%C2%AC%C3%82%C2%9D%C3%83%C2%A7%C3%85%C2%A1%C3%A2%E2%82%AC%C5%BE%C3%83%C2%A5%C3%82%C2%B8%C3%86%E2%80%99%C3%83%C2%A5%C3%82%C2%B1%C3%A2%E2%80%9A%C2%AC%C3%83%C2%A8%C3%82%C2%90%C3%82%C2%A5%C3%83%C2%A9%C3%A2%E2%80%9A%C2%AC%C3%82%C2%A0%C3%83%C2%A5%C3%82%C2%8F%C3%85%C2%A0%C3%83%C2%A5%C3%A2%E2%82%AC%C2%A6%C3%82%C2%B6%C3%83%C2%A6%C3%8B%E2%80%A0%C3%82%C2%90%C3%83%C2%A5%C3%A2%E2%82%AC%C2%BA%C3%82%C2%A0.pdf"}
+  ]
+}

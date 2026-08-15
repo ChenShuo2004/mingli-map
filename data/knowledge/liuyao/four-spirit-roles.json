@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.0",
+  "id": "liuyao_four_spirit_roles",
+  "title": "用神与相关角色",
+  "summary": "取用先把观察对象落到世爻或相应六亲，再以那一爻为关系中心：原神生用神，忌神克用神，仇神既生忌神又克原神。前一步按对象关系定位，后一步按五行生克生成角色，不能把两层混成一张固定名单。",
+  "use_selection": [
+    {
+      "id": "self",
+      "label": "自身",
+      "target": "世爻",
+      "principle": "凡损益自身者",
+      "examples": ["自己的处境", "自身得失"],
+      "note": "《卜筮正宗》把涉及自身的观察对象直接落在世爻；世爻所临的六亲仍是另一层信息。"
+    },
+    {
+      "id": "parents",
+      "label": "父母",
+      "target": "父母爻",
+      "principle": "庇护、承载与文书",
+      "examples": ["父母师长", "宅舍舟车", "文章文契"],
+      "note": "人物与事物之所以同列，不是因为外形相同，而是古籍把庇护、承载、文书归在同一关系轴上。"
+    },
+    {
+      "id": "official",
+      "label": "官鬼",
+      "target": "官鬼爻",
+      "principle": "功名、官府与拘束",
+      "examples": ["功名官府", "约束忧疑"],
+      "note": "官与鬼共用一个六亲名称，既可指身份与制度，也可指形成约束的对象；不能脱离具体观察对象只取其中一义。"
+    },
+    {
+      "id": "siblings",
+      "label": "兄弟",
+      "target": "兄弟爻",
+      "principle": "同类、同辈与竞争",
+      "examples": ["兄弟姊妹", "同辈朋友", "竞争分割"],
+      "note": "同辈、同类与竞争关系被放在同一轴上；具体是哪一层，要回到原先限定的对象。"
+    },
+    {
+      "id": "wealth",
+      "label": "妻财",
+      "target": "妻财爻",
+      "principle": "财货、器物与使用",
+      "examples": ["钱财珠宝", "仓库器物", "受驱使者（古籍口径）"],
+      "note": "“妻财”保留传统术语；古籍把财货、器物及被驱使的人物并列，其中人物称谓属于历史语境，不当作现代身份规范。"
+    },
+    {
+      "id": "descendants",
+      "label": "子孙",
+      "target": "子孙爻",
+      "principle": "后辈、医药与解忧",
+      "examples": ["子女晚辈", "门生医药", "禽兽解忧"],
+      "note": "后辈、医药与解忧同列，来自子孙作为制鬼、解忧之神的关系解释，不等于遇到子孙便直接得到某种结果。"
+    }
+  ],
+  "targets": [
+    { "id": "wood", "label": "木为用神", "use": "木", "origin": "水", "avoid": "金", "enemy": "土" },
+    { "id": "fire", "label": "火为用神", "use": "火", "origin": "木", "avoid": "水", "enemy": "金" },
+    { "id": "earth", "label": "土为用神", "use": "土", "origin": "火", "avoid": "木", "enemy": "水" },
+    { "id": "metal", "label": "金为用神", "use": "金", "origin": "土", "avoid": "火", "enemy": "木" },
+    { "id": "water", "label": "水为用神", "use": "水", "origin": "金", "avoid": "土", "enemy": "火" }
+  ],
+  "roles": [
+    { "id": "use", "label": "用神", "question": "当前固定的目标是谁？", "relation": "关系中心" },
+    { "id": "origin", "label": "原神", "question": "谁直接生用神？", "relation": "生用神" },
+    { "id": "avoid", "label": "忌神", "question": "谁直接克用神？", "relation": "克用神" },
+    { "id": "enemy", "label": "仇神", "question": "谁生忌神并克原神？", "relation": "生忌、克原" }
+  ],
+  "chain_examples": [
+    { "label": "接续相生", "path": ["仇神", "忌神", "原神", "用神"], "note": "当忌神同时转而生原神时，关系链可能从直接相克改为接续相生；是否有力仍须另查状态。" },
+    { "label": "后援被截", "path": ["仇神", "原神", "用神"], "note": "仇神克原神，表示用神的直接生源先被截断；这里只识别方向，不翻译成结果。" }
+  ],
+  "terminology_notes": [
+    "六爻资料常写“原神”，也有现代资料写“元神”；两者作为同义写法保留。",
+    "八字也使用“用神、忌神”等名称，但生成语境与角色范围不同，不能用八字取用框架覆盖六爻关系网。"
+  ],
+  "existing_boundary": "“六亲生成”回答卦宫五行与各爻形成哪类六亲；本节点先按观察对象定位用神，再围绕已经确定的目标爻生成原神、忌神、仇神。",
+  "reading_boundary": "本页只展示古籍中的对象分类轴，并用五组固定五行目标演示角色生成；不接收真实事项，不替用户选择具体用神，也不输出吉凶或事件结论。",
+  "internal_review": { "status": "classical_use_selection_and_role_graph_cross_checked", "reviewed_at": "2026-08-05", "source_refs": ["zengshan_buyi_chapter_8", "zengshan_buyi_chapters_9_10", "bushi_zhengzong_yongshen_fenlei_lines_949_956", "bushi_zhengzong_original_avoid_enemy_discussion", "github_weizew_mingli_skills_c16eca0", "github_lusing_qimen_af07532"] }
+}

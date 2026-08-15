@@ -1,0 +1,13 @@
+{
+  "id":"dream-time-conditions","title":"支日、时辰与建除怎样成为条件","summary":"P.3908把十二支日、十二时和建除十二日各立一章；这三组内容直接以做梦时间为入口，不能当成普通梦象对象。",
+  "kicker":"3套时间表 · 12＋12＋12项",
+  "sections":[
+    {"label":"十二支日","note":"以做梦之日的地支进入","items":[{"term":"子","detail":"失脸、口舌"},{"term":"丑","detail":"财入宅、喜悦"},{"term":"寅","detail":"酒、远行人"},{"term":"卯","detail":"外客、官事"},{"term":"辰","detail":"酒肉、外财"},{"term":"巳","detail":"东家小病"},{"term":"午","detail":"远行到"},{"term":"未","detail":"酒肉、喜乐"},{"term":"申","detail":"官事、口舌"},{"term":"酉","detail":"酒食"},{"term":"戌","detail":"远客、外财"},{"term":"亥","detail":"官事、疾病"}]},
+    {"label":"十二时","note":"以梦发生的时辰进入","items":[{"term":"子","detail":"吉昌"},{"term":"丑","detail":"财"},{"term":"寅","detail":"酒肉"},{"term":"卯","detail":"雨"},{"term":"辰","detail":"口舌"},{"term":"巳","detail":"哭泣"},{"term":"午","detail":"失财"},{"term":"未","detail":"口病"},{"term":"申","detail":"诤讼"},{"term":"酉","detail":"客来"},{"term":"戌","detail":"远信"},{"term":"亥","detail":"官事"}]},
+    {"label":"建除十二日","note":"以建除日名进入","items":[{"term":"建","detail":"吉利"},{"term":"除","detail":"疾病"},{"term":"满","detail":"酒肉"},{"term":"平","detail":"口舌"},{"term":"定","detail":"私事"},{"term":"执","detail":"失财"},{"term":"破","detail":"吉事"},{"term":"危","detail":"官事"},{"term":"成","detail":"吉事"},{"term":"收","detail":"凶事"},{"term":"开","detail":"生子"},{"term":"闭","detail":"惊恐"}]}
+  ],
+  "relations":[{"from":"支日","link":"不是","to":"时辰","note":"同名地支处于不同时间层"},{"from":"支日／时辰","link":"不是","to":"建除日","note":"建、除、满等属于另一套日序"},{"from":"三套时间表","link":"均不等于","to":"梦象对象","note":"它们是占辞条件入口"}],
+  "fixed_examples":[{"source":"P.3908·第十九章","dream":"支日得梦","qualifier":"子至亥","marker":"—","outcome":"12项时间占辞","note":"P.3571部分异文另存"},{"source":"P.3908·第二十章","dream":"时辰得梦","qualifier":"子至亥","marker":"—","outcome":"12项时间占辞","note":"原文个别字仍有校录疑问"},{"source":"P.3908·第二十一章","dream":"建除日得梦","qualifier":"建至闭","marker":"—","outcome":"12项时间占辞","note":"不读取当前日期自动套用"}],
+  "boundaries":["三表按研究译注登记，不提供日期换算、时辰识别或自动查询。","支日与支时虽共享十二地支名称，不能合并成一张表。","P.3571与P.3908存在异文；本页以P.3908为主本，不裁定唯一版本。"],
+  "public_sources":[{"title":"P.3908译注：第十九至二十一章","note":"保存十二支日、十二时与建除十二日的连续校录。","url":"https://www.daowen.com/lilun/1567134.html"},{"title":"数字藏经洞：P.3908馆藏页","note":"用于回看原写本影像。","url":"https://cave17.e-dunhuang.com/item/FRA.BNF.Pel%403908%40WX.Chs.html"}]
+}

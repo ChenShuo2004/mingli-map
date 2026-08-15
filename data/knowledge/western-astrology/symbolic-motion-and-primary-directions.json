@@ -1,0 +1,28 @@
+{
+  "schema_version":"1.0.0","id":"western_astrology_symbolic_motion_and_primary_directions","title":"象征推进与主限方向弧","summary":"日弧、次限和主限都改变时间与星盘坐标的关系，但变换机制不同：日弧让所有对象统一移动同一太阳弧，次限以出生后一天象征一年并保留各对象自身速度，主限则依据地球自转、赤经赤纬和半弧计算许诺星到征象星的方向弧。三者不能用“约1°等于1年”合并。",
+  "concept_cards":[
+    {"id":"solar-arc","name":"日弧推运","tag":"统一弧","summary":"所有对象和轴点平移同一太阳弧；当前锁定仓库无专门模块。","details":["输入：年龄与太阳弧口径","输出：统一平移位置"]},
+    {"id":"secondary","name":"次限推运","tag":"一天一年","summary":"出生后第N天象征第N年，各对象按真实日速度形成不同位置；当前无专门模块。","details":["不是全盘统一平移","象征日期需单独生成"]},
+    {"id":"primary","name":"主限推运","tag":"半弧方向","summary":"锁定实现默认顺向、半弧法，同时输出黄道内Z与世界内M方向弧。","details":["输入赤经赤纬与地理纬度","最大弧100°","不换算历年"]}
+  ],
+  "fixed_samples":[
+    {"id":"solar-arc-model","label":"日弧模型","input":"年龄＋太阳弧","output":"所有对象同弧平移","note":"来源说明层"},
+    {"id":"secondary-model","label":"次限模型","input":"出生后第N天","output":"每颗对象按自身速度定位","note":"来源说明层"},
+    {"id":"pd-z","label":"主限样本 Z","input":"D_Saturn_120 → N_Sun_0","output":"方向弧0.028912° · 黄道内Z","note":"锁定实现第1条排序结果"},
+    {"id":"pd-m","label":"主限样本 M","input":"D_Saturn_120 → N_Sun_0","output":"方向弧0.303756° · 世界内M","note":"同一对象对的另一坐标口径"},
+    {"id":"pd-angle","label":"主限至轴点","input":"N_Moon_180 → N_Asc_0","output":"方向弧0.306034° · 世界内M","note":"征象星可为ASC"},
+    {"id":"pd-inventory","label":"固定盘结果库存","input":"五主相位 · 默认许诺星／征象星集合","output":"1,158条0—100°方向弧","note":"只展示排序数量，不转换事件年份"}
+  ],
+  "comparisons":[
+    {"field":"时间替代","left":"日弧／次限用年龄对应象征运动","right":"主限输出地球自转相关方向弧","handling":"三种弧不直接互换。"},
+    {"field":"对象速度","left":"日弧所有对象同速；次限各对象异速","right":"主限比较许诺星与征象星的赤道坐标半弧","handling":"输出结构分别保存。"},
+    {"field":"实现覆盖","left":"日弧与次限只有来源说明","right":"主限有专门模块并产出Z／M方向弧","handling":"不能因一项已实现就把三项都标成已接通。"},
+    {"field":"年份换算","left":"作者以约1°对应1年概括主限","right":"模块只输出方向弧，没有key或日期转换","handling":"页面不发布事件年份。"}
+  ],
+  "reading_boundaries":["固定主限结果只验证实现结构，不对应用户。","1,158条结果不求和、不排序成重要事件。","作者的危机、转折、内在成熟等解释词不进入输出。","日弧和次限尚无锁定实现，不生成虚构计算结果。"],
+  "public_sources":[
+    {"type":"参考资料","title":"fortune-telling-skills：日弧、次限与主限","url":"https://github.com/doododod/fortune-telling-skills/blob/8bcc734491ac75cfb21c1de8727c9fc3f9427b1e/astrology-chart-analysis/references/predictive-techniques.md#%E6%97%A5%E5%BC%A7%E6%8E%A8%E8%BF%90solar-arc-directions","note":"提供三种技术的作者原理摘要；事件解释与精度宣称不继承。"},
+    {"type":"实现资料","title":"flatlib：主限半弧实现","url":"https://github.com/flatangle/flatlib/blob/856d26b8bd1316ccdafe76399994696f9510de9e/flatlib/predictives/primarydirections.py","note":"提供顺向半弧、黄道内／世界内方向、对象生成与最大弧100°。"}
+  ],
+  "internal_review":{"excluded_claims":["事件年份","危机转折","精确度极高","日弧与次限伪实现"]}
+}

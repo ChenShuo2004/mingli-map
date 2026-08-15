@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "id": "ziwei_minor_limit_age_cycle",
+  "title": "iztro小限岁序",
+  "summary": "小限把虚岁沿十二个地支宫位逐年移动：先按生年地支三合组确定一岁起宫，再按男顺、女逆每岁移动一格，十二年回到同一位置。锁定实现为每个宫位预存10个相隔12岁的年龄，覆盖1至120岁；查询时用当前虚岁选中其中一宫。它是平行年岁轨，不是大限的缩写，也不等于首个大限前使用的童限。",
+  "branch_order": ["寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥", "子", "丑"],
+  "year_branch_groups": [
+    {"id":"fire","year_branches":["寅","午","戌"],"start_branch":"辰","note":"寅午戌组三支共用辰位作为一岁起点。"},
+    {"id":"water","year_branches":["申","子","辰"],"start_branch":"戌","note":"申子辰组三支共用戌位作为一岁起点。"},
+    {"id":"metal","year_branches":["巳","酉","丑"],"start_branch":"未","note":"巳酉丑组三支共用未位作为一岁起点。"},
+    {"id":"wood","year_branches":["亥","卯","未"],"start_branch":"丑","note":"亥卯未组三支共用丑位作为一岁起点。"}
+  ],
+  "directions": [
+    {"gender":"男","direction":"顺行","step":1,"note":"每增加一岁，沿寅、卯、辰至丑的宫位索引前进一格。"},
+    {"gender":"女","direction":"逆行","step":-1,"note":"每增加一岁，沿同一组宫位索引后退一格。"}
+  ],
+  "age_pattern": {
+    "cycle_length": 12,
+    "stored_cycles": 10,
+    "covered_ages": [1, 120],
+    "first_position_ages": [1, 13, 25, 37, 49, 61, 73, 85, 97, 109],
+    "formula": "第i个岁位保存 i＋1、i＋13、i＋25……i＋109；再按男女方向把第i个岁位放到起宫的顺行或逆行第i格。",
+    "note": "年龄每加12会回到同一地支位置，但当前虚岁仍是不同数值；页面不把循环位置解释成事件重复。"
+  },
+  "lookup_chain": [
+    {"id":"year-branch","label":"生年地支分组","output":"一岁起宫","note":"12支压成4组三合入口，只决定起点。"},
+    {"id":"gender","label":"性别方向","output":"顺行或逆行","note":"锁定实现直接按男顺女逆，不再读取年干或年支阴阳。"},
+    {"id":"age","label":"当前虚岁","output":"岁位偏移","note":"一岁留在起宫，二岁移动一格，十三岁回到起宫。"},
+    {"id":"palace","label":"命中宫位","output":"小限干支与四化入口","note":"实现读取该本命宫格的天干、地支，并以宫干取得小限四化；没有另生成小限流耀数组。"}
+  ],
+  "age_divide_options": [
+    {"id":"normal","label":"自然年分界","rule":"目标农历年减出生农历年后加1","note":"默认口径只考虑年份，不等待生日。"},
+    {"id":"birthday","label":"生日分界","rule":"目标农历年减出生农历年；过农历生日后再加1","note":"同一自然年内，生日之前与之后可能落在相邻两个小限宫。"}
+  ],
+  "parallel_comparison": [
+    {"label":"小限","unit":"一岁一宫","start":"生年支三合组起宫","direction":"男顺女逆","role":"独立age字段"},
+    {"label":"大限","unit":"十年一宫","start":"命宫＋五行局起岁","direction":"阳男阴女顺、阴男阳女逆","role":"decadal字段"},
+    {"label":"童限","unit":"首限前1至6岁","start":"命、财帛、疾厄、夫妻、福德、官禄","direction":"固定六宫序列","role":"大限尚未开始时的替代入口"}
+  ],
+  "fixed_examples": [
+    {"label":"寅年男命 · 前13岁","year_branch":"寅","gender":"男","start_branch":"辰","sequence":["辰","巳","午","未","申","酉","戌","亥","子","丑","寅","卯","辰"],"note":"一岁辰、二岁巳，十二岁卯，十三岁回辰。"},
+    {"label":"寅年女命 · 前13岁","year_branch":"寅","gender":"女","start_branch":"辰","sequence":["辰","卯","寅","丑","子","亥","戌","酉","申","未","午","巳","辰"],"note":"起点仍是辰，但二岁逆到卯，十三岁同样回辰。"}
+  ],
+  "boundaries": [
+    {"label":"小限不等于流年","note":"流年宫按目标年地支定位；小限宫按生年支起点、性别方向与虚岁循环，二者可能同宫但生成链不同。"},
+    {"label":"小限不等于童限","note":"童限只在首个大限尚未开始时替代decadal入口；小限age字段不因大限开始而消失。"},
+    {"label":"性别只作为算法分支","note":"页面使用男顺、女逆两个抽象按钮展示锁定实现，不接收或推断真人性别。"},
+    {"label":"岁位不产生事件结论","note":"命中哪一宫只形成时间坐标及该宫干支、四化入口，不自动生成健康、关系、事业或吉凶判断。"}
+  ],
+  "public_sources": [
+    {"title":"iztro：小限起宫四组","note":"锁定源码列出四组三合年支的一岁起宫：寅午戌起辰、申子辰起戌、巳酉丑起未、亥卯未起丑。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/utils/index.ts#L168-L191"},
+    {"title":"iztro：男顺女逆与120岁数组","note":"锁定实现按男顺女逆把12个岁位放入宫格，每格保存10个相隔12岁的年龄，整体覆盖1至120岁。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/astro/palace.ts#L177-L221"},
+    {"title":"iztro：按虚岁查小限宫","note":"运限对象遍历十二宫的ages数组，命中虚岁后读取该宫天干、地支、重排宫名与宫干四化。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/astro/FunctionalAstrolabe.ts#L43-L118"},
+    {"title":"iztro：小限返回字段","note":"锁定对象把小限单列为age，保存index、nominalAge、干支、十二宫名与四化；它不属于六层stars数组。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/astro/FunctionalAstrolabe.ts#L135-L165"},
+    {"title":"iztro：虚岁分界配置","note":"源码提供自然年与生日两种ageDivide口径，直接影响当前虚岁及小限宫选择。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/astro/astro.ts#L44-L53"}
+  ],
+  "internal_review": {
+    "status":"formal_minor_limit_cycle_node_locked_implementation",
+    "reviewed_at":"2026-08-06",
+    "source_refs":["github_sylarlong_iztro_2fb2030"],
+    "ownership":"K-ZW.07 运限层次",
+    "deduplication":"不并入运限层次：该节点只把小限标为平行年岁轨，本对象新增4组起宫、男女方向、1至120岁数组和虚岁查宫链；不并入六层流耀：小限age对象没有stars字段，只读取宫干四化；不并入大限或童限：三者的单位、起点、方向和对象字段均不同。",
+    "boundary":"只开放12支分组、男女抽象方向、1至120虚岁循环及两种分界口径，不接收出生日期或真人性别，不输出事件、吉凶或应期。"
+  }
+}

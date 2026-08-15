@@ -1,0 +1,23 @@
+{
+  "id": "three-sections-face-proportion",
+  "title": "三庭与面部比例",
+  "summary": "三庭把面部纵向分成上、中、下三段；古本强调三段相较，现代教学图必须另写清发际、眉线、鼻尖与下颏等实际取点。",
+  "image": "/assets/palmistry/ai-face-proportion-comparison.webp",
+  "sections": [
+    {"id": "upper", "label": "上庭", "traditional_anchor": "额门", "drawing_range": "发际点 → 眉线", "observe": ["纵向高度", "发际是否完整", "眉线是否水平"], "color": "upper"},
+    {"id": "middle", "label": "中庭", "traditional_anchor": "准头", "drawing_range": "眉线 → 鼻尖线", "observe": ["纵向高度", "鼻梁方向", "面部俯仰影响"], "color": "middle"},
+    {"id": "lower", "label": "下庭", "traditional_anchor": "地角", "drawing_range": "鼻尖线 → 下颏点", "observe": ["纵向高度", "唇与颏位置", "张口与表情影响"], "color": "lower"}
+  ],
+  "ratio_fields": ["上庭高度", "中庭高度", "下庭高度", "三段总高", "各段／总高比例", "取点版本"],
+  "measurement_steps": ["确认正面图可用", "标出四条水平参照线", "以同一单位量三段", "保存原值与比例", "传统评价另列来源"],
+  "version_notes": [
+    {"label": "古本术语", "content": "以额门、准头、地角概括面部三停，并强调三段互相比较。"},
+    {"label": "教学取点", "content": "本页用发际、眉线、鼻尖线、下颏点绘图；这是为重复标注而固定的图示口径。"},
+    {"label": "不可混用", "content": "若其他资料以眉心、鼻底或其他点分段，必须另存版本后再比较。"}
+  ],
+  "boundaries": ["三庭不是医疗人体测量标准", "发际变化会影响上庭读数", "表情与头部俯仰会改变下庭和中庭", "比例差异不直接产生吉凶评价"],
+  "public_sources": [
+    {"title": "Harvard Library《神相全编》明刻本卷一影像", "note": "影像包含六府三才三停图，用于核对传统三停材料。", "url": "https://commons.wikimedia.org/wiki/File:Harvard_drs_53262204_%E7%A5%9E%E7%9B%B8%E5%85%A8%E7%B7%A8_v.1%E5%BA%8F%E3%80%81%E7%9B%AE%E9%8C%84%E3%80%81%E5%8D%B7%E4%B9%8B%E4%B8%80.pdf"},
+    {"title": "梁伟贤〈《麻衣相法》版本初探〉", "note": "用于确认万历本与今本篇幅、图表及章节编排存在显著版本差异。", "url": "https://ccsndb.ncl.edu.tw/nclccs/pdf/01_034_004_01_05.pdf"}
+  ]
+}

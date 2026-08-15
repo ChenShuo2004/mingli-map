@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.0.0",
+  "id": "qimen_five_not_meet_hour_variants",
+  "title": "五不遇时的十组表与实现放宽",
+  "summary": "结构化资料把五不遇时限定为时干克日干且阴阳同性，并给出十组完整日干—时辰；另一套排盘实现只检查时干五行是否克日干五行，未检查阴阳同性，因此程序条件会从10组天干对放宽到20组。两种口径并列保存，不把实现便利当成传统共识。",
+  "strict_rule": {
+    "formula": "时干克日干 ＋ 阴阳同性",
+    "pair_count": 10,
+    "requires_full_hour_ganzhi": true
+  },
+  "strict_pairs": [
+    {"day_stem": "甲", "day_element": "木", "polarity": "阳", "hour_ganzhi": "庚午", "hour_stem": "庚", "relation": "金克木"},
+    {"day_stem": "乙", "day_element": "木", "polarity": "阴", "hour_ganzhi": "辛巳", "hour_stem": "辛", "relation": "金克木"},
+    {"day_stem": "丙", "day_element": "火", "polarity": "阳", "hour_ganzhi": "壬辰", "hour_stem": "壬", "relation": "水克火"},
+    {"day_stem": "丁", "day_element": "火", "polarity": "阴", "hour_ganzhi": "癸卯", "hour_stem": "癸", "relation": "水克火"},
+    {"day_stem": "戊", "day_element": "土", "polarity": "阳", "hour_ganzhi": "甲寅", "hour_stem": "甲", "relation": "木克土"},
+    {"day_stem": "己", "day_element": "土", "polarity": "阴", "hour_ganzhi": "乙丑", "hour_stem": "乙", "relation": "木克土"},
+    {"day_stem": "庚", "day_element": "金", "polarity": "阳", "hour_ganzhi": "丙子", "hour_stem": "丙", "relation": "火克金"},
+    {"day_stem": "辛", "day_element": "金", "polarity": "阴", "hour_ganzhi": "丁亥", "hour_stem": "丁", "relation": "火克金"},
+    {"day_stem": "壬", "day_element": "水", "polarity": "阳", "hour_ganzhi": "戊戌", "hour_stem": "戊", "relation": "土克水"},
+    {"day_stem": "癸", "day_element": "水", "polarity": "阴", "hour_ganzhi": "己酉", "hour_stem": "己", "relation": "土克水"}
+  ],
+  "implementation_variant": {
+    "label": "qimenpaipan 当前格局检测",
+    "formula": "只检查时干五行克日干五行",
+    "pair_count": 20,
+    "checks_same_polarity": false,
+    "checks_hour_branch": false,
+    "additional_opposite_polarity_pairs": [
+      {"day_stem": "甲", "hour_stem": "辛"},
+      {"day_stem": "乙", "hour_stem": "庚"},
+      {"day_stem": "丙", "hour_stem": "癸"},
+      {"day_stem": "丁", "hour_stem": "壬"},
+      {"day_stem": "戊", "hour_stem": "乙"},
+      {"day_stem": "己", "hour_stem": "甲"},
+      {"day_stem": "庚", "hour_stem": "丁"},
+      {"day_stem": "辛", "hour_stem": "丙"},
+      {"day_stem": "壬", "hour_stem": "己"},
+      {"day_stem": "癸", "hour_stem": "戊"}
+    ]
+  },
+  "fixed_comparisons": [
+    {"day_stem": "甲", "hour_stem": "庚", "strict_table": true, "implementation": true, "reason": "金克木且同为阳"},
+    {"day_stem": "甲", "hour_stem": "辛", "strict_table": false, "implementation": true, "reason": "金克木但阴阳异性"},
+    {"day_stem": "甲", "hour_stem": "壬", "strict_table": false, "implementation": false, "reason": "水不克木"}
+  ],
+  "reading_boundaries": [
+    "页面只切换固定日干与时干组合，不读取当前日期或时间，也不替用户判定所处时辰。",
+    "严格表保存完整时干支；实现版本只比较两个天干五行，两个输入层级不能互换。",
+    "来源中的百事凶、不可用等结果断语不进入公开规则；页面只展示条件是否命中。",
+    "qimenpaipan 的20组是按现有代码机械展开的实现覆盖，不声明为另一套传统。"
+  ],
+  "public_sources": [
+    {
+      "title": "mingli-skills 锁定五不遇时表",
+      "url": "https://github.com/weizeW/mingli-skills/blob/c16eca0/qimen-dunjia/data/wubuyushi.json",
+      "note": "提供同性相克公式和十组日干—完整时辰。"
+    },
+    {
+      "title": "qimenpaipan 锁定格局检测",
+      "url": "https://github.com/redrockhorse/qimenpaipan/blob/b6de54245cf7a514f59e51833dc01a87e1a3a849/qimenpaipan.py",
+      "note": "get_major_geju 只检查时干五行是否克日干五行，未检查阴阳同性或时支。"
+    }
+  ],
+  "internal_review": {
+    "status": "formal_variant_condition",
+    "reviewed_at": "2026-08-09",
+    "owner": ["火华", "Codex"],
+    "source_refs": ["github_weizew_mingli_skills_c16eca0", "github_redrockhorse_qimenpaipan_b6de542"],
+    "deduplication": "五行生克页维护通用关系；本页只维护日干、时干及完整时辰组成的五不遇时条件和实现差异。",
+    "known_gaps": ["结构表称三来源交叉验证但没有逐条规则级页码。", "qimenpaipan 当前检测没有传统版本说明。"],
+    "boundary": "条件识别与实现差异，不输出吉凶或行动建议。"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "id": "dream-modern-research",
+  "title": "精神分析与现代睡眠研究怎样研究梦",
+  "summary": "现代梦研究包含彼此不同的路线：精神分析解释梦的心理意义，睡眠实验记录生理阶段与醒后报告，认知神经科学研究梦报告的脑活动相关；它们都不等于传统占辞。",
+  "kicker": "理论解释 × 定时唤醒 × EEG",
+  "profiles": [
+    {"label":"精神分析","object":"显梦、隐意与梦的工作","question":"梦怎样在理论中形成可解释的心理材料","evidence":"梦者报告、自由联想与理论文本","output":"理论内部的心理解释"},
+    {"label":"睡眠分期","object":"REM、NREM及其生理特征","question":"何种睡眠状态更常取得梦报告","evidence":"眼动、脑电、肌张力和定时唤醒","output":"睡眠阶段与报告率的关系"},
+    {"label":"认知神经科学","object":"有梦／无梦报告与脑活动","question":"哪些活动模式和梦报告同时出现","evidence":"高密度脑电、重复唤醒与内容报告","output":"神经相关而非梦义"},
+    {"label":"梦报告研究","object":"醒后回忆并说出的文本","question":"研究者实际取得的材料是什么","evidence":"提问方式、唤醒时点、回忆长度和编码标准","output":"可比较的报告数据"}
+  ],
+  "records": [
+    {"label":"四个重要分界", "items":[{"term":"梦体验／梦报告","detail":"睡眠中的经验不能直接读取，实验通常取得醒后报告"},{"term":"REM／做梦","detail":"REM较常取得梦报告，但NREM也可出现梦经验"},{"term":"相关／原因","detail":"脑电活动与报告相关，不自动证明梦的单一生成原因"},{"term":"理论／实验","detail":"心理理论的意义解释与生理实验回答不同问题"}]},
+    {"label":"固定研究锚点", "items":[{"term":"1900前后","detail":"《梦的解析》把梦系统地纳入精神分析理论"},{"term":"1953","detail":"Aserinsky与Kleitman报告睡眠中周期性快速眼动"},{"term":"2017","detail":"Siclari等以REM、NREM定时唤醒和高密度EEG比较有梦与无梦报告"},{"term":"当前综述","detail":"REM＝做梦、NREM＝无梦已被视为过度简化"}]}
+  ],
+  "case_notes": [
+    {"label":"心理路线","note":"同一梦在不同心理学派中可能获得不同解释。"},
+    {"label":"实验路线","note":"实验变量、唤醒方式和提问措辞会影响梦报告。"},
+    {"label":"共同限制","note":"研究梦报告不等于建立固定象征词典。"}
+  ],
+  "boundaries": [
+    "现代研究没有把传统梦书的梦象—占辞关系验证为通用预测规则。",
+    "单次梦境不能独立诊断人格、创伤、精神障碍或睡眠疾病。",
+    "本节点不提供心理分析、噩梦治疗或睡眠障碍筛查。"
+  ],
+  "public_sources": [
+    {"title":"The Interpretation of Dreams","note":"Brill英译本书目信息与全文入口，代表具名精神分析版本。","url":"https://www.gutenberg.org/ebooks/66048"},
+    {"title":"Regularly occurring periods of eye motility","note":"Aserinsky与Kleitman 1953年REM研究的PubMed记录。","url":"https://pubmed.ncbi.nlm.nih.gov/13089671/"},
+    {"title":"The neural correlates of dreaming","note":"2017年高密度EEG与定时唤醒研究。","url":"https://www.nature.com/articles/nn.4545"},
+    {"title":"What about dreams? State of the art and open questions","note":"综述REM／NREM、梦报告与当前开放问题。","url":"https://pmc.ncbi.nlm.nih.gov/articles/PMC9539486/"}
+  ]
+}

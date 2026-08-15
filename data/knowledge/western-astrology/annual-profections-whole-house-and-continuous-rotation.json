@@ -1,0 +1,202 @@
+{
+  "schema_version": "1.0.0",
+  "id": "western_astrology_annual_profections_whole_house_and_continuous_rotation",
+  "title": "年度小限：整宫年步与连续旋转",
+  "summary": "年度小限至少要分成两个模型阅读：作者资料按完整年龄每年从上升推进一个整宫，以年龄模12得到年度宫位；锁定flatlib则复制整张星盘，把完整年龄30°与相邻太阳回归之间的年内比例0—30°相加后连续旋转。两者的时间粒度、切换锚点与输出对象不同，不能因为都叫Annual Profections就合成一条规则。",
+  "whole_house_model": {
+    "name": "整宫年度模型",
+    "formula": "annual_house = age mod 12 + 1",
+    "step": "每完成一年推进一个整宫，十二年回到第一宫。",
+    "output": "年度宫位及该宫主宰星",
+    "author_monthly_note": "作者另写从小限宫开始，生日后每月推进一宫；本页只登记月限入口，不把它代入flatlib年内比例。",
+    "fixed_teaching_chart": {
+      "label": "固定教学盘",
+      "rising_sign": "白羊座",
+      "rising_longitude": 24.271375,
+      "note": "只用上升星座建立整宫序列；不是任何用户的命盘，也不输出年度主题。"
+    },
+    "age_samples": [
+      {"age": 0, "house": 1, "sign": "白羊座", "ruler": "火星", "cycle": 1},
+      {"age": 1, "house": 2, "sign": "金牛座", "ruler": "金星", "cycle": 1},
+      {"age": 4, "house": 5, "sign": "狮子座", "ruler": "太阳", "cycle": 1},
+      {"age": 11, "house": 12, "sign": "双鱼座", "ruler": "木星", "cycle": 1},
+      {"age": 12, "house": 1, "sign": "白羊座", "ruler": "火星", "cycle": 2},
+      {"age": 13, "house": 2, "sign": "金牛座", "ruler": "金星", "cycle": 2}
+    ]
+  },
+  "flatlib_model": {
+    "name": "连续旋转实现",
+    "function": "flatlib.predictives.profections.compute(chart, date, fixedObjects=False)",
+    "formula_parts": [
+      {
+        "id": "full-age",
+        "label": "完整年龄项",
+        "expression": "floor((targetJD − natalJD) / 365.25)",
+        "contribution": "30° × 完整年龄"
+      },
+      {
+        "id": "solar-return-fraction",
+        "label": "太阳回归年内项",
+        "expression": "(targetJD − previousSolarReturnJD) / (nextSolarReturnJD − previousSolarReturnJD)",
+        "contribution": "30° × 年内比例"
+      },
+      {
+        "id": "total-rotation",
+        "label": "总旋转量",
+        "expression": "30° × 完整年龄 + 30° × 年内比例",
+        "contribution": "按360°归一化后移动星盘内容"
+      }
+    ],
+    "rotation_targets": [
+      {"target": "宫位", "always_rotated": true, "fixed_objects_effect": "不受fixedObjects影响"},
+      {"target": "轴点", "always_rotated": true, "fixed_objects_effect": "不受fixedObjects影响"},
+      {"target": "行星与其他对象", "always_rotated": false, "fixed_objects_effect": "fixedObjects=false时旋转，true时留在本命黄经"}
+    ],
+    "house_system_handling": "函数复制传入星盘并旋转已有宫位，没有检查或强制整宫制。",
+    "output": "复制后的旋转星盘"
+  },
+  "fixed_runtime_fixture": {
+    "scope": "锁定实现边界探针",
+    "natal_datetime": "2000-01-01 12:00 UT",
+    "location": "51°29′N, 0°00′W",
+    "natal_sun_longitude": 280.368919,
+    "natal_asc_longitude": 24.271375,
+    "observed_solar_return": "2004-01-01约11:14 UT",
+    "runtime": "flatlib提交856d26b8bd1316ccdafe76399994696f9510de9e；pyswisseph 2.10.3.2",
+    "note": "这是用于复算代码行为的固定测试夹具，不用于真人判断。"
+  },
+  "runtime_probes": [
+    {
+      "id": "before-return",
+      "label": "回归前1分钟",
+      "target_datetime": "2004-01-01 11:13 UT",
+      "full_age": 3,
+      "solar_year_fraction": 0.999997285,
+      "rotation": 119.999919,
+      "profected_asc": 144.271294,
+      "boundary": "太阳回归年内项接近30°"
+    },
+    {
+      "id": "after-return",
+      "label": "回归后1分钟",
+      "target_datetime": "2004-01-01 11:15 UT",
+      "full_age": 3,
+      "solar_year_fraction": 0.000001226,
+      "rotation": 90.000037,
+      "profected_asc": 114.271412,
+      "boundary": "年龄尚未变化，年内项已重置，旋转量回落约30°"
+    },
+    {
+      "id": "before-birthday",
+      "label": "生日时刻前1分钟",
+      "target_datetime": "2004-01-01 11:59 UT",
+      "full_age": 3,
+      "solar_year_fraction": 0.00008473,
+      "rotation": 90.002542,
+      "profected_asc": 114.273917,
+      "boundary": "仍由完整年龄3贡献90°"
+    },
+    {
+      "id": "at-birthday",
+      "label": "生日时刻",
+      "target_datetime": "2004-01-01 12:00 UT",
+      "full_age": 4,
+      "solar_year_fraction": 0.000086628,
+      "rotation": 120.002599,
+      "profected_asc": 144.273974,
+      "boundary": "完整年龄变为4，旋转量重新增加30°"
+    },
+    {
+      "id": "mid-solar-year",
+      "label": "回归年约一半",
+      "target_datetime": "2004-06-30 12:00 UT",
+      "full_age": 4,
+      "solar_year_fraction": 0.495650975,
+      "rotation": 134.869529,
+      "profected_asc": 159.140905,
+      "boundary": "年内项贡献约14.87°，不是整宫保持不动"
+    },
+    {
+      "id": "late-solar-year",
+      "label": "下一回归前",
+      "target_datetime": "2004-12-31 00:00 UT",
+      "full_age": 4,
+      "solar_year_fraction": 0.998060798,
+      "rotation": 149.941824,
+      "profected_asc": 174.213199,
+      "boundary": "总旋转接近150°"
+    }
+  ],
+  "fixed_objects_probe": {
+    "target_datetime": "2004-06-30 12:00 UT",
+    "rotation": 134.869529,
+    "natal": {"sun": 280.368919, "asc": 24.271375, "house_1": 24.271375},
+    "fixed_false": {"sun": 55.238448, "asc": 159.140905, "house_1": 159.140905},
+    "fixed_true": {"sun": 280.368919, "asc": 159.140905, "house_1": 159.140905},
+    "finding": "fixedObjects只固定对象；宫位和轴点在两种分支中都旋转。"
+  },
+  "model_comparison": [
+    {
+      "field": "年度选择",
+      "whole_house": "年龄模12选择一座完整宫位",
+      "flatlib": "完整年龄与太阳回归年内比例共同生成连续角度",
+      "handling": "整宫模型回答年度宫位；连续模型回答旋转后的星盘位置。"
+    },
+    {
+      "field": "切换锚点",
+      "whole_house": "作者以年龄及生日后月数描述年限／月限",
+      "flatlib": "年龄项以365.25日取floor，年内项以真实太阳回归重置",
+      "handling": "两只时钟分别展示；不假设生日时刻等于太阳回归时刻。"
+    },
+    {
+      "field": "宫制",
+      "whole_house": "作者明确写每年推进一个整宫",
+      "flatlib": "旋转传入chart的既有houses，没有强制Whole Sign",
+      "handling": "软件函数是一般旋转器，不据此证明任意宫制都是传统小限。"
+    },
+    {
+      "field": "输出对象",
+      "whole_house": "年度宫位与宫主星",
+      "flatlib": "宫位、轴点及可选行星对象组成的新星盘",
+      "handling": "页面不从旋转对象推导事件、强弱或年度主题。"
+    }
+  ],
+  "reading_boundaries": [
+    "固定运行样本只用于验证锁定代码；日期、地点和黄经不对应用户，也不进入个性化判断。",
+    "太阳回归前后约30°回落与生日时刻约30°回升是当前实现的双时钟边界，不登记为传统小限规则。",
+    "作者资料中的年度核心、领域激活和事件触发说法不进入本页输出。",
+    "月限只保留为另一时间粒度的入口；未核清月长、生日边界与版本前，不生成逐月序列。",
+    "软件能旋转非整宫制星盘，不代表来源层已经支持把任意宫制解释为整宫年限。"
+  ],
+  "public_sources": [
+    {
+      "type": "实现资料",
+      "title": "fortune-telling-skills：小限法与年龄宫位表",
+      "url": "https://github.com/doododod/fortune-telling-skills/blob/8bcc734491ac75cfb21c1de8727c9fc3f9427b1e/astrology-chart-analysis/references/predictive-techniques.md#%E5%B0%8F%E9%99%90%E6%B3%95annual-profections",
+      "note": "提供每年推进一个整宫、年龄—宫位对应及生日后逐月推进的作者说明；事件解释不继承。"
+    },
+    {
+      "type": "实现资料",
+      "title": "flatlib：profections.compute锁定实现",
+      "url": "https://github.com/flatangle/flatlib/blob/856d26b8bd1316ccdafe76399994696f9510de9e/flatlib/predictives/profections.py",
+      "note": "提供完整年龄项、太阳回归年内项、fixedObjects分支及宫位／轴点旋转范围。"
+    },
+    {
+      "type": "实现资料",
+      "title": "flatlib：太阳回归时刻接口",
+      "url": "https://github.com/flatangle/flatlib/blob/856d26b8bd1316ccdafe76399994696f9510de9e/flatlib/ephem/ephem.py",
+      "note": "提供上一与下一太阳回归日期，作为连续年内比例的两个锚点。"
+    },
+    {
+      "type": "实现资料",
+      "title": "flatlib：小限调用示例",
+      "url": "https://github.com/flatangle/flatlib/blob/856d26b8bd1316ccdafe76399994696f9510de9e/recipes/profections.py",
+      "note": "证明公开调用返回一张小限星盘，并以旋转后的上升作为示例输出。"
+    }
+  ],
+  "internal_review": {
+    "source_status": "作者规则与锁定实现分别保存；固定运行夹具已复算。",
+    "rights_status": "只保存公式、结构、少量数值探针与来源链接，不复制长篇解释。",
+    "excluded_claims": ["年度事件预测", "领域必然激活", "行运触发结论", "真人小限主星判断"]
+  }
+}

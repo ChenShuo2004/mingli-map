@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0",
+  "id": "bazi_tiaohou_selection",
+  "title": "调候取用",
+  "summary": "调候先观察日干在不同月令中的寒、暖、燥、湿与生长状态，再区分先用、次用、佐用和条件用；它不是一张不分先后的天干清单。",
+  "reading_dimensions": [
+    {"id": "climate", "label": "气候", "question": "当令环境偏寒、偏热、偏燥还是偏湿？", "explanation": "先看季节造成的整体环境，例如初春余寒、盛夏焦燥、隆冬冻结。"},
+    {"id": "condition", "label": "状态", "question": "这个日干在当月呈现什么状态？", "explanation": "同一个月令作用到不同日干上，可能表现为寒、焦、枯、旺、弱或受制。"},
+    {"id": "roles", "label": "次序", "question": "哪些天干是先用、次用或佐用？", "explanation": "原文中的先、次、佐表示作用层级；并列出现的字也不一定处于同一优先级。"},
+    {"id": "conditions", "label": "条件", "question": "什么结构会改变原来的取用？", "explanation": "透干、成局、数量过多或某字受制，都可能让取用发生变化。"}
+  ],
+  "month_branches": ["寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥", "子", "丑"],
+  "worked_example": {
+    "day_stem": "甲",
+    "label": "甲木十二月",
+    "note": "以下用甲木展示原文如何随月令改变观察重点。它是阅读结构示例，不是脱离完整命局即可套用的结论。",
+    "records": [
+      {"month_branch": "寅", "season_label": "正月 · 初春", "condition": "初春尚有余寒，木开始生长。", "roles": [{"type": "并用", "stems": ["丙", "癸"], "purpose": "丙用于温暖，癸用于滋养。"}], "reading": "水与火需要相济，不能只看到其中一个字。"},
+      {"month_branch": "卯", "season_label": "二月 · 仲春", "condition": "木气渐旺，需要在生长与修整之间取得平衡。", "roles": [{"type": "重点", "stems": ["庚"], "purpose": "用金修整旺木。"}, {"type": "辅助", "stems": ["丁"], "purpose": "形成木火通明的另一条路径。"}], "reading": "二月原文不是一条固定双字公式，而是随是否见庚、丁及其他结构分路讨论。"},
+      {"month_branch": "辰", "season_label": "三月 · 暮春", "condition": "木气渐竭，阳气渐盛。", "roles": [{"type": "先用", "stems": ["庚"], "purpose": "先作修整。"}, {"type": "次用", "stems": ["壬"], "purpose": "再作滋扶。"}, {"type": "条件用", "stems": ["丁"], "purpose": "只有支成金局时才进入这一分支。"}], "reading": "这是最清楚的先后与条件用示例。"},
+      {"month_branch": "巳", "season_label": "四月 · 初夏", "condition": "丙火司权，甲木退气。", "roles": [{"type": "先用", "stems": ["癸"], "purpose": "先解燥热。"}, {"type": "次用", "stems": ["丁"], "purpose": "再配合整体结构。"}], "reading": "原文还会继续判断庚金是否过多，以及壬水能否调和。"},
+      {"month_branch": "午", "season_label": "五月 · 仲夏", "condition": "木性虚焦，暑热明显。", "roles": [{"type": "先用", "stems": ["癸"], "purpose": "先作滋润。"}, {"type": "次用", "stems": ["丁"], "purpose": "随后参与疏泄。"}, {"type": "佐用", "stems": ["庚"], "purpose": "作为次一级辅助。"}], "reading": "三者有先后，不应压缩成同级数组。"},
+      {"month_branch": "未", "season_label": "六月 · 暮夏", "condition": "三伏生寒，丁火开始退气。", "roles": [{"type": "先用", "stems": ["丁"], "purpose": "先顺应当月状态。"}, {"type": "次用", "stems": ["庚"], "purpose": "再作修整。"}], "reading": "与五月同属夏季，但先后次序已经改变。"},
+      {"month_branch": "申", "season_label": "七月 · 初秋", "condition": "木渐枯槁，金开始乘旺。", "roles": [{"type": "先用", "stems": ["丁"], "purpose": "先制金并温养。"}, {"type": "次用", "stems": ["庚"], "purpose": "庚仍不可少。"}], "reading": "丁为尊、庚次之，强调二者功能相连而非简单择一。"},
+      {"month_branch": "酉", "season_label": "八月 · 仲秋", "condition": "木囚金旺。", "roles": [{"type": "先用", "stems": ["丁"], "purpose": "先处理金旺。"}, {"type": "次用", "stems": ["丙"], "purpose": "再取阳火。"}, {"type": "再次", "stems": ["庚"], "purpose": "列在第三层。"}], "reading": "同一格中出现三个字，但原文给出了明确层级。"},
+      {"month_branch": "戌", "season_label": "九月 · 暮秋", "condition": "木星凋零。", "roles": [{"type": "并看", "stems": ["丁", "癸"], "purpose": "一面温养，一面滋扶。"}, {"type": "条件", "stems": ["戊"], "purpose": "原文另提出见戊透的分支。"}], "reading": "这里更像条件组合，而不是固定的第一、第二名。"},
+      {"month_branch": "亥", "season_label": "十月 · 初冬", "condition": "寒意渐重，同时要防水势泛身。", "roles": [{"type": "并用", "stems": ["庚", "丁"], "purpose": "庚丁同列为要。"}, {"type": "次用", "stems": ["丙"], "purpose": "作为进一步温暖。"}, {"type": "条件用", "stems": ["戊"], "purpose": "壬水过多时用来制水。"}], "reading": "同一个戊，只在特定问题出现时才进入。"},
+      {"month_branch": "子", "season_label": "十一月 · 仲冬", "condition": "木性生寒，癸水司权。", "roles": [{"type": "先用", "stems": ["丁"], "purpose": "先解寒。"}, {"type": "次用", "stems": ["庚"], "purpose": "随后修整。"}, {"type": "佐用", "stems": ["丙"], "purpose": "辅助增温。"}], "reading": "先、后、佐三个层级在这一月同时出现。"},
+      {"month_branch": "丑", "season_label": "十二月 · 暮冬", "condition": "天寒气冻，木性极寒。", "roles": [{"type": "先用", "stems": ["庚"], "purpose": "先以庚劈甲。"}, {"type": "次用", "stems": ["丁"], "purpose": "再引丁火，使木火通明。"}], "reading": "虽然冬寒，原文仍先谈庚再谈丁，说明不能只按寒暖机械取字。"}
+    ]
+  },
+  "additional_examples": [
+    {
+      "day_stem": "丙",
+      "label": "丙火十二月",
+      "scope": "完整月份样本",
+      "note": "这组样本按十二个月连续整理丙火的取用层次。它保留主用、佐用、替代与条件分支，不把每月压缩成同级天干清单。",
+      "records": [
+        {"month_branch": "寅", "season_label": "正月 · 初春", "condition": "三阳开泰，火气渐炎。", "roles": [{"type": "先用", "stems": ["壬"], "purpose": "作为这一月的主要取用。"}, {"type": "佐用", "stems": ["庚"], "purpose": "帮助壬水有源。"}], "reading": "原文先定壬为尊，再把庚放在辅助位置，二者不是同一层级。"},
+        {"month_branch": "卯", "season_label": "二月 · 仲春", "condition": "阳气舒升，木气居旺。", "roles": [{"type": "专用", "stems": ["壬"], "purpose": "这一月的主线集中在壬水。"}, {"type": "条件辅助", "stems": ["庚", "辛"], "purpose": "在后续分支中帮助壬水有源。"}], "reading": "二月比正月更集中于壬，庚辛是围绕壬是否有源展开的辅助条件。"},
+        {"month_branch": "辰", "season_label": "三月 · 暮春", "condition": "火气渐炎，土气可能晦光塞水。", "roles": [{"type": "先用", "stems": ["壬"], "purpose": "原文强调壬不可离。"}, {"type": "条件佐用", "stems": ["甲"], "purpose": "支成土局时，用甲疏土护壬。"}], "reading": "甲不是每个三月都与壬并列，只有土局这一分支出现时才进入。"},
+        {"month_branch": "巳", "season_label": "四月 · 初夏", "condition": "建禄于巳，火势炎炎。", "roles": [{"type": "专用", "stems": ["壬"], "purpose": "解炎并形成水火相济。"}, {"type": "佐用", "stems": ["庚"], "purpose": "为壬水提供根源。"}, {"type": "替代", "stems": ["癸"], "purpose": "没有壬时才退而使用。"}], "reading": "壬是主线，庚解决夏水易涸的问题；癸只能作为缺壬时的替代。"},
+        {"month_branch": "午", "season_label": "五月 · 仲夏", "condition": "火气更炎，月令进入阳刃。", "roles": [{"type": "先用", "stems": ["壬"], "purpose": "处理盛夏炎烈。"}, {"type": "佐用", "stems": ["庚"], "purpose": "使壬水有持续来源。"}, {"type": "条件用", "stems": ["甲"], "purpose": "支成土局、泄气过度时制土扶火。"}], "reading": "通常仍是壬主庚佐；只有土局成为主要问题时，甲才进入另一条支线。"},
+        {"month_branch": "未", "season_label": "六月 · 暮夏", "condition": "丙火开始退气，己土当令而泄火。", "roles": [{"type": "先用", "stems": ["壬"], "purpose": "仍保留三夏用水的主线。"}, {"type": "佐用", "stems": ["庚"], "purpose": "在季月土旺时帮助壬水。"}], "reading": "表面仍是壬庚，但六月已出现火退、土泄，不能与四五月按同一强弱前提理解。"},
+        {"month_branch": "申", "season_label": "七月 · 初秋", "condition": "太阳转西，阳气渐衰，见土容易晦光。", "roles": [{"type": "专用", "stems": ["壬"], "purpose": "以水辅映丙火余光。"}, {"type": "次用", "stems": ["戊"], "purpose": "壬水过多时作约束。"}], "reading": "七月原文直接归纳为专壬次戊，戊只在水多时承担第二层作用。"},
+        {"month_branch": "酉", "season_label": "八月 · 仲秋", "condition": "日近黄昏，丙火只留余光。", "roles": [{"type": "先用", "stems": ["壬"], "purpose": "继续以水辅映余光。"}, {"type": "替代", "stems": ["癸"], "purpose": "没有壬时可暂代，但作用较弱。"}], "reading": "八月主线仍是壬，不因火势转弱就机械改用木火；癸只是缺壬时的替代。"},
+        {"month_branch": "戌", "season_label": "九月 · 暮秋", "condition": "火气愈退，燥土容易晦光。", "roles": [{"type": "先用", "stems": ["甲"], "purpose": "先处理土重晦光。"}, {"type": "次用", "stems": ["壬"], "purpose": "再辅映丙火并滋甲。"}, {"type": "替代", "stems": ["癸"], "purpose": "没有壬时承担润木分支。"}], "reading": "九月第一次把甲放在壬之前，说明主要问题已经从炎热转向燥土晦光。"},
+        {"month_branch": "亥", "season_label": "十月 · 初冬", "condition": "太阳失令，水木的数量会改变取用。", "roles": [{"type": "基础", "stems": ["甲"], "purpose": "为休囚的丙火保留生机。"}, {"type": "条件调节", "stems": ["庚", "戊"], "purpose": "木旺用庚，水旺用戊。"}, {"type": "条件用", "stems": ["壬"], "purpose": "丙火本身有力时再用壬辅映。"}], "reading": "十月不适合压成固定双字表，需要先判断木旺、水旺还是火旺，再决定庚、戊、壬的分工。"},
+        {"month_branch": "子", "season_label": "十一月 · 仲冬", "condition": "冬至一阳生，但水势仍旺。", "roles": [{"type": "主用", "stems": ["壬"], "purpose": "在丙火有力时形成水火相济。"}, {"type": "佐用", "stems": ["戊"], "purpose": "水旺时作约束。"}, {"type": "关键条件", "stems": ["甲"], "purpose": "生扶丙火并处理土晦光。"}], "reading": "壬最、戊佐并不等于可以略去甲；原文特别强调用壬或用戊都要结合甲木。"},
+        {"month_branch": "丑", "season_label": "十二月 · 暮冬", "condition": "二阳进气，己土司令。", "roles": [{"type": "先用", "stems": ["壬"], "purpose": "以雪后阳光之象取清。"}, {"type": "佐用", "stems": ["甲"], "purpose": "生丙并处理土多晦光。"}, {"type": "条件用", "stems": ["辛"], "purpose": "土制癸过多时泄土滋水。"}], "reading": "十二月仍喜壬，但土多时甲不可少；辛只进入己土制癸太过的分支。"}
+      ]
+    }
+  ],
+  "public_sources": [
+    {"title": "《穷通宝鉴》全书目录", "note": "甲木与丙火十二月样本的章节入口；甲木见第2—12章，丙火见第25—36章。", "url": "https://www.luckclub.cn/bazi/004/"},
+    {"title": "《穷通宝鉴·甲木总论》", "note": "甲木调候样本的总论入口。", "url": "https://www.luckclub.cn/bazi/004/001/"},
+    {"title": "《穷通宝鉴·正月丙火》", "note": "丙火十二月连续样本的起始章。", "url": "https://www.luckclub.cn/bazi/004/025/"},
+    {"title": "《穷通宝鉴·十二月丙火》", "note": "丙火十二月连续样本的收束章。", "url": "https://www.luckclub.cn/bazi/004/036/"}
+  ],
+  "internal_review": {
+    "status": "reading_framework_verified_worked_example_transcribed",
+    "reviewed_at": "2026-08-03",
+    "source_refs": ["local_qiongtong_baojian_xuchang_zhiyanzhai_pdf_pages_2_5", "wikisource_qiongtong_baojian", "luckclub_qiongtong_baojian_bingfire_months_025_036", "github_yanouyuan_bit_bazi_roundtable_e248159", "github_minervaowl7_bazi_pro_65955b3"],
+    "boundary": "正式页发布调候阅读结构、甲木十二月与丙火十二月两组示例；两仓库的完整 120 格平面表继续保留在内部比较层，不直接择一发布。"
+  }
+}

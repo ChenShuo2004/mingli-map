@@ -1,0 +1,167 @@
+{
+  "schema_version": "1.0.0",
+  "id": "western_astrology_reception_and_mutual_reception",
+  "title": "接纳与互容",
+  "summary": "接纳是一条有方向的关系：一颗星落入另一颗星掌管的尊贵范围，尊贵持有者成为接纳方；`flatlib`还要求两星形成主相位。反向关系也成立时才形成互容，同类互容再区分入庙↔入庙与擢升↔擢升。当前页面用五组固定双星例把尊贵归属、相位门、单向接纳和双向互容分开。",
+  "concepts": [
+    {
+      "id": "disposition",
+      "name": "尊贵归属",
+      "english": "Disposition",
+      "rule": "B落在A的尊贵范围中，A是B在该层尊贵的持有者。",
+      "aspect_required": false
+    },
+    {
+      "id": "reception",
+      "name": "接纳",
+      "english": "Reception",
+      "rule": "在`flatlib`中，B落在A的尊贵范围中，并且B与A形成主相位，才返回A接纳B。",
+      "aspect_required": true
+    },
+    {
+      "id": "mutual",
+      "name": "互容",
+      "english": "Mutual reception",
+      "rule": "A接纳B且B也接纳A，关系成为双向。",
+      "aspect_required": true
+    }
+  ],
+  "supported_reception_types": [
+    { "id": "ruler-ruler", "name": "庙宫互容", "left": "入庙", "right": "入庙", "flatlib_equal_type": true },
+    { "id": "exalt-exalt", "name": "擢升互容", "left": "擢升", "right": "擢升", "flatlib_equal_type": true },
+    { "id": "ruler-exalt", "name": "混合互容", "left": "入庙", "right": "擢升", "flatlib_equal_type": false }
+  ],
+  "fixed_cases": [
+    {
+      "id": "author-domicile-no-aspect",
+      "label": "作者正文的庙宫例",
+      "left": { "planet": "火星", "symbol": "♂", "sign": "金牛", "degree": 10 },
+      "right": { "planet": "金星", "symbol": "♀", "sign": "白羊", "degree": 10 },
+      "angle": 30,
+      "major_aspect": false,
+      "directions": [
+        { "receiver": "金星", "guest": "火星", "dignity": "入庙" },
+        { "receiver": "火星", "guest": "金星", "dignity": "入庙" }
+      ],
+      "classification": "双向尊贵归属；不满足flatlib主相位门",
+      "source_scope": "作者正文直接称庙宫互容；实现层不会返回接纳。"
+    },
+    {
+      "id": "ruler-ruler-opposition",
+      "label": "同类入庙互容",
+      "left": { "planet": "火星", "symbol": "♂", "sign": "金牛", "degree": 10 },
+      "right": { "planet": "金星", "symbol": "♀", "sign": "天蝎", "degree": 10 },
+      "angle": 180,
+      "major_aspect": true,
+      "aspect_name": "对冲",
+      "directions": [
+        { "receiver": "金星", "guest": "火星", "dignity": "入庙" },
+        { "receiver": "火星", "guest": "金星", "dignity": "入庙" }
+      ],
+      "classification": "入庙↔入庙的同类互容",
+      "source_scope": "满足flatlib的ruler-ruler互容。"
+    },
+    {
+      "id": "exalt-exalt-opposition",
+      "label": "同类擢升互容",
+      "left": { "planet": "太阳", "symbol": "☉", "sign": "天秤", "degree": 19 },
+      "right": { "planet": "土星", "symbol": "♄", "sign": "白羊", "degree": 19 },
+      "angle": 180,
+      "major_aspect": true,
+      "aspect_name": "对冲",
+      "directions": [
+        { "receiver": "土星", "guest": "太阳", "dignity": "擢升" },
+        { "receiver": "太阳", "guest": "土星", "dignity": "擢升" }
+      ],
+      "classification": "擢升↔擢升的同类互容",
+      "source_scope": "满足flatlib的exalt-exalt互容。"
+    },
+    {
+      "id": "mixed-sextile",
+      "label": "混合互容",
+      "left": { "planet": "太阳", "symbol": "☉", "sign": "天秤", "degree": 10 },
+      "right": { "planet": "土星", "symbol": "♄", "sign": "狮子", "degree": 10 },
+      "angle": 60,
+      "major_aspect": true,
+      "aspect_name": "六分",
+      "directions": [
+        { "receiver": "土星", "guest": "太阳", "dignity": "擢升" },
+        { "receiver": "太阳", "guest": "土星", "dignity": "入庙" }
+      ],
+      "classification": "擢升↔入庙的混合互容",
+      "source_scope": "满足flatlib的ruler/exalt混合互容，但不属于equal-type结果。"
+    },
+    {
+      "id": "one-way-sextile",
+      "label": "单向接纳",
+      "left": { "planet": "火星", "symbol": "♂", "sign": "金牛", "degree": 10 },
+      "right": { "planet": "金星", "symbol": "♀", "sign": "巨蟹", "degree": 10 },
+      "angle": 60,
+      "major_aspect": true,
+      "aspect_name": "六分",
+      "directions": [
+        { "receiver": "金星", "guest": "火星", "dignity": "入庙" }
+      ],
+      "classification": "金星单向接纳火星",
+      "source_scope": "有主相位且只有一个尊贵方向，不构成互容。"
+    }
+  ],
+  "gate_steps": [
+    { "id": "placement", "label": "定位两颗星", "question": "它们分别落在哪个星座与度数？" },
+    { "id": "dignity", "label": "查尊贵持有者", "question": "B的位置是否属于A的入庙或擢升范围？" },
+    { "id": "aspect", "label": "检查主相位门", "question": "实现口径下，两星是否形成主相位？" },
+    { "id": "reverse", "label": "反向再查一次", "question": "A的位置是否也属于B的尊贵范围？" }
+  ],
+  "source_differences": [
+    {
+      "field": "相位是否必要",
+      "author_source": "庙宫互容定义与例子没有把主相位写成成立条件。",
+      "flatlib": "`receives`明确要求主相位；互容由两个方向的`receives`组合。",
+      "handling": "尊贵归属与实现接纳分两层显示。"
+    },
+    {
+      "field": "互容类型",
+      "author_source": "列庙宫、擢升、混合互容与单向接纳。",
+      "flatlib": "`reMutualReceptions`只保留入庙和擢升；`eqMutualReceptions`再筛同类配对。",
+      "handling": "三类互容并列，不把混合互容写成同类互容。"
+    },
+    {
+      "field": "负尊贵字段",
+      "author_source": "互容说明集中在入庙与擢升。",
+      "flatlib": "底层`inDignities`仍可能返回落陷与弱势，并留有是否忽略的源码注释。",
+      "handling": "当前正式节点只发布入庙／擢升接纳，负尊贵接纳标为实现缺口。"
+    }
+  ],
+  "reading_boundaries": [
+    "五组案例是固定抽象位置，不读取出生日期、地点、时间、真人星盘或当前星历。",
+    "箭头表示谁接纳谁，不代表感情、帮助、控制、善意、关系质量或现实互动。",
+    "相位几何只作为实现成立门；相位标签本身不生成结果解释。",
+    "三分、界、面接纳及落陷／弱势字段是否进入接纳，需要更多底本与流派比较，当前不并入正式规则。"
+  ],
+  "public_sources": [
+    {
+      "title": "fortune-telling-skills：尊贵度与互容",
+      "url": "https://github.com/doododod/fortune-telling-skills/blob/8bcc734491ac75cfb21c1de8727c9fc3f9427b1e/astrology-chart-analysis/references/dignities-reception.md",
+      "note": "提供庙宫、擢升、混合互容与单向接纳的作者定义和固定例；没有逐项古典底本，也未把主相位写成互容门槛。"
+    },
+    {
+      "title": "flatlib：星盘关系接口",
+      "url": "https://github.com/flatangle/flatlib/blob/856d26b8bd1316ccdafe76399994696f9510de9e/flatlib/tools/chartdynamics.py",
+      "note": "提供`inDignities`、`receives`、`disposits`与互容实现；接纳明确经过主相位门。"
+    },
+    {
+      "title": "flatlib：偶然尊贵中的互容入口",
+      "url": "https://github.com/flatangle/flatlib/blob/856d26b8bd1316ccdafe76399994696f9510de9e/flatlib/dignities/accidental.py",
+      "note": "提供入庙／擢升互容和同类互容筛选；其余偶然状态不进入本节点。"
+    }
+  ],
+  "internal_review": {
+    "status": "formal_directed_relation_node_with_fixed_two_planet_cases",
+    "reviewed_at": "2026-08-09",
+    "owner": ["火华", "Codex"],
+    "source_refs": ["github_doododod_fortune_telling_skills_8bcc734", "github_flatangle_flatlib_856d26b"],
+    "deduplication": "复用必然尊贵的入庙／擢升关系与相位节点的主相位门，但不复制两张基础表。本页只回答尊贵关系怎样成为单向接纳或双向互容。",
+    "known_gaps": ["作者正文没有给出互容规则的古典底本版次与页码。", "作者口径不要求相位，flatlib明确要求主相位，两者不能静默合并。", "flatlib底层尊贵查询包含落陷／弱势字段并留有疑问注释，当前只采用其入庙／擢升专用互容接口。"],
+    "boundary": "固定双星关系教育；无真人输入、合盘、关系判断、吉凶、事件预测或行动建议。"
+  }
+}

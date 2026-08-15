@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0.0",
+  "id": "taiyi-three-flags",
+  "title": "三旗",
+  "summary": "太岁青龙旗、太阴黑旗与害气赤旗共用积年入口，却各自进入12年、36年和4年路线。锁定实现还分别使用零偏移、加25与加1，所以同一积年下三者不能由一张统一查表推出。仅展示旗名、周期、方向、余数与是否同位；‘同位即灾’、旗色战争对应、地域和行动判断全部排除。",
+  "fixed_input": "1552年9月24日 00:00 · 年计 · 四个积年分支",
+  "flags": [
+    {"id": "qinglong", "name": "太岁青龙旗", "short": "青龙", "start": "亥", "direction": "顺行十二支", "sequence": ["亥", "子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌"], "large_cycle": 60, "small_cycle": 12, "rate": 1, "offset": 0, "formula": "(积年 mod 60) mod 12", "status": "一年一移"},
+    {"id": "taiyin", "name": "太阴黑旗", "short": "太阴", "start": "亥", "direction": "逆行十二支", "sequence": ["亥", "戌", "酉", "申", "未", "午", "巳", "辰", "卯", "寅", "丑", "子"], "large_cycle": 360, "small_cycle": 36, "rate": 3, "offset": 25, "formula": "(((积年 + 25) mod 360) mod 36) ÷ 3取整", "status": "三年一移"},
+    {"id": "haiqi", "name": "害气赤旗", "short": "害气", "start": "亥", "direction": "逆行四孟", "sequence": ["亥", "申", "巳", "寅"], "large_cycle": 40, "small_cycle": 4, "rate": 1, "offset": 1, "formula": "((积年 + 1) mod 40) mod 4", "status": "一年一移"}
+  ],
+  "fixed_methods": [
+    {"method": 0, "label": "太乙统宗", "accumulated": 10155469, "qinglong_remainder": 1, "qinglong": "子", "taiyin_remainder": 2, "taiyin": "亥", "haiqi_remainder": 2, "haiqi": "巳", "meeting": "三处不同", "status": "与method 1／3同结果"},
+    {"method": 1, "label": "太乙金镜", "accumulated": 1938109, "qinglong_remainder": 1, "qinglong": "子", "taiyin_remainder": 2, "taiyin": "亥", "haiqi_remainder": 2, "haiqi": "巳", "meeting": "三处不同", "status": "虽原数不同，三条周期均同余"},
+    {"method": 2, "label": "太乙淘金歌", "accumulated": 10155745, "qinglong_remainder": 1, "qinglong": "子", "taiyin_remainder": 26, "taiyin": "卯", "haiqi_remainder": 2, "haiqi": "巳", "meeting": "三处不同", "status": "只改变太阴黑旗"},
+    {"method": 3, "label": "太乙局", "accumulated": 10155469, "qinglong_remainder": 1, "qinglong": "子", "taiyin_remainder": 2, "taiyin": "亥", "haiqi_remainder": 2, "haiqi": "巳", "meeting": "三处不同", "status": "与method 0同式同值"}
+  ],
+  "meeting_states": [
+    {"count": 3, "label": "三处不同", "meaning": "三个位置值都不同；只记录坐标结构。"},
+    {"count": 2, "label": "两旗同位", "meaning": "三个位置值中有两个相同；不附加缓急判断。"},
+    {"count": 1, "label": "三旗同位", "meaning": "三个位置值全部相同；不附加灾异判断。"}
+  ],
+  "boundary_probes": [
+    {"accumulated": 0, "qinglong": "亥", "taiyin": "卯", "haiqi": "申", "note": "程序采用零基索引；加25与加1已在取余前生效。"},
+    {"accumulated": 2, "qinglong": "丑", "taiyin": "寅", "haiqi": "寅", "note": "固定小样本出现两旗同位，只用于验证结构标签。"},
+    {"accumulated": 11, "qinglong": "戌", "taiyin": "亥", "haiqi": "亥", "note": "太阴余0—2均落亥；害气在加1后余0落亥。"},
+    {"accumulated": 12, "qinglong": "亥", "taiyin": "亥", "haiqi": "申", "note": "青龙完成12步回亥，另外两旗继续按各自周期。"}
+  ],
+  "implementation_differences": [
+    {"label": "三条周期不能合成一条旗序", "source": "选定卷十目录把三旗分别列为青龙旗、太阴黑旗、害气赤旗所在术。", "implementation": "三个函数分别使用12支顺行、12支逆行三年一移和四孟逆行。", "handling": "共用积年入口，但保留三条公式和三个余数。"},
+    {"label": "起亥不等于积年零都落亥", "source": "连接文本目录和函数注释均写命起亥。", "implementation": "太阴先加25，害气先加1；当积年为0时分别返回卯与申。", "handling": "公开边界探针，不用文字起点覆盖程序偏移。"},
+    {"label": "太阴采用三年分段的零基取整", "source": "来源说明三年一移、三十六年一周。", "implementation": "余0—2落亥，余3—5落戌，依次逆行。", "handling": "固定例可复算；算外与余尽边界仍待逐页影像校勘。"},
+    {"label": "同局不能推出三旗同值", "source": "三旗读取原始积年，不读取七十二局号。", "implementation": "method 0／1／3三条周期同余；method 2虽只与method 0相差276，却把太阴从亥改为卯。", "handling": "逐method显示积年、余数和位置，不复用局号分组。"},
+    {"label": "同名不是同一对象", "source": "九宫贵神九名中也有青龙、太阴。", "implementation": "三旗的青龙、太阴是积年推得的地支位置；九宫贵神则是九神飞布中的名称。", "handling": "分成两个节点，并在页内明确交叉重名。"},
+    {"label": "会合解释不纳入本节点", "source": "卷十和锁定函数把二旗／三旗同位继续连接灾异文本。", "implementation": "sanqi直接返回带缓急、除旧布新的字符串。", "handling": "只把集合大小改写成三处不同、两旗同位、三旗同位。"}
+  ],
+  "reading_boundaries": [
+    {"label": "可理解", "note": "三面旗分别怎样从积年进入12年、36年与4年路线。"},
+    {"label": "可比较", "note": "四method为何只在太阴黑旗上出现固定例分叉。"},
+    {"label": "待核验", "note": "加25、加1的底本字形、算外／余尽处理与三旗完整版本谱系。"},
+    {"label": "不作断语", "note": "不展示灾异、气候、战争、旗色行动、地域或真人判断。"}
+  ],
+  "public_sources": [
+    {"title": "《太乙统宗宝鉴》卷十目录连接文本", "url": "https://ctext.org/wiki.pl?chapter=258102&if=gb", "note": "列出三旗、九宫贵神及三旗所在术；OCR字形不稳，须与影像互校。"},
+    {"title": "《太乙统宗宝鉴》书目与影像入口", "url": "https://ctext.org/wiki.pl?if=gb&res=444363", "note": "当前原典导航入口，不把自动OCR当作无误校本。"},
+    {"title": "kintaiyi锁定三旗常数与函数", "url": "https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/config.py#L895-L993", "note": "保存三旗名称、十二支／四孟序列、三条公式与会合字符串。"},
+    {"title": "kintaiyi锁定普通结果接口", "url": "https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L2265-L2271", "note": "普通式盘把积年直接传入三旗和九宫贵神函数。"}
+  ],
+  "internal_review": {
+    "status": "formal_three_independent_flag_cycles",
+    "reviewed_at": "2026-08-07",
+    "owner": ["火华", "Codex"],
+    "runtime_basis": "固定四method积年取自已核年计节点，按锁定三个函数逐式复算；另用0、2、11、12作边界探针",
+    "deduplication": "不并入九宫贵神：二者虽同见卷十且重名青龙、太阴，三旗输出三处地支，九宫贵神输出直事神和九宫分布。不并入五运六气：三旗会合只是其下游条件之一，三条周期不能由年干年支表承接。",
+    "known_gaps": ["三旗原式未逐页影像校勘", "加25与加1的版本来源未独立互证", "算外／余尽的零基边界待核", "缺少仓库专项测试"],
+    "boundary": "固定积年、无真人输入、无随机；不公开灾异、气候、军事、地域和行动断语。"
+  }
+}

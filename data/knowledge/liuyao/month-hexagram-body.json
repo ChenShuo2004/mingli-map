@@ -1,0 +1,96 @@
+{
+  "schema_version": "1.0",
+  "id": "liuyao_month_hexagram_body",
+  "title": "月卦身",
+  "summary": "月卦身先读取世爻的阴阳与所在爻位：阳世从子起，阴世从午起，再从初爻顺数到世爻，得到一个地支。这个地支是另行推出的结构标记；还要与纳甲装入本卦的六个地支比对，才能知道它是否实际落在某一爻。",
+  "modes": [
+    {
+      "id": "yang",
+      "label": "阳世",
+      "start": "子",
+      "branches": ["子", "丑", "寅", "卯", "辰", "巳"],
+      "note": "世爻为阳，从初爻起子，随爻位逐支顺数。"
+    },
+    {
+      "id": "yin",
+      "label": "阴世",
+      "start": "午",
+      "branches": ["午", "未", "申", "酉", "戌", "亥"],
+      "note": "世爻为阴，从初爻起午，随爻位逐支顺数。"
+    }
+  ],
+  "positions": [
+    {"value": 1, "label": "初爻"},
+    {"value": 2, "label": "二爻"},
+    {"value": 3, "label": "三爻"},
+    {"value": 4, "label": "四爻"},
+    {"value": 5, "label": "五爻"},
+    {"value": 6, "label": "上爻"}
+  ],
+  "fixed_examples": [
+    {
+      "name": "乾为天",
+      "mode_id": "yang",
+      "shi_position": 6,
+      "body_branch": "巳",
+      "installed_branches": ["子", "寅", "辰", "午", "申", "戌"],
+      "on_hexagram": false,
+      "note": "阳世在上爻，从子数到第六位得巳；乾卦六支中没有巳，因此这里只得到卦身地支，没有同支爻位。"
+    },
+    {
+      "name": "坤为地",
+      "mode_id": "yin",
+      "shi_position": 6,
+      "body_branch": "亥",
+      "installed_branches": ["未", "巳", "卯", "丑", "亥", "酉"],
+      "on_hexagram": true,
+      "holder_position": 5,
+      "note": "阴世在上爻，从午数到第六位得亥；坤卦五爻正好装亥，因此卦身地支在本卦中找到同支爻位。"
+    }
+  ],
+  "distinctions": [
+    {
+      "label": "世应定位",
+      "question": "世爻在第几位？",
+      "answer": "先提供月卦身所需的爻位与阴阳。"
+    },
+    {
+      "label": "月卦身",
+      "question": "从子或午数到世，得到哪一支？",
+      "answer": "生成一个独立地支，不等于已经落在某爻。"
+    },
+    {
+      "label": "纳甲对照",
+      "question": "本卦六支里有没有这一个地支？",
+      "answer": "有才标出同支爻位，没有则保留为不上卦。"
+    }
+  ],
+  "source_positions": [
+    {
+      "label": "古籍起例",
+      "position": "《卜筮正宗》以阴世午起、阳世子起，再从初爻数到世爻。",
+      "public_use": "页面只采用可定位的生成规则，不采用同书的固定吉凶断语。"
+    },
+    {
+      "label": "名称分界",
+      "position": "古籍目录称“安月卦身诀”，实现中常缩写为“卦身”；世身另有按世爻地支定位爻位的起例。",
+      "public_use": "本节点明确写作月卦身，不把月卦身与世身合并。"
+    },
+    {
+      "label": "实现对照",
+      "position": "锁定实现同样读取世爻阴阳与索引，从子或午顺排后返回一个地支。",
+      "public_use": "实现只作规则重合证据；是否采用及如何解释仍按具体来源并列。"
+    }
+  ],
+  "reading_boundary": "本页只展示月卦身地支怎样生成，以及它是否在固定卦例的纳甲六支中出现；不接收卦象输入，也不把卦身的空破、生克或所在六亲翻译成吉凶和事项结论。",
+  "internal_review": {
+    "status": "classical_formula_locked_implementation_and_name_boundary_cross_checked",
+    "reviewed_at": "2026-08-05",
+    "source_refs": [
+      "bushi_zhengzong_scan_pdf_page_6_lines_413_415",
+      "bushi_zhengzong_scan_pdf_page_8_lines_486_489",
+      "github_chxb_jishiyu_97b6d6d_js_6yao_guashen"
+    ],
+    "boundary": "公开生成映射、上卦检查和术语分界；卦身喜忌、真人事项、吉凶与应期留在受限层。"
+  }
+}

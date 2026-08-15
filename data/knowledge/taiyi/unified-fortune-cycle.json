@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.0.0",
+  "id": "taiyi-unified-fortune-cycle",
+  "title": "统运入卦路线与实现缺口",
+  "summary": "统运是一条独立于普通年计四method的公元年入卦路线：以周敬王四十三年为纪年锚点，经卦盈差与校正进入声明为11520年的大周，再定位十二运、卦和爻。锁定实现保留了这套结构，却没有闭合成可视为完整传统表的算法：十二运分段只合计11498年，规范六十四卦缺4卦并混入‘遇’，若干历史锚点也与当前定位函数不一致。因此展示十二运骨架、固定复算与缺口，不展示爻位祸福、历史兴亡类比或流年判断。",
+  "fixed_input": "固定公元年探针 · 不读取普通年计method",
+  "calculation_steps": [
+    {"index": "01", "name": "纪年入口", "input": "公元年", "formula": "统运积年 = 公元年 − (−476)", "output": "距周敬王四十三年的名义年数"},
+    {"index": "02", "name": "大周位置", "input": "纪年数、卦盈差300、校正421", "formula": "(纪年数 − 1 + 300 + 421) mod 11520", "output": "0—11519的周期位置"},
+    {"index": "03", "name": "十二运入卦", "input": "周期位置", "formula": "依十二运内各卦年数逐段定位", "output": "运、卦、入卦年数"},
+    {"index": "04", "name": "卦内入爻", "input": "入卦偏移与六爻策数", "formula": "阳爻36年、阴爻24年逐爻累计", "output": "爻名、入爻年数与爻策"}
+  ],
+  "declared_cycle": 11520,
+  "built_cycle": 11498,
+  "cycle_gap": 22,
+  "fortunes": [
+    {"index": 1, "name": "天地否泰", "declared_years": 720, "built_years": 720, "hexagrams": ["乾", "坤", "否", "泰"], "durations": [216, 144, 180, 180], "status": "显式年数闭合"},
+    {"index": 2, "name": "男女交亲", "declared_years": 2160, "built_years": 2138, "hexagrams": ["震", "巽", "恒", "益", "坎", "离", "既济", "未济", "艮", "兑", "损", "咸"], "durations": [168, 192, 200, 160, 168, 192, 181, 179, 178, 118, 212, 190], "status": "显式年数少22"},
+    {"index": 3, "name": "三阳晶守政", "declared_years": 1152, "built_years": 1152, "hexagrams": ["大壮", "无妄", "需", "讼", "大畜", "遯"], "durations": [192, 192, 192, 192, 192, 192], "status": "程序平均分配"},
+    {"index": 4, "name": "四阴毛权衡", "declared_years": 1008, "built_years": 1008, "hexagrams": ["观", "晋", "明夷", "萃", "临"], "durations": [201, 201, 201, 201, 204], "status": "程序平均分配"},
+    {"index": 5, "name": "资育还本", "declared_years": 936, "built_years": 936, "hexagrams": ["豫", "复", "比", "剥", "谦"], "durations": [187, 187, 187, 187, 188], "status": "程序平均分配"},
+    {"index": 6, "name": "造化符天", "declared_years": 1224, "built_years": 1224, "hexagrams": ["小畜", "同人", "大有", "履", "夬"], "durations": [244, 244, 244, 244, 248], "status": "程序平均分配"},
+    {"index": 7, "name": "刚中健至", "declared_years": 672, "built_years": 672, "hexagrams": ["解", "屯", "颐", "遇"], "durations": [168, 168, 168, 168], "status": "‘遇’疑为‘姤’"},
+    {"index": 8, "name": "群愚位贤", "declared_years": 768, "built_years": 768, "hexagrams": ["家人", "鼎", "中孚", "大过"], "durations": [192, 192, 192, 192], "status": "程序平均分配"},
+    {"index": 9, "name": "德义顺命", "declared_years": 1080, "built_years": 1080, "hexagrams": ["丰", "噬嗑", "归妹", "随", "节", "困"], "durations": [180, 180, 180, 180, 180, 180], "status": "程序平均分配"},
+    {"index": 10, "name": "惑姤留连", "declared_years": 1080, "built_years": 1080, "hexagrams": ["涣", "井", "渐", "蛊", "旅", "贲"], "durations": [180, 180, 180, 180, 180, 180], "status": "程序平均分配"},
+    {"index": 11, "name": "寡阳相搏", "declared_years": 336, "built_years": 336, "hexagrams": ["蹇", "蒙"], "durations": [168, 168], "status": "程序平均分配"},
+    {"index": 12, "name": "物极元终", "declared_years": 384, "built_years": 384, "hexagrams": ["睽", "革"], "durations": [192, 192], "status": "程序平均分配"}
+  ],
+  "fixed_probes": [
+    {"year": -476, "label": "周敬王四十三年锚点", "cycle_position": 720, "fortune": "男女交亲", "hexagram": "震", "hexagram_year": 1, "line": "初九", "line_year": 1, "line_weight": 36, "status": "当前函数与仓库锚点相合"},
+    {"year": 1504, "label": "仓库历史表锚点", "cycle_position": 2700, "fortune": "男女交亲", "hexagram": "咸", "hexagram_year": 33, "line": "六二", "line_year": 9, "line_weight": 24, "status": "历史表写咸初六，当前函数写六二"},
+    {"year": 1528, "label": "仓库历史表锚点", "cycle_position": 2724, "fortune": "男女交亲", "hexagram": "咸", "hexagram_year": 57, "line": "九三", "line_year": 9, "line_weight": 36, "status": "历史表写咸九二，当前函数写九三"},
+    {"year": 1552, "label": "网页固定历史年", "cycle_position": 2748, "fortune": "男女交亲", "hexagram": "咸", "hexagram_year": 81, "line": "九三", "line_year": 33, "line_weight": 36, "status": "只作锁定函数复算"},
+    {"year": 2026, "label": "当前公元年探针", "cycle_position": 3222, "fortune": "三阳晶守政", "hexagram": "无妄", "hexagram_year": 173, "line": "九五", "line_year": 29, "line_weight": 36, "status": "无／無字形令爻策表回退"},
+    {"year": 10323, "label": "周期尾部缺口探针", "cycle_position": 11519, "fortune": "物极元终", "hexagram": "革", "hexagram_year": 1, "line": "初九", "line_year": 1, "line_weight": 36, "status": "位置未命中任何段，函数强制回退革卦起点"}
+  ],
+  "implementation_differences": [
+    {"label": "统运不读取普通年计四method", "source": "统运以周敬王四十三年纪年并加卦盈差。", "implementation": "tongyun_rugua只接收公元年；普通年计的四个积年常数完全不参与。", "handling": "归入计法与版本，但作为独立公元年路线展示。"},
+    {"label": "声明大周与实际分段相差22年", "source": "代码常数和综合要诀均称11520年一周。", "implementation": "十二运声明总年相加为11520，但第二运各卦年数只合计2138，使全部分段仅11498。", "handling": "同时显示声明值、构建值与22年空档，不自动补入某卦。"},
+    {"label": "六十四卦集合没有闭合", "source": "统运目录与旧表按六十四卦组织。", "implementation": "新十二运表共61个标签，只覆盖60个规范卦名；缺师、升、小过、姤，另写一个非规范‘遇’。", "handling": "保留程序表，标出‘遇／姤’和四个缺名，不擅自替换后重算。"},
+    {"label": "同文件旧表与新表互相冲突", "source": "config前段旧tygua／tygua_years保存完整64卦及逐卦年数。", "implementation": "新表除前两运外都把运总年平均分给所列卦，生成201、187、244等旧表没有的年数。", "handling": "本页只称锁定新函数输出，不宣称它等于旧表或原典。"},
+    {"label": "历史锚点没有逐项验证当前函数", "source": "仓库历史表写1504咸初六、1528咸九二。", "implementation": "按当前分段与咸卦24／24／36爻策复算，分别落六二与九三。", "handling": "锚点与函数返回并列，历史列表不再作为算法正确性的证明。"},
+    {"label": "周期序字段永远为一", "source": "返回结构设有‘周期序’，名称暗示可记录第几周。", "implementation": "周期位置先mod 11520，随后再整除11520，所以结果恒为0+1。", "handling": "不展示为真实累计周次，只保留当前周期内位置。"},
+    {"label": "无／無字形触发爻策回退", "source": "十二运表写无妄，旧爻策表写無妄。", "implementation": "查表失败后按卦画重算；若卦名匹配也失败则回退六爻全阳。", "handling": "2026探针标记为回退路径，不把爻策视为已核。"},
+    {"label": "卷次标注与电子目录错位", "source": "锁定注释称卷十二至十四；电子目录本节点把相关标题显示在第十三至十六卷。", "implementation": "普通结果又按卷十二、十三、十四三个键组织。", "handling": "以条目名和固定提交定位，不据数字卷次宣称版本等同。"},
+    {"label": "祸福与历史兴亡类比不公开", "source": "原典目录与实现继续连接灾厄首尾、祯祥和历代验例。", "implementation": "vol12_zonghe直接返回入爻祸福、历史例、变卦与观象期。", "handling": "只展示周期、分段、卦爻坐标和实现缺口。"}
+  ],
+  "reading_boundaries": [
+    {"label": "可理解", "note": "公元年怎样经纪年锚点、大周、十二运、卦和爻形成一条定位链。"},
+    {"label": "可比较", "note": "固定年份的当前函数结果怎样与仓库历史锚点发生错位。"},
+    {"label": "待核验", "note": "11520年完整64卦年数、十二运原表、卷次谱系、遇／姤与22年缺口。"},
+    {"label": "不作断语", "note": "不输出爻位祸福、历史兴亡类比、灾厄、流年事件或真人判断。"}
+  ],
+  "public_sources": [
+    {"title": "《太乙统宗宝鉴》统运目录连接文本", "url": "https://ctext.org/wiki.pl?chapter=258102&if=gb", "note": "可定位统运八卦纪年、纪元立成、入爻、流年直卦等条目；卷次显示与锁定注释存在错位。"},
+    {"title": "《太乙统宗宝鉴》书目与影像入口", "url": "https://ctext.org/wiki.pl?if=gb&res=444363", "note": "统运相关底本导航，不把自动OCR当作无误校本。"},
+    {"title": "kintaiyi锁定统运十二运与定位函数", "url": "https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/config.py#L3371-L3565", "note": "保存11520常数、十二运分段、入卦入爻、历史锚点及当前定位公式。"},
+    {"title": "kintaiyi同文件旧六十四卦年数表", "url": "https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/config.py#L116-L186", "note": "保存完整64卦爻策与旧逐卦年数，可见新旧表并不一致。"},
+    {"title": "kintaiyi锁定卷十二至十四结果入口", "url": "https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L2307-L2319", "note": "完整结果按公元年生成统运、卦象与行支编年三块。"}
+  ],
+  "internal_review": {
+    "status": "formal_unified_fortune_cycle_structure_and_gap_audit",
+    "reviewed_at": "2026-08-07",
+    "owner": ["火华", "Codex"],
+    "runtime_basis": "按锁定_TONGYUN_YUN_DEF、_tongyun_cycle_pos、_locate_tongyun与咸／震爻策逐式复算6个年份；十二运声明值和实际分段独立求和",
+    "deduplication": "不并入年计：统运只读公元年及独立纪年锚点，不读取四method积年。不并入纪元：六纪／五子元用于普通太乙积数的360层，统运使用11520年与十二运入卦。",
+    "known_gaps": ["十二运原表未逐页影像校勘", "22年缺口未定位", "六十四卦集合缺4卦并混入遇字", "历史锚点与当前函数冲突", "卷次谱系未闭合", "缺少统运专项测试"],
+    "boundary": "固定公元年探针，无真人输入或随机；不公开祸福、历史兴亡类比、灾厄、军事和流年事件判断。"
+  }
+}

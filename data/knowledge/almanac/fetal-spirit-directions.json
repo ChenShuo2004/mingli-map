@@ -1,0 +1,18 @@
+{
+  "id":"fetal-spirit-directions","title":"胎神占方","summary":"每日胎神由日干对应的处所名、日支对应的器物名和六十日内外方位共同组成；月胎神是另一字段，不与每日占方混用。",
+  "stem_objects":[{"stems":"甲己","object":"门"},{"stems":"乙庚","object":"碓磨"},{"stems":"丙辛","object":"厨灶"},{"stems":"丁壬","object":"仓库"},{"stems":"戊癸","object":"房床"}],
+  "branch_objects":[{"branches":"子午","object":"碓"},{"branches":"丑未","object":"厕"},{"branches":"寅申","object":"炉"},{"branches":"卯酉","object":"门"},{"branches":"辰戌","object":"栖"},{"branches":"巳亥","object":"床"}],
+  "position_segments":[
+    {"days":"甲子—癸酉","area":"外","direction":"东南—西南"},{"days":"甲戌—癸未","area":"外","direction":"西南—西北"},{"days":"甲申—癸巳","area":"外转房内","direction":"西北—房内北"},
+    {"days":"甲午—癸卯","area":"房内","direction":"北—西"},{"days":"甲辰—癸丑","area":"房内转外","direction":"东—东北"},{"days":"甲寅—癸亥","area":"外","direction":"东北—东南"}
+  ],
+  "fixed_sequence":[
+    {"date":"1986-05-29","day":"癸酉","position":"房床门 外西南"},{"date":"1986-05-30","day":"甲戌","position":"占门栖 外西南"},{"date":"1986-05-31","day":"乙亥","position":"碓磨床 外西南"},{"date":"1986-06-01","day":"丙子","position":"厨灶碓 外西南"},{"date":"1986-06-02","day":"丁丑","position":"仓库厕 外正西"},{"date":"1986-06-03","day":"戊寅","position":"房床炉 外正西"}
+  ],
+  "fixed_example":{"date":"1986-05-29","day":"癸酉","stem_part":"癸 → 房床","branch_part":"酉 → 门","position_part":"外西南","display":"房床门 外西南"},
+  "boundaries":["每日胎神与逐月胎神分开","只展示传统占方结构，不提供孕产、医疗或居家行动建议"],
+  "public_sources":[
+    {"title":"《永乐大典》六甲胎神条","note":"保存十干与十二支所对应处所／器物的传统表述。","url":"https://www.shidianguji.com/book/YLDD00001/chapter/1lmfk7rg3n2nd"},
+    {"title":"lunar-javascript 锁定实现","note":"六十日内外方位和固定六日样本来自锁定版本。","url":"https://github.com/6tail/lunar-javascript/tree/4c45a59"}
+  ]
+}

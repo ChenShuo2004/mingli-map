@@ -1,0 +1,91 @@
+{
+  "schema_version": "1.0",
+  "id": "liuyao_branch_punishment_harm",
+  "title": "三刑与六害",
+  "summary": "三刑与六害共用基础地支成员表，但在六爻里还要记录关系的两端来自月建、日辰还是卦中爻。刑包含三支循环、二支互刑和四支自刑，害则固定为六组二支关系；同一对地支还可能同时命中刑与害。",
+  "relation_types": [
+    {
+      "id": "punishment",
+      "label": "相刑",
+      "count": "4 类结构",
+      "question": "成员是循环、互刑，还是同支自刑？"
+    },
+    {
+      "id": "harm",
+      "label": "六害",
+      "count": "6 组二支",
+      "question": "来源支与目标支是否落在固定害对？"
+    }
+  ],
+  "punishment_structures": [
+    { "id": "yin-si-shen", "type": "三支循环", "members": ["寅", "巳", "申"], "arrows": ["寅→巳", "巳→申", "申→寅"] },
+    { "id": "chou-xu-wei", "type": "三支循环", "members": ["丑", "戌", "未"], "arrows": ["丑→戌", "戌→未", "未→丑"] },
+    { "id": "zi-mao", "type": "二支互刑", "members": ["子", "卯"], "arrows": ["子↔卯"] },
+    { "id": "self", "type": "同支自刑", "members": ["辰", "午", "酉", "亥"], "arrows": ["辰→辰", "午→午", "酉→酉", "亥→亥"] }
+  ],
+  "harm_pairs": [
+    ["子", "未"],
+    ["丑", "午"],
+    ["寅", "巳"],
+    ["卯", "辰"],
+    ["申", "亥"],
+    ["酉", "戌"]
+  ],
+  "source_layers": [
+    { "id": "month", "label": "月建", "role": "卦外来源", "note": "月支可以刑、害卦中某爻，关系方向记为月建指向爻。" },
+    { "id": "day", "label": "日辰", "role": "卦外来源", "note": "日支可以刑、害卦中某爻，不能倒写成爻反作用于日辰。" },
+    { "id": "lines", "label": "卦中爻", "role": "卦内来源", "note": "两个爻的地支也可能形成刑害；是否发动另作状态记录。" }
+  ],
+  "fixed_examples": [
+    {
+      "id": "overlap",
+      "label": "刑害重叠",
+      "source": { "label": "日辰", "branch": "寅" },
+      "target": { "label": "卦中巳爻", "branch": "巳" },
+      "matches": ["刑", "害"],
+      "explanation": "寅巳既位于寅巳申刑的相邻一步，又是六害固定配对，所以两个标签可以并存。"
+    },
+    {
+      "id": "month-harm",
+      "label": "月建害爻",
+      "source": { "label": "月建", "branch": "子" },
+      "target": { "label": "卦中未爻", "branch": "未" },
+      "matches": ["害"],
+      "explanation": "子未属于六害之一，来源层明确为月建指向卦中爻。"
+    },
+    {
+      "id": "line-punishment",
+      "label": "爻间相刑",
+      "source": { "label": "寅爻", "branch": "寅" },
+      "target": { "label": "巳爻", "branch": "巳" },
+      "matches": ["刑"],
+      "explanation": "两个卦中爻落在寅巳申刑的相邻位置，关系发生在卦内。"
+    },
+    {
+      "id": "self-punishment",
+      "label": "同支自刑",
+      "source": { "label": "日辰", "branch": "酉" },
+      "target": { "label": "卦中酉爻", "branch": "酉" },
+      "matches": ["自刑"],
+      "explanation": "辰、午、酉、亥使用同支重复的自刑结构，不应画成两个不同地支。"
+    }
+  ],
+  "evidence_boundary": [
+    { "source": "《卜筮全书》", "public_label": "成员并列口径", "position": "同时列出三刑、六害成员，并附固定断语。", "public_use": "只采用成员结构，不采用固定结果。" },
+    { "source": "《增删卜易》", "public_label": "经验保留口径", "position": "保存三刑成员，但指出独犯三刑的独立验例很少。", "public_use": "保留验证保留意见，不把刑直接判为结果。" },
+    { "source": "《卜筮正宗》", "public_label": "效力否定口径", "position": "认可三刑结构，却称六害屡试无验而不录其断法。", "public_use": "六害只作为关系标签，不宣称稳定占断效力。" }
+  ],
+  "bazi_boundary": "八字“地支关系”使用相同成员表；六爻另需记录月、日、卦爻三类来源、作用方向和标签重叠。",
+  "reading_boundary": "本页只展示刑害成员、来源方向、重叠与古籍分歧，不接收起卦结果，不选择用神，也不把刑害翻译成吉凶、应期或个人事件判断。",
+  "internal_review": {
+    "status": "classical_membership_and_locked_implementation_cross_checked",
+    "reviewed_at": "2026-08-04",
+    "source_refs": [
+      "zengshan_buyi_wikisource_chapter_21",
+      "bushi_quanshu_ctext_volume_14",
+      "bushi_zhengzong_ctext_sanxing_liuhai_discussion",
+      "github_horace_maxwell_horosa_7d8a93e_liuyao_const_engine"
+    ],
+    "boundary": "公开成员、来源层、方向、重叠与效力分歧；固定吉凶、六亲事件、用神与应期留在受限层。"
+  }
+}

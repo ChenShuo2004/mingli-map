@@ -1,0 +1,33 @@
+{
+  "id":"taiyi-host-guest-relations-fixed-example","topic_id":"taiyi","title":"主客算与七类位置关系",
+  "summary":"沿用1552年的固定年计式盘，先区分主算、客算、定算及其大将、参将，再把掩、击、迫、囚、关、格、对还原成同宫、相邻或对宫条件。本节点只显示锁定实现的命中证据，不把关系名称继续推成胜负与军国断语。",
+  "fixed_input":{"display":"1552年9月24日 0时0分","board":"阳遁十三局","taiyi_palace":6,"taiyi_position":"酉","lookup_row":[18,19,19],"lookup_note":"锁定实现的find_cal按阴阳遁和1至72局查预置表；阳遁第13项为[18, 19, 19]。"},
+  "calculation_tracks":[
+    {"id":"host","label":"主","eye":"文昌 · 巽（映射九宫）","count":18,"general":8,"assistant":4,"count_source":"阳遁十三局查表第1值","general_formula":"18 → 去十位 → 8宫","assistant_formula":"8 × 3 mod 10 = 4宫","note":"原典卷二支持由二目求主客算、再由算定大将的先后；18本身在锁定代码中来自预置表。"},
+    {"id":"guest","label":"客","eye":"始击 · 辰（映射九宫）","count":19,"general":9,"assistant":7,"count_source":"阳遁十三局查表第2值","general_formula":"19 → 去十位 → 9宫","assistant_formula":"9 × 3 mod 10 = 7宫","note":"客算与客将沿客目支线保存；本页不把客解释成现实中的攻击方。"},
+    {"id":"determination","label":"定","eye":"定目 · 辰（映射九宫）","count":19,"general":9,"assistant":7,"count_source":"阳遁十三局查表第3值","general_formula":"19 mod 10 = 9宫","assistant_formula":"9 × 3 mod 10 = 7宫","note":"定算是锁定实现中的第三列；不作为最终预测结论。"}
+  ],
+  "relation_rules":[
+    {"id":"mask","label":"掩","geometry":"同宫","classical_condition":"始击（客目）临太乙宫。","implementation_condition":"始击映射宫位 = 太乙宫。","fixed_status":"未命中","evidence":"始击9宫 ≠ 太乙6宫。"},
+    {"id":"strike","label":"击","geometry":"前后相邻","classical_condition":"客目在太乙前／后一辰或前／后一宫。","implementation_condition":"始击位于太乙相邻辰或八宫顺序的相邻宫。","fixed_status":"未命中","evidence":"太乙6宫的相邻宫为4与7；始击在9宫。"},
+    {"id":"press","label":"迫","geometry":"前后相邻","classical_condition":"卷三先列上下二目与主客大小四将在太乙左右，随后又记“上目无迫”。","implementation_condition":"文昌、始击、定目与四将均进入邻辰／邻宫检查。","fixed_status":"命中2条","evidence":"主参4宫为内宫迫；客参7宫为外宫迫。"},
+    {"id":"confine","label":"囚","geometry":"同宫","classical_condition":"文昌及主客大小四将与太乙同宫。","implementation_condition":"文昌或四将的宫位 = 太乙宫。","fixed_status":"未命中","evidence":"文昌9宫，四将8／4／9／7宫，均不等于太乙6宫。"},
+    {"id":"barrier","label":"关","geometry":"将与将同宫","classical_condition":"主客大小四将同宫数齐。","implementation_condition":"四将中任意两者宫数相同且不在五宫。","fixed_status":"未命中","evidence":"四将分别在8、4、9、7宫，没有同宫对。"},
+    {"id":"block","label":"格","geometry":"对宫","classical_condition":"客目、客大将或客参将与太乙对宫。","implementation_condition":"始击、客大将或客参将宫位 = 太乙对宫。","fixed_status":"未命中","evidence":"太乙6宫的对宫为4；客目／客大／客参为9／9／7宫。"},
+    {"id":"oppose","label":"对","geometry":"对宫","classical_condition":"下目文昌与太乙相冲相当。","implementation_condition":"文昌宫位 = 太乙对宫。","fixed_status":"未命中","evidence":"文昌9宫 ≠ 太乙对宫4宫。"}
+  ],
+  "method_differences":[
+    {"label":"算数怎样得到","classical":"卷二描述从天地二目所在起算，行至太乙宫。","implementation":"find_cal按阴阳遁与局数直接查72项预置表。","handling":"公开查表事实，不声称代码复原古法逐位行算。"},
+    {"label":"谁可以构成迫","classical":"同段先列上下二目与四将，随后又记“上目无迫”。","implementation":"文昌、始击、定目与四将全部进入迫的检查。","handling":"固定例两条命中都来自参将；范围差异仍单列。"},
+    {"label":"“关”的两个语境","classical":"“推关法”指四将同宫；“推主客相关法”又以五行相制说明主客相关。","implementation":"shi_geju中的关只检查四将同宫。","handling":"本节点只展示盘面位置关系，不借同字合并。"}
+  ],
+  "reading_boundaries":[{"label":"可验证","note":"固定查表行、三类算、将宫公式与七类位置证据。"},{"label":"待校勘","note":"预置表怎样逐项对应古法行算及迫的完整主体范围。"},{"label":"明确排除","note":"不映射真人双方，不输出战争、国运、灾异或胜负。"}],
+  "public_sources":[
+    {"title":"《太乙金鏡式經》卷二","url":"https://ctext.org/wiki.pl?chapter=275091&if=gb&remap=gb","note":"由二目求主客算，再由算数定大将。"},
+    {"title":"《太乙金鏡式經》卷三","url":"https://ctext.org/wiki.pl?chapter=791210&if=gb&remap=gb","note":"逐条列出掩迫关囚击格对；OCR须回看影像。"},
+    {"title":"kintaiyi锁定主客定算表","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/config.py#L109-L114","note":"阳遁第13项为[18,19,19]。"},
+    {"title":"kintaiyi锁定算将函数","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L628-L710","note":"主客定算及大将、参将公式。"},
+    {"title":"kintaiyi锁定七类关系检查","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L2014-L2163","note":"本例只返回主参内宫迫与客参外宫迫。"}
+  ],
+  "internal_review":{"status":"formal_structure_node","reviewed_at":"2026-08-06","owner":["火华","Codex"],"runtime_check":"shi_geju(0,1) => 宫迫(内、主参)，宫迫(外、客参)"}
+}

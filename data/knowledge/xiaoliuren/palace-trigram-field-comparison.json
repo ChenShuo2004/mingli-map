@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0.0",
+  "id": "xiaoliuren_palace_trigram_field_comparison",
+  "title": "六宫卦位字段的共同项与分歧",
+  "summary": "九神道门版与 maifusha 六神表都为六个同名位置附加卦位字段。大安、速喜、赤口、小吉分别对齐为震、离、兑、坎；留连却是一处写巽、一处写巽坤乾艮，空亡也分别写中与无卦。页面把四个共同项和两个分歧项同时保留，不用多数票或方位推理补成唯一答案。",
+  "versions": [
+    {"id": "daoist-nine-deity", "label": "九神道门版", "object_model": "九位系统", "rights": "无复用授权；短字段比较"},
+    {"id": "maifusha-six", "label": "maifusha 六神表", "object_model": "六位系统", "rights": "MIT仓库；字段级引用"}
+  ],
+  "palaces": [
+    {"palace": "大安", "daoist_nine": "震", "maifusha_six": "震卦", "status": "字段对齐", "note": "两份来源的卦名相同，只是是否带“卦”字不同。"},
+    {"palace": "留连", "daoist_nine": "巽", "maifusha_six": "巽坤乾艮卦", "status": "范围分歧", "note": "九位系统给出单一巽位，六神表把四个角卦并列；不能缩写成同一值。"},
+    {"palace": "速喜", "daoist_nine": "离", "maifusha_six": "离卦", "status": "字段对齐", "note": "两份来源的卦名相同，只是是否带“卦”字不同。"},
+    {"palace": "赤口", "daoist_nine": "兑", "maifusha_six": "兑卦", "status": "字段对齐", "note": "两份来源的卦名相同，只是是否带“卦”字不同。"},
+    {"palace": "小吉", "daoist_nine": "坎", "maifusha_six": "坎卦", "status": "字段对齐", "note": "两份来源的卦名相同，只是是否带“卦”字不同。"},
+    {"palace": "空亡", "daoist_nine": "中", "maifusha_six": "无卦", "status": "身份分歧", "note": "一个来源把它标作中央位置，另一个明确写无卦；中央不能自动改写成某个八卦。"}
+  ],
+  "comparison_summary": {"aligned": 4, "divergent": 2, "total": 6},
+  "nine_system_extra_positions": [
+    {"name": "病符", "trigram": "坤"},
+    {"name": "桃花", "trigram": "艮"},
+    {"name": "天德", "trigram": "乾"}
+  ],
+  "comparison_rules": [
+    "对齐只确认当前卦名字段相同，不证明宫义、五行、神名或起课规则相同。",
+    "留连的单一巽与四角卦集合按原表并列，不拆开投票。",
+    "空亡的“中”是位置标签，“无卦”是卦位缺省；两者相关但不等同。",
+    "九位系统另有病符、桃花、天德三位，不能把它们的坤、艮、乾写回六位表。"
+  ],
+  "reading_boundaries": [
+    "本页只比较卦位字段，不重复推导五行和方位。",
+    "不从卦名生成吉凶、性格、疾病或行动判断。",
+    "无授权来源只公开短字段与原创差异说明。"
+  ],
+  "public_sources": [
+    {
+      "title": "Horace-Maxwell/divination-notes-prompt 锁定资料索引",
+      "url": "https://github.com/Horace-Maxwell/divination-notes-prompt/tree/b22ecfaafcd17782ddc0f633df163b6492b766d4",
+      "note": "无许可证；用于定位九神道门版的六个卦位短字段。"
+    },
+    {
+      "title": "maifusha/xiaoliuren 锁定六神表",
+      "url": "https://github.com/maifusha/xiaoliuren/tree/00b56579cf35b9961af5468bd2dc90f9211cc146",
+      "note": "MIT仓库；用于对照六宫的八卦字段。"
+    }
+  ],
+  "internal_review": {
+    "reviewed_on": "2026-08-09",
+    "owner": ["火华", "Codex"],
+    "status": "formal_trigram_field_comparison"
+  }
+}

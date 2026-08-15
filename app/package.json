@@ -1,0 +1,24 @@
+{
+  "name": "mingli-knowledge-map",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "verify:bazi": "node scripts/verify-bazi-content.mjs",
+    "verify:tarot": "node scripts/verify-tarot-content.mjs",
+    "verify:taiyi": "node scripts/verify-taiyi-content.mjs",
+    "verify:ziwei": "node scripts/verify-ziwei-content.mjs",
+    "verify:site": "node scripts/verify-site-content.mjs",
+    "verify:public": "npm run build && node scripts/verify-public-bundle.mjs"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "tyme4ts": "^1.5.2",
+    "vite": "latest"
+  }
+}

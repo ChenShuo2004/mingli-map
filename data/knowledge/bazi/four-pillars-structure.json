@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "id": "bazi_four_pillars_structure",
+  "title": "四柱结构",
+  "summary": "八字由年、月、日、时四柱组成，每柱各有一个天干与一个地支。月柱的天干从年干推得，时柱的天干从日干推得，因此四柱不是四个彼此独立的标签。",
+  "pillars": [
+    {"id": "year", "label": "年柱", "records": "出生年", "stem_source": "历法纪年", "branch_source": "历法纪年"},
+    {"id": "month", "label": "月柱", "records": "出生月令", "stem_source": "由年干起月", "branch_source": "按月令排列"},
+    {"id": "day", "label": "日柱", "records": "出生日", "stem_source": "干支纪日", "branch_source": "干支纪日"},
+    {"id": "hour", "label": "时柱", "records": "出生时辰", "stem_source": "由日干起时", "branch_source": "十二时辰"}
+  ],
+  "dependencies": [
+    {"from": "年干", "to": "月干", "label": "年上起月"},
+    {"from": "日干", "to": "时干", "label": "日上起时"}
+  ],
+  "branch_calendar_mapping": [
+    {"branch": "子", "month_label": "十一月", "hour_label": "23:00-01:00"},
+    {"branch": "丑", "month_label": "十二月", "hour_label": "01:00-03:00"},
+    {"branch": "寅", "month_label": "正月", "hour_label": "03:00-05:00"},
+    {"branch": "卯", "month_label": "二月", "hour_label": "05:00-07:00"},
+    {"branch": "辰", "month_label": "三月", "hour_label": "07:00-09:00"},
+    {"branch": "巳", "month_label": "四月", "hour_label": "09:00-11:00"},
+    {"branch": "午", "month_label": "五月", "hour_label": "11:00-13:00"},
+    {"branch": "未", "month_label": "六月", "hour_label": "13:00-15:00"},
+    {"branch": "申", "month_label": "七月", "hour_label": "15:00-17:00"},
+    {"branch": "酉", "month_label": "八月", "hour_label": "17:00-19:00"},
+    {"branch": "戌", "month_label": "九月", "hour_label": "19:00-21:00"},
+    {"branch": "亥", "month_label": "十月", "hour_label": "21:00-23:00"}
+  ],
+  "mapping_boundary": "月支表示节令月次序，不等于公历月份的固定起止；时支先展示传统双时辰区间，不在这里处理时区、真太阳时或换日分歧。",
+  "fixed_example": [
+    {"pillar": "年柱", "stem": "甲", "branch": "子"},
+    {"pillar": "月柱", "stem": "丙", "branch": "寅"},
+    {"pillar": "日柱", "stem": "戊", "branch": "辰"},
+    {"pillar": "时柱", "stem": "壬", "branch": "戌"}
+  ],
+  "public_sources": [
+    {"title": "《三命通会·论年月日时》", "note": "说明年、月、日、时排成四柱，并记年上起月、日上起时的依赖关系。", "url": "https://www.luckclub.cn/bazi/005/023/"},
+    {"title": "《渊海子平·论年上起月例》", "note": "年干推月干的传统规则。", "url": "https://www.luckclub.cn/bazi/001/018/"},
+    {"title": "《渊海子平·论日上起时例》", "note": "日干推时干的传统规则。", "url": "https://www.luckclub.cn/bazi/001/019/"}
+  ],
+  "internal_review": {
+    "status": "structure_and_dependencies_verified",
+    "reviewed_at": "2026-08-04",
+    "source_refs": ["sanming_tonghui_lun_nianyuerishi", "yuanhai_ziping_year_stem_month", "yuanhai_ziping_day_stem_hour", "github_minervaowl7_bazi_pro_65955b3", "github_dadanluo_bazi_agent_24f0216", "github_chonglou_destiny_b849d17"],
+    "boundary": "公开四柱组成与两条推导依赖；固定例子只演示结构，不对应真人，也不提供排盘。"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "id": "four-name-structure-formulas",
+  "title": "四种姓名结构的五格公式",
+  "summary": "用姓一S1、姓二S2、名一G1、名二G2表示逐字笔画；四种模板分别计算，不能把单姓、复姓、单名和双名的补一位置混用。",
+  "symbols": [
+    {"symbol": "S1", "label": "姓一", "content": "第一姓字的笔画"},
+    {"symbol": "S2", "label": "姓二", "content": "第二姓字的笔画"},
+    {"symbol": "G1", "label": "名一", "content": "第一名字的笔画"},
+    {"symbol": "G2", "label": "名二", "content": "第二名字的笔画"}
+  ],
+  "formulas": [
+    {"id": "single-single", "type": "单姓单名", "layout": "S1｜G1", "heaven": "S1＋1", "person": "S1＋G1", "earth": "G1＋1", "outer": "2", "total": "S1＋G1", "outer_equivalent": "两个补一单位"},
+    {"id": "single-double", "type": "单姓双名", "layout": "S1｜G1＋G2", "heaven": "S1＋1", "person": "S1＋G1", "earth": "G1＋G2", "outer": "总格－人格＋1", "total": "S1＋G1＋G2", "outer_equivalent": "G2＋1"},
+    {"id": "compound-single", "type": "复姓单名", "layout": "S1＋S2｜G1", "heaven": "S1＋S2", "person": "S2＋G1", "earth": "G1＋1", "outer": "总格－人格＋1", "total": "S1＋S2＋G1", "outer_equivalent": "S1＋1"},
+    {"id": "compound-double", "type": "复姓双名", "layout": "S1＋S2｜G1＋G2", "heaven": "S1＋S2", "person": "S2＋G1", "earth": "G1＋G2", "outer": "总格－人格", "total": "S1＋S2＋G1＋G2", "outer_equivalent": "S1＋G2"}
+  ],
+  "shared_rules": [
+    "人格始终取姓氏最后一字与名字第一字",
+    "总格始终为全部真实姓名用字笔画之和",
+    "单姓在天格一侧补一，单名在地格一侧补一",
+    "外格等价式用于复核，不另造一套结果"
+  ],
+  "fixed_example": {
+    "strokes": [
+      {"symbol": "S1", "stroke": 7},
+      {"symbol": "S2", "stroke": 9},
+      {"symbol": "G1", "stroke": 5},
+      {"symbol": "G2", "stroke": 8}
+    ],
+    "examples": [
+      {"id": "single-single", "type": "单姓单名", "input": "S1＝7｜G1＝5", "heaven": 8, "person": 12, "earth": 6, "outer": 2, "total": 12, "outer_check": "2"},
+      {"id": "single-double", "type": "单姓双名", "input": "S1＝7｜G1＝5、G2＝8", "heaven": 8, "person": 12, "earth": 13, "outer": 9, "total": 20, "outer_check": "20－12＋1＝9"},
+      {"id": "compound-single", "type": "复姓单名", "input": "S1＝7、S2＝9｜G1＝5", "heaven": 16, "person": 14, "earth": 6, "outer": 8, "total": 21, "outer_check": "21－14＋1＝8"},
+      {"id": "compound-double", "type": "复姓双名", "input": "S1＝7、S2＝9｜G1＝5、G2＝8", "heaven": 16, "person": 14, "earth": 13, "outer": 15, "total": 29, "outer_check": "29－14＝15"}
+    ],
+    "checks": [
+      "所有总格只加真实字符笔画",
+      "单姓两例的天格均为7＋1＝8",
+      "单名两例的地格均为5＋1＝6",
+      "复姓两例的人格均为9＋5＝14"
+    ]
+  },
+  "boundaries": [
+    "公式只接收已核定的逐字笔画，不负责繁简转换与查字",
+    "S1、S2、G1、G2表示笔画数，不表示字符编码或字序号",
+    "三字姓、三字名及其他结构不在这四个模板内",
+    "计算结果与数理解释分开保存"
+  ],
+  "public_sources": [
+    {"title": "tianji：五格计算公式与实现", "note": "表格与脚本均给出四种结构；固定数值只用于逐式复核，不采用评分和断语。", "url": "https://github.com/Ficere/tianji"},
+    {"title": "八字辅助工具：五格资料", "note": "后段公式与前述实现相合；仓库无许可证，因此只作来源索引。", "url": "https://github.com/TVB-JINPAIJIANZHI/bazifuzugongju"}
+  ]
+}

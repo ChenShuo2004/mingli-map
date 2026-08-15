@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0.0",
+  "id": "meihua_five_element_directions",
+  "title": "五行关系方向",
+  "summary": "确定体卦与用卦之后，五行关系必须保留方向：用生体与体生用不是同一条关系，体克用与用克体也不能互换。这个节点只展示木火土金水的生克方向和五种体用关系名称，主动移除来源实现附带的结果判断标签，避免从结构关系直接跳到个人结论。",
+  "trigram_elements": [
+    {"element": "金", "trigrams": ["乾", "兑"]},
+    {"element": "木", "trigrams": ["震", "巽"]},
+    {"element": "水", "trigrams": ["坎"]},
+    {"element": "火", "trigrams": ["离"]},
+    {"element": "土", "trigrams": ["艮", "坤"]}
+  ],
+  "cycles": {
+    "generating": ["木生火", "火生土", "土生金", "金生水", "水生木"],
+    "overcoming": ["木克土", "土克水", "水克火", "火克金", "金克木"]
+  },
+  "relations": [
+    {"id": "use-generates-body", "label": "用生体", "body": {"trigram": "坎", "element": "水"}, "use": {"trigram": "乾", "element": "金"}, "direction": "金生水", "question": "用卦五行是否生成体卦五行？"},
+    {"id": "body-generates-use", "label": "体生用", "body": {"trigram": "震", "element": "木"}, "use": {"trigram": "离", "element": "火"}, "direction": "木生火", "question": "体卦五行是否生成用卦五行？"},
+    {"id": "body-overcomes-use", "label": "体克用", "body": {"trigram": "巽", "element": "木"}, "use": {"trigram": "艮", "element": "土"}, "direction": "木克土", "question": "体卦五行是否克制用卦五行？"},
+    {"id": "use-overcomes-body", "label": "用克体", "body": {"trigram": "震", "element": "木"}, "use": {"trigram": "兑", "element": "金"}, "direction": "金克木", "question": "用卦五行是否克制体卦五行？"},
+    {"id": "same-element", "label": "比和", "body": {"trigram": "乾", "element": "金"}, "use": {"trigram": "兑", "element": "金"}, "direction": "同属金", "question": "体卦与用卦是否同属一种五行？"}
+  ],
+  "source_label_boundary": {
+    "source_statement": "主资料库实现还给五种关系附加了结果性等级标签。",
+    "project_decision": "公开节点只保留关系名称与箭头方向；标签属于解释层且缺底本裁决，不在此页显示。"
+  },
+  "reading_boundaries": [
+    "五行方向必须在体用对象已经确定后才能命名，不能脱离对象单独套用。",
+    "关系名称描述元素之间的方向，不直接等于现实事件的好坏。",
+    "本页不叠加旺衰、通关、应期、事项类型或个人行动建议。"
+  ],
+  "public_sources": [
+    {
+      "title": "muyen/meihua-yishu 锁定五行关系实现",
+      "url": "https://github.com/muyen/meihua-yishu/blob/aecdf87ebef26328c32caa65d40b2f9d273088ec/scripts/meihua_calc.py",
+      "note": "保存五行生克环与五种体用方向；公开页只采用方向，不采用结果性等级标签。"
+    },
+    {
+      "title": "ZZq114514/MeihuaYishu 锁定八卦五行常量",
+      "url": "https://github.com/ZZq114514/MeihuaYishu/blob/466ee62105db599a29c25259f2ba6d10092d660c/src/meihuayishu/constants.py",
+      "note": "支持八卦到五行的元数据对照，但运行路径未实现体用关系。"
+    }
+  ],
+  "internal_review": {
+    "status": "formal_relation_direction_node_without_judgment_labels",
+    "reviewed_at": "2026-08-09",
+    "owner": ["火华", "Codex"],
+    "source_refs": ["github_muyen_meihua_yishu_aecdf87", "github_zzq114514_meihuayishu_466ee62", "github_deminzhang_qimen_go_4d3f58f"],
+    "deduplication": "不并入体卦与用卦：体用页确定两个对象，本页只在对象已定后命名五行方向。不并入旺衰：旺衰需要时间与季节作为第三个输入。",
+    "known_gaps": ["关系方向可机械复算，但来源实现附带的吉凶标签缺规则级底本。", "qimen-go存在体克用、体生用标签渲染缺陷，不能用其展示结果增加共识票。"],
+    "boundary": "固定体用元素对；只展示生克方向，不显示吉凶、评分或个人解释。"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "five-grid-components",
+  "title": "五格的组成",
+  "summary": "五格是从姓名各字笔画与姓名结构推导出的五个计算字段；先确定姓与名的位置，再按同一公式版本形成天格、人格、地格、外格和总格。",
+  "grids": [
+    {"id": "heaven", "label": "天格", "position": "姓氏一侧", "composition": "取姓氏笔画；单姓版本另补一", "uses_virtual_one": "单姓使用", "uses_real_strokes": "姓氏"},
+    {"id": "person", "label": "人格", "position": "姓与名的交界", "composition": "末一姓字与第一名字相加", "uses_virtual_one": "不使用", "uses_real_strokes": "姓末字＋名首字"},
+    {"id": "earth", "label": "地格", "position": "名字一侧", "composition": "取名字笔画；单名版本另补一", "uses_virtual_one": "单名使用", "uses_real_strokes": "名字"},
+    {"id": "outer", "label": "外格", "position": "人格之外", "composition": "按姓名结构由总格、人格与补一规则导出", "uses_virtual_one": "随结构变化", "uses_real_strokes": "人格之外的姓名用字"},
+    {"id": "total", "label": "总格", "position": "完整姓名", "composition": "全部真实姓名用字的笔画总和", "uses_virtual_one": "不使用", "uses_real_strokes": "全部姓名用字"}
+  ],
+  "calculation_order": ["姓名结构", "逐字笔画", "公式版本", "天格、人格、地格、总格", "外格"],
+  "field_distinctions": [
+    "五格是五个计算字段，不是把姓名拆成五个字符",
+    "人格只取姓与名交界处的两个真实字符",
+    "总格只汇总真实姓名用字，不把补一计入总格",
+    "外格依赖姓名结构，不能脱离结构写成唯一公式"
+  ],
+  "boundaries": [
+    "五格组成只说明字段来源，不提供吉凶、性格、年龄阶段或人生含义",
+    "笔画值必须来自已经注明字形、字表与版本的上一步输入",
+    "四种常用模板以外的姓名结构另行记录，不自动套用",
+    "资料中的字段解释与人生断语不属于五格组成规则"
+  ],
+  "public_sources": [
+    {"title": "tianji：三才五格计算说明", "note": "用于核对五格字段与四种姓名结构公式；属于现代实现版本，不作为历史定本。", "url": "https://github.com/Ficere/tianji"},
+    {"title": "八字辅助工具：周易起名字资料索引", "note": "同一资料后段包含相同笔画公式，但前段另有冲突定义；仅作为版本对照，不复用解释文案。", "url": "https://github.com/TVB-JINPAIJIANZHI/bazifuzugongju"}
+  ]
+}

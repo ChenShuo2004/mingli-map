@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "id": "liuyao_moving_lines_change",
+  "title": "动爻与变卦",
+  "summary": "三钱法每次把字背数量记录为一个爻态，连续六次由初爻记到上爻。六个爻位除了阴阳，还可区分老少：少阳、少阴保持原状，老阳、老阴作为动爻翻转阴阳；所有动爻同时翻转后形成变卦。",
+  "coin_method": {
+    "name": "以钱代蓍法",
+    "outcomes": [
+      {"state_id": "young-yang", "backs": 1, "characters": 2, "result": "一背二字", "record": "单"},
+      {"state_id": "young-yin", "backs": 2, "characters": 1, "result": "二背一字", "record": "拆"},
+      {"state_id": "old-yang", "backs": 3, "characters": 0, "result": "三背", "record": "重"},
+      {"state_id": "old-yin", "backs": 0, "characters": 3, "result": "三字", "record": "交"}
+    ],
+    "position_order": [
+      {"index": 1, "label": "初爻", "part": "内卦"},
+      {"index": 2, "label": "二爻", "part": "内卦"},
+      {"index": 3, "label": "三爻", "part": "内卦"},
+      {"index": 4, "label": "四爻", "part": "外卦"},
+      {"index": 5, "label": "五爻", "part": "外卦"},
+      {"index": 6, "label": "上爻", "part": "外卦"}
+    ],
+    "count_rule": "一次三钱只记录一个爻；重复六次，并按第一次为初爻、最后一次为上爻自下而上排列。",
+    "terminology_note": "这里沿用古籍的“字、背”记法，只比较两面数量，不把某种现代硬币的具体图案强定为字或背。"
+  },
+  "states": [
+    {"id": "young-yang", "number": 7, "label": "少阳", "polarity": "阳", "line": "solid", "moving": false, "changes_to": "阳"},
+    {"id": "young-yin", "number": 8, "label": "少阴", "polarity": "阴", "line": "broken", "moving": false, "changes_to": "阴"},
+    {"id": "old-yang", "number": 9, "label": "老阳", "polarity": "阳", "line": "solid", "moving": true, "changes_to": "阴"},
+    {"id": "old-yin", "number": 6, "label": "老阴", "polarity": "阴", "line": "broken", "moving": true, "changes_to": "阳"}
+  ],
+  "fixed_example": {
+    "base_name": "火水未济",
+    "changed_name": "火地晋",
+    "moving_positions": [2],
+    "positions": [
+      {"index": 1, "label": "初爻", "state": "young-yin", "base": "broken", "changed": "broken"},
+      {"index": 2, "label": "二爻", "state": "old-yang", "base": "solid", "changed": "broken"},
+      {"index": 3, "label": "三爻", "state": "young-yin", "base": "broken", "changed": "broken"},
+      {"index": 4, "label": "四爻", "state": "young-yang", "base": "solid", "changed": "solid"},
+      {"index": 5, "label": "五爻", "state": "young-yin", "base": "broken", "changed": "broken"},
+      {"index": 6, "label": "上爻", "state": "young-yang", "base": "solid", "changed": "solid"}
+    ]
+  },
+  "reading_boundary": "固定方法只解释一次三钱怎样映射爻态及六次记录顺序；不提供随机摇卦，不接收摇卦结果，不选择用神，也不解释本卦或变卦的吉凶。",
+  "internal_review": {
+    "status": "classical_rule_and_implementation_cross_checked",
+    "reviewed_at": "2026-08-05",
+    "source_refs": ["github_chxb_jishiyu_97b6d6d_view_6yao_shake_once", "bushi_quanshu_qimeng_jieyao_lines_37_56", "bushi_zhengzong_ctext_lines_123_134", "zhouyi_shishu_siku_vol4"],
+    "boundary": "公开三钱到四种爻态的固定映射、六次记录次序和固定变化示例，不公开随机起卦入口或占断。"
+  }
+}

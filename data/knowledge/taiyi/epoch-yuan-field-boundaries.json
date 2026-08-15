@@ -1,0 +1,69 @@
+{
+  "schema_version":"1.0.0",
+  "id":"epoch-yuan-field-boundaries",
+  "title":"六纪、三元与五子元的字段边界",
+  "summary":"《武备志》所录太乙法把三百六十分作六个六十甲子之纪，又在案例中依次称第一纪上元、第二纪中元、第三纪下元，第四纪重新回到上元；同章另以甲子、丙子、戊子、庚子、壬子五子元各统七十二局。六纪、上中下三元与五子元因此是三条交叉分层，不能仅凭都含“元”字合并。锁定实现的getepoch[纪]大体按六十取纪，但getepoch[元]另以积数连取360、72、24余数再除3，生成一至六的程序数元；getyuan又用round(余数/72)选择五子元首，导致边界并非73、145、217、289。jiyuan最后把这些不同字段拼为一串，固定年计method 0遂显示“第四纪第四戊子元”，而正确五子元范围应是庚子元。保留原始返回、输入来源与错位边界，不把程序字符串升级为古籍共识。",
+  "classical_layers":[
+    {"id":"epoch","index":"01","name":"六纪","unit":"60甲子","cycle":"6 × 60 = 360","question":"位于第几个六十甲子？","labels":"第一纪—第六纪","note":"按三百六十连续编号每60位换纪。"},
+    {"id":"tri-yuan","index":"02","name":"上中下元","unit":"2纪一轮","cycle":"上、中、下、上、中、下","question":"本纪属于三元次序哪一段？","labels":"一／四上，二／五中，三／六下","note":"原典案例显示第四纪重新称上元；不是五子元。"},
+    {"id":"five-zi","index":"03","name":"五子元","unit":"72局","cycle":"5 × 72 = 360","question":"位于哪个七十二局段？","labels":"甲子、丙子、戊子、庚子、壬子元","note":"边界为1、73、145、217、289。"},
+    {"id":"local-board","index":"04","name":"元内局号","unit":"1局","cycle":"1—72","question":"在五子元内部是第几局？","labels":"一局—七十二局","note":"与纪数、三元名称和五子元名称都不是同一字段。"}
+  ],
+  "six_epoch_table":[
+    {"epoch":1,"range":"1—60","tri_yuan":"上元","five_yuan_crossing":"甲子元1—60"},
+    {"epoch":2,"range":"61—120","tri_yuan":"中元","five_yuan_crossing":"甲子元61—72／丙子元1—48"},
+    {"epoch":3,"range":"121—180","tri_yuan":"下元","five_yuan_crossing":"丙子元49—72／戊子元1—36"},
+    {"epoch":4,"range":"181—240","tri_yuan":"上元","five_yuan_crossing":"戊子元37—72／庚子元1—24"},
+    {"epoch":5,"range":"241—300","tri_yuan":"中元","five_yuan_crossing":"庚子元25—72／壬子元1—12"},
+    {"epoch":6,"range":"301—360","tri_yuan":"下元","five_yuan_crossing":"壬子元13—72"}
+  ],
+  "implementation_fields":[
+    {"function":"getepoch → 纪","input":"年／月／日积数余360","rule":"余数按60整除后取一至六","closest_layer":"六纪","status":"大体同层；余0以折返处理"},
+    {"function":"getepoch → 元","input":"年／月／日积数余360","rule":"int(余360 % 72 % 24 ÷ 3)，再折至一至六","closest_layer":"无已核原典对应","status":"程序数元；不得标成上中下元"},
+    {"function":"getyuan","input":"积数余360","rule":"round(余数 ÷ 72)映射五个子元首","closest_layer":"五子元","status":"取整方式使分段边界错位"},
+    {"function":"epochdict／jiyuan_dict","input":"日干支或时干支","rule":"六组10干支／五组12干支查表","closest_layer":"六纪／五子元","status":"时计与分计会改用干支查表"},
+    {"function":"jiyuan","input":"上述多个返回","rule":"纪 + 程序数元 + 五子元首拼接","closest_layer":"混合输出","status":"字符串可记录，不作为单一传统字段"}
+  ],
+  "rounding_boundaries":[
+    {"remainder":72,"expected":"甲子元72局","program":"甲子元","state":"same","note":"第一段终点。"},
+    {"remainder":73,"expected":"丙子元1局","program":"甲子元","state":"mismatch","note":"传统五段已换元，round仍留在第一段。"},
+    {"remainder":107,"expected":"丙子元35局","program":"甲子元","state":"mismatch","note":"程序尚未换元。"},
+    {"remainder":108,"expected":"丙子元36局","program":"丙子元","state":"transition","note":"程序第一次换元，比应有边界晚35位。"},
+    {"remainder":145,"expected":"戊子元1局","program":"丙子元","state":"mismatch","note":"第二个应有边界仍未换元。"},
+    {"remainder":181,"expected":"戊子元37局","program":"戊子元","state":"transition","note":"程序第二次换元。"},
+    {"remainder":217,"expected":"庚子元1局","program":"戊子元","state":"mismatch","note":"第三个应有边界仍未换元。"},
+    {"remainder":229,"expected":"庚子元13局","program":"戊子元","state":"fixed","note":"固定年计method 0／1／3的实际错位。"},
+    {"remainder":289,"expected":"壬子元1局","program":"庚子元","state":"mismatch","note":"第四个应有边界仍未换元。"},
+    {"remainder":325,"expected":"壬子元37局","program":"壬子元","state":"transition","note":"程序第四次换元。"}
+  ],
+  "style_results":[
+    {"style":0,"name":"年计","source":"积年数","methods":[{"method":0,"remainder":229,"epoch":"四","numeric_yuan":"四","getyuan":"戊子","jiyuan":"第四紀第四戊子元","expected_five_yuan":"庚子元13局","state":"mismatch"},{"method":1,"remainder":229,"epoch":"四","numeric_yuan":"四","getyuan":"戊子","jiyuan":"第四紀第四戊子元","expected_five_yuan":"庚子元13局","state":"mismatch"},{"method":2,"remainder":145,"epoch":"三","numeric_yuan":"一","getyuan":"丙子","jiyuan":"第三紀第一丙子元","expected_five_yuan":"戊子元1局","state":"mismatch"},{"method":3,"remainder":229,"epoch":"四","numeric_yuan":"四","getyuan":"戊子","jiyuan":"第四紀第四戊子元","expected_five_yuan":"庚子元13局","state":"mismatch"}]},
+    {"style":1,"name":"月计","source":"积月数","methods":[{"method":0,"remainder":227,"epoch":"四","numeric_yuan":"三","getyuan":"戊子","jiyuan":"第四紀第三戊子元","expected_five_yuan":"庚子元11局","state":"mismatch"},{"method":1,"remainder":227,"epoch":"四","numeric_yuan":"三","getyuan":"戊子","jiyuan":"第四紀第三戊子元","expected_five_yuan":"庚子元11局","state":"mismatch"},{"method":2,"remainder":299,"epoch":"五","numeric_yuan":"三","getyuan":"庚子","jiyuan":"第五紀第三庚子元","expected_five_yuan":"壬子元11局","state":"mismatch"},{"method":3,"remainder":227,"epoch":"四","numeric_yuan":"三","getyuan":"戊子","jiyuan":"第四紀第三戊子元","expected_five_yuan":"庚子元11局","state":"mismatch"}]},
+    {"style":2,"name":"日计","source":"积日数","methods":[{"method":0,"remainder":83,"epoch":"二","numeric_yuan":"三","getyuan":"甲子","jiyuan":"第二紀第三甲子元","expected_five_yuan":"丙子元11局","state":"mismatch"},{"method":1,"remainder":83,"epoch":"二","numeric_yuan":"三","getyuan":"甲子","jiyuan":"第二紀第三甲子元","expected_five_yuan":"丙子元11局","state":"mismatch"},{"method":2,"remainder":83,"epoch":"二","numeric_yuan":"三","getyuan":"甲子","jiyuan":"第二紀第三甲子元","expected_five_yuan":"丙子元11局","state":"mismatch"},{"method":3,"remainder":171,"epoch":"三","numeric_yuan":"一","getyuan":"丙子","jiyuan":"第三紀第一丙子元","expected_five_yuan":"戊子元27局","state":"mismatch"}]},
+    {"style":3,"name":"时计","source":"纪取日干支；元首method 1取时干支，其余取日干支","methods":[{"method":0,"remainder":265,"epoch":"五","numeric_yuan":null,"getyuan":"庚子","jiyuan":"第五紀庚子元","expected_five_yuan":"庚子元49局","state":"source-shift"},{"method":1,"remainder":289,"epoch":"五","numeric_yuan":null,"getyuan":"庚子","jiyuan":"第五紀壬子元","expected_five_yuan":"壬子元1局","state":"source-shift"},{"method":2,"remainder":301,"epoch":"五","numeric_yuan":null,"getyuan":"庚子","jiyuan":"第五紀庚子元","expected_five_yuan":"壬子元13局","state":"mismatch"},{"method":3,"remainder":49,"epoch":"五","numeric_yuan":null,"getyuan":"甲子","jiyuan":"第五紀庚子元","expected_five_yuan":"甲子元49局","state":"source-shift"}]},
+    {"style":4,"name":"分计","source":"纪与元首都取时干支；getyuan积分结果不进入字符串","methods":[{"method":0,"remainder":119,"epoch":"五","numeric_yuan":null,"getyuan":"丙子","jiyuan":"第五紀壬子元","expected_five_yuan":"丙子元47局","state":"source-shift"},{"method":1,"remainder":299,"epoch":"五","numeric_yuan":null,"getyuan":"庚子","jiyuan":"第五紀壬子元","expected_five_yuan":"壬子元11局","state":"source-shift"},{"method":2,"remainder":299,"epoch":"五","numeric_yuan":null,"getyuan":"庚子","jiyuan":"第五紀壬子元","expected_five_yuan":"壬子元11局","state":"source-shift"},{"method":3,"remainder":119,"epoch":"五","numeric_yuan":null,"getyuan":"丙子","jiyuan":"第五紀壬子元","expected_five_yuan":"丙子元47局","state":"source-shift"}]}
+  ],
+  "field_differences":[
+    {"label":"六纪不是五子元","source":"六纪按60分，五子元按72分，同在360内交叉切段","implementation":"getepoch[纪]与getyuan分别计算后又拼在一串","handling":"本节点并排画六段与五段，不把一个当作另一个的子级。"},
+    {"label":"三元会重复","source":"第一至第六纪依上、中、下、上、中、下排列","implementation":"没有直接返回上／中／下，而返回一至六程序数元","handling":"程序数元采用中性命名，不替换为传统三元。"},
+    {"label":"程序数元来源未明","source":"已核原典案例没有支持余72、余24、除3这条组合公式","implementation":"getepoch[元]按该公式生成一至六","handling":"只记录公式与返回；状态标为待找依据。"},
+    {"label":"五子元边界被四舍五入移动","source":"五段边界固定在73、145、217、289","implementation":"round(余数/72)约在108、181、252、325才换元","handling":"十个边界样本逐项展示预期段与程序段。"},
+    {"label":"固定字符串混合三层","source":"原典可分别说第几纪、上中下元、某子元某局","implementation":"年计输出“第四纪第四戊子元”","handling":"拆回纪、程序数元、getyuan与正确五子元四列。"},
+    {"label":"时分改走干支来源","source":"岁月日时案例各有独立积数与入元结果","implementation":"时计、分计的纪元字符串改查日／时干支，且method 1条件改变时计元首来源","handling":"把来源选择作为实现事实，不推成统一传统规则。"},
+    {"label":"getyuan可被计算却不被使用","source":"五子元名称应与元内局号共同定位","implementation":"时计与分计先可算getyuan，但jiyuan字符串改用jiyuan_dict","handling":"同时显示函数返回和最终字符串，避免把未使用值误当本节点遗漏。"}
+  ],
+  "reading_boundaries":[
+    {"label":"可理解","note":"六个60段、三元重复序列与五个72段如何共同覆盖同一个360周期。"},
+    {"label":"可操作","note":"切换十个余数边界，比较正确五子元与round分段；切换五种粒度查看四个method。"},
+    {"label":"可复核","note":"固定输入1552-09-24 00:00的20组getepoch、getyuan、jiyuan原始返回。"},
+    {"label":"不由此推出","note":"任何真人运势、战争、灾异、天气、行动、人事或结果；程序错位也不证明传统结构无效。"}
+  ],
+  "public_sources":[
+    {"title":"《武备志》：六纪、三元与五子元案例","url":"https://ctext.org/wiki.pl?chapter=3064539&if=gb&remap=gb","note":"第2条说明六纪甲子、七十二局、五子元与三百六十；岁、月、日、时案例依次出现上中下元与第四纪复称上元。后续断语不纳入本节点。"},
+    {"title":"《太乙指津》：五元七十二局与六纪互证","url":"https://ctext.org/wiki.pl?chapter=948786&if=gb&remap=gb","note":"用于互证六纪甲子与甲子至壬子五元各七十二局；OCR不稳处不据以建立唯一字句。"},
+    {"title":"kintaiyi锁定纪元接口","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L545-L569","note":"getepoch、getyuan与jiyuan三段实现，显示积数公式、round取元和字符串拼接。"},
+    {"title":"kintaiyi锁定纪与元干支表","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/config.py#L89-L101","note":"epochdict按六组10干支返回一至六纪；jiyuan_dict按五组12干支返回五子元首。"},
+    {"title":"kintaiyi锁定固定例输入","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/examples/basic_usage.py#L13-L20","note":"沿用1552-09-24 00:00，在临时锁定环境复跑五种ji_style与method 0—3。"}
+  ],
+  "internal_review":{"status":"formal_epoch_yuan_field_audit","reviewed_at":"2026-08-06","owner":["火华","Codex"],"runtime_environment":"temporary Python venv; locked repository commit installed from source","runtime_command":"Taiyi.getepoch/getyuan/jiyuan for ji_style=0..4 and method=0..3; boundary arithmetic independently enumerated","deduplication":"不并入‘五子元’：上一页解释七十二局如何定位到1—360，本页专门审计六纪、传统三元、五子元和程序数元被混写的问题。不并入‘计法与版本’总览：本页保留20组运行返回和round边界。","known_gaps":["getepoch[元]组合公式尚未找到原典依据","时计method 1改取时干支而其他method取日干支的设计依据未明","分钟干支已存在但分计纪元改取时干支的依据未明","相关三个函数未发现专项测试"],"boundary":"固定样本与机械枚举，无真人输入、无随机；只展示字段分层、边界和实现差异。"}
+}

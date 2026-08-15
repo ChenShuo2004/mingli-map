@@ -1,0 +1,2200 @@
+{
+  "title": "中式星学",
+  "tradition": "chinese-astral",
+  "summary": "从星曜与典籍材料进入黄赤坐标、历法测度和星式盘法。",
+  "groups": [
+    {
+      "id": "classics",
+      "title": "《星学大成》基础结构",
+      "sequence": 1
+    },
+    {
+      "id": "coordinates",
+      "title": "天文坐标",
+      "sequence": 2
+    },
+    {
+      "id": "calendar",
+      "title": "历法测度",
+      "sequence": 3
+    },
+    {
+      "id": "chart-forms",
+      "title": "星式与十二盘式",
+      "sequence": 4
+    }
+  ],
+  "nodes": [
+    {
+      "id": "chinese-astral-lineages",
+      "group": "classics",
+      "sequence": 1,
+      "title": "中式星学与材料谱系",
+      "latin": "Chinese astral lineages",
+      "count": "4 层材料 · 3 种证据状态",
+      "tags": [
+        "星学大成",
+        "步天歌",
+        "来源分层"
+      ],
+      "question": "典籍、转录、现代讲稿与作者模型怎样分层？",
+      "summary": "先按材料性质登记，再决定它能证明什么；古籍影像、转录文本、现代讲稿和作者模型不互相代替。",
+      "facts": [
+        [
+          "底本层",
+          "《星学大成》三十卷与《步天歌》具名古籍"
+        ],
+        [
+          "转录层",
+          "固定版本文本用于检索卷次与术语"
+        ],
+        [
+          "研究层",
+          "现代讲稿只作课程顺序与检索线索"
+        ]
+      ],
+      "material_layers": [
+        {
+          "index": 1,
+          "name": "古籍底本",
+          "items": [
+            "《星学大成》三十卷",
+            "《步天歌》"
+          ],
+          "evidence": "书名、卷次、篇目与原文位置"
+        },
+        {
+          "index": 2,
+          "name": "固定转录",
+          "items": [
+            "Kanripo WYG文本"
+          ],
+          "evidence": "逐卷检索；无明确许可，只作短引与索引"
+        },
+        {
+          "index": 3,
+          "name": "现代讲稿",
+          "items": [
+            "第77—121课"
+          ],
+          "evidence": "课程顺序与术语线索；无复用授权"
+        },
+        {
+          "index": 4,
+          "name": "作者模型",
+          "items": [
+            "黄赤叠盘",
+            "卜命双路线",
+            "十二盘式"
+          ],
+          "evidence": "当前整理者的融贯说明，不冒充古籍共识"
+        }
+      ],
+      "evidence_states": [
+        {
+          "name": "底本可核",
+          "use": "可登记具名对象与规则"
+        },
+        {
+          "name": "材料转述",
+          "use": "保留出处，不代替底本"
+        },
+        {
+          "name": "作者模型",
+          "use": "单独标注，等待材料反馈"
+        }
+      ],
+      "implementation_note": "转录文本只作卷次和术语索引；现代讲稿只作研究线索。来源许可不明的材料不复用正文，作者模型始终单独标注。",
+      "internal_review": {
+        "locked_commits": {
+          "kanripo": "6626e6d7b8337db0e966522e77dc291f54664548",
+          "lecture": "b22ecfaafcd17782ddc0f633df163b6492b766d4"
+        },
+        "rights_state": "Kanripo仓未声明许可证；讲稿仓标记no_reuse_grant"
+      },
+      "public_sources": [
+        {
+          "title": "《星学大成》三十卷 · Kanripo固定版本",
+          "url": "https://github.com/kanripo/KR3g0041/tree/6626e6d7b8337db0e966522e77dc291f54664548",
+          "fields": [
+            "30卷转录",
+            "WYG底本标记"
+          ]
+        },
+        {
+          "title": "《步天歌》文本 · 维基文库",
+          "url": "https://zh.wikisource.org/wiki/%E6%AD%A5%E5%A4%A9%E6%AD%8C_(%E7%8E%8B%E5%B8%8C%E6%98%8E)",
+          "fields": [
+            "三垣",
+            "二十八宿"
+          ]
+        },
+        {
+          "title": "现代讲稿固定版本 · 仅作检索线索",
+          "url": "https://github.com/horace-maxwell/divination-notes-prompt/blob/b22ecfaafcd17782ddc0f633df163b6492b766d4/%E8%8D%80%E7%88%BD%E5%8D%A0%E6%98%9F%E8%AE%B2%E7%A8%BF.md",
+          "fields": [
+            "第77—121课",
+            "无复用授权"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seven-governors-four-residues",
+      "group": "classics",
+      "sequence": 2,
+      "title": "七政四余",
+      "latin": "Seven governors & four residues",
+      "count": "7 政 · 4 余 · 11 曜",
+      "tags": [
+        "日月五星",
+        "紫气月孛",
+        "罗喉计都"
+      ],
+      "question": "七政与四余分别包含哪些对象？",
+      "summary": "七政是日月与五颗行星，四余列紫气、月孛、罗喉、计都；十一曜先按传统对象名登记，不套用现代实体分类。",
+      "facts": [
+        [
+          "七政",
+          "太阳、太阴、木、火、土、金、水"
+        ],
+        [
+          "四余",
+          "紫气、月孛、罗喉、计都"
+        ],
+        [
+          "边界",
+          "对象名、历算周期与现代天体身份分字段保存"
+        ]
+      ],
+      "governors": [
+        {
+          "index": 1,
+          "name": "太阳",
+          "kind": "二曜",
+          "phase": "日"
+        },
+        {
+          "index": 2,
+          "name": "太阴",
+          "kind": "二曜",
+          "phase": "月"
+        },
+        {
+          "index": 3,
+          "name": "木星",
+          "kind": "五星",
+          "phase": "木"
+        },
+        {
+          "index": 4,
+          "name": "火星",
+          "kind": "五星",
+          "phase": "火"
+        },
+        {
+          "index": 5,
+          "name": "土星",
+          "kind": "五星",
+          "phase": "土"
+        },
+        {
+          "index": 6,
+          "name": "金星",
+          "kind": "五星",
+          "phase": "金"
+        },
+        {
+          "index": 7,
+          "name": "水星",
+          "kind": "五星",
+          "phase": "水"
+        }
+      ],
+      "residues": [
+        {
+          "index": 8,
+          "name": "紫气",
+          "source_form": "炁",
+          "cycle_note": "卷一记约二十九年一周"
+        },
+        {
+          "index": 9,
+          "name": "月孛",
+          "source_form": "孛",
+          "cycle_note": "卷一记约九年一周"
+        },
+        {
+          "index": 10,
+          "name": "罗喉",
+          "source_form": "罗",
+          "cycle_note": "卷一记约十八年一周"
+        },
+        {
+          "index": 11,
+          "name": "计都",
+          "source_form": "计",
+          "cycle_note": "卷一记约十八年一周"
+        }
+      ],
+      "record_fields": [
+        "对象名",
+        "底本字形",
+        "所属层",
+        "历算版本",
+        "位置值"
+      ],
+      "implementation_note": "古籍中的周行年数是该底本的历算表达，不直接替换为现代轨道周期。",
+      "public_sources": [
+        {
+          "title": "《星学大成》卷一 · 十一曜周行与七政旺宫",
+          "url": "https://github.com/kanripo/KR3g0041/blob/6626e6d7b8337db0e966522e77dc291f54664548/KR3g0041_001.txt",
+          "fields": [
+            "十一曜",
+            "七政旺宫星度歌"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "twelve-palaces-rulers",
+      "group": "classics",
+      "sequence": 3,
+      "title": "十二宫与宫主管库",
+      "latin": "Twelve palaces & rulers",
+      "count": "12 宫 · 3 层对象",
+      "tags": [
+        "十二宫",
+        "宫主",
+        "主管库"
+      ],
+      "question": "宫位、宫内星与宫主管库怎样避免混成一个对象？",
+      "summary": "十二宫是位置序列，宫内星是实际占位对象，宫主及管库星是按来源规则取得的关联对象；三层分别登记。",
+      "facts": [
+        [
+          "位置层",
+          "命、财帛至相貌共十二宫"
+        ],
+        [
+          "占位层",
+          "十一曜实际落入的宫分"
+        ],
+        [
+          "主辖层",
+          "宫分主星与管库星另行查取"
+        ]
+      ],
+      "palaces": [
+        {
+          "index": 1,
+          "name": "命"
+        },
+        {
+          "index": 2,
+          "name": "财帛"
+        },
+        {
+          "index": 3,
+          "name": "兄弟"
+        },
+        {
+          "index": 4,
+          "name": "田宅"
+        },
+        {
+          "index": 5,
+          "name": "男女"
+        },
+        {
+          "index": 6,
+          "name": "奴仆"
+        },
+        {
+          "index": 7,
+          "name": "妻妾"
+        },
+        {
+          "index": 8,
+          "name": "疾厄"
+        },
+        {
+          "index": 9,
+          "name": "迁移"
+        },
+        {
+          "index": 10,
+          "name": "官禄"
+        },
+        {
+          "index": 11,
+          "name": "福德"
+        },
+        {
+          "index": 12,
+          "name": "相貌"
+        }
+      ],
+      "object_layers": [
+        {
+          "name": "宫位",
+          "question": "是哪一个编号位置？",
+          "example": "命宫"
+        },
+        {
+          "name": "宫内星",
+          "question": "哪些星曜实际在此？",
+          "example": "原守十一曜"
+        },
+        {
+          "name": "宫主／管库",
+          "question": "按哪条来源规则取得主辖星？",
+          "example": "宫分主星、管库星"
+        }
+      ],
+      "ruler_lookup": [
+        {
+          "branches": "寅、卯",
+          "phase": "木",
+          "ruler": "木星"
+        },
+        {
+          "branches": "巳、午",
+          "phase": "火",
+          "ruler": "火星"
+        },
+        {
+          "branches": "辰、戌、丑、未",
+          "phase": "土",
+          "ruler": "土星"
+        },
+        {
+          "branches": "申、酉",
+          "phase": "金",
+          "ruler": "金星"
+        },
+        {
+          "branches": "亥、子",
+          "phase": "水",
+          "ruler": "水星"
+        }
+      ],
+      "ruler_pipeline": [
+        "读取宫位所在支",
+        "按地支五行归类",
+        "取得同五行的五星主管",
+        "定位该星实际所居宫分",
+        "再查得地、得时与留顺伏逆"
+      ],
+      "status_checks": [
+        "管库星所在宫分",
+        "得地／失地",
+        "得时／失时",
+        "留顺伏逆"
+      ],
+      "implementation_note": "卷三明示“寅木则属木之类”；查表按十二支五行展开为五星主管，再回盘检查主管星状态。宫主、宫内星与管库星仍分字段保存。",
+      "public_sources": [
+        {
+          "title": "《星学大成》卷三 · 十二宫管库星歌",
+          "url": "https://github.com/kanripo/KR3g0041/blob/6626e6d7b8337db0e966522e77dc291f54664548/KR3g0041_003.txt",
+          "fields": [
+            "十二宫序列",
+            "宫分主星",
+            "管库星"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "season-place-status",
+      "group": "classics",
+      "sequence": 4,
+      "title": "得时、得地与宫位强弱",
+      "latin": "Seasonal & positional status",
+      "count": "2 条状态轴 · 7 强宫 · 5 弱宫",
+      "tags": [
+        "得时",
+        "得地",
+        "廟旺",
+        "留顺伏逆"
+      ],
+      "question": "得时、得地和宫位强弱为何不能合并成一个标签？",
+      "summary": "得时判断星曜与节令等时间条件，得地判断星曜与宫分、宿度等位置条件；宫位强弱与运行状态还需另列。",
+      "facts": [
+        [
+          "得时",
+          "节令、昼夜等时间条件"
+        ],
+        [
+          "得地",
+          "入垣、廟乐及宫宿位置条件"
+        ],
+        [
+          "联查",
+          "七强五弱、先后与留顺伏逆另列"
+        ]
+      ],
+      "status_axes": [
+        {
+          "id": "time",
+          "name": "得时／失时",
+          "inputs": [
+            "生时节令",
+            "昼夜条件",
+            "星曜时序"
+          ],
+          "output": "时间状态"
+        },
+        {
+          "id": "place",
+          "name": "得地／失地",
+          "inputs": [
+            "十二宫分",
+            "二十八宿度",
+            "入垣与廟乐"
+          ],
+          "output": "位置状态"
+        }
+      ],
+      "parallel_checks": [
+        {
+          "name": "宫位强弱",
+          "values": "七强／五弱",
+          "note": "位置类别，不等于得时"
+        },
+        {
+          "name": "先后",
+          "values": "先入／后入",
+          "note": "多星同看时记录顺序"
+        },
+        {
+          "name": "运行",
+          "values": "留／顺／伏／逆",
+          "note": "五星运动状态"
+        },
+        {
+          "name": "星用",
+          "values": "福禄／囚煞等",
+          "note": "来源中的作用名，不由星名直接决定"
+        }
+      ],
+      "house_strengths": [
+        {
+          "level": "最强",
+          "palaces": ["命", "官禄"],
+          "source_basis": "底本直列"
+        },
+        {
+          "level": "次强",
+          "palaces": ["福德", "妻妾"],
+          "source_basis": "底本直列"
+        },
+        {
+          "level": "近强",
+          "palaces": ["男女", "田宅"],
+          "source_basis": "底本直列"
+        },
+        {
+          "level": "合照强宫",
+          "palaces": ["迁移"],
+          "source_basis": "底本直列"
+        },
+        {
+          "level": "弱宫",
+          "palaces": ["财帛", "兄弟", "奴仆", "疾厄", "相貌"],
+          "source_basis": "兄弟、奴仆、疾厄、相貌由底本直列；财帛按十二宫七强五弱的余项复原"
+        }
+      ],
+      "place_example": "卷三以木星在寅、亥为乐廟示例；这是底本例句，不扩写成所有星曜的统一廟乐表。",
+      "implementation_note": "卷三明确提出“得地不问居强弱，失时休夸强最雄”；宫位强弱、时间状态、位置状态和运动状态分开登记，不公开吉凶结论。",
+      "public_sources": [
+        {
+          "title": "《星学大成》卷三 · 得地失时、强弱与留顺伏逆",
+          "url": "https://github.com/kanripo/KR3g0041/blob/6626e6d7b8337db0e966522e77dc291f54664548/KR3g0041_003.txt",
+          "fields": [
+            "论得地失时星歌",
+            "论强弱前后",
+            "论留顺伏逆"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "planet-five-phase-relations",
+      "group": "classics",
+      "sequence": 5,
+      "title": "星曜五行关系",
+      "latin": "Astral five-phase relations",
+      "count": "5 行 · 5 条有向关系",
+      "tags": [
+        "星曜五行",
+        "生克",
+        "廟乐旺制"
+      ],
+      "question": "星曜属性与星宫之间的生克方向怎样分别记录？",
+      "summary": "先登记五星的五行，再从宫与星的方向写出生、克、同类；方向不同，来源中的状态名也不同。",
+      "facts": [
+        [
+          "属性层",
+          "木火土金水五星各归本行"
+        ],
+        [
+          "关系层",
+          "宫生星、星生宫、星克宫、宫克星分别记录"
+        ],
+        [
+          "版本层",
+          "状态名称保留底本文字，不外推事件断语"
+        ]
+      ],
+      "phase_bodies": [
+        {
+          "phase": "木",
+          "body": "木星"
+        },
+        {
+          "phase": "火",
+          "body": "火星"
+        },
+        {
+          "phase": "土",
+          "body": "土星"
+        },
+        {
+          "phase": "金",
+          "body": "金星"
+        },
+        {
+          "phase": "水",
+          "body": "水星"
+        }
+      ],
+      "relation_paths": [
+        {
+          "from": "宫",
+          "relation": "同类",
+          "to": "星",
+          "source_label": "廟堂"
+        },
+        {
+          "from": "宫",
+          "relation": "生",
+          "to": "星",
+          "source_label": "乐乡"
+        },
+        {
+          "from": "星",
+          "relation": "生",
+          "to": "宫",
+          "source_label": "旺度"
+        },
+        {
+          "from": "星",
+          "relation": "克",
+          "to": "宫",
+          "source_label": "入制"
+        },
+        {
+          "from": "宫",
+          "relation": "克",
+          "to": "星",
+          "source_label": "刑伤"
+        }
+      ],
+      "implementation_note": "关系必须保存起点与终点；只写“相生”“相克”会丢失宫生星与星生宫的区别。",
+      "public_sources": [
+        {
+          "title": "《星学大成》卷一 · 廟旺克忌关系",
+          "url": "https://github.com/kanripo/KR3g0041/blob/6626e6d7b8337db0e966522e77dc291f54664548/KR3g0041_001.txt",
+          "fields": [
+            "星辰本宫",
+            "生我之宫",
+            "我生之宫",
+            "星宫相克"
+          ]
+        },
+        {
+          "title": "《星学大成》卷三 · 五行生克与沉泄",
+          "url": "https://github.com/kanripo/KR3g0041/blob/6626e6d7b8337db0e966522e77dc291f54664548/KR3g0041_003.txt",
+          "fields": [
+            "论五行沉泄法歌"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "qintang-full-empty",
+      "group": "classics",
+      "sequence": 6,
+      "title": "琴堂虚实",
+      "latin": "Qintang full & empty",
+      "count": "12 位 · 空实与拱夹冲",
+      "status": "正式知识节点 · 已补《星学大成》底本",
+      "tags": [
+        "琴堂",
+        "虚实",
+        "四柱地支"
+      ],
+      "question": "琴堂的“实”与“空”由什么输入形成？",
+      "summary": "四柱地支在十二宫对应位置填实，其余位置结合旬空及拱、夹、冲等关系另行判断；虚实不是星曜强弱的同义词。",
+      "facts": [
+        [
+          "实",
+          "四柱地支在十二宫中填入本位"
+        ],
+        [
+          "空",
+          "四柱旬中空亡另行登记"
+        ],
+        [
+          "关系",
+          "拱、夹、冲可连接或触发空实位置"
+        ]
+      ],
+      "qintang_terms": [
+        {
+          "name": "体",
+          "definition": "四柱干支分布于十二宫的固定层"
+        },
+        {
+          "name": "用",
+          "definition": "十一曜运行、原守与流年的变动层"
+        },
+        {
+          "name": "实",
+          "definition": "四支所有之字填入十二宫本位"
+        },
+        {
+          "name": "空",
+          "definition": "当生四柱旬中空亡；流年另记其旬空"
+        }
+      ],
+      "relation_actions": [
+        {
+          "name": "拱",
+          "shape": "三方",
+          "requirement": "四柱有字方为实拱"
+        },
+        {
+          "name": "夹",
+          "shape": "左右两位夹中位",
+          "requirement": "两侧有实字"
+        },
+        {
+          "name": "冲",
+          "shape": "对宫相冲",
+          "requirement": "对宫实字可冲起本宫"
+        }
+      ],
+      "record_fields": [
+        "四柱支字",
+        "本命旬空",
+        "十二宫位置",
+        "原守星曜",
+        "拱夹冲关系",
+        "流年版本"
+      ],
+      "implementation_note": "底本已见卷一“人盘重虚实”与卷四“空、实、拱、夹、冲”定义；不再沿用“仅见现代讲稿”的旧标记。",
+      "public_sources": [
+        {
+          "title": "《星学大成》卷一 · 人盘重虚实",
+          "url": "https://github.com/kanripo/KR3g0041/blob/6626e6d7b8337db0e966522e77dc291f54664548/KR3g0041_001.txt",
+          "fields": [
+            "人盘",
+            "琴堂",
+            "四柱填实"
+          ]
+        },
+        {
+          "title": "《星学大成》卷四 · 括苍二十字例",
+          "url": "https://github.com/kanripo/KR3g0041/blob/6626e6d7b8337db0e966522e77dc291f54664548/KR3g0041_004.txt",
+          "fields": [
+            "体用",
+            "空实",
+            "拱夹冲"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "suijia-markers",
+      "group": "classics",
+      "sequence": 7,
+      "title": "岁驾与神煞材料层",
+      "latin": "Suijia & auxiliary markers",
+      "count": "7 个入口 · 3 类取值",
+      "tags": [
+        "岁驾",
+        "岁殿",
+        "天空",
+        "刃锋"
+      ],
+      "question": "岁驾、岁殿与相关神煞怎样按取值入口归档？",
+      "summary": "先保存名称、起算输入和位置关系；岁驾取年支本位，岁殿由年干起算，天空、驀越、天厄、刃锋与阳刃分别按底本规则定位。",
+      "facts": [
+        [
+          "年支入口",
+          "岁驾以出生年支本宫为位"
+        ],
+        [
+          "年干入口",
+          "岁殿由天元干神起算"
+        ],
+        [
+          "相对位置",
+          "天空、刃锋与阳刃按岁位、年干或禄位规则登记"
+        ]
+      ],
+      "markers": [
+        {
+          "name": "岁驾",
+          "input": "出生年支",
+          "position": "年支本宫",
+          "source_state": "卷一有定义"
+        },
+        {
+          "name": "岁殿",
+          "input": "出生年干＋年支宫",
+          "position": "从年支宫起甲，数至本年干",
+          "source_state": "卷一有定义"
+        },
+        {
+          "name": "天空",
+          "input": "岁驾位置",
+          "position": "太岁前一位",
+          "source_state": "卷三有定义"
+        },
+        {
+          "name": "驀越",
+          "input": "岁驾位置",
+          "position": "岁驾后一位",
+          "source_state": "卷三有定义"
+        },
+        {
+          "name": "天厄",
+          "input": "天空位置",
+          "position": "天空对位",
+          "source_state": "卷三有定义"
+        },
+        {
+          "name": "刃锋",
+          "input": "出生年支＋出生年干",
+          "position": "刃取年支本位；锋位依年干为甲寅、乙卯、丙巳、丁午、戊丑戌、己辰未、庚申、辛酉、壬亥、癸子",
+          "source_state": "卷三《定刃锋》有歌诀"
+        },
+        {
+          "name": "阳刃",
+          "input": "天干的禄位",
+          "position": "禄前一位",
+          "source_state": "卷三《阳刃煞》有定义"
+        }
+      ],
+      "record_fields": [
+        "名称",
+        "本命／流年",
+        "起算输入",
+        "落宫位置",
+        "底本卷次"
+      ],
+      "implementation_note": "公开节点只保留取值结构；古籍中的灾福与事件断语不进入知识地图。",
+      "public_sources": [
+        {
+          "title": "《星学大成》卷一 · 岁殿与岁驾",
+          "url": "https://github.com/kanripo/KR3g0041/blob/6626e6d7b8337db0e966522e77dc291f54664548/KR3g0041_001.txt",
+          "fields": [
+            "论岁殿",
+            "论岁驾"
+          ]
+        },
+        {
+          "title": "《星学大成》卷三 · 天空、驀越、天厄与年煞",
+          "url": "https://github.com/kanripo/KR3g0041/blob/6626e6d7b8337db0e966522e77dc291f54664548/KR3g0041_003.txt",
+          "fields": [
+            "定天空",
+            "定驀越",
+            "定天厄",
+            "定刃锋",
+            "阳刃煞"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "butiange-star-path",
+      "group": "classics",
+      "sequence": 8,
+      "title": "《步天歌》星官路径",
+      "latin": "Būtian gē star map",
+      "count": "3 垣 · 28 宿 · 31 天区",
+      "tags": [
+        "步天歌",
+        "三垣",
+        "二十八宿"
+      ],
+      "question": "《步天歌》的三十一天区怎样形成连续认星索引？",
+      "summary": "以三垣与二十八宿组成三十一天区；二十八宿按东、北、西、南各七宿排列，节点只存天区顺序与星官索引。",
+      "facts": [
+        [
+          "三垣",
+          "紫微、太微、天市三处垣区"
+        ],
+        [
+          "二十八宿",
+          "四方各七宿，共二十八天区"
+        ],
+        [
+          "边界",
+          "作者归属与传本差异保留，不复刻缺失星图"
+        ]
+      ],
+      "enclosures": [
+        {
+          "index": 1,
+          "name": "紫微垣"
+        },
+        {
+          "index": 2,
+          "name": "太微垣"
+        },
+        {
+          "index": 3,
+          "name": "天市垣"
+        }
+      ],
+      "quarters": [
+        {
+          "index": 1,
+          "name": "东方七宿",
+          "symbol": "青龙",
+          "lodges": [
+            "角",
+            "亢",
+            "氐",
+            "房",
+            "心",
+            "尾",
+            "箕"
+          ]
+        },
+        {
+          "index": 2,
+          "name": "北方七宿",
+          "symbol": "玄武",
+          "lodges": [
+            "斗",
+            "牛",
+            "女",
+            "虚",
+            "危",
+            "室",
+            "壁"
+          ]
+        },
+        {
+          "index": 3,
+          "name": "西方七宿",
+          "symbol": "白虎",
+          "lodges": [
+            "奎",
+            "娄",
+            "胃",
+            "昴",
+            "毕",
+            "觜",
+            "参"
+          ]
+        },
+        {
+          "index": 4,
+          "name": "南方七宿",
+          "symbol": "朱雀",
+          "lodges": [
+            "井",
+            "鬼",
+            "柳",
+            "星",
+            "张",
+            "翼",
+            "轸"
+          ]
+        }
+      ],
+      "index_fields": [
+        "天区顺序",
+        "星官名称",
+        "星数记载",
+        "相邻方位语",
+        "传本版本"
+      ],
+      "attribution_note": "题署常见王希明／丹元子，目录学材料对作者与时代存在疑问；本节点不选定唯一作者说。",
+      "implementation_note": "这里的《步天歌》星区索引与《星学大成》卷十所收“步天经”不是同一文本层，分开挂接来源。",
+      "public_sources": [
+        {
+          "title": "《步天歌》文本 · 维基文库",
+          "url": "https://zh.wikisource.org/wiki/%E6%AD%A5%E5%A4%A9%E6%AD%8C_(%E7%8E%8B%E5%B8%8C%E6%98%8E)",
+          "fields": [
+            "三垣",
+            "二十八宿歌次"
+          ]
+        },
+        {
+          "title": "首尔大学奎章阁《步天歌》书目与影像",
+          "url": "https://kyudb.snu.ac.kr/book/view.do?book_cd=GC02384_00",
+          "fields": [
+            "二十八宿",
+            "太微垣",
+            "紫微垣",
+            "天市垣"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tropical-sidereal-zodiac",
+      "group": "coordinates",
+      "sequence": 1,
+      "title": "回归黄道与恒星黄道",
+      "latin": "Tropical & sidereal zodiac",
+      "count": "2 种零点 · 1 个差值",
+      "tags": [
+        "春分点",
+        "恒星黄道",
+        "Ayanamsa"
+      ],
+      "question": "两种黄道怎样选择零点？",
+      "summary": "回归黄道以当日春分点为零点；恒星黄道从所选恒星基准与岁差量建立零点。二者都是十二个等分区，不等同于天文学星座边界。",
+      "facts": [
+        [
+          "回归制",
+          "0°锚定当日春分点"
+        ],
+        [
+          "恒星制",
+          "0°依具名恒星基准与Ayanamsa"
+        ],
+        [
+          "换算",
+          "恒星黄经＝回归黄经－Ayanamsa（模360°）"
+        ]
+      ],
+      "zodiac_systems": [
+        {
+          "id": "tropical",
+          "name": "回归黄道",
+          "origin": "当日春分点",
+          "division": "12×30°",
+          "required_fields": [
+            "日期",
+            "参考系",
+            "黄经"
+          ]
+        },
+        {
+          "id": "sidereal",
+          "name": "恒星黄道",
+          "origin": "所选恒星基准",
+          "division": "12×30°",
+          "required_fields": [
+            "日期",
+            "Ayanamsa名称／版本",
+            "黄经"
+          ]
+        }
+      ],
+      "formula": "λ恒星 = normalize(λ回归 − Ayanamsa(t, mode))",
+      "separations": [
+        "十二等分黄道 ≠ IAU星座边界",
+        "恒星黄道 ≠ 单一固定零点",
+        "未写Ayanamsa的恒星黄经不可复算"
+      ],
+      "implementation_note": "页面只演示坐标基准与换算字段，不预设哪一种恒星黄道为唯一标准。",
+      "public_sources": [
+        {
+          "title": "美国海军天文台 · ICRS与历元参考",
+          "url": "https://aa.usno.navy.mil/faq/ICRS_doc",
+          "fields": [
+            "赤道与春分点",
+            "参考日期"
+          ]
+        },
+        {
+          "title": "PyJHora · Ayanamsa模式与恒星黄经实现（固定版本）",
+          "url": "https://github.com/naturalstupid/PyJHora/blob/ca22995709bd60e371e7820a1a5efc80ce4cf821/src/jhora/panchanga/drik.py",
+          "fields": [
+            "Ayanamsa模式",
+            "恒星黄经换算"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "equator-pole-dipper",
+      "group": "coordinates",
+      "sequence": 2,
+      "title": "赤道、北极与北斗",
+      "latin": "Equator, pole & dipper",
+      "count": "4 个对象 · 3 条关系",
+      "tags": [
+        "天赤道",
+        "北天极",
+        "北极星",
+        "北斗"
+      ],
+      "question": "赤道、北极和北斗分别承担什么坐标作用？",
+      "summary": "天赤道是地球赤道的天球投影，北天极是地轴北向与天球的交点；北极星目前靠近北天极，北斗七星可帮助辨认其方向，但两者都不等同于天极。",
+      "facts": [
+        [
+          "坐标面",
+          "天赤道提供赤道坐标基准"
+        ],
+        [
+          "转轴点",
+          "北天极标记天球周日转动中心"
+        ],
+        [
+          "辨向链",
+          "北斗指向北极星，北极星近北天极"
+        ]
+      ],
+      "sky_objects": [
+        {
+          "name": "天赤道",
+          "kind": "大圆",
+          "role": "地球赤道向天球投影"
+        },
+        {
+          "name": "北天极",
+          "kind": "几何点",
+          "role": "地轴北向与天球交点"
+        },
+        {
+          "name": "北极星",
+          "kind": "恒星",
+          "role": "当前接近北天极的辨向星"
+        },
+        {
+          "name": "北斗",
+          "kind": "星群",
+          "role": "北天显著星群与辨向标志"
+        }
+      ],
+      "dipper_stars": [
+        "天枢",
+        "天璇",
+        "天玑",
+        "天权",
+        "玉衡",
+        "开阳",
+        "摇光"
+      ],
+      "relations": [
+        "地球赤道 → 投影为天赤道",
+        "地轴北向 → 指向北天极",
+        "天枢、天璇连线 → 延长可寻北极星"
+      ],
+      "implementation_note": "北极星与北天极之间仍有角距；北斗是辨向星群，不作为坐标原点。",
+      "public_sources": [
+        {
+          "title": "香港太空馆 · 北斗：天上的指路明灯",
+          "url": "https://hk.space.museum/sc/web/spm/resources/curators-blog/2022/03/the-big-dipper-a-pointer-in-the-sky.html",
+          "fields": [
+            "北斗七星名称",
+            "北斗寻北极星"
+          ]
+        },
+        {
+          "title": "NASA · 北极星与北天极",
+          "url": "https://science.nasa.gov/solar-system/skywatching/what-is-the-north-star-and-how-do-you-find-it/",
+          "fields": [
+            "北极星并非天极",
+            "地轴进动"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "twenty-eight-lodges",
+      "group": "coordinates",
+      "sequence": 3,
+      "title": "二十八宿",
+      "latin": "Twenty-eight lodges",
+      "count": "28 宿 · 4 方 · 3 个测量字段",
+      "tags": [
+        "距星",
+        "宿度",
+        "入宿度"
+      ],
+      "question": "二十八宿怎样形成沿天区的连续索引？",
+      "summary": "二十八宿按东、北、西、南各七宿排列；每宿的距星给出测量起点，相邻距星界定该宿度宽，目标相对距星的位置另记入宿度。",
+      "facts": [
+        [
+          "索引",
+          "四方各七宿，共二十八宿"
+        ],
+        [
+          "起点",
+          "每宿由具名距星建立测量基准"
+        ],
+        [
+          "版本",
+          "距星表、度单位与历元必须成套保存"
+        ]
+      ],
+      "quarters": [
+        {
+          "index": 1,
+          "name": "东方青龙",
+          "lodges": [
+            "角",
+            "亢",
+            "氐",
+            "房",
+            "心",
+            "尾",
+            "箕"
+          ]
+        },
+        {
+          "index": 2,
+          "name": "北方玄武",
+          "lodges": [
+            "斗",
+            "牛",
+            "女",
+            "虚",
+            "危",
+            "室",
+            "壁"
+          ]
+        },
+        {
+          "index": 3,
+          "name": "西方白虎",
+          "lodges": [
+            "奎",
+            "娄",
+            "胃",
+            "昴",
+            "毕",
+            "觜",
+            "参"
+          ]
+        },
+        {
+          "index": 4,
+          "name": "南方朱雀",
+          "lodges": [
+            "井",
+            "鬼",
+            "柳",
+            "星",
+            "张",
+            "翼",
+            "轸"
+          ]
+        }
+      ],
+      "measurement_chain": [
+        {
+          "name": "距星",
+          "definition": "该宿测量起点的指定恒星"
+        },
+        {
+          "name": "宿度",
+          "definition": "本宿距星至下一宿距星的赤道方向跨度"
+        },
+        {
+          "name": "入宿度",
+          "definition": "目标自本宿距星起算的位置量"
+        }
+      ],
+      "version_fields": [
+        "距星版本",
+        "赤道宿度／黄道宿度",
+        "度单位",
+        "历元／观测年代",
+        "底本"
+      ],
+      "catalog_scope": {
+        "public_now": "宿序、四方、距星／宿度／入宿度三种字段与版本条件",
+        "pending_verification": "28宿逐宿距星身份表及各历史星表的赤道宿度数值",
+        "reason": "选定论文为扫描版，逐星表尚未完成影像核对；未核对前不按记忆补星名"
+      },
+      "implementation_note": "二十八宿不是二十八个等宽30°分区；距星身份、赤道或黄道宿度、度单位、历元和底本必须成套登记。逐宿数值表待影像核对后再公开。",
+      "public_sources": [
+        {
+          "title": "紫金山天文台《二十八宿距星及其赤道宿度》",
+          "url": "https://www.pmo.cas.cn/xscbw/twxb/xbll/2022_63/2022_63_6/202211/P020221128591265271898.pdf",
+          "fields": [
+            "距星",
+            "赤道宿度",
+            "历代数据"
+          ]
+        },
+        {
+          "title": "日本国立天文台历Wiki · 二十八宿",
+          "url": "https://eco.mtk.nao.ac.jp/koyomi/wiki/C6F3BDBDC8ACBDC9.html",
+          "fields": [
+            "二十八宿",
+            "赤道与天极参照"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "right-ascension-declination",
+      "group": "coordinates",
+      "sequence": 4,
+      "title": "赤经与赤纬",
+      "latin": "Right ascension & declination",
+      "count": "2 个坐标 · 5 项版本字段",
+      "tags": [
+        "赤经",
+        "赤纬",
+        "参考系"
+      ],
+      "question": "赤道坐标怎样记录天体位置？",
+      "summary": "赤经沿天赤道自坐标原点向东量取，通常写作0—24时；赤纬自天赤道向南北量取，范围−90°至+90°。数值必须连同参考系与日期条件保存。",
+      "facts": [
+        [
+          "赤经 α",
+          "0—24h向东；1h＝15°"
+        ],
+        [
+          "赤纬 δ",
+          "北正南负；−90°至+90°"
+        ],
+        [
+          "记录",
+          "参考系、历元、中心与视位置类型同行"
+        ]
+      ],
+      "coordinate_axes": [
+        {
+          "symbol": "α",
+          "name": "赤经",
+          "range": "0h—24h",
+          "origin": "参考系原点",
+          "direction": "沿天赤道向东"
+        },
+        {
+          "symbol": "δ",
+          "name": "赤纬",
+          "range": "−90°—+90°",
+          "origin": "天赤道",
+          "direction": "向北为正、向南为负"
+        }
+      ],
+      "reading_example": {
+        "alpha": "6h = 90°",
+        "delta": "+30°",
+        "meaning": "自原点向东90°，位于天赤道以北30°"
+      },
+      "version_fields": [
+        "参考系／春分点",
+        "历元或观测日期",
+        "地心／站心",
+        "平均／真／视位置",
+        "时间尺度"
+      ],
+      "implementation_note": "只给出α、δ两个数字仍不足以复现位置；历史星表与现代ICRS坐标不能省略版本字段后直接混排。",
+      "public_sources": [
+        {
+          "title": "美国海军天文台 · ICRS",
+          "url": "https://aa.usno.navy.mil/faq/ICRS_doc",
+          "fields": [
+            "赤经赤纬",
+            "参考系与日期"
+          ]
+        },
+        {
+          "title": "Astronomy Engine · 赤道坐标实现（固定版本）",
+          "url": "https://github.com/cosinekitty/astronomy/blob/865d3da7d8112bbc7911238052c6af4aaf877181/source/js/astronomy.ts",
+          "fields": [
+            "Equator",
+            "旋转矩阵",
+            "J2000与当日坐标"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ecliptic-longitude-latitude",
+      "group": "coordinates",
+      "sequence": 5,
+      "title": "黄经与黄纬",
+      "latin": "Ecliptic longitude & latitude",
+      "count": "2 个坐标 · 2 个基准面",
+      "tags": [
+        "黄经",
+        "黄纬",
+        "黄赤转换"
+      ],
+      "question": "黄道坐标怎样记录天体位置？",
+      "summary": "黄经沿黄道自所选零点向东量取，黄纬记录目标偏离黄道的南北角距；黄赤交角把黄道坐标与赤道坐标连接起来。",
+      "facts": [
+        [
+          "黄经 λ",
+          "0—360°沿黄道向东"
+        ],
+        [
+          "黄纬 β",
+          "黄道以北为正、以南为负"
+        ],
+        [
+          "转换",
+          "黄赤交角 ε 连接黄道面与赤道面"
+        ]
+      ],
+      "coordinate_axes": [
+        {
+          "symbol": "λ",
+          "name": "黄经",
+          "range": "0°—360°",
+          "origin": "所选春分点或恒星零点",
+          "direction": "沿黄道向东"
+        },
+        {
+          "symbol": "β",
+          "name": "黄纬",
+          "range": "−90°—+90°",
+          "origin": "黄道面",
+          "direction": "向北为正、向南为负"
+        }
+      ],
+      "reference_planes": [
+        {
+          "name": "黄道面",
+          "role": "黄经、黄纬的基准面"
+        },
+        {
+          "name": "天赤道面",
+          "role": "赤经、赤纬的基准面"
+        }
+      ],
+      "version_fields": [
+        "回归／恒星零点",
+        "历元／观测日期",
+        "黄赤交角模型",
+        "参考中心",
+        "视位置类型"
+      ],
+      "internal_review": {
+        "unverified_material_variant": "讲稿另用“拟黄经／拟黄纬”描述一种历史测量说法；未见其所引底本前只留研究线索。"
+      },
+      "implementation_note": "黄经与赤经不因都表示沿圈角度而等同；转换必须带入日期与黄赤交角。",
+      "public_sources": [
+        {
+          "title": "美国海军天文台 · 天文学词汇表",
+          "url": "https://aa.usno.navy.mil/faq/asa_glossary",
+          "fields": [
+            "黄经",
+            "黄纬",
+            "黄道"
+          ]
+        },
+        {
+          "title": "Astronomy Engine · 黄赤坐标实现（固定版本）",
+          "url": "https://github.com/cosinekitty/astronomy/blob/865d3da7d8112bbc7911238052c6af4aaf877181/source/js/astronomy.ts",
+          "fields": [
+            "Ecliptic",
+            "Equator",
+            "坐标旋转"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "polar-precession-differences",
+      "group": "coordinates",
+      "sequence": 6,
+      "title": "极距、极差与岁差",
+      "latin": "Polar distance, source terms & precession",
+      "count": "1 个现代量 · 2 个同名来源义 · 1 种长期运动",
+      "status": "正式知识节点 · 同名术语分层",
+      "tags": [
+        "极距",
+        "极差",
+        "岁差",
+        "历元"
+      ],
+      "question": "为何旧星表坐标不能直接当作当前坐标？",
+      "summary": "现代极距表示目标到天极的角距；“极差”在讲稿与古代历算材料中可指不同量；岁差又会长期改变天极与春分点相对恒星背景的位置，三者必须分层。",
+      "facts": [
+        [
+          "极距",
+          "目标至天极的角距；北天可写90°−δ"
+        ],
+        [
+          "极差",
+          "讲稿义与《明史·历志》用例并不相同"
+        ],
+        [
+          "岁差",
+          "地轴进动使坐标网格随年代改变"
+        ]
+      ],
+      "term_layers": [
+        {
+          "name": "极距",
+          "source": "现代天球坐标",
+          "definition": "天体到所取天极的角距离",
+          "status": "可计算"
+        },
+        {
+          "name": "极差",
+          "source": "当前讲稿",
+          "definition": "讲者用于极星与真天极之间的偏离",
+          "status": "材料陈述"
+        },
+        {
+          "name": "极差",
+          "source": "《明史·历志》",
+          "definition": "行星历算中另有木、火、土等极差用例",
+          "status": "同名异义"
+        }
+      ],
+      "precession_chain": [
+        "地轴方向缓慢进动",
+        "天极相对恒星背景移动",
+        "春分点与历元坐标改变",
+        "旧值需按参考系和年代转换"
+      ],
+      "record_fields": [
+        "术语原文",
+        "定义／公式",
+        "对象",
+        "坐标系",
+        "历元／年代",
+        "来源"
+      ],
+      "implementation_note": "页面不把讲稿“极差”改写成普遍古代术语，也不把《明史》的同名数值套入极距公式。",
+      "public_sources": [
+        {
+          "title": "NASA · 北天极与地轴进动",
+          "url": "https://science.nasa.gov/solar-system/skywatching/what-is-the-north-star-and-how-do-you-find-it/",
+          "fields": [
+            "北极星与天极角距",
+            "约26000年进动"
+          ]
+        },
+        {
+          "title": "《明史》卷三十三 · 历志中的极差用例",
+          "url": "https://zh.wikisource.org/zh-hans/%E6%98%8E%E5%8F%B2/%E5%8D%B733",
+          "fields": [
+            "木星极差",
+            "火星极差",
+            "土星极差"
+          ]
+        },
+        {
+          "title": "荀爽占星讲稿（固定版本，仅作现代材料索引）",
+          "url": "https://github.com/horace-maxwell/divination-notes-prompt/blob/b22ecfaafcd17782ddc0f633df163b6492b766d4/%E8%8D%80%E7%88%BD%E5%8D%A0%E6%98%9F%E8%AE%B2%E7%A8%BF.md",
+          "fields": [
+            "讲稿极差定义",
+            "无复用许可"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "heliacal-opposition",
+      "group": "coordinates",
+      "sequence": 7,
+      "title": "偕日与冲日",
+      "latin": "Heliacal phenomena & opposition",
+      "count": "2 类关系 · 4 个观测门",
+      "tags": [
+        "偕日",
+        "冲日",
+        "晨昏可见性"
+      ],
+      "question": "天体与太阳的相对位置怎样形成两类观测关系？",
+      "summary": "偕日现象是天体在晨光或暮光中首次或末次可见的观测事件；冲日是天体与太阳在地心视方向上约相隔180°的几何关系。可见性不能只由经度相等推出。",
+      "facts": [
+        [
+          "偕日",
+          "晨昏首次／末次可见，需观测条件"
+        ],
+        [
+          "冲日",
+          "日星视方向约相隔180°"
+        ],
+        [
+          "分离",
+          "合日几何、偕日可见性与术数名称分开"
+        ]
+      ],
+      "observation_gates": [
+        {
+          "id": "dawn-first",
+          "name": "晨始见",
+          "horizon": "日出前东方",
+          "event": "首次可见"
+        },
+        {
+          "id": "dawn-last",
+          "name": "晨末见",
+          "horizon": "日出前东方",
+          "event": "末次可见"
+        },
+        {
+          "id": "dusk-first",
+          "name": "昏始见",
+          "horizon": "日落后西方",
+          "event": "首次可见"
+        },
+        {
+          "id": "dusk-last",
+          "name": "昏末见",
+          "horizon": "日落后西方",
+          "event": "末次可见"
+        }
+      ],
+      "geometry": [
+        {
+          "name": "合日附近",
+          "separation": "约0°",
+          "kind": "几何关系"
+        },
+        {
+          "name": "冲日附近",
+          "separation": "约180°",
+          "kind": "几何关系"
+        }
+      ],
+      "visibility_inputs": [
+        "观测日期与地点",
+        "太阳和目标视位置",
+        "地平高度",
+        "大气与暮光",
+        "目标亮度／可见阈值"
+      ],
+      "internal_review": {
+        "lecture_terms": [
+          "偕日升",
+          "偕日落",
+          "冲日升",
+          "冲日落"
+        ],
+        "status": "讲稿词表；未升级为通行天文学分类"
+      },
+      "implementation_note": "四个讲稿名称保留为材料词表，不升级为通行天文学分类；页面不输出特定地点的实际观测预报。",
+      "public_sources": [
+        {
+          "title": "国际天文学联合会 CAPjournal 33 · 偕日初升与季节观测",
+          "url": "https://www.iau.org/static/publications/capjournals/capjournal-33.pdf",
+          "fields": [
+            "heliacal rising",
+            "first visibility"
+          ]
+        },
+        {
+          "title": "Astronomy Engine · 太阳距角实现（固定版本）",
+          "url": "https://github.com/cosinekitty/astronomy/blob/865d3da7d8112bbc7911238052c6af4aaf877181/source/js/astronomy.ts",
+          "fields": [
+            "Elongation",
+            "Visibility",
+            "地平观测量"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sidereal-synodic-month",
+      "group": "calendar",
+      "sequence": 1,
+      "title": "恒星月与朔望月",
+      "latin": "Sidereal & synodic month",
+      "count": "2 个周期 · 2 种参照",
+      "tags": [
+        "恒星月",
+        "朔望月",
+        "日月相位"
+      ],
+      "question": "月球的两个常见周期为何长度不同？",
+      "summary": "恒星月测量月球相对恒星背景绕地一周；朔望月测量日月相位从一次朔或望回到下一次。地球同时绕太阳前进，因此朔望月更长。",
+      "facts": [
+        [
+          "恒星月",
+          "相对恒星约27.3日"
+        ],
+        [
+          "朔望月",
+          "相邻同名月相平均29.5306日"
+        ],
+        [
+          "差值",
+          "月球需多运行以追上新的日月方向"
+        ]
+      ],
+      "month_cycles": [
+        {
+          "id": "sidereal",
+          "name": "恒星月",
+          "reference": "恒星背景",
+          "start_end": "月球相对恒星回到同一方向",
+          "mean_length": "约27.3日",
+          "calendar_role": "不直接决定农历月首"
+        },
+        {
+          "id": "synodic",
+          "name": "朔望月",
+          "reference": "太阳—地球—月球相位",
+          "start_end": "相邻两朔或两望",
+          "mean_length": "29.5306日",
+          "calendar_role": "农历月以朔为起点"
+        }
+      ],
+      "motion_chain": [
+        "月球绕地前进",
+        "地球同时绕日运行",
+        "完成恒星一周时日月方向已移动",
+        "月球继续运行后才回到同名月相"
+      ],
+      "calendar_fields": [
+        "朔的精确时刻",
+        "民用日期与时区",
+        "29日／30日月长",
+        "历法版本"
+      ],
+      "implementation_note": "两个周期不是两套互相替代的月份；一个以恒星为参照，一个以太阳相位为参照。",
+      "public_sources": [
+        {
+          "title": "香港天文台 · 中国农历",
+          "url": "https://www.hko.gov.hk/en/gts/time/lunarcal.htm",
+          "fields": [
+            "朔望月29.5306日",
+            "朔起月首",
+            "阴阳合历"
+          ]
+        },
+        {
+          "title": "NASA · Moon Facts",
+          "url": "https://science.nasa.gov/moon/facts/",
+          "fields": [
+            "月球绕地周期",
+            "地球运动造成相位周期更长"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "solar-terms-leap-month",
+      "group": "calendar",
+      "sequence": 2,
+      "title": "节气、中气与置闰",
+      "latin": "Solar terms, principal terms & leap month",
+      "count": "24 节气 · 12 中气 · 4 步定闰",
+      "tags": [
+        "二十四节气",
+        "中气",
+        "冬至月",
+        "闰月"
+      ],
+      "question": "中气怎样参与农历闰月安排？",
+      "summary": "二十四节气按太阳视黄经每15°排列，其中每隔30°为中气。现代农历先由朔划月并固定冬至所在月为十一月；两冬至月之间若有13个月，取冬至月后的首个无中气月为闰月。",
+      "facts": [
+        [
+          "太阳刻度",
+          "视黄经每15°一个节气"
+        ],
+        [
+          "月序锚点",
+          "冬至所在朔望月为十一月"
+        ],
+        [
+          "置闰",
+          "13个月时取首个无中气月"
+        ]
+      ],
+      "term_pairs": [
+        {
+          "branch": "寅",
+          "month": 1,
+          "sectional": "立春",
+          "principal": "雨水"
+        },
+        {
+          "branch": "卯",
+          "month": 2,
+          "sectional": "惊蛰",
+          "principal": "春分"
+        },
+        {
+          "branch": "辰",
+          "month": 3,
+          "sectional": "清明",
+          "principal": "谷雨"
+        },
+        {
+          "branch": "巳",
+          "month": 4,
+          "sectional": "立夏",
+          "principal": "小满"
+        },
+        {
+          "branch": "午",
+          "month": 5,
+          "sectional": "芒种",
+          "principal": "夏至"
+        },
+        {
+          "branch": "未",
+          "month": 6,
+          "sectional": "小暑",
+          "principal": "大暑"
+        },
+        {
+          "branch": "申",
+          "month": 7,
+          "sectional": "立秋",
+          "principal": "处暑"
+        },
+        {
+          "branch": "酉",
+          "month": 8,
+          "sectional": "白露",
+          "principal": "秋分"
+        },
+        {
+          "branch": "戌",
+          "month": 9,
+          "sectional": "寒露",
+          "principal": "霜降"
+        },
+        {
+          "branch": "亥",
+          "month": 10,
+          "sectional": "立冬",
+          "principal": "小雪"
+        },
+        {
+          "branch": "子",
+          "month": 11,
+          "sectional": "大雪",
+          "principal": "冬至"
+        },
+        {
+          "branch": "丑",
+          "month": 12,
+          "sectional": "小寒",
+          "principal": "大寒"
+        }
+      ],
+      "leap_steps": [
+        {
+          "index": 1,
+          "name": "定朔",
+          "rule": "以朔的时刻划分连续朔望月"
+        },
+        {
+          "index": 2,
+          "name": "定冬至月",
+          "rule": "含冬至的月定为十一月"
+        },
+        {
+          "index": 3,
+          "name": "数月",
+          "rule": "检查两冬至月之间为12个月还是13个月"
+        },
+        {
+          "index": 4,
+          "name": "置闰",
+          "rule": "若有13个月，冬至月后的首个无中气月为闰月"
+        }
+      ],
+      "separations": [
+        "闰月 ≠ 公历闰日",
+        "无中气月 ≠ 无二十四节气",
+        "十九年七闰是周期近似，不替代逐年天文编算"
+      ],
+      "implementation_note": "讲稿“中气落月末则下月置闰”只作理解线索；正式节点采用现行农历编算条件。",
+      "public_sources": [
+        {
+          "title": "国家标准 GB/T 33661-2017《农历的编算和颁行》",
+          "url": "https://openstd.samr.gov.cn/bzgk/gb/newGbInfo?hcno=E107EA4DE9725EDF819F33C60A44B296",
+          "fields": [
+            "现行标准身份",
+            "农历编算与颁行"
+          ]
+        },
+        {
+          "title": "香港天文台 · 中国农历",
+          "url": "https://www.hko.gov.hk/en/gts/time/lunarcal.htm",
+          "fields": [
+            "回归年与朔望月",
+            "阴阳合历",
+            "十九年七闰"
+          ]
+        },
+        {
+          "title": "香港天文台 · 二十四节气",
+          "url": "https://www.hko.gov.hk/en/gts/time/24solarterms.htm",
+          "fields": [
+            "二十四节气",
+            "太阳周年位置"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "yellow-equatorial-overlay",
+      "group": "chart-forms",
+      "sequence": 1,
+      "title": "黄赤盘、覆盘与覆动",
+      "latin": "Ecliptic-equatorial overlay",
+      "count": "2 层盘 · 2 种动作 · 12 档偏移",
+      "status": "正式材料节点 · 讲稿模型",
+      "tags": [
+        "黄道盘",
+        "赤道盘",
+        "覆盘",
+        "覆动"
+      ],
+      "question": "黄道盘与赤道盘怎样叠合？",
+      "summary": "讲稿把十二地支分别布置在黄道盘与赤道盘上：一盘覆于另一盘称覆盘，上盘相对下盘逐宫旋转称覆动。它是讲者的统摄模型，不是已核定的通行古法。",
+      "facts": [
+        [
+          "两层",
+          "黄道盘与赤道盘各有十二地支位"
+        ],
+        [
+          "覆盘",
+          "两盘同心叠合并指定一组对齐点"
+        ],
+        [
+          "覆动",
+          "上盘每转一宫，全盘对应同时平移一宫"
+        ]
+      ],
+      "disc_layers": [
+        {
+          "id": "ecliptic",
+          "name": "黄道盘",
+          "lecture_alias": "公转盘",
+          "slots": [
+            "子",
+            "丑",
+            "寅",
+            "卯",
+            "辰",
+            "巳",
+            "午",
+            "未",
+            "申",
+            "酉",
+            "戌",
+            "亥"
+          ]
+        },
+        {
+          "id": "equatorial",
+          "name": "赤道盘",
+          "lecture_alias": "自转盘",
+          "slots": [
+            "子",
+            "丑",
+            "寅",
+            "卯",
+            "辰",
+            "巳",
+            "午",
+            "未",
+            "申",
+            "酉",
+            "戌",
+            "亥"
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "name": "覆盘",
+          "input": "两盘＋一组锚点",
+          "change": "确定上下层与初始对应",
+          "output": "12组一一对应"
+        },
+        {
+          "name": "覆动",
+          "input": "覆盘＋偏移宫数",
+          "change": "上盘整体旋转0—11宫",
+          "output": "新的12组对应"
+        }
+      ],
+      "offset_formula": "下盘索引 = normalize(上盘索引 + 偏移量, 12)",
+      "model_boundaries": [
+        "十二地支同时映射黄道与赤道是讲稿设定",
+        "公转盘／自转盘是讲稿别名",
+        "页面演示相对位置，不证明历史谱系"
+      ],
+      "implementation_note": "只保存双盘、锚点与偏移关系；讲稿对世界各占星传统的总体归类不进入正式事实层。",
+      "public_sources": [
+        {
+          "title": "荀爽占星讲稿 · 108 星式综述：覆盘与覆动（固定版本）",
+          "url": "https://github.com/horace-maxwell/divination-notes-prompt/blob/b22ecfaafcd17782ddc0f633df163b6492b766d4/%E8%8D%80%E7%88%BD%E5%8D%A0%E6%98%9F%E8%AE%B2%E7%A8%BF.md",
+          "fields": [
+            "黄道盘／赤道盘",
+            "覆盘",
+            "覆动",
+            "无复用许可"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "month-general-hour-divination-natal",
+      "group": "chart-forms",
+      "sequence": 2,
+      "title": "月将、时支与两种覆盘",
+      "latin": "Month general, hour branch & two overlays",
+      "count": "2 个输入 · 2 种上下层",
+      "status": "正式材料节点 · 讲稿模型",
+      "tags": [
+        "月将",
+        "时支",
+        "月将加时",
+        "时加月将"
+      ],
+      "question": "月将与时支怎样形成两种上下层不同的覆盘？",
+      "summary": "讲稿以月将作为黄道盘锚点、时支作为赤道盘锚点：黄道在上形成“月将加时”，赤道在上形成“时加月将”。两者共享同一组对应，只是阅读层次相反。",
+      "facts": [
+        [
+          "输入",
+          "月将锚定黄道盘，时支锚定赤道盘"
+        ],
+        [
+          "黄赤盘",
+          "黄道在上，月将对齐时支"
+        ],
+        [
+          "赤黄盘",
+          "赤道在上，时支对齐月将"
+        ]
+      ],
+      "inputs": [
+        {
+          "id": "month-general",
+          "name": "月将",
+          "disc": "黄道盘",
+          "source_role": "讲稿以太阳黄道位置映射为月将"
+        },
+        {
+          "id": "hour-branch",
+          "name": "时支",
+          "disc": "赤道盘",
+          "source_role": "出生或问事时刻的地支时段"
+        }
+      ],
+      "overlay_routes": [
+        {
+          "id": "ecliptic-over-equatorial",
+          "name": "月将加时",
+          "upper": "黄道盘",
+          "lower": "赤道盘",
+          "anchor": "月将 → 时支",
+          "lecture_use": "讲稿偏向占卜阅读"
+        },
+        {
+          "id": "equatorial-over-ecliptic",
+          "name": "时加月将",
+          "upper": "赤道盘",
+          "lower": "黄道盘",
+          "anchor": "时支 → 月将",
+          "lecture_use": "讲稿偏向命盘阅读"
+        }
+      ],
+      "fixed_example": {
+        "month_general": "寅",
+        "hour_branch": "未",
+        "pair": "黄道寅 ↔ 赤道未",
+        "reverse_pair": "赤道未 ↔ 黄道寅"
+      },
+      "internal_review": {
+        "fixed_example_conflict": "讲稿正文给出癸未时；段末误写为辰时，按正文保留未并登记冲突"
+      },
+      "record_fields": [
+        "月将算法与版本",
+        "时区与时支边界",
+        "上下盘顺序",
+        "锚点对应",
+        "材料用途"
+      ],
+      "implementation_note": "“偏向占卜／命盘”是讲稿的用途判断，不推广为希腊、印度、中国各传统的共同规则；页面不接收真人时间。",
+      "public_sources": [
+        {
+          "title": "荀爽占星讲稿 · 109—110 时将焉覆与或卜或命（固定版本）",
+          "url": "https://github.com/horace-maxwell/divination-notes-prompt/blob/b22ecfaafcd17782ddc0f633df163b6492b766d4/%E8%8D%80%E7%88%BD%E5%8D%A0%E6%98%9F%E8%AE%B2%E7%A8%BF.md",
+          "fields": [
+            "月将与时支",
+            "月将加时",
+            "时加月将",
+            "正文时支冲突",
+            "无复用许可"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "twelve-chart-forms",
+      "group": "chart-forms",
+      "sequence": 3,
+      "title": "十二盘式偏移表",
+      "latin": "Twelve overlay offsets",
+      "count": "12 档偏移 · 12 个讲稿名称",
+      "status": "正式材料节点 · 讲稿命名表",
+      "tags": [
+        "伏吟",
+        "反吟",
+        "连茹",
+        "三合"
+      ],
+      "question": "十二盘式怎样按月将与时支的相对偏移排列？",
+      "summary": "固定月将后，让时支依次移动0—11宫即可得到十二种唯一对应。讲稿为每档偏移命名；节点只保存偏移、示例与对称位置，不收录性格、疾病和吉凶断语。",
+      "facts": [
+        [
+          "零偏移",
+          "月将与时支同位，讲稿名伏吟"
+        ],
+        [
+          "六宫偏移",
+          "月将与时支对冲，讲稿名反吟"
+        ],
+        [
+          "完整循环",
+          "0—11宫覆盖所有十二种对应"
+        ]
+      ],
+      "offset_basis": {
+        "fixed_month_general": "卯",
+        "formula": "offset = normalize(时支索引 − 月将索引, 12)",
+        "branch_order": [
+          "子",
+          "丑",
+          "寅",
+          "卯",
+          "辰",
+          "巳",
+          "午",
+          "未",
+          "申",
+          "酉",
+          "戌",
+          "亥"
+        ]
+      },
+      "chart_forms": [
+        {
+          "offset": 0,
+          "hour_branch": "卯",
+          "name": "伏吟"
+        },
+        {
+          "offset": 1,
+          "hour_branch": "辰",
+          "name": "退连茹"
+        },
+        {
+          "offset": 2,
+          "hour_branch": "巳",
+          "name": "退间传"
+        },
+        {
+          "offset": 3,
+          "hour_branch": "午",
+          "name": "病胎"
+        },
+        {
+          "offset": 4,
+          "hour_branch": "未",
+          "name": "逆三合"
+        },
+        {
+          "offset": 5,
+          "hour_branch": "申",
+          "name": "四绝体"
+        },
+        {
+          "offset": 6,
+          "hour_branch": "酉",
+          "name": "反吟"
+        },
+        {
+          "offset": 7,
+          "hour_branch": "戌",
+          "name": "四墓覆生"
+        },
+        {
+          "offset": 8,
+          "hour_branch": "亥",
+          "name": "顺三合"
+        },
+        {
+          "offset": 9,
+          "hour_branch": "子",
+          "name": "生胎"
+        },
+        {
+          "offset": 10,
+          "hour_branch": "丑",
+          "name": "进间传"
+        },
+        {
+          "offset": 11,
+          "hour_branch": "寅",
+          "name": "进连茹"
+        }
+      ],
+      "symmetry_pairs": [
+        {
+          "offsets": "0 ↔ 6",
+          "names": "伏吟 ↔ 反吟"
+        },
+        {
+          "offsets": "1 ↔ 11",
+          "names": "退连茹 ↔ 进连茹"
+        },
+        {
+          "offsets": "2 ↔ 10",
+          "names": "退间传 ↔ 进间传"
+        },
+        {
+          "offsets": "4 ↔ 8",
+          "names": "逆三合 ↔ 顺三合"
+        }
+      ],
+      "internal_review": {
+        "excluded_content": [
+          "上升星座性格",
+          "疾病与寿命",
+          "事件吉凶",
+          "行动建议"
+        ]
+      },
+      "implementation_note": "十二名称来自同一现代讲稿，未找到独立古籍底本；这里是材料内的完整偏移索引，不宣称为中式星学共识。",
+      "public_sources": [
+        {
+          "title": "荀爽占星讲稿 · 113—121 十二盘式（固定版本）",
+          "url": "https://github.com/horace-maxwell/divination-notes-prompt/blob/b22ecfaafcd17782ddc0f633df163b6492b766d4/%E8%8D%80%E7%88%BD%E5%8D%A0%E6%98%9F%E8%AE%B2%E7%A8%BF.md",
+          "fields": [
+            "12档月将时支偏移",
+            "12个讲稿名称",
+            "无复用许可"
+          ]
+        }
+      ]
+    }
+  ],
+  "public_sources": [
+    {
+      "title": "divination-notes-prompt 星学资料",
+      "url": "https://github.com/horace-maxwell/divination-notes-prompt",
+      "note": "第 77—121 课及星式综述的整理来源；仓库无复用许可，页面只使用原创结构摘要。"
+    },
+    {
+      "title": "Astronomy Engine",
+      "url": "https://github.com/cosinekitty/astronomy",
+      "note": "天体位置与坐标概念的确定性上游参考，不提供术数解释。"
+    }
+  ],
+  "boundary": "只展示材料谱系、天文坐标、历法和盘式分类；讲者融贯模型明确标注，不开放真人盘与事件判断。"
+}

@@ -1,0 +1,130 @@
+{
+  "schema_version": "1.0",
+  "id": "ziwei_horoscope_layers",
+  "title": "运限层次",
+  "summary": "运限层次把同一张本命盘分成本命、大限、流年、流月、流日与流时六个作用域，并在大限部分保存首段以前的童限回退。每一层都可重新取得十二宫名、干支、动态星曜与四化，但它们共享同一张十二宫底盘和三方四正关系；层级变细不等于结论变得更确定。",
+  "scopes": [
+    {"id":"origin","label":"本命","latin":"origin","duration":"基础层","anchor":"出生盘十二宫","inputs":["本命宫位","本命星曜","生年四化"],"outputs":["十二宫底盘","长期参照坐标"],"note":"作为后续五层共同叠加的底盘，不随目标日期移动。"},
+    {"id":"decadal","label":"大限","latin":"decadal","duration":"每十年一宫","anchor":"命宫起步","inputs":["五行局起始岁数","出生年阴阳","性别"],"outputs":["当前大限宫","大限干支","大限四化与流耀"],"note":"水二局从2岁段起、木三局从3岁段起，依次到火六局；阳男阴女顺，阴男阳女逆。"},
+    {"id":"yearly","label":"流年","latin":"yearly","duration":"一年","anchor":"目标年地支","inputs":["目标年份","年界配置"],"outputs":["流年宫","流年干支","流年四化与流耀"],"note":"年界可按正月初一或立春；同一日期在边界附近可能落入不同年层。"},
+    {"id":"monthly","label":"流月","latin":"monthly","duration":"一月","anchor":"流年宫继续推月","inputs":["流年位置","生月与生时","目标农历月","闰月状态"],"outputs":["流月宫","流月干支","流月四化与流耀"],"note":"不是只把流年缩小；实现还读取出生月、出生时及出生月与目标月的闰月后半段修正。"},
+    {"id":"daily","label":"流日","latin":"daily","duration":"一日","anchor":"流月宫顺数日期","inputs":["流月位置","目标农历日"],"outputs":["流日宫","流日干支","流日四化与流耀"],"note":"锁定实现以流月索引加农历日序，初一留在流月起点。"},
+    {"id":"hourly","label":"流时","latin":"hourly","duration":"一个时辰","anchor":"流日宫顺数时支","inputs":["流日位置","目标时辰"],"outputs":["流时宫","流时干支","流时四化与流耀"],"note":"在流日位置上继续叠加目标时支；早子时、晚子时与换日配置必须显式保存。"}
+  ],
+  "shared_fields": [
+    {"id":"index","label":"宫位索引","note":"指出这一层的起点落在底盘哪一格。"},
+    {"id":"stem_branch","label":"层干支","note":"保存该层的天干与地支。"},
+    {"id":"palace_names","label":"十二宫名","note":"以当前层起点重新排列十二个宫名。"},
+    {"id":"mutagen","label":"层四化","note":"按这一层的天干取得禄、权、科、忌目标星。"},
+    {"id":"stars","label":"流耀","note":"保存该时间层新增的动态星曜；不是覆盖本命星。"}
+  ],
+  "decadal_start_table": [
+    {"bureau":"水二局","start_age":2,"first_ranges":["2–11","12–21","22–31","32–41"]},
+    {"bureau":"木三局","start_age":3,"first_ranges":["3–12","13–22","23–32","33–42"]},
+    {"bureau":"金四局","start_age":4,"first_ranges":["4–13","14–23","24–33","34–43"]},
+    {"bureau":"土五局","start_age":5,"first_ranges":["5–14","15–24","25–34","35–44"]},
+    {"bureau":"火六局","start_age":6,"first_ranges":["6–15","16–25","26–35","36–45"]}
+  ],
+  "direction_table": [
+    {"year_yinyang":"阳","gender":"男","direction":"顺行"},
+    {"year_yinyang":"阴","gender":"女","direction":"顺行"},
+    {"year_yinyang":"阴","gender":"男","direction":"逆行"},
+    {"year_yinyang":"阳","gender":"女","direction":"逆行"}
+  ],
+  "decadal_orbit": {
+    "title":"大限十二宫轨",
+    "summary":"锁定实现从命宫所在支开始生成十二个十年段。阳男、阴女按顺行轨读取，阴男、阳女按逆行轨读取；五行局数只决定第一段从几岁开始，之后每段起岁固定增加10。",
+    "branch_order":["寅","卯","辰","巳","午","未","申","酉","戌","亥","子","丑"],
+    "palace_order_from_soul":["命宫","父母宫","福德宫","田宅宫","官禄宫","仆役宫","迁移宫","疾厄宫","财帛宫","子女宫","夫妻宫","兄弟宫"],
+    "direction_steps":[
+      {"direction":"顺行","branch_step":-1,"note":"在本页寅、卯至丑的数组坐标中每段减一格；这是坐标换算，不把顺行字面改成逆行。"},
+      {"direction":"逆行","branch_step":1,"note":"在本页寅、卯至丑的数组坐标中每段加一格；宫名随底盘物理位置一同读取。"}
+    ],
+    "formula_steps":[
+      {"id":"direction","label":"定顺逆","expression":"年阴阳与性别同组＝顺行；异组＝逆行","note":"对应阳男阴女顺、阴男阳女逆。"},
+      {"id":"segment","label":"定十年段","expression":"第 i 段＝[局数＋10i，局数＋10i＋9]","note":"i从0到11；锁定实现一次生成十二段。"},
+      {"id":"position","label":"定宫位","expression":"宫位＝mod12(命宫索引＋方向步长×i)","note":"首段i=0始终落在命宫，之后每十年过一宫。"},
+      {"id":"age","label":"按虚岁读取","expression":"i＝floor((虚岁－局数)÷10)","note":"虚岁小于局数时尚未起大限；i超过11时不在当前十二段数组内。"}
+    ],
+    "coverage": {
+      "segments":12,
+      "years_per_segment":10,
+      "covered_years":120,
+      "before_first":"进入童限回退，而不是把第一段向前延伸。",
+      "after_last":"锁定实现只生成十二段；页面不自动循环到第十三段。"
+    },
+    "fixed_examples":[
+      {"id":"locked-chart-age-23","label":"锁定盘二十三岁","bureau":"金四局","soul_branch":"午","year_yinyang":"阳","gender":"男","nominal_age":23,"direction":"顺行","segment_index":1,"range":[14,23],"palace":"兄弟宫","branch":"巳","note":"对应公开固定盘：命宫午的首段为4至13岁，第二段顺行到巳位兄弟宫。"},
+      {"id":"first-segment","label":"首段停在命宫","bureau":"水二局","soul_branch":"寅","year_yinyang":"阴","gender":"女","nominal_age":2,"direction":"顺行","segment_index":0,"range":[2,11],"palace":"命宫","branch":"寅","note":"方向尚未发生位移时，所有顺逆组合的首段都在命宫。"},
+      {"id":"reverse-third-segment","label":"逆行第三段","bureau":"木三局","soul_branch":"申","year_yinyang":"阳","gender":"女","nominal_age":27,"direction":"逆行","segment_index":2,"range":[23,32],"palace":"福德宫","branch":"戌","note":"逆行在寅起数组中每段加一格；第三段相对命宫移动两格。"},
+      {"id":"before-decadal","label":"尚未起大限","bureau":"火六局","soul_branch":"子","year_yinyang":"阴","gender":"男","nominal_age":5,"direction":"逆行","segment_index":-1,"range":null,"palace":"童限回退","branch":null,"note":"五岁小于火六局首段六岁，本页不把它误归到命宫大限。"}
+    ]
+  },
+  "decadal_stem_rule": {
+    "title": "大限干支沿用所在宫格坐标",
+    "summary": "锁定实现先用生年天干的五虎遁分组为十二个地支位置装配宫干；大限移动到哪一物理宫格，就从同一索引读取该格的天干与地支。年干同时提供阴阳，继续参与阳男阴女顺、阴男阳女逆的方向判断。",
+    "steps": [
+      {"id":"year-stem","label":"生年干选宫干组","note":"甲己、乙庚、丙辛、丁壬、戊癸五组分别确定寅宫起干；完整五组表由“十二宫盘面”维护。"},
+      {"id":"direction","label":"年干阴阳定顺逆参数","note":"甲丙戊庚壬为阳，乙丁己辛癸为阴，再与性别参数合成顺逆。"},
+      {"id":"physical-index","label":"大限读取所在格干支","note":"每个十年段的宫名、天干和地支都从同一物理索引取得，不另造一套大限天干循环。"}
+    ],
+    "boundary": "页面复用“十二宫盘面”的宫干装配表，不复制五组十二格数据；这里只解释大限干支如何进入时间层，不继续推导大限四化、事件或应期。"
+  },
+  "calculation_chain": [
+    {"from":"本命","to":"大限","relation":"命宫 + 五行局起岁 + 顺逆方向","note":"先决定十年区间落在哪一宫。"},
+    {"from":"大限","to":"流年","relation":"目标年地支定位","note":"流年是与大限并列叠入的年度层，不由大限宫简单加一。"},
+    {"from":"流年","to":"流月","relation":"生月、生时、目标月与闰月修正","note":"月层保留出生盘与目标日期两端的输入。"},
+    {"from":"流月","to":"流日","relation":"流月索引 + 农历日 − 1","note":"初一与流月起点重合。"},
+    {"from":"流日","to":"流时","relation":"流日索引 + 目标时支","note":"十二时支在十二宫循环。"}
+  ],
+  "positioning_rules": [
+    {"id":"yearly","label":"流年定位","depends_on":"目标年干支","expression":"流年索引 = 目标年地支在十二支中的索引","inputs":["目标日期","年界配置"],"output":"流年宫索引","boundary":"目标年干支先受正月初一／立春年界配置影响。"},
+    {"id":"monthly","label":"流月定位","depends_on":"流年索引","expression":"流年索引 −（生月＋出生闰月后半修正）＋生时支索引＋（目标月＋目标闰月后半修正）","inputs":["流年索引","出生农历月","出生时支","目标农历月","两端闰月状态"],"output":"流月宫索引","boundary":"出生或目标日期处在闰月后15日时，各自增加1月修正。"},
+    {"id":"daily","label":"流日定位","depends_on":"流月索引","expression":"流日索引 = 流月索引＋目标农历日−1","inputs":["流月索引","目标农历日"],"output":"流日宫索引","boundary":"初一与流月起点同宫；日期换日仍受早晚子时配置影响。"},
+    {"id":"hourly","label":"流时定位","depends_on":"流日索引","expression":"流时索引 = 流日索引＋目标时支索引","inputs":["流日索引","目标时支"],"output":"流时宫索引","boundary":"索引均回绕十二宫；目标时支可由显式输入或目标日期小时换算。"}
+  ],
+  "field_provenance": [
+    {"field":"index","source":"本页各层定位公式","meaning":"该层命宫落入的物理宫格索引"},
+    {"field":"heavenlyStem／earthlyBranch","source":"目标日期或大限宫轨","meaning":"该时间层自己的干支"},
+    {"field":"palaceNames","source":"以该层索引重排十二宫名","meaning":"同一底盘上的时间层宫名"},
+    {"field":"mutagen","source":"该层天干＋四化映射表","meaning":"这一层附到星曜的禄权科忌"},
+    {"field":"stars","source":"该层干支的流耀函数","meaning":"叠加到本命星之上的动态星曜"}
+  ],
+  "parallel_tracks": [
+    {"label":"小限","status":"平行年岁轨","note":"锁定实现另返回小限宫与虚岁；它不是origin—decadal—yearly—monthly—daily—hourly六层中的第七个嵌套层。"},
+    {"label":"童限","status":"大限前替代入口","note":"尚未进入首个大限年龄段时，锁定实现以命、财帛、疾厄、夫妻、福德、官禄六宫作为候选；五行局使实际窗口只有一至五年，完整可达性在本页童限板块展开。"}
+  ],
+  "boundary_gates": [
+    {"label":"年界","options":["正月初一","立春"],"affects":"流年、流月干支与四化输入","status":"配置差异"},
+    {"label":"虚岁分界","options":["自然年","生日"],"affects":"大限、小限与童限选择","status":"配置差异"},
+    {"label":"闰月后半","options":["仍按本月","十五日后按下月"],"affects":"流月与流日位置","status":"版本修复敏感"},
+    {"label":"晚子时","options":["算当日","算次日"],"affects":"流日、流时与日期干支","status":"配置差异"}
+  ],
+  "known_implementation_edge": {
+    "scope":"显式传入早子时索引0",
+    "code":"timeIndex || convertTimeIndex",
+    "status":"待上游核验",
+    "note":"当前锁定源码把0当作假值，可能回退到目标时间自动换算的时辰；知识页不演示这一边界结果，也不把它解释成规则。"
+  },
+  "boundaries": [
+    {"label":"层级不等于事件","note":"六层只说明时间坐标怎样叠加；不能据层数或宫位直接生成事业、健康、婚恋或吉凶事件。"},
+    {"label":"关系网可以复用","note":"每层可重新排列宫名并调用三方四正，但三方四正公式本身不因时间层而改变。"},
+    {"label":"四化映射保持独立","note":"每层天干可以再次取得四化目标星；十干四化表仍由“生年四化”节点维护，本页不复制十干40格。"}
+  ],
+  "public_sources": [
+    {"title":"iztro：六层运限对象生成","note":"锁定源码依次生成大限、小限、流年、流月、流日、流时，并保存每层宫位索引、宫名、干支、四化和流耀。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/astro/FunctionalAstrolabe.ts#L20-L181"},
+    {"title":"iztro：运限对象字段类型","note":"类型定义明确每层共有index、干支、palaceNames、mutagen与stars，并把大限、小限和四个流层分开保存。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/data/types/astro.ts#L13-L91"},
+    {"title":"iztro：大限十二宫轨与干支实现","note":"锁定实现先按生年干取得五虎遁起干，再从命宫索引按年干阴阳与性别移动；每段的宫名、天干、地支和十年范围都写入同一物理宫格。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/astro/palace.ts#L166-L234"},
+    {"title":"紫微研习社：起大限诀","note":"公开安星诀保存命宫起限、阳男阴女顺、阴男阳女逆以及每十年过一宫四项关系。","url":"https://iztro.com/learn/setup.html#_4-起大限诀"},
+    {"title":"iztro：按运限层取宫与三方四正","note":"功能对象允许在指定scope下取宫、展开三方四正，并检查该层的流耀与四化，证明时间层与关系网是组合而非重复对象。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/astro/FunctionalHoroscope.ts#L8-L212"},
+    {"title":"iztro：运限边界修订记录","note":"更改日志连续记录年界、虚岁分割、闰月流月／流日、晚子时和运限索引修复，支持把这些口径保留为显式边界。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/CHANGELOG.md#L7-L69"}
+  ],
+  "internal_review": {
+    "status":"formal_time_scope_object_with_complete_twelve_segment_decadal_orbit_and_stems",
+    "reviewed_at":"2026-08-06",
+    "source_refs":["github_sylarlong_iztro_2fb2030"],
+    "ownership":"K-ZW.07 运限层次",
+    "deduplication":"大限十二宫轨与大限干支直接补入本节点，不另增卡片：观察主体仍是运限层次中的大限。起岁与顺逆生成十二段位置，干支只读取该位置已有的宫干支；五组宫干装配仍由“十二宫盘面”维护，不在此复制。它不并入五行局、童限或小限。",
+    "boundary":"只使用抽象命宫支、五行局、生年天干、性别与虚岁演示十二段坐标，不接收出生日期或目标日期，不生成真人运势、四化、事件或应期；十二段之后不擅自循环。"
+  }
+}

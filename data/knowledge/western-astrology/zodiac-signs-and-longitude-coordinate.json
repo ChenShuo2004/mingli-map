@@ -1,0 +1,24 @@
+{
+  "schema_version":"1.0.0","id":"western_astrology_zodiac_signs_and_longitude_coordinate","title":"十二星座与黄经坐标","summary":"星座是黄道上的十二个连续30°区间，不是十二宫位。当前节点以0—360°黄经、元素、模式和传统主宰星建立十二星座对象层；尊贵、性格关键词和宫位主题继续留在各自节点。",
+  "concept_cards":[
+    {"id":"coordinate","name":"黄经区间","tag":"12 × 30°","summary":"按floor(longitude / 30)选择星座，再以longitude mod 30得到座内度数。","details":["0°含于白羊","360°先归一化为0°","边界按左闭右开"]},
+    {"id":"element","name":"四元素","tag":"火土风水","summary":"每种元素各有三个星座，只保存分类，不推导人格。","details":["火：白羊狮子射手","土：金牛处女摩羯","风：双子天秤水瓶","水：巨蟹天蝎双鱼"]},
+    {"id":"mode","name":"三模式","tag":"开创固定变动","summary":"每种模式各有四个星座，与元素形成12个唯一组合。","details":["开创：白羊巨蟹天秤摩羯","固定：金牛狮子天蝎水瓶","变动：双子处女射手双鱼"]},
+    {"id":"ruler","name":"传统主宰星","tag":"七曜分配","summary":"十二星座由七颗传统行星主宰，不把现代守护星混入古典表。","details":["日月各主一座","五颗游星各主两座"]}
+  ],
+  "fixed_samples":[
+    {"id":"aries","label":"白羊座 ♈","input":"0° ≤ λ < 30°","output":"火 · 开创 · 火星","note":"起点0°"},{"id":"taurus","label":"金牛座 ♉","input":"30° ≤ λ < 60°","output":"土 · 固定 · 金星","note":"传统主宰"},{"id":"gemini","label":"双子座 ♊","input":"60° ≤ λ < 90°","output":"风 · 变动 · 水星","note":"传统主宰"},{"id":"cancer","label":"巨蟹座 ♋","input":"90° ≤ λ < 120°","output":"水 · 开创 · 月亮","note":"发光体主宰"},{"id":"leo","label":"狮子座 ♌","input":"120° ≤ λ < 150°","output":"火 · 固定 · 太阳","note":"发光体主宰"},{"id":"virgo","label":"处女座 ♍","input":"150° ≤ λ < 180°","output":"土 · 变动 · 水星","note":"传统主宰"},{"id":"libra","label":"天秤座 ♎","input":"180° ≤ λ < 210°","output":"风 · 开创 · 金星","note":"传统主宰"},{"id":"scorpio","label":"天蝎座 ♏","input":"210° ≤ λ < 240°","output":"水 · 固定 · 火星","note":"不采用冥王星主宰"},{"id":"sagittarius","label":"射手座 ♐","input":"240° ≤ λ < 270°","output":"火 · 变动 · 木星","note":"传统主宰"},{"id":"capricorn","label":"摩羯座 ♑","input":"270° ≤ λ < 300°","output":"土 · 开创 · 土星","note":"传统主宰"},{"id":"aquarius","label":"水瓶座 ♒","input":"300° ≤ λ < 330°","output":"风 · 固定 · 土星","note":"不采用天王星主宰"},{"id":"pisces","label":"双鱼座 ♓","input":"330° ≤ λ < 360°","output":"水 · 变动 · 木星","note":"不采用海王星主宰"}
+  ],
+  "comparisons":[
+    {"field":"星座与宫位","left":"星座是黄经30°区间","right":"宫位是由宫制、时刻和地点生成的位置区间","handling":"名称都为十二项，但对象类型不同。"},
+    {"field":"传统与现代主宰","left":"古典表只用七曜","right":"作者另列三颗外行星为现代补充","handling":"现代守护星不进入本节点主宰关系。"},
+    {"field":"尊贵关系","left":"主宰星是星座对象的基础关系","right":"擢升、落陷、弱势、界、面另有条件","handling":"只链接既有尊贵节点，不在本页合并评分。"}
+  ],
+  "reading_boundaries":["不把元素和模式翻译成用户人格。","星座与宫位不互换；整宫制也只是让一座星座对应一宫。","360°必须先归一化到0°，不能生成第十三个区间。","现代太阳星座日期与模板运势不属于本节点。"],
+  "public_sources":[
+    {"type":"参考资料","title":"fortune-telling-skills：十二星座与传统主宰星","url":"https://github.com/doododod/fortune-telling-skills/blob/8bcc734491ac75cfb21c1de8727c9fc3f9427b1e/astrology-chart-analysis/references/natal-chart.md#%E5%8D%81%E4%BA%8C%E6%98%9F%E5%BA%A7%E4%B8%8E%E4%B8%BB%E5%AE%B0%E6%98%9F","note":"提供十二星座、元素、模式和传统主宰星表；解释性关键词不进入对象层。"},
+    {"type":"实现资料","title":"flatlib：星座与模式常量","url":"https://github.com/flatangle/flatlib/blob/856d26b8bd1316ccdafe76399994696f9510de9e/flatlib/const.py#L37-L61","note":"提供十二星座ID及Cardinal、Fixed、Mutable三种模式常量。"},
+    {"type":"实现资料","title":"flatlib：黄经归一化","url":"https://github.com/flatangle/flatlib/blob/856d26b8bd1316ccdafe76399994696f9510de9e/flatlib/angle.py#L23-L25","note":"以模360把角度归一化到0—360°。"}
+  ],
+  "internal_review":{"excluded_claims":["星座人格","兼容度","现代守护星裁决","运势模板"]}
+}

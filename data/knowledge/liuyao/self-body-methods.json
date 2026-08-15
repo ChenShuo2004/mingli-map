@@ -1,0 +1,121 @@
+{
+  "schema_version": "1.0",
+  "id": "liuyao_self_body_methods",
+  "title": "世身取法",
+  "summary": "世身先读取世爻所纳的地支，再用一套两支一组的映射，把这个地支转成初至上六个爻位之一。它与月卦身的输入和输出正好不同：月卦身由阴阳与爻位推出地支，世身则由世爻地支反查爻位。资料中不只有一套分组，而且《卜筮正宗》还明确反对用世身取代世爻，因此规则、异说与批评需要并列保存。",
+  "branch_order": ["子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"],
+  "depends_on": [
+    {
+      "dataset": "month-hexagram-body",
+      "fields": ["positions"],
+      "reason": "月卦身与世身共用同一组六爻位名称，不重复保存位置底表。"
+    }
+  ],
+  "methods": [
+    {
+      "id": "standard",
+      "label": "子午同组起例",
+      "short_label": "子午起",
+      "source_label": "《断易天机》《卜筮全书》所载",
+      "groups": [
+        {"position": 1, "branches": ["子", "午"]},
+        {"position": 2, "branches": ["丑", "未"]},
+        {"position": 3, "branches": ["寅", "申"]},
+        {"position": 4, "branches": ["卯", "酉"]},
+        {"position": 5, "branches": ["辰", "戌"]},
+        {"position": 6, "branches": ["巳", "亥"]}
+      ]
+    },
+    {
+      "id": "alternate",
+      "label": "亥子同组起例",
+      "short_label": "亥子起",
+      "source_label": "《断易天机》后部所录异说",
+      "attribution_note": "来源将此称作“李淳风定卦身”，本项目只保存来源署名，不据此确认历史作者。",
+      "groups": [
+        {"position": 1, "branches": ["亥", "子"]},
+        {"position": 2, "branches": ["丑", "戌"]},
+        {"position": 3, "branches": ["寅", "申"]},
+        {"position": 4, "branches": ["卯", "酉"]},
+        {"position": 5, "branches": ["辰", "未"]},
+        {"position": 6, "branches": ["巳", "午"]}
+      ]
+    }
+  ],
+  "comparison_examples": [
+    {
+      "branch": "戌",
+      "context": "乾为天世爻在上爻，世爻纳支为戌",
+      "standard_position": 5,
+      "alternate_position": 2,
+      "note": "同一个世爻地支，在两套起例中分别指向五爻与二爻；分歧发生在映射表，不是世应定位算错。"
+    },
+    {
+      "branch": "酉",
+      "context": "世爻纳支为酉",
+      "standard_position": 4,
+      "alternate_position": 4,
+      "note": "寅申、卯酉两组在两套起例中相同，因此并非十二支都会产生不同位置。"
+    }
+  ],
+  "distinctions": [
+    {
+      "label": "世应定位",
+      "input": "内外卦同异模式",
+      "output": "世爻与应爻的位置",
+      "role": "先确定哪一爻是世。"
+    },
+    {
+      "label": "纳甲装配",
+      "input": "世爻所在卦与爻位",
+      "output": "世爻所纳地支",
+      "role": "为世身取法提供要查的地支。"
+    },
+    {
+      "label": "世身取法",
+      "input": "世爻地支",
+      "output": "另一爻位",
+      "role": "按所选映射把地支归入六个位置之一。"
+    },
+    {
+      "label": "月卦身",
+      "input": "世爻阴阳与位置",
+      "output": "另一个地支",
+      "role": "方向与世身相反，不能因名称相近而合并。"
+    }
+  ],
+  "source_positions": [
+    {
+      "label": "通行起例",
+      "position": "《断易天机》列“子午初、丑未二、寅申三、卯酉四、辰戌五、巳亥六”；《卜筮全书》的规则被《卜筮正宗》逐句转录。",
+      "public_use": "作为一套可核对的地支到爻位映射展示。"
+    },
+    {
+      "label": "另一套分组",
+      "position": "《断易天机》后部另录亥子初、丑戌二、寅申三、卯酉四、辰未五、巳午六，与前一套在午、未、戌、亥四支上换位。",
+      "public_use": "作为并列异说，不合并成平均表，也不替用户默认选择。"
+    },
+    {
+      "label": "明确批评",
+      "position": "《卜筮正宗》保留前一套起例，但反对在世爻受空破刑冲克害时改以身爻代世，指出两者可能给出相反判断。",
+      "public_use": "页面保存这项方法论冲突，不把起例存在误写成各家都认可其用途。"
+    },
+    {
+      "label": "实现对照",
+      "position": "锁定实现把两套十二支映射做成可切换设置，并以乾为天世爻戌验证五爻与二爻两种结果。",
+      "public_use": "实现只证明两套规则可以确定执行，不证明其中任何一套更正确。"
+    }
+  ],
+  "reading_boundary": "本页只展示世爻地支怎样在两套起例中映射到爻位，以及古籍为何质疑用世身替代世爻；不接收卦象，不判断应该采用哪一派，也不把所得爻位转成吉凶、疾病、事项或应期。",
+  "internal_review": {
+    "status": "two_classical_mappings_critique_and_locked_implementation_cross_checked",
+    "reviewed_at": "2026-08-05",
+    "source_refs": [
+      "duanyi_tianji_volume_1_standard_self_body_formula",
+      "duanyi_tianji_later_lichunfeng_attributed_variant",
+      "bushi_zhengzong_scan_pdf_page_25_lines_2763_2770",
+      "github_horace_maxwell_horosa_7d8a93e_liuyao_gu_fa_shishen"
+    ],
+    "boundary": "公开两套映射、重合与分歧位置、来源批评；作者归属不作历史确证，真人判断与结果解释不进入页面。"
+  }
+}

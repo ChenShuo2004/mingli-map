@@ -1,0 +1,23 @@
+{
+  "id":"source-version-register","title":"来源与版本登记","summary":"每个择日字段同时登记来源、版本、适用尺度、原始显示和规范化方式；相同名称在不同版本中的结果不自动合并。",
+  "required_fields":[
+    {"field":"知识对象","example":"每日宜忌","purpose":"说明记录的是什么"},
+    {"field":"适用尺度","example":"日级／时级","purpose":"防止跨尺度覆盖"},
+    {"field":"来源","example":"古籍正文／程序实现","purpose":"区分来源陈述与实现输出"},
+    {"field":"版本","example":"提交4c45a59","purpose":"使结果可以复算"},
+    {"field":"原始显示","example":"忌：无","purpose":"保留来源原貌"},
+    {"field":"数据规范化","example":"avoids: []","purpose":"支持稳定的数据结构"},
+    {"field":"冲突状态","example":"无／并列／待核验","purpose":"不静默消除差异"}
+  ],
+  "register":[
+    {"object":"用事次序","scale":"事项层","source":"《协纪辨方书》卷十一","version":"识典古籍页面版","raw":"选择由事起","normalization":"事项作为入口","conflict":"无"},
+    {"object":"每日宜忌","scale":"日级","source":"lunar-javascript","version":"4c45a59","raw":"忌：无","normalization":"avoids: []","conflict":"无"},
+    {"object":"时辰宜忌","scale":"时级","source":"lunar-javascript","version":"4c45a59","raw":"卯时宜：无；忌：诸事不宜","normalization":"yi: []; ji: [诸事不宜]","conflict":"无"},
+    {"object":"福神方位","scale":"日干表","source":"两张既有方位表","version":"版本一／版本二","raw":"癸：正西／东北","normalization":"fortune_v1／fortune_v2","conflict":"并列"}
+  ],
+  "boundaries":["网页转录不是古籍校勘定本","实现版本可复算不等于传统共识","规范化只改变数据形态，不改变来源含义"],
+  "public_sources":[
+    {"title":"《协纪辨方书》卷十一·用事","note":"保存事项入口与编排依据。","url":"https://www.shidianguji.com/book/SK1619/chapter/1l9llrr4rdde7"},
+    {"title":"lunar-javascript 锁定实现","note":"保存可复算的日时字段版本。","url":"https://github.com/6tail/lunar-javascript/tree/4c45a59"}
+  ]
+}

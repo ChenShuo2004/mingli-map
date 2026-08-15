@@ -1,0 +1,65 @@
+{
+  "schema_version":"1.0.0",
+  "id":"ten-essence-yin-opposites",
+  "title":"十精阳遁基位与阴遁冲位",
+  "summary":"《太乙金镜式经》卷七在逐项推完十精后总括：岁、月、日、时先求积数，阴遁十精取阳遁所在之冲。十六神位可形成子午、丑未、艮坤、寅申、卯酉、辰戌、巽乾、巳亥八组对位；换到九宫数字则是1／9、2／8、3／7、4／6四组，中五自守。锁定实现只有太乙本体的ty按局的阴阳选择两套位置表；天皇、帝符、天时、太尊、飞鸟、五行、三风、五风、八风九个函数都只接积数，shijing_luo也没有阴阳参数，因此固定阴遁時計输出的是未经对冲的函数基位。汇总层还把十六位序号写入“宫数”，并用太岁替换太乙、把帝符写作地符。据此并列原典冲位、函数原始返回、派生对位与实现覆盖，不把派生表冒充已经实现的正式盘面。",
+  "fixed_input":"1552年9月24日 0时0分 · 時計（ji_style 3）",
+  "opposition_pairs":[
+    {"left":"子","right":"午","left_palace":8,"right_palace":2},
+    {"left":"丑","right":"未","left_palace":3,"right_palace":7},
+    {"left":"艮","right":"坤","left_palace":3,"right_palace":7},
+    {"left":"寅","right":"申","left_palace":4,"right_palace":6},
+    {"left":"卯","right":"酉","left_palace":4,"right_palace":6},
+    {"left":"辰","right":"戌","left_palace":9,"right_palace":1},
+    {"left":"巽","right":"乾","left_palace":9,"right_palace":1},
+    {"left":"巳","right":"亥","left_palace":2,"right_palace":8}
+  ],
+  "palace_pairs":[
+    {"left":1,"right":9,"positions":"乾／戌 ↔ 巽／辰"},
+    {"left":2,"right":8,"positions":"午／巳 ↔ 子／亥"},
+    {"left":3,"right":7,"positions":"艮／丑 ↔ 坤／未"},
+    {"left":4,"right":6,"positions":"卯／寅 ↔ 酉／申"},
+    {"left":5,"right":5,"positions":"中宫自守"}
+  ],
+  "coverage":[
+    {"id":"taiyi","name":"太乙本体","inputs":"局数 + 阴阳遁","implementation":"ty读取kook文首‘阳／阴’，分别选择两套72局位置表","status":"已分阴阳","tone":"covered"},
+    {"id":"nine-functions","name":"九个附属周期对象","inputs":"只有积数","implementation":"九个config函数不接收阴阳遁；相同积数只产生一套基位","status":"未实现阴遁冲位","tone":"missing"},
+    {"id":"aggregate","name":"十精汇总层","inputs":"只有积数","implementation":"shijing_luo遍历函数并转写标签，没有局数、遁别或冲位步骤","status":"未传递阴阳上下文","tone":"missing"}
+  ],
+  "method_results":[
+    {"method":0,"label":"太乙统宗","accumulated":8494607065,"board":"阴遁四十九局","taiyi_palace":9,"raw":{"天皇":"亥","帝符":"丑","天时":"寅","太尊":"子","飞鸟":"乾","五行":"艮","三风":"乾","五风":null,"八风":"酉"},"opposite":{"天皇":"巳","帝符":"未","天时":"申","太尊":"午","飞鸟":"巽","五行":"坤","三风":"巽","五风":null,"八风":"卯"},"status":"五风原始值无法映射"},
+    {"method":1,"label":"太乙金镜","accumulated":8372760049,"board":"阴遁一局","taiyi_palace":9,"raw":{"天皇":"寅","帝符":"辰","天时":"寅","太尊":"子","飞鸟":"乾","五行":"巽","三风":"坤","五风":"坤","八风":"午"},"opposite":{"天皇":"申","帝符":"戌","天时":"申","太尊":"午","飞鸟":"巽","五行":"乾","三风":"艮","五风":"艮","八风":"子"},"status":"九项均可派生冲位"},
+    {"method":2,"label":"太乙淘金歌","accumulated":8372760061,"board":"阴遁十三局","taiyi_palace":4,"raw":{"天皇":"申","帝符":"戌","天时":"寅","太尊":"子","飞鸟":"巽","五行":"乾","三风":"乾","五风":"巽","八风":"酉"},"opposite":{"天皇":"寅","帝符":"辰","天时":"申","太尊":"午","飞鸟":"乾","五行":"巽","三风":"巽","五风":"乾","八风":"卯"},"status":"九项均可派生冲位"},
+    {"method":3,"label":"太乙局","accumulated":49,"board":"阴遁四十九局","taiyi_palace":9,"raw":{"天皇":"寅","帝符":"辰","天时":"寅","太尊":"子","飞鸟":"乾","五行":"巽","三风":"乾","五风":"艮","八风":"酉"},"opposite":{"天皇":"申","帝符":"戌","天时":"申","太尊":"午","飞鸟":"巽","五行":"乾","三风":"巽","五风":"坤","八风":"卯"},"status":"九项均可派生冲位"}
+  ],
+  "coordinate_audit":[
+    {"object":"帝符","raw":"辰","ordinal":6,"actual_palace":9,"aggregate":"shijing_luo写作宫数6","status":"十六位序号被误作九宫数"},
+    {"object":"五行","raw":"巽","ordinal":7,"actual_palace":9,"aggregate":"shijing_luo写作宫数7","status":"十六位序号被误作九宫数"},
+    {"object":"太尊","raw":"子","ordinal":1,"actual_palace":8,"aggregate":"shijing_luo写作宫数1","status":"十六位序号被误作九宫数"},
+    {"object":"天皇","raw":"寅","ordinal":4,"actual_palace":4,"aggregate":"shijing_luo写作宫数4","status":"数值偶合，掩盖同一错误路径"}
+  ],
+  "layer_differences":[
+    {"label":"太乙已分阴阳，九个附属对象没有","classical":"阴遁十精取阳遁所在之冲","implementation":"ty有阳／阴两套局表；九个周期函数只接积数","handling":"把太乙标为已覆盖，其余九项标为派生对位而非程序结果。"},
+    {"label":"遁别没有传入十精汇总","classical":"岁月日时各自积数之后还要按阳遁／阴遁转换","implementation":"shijing_luo签名只有taiyi_acumyear，没有ji_style、局数或遁别","handling":"固定阴遁時計同时展示函数基位和按原典关系派生的冲位。"},
+    {"label":"十精对象清单存在版本差异","classical":"卷七连续列太乙及九个附属对象后总称十精","implementation":"_TEN_JING_FN列九个附属对象再加太岁，未列太乙本体","handling":"不强行合并两份清单；太岁只标为实现额外对象，待其他卷本校勘。"},
+    {"label":"帝符／地符名称不同","classical":"卷七标题与正文使用帝符","implementation":"底层函数名kingfu，汇总字典显示地符","handling":"本节点以帝符为原典名称，并在实现层保留地符异名。"},
+    {"label":"十六位序号不是九宫数","classical":"十六神位与九宫是两层坐标","implementation":"_palace_label对位置字符串调用config.gong，得到1—16序号后写进宫数字段","handling":"用四个固定对象公开核对，不让错误宫数继续参与阴阳宫判断。"},
+    {"label":"异常基位不能派生冲位","classical":"对冲转换以前应先有明确阳遁所在","implementation":"method 0時計五风经num2gong后为空；分計等还可出现天皇或太岁空值","handling":"空值保持空，不补成对宫。"},
+    {"label":"高风险解释不公开","classical":"后续候十精云气法连接晴雨、日月与云气","implementation":"yunqi_zongduan继续组合阴阳宫和同宫文本","handling":"范围止于坐标转换与覆盖审计，不展示天象、气候、灾异或行动结论。"}
+  ],
+  "reading_boundaries":[
+    {"label":"可理解","note":"十六位和九宫中的对冲映射，以及阴遁由阳遁基位转冲位的来源规则。"},
+    {"label":"可复核","note":"固定阴遁時計四个method的九项原始返回、派生冲位与太乙实际宫数。"},
+    {"label":"待校勘","note":"十精是否含太乙或太岁、帝符／地符名称及不同卷本对阴遁转换的具体适用范围。"},
+    {"label":"不由此推出","note":"派生冲位已被锁定程序采用，或任何现实天象、气候、灾异、战争、行动与个人结果。"}
+  ],
+  "public_sources":[
+    {"title":"《太乙金鏡式經》卷七：推十精太乙法","url":"https://ctext.org/wiki.pl?chapter=469355&if=gb&remap=gb","note":"第24条说明岁月日时积数，并称阴遁十精以阳遁所冲取得；来源连接四库影像，具体断句与十精清单仍待跨卷校。"},
+    {"title":"kintaiyi锁定太乙阴阳局表","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L571-L580","note":"ty读取kook返回的阳／阴遁并选择两套72局位置表，是锁定实现中太乙本体的阴阳分支。"},
+    {"title":"kintaiyi锁定九个周期函数","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/config.py#L641-L738","note":"九个函数都只接积数，不接ji_style、局数或阴阳遁参数。"},
+    {"title":"kintaiyi锁定十精汇总与位置转写","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/yunqi.py#L72-L109","note":"_TEN_JING_FN以太岁替代太乙并使用地符名称；shijing_luo只接积数，_palace_label把位置字符串交给十六位序号表。"},
+    {"title":"kintaiyi锁定十六位与九宫坐标配置","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/config.py#L52-L67","note":"固定提交同时列十六位顺序、十六位序号与十六位到八个外宫数字的映射，可用于识别序号／宫数混用。"},
+    {"title":"kintaiyi锁定固定例输入","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/examples/basic_usage.py#L13-L20","note":"沿用1552-09-24 00:00；本页改用時計ji_style 3复跑method 0—3，四局均为阴遁。"}
+  ],
+  "internal_review":{"status":"formal_ten_essence_yin_opposition_audit","reviewed_at":"2026-08-06","owner":["火华","Codex"],"runtime_environment":"temporary Python venv; locked repository commit installed from source","runtime_command":"Taiyi.accnum/kook/ty(ji_style=3, method=0..3), nine config cycle functions plus explicit 16-position opposition map","deduplication":"不并入两页九对象周期：周期页生成阳遁基位，本页审计阴遁如何由基位转成冲位。不并入九宫与十六神位：坐标页定义通用成对映射，本页使用该映射检查十精阴遁转换和汇总错误。不并入太乙数：该页是1—72取数身份，本页是位置的阴阳遁转换。","known_gaps":["卷七十精清单与实现太岁清单的版本关系未完成跨卷校勘","阴遁对冲规则尚未找到锁定仓库专项测试","method 0時計五风原始返回为空"],"boundary":"固定样本、无真人输入、无随机；派生冲位只作为来源规则演示，不宣称程序已经采用，不展示天象、气候、云气、灾异、战争、地域、行动或个人断语。"}
+}

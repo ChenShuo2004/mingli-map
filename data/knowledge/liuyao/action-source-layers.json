@@ -1,0 +1,97 @@
+{
+  "schema_version": "1.0",
+  "id": "liuyao_action_source_layers",
+  "title": "作用来源",
+  "summary": "同一个目标爻可能面对五类来源：太岁、月建、日辰、卦中其他动爻，以及它发动后形成的同位变爻。前三类来自卦外的年、月、日时间背景，第四类来自卦内其他位置，第五类沿同一爻位返回；太岁还要先通过年度、远期或少数大事的范围门。先保存来源、尺度与方向，才能继续判断箭头是否成立或发生改道。",
+  "fixed_target": {
+    "branch": "戌",
+    "element": "土",
+    "label": "目标爻"
+  },
+  "sources": [
+    {
+      "id": "year",
+      "label": "太岁",
+      "layer": "卦外时间",
+      "scope": "年度与远期线索",
+      "source": "辰土",
+      "target": "戌土",
+      "relation": "冲",
+      "direction": "太岁 → 卦爻",
+      "note": "太岁可以与目标爻形成关系，但必须先检查问题尺度；普通细事中的岁冲不自动为凶，岁合也不自动为吉，不能把它机械提升到月建、日辰同等权力。"
+    },
+    {
+      "id": "month",
+      "label": "月建",
+      "layer": "卦外时间",
+      "scope": "当月关系背景",
+      "source": "寅木",
+      "target": "戌土",
+      "relation": "克",
+      "direction": "月建 → 卦爻",
+      "note": "月建从卦外进入，可与静爻、动爻、变爻、飞神或伏神形成生克冲合等关系。"
+    },
+    {
+      "id": "day",
+      "label": "日辰",
+      "layer": "卦外时间",
+      "scope": "当日关系来源",
+      "source": "辰土",
+      "target": "戌土",
+      "relation": "冲",
+      "direction": "日辰 → 卦爻",
+      "note": "日辰同样从卦外作用于卦爻；日冲之后是否成为暗动、冲空或日破，还要继续查看目标状态。"
+    },
+    {
+      "id": "moving",
+      "label": "卦中动爻",
+      "layer": "卦内异位",
+      "scope": "其他爻位发动",
+      "source": "午火",
+      "target": "戌土",
+      "relation": "生",
+      "direction": "动爻 → 目标爻",
+      "note": "卦中另一爻发动后可以作用于目标爻；多个动爻同时出现时，还要继续排列它们的接续与改道。"
+    },
+    {
+      "id": "changed",
+      "label": "同位变爻",
+      "layer": "卦内同位",
+      "scope": "目标爻发动后变出",
+      "source": "卯木",
+      "target": "戌土",
+      "relation": "合＋克",
+      "direction": "变爻 → 本爻",
+      "note": "同位变爻返回作用于原动爻，方向固定为变爻到本爻；五行生克与地支冲合可以同时命中。"
+    }
+  ],
+  "comparison": [
+    {
+      "label": "来源",
+      "question": "箭头从哪里进入？",
+      "answer": "年、月、日、异位动爻或同位变爻"
+    },
+    {
+      "label": "关系",
+      "question": "来源与目标是什么关系？",
+      "answer": "分别检查生、克、冲、合等固定关系"
+    },
+    {
+      "label": "权限",
+      "question": "关系出现就一定能作用吗？",
+      "answer": "还要继续检查动静、旺衰与状态条件"
+    }
+  ],
+  "reading_boundary": "固定戌土为目标，只演示五类来源、时间尺度与箭头方向；太岁先经过范围门，不把来源数量相加成分数，也不由一条关系推出事项结果。",
+  "internal_review": {
+    "status": "five_action_sources_with_taisui_scope_cross_checked_with_classical_text_and_locked_implementation",
+    "reviewed_at": "2026-08-05",
+    "source_refs": [
+      "zengshan_buyi_root_four_action_sources_wikisource",
+      "zengshan_buyi_chapter_14_wikisource",
+      "zengshan_buyi_locked_volume_2_part_1_taisui_scope_lines_930_940",
+      "bushi_zhengzong_eighteen_questions_part_1_three_transmissions_lines_1649_1651",
+      "github_horace_maxwell_liuyao_duanjue_environment_and_power"
+    ]
+  }
+}

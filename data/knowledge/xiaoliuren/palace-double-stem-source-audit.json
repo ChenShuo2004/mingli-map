@@ -1,0 +1,96 @@
+{
+  "schema_version": "1.0.0",
+  "id": "xiaoliuren_palace_double_stem_source_audit",
+  "title": "六宫双干字段与来源内冲突",
+  "summary": "版本三笔记先给出六宫的方位、季节与概览天干，随后又为每宫建立主干和次干的双干模型。两层并不完全相同，原文还在大安次干处交替出现地支“巳”和天干“丁”，空亡概览又出现“戊已”的字形。本节点把概览、详细双干、阴阳身份与原始冲突分栏保存；不把可能的笔误静默修正，也不继承双干生克对应的吉凶解释。",
+  "source_scope": {
+    "source": "Horace-Maxwell/divination-notes-prompt 小六壬笔记·版本三",
+    "commit": "b22ecfaafcd17782ddc0f633df163b6492b766d4",
+    "status": "无仓库许可、未独立核验的作者版本；字段级审计"
+  },
+  "model_layers": [
+    {"id": "overview", "label": "概览所属干", "definition": "段首按方位或季节列出的天干范围，不等于后文双干。"},
+    {"id": "detailed_pair", "label": "详细双干", "definition": "后文为每宫指定的两个干，并区分主次或纯阴纯阳。"},
+    {"id": "raw_conflict", "label": "原文冲突", "definition": "字形或两层模型无法直接对齐的地方，保持待核验。"}
+  ],
+  "palaces": [
+    {
+      "name": "大安",
+      "overview_stems": ["甲", "乙"],
+      "detailed_primary": "甲",
+      "detailed_secondary": "丁？／巳？",
+      "polarity": "阳主、阴次（按丁解释）",
+      "raw_conflict": "同一详细段先两次写“巳火”，紧接着又以“丁火”解释；巳是地支、丁是天干，当前不代改。",
+      "audit_status": "待底本核字"
+    },
+    {
+      "name": "留连",
+      "overview_stems": [],
+      "detailed_primary": "己",
+      "detailed_secondary": "丁",
+      "polarity": "双阴，不分主次",
+      "raw_conflict": "概览只列方位与月份，没有直接列出天干；详细段新增己、丁。",
+      "audit_status": "层级新增"
+    },
+    {
+      "name": "速喜",
+      "overview_stems": ["丙", "丁"],
+      "detailed_primary": "丙",
+      "detailed_secondary": "辛",
+      "polarity": "阳主、阴次",
+      "raw_conflict": "概览的同五行范围是丙丁，详细双干改为丙辛，属于不同模型。",
+      "audit_status": "模型不同"
+    },
+    {
+      "name": "赤口",
+      "overview_stems": ["庚", "辛"],
+      "detailed_primary": "庚",
+      "detailed_secondary": "癸",
+      "polarity": "阳主、阴次",
+      "raw_conflict": "概览的同五行范围是庚辛，详细双干改为庚癸，属于不同模型。",
+      "audit_status": "模型不同"
+    },
+    {
+      "name": "小吉",
+      "overview_stems": ["壬", "癸"],
+      "detailed_primary": "壬",
+      "detailed_secondary": "甲",
+      "polarity": "双阳，仍分主次",
+      "raw_conflict": "概览的同五行范围是壬癸，详细双干改为壬甲，属于不同模型。",
+      "audit_status": "模型不同"
+    },
+    {
+      "name": "空亡",
+      "overview_stems": ["戊", "已？／己？"],
+      "detailed_primary": "戊",
+      "detailed_secondary": "乙",
+      "polarity": "阳主、阴次",
+      "raw_conflict": "概览写“戊已土”，其中“已”不是天干；可能指己，但当前保留原字。详细双干另为戊乙。",
+      "audit_status": "待底本核字＋模型不同"
+    }
+  ],
+  "audit_rules": [
+    "概览所属天干与详细双干是两个字段层，不能相互覆盖。",
+    "巳／丁、已／己先按原字保留并标问号，未见底本前不自动纠错。",
+    "详细双干中的主次与阴阳只按该版本自述保存，不推广到其他小六壬版本。",
+    "双干之间的生克、象意和吉凶解释不进入本节点。"
+  ],
+  "excluded_claims": ["收入与财富", "疾病与伤灾", "官司牢狱", "婚恋情色", "出行成败", "应期与行动建议"],
+  "reading_boundaries": [
+    "页面展示的是来源审计，不是统一双干表。",
+    "不把疑似错字改写成确定事实。",
+    "不使用双干为真人事项生成解释。"
+  ],
+  "public_sources": [
+    {
+      "title": "Horace-Maxwell 小六壬笔记版本三",
+      "url": "https://github.com/Horace-Maxwell/divination-notes-prompt/blob/b22ecfaafcd17782ddc0f633df163b6492b766d4/%E5%B0%8F%E5%85%AD%E5%A3%AC%E7%AC%94%E8%AE%B0.md",
+      "note": "“六神的干支特性”段含概览与详细双干；页面只做字段审计，不复用长解释和断语。"
+    }
+  ],
+  "internal_review": {
+    "reviewed_on": "2026-08-09",
+    "owner": ["火华", "Codex"],
+    "status": "formal_internal_source_conflict_audit"
+  }
+}

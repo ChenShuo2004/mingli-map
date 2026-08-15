@@ -1,0 +1,113 @@
+{
+  "schema_version": "1.0",
+  "id": "ziwei_surrounded_palaces",
+  "title": "三方四正",
+  "summary": "三方四正以任一宫位为起点，把本宫、顺数四位与八位的两个三合方，以及顺数六位的对宫合成四宫观察范围。它不是新增宫位，也不是星曜或四化本身；它提供一张可让星曜、四化和后续运限共同读取的跨宫关系网。",
+  "offset_rule": [
+    {"id":"target","label":"本宫","offset":0,"note":"当前选择的起点。"},
+    {"id":"trine_a","label":"三合方一","offset":4,"note":"沿十二宫循环顺数四位。"},
+    {"id":"opposite","label":"对宫","offset":6,"note":"沿十二宫循环顺数六位。"},
+    {"id":"trine_b","label":"三合方二","offset":8,"note":"沿十二宫循环顺数八位。"}
+  ],
+  "palace_order": [
+    {"index":0,"id":"soul","name":"命宫","short":"命","branch":"寅"},
+    {"index":1,"id":"parents","name":"父母宫","short":"父母","branch":"卯"},
+    {"index":2,"id":"spirit","name":"福德宫","short":"福德","branch":"辰"},
+    {"index":3,"id":"property","name":"田宅宫","short":"田宅","branch":"巳"},
+    {"index":4,"id":"career","name":"官禄宫","short":"官禄","branch":"午"},
+    {"index":5,"id":"friends","name":"仆役宫","short":"仆役","branch":"未"},
+    {"index":6,"id":"surface","name":"迁移宫","short":"迁移","branch":"申"},
+    {"index":7,"id":"health","name":"疾厄宫","short":"疾厄","branch":"酉"},
+    {"index":8,"id":"wealth","name":"财帛宫","short":"财帛","branch":"戌"},
+    {"index":9,"id":"children","name":"子女宫","short":"子女","branch":"亥"},
+    {"index":10,"id":"spouse","name":"夫妻宫","short":"夫妻","branch":"子"},
+    {"index":11,"id":"siblings","name":"兄弟宫","short":"兄弟","branch":"丑"}
+  ],
+  "relation_rows": [
+    {"target":"命宫","trine_a":"官禄宫","opposite":"迁移宫","trine_b":"财帛宫"},
+    {"target":"父母宫","trine_a":"仆役宫","opposite":"疾厄宫","trine_b":"子女宫"},
+    {"target":"福德宫","trine_a":"迁移宫","opposite":"财帛宫","trine_b":"夫妻宫"},
+    {"target":"田宅宫","trine_a":"疾厄宫","opposite":"子女宫","trine_b":"兄弟宫"},
+    {"target":"官禄宫","trine_a":"财帛宫","opposite":"夫妻宫","trine_b":"命宫"},
+    {"target":"仆役宫","trine_a":"子女宫","opposite":"兄弟宫","trine_b":"父母宫"},
+    {"target":"迁移宫","trine_a":"夫妻宫","opposite":"命宫","trine_b":"福德宫"},
+    {"target":"疾厄宫","trine_a":"兄弟宫","opposite":"父母宫","trine_b":"田宅宫"},
+    {"target":"财帛宫","trine_a":"命宫","opposite":"福德宫","trine_b":"官禄宫"},
+    {"target":"子女宫","trine_a":"父母宫","opposite":"田宅宫","trine_b":"仆役宫"},
+    {"target":"夫妻宫","trine_a":"福德宫","opposite":"官禄宫","trine_b":"迁移宫"},
+    {"target":"兄弟宫","trine_a":"田宅宫","opposite":"仆役宫","trine_b":"疾厄宫"}
+  ],
+  "network_layers": [
+    {"id":"trines","label":"四组三合三角","count":4,"note":"每个宫与顺数四位、八位组成一个三角；同一组三宫互为三合方。"},
+    {"id":"opposites","label":"六组对宫轴","count":6,"note":"每个宫与顺数六位的宫相对；同一条轴从任一端读取都不变。"},
+    {"id":"union","label":"十二组四宫范围","count":12,"note":"每个起点把所在三合三角与自己的对宫合并，得到一组三方四正。"}
+  ],
+  "trine_groups": [
+    ["命宫","官禄宫","财帛宫"],
+    ["父母宫","仆役宫","子女宫"],
+    ["福德宫","迁移宫","夫妻宫"],
+    ["田宅宫","疾厄宫","兄弟宫"]
+  ],
+  "opposite_axes": [
+    ["命宫","迁移宫"],
+    ["父母宫","疾厄宫"],
+    ["福德宫","财帛宫"],
+    ["田宅宫","子女宫"],
+    ["官禄宫","夫妻宫"],
+    ["仆役宫","兄弟宫"]
+  ],
+  "opposite_axis_profiles": [
+    {"id":"soul-surface","label":"命迁线","palaces":["命宫","迁移宫"],"aliases":[],"source_theme":"表里","source_statement":"来源以命宫与迁移宫组成星盘主人的表里轴。","boundary":"只保存该来源的命名与说明，不据此判断个人内外表现。"},
+    {"id":"siblings-friends","label":"兄友线","palaces":["兄弟宫","仆役宫"],"aliases":["沟通线","成就线"],"source_theme":"交际","source_statement":"来源把兄弟宫与仆役宫的轴线联系到交际，并另列沟通线、成就线两个名称。","boundary":"别称是来源用语，不代表沟通或成就可以由这一轴单独决定。"},
+    {"id":"career-spouse","label":"官夫线","palaces":["官禄宫","夫妻宫"],"aliases":[],"source_theme":"事业与伴侣关系","source_statement":"来源以官禄宫和夫妻宫并列说明事业与伴侣支持之间的关系。","boundary":"这里只登记成对宫位及来源主题，不输出事业或感情结论。"},
+    {"id":"children-property","label":"子田线","palaces":["子女宫","田宅宫"],"aliases":["桃花线"],"source_theme":"亲子、家庭、合作与异性关系","source_statement":"来源把子女宫与田宅宫称作子田线，并另列桃花线别称及多项观察范围。","boundary":"多项范围只作为来源陈述，不将桃花线变成固定事件规则。"},
+    {"id":"wealth-spirit","label":"财福线","palaces":["财帛宫","福德宫"],"aliases":[],"source_theme":"消费与理财观","source_statement":"来源以财帛宫和福德宫组成财福线，说明其观察消费观与理财观。","boundary":"不从宫位轴直接生成财富水平或消费判断。"},
+    {"id":"parents-health","label":"父疾线","palaces":["父母宫","疾厄宫"],"aliases":["文书线"],"source_theme":"父母与文书关系","source_statement":"来源把父母宫与疾厄宫称作父疾线，并记录文书线别称。","boundary":"只保存命名，不把契约、健康或父母关系写成个人事件。"}
+  ],
+  "empty_soul_palace_reading": {
+    "title":"命宫空宫时的对宫主星读取",
+    "scope":"锁定实现中的getMajorStarBySolarDate／getMajorStarByLunarDate辅助方法",
+    "summary":"这个分支只回答“辅助方法返回哪一组命宫主星”：先检查命宫内type为major的星；存在则原位返回，不存在才读取索引+6的对宫，并且仍只筛type为major的星。",
+    "states":[
+      {"id":"occupied","label":"命宫有主星","condition":"命宫内至少有1颗type=major的星","steps":["定位命宫索引soulIndex","筛出命宫内type=major的星","直接返回命宫主星名称"],"result":"读取本宫","offset":0,"note":"此时不会再读取对宫主星。"},
+      {"id":"empty","label":"命宫无主星","condition":"命宫内type=major的星数量为0","steps":["定位命宫索引soulIndex","确认命宫没有type=major的星","转到fixIndex(soulIndex+6)并返回其中主星名称"],"result":"读取对宫","offset":6,"note":"这里的+6正是本页既有对宫关系，因此归入三方四正而不另建节点。"}
+    ],
+    "entry_paths":[
+      {"label":"阳历入口","path":"阳历日期 → 排主星 → 检查命宫 → 必要时转+6对宫","note":"分支逻辑直接写在getMajorStarBySolarDate。"},
+      {"label":"农历入口","path":"农历日期 → 转为阳历 → 复用阳历入口","note":"getMajorStarByLunarDate没有另写一套空宫规则。"}
+    ],
+    "implementation_boundaries":[
+      "只验证命宫，不据此声称其余十一宫都使用同一辅助方法。",
+      "只借type=major的十四主星，不把辅星、杂曜、四化或亮度一并复制到命宫。",
+      "返回的是主星名称字符串，不会改写原命盘中两宫的星曜数组。",
+      "源码没有给出借入比例、强弱权重、吉凶或事件解释，本页不补写。"
+    ]
+  },
+  "known_mismatches": [
+    {"source":"fortune-telling-skills 宫位表","scope":"父母宫一行","recorded":"事业宫、命宫，并注为相夹关系","expected":"仆役宫、子女宫","status":"不进入默认表","note":"该行不符合+4/+8循环，也把夹宫混进三合栏；同文其他示例仍只作结构说明。"},
+    {"source":"patdelphi/suanming EnhancedSiHua","scope":"十二组三方数组","recorded":"仅2/12组符合十二宫循环","expected":"每行都满足+4/+6/+8","status":"确认实现缺陷","note":"该仓审核结论保留为错误样本，不作为第二套流派版本。"}
+  ],
+  "boundaries": [
+    {"label":"关系不等于内容","note":"本节点只确定四个宫位；其中有哪些星曜、四化要从其他节点或固定盘再读取。"},
+    {"label":"相对角色不等于宫名","note":"代码中的career、wealth表示相对+4/+8位置；父母宫的+4实际是仆役宫，不是固定官禄宫。"},
+    {"label":"不直接生成论断","note":"四宫合看是结构范围，不能从“会照”一词自动推出个人吉凶。"},
+    {"label":"空宫读取不是搬星","note":"辅助方法在命宫无十四主星时返回对宫主星名称，但没有把对宫星曜复制进命宫，也没有附加解释权重。"}
+  ],
+  "public_sources": [
+    {"title":"iztro：三方四正取宫公式","note":"锁定实现先定位本宫，再以宫位索引+4、+6、+8取得两个三合方与对宫，是本页12行关系表的直接来源。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/astro/analyzer.ts#L126-L160"},
+    {"title":"iztro：四宫关系对象","note":"关系对象把四个位置分存为target、opposite、wealth、career，并允许在四宫范围内检索星曜与四化。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/astro/FunctionalSurpalaces.ts#L1-L63"},
+    {"title":"iztro：命宫与疾厄宫固定断言","note":"测试直接断言命宫对应迁移、财帛、官禄，疾厄宫对应父母、田宅、兄弟，用于校验宫名与偏移关系。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/__tests__/astro/analyzer.test.ts#L130-L153"},
+    {"title":"iztro宫位知识：六条宫位轴名称","note":"官方学习文档按宫名列出命迁、兄友、官夫、子田、财福、父疾六条对宫轴，并保存沟通线、成就线、桃花线、文书线等来源别称。","url":"https://docs.iztro.com/learn/palace.html#按宫名分类"},
+    {"title":"fortune-telling-skills：三方四正结构示意","note":"该资料用命宫、官禄、财帛、迁移说明四宫合看；其父母宫三合栏另有确认错误，本页只采用可与循环公式对上的结构示意。","url":"https://github.com/doododod/fortune-telling-skills/blob/8bcc734491ac75cfb21c1de8727c9fc3f9427b1e/ziwei-doushu/references/palaces.md#L153-L170"},
+    {"title":"iztro：命宫主星与空宫分支","note":"锁定辅助方法先筛命宫内type=major的星；列表为空时才以soulIndex+6读取对宫，并再次只筛type=major。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/astro/astro.ts#L539-L570"},
+    {"title":"iztro：农历入口复用与固定断言","note":"农历入口先转阳历再复用同一主星方法；测试保存阳历与农历入口的固定返回值，但没有另立一套空宫解释规则。","url":"https://github.com/SylarLong/iztro/blob/2fb203040b00d87f2fa240f6109511d350ca502b/src/__tests__/astro/astro.test.ts#L936-L949"}
+  ],
+  "internal_review": {
+    "status":"formal_relation_network_locked_formula_with_rejected_mismatches",
+    "reviewed_at":"2026-08-06",
+    "source_refs":["github_sylarlong_iztro_2fb2030","github_doododod_fortune_telling_skills_8bcc734","github_patdelphi_suanming_a58292c"],
+    "ownership":"K-ZW.06 三方四正与飞化网络",
+    "deduplication":"不并入十二宫盘面：十二宫只定义宫名、位置和装配字段，本对象新增任一宫到三个跨宫位置的关系；六条宫位轴是既有六组对宫的来源命名，直接补入本对象而不另建卡；空宫借对宫只是在命宫无十四主星时读取既有+6对宫的辅助方法分支，没有独立宫位、星曜或解释模型，因此继续补入本对象而不另建卡；不并入星曜或四化：它们是随后进入四宫范围被检索的内容；不并入运限：同一关系可被本命或运限复用，但不负责生成时间层。",
+    "boundary":"只允许选择抽象宫位并展开固定+4/+6/+8网络、六条对宫轴及命宫主星辅助方法的两条分支；轴线主题与别称明确标为来源陈述，空宫分支只返回type=major名称，不搬移星曜、不扩展到其余十一宫；不接收出生信息、不读取真人命盘、不把四宫范围转写成吉凶；错误数组作为实现缺陷保存，不包装成流派分歧。"
+  }
+}

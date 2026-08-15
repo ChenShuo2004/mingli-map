@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "id": "liuyao_moving_static_permissions",
+  "title": "动静爻作用权限",
+  "summary": "生克刑冲关系存在，不等于两爻之间一定能够作用。古籍把两爻都静时的旺衰优先，与出现动爻时的动静优先分开：旺静可以作用于休囚静，休囚静不能反伤旺静；即使休囚，动爻仍可作用于旺静。这个节点只显示箭头能否通过。",
+  "cases": [
+    {"id":"strong_still_to_weak_still","label":"旺静 → 衰静","attacker":{"motion":"静","strength":"旺相"},"target":{"motion":"静","strength":"休囚"},"relation":"生／克","allowed":true,"rule":"两爻俱静，以旺为先","note":"旺相静爻可以生克休囚静爻。"},
+    {"id":"weak_still_to_strong_still","label":"衰静 → 旺静","attacker":{"motion":"静","strength":"休囚"},"target":{"motion":"静","strength":"旺相"},"relation":"生／克","allowed":false,"rule":"衰静伤不得旺静","note":"休囚静爻不能反向生克旺相静爻。"},
+    {"id":"weak_moving_to_strong_still","label":"衰动 → 旺静","attacker":{"motion":"动","strength":"休囚"},"target":{"motion":"静","strength":"旺相"},"relation":"生／克／刑冲","allowed":true,"rule":"有动，以动为急","note":"动爻虽休囚，仍可作用于旺相静爻。"},
+    {"id":"strong_still_to_weak_moving","label":"旺静 → 衰动","attacker":{"motion":"静","strength":"旺相"},"target":{"motion":"动","strength":"休囚"},"relation":"生／克／刑冲","allowed":false,"rule":"静爻伤不得动爻","note":"静爻虽旺，不据此反压已经发动的爻。"}
+  ],
+  "priority_rules": [
+    {"label":"都静","priority":"先比旺衰","formula":"旺静 → 衰静"},
+    {"label":"一动一静","priority":"先看动静","formula":"动爻 → 静爻"},
+    {"label":"日辰与卦爻","priority":"外力单向","formula":"日辰 → 卦爻"}
+  ],
+  "scope_notes": [
+    "这里比较的是两爻之间的作用许可，不重新计算原神、忌神是谁。",
+    "日辰能够作用卦爻、卦爻不反作用日辰，是来源保存的另一条方向边界。"
+  ],
+  "reading_boundary": "只展示四种有明确来源支持的比较，不补写动动、旺旺等未在本章确定的组合，也不把箭头通断翻译成事项结果。",
+  "internal_review": {"status":"zengshan_and_huangjince_action_priority_with_locked_predicate_cross_checked","reviewed_at":"2026-08-05","source_refs":["zengshan_buyi_chapter_14_wikisource","bushi_quanshu_huangjince_ctext_428169_lines_108_111","github_horace_maxwell_power_can_ke"]}
+}

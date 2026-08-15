@@ -1,0 +1,1779 @@
+{
+  "schema_version": "1.0.0",
+  "id": "yijing_sixty_four_hexagram_index",
+  "title": "六十四卦共享基础索引",
+  "summary": "把八个经卦的三爻编码、六十四种上下相重关系与文王卦序合成一份共享结构索引。六位编码始终按上爻至初爻保存，文王序号则是另一条独立排序；两者不得互相替代。梅花易数只从这里读取卦名与卦形，不把共享底层重复建设成专题卡片。",
+  "encoding_convention": {
+    "code_order": "六位编码从上爻到初爻；前三位为外卦，后三位为内卦",
+    "line_values": {
+      "1": "阳",
+      "0": "阴"
+    },
+    "display_order": "界面可从上爻向初爻绘制；计算动爻时仍从初爻向上编号",
+    "sequence_boundary": "文王卦序是一至六十四的名称排序，不是8×8外卦／内卦枚举位置"
+  },
+  "trigrams": [
+    {
+      "name": "乾",
+      "symbol": "☰",
+      "image": "天",
+      "code": "111"
+    },
+    {
+      "name": "兑",
+      "symbol": "☱",
+      "image": "泽",
+      "code": "011"
+    },
+    {
+      "name": "离",
+      "symbol": "☲",
+      "image": "火",
+      "code": "101"
+    },
+    {
+      "name": "震",
+      "symbol": "☳",
+      "image": "雷",
+      "code": "001"
+    },
+    {
+      "name": "巽",
+      "symbol": "☴",
+      "image": "风",
+      "code": "110"
+    },
+    {
+      "name": "坎",
+      "symbol": "☵",
+      "image": "水",
+      "code": "010"
+    },
+    {
+      "name": "艮",
+      "symbol": "☶",
+      "image": "山",
+      "code": "100"
+    },
+    {
+      "name": "坤",
+      "symbol": "☷",
+      "image": "地",
+      "code": "000"
+    }
+  ],
+  "hexagrams": [
+    {
+      "king_wen_number": 1,
+      "unicode_symbol": "䷀",
+      "name": "乾为天",
+      "code_top_to_bottom": "111111",
+      "outer_trigram": "乾",
+      "outer_symbol": "☰",
+      "inner_trigram": "乾",
+      "inner_symbol": "☰",
+      "lines_top_to_bottom": [
+        "阳",
+        "阳",
+        "阳",
+        "阳",
+        "阳",
+        "阳"
+      ],
+      "lines_bottom_to_top": [
+        "阳",
+        "阳",
+        "阳",
+        "阳",
+        "阳",
+        "阳"
+      ]
+    },
+    {
+      "king_wen_number": 2,
+      "unicode_symbol": "䷁",
+      "name": "坤为地",
+      "code_top_to_bottom": "000000",
+      "outer_trigram": "坤",
+      "outer_symbol": "☷",
+      "inner_trigram": "坤",
+      "inner_symbol": "☷",
+      "lines_top_to_bottom": [
+        "阴",
+        "阴",
+        "阴",
+        "阴",
+        "阴",
+        "阴"
+      ],
+      "lines_bottom_to_top": [
+        "阴",
+        "阴",
+        "阴",
+        "阴",
+        "阴",
+        "阴"
+      ]
+    },
+    {
+      "king_wen_number": 3,
+      "unicode_symbol": "䷂",
+      "name": "水雷屯",
+      "code_top_to_bottom": "010001",
+      "outer_trigram": "坎",
+      "outer_symbol": "☵",
+      "inner_trigram": "震",
+      "inner_symbol": "☳",
+      "lines_top_to_bottom": [
+        "阴",
+        "阳",
+        "阴",
+        "阴",
+        "阴",
+        "阳"
+      ],
+      "lines_bottom_to_top": [
+        "阳",
+        "阴",
+        "阴",
+        "阴",
+        "阳",
+        "阴"
+      ]
+    },
+    {
+      "king_wen_number": 4,
+      "unicode_symbol": "䷃",
+      "name": "山水蒙",
+      "code_top_to_bottom": "100010",
+      "outer_trigram": "艮",
+      "outer_symbol": "☶",
+      "inner_trigram": "坎",
+      "inner_symbol": "☵",
+      "lines_top_to_bottom": [
+        "阳",
+        "阴",
+        "阴",
+        "阴",
+        "阳",
+        "阴"
+      ],
+      "lines_bottom_to_top": [
+        "阴",
+        "阳",
+        "阴",
+        "阴",
+        "阴",
+        "阳"
+      ]
+    },
+    {
+      "king_wen_number": 5,
+      "unicode_symbol": "䷄",
+      "name": "水天需",
+      "code_top_to_bottom": "010111",
+      "outer_trigram": "坎",
+      "outer_symbol": "☵",
+      "inner_trigram": "乾",
+      "inner_symbol": "☰",
+      "lines_top_to_bottom": [
+        "阴",
+        "阳",
+        "阴",
+        "阳",
+        "阳",
+        "阳"
+      ],
+      "lines_bottom_to_top": [
+        "阳",
+        "阳",
+        "阳",
+        "阴",
+        "阳",
+        "阴"
+      ]
+    },
+    {
+      "king_wen_number": 6,
+      "unicode_symbol": "䷅",
+      "name": "天水讼",
+      "code_top_to_bottom": "111010",
+      "outer_trigram": "乾",
+      "outer_symbol": "☰",
+      "inner_trigram": "坎",
+      "inner_symbol": "☵",
+      "lines_top_to_bottom": [
+        "阳",
+        "阳",
+        "阳",
+        "阴",
+        "阳",
+        "阴"
+      ],
+      "lines_bottom_to_top": [
+        "阴",
+        "阳",
+        "阴",
+        "阳",
+        "阳",
+        "阳"
+      ]
+    },
+    {
+      "king_wen_number": 7,
+      "unicode_symbol": "䷆",
+      "name": "地水师",
+      "code_top_to_bottom": "000010",
+      "outer_trigram": "坤",
+      "outer_symbol": "☷",
+      "inner_trigram": "坎",
+      "inner_symbol": "☵",
+      "lines_top_to_bottom": [
+        "阴",
+        "阴",
+        "阴",
+        "阴",
+        "阳",
+        "阴"
+      ],
+      "lines_bottom_to_top": [
+        "阴",
+        "阳",
+        "阴",
+        "阴",
+        "阴",
+        "阴"
+      ]
+    },
+    {
+      "king_wen_number": 8,
+      "unicode_symbol": "䷇",
+      "name": "水地比",
+      "code_top_to_bottom": "010000",
+      "outer_trigram": "坎",
+      "outer_symbol": "☵",
+      "inner_trigram": "坤",
+      "inner_symbol": "☷",
+      "lines_top_to_bottom": [
+        "阴",
+        "阳",
+        "阴",
+        "阴",
+        "阴",
+        "阴"
+      ],
+      "lines_bottom_to_top": [
+        "阴",
+        "阴",
+        "阴",
+        "阴",
+        "阳",
+        "阴"
+      ]
+    },
+    {
+      "king_wen_number": 9,
+      "unicode_symbol": "䷈",
+      "name": "风天小畜",
+      "code_top_to_bottom": "110111",
+      "outer_trigram": "巽",
+      "outer_symbol": "☴",
+      "inner_trigram": "乾",
+      "inner_symbol": "☰",
+      "lines_top_to_bottom": [
+        "阳",
+        "阳",
+        "阴",
+        "阳",
+        "阳",
+        "阳"
+      ],
+      "lines_bottom_to_top": [
+        "阳",
+        "阳",
+        "阳",
+        "阴",
+        "阳",
+        "阳"
+      ]
+    },
+    {
+      "king_wen_number": 10,
+      "unicode_symbol": "䷉",
+      "name": "天泽履",
+      "code_top_to_bottom": "111011",
+      "outer_trigram": "乾",
+      "outer_symbol": "☰",
+      "inner_trigram": "兑",
+      "inner_symbol": "☱",
+      "lines_top_to_bottom": [
+        "阳",
+        "阳",
+        "阳",
+        "阴",
+        "阳",
+        "阳"
+      ],
+      "lines_bottom_to_top": [
+        "阳",
+        "阳",
+        "阴",
+        "阳",
+        "阳",
+        "阳"
+      ]
+    },
+    {
+      "king_wen_number": 11,
+      "unicode_symbol": "䷊",
+      "name": "地天泰",
+      "code_top_to_bottom": "000111",
+      "outer_trigram": "坤",
+      "outer_symbol": "☷",
+      "inner_trigram": "乾",
+      "inner_symbol": "☰",
+      "lines_top_to_bottom": [
+        "阴",
+        "阴",
+        "阴",
+        "阳",
+        "阳",
+        "阳"
+      ],
+      "lines_bottom_to_top": [
+        "阳",
+        "阳",
+        "阳",
+        "阴",
+        "阴",
+        "阴"
+      ]
+    },
+    {
+      "king_wen_number": 12,
+      "unicode_symbol": "䷋",
+      "name": "天地否",
+      "code_top_to_bottom": "111000",
+      "outer_trigram": "乾",
+      "outer_symbol": "☰",
+      "inner_trigram": "坤",
+      "inner_symbol": "☷",
+      "lines_top_to_bottom": [
+        "阳",
+        "阳",
+        "阳",
+        "阴",
+        "阴",
+        "阴"
+      ],
+      "lines_bottom_to_top": [
+        "阴",
+        "阴",
+        "阴",
+        "阳",
+        "阳",
+        "阳"
+      ]
+    },
+    {
+      "king_wen_number": 13,
+      "unicode_symbol": "䷌",
+      "name": "天火同人",
+      "code_top_to_bottom": "111101",
+      "outer_trigram": "乾",
+      "outer_symbol": "☰",
+      "inner_trigram": "离",
+      "inner_symbol": "☲",
+      "lines_top_to_bottom": [
+        "阳",
+        "阳",
+        "阳",
+        "阳",
+        "阴",
+        "阳"
+      ],
+      "lines_bottom_to_top": [
+        "阳",
+        "阴",
+        "阳",
+        "阳",
+        "阳",
+        "阳"
+      ]
+    },
+    {
+      "king_wen_number": 14,
+      "unicode_symbol": "䷍",
+      "name": "火天大有",
+      "code_top_to_bottom": "101111",
+      "outer_trigram": "离",
+      "outer_symbol": "☲",
+      "inner_trigram": "乾",
+      "inner_symbol": "☰",
+      "lines_top_to_bottom": [
+        "阳",
+        "阴",
+        "阳",
+        "阳",
+        "阳",
+        "阳"
+      ],
+      "lines_bottom_to_top": [
+        "阳",
+        "阳",
+        "阳",
+        "阳",
+        "阴",
+        "阳"
+      ]
+    },
+    {
+      "king_wen_number": 15,
+      "unicode_symbol": "䷎",
+      "name": "地山谦",
+      "code_top_to_bottom": "000100",
+      "outer_trigram": "坤",
+      "outer_symbol": "☷",
+      "inner_trigram": "艮",
+      "inner_symbol": "☶",
+      "lines_top_to_bottom": [
+        "阴",
+        "阴",
+        "阴",
+        "阳",
+        "阴",
+        "阴"
+      ],
+      "lines_bottom_to_top": [
+        "阴",
+        "阴",
+        "阳",
+        "阴",
+        "阴",
+        "阴"
+      ]
+    },
+    {
+      "king_wen_number": 16,
+      "unicode_symbol": "䷏",
+      "name": "雷地豫",
+      "code_top_to_bottom": "001000",
+      "outer_trigram": "震",
+      "outer_symbol": "☳",
+      "inner_trigram": "坤",
+      "inner_symbol": "☷",
+      "lines_top_to_bottom": [
+        "阴",
+        "阴",
+        "阳",
+        "阴",
+        "阴",
+        "阴"
+      ],
+      "lines_bottom_to_top": [
+        "阴",
+        "阴",
+        "阴",
+        "阳",
+        "阴",
+        "阴"
+      ]
+    },
+    {
+      "king_wen_number": 17,
+      "unicode_symbol": "䷐",
+      "name": "泽雷随",
+      "code_top_to_bottom": "011001",
+      "outer_trigram": "兑",
+      "outer_symbol": "☱",
+      "inner_trigram": "震",
+      "inner_symbol": "☳",
+      "lines_top_to_bottom": [
+        "阴",
+        "阳",
+        "阳",
+        "阴",
+        "阴",
+        "阳"
+      ],
+      "lines_bottom_to_top": [
+        "阳",
+        "阴",
+        "阴",
+        "阳",
+        "阳",
+        "阴"
+      ]
+    },
+    {
+      "king_wen_number": 18,
+      "unicode_symbol": "䷑",
+      "name": "山风蛊",
+      "code_top_to_bottom": "100110",
+      "outer_trigram": "艮",
+      "outer_symbol": "☶",
+      "inner_trigram": "巽",
+      "inner_symbol": "☴",
+      "lines_top_to_bottom": [
+        "阳",
+        "阴",
+        "阴",
+        "阳",
+        "阳",
+        "阴"
+      ],
+      "lines_bottom_to_top": [
+        "阴",
+        "阳",
+        "阳",
+        "阴",
+        "阴",
+        "阳"
+      ]
+    },
+    {
+      "king_wen_number": 19,
+      "unicode_symbol": "䷒",
+      "name": "地泽临",
+      "code_top_to_bottom": "000011",
+      "outer_trigram": "坤",
+      "outer_symbol": "☷",
+      "inner_trigram": "兑",
+      "inner_symbol": "☱",
+      "lines_top_to_bottom": [
+        "阴",
+        "阴",
+        "阴",
+        "阴",
+        "阳",
+        "阳"
+      ],
+      "lines_bottom_to_top": [
+        "阳",
+        "阳",
+        "阴",
+        "阴",
+        "阴",
+        "阴"
+      ]
+    },
+    {
+      "king_wen_number": 20,
+      "unicode_symbol": "䷓",
+      "name": "风地观",
+      "code_top_to_bottom": "110000",
+      "outer_trigram": "巽",
+      "outer_symbol": "☴",
+      "inner_trigram": "坤",
+      "inner_symbol": "☷",
+      "lines_top_to_bottom": [
+        "阳",
+        "阳",
+        "阴",
+        "阴",
+        "阴",
+        "阴"
+      ],
+      "lines_bottom_to_top": [
+        "阴",
+        "阴",
+        "阴",
+        "阴",
+        "阳",
+        "阳"
+      ]
+    },
+    {
+      "king_wen_number": 21,
+      "unicode_symbol": "䷔",
+      "name": "火雷噬嗑",
+      "code_top_to_bottom": "101001",
+      "outer_trigram": "离",
+      "outer_symbol": "☲",
+      "inner_trigram": "震",
+      "inner_symbol": "☳",
+      "lines_top_to_bottom": [
+        "阳",
+        "阴",
+        "阳",
+        "阴",
+        "阴",
+        "阳"
+      ],
+      "lines_bottom_to_top": [
+        "阳",
+        "阴",
+        "阴",
+        "阳",
+        "阴",
+        "阳"
+      ]
+    },
+    {
+      "king_wen_number": 22,
+      "unicode_symbol": "䷕",
+      "name": "山火贲",
+      "code_top_to_bottom": "100101",
+      "outer_trigram": "艮",
+      "outer_symbol": "☶",
+      "inner_trigram": "离",
+      "inner_symbol": "☲",
+      "lines_top_to_bottom": [
+        "阳",
+        "阴",
+        "阴",
+        "阳",
+        "阴",
+        "阳"
+      ],
+      "lines_bottom_to_top": [
+        "阳",
+        "阴",
+        "阳",
+        "阴",
+        "阴",
+        "阳"
+      ]
+    },
+    {
+      "king_wen_number": 23,
+      "unicode_symbol": "䷖",
+      "name": "山地剥",
+      "code_top_to_bottom": "100000",
+      "outer_trigram": "艮",
+      "outer_symbol": "☶",
+      "inner_trigram": "坤",
+      "inner_symbol": "☷",
+      "lines_top_to_bottom": [
+        "阳",
+        "阴",
+        "阴",
+        "阴",
+        "阴",
+        "阴"
+      ],
+      "lines_bottom_to_top": [
+        "阴",
+        "阴",
+        "阴",
+        "阴",
+        "阴",
+        "阳"
+      ]
+    },
+    {
+      "king_wen_number": 24,
+      "unicode_symbol": "䷗",
+      "name": "地雷复",
+      "code_top_to_bottom": "000001",
+      "outer_trigram": "坤",
+      "outer_symbol": "☷",
+      "inner_trigram": "震",
+      "inner_symbol": "☳",
+      "lines_top_to_bottom": [
+        "阴",
+        "阴",
+        "阴",
+        "阴",
+        "阴",
+        "阳"
+      ],
+      "lines_bottom_to_top": [
+        "阳",
+        "阴",
+        "阴",
+        "阴",
+        "阴",
+        "阴"
+      ]
+    },
+    {
+      "king_wen_number": 25,
+      "unicode_symbol": "䷘",
+      "name": "天雷无妄",
+      "code_top_to_bottom": "111001",
+      "outer_trigram": "乾",
+      "outer_symbol": "☰",
+      "inner_trigram": "震",
+      "inner_symbol": "☳",
+      "lines_top_to_bottom": [
+        "阳",
+        "阳",
+        "阳",
+        "阴",
+        "阴",
+        "阳"
+      ],
+      "lines_bottom_to_top": [
+        "阳",
+        "阴",
+        "阴",
+        "阳",
+        "阳",
+        "阳"
+      ]
+    },
+    {
+      "king_wen_number": 26,
+      "unicode_symbol": "䷙",
+      "name": "山天大畜",
+      "code_top_to_bottom": "100111",
+      "outer_trigram": "艮",
+      "outer_symbol": "☶",
+      "inner_trigram": "乾",
+      "inner_symbol": "☰",
+      "lines_top_to_bottom": [
+        "阳",
+        "阴",
+        "阴",
+        "阳",
+        "阳",
+        "阳"
+      ],
+      "lines_bottom_to_top": [
+        "阳",
+        "阳",
+        "阳",
+        "阴",
+        "阴",
+        "阳"
+      ]
+    },
+    {
+      "king_wen_number": 27,
+      "unicode_symbol": "䷚",
+      "name": "山雷颐",
+      "code_top_to_bottom": "100001",
+      "outer_trigram": "艮",
+      "outer_symbol": "☶",
+      "inner_trigram": "震",
+      "inner_symbol": "☳",
+      "lines_top_to_bottom": [
+        "阳",
+        "阴",
+        "阴",
+        "阴",
+        "阴",
+        "阳"
+      ],
+      "lines_bottom_to_top": [
+        "阳",
+        "阴",
+        "阴",
+        "阴",
+        "阴",
+        "阳"
+      ]
+    },
+    {
+      "king_wen_number": 28,
+      "unicode_symbol": "䷛",
+      "name": "泽风大过",
+      "code_top_to_bottom": "011110",
+      "outer_trigram": "兑",
+      "outer_symbol": "☱",
+      "inner_trigram": "巽",
+      "inner_symbol": "☴",
+      "lines_top_to_bottom": [
+        "阴",
+        "阳",
+        "阳",
+        "阳",
+        "阳",
+        "阴"
+      ],
+      "lines_bottom_to_top": [
+        "阴",
+        "阳",
+        "阳",
+        "阳",
+        "阳",
+        "阴"
+      ]
+    },
+    {
+      "king_wen_number": 29,
+      "unicode_symbol": "䷜",
+      "name": "坎为水",
+      "code_top_to_bottom": "010010",
+      "outer_trigram": "坎",
+      "outer_symbol": "☵",
+      "inner_trigram": "坎",
+      "inner_symbol": "☵",
+      "lines_top_to_bottom": [
+        "阴",
+        "阳",
+        "阴",
+        "阴",
+        "阳",
+        "阴"
+      ],
+      "lines_bottom_to_top": [
+        "阴",
+        "阳",
+        "阴",
+        "阴",
+        "阳",
+        "阴"
+      ]
+    },
+    {
+      "king_wen_number": 30,
+      "unicode_symbol": "䷝",
+      "name": "离为火",
+      "code_top_to_bottom": "101101",
+      "outer_trigram": "离",
+      "outer_symbol": "☲",
+      "inner_trigram": "离",
+      "inner_symbol": "☲",
+      "lines_top_to_bottom": [
+        "阳",
+        "阴",
+        "阳",
+        "阳",
+        "阴",
+        "阳"
+      ],
+      "lines_bottom_to_top": [
+        "阳",
+        "阴",
+        "阳",
+        "阳",
+        "阴",
+        "阳"
+      ]
+    },
+    {
+      "king_wen_number": 31,
+      "unicode_symbol": "䷞",
+      "name": "泽山咸",
+      "code_top_to_bottom": "011100",
+      "outer_trigram": "兑",
+      "outer_symbol": "☱",
+      "inner_trigram": "艮",
+      "inner_symbol": "☶",
+      "lines_top_to_bottom": [
+        "阴",
+        "阳",
+        "阳",
+        "阳",
+        "阴",
+        "阴"
+      ],
+      "lines_bottom_to_top": [
+        "阴",
+        "阴",
+        "阳",
+        "阳",
+        "阳",
+        "阴"
+      ]
+    },
+    {
+      "king_wen_number": 32,
+      "unicode_symbol": "䷟",
+      "name": "雷风恒",
+      "code_top_to_bottom": "001110",
+      "outer_trigram": "震",
+      "outer_symbol": "☳",
+      "inner_trigram": "巽",
+      "inner_symbol": "☴",
+      "lines_top_to_bottom": [
+        "阴",
+        "阴",
+        "阳",
+        "阳",
+        "阳",
+        "阴"
+      ],
+      "lines_bottom_to_top": [
+        "阴",
+        "阳",
+        "阳",
+        "阳",
+        "阴",
+        "阴"
+      ]
+    },
+    {
+      "king_wen_number": 33,
+      "unicode_symbol": "䷠",
+      "name": "天山遁",
+      "code_top_to_bottom": "111100",
+      "outer_trigram": "乾",
+      "outer_symbol": "☰",
+      "inner_trigram": "艮",
+      "inner_symbol": "☶",
+      "lines_top_to_bottom": [
+        "阳",
+        "阳",
+        "阳",
+        "阳",
+        "阴",
+        "阴"
+      ],
+      "lines_bottom_to_top": [
+        "阴",
+        "阴",
+        "阳",
+        "阳",
+        "阳",
+        "阳"
+      ]
+    },
+    {
+      "king_wen_number": 34,
+      "unicode_symbol": "䷡",
+      "name": "雷天大壮",
+      "code_top_to_bottom": "001111",
+      "outer_trigram": "震",
+      "outer_symbol": "☳",
+      "inner_trigram": "乾",
+      "inner_symbol": "☰",
+      "lines_top_to_bottom": [
+        "阴",
+        "阴",
+        "阳",
+        "阳",
+        "阳",
+        "阳"
+      ],
+      "lines_bottom_to_top": [
+        "阳",
+        "阳",
+        "阳",
+        "阳",
+        "阴",
+        "阴"
+      ]
+    },
+    {
+      "king_wen_number": 35,
+      "unicode_symbol": "䷢",
+      "name": "火地晋",
+      "code_top_to_bottom": "101000",
+      "outer_trigram": "离",
+      "outer_symbol": "☲",
+      "inner_trigram": "坤",
+      "inner_symbol": "☷",
+      "lines_top_to_bottom": [
+        "阳",
+        "阴",
+        "阳",
+        "阴",
+        "阴",
+        "阴"
+      ],
+      "lines_bottom_to_top": [
+        "阴",
+        "阴",
+        "阴",
+        "阳",
+        "阴",
+        "阳"
+      ]
+    },
+    {
+      "king_wen_number": 36,
+      "unicode_symbol": "䷣",
+      "name": "地火明夷",
+      "code_top_to_bottom": "000101",
+      "outer_trigram": "坤",
+      "outer_symbol": "☷",
+      "inner_trigram": "离",
+      "inner_symbol": "☲",
+      "lines_top_to_bottom": [
+        "阴",
+        "阴",
+        "阴",
+        "阳",
+        "阴",
+        "阳"
+      ],
+      "lines_bottom_to_top": [
+        "阳",
+        "阴",
+        "阳",
+        "阴",
+        "阴",
+        "阴"
+      ]
+    },
+    {
+      "king_wen_number": 37,
+      "unicode_symbol": "䷤",
+      "name": "风火家人",
+      "code_top_to_bottom": "110101",
+      "outer_trigram": "巽",
+      "outer_symbol": "☴",
+      "inner_trigram": "离",
+      "inner_symbol": "☲",
+      "lines_top_to_bottom": [
+        "阳",
+        "阳",
+        "阴",
+        "阳",
+        "阴",
+        "阳"
+      ],
+      "lines_bottom_to_top": [
+        "阳",
+        "阴",
+        "阳",
+        "阴",
+        "阳",
+        "阳"
+      ]
+    },
+    {
+      "king_wen_number": 38,
+      "unicode_symbol": "䷥",
+      "name": "火泽睽",
+      "code_top_to_bottom": "101011",
+      "outer_trigram": "离",
+      "outer_symbol": "☲",
+      "inner_trigram": "兑",
+      "inner_symbol": "☱",
+      "lines_top_to_bottom": [
+        "阳",
+        "阴",
+        "阳",
+        "阴",
+        "阳",
+        "阳"
+      ],
+      "lines_bottom_to_top": [
+        "阳",
+        "阳",
+        "阴",
+        "阳",
+        "阴",
+        "阳"
+      ]
+    },
+    {
+      "king_wen_number": 39,
+      "unicode_symbol": "䷦",
+      "name": "水山蹇",
+      "code_top_to_bottom": "010100",
+      "outer_trigram": "坎",
+      "outer_symbol": "☵",
+      "inner_trigram": "艮",
+      "inner_symbol": "☶",
+      "lines_top_to_bottom": [
+        "阴",
+        "阳",
+        "阴",
+        "阳",
+        "阴",
+        "阴"
+      ],
+      "lines_bottom_to_top": [
+        "阴",
+        "阴",
+        "阳",
+        "阴",
+        "阳",
+        "阴"
+      ]
+    },
+    {
+      "king_wen_number": 40,
+      "unicode_symbol": "䷧",
+      "name": "雷水解",
+      "code_top_to_bottom": "001010",
+      "outer_trigram": "震",
+      "outer_symbol": "☳",
+      "inner_trigram": "坎",
+      "inner_symbol": "☵",
+      "lines_top_to_bottom": [
+        "阴",
+        "阴",
+        "阳",
+        "阴",
+        "阳",
+        "阴"
+      ],
+      "lines_bottom_to_top": [
+        "阴",
+        "阳",
+        "阴",
+        "阳",
+        "阴",
+        "阴"
+      ]
+    },
+    {
+      "king_wen_number": 41,
+      "unicode_symbol": "䷨",
+      "name": "山泽损",
+      "code_top_to_bottom": "100011",
+      "outer_trigram": "艮",
+      "outer_symbol": "☶",
+      "inner_trigram": "兑",
+      "inner_symbol": "☱",
+      "lines_top_to_bottom": [
+        "阳",
+        "阴",
+        "阴",
+        "阴",
+        "阳",
+        "阳"
+      ],
+      "lines_bottom_to_top": [
+        "阳",
+        "阳",
+        "阴",
+        "阴",
+        "阴",
+        "阳"
+      ]
+    },
+    {
+      "king_wen_number": 42,
+      "unicode_symbol": "䷩",
+      "name": "风雷益",
+      "code_top_to_bottom": "110001",
+      "outer_trigram": "巽",
+      "outer_symbol": "☴",
+      "inner_trigram": "震",
+      "inner_symbol": "☳",
+      "lines_top_to_bottom": [
+        "阳",
+        "阳",
+        "阴",
+        "阴",
+        "阴",
+        "阳"
+      ],
+      "lines_bottom_to_top": [
+        "阳",
+        "阴",
+        "阴",
+        "阴",
+        "阳",
+        "阳"
+      ]
+    },
+    {
+      "king_wen_number": 43,
+      "unicode_symbol": "䷪",
+      "name": "泽天夬",
+      "code_top_to_bottom": "011111",
+      "outer_trigram": "兑",
+      "outer_symbol": "☱",
+      "inner_trigram": "乾",
+      "inner_symbol": "☰",
+      "lines_top_to_bottom": [
+        "阴",
+        "阳",
+        "阳",
+        "阳",
+        "阳",
+        "阳"
+      ],
+      "lines_bottom_to_top": [
+        "阳",
+        "阳",
+        "阳",
+        "阳",
+        "阳",
+        "阴"
+      ]
+    },
+    {
+      "king_wen_number": 44,
+      "unicode_symbol": "䷫",
+      "name": "天风姤",
+      "code_top_to_bottom": "111110",
+      "outer_trigram": "乾",
+      "outer_symbol": "☰",
+      "inner_trigram": "巽",
+      "inner_symbol": "☴",
+      "lines_top_to_bottom": [
+        "阳",
+        "阳",
+        "阳",
+        "阳",
+        "阳",
+        "阴"
+      ],
+      "lines_bottom_to_top": [
+        "阴",
+        "阳",
+        "阳",
+        "阳",
+        "阳",
+        "阳"
+      ]
+    },
+    {
+      "king_wen_number": 45,
+      "unicode_symbol": "䷬",
+      "name": "泽地萃",
+      "code_top_to_bottom": "011000",
+      "outer_trigram": "兑",
+      "outer_symbol": "☱",
+      "inner_trigram": "坤",
+      "inner_symbol": "☷",
+      "lines_top_to_bottom": [
+        "阴",
+        "阳",
+        "阳",
+        "阴",
+        "阴",
+        "阴"
+      ],
+      "lines_bottom_to_top": [
+        "阴",
+        "阴",
+        "阴",
+        "阳",
+        "阳",
+        "阴"
+      ]
+    },
+    {
+      "king_wen_number": 46,
+      "unicode_symbol": "䷭",
+      "name": "地风升",
+      "code_top_to_bottom": "000110",
+      "outer_trigram": "坤",
+      "outer_symbol": "☷",
+      "inner_trigram": "巽",
+      "inner_symbol": "☴",
+      "lines_top_to_bottom": [
+        "阴",
+        "阴",
+        "阴",
+        "阳",
+        "阳",
+        "阴"
+      ],
+      "lines_bottom_to_top": [
+        "阴",
+        "阳",
+        "阳",
+        "阴",
+        "阴",
+        "阴"
+      ]
+    },
+    {
+      "king_wen_number": 47,
+      "unicode_symbol": "䷮",
+      "name": "泽水困",
+      "code_top_to_bottom": "011010",
+      "outer_trigram": "兑",
+      "outer_symbol": "☱",
+      "inner_trigram": "坎",
+      "inner_symbol": "☵",
+      "lines_top_to_bottom": [
+        "阴",
+        "阳",
+        "阳",
+        "阴",
+        "阳",
+        "阴"
+      ],
+      "lines_bottom_to_top": [
+        "阴",
+        "阳",
+        "阴",
+        "阳",
+        "阳",
+        "阴"
+      ]
+    },
+    {
+      "king_wen_number": 48,
+      "unicode_symbol": "䷯",
+      "name": "水风井",
+      "code_top_to_bottom": "010110",
+      "outer_trigram": "坎",
+      "outer_symbol": "☵",
+      "inner_trigram": "巽",
+      "inner_symbol": "☴",
+      "lines_top_to_bottom": [
+        "阴",
+        "阳",
+        "阴",
+        "阳",
+        "阳",
+        "阴"
+      ],
+      "lines_bottom_to_top": [
+        "阴",
+        "阳",
+        "阳",
+        "阴",
+        "阳",
+        "阴"
+      ]
+    },
+    {
+      "king_wen_number": 49,
+      "unicode_symbol": "䷰",
+      "name": "泽火革",
+      "code_top_to_bottom": "011101",
+      "outer_trigram": "兑",
+      "outer_symbol": "☱",
+      "inner_trigram": "离",
+      "inner_symbol": "☲",
+      "lines_top_to_bottom": [
+        "阴",
+        "阳",
+        "阳",
+        "阳",
+        "阴",
+        "阳"
+      ],
+      "lines_bottom_to_top": [
+        "阳",
+        "阴",
+        "阳",
+        "阳",
+        "阳",
+        "阴"
+      ]
+    },
+    {
+      "king_wen_number": 50,
+      "unicode_symbol": "䷱",
+      "name": "火风鼎",
+      "code_top_to_bottom": "101110",
+      "outer_trigram": "离",
+      "outer_symbol": "☲",
+      "inner_trigram": "巽",
+      "inner_symbol": "☴",
+      "lines_top_to_bottom": [
+        "阳",
+        "阴",
+        "阳",
+        "阳",
+        "阳",
+        "阴"
+      ],
+      "lines_bottom_to_top": [
+        "阴",
+        "阳",
+        "阳",
+        "阳",
+        "阴",
+        "阳"
+      ]
+    },
+    {
+      "king_wen_number": 51,
+      "unicode_symbol": "䷲",
+      "name": "震为雷",
+      "code_top_to_bottom": "001001",
+      "outer_trigram": "震",
+      "outer_symbol": "☳",
+      "inner_trigram": "震",
+      "inner_symbol": "☳",
+      "lines_top_to_bottom": [
+        "阴",
+        "阴",
+        "阳",
+        "阴",
+        "阴",
+        "阳"
+      ],
+      "lines_bottom_to_top": [
+        "阳",
+        "阴",
+        "阴",
+        "阳",
+        "阴",
+        "阴"
+      ]
+    },
+    {
+      "king_wen_number": 52,
+      "unicode_symbol": "䷳",
+      "name": "艮为山",
+      "code_top_to_bottom": "100100",
+      "outer_trigram": "艮",
+      "outer_symbol": "☶",
+      "inner_trigram": "艮",
+      "inner_symbol": "☶",
+      "lines_top_to_bottom": [
+        "阳",
+        "阴",
+        "阴",
+        "阳",
+        "阴",
+        "阴"
+      ],
+      "lines_bottom_to_top": [
+        "阴",
+        "阴",
+        "阳",
+        "阴",
+        "阴",
+        "阳"
+      ]
+    },
+    {
+      "king_wen_number": 53,
+      "unicode_symbol": "䷴",
+      "name": "风山渐",
+      "code_top_to_bottom": "110100",
+      "outer_trigram": "巽",
+      "outer_symbol": "☴",
+      "inner_trigram": "艮",
+      "inner_symbol": "☶",
+      "lines_top_to_bottom": [
+        "阳",
+        "阳",
+        "阴",
+        "阳",
+        "阴",
+        "阴"
+      ],
+      "lines_bottom_to_top": [
+        "阴",
+        "阴",
+        "阳",
+        "阴",
+        "阳",
+        "阳"
+      ]
+    },
+    {
+      "king_wen_number": 54,
+      "unicode_symbol": "䷵",
+      "name": "雷泽归妹",
+      "code_top_to_bottom": "001011",
+      "outer_trigram": "震",
+      "outer_symbol": "☳",
+      "inner_trigram": "兑",
+      "inner_symbol": "☱",
+      "lines_top_to_bottom": [
+        "阴",
+        "阴",
+        "阳",
+        "阴",
+        "阳",
+        "阳"
+      ],
+      "lines_bottom_to_top": [
+        "阳",
+        "阳",
+        "阴",
+        "阳",
+        "阴",
+        "阴"
+      ]
+    },
+    {
+      "king_wen_number": 55,
+      "unicode_symbol": "䷶",
+      "name": "雷火丰",
+      "code_top_to_bottom": "001101",
+      "outer_trigram": "震",
+      "outer_symbol": "☳",
+      "inner_trigram": "离",
+      "inner_symbol": "☲",
+      "lines_top_to_bottom": [
+        "阴",
+        "阴",
+        "阳",
+        "阳",
+        "阴",
+        "阳"
+      ],
+      "lines_bottom_to_top": [
+        "阳",
+        "阴",
+        "阳",
+        "阳",
+        "阴",
+        "阴"
+      ]
+    },
+    {
+      "king_wen_number": 56,
+      "unicode_symbol": "䷷",
+      "name": "火山旅",
+      "code_top_to_bottom": "101100",
+      "outer_trigram": "离",
+      "outer_symbol": "☲",
+      "inner_trigram": "艮",
+      "inner_symbol": "☶",
+      "lines_top_to_bottom": [
+        "阳",
+        "阴",
+        "阳",
+        "阳",
+        "阴",
+        "阴"
+      ],
+      "lines_bottom_to_top": [
+        "阴",
+        "阴",
+        "阳",
+        "阳",
+        "阴",
+        "阳"
+      ]
+    },
+    {
+      "king_wen_number": 57,
+      "unicode_symbol": "䷸",
+      "name": "巽为风",
+      "code_top_to_bottom": "110110",
+      "outer_trigram": "巽",
+      "outer_symbol": "☴",
+      "inner_trigram": "巽",
+      "inner_symbol": "☴",
+      "lines_top_to_bottom": [
+        "阳",
+        "阳",
+        "阴",
+        "阳",
+        "阳",
+        "阴"
+      ],
+      "lines_bottom_to_top": [
+        "阴",
+        "阳",
+        "阳",
+        "阴",
+        "阳",
+        "阳"
+      ]
+    },
+    {
+      "king_wen_number": 58,
+      "unicode_symbol": "䷹",
+      "name": "兑为泽",
+      "code_top_to_bottom": "011011",
+      "outer_trigram": "兑",
+      "outer_symbol": "☱",
+      "inner_trigram": "兑",
+      "inner_symbol": "☱",
+      "lines_top_to_bottom": [
+        "阴",
+        "阳",
+        "阳",
+        "阴",
+        "阳",
+        "阳"
+      ],
+      "lines_bottom_to_top": [
+        "阳",
+        "阳",
+        "阴",
+        "阳",
+        "阳",
+        "阴"
+      ]
+    },
+    {
+      "king_wen_number": 59,
+      "unicode_symbol": "䷺",
+      "name": "风水涣",
+      "code_top_to_bottom": "110010",
+      "outer_trigram": "巽",
+      "outer_symbol": "☴",
+      "inner_trigram": "坎",
+      "inner_symbol": "☵",
+      "lines_top_to_bottom": [
+        "阳",
+        "阳",
+        "阴",
+        "阴",
+        "阳",
+        "阴"
+      ],
+      "lines_bottom_to_top": [
+        "阴",
+        "阳",
+        "阴",
+        "阴",
+        "阳",
+        "阳"
+      ]
+    },
+    {
+      "king_wen_number": 60,
+      "unicode_symbol": "䷻",
+      "name": "水泽节",
+      "code_top_to_bottom": "010011",
+      "outer_trigram": "坎",
+      "outer_symbol": "☵",
+      "inner_trigram": "兑",
+      "inner_symbol": "☱",
+      "lines_top_to_bottom": [
+        "阴",
+        "阳",
+        "阴",
+        "阴",
+        "阳",
+        "阳"
+      ],
+      "lines_bottom_to_top": [
+        "阳",
+        "阳",
+        "阴",
+        "阴",
+        "阳",
+        "阴"
+      ]
+    },
+    {
+      "king_wen_number": 61,
+      "unicode_symbol": "䷼",
+      "name": "风泽中孚",
+      "code_top_to_bottom": "110011",
+      "outer_trigram": "巽",
+      "outer_symbol": "☴",
+      "inner_trigram": "兑",
+      "inner_symbol": "☱",
+      "lines_top_to_bottom": [
+        "阳",
+        "阳",
+        "阴",
+        "阴",
+        "阳",
+        "阳"
+      ],
+      "lines_bottom_to_top": [
+        "阳",
+        "阳",
+        "阴",
+        "阴",
+        "阳",
+        "阳"
+      ]
+    },
+    {
+      "king_wen_number": 62,
+      "unicode_symbol": "䷽",
+      "name": "雷山小过",
+      "code_top_to_bottom": "001100",
+      "outer_trigram": "震",
+      "outer_symbol": "☳",
+      "inner_trigram": "艮",
+      "inner_symbol": "☶",
+      "lines_top_to_bottom": [
+        "阴",
+        "阴",
+        "阳",
+        "阳",
+        "阴",
+        "阴"
+      ],
+      "lines_bottom_to_top": [
+        "阴",
+        "阴",
+        "阳",
+        "阳",
+        "阴",
+        "阴"
+      ]
+    },
+    {
+      "king_wen_number": 63,
+      "unicode_symbol": "䷾",
+      "name": "水火既济",
+      "code_top_to_bottom": "010101",
+      "outer_trigram": "坎",
+      "outer_symbol": "☵",
+      "inner_trigram": "离",
+      "inner_symbol": "☲",
+      "lines_top_to_bottom": [
+        "阴",
+        "阳",
+        "阴",
+        "阳",
+        "阴",
+        "阳"
+      ],
+      "lines_bottom_to_top": [
+        "阳",
+        "阴",
+        "阳",
+        "阴",
+        "阳",
+        "阴"
+      ]
+    },
+    {
+      "king_wen_number": 64,
+      "unicode_symbol": "䷿",
+      "name": "火水未济",
+      "code_top_to_bottom": "101010",
+      "outer_trigram": "离",
+      "outer_symbol": "☲",
+      "inner_trigram": "坎",
+      "inner_symbol": "☵",
+      "lines_top_to_bottom": [
+        "阳",
+        "阴",
+        "阳",
+        "阴",
+        "阳",
+        "阴"
+      ],
+      "lines_bottom_to_top": [
+        "阴",
+        "阳",
+        "阴",
+        "阳",
+        "阴",
+        "阳"
+      ]
+    }
+  ],
+  "reading_boundaries": [
+    "共享索引只保存序号、名称、Unicode卦符、内外卦与六爻编码。",
+    "不收录卦辞、爻辞、现代摘要、吉凶、事项解释或个人判断。",
+    "程序枚举次序、文王卦序和八宫宫内次序继续作为三种不同排序保存。"
+  ],
+  "public_sources": [
+    {
+      "title": "《卜筮正宗》第一册扫描本",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/b/b7/NLC892-GBZX0301013045-259368_%E5%8D%9C%E7%AD%AE%E6%AD%A3%E5%AE%97_%E5%8D%81%E5%9B%9B%E5%8D%B7_%E7%AC%AC1%E5%86%8A.pdf",
+      "note": "既有审核记录以该刊本的六十四卦名与逐卦表核对上下经卦组合；具体扫描页沿用K-LY已登记定位。"
+    },
+    {
+      "title": "jishiyu 锁定六十四卦映射",
+      "url": "https://github.com/chxb/jishiyu/blob/97b6d6d8e58c6947a86e281d5b69de1032e9bc08/js/6yao.js",
+      "note": "支撑八个三爻编码和64组外卦／内卦到卦名的结构映射；只复用事实字段，不复制解释文本。"
+    },
+    {
+      "title": "muyen/meihua-yishu 锁定文王序号映射",
+      "url": "https://github.com/muyen/meihua-yishu/blob/aecdf87ebef26328c32caa65d40b2f9d273088ec/scripts/meihua_calc.py#L78-L116",
+      "note": "支撑64组经卦对到文王序号的映射；繁简字形统一为项目现有显示词表。"
+    },
+    {
+      "title": "zzkt/i-ching 锁定序列实现",
+      "url": "https://github.com/zzkt/i-ching/blob/e4339cb64a97e0d04a4cb8e7183aeec4e4ae6a29/i-ching.el",
+      "note": "作为文王序、Unicode卦符与六位二进制并列保存的工程对照；其混合卦文与现代改写不进入本索引。"
+    }
+  ],
+  "internal_review": {
+    "status": "formal_shared_structure_index",
+    "reviewed_at": "2026-08-09",
+    "owner": [
+      "火华",
+      "Codex"
+    ],
+    "source_refs": [
+      "github_chxb_jishiyu_97b6d6d",
+      "github_muyen_meihua_yishu_aecdf87",
+      "github_zzkt_i_ching_e4339cb",
+      "bushi_zhengzong_scan_volume_1_page_20_sixty_four_names"
+    ],
+    "deduplication": "从liuyao/hexagram-body抽取已审核的结构事实，再补文王序号形成共享上游；原六爻节点继续解释六爻卦体，本文件不成为梅花或六爻的重复卡片。",
+    "known_gaps": [
+      "《周易》经文、卦辞与爻辞的版本和内容权利尚未进入本共享索引。",
+      "Unicode卦符按U+4DC0至U+4DFF与文王序对应生成，仍只作为显示符号。",
+      "繁简、异体字和古籍用字目前仅保存项目标准显示名，别名索引待真实搜索需求触发。"
+    ],
+    "boundary": "共享结构数据，不提供起卦、随机、取辞、占断或专题结论。"
+  }
+}

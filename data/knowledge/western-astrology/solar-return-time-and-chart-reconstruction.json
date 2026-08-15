@@ -1,0 +1,179 @@
+{
+  "schema_version": "1.0.0",
+  "id": "western_astrology_solar_return_time_and_chart_reconstruction",
+  "title": "太阳回归时刻与回归盘重建",
+  "summary": "太阳回归盘不是一个单步对象：先用本命太阳黄经与查询时刻寻找上一或下一次回归的Julian Day，再沿用原星盘的地点、宫制和对象ID重建一张新盘。锁定flatlib当前只接通太阳回归；月亮回归虽然出现在模块标题和作者资料中，但没有对应实现。页面只展示时刻搜索、时区显示与星盘重建参数，不解释年度主题或事件。",
+  "concept_layers": [
+    {
+      "id": "natal-target",
+      "name": "目标黄经",
+      "question": "太阳要回到哪里？",
+      "input": "原星盘中的本命太阳黄经",
+      "output": "0—360°目标值"
+    },
+    {
+      "id": "return-search",
+      "name": "回归时刻搜索",
+      "question": "从哪个查询时刻向前或向后找？",
+      "input": "查询Datetime、方向与目标黄经",
+      "output": "回归Julian Day及带查询时区的Datetime"
+    },
+    {
+      "id": "chart-rebuild",
+      "name": "回归盘重建",
+      "question": "找到时刻后用哪些盘面参数？",
+      "input": "回归Datetime＋原盘地点／宫制／对象ID",
+      "output": "重新计算的Chart"
+    }
+  ],
+  "search_implementation": {
+    "next_entry": "returns.nextSolarReturn(chart, date)",
+    "previous_entry": "returns.prevSolarReturn(chart, date)",
+    "target_source": "chart.getObject(Sun).lon",
+    "solver": "solarReturnJD",
+    "mean_motion_divisor": 0.9833,
+    "max_error_degrees": 0.0003,
+    "max_error_arcseconds": 1.08,
+    "iteration_rule": "以太阳当前位置到目标黄经的方向距离估算JD步长，再用最近角距离迭代，直到绝对误差不大于MAX_ERROR。",
+    "boundary": "当输入时刻本身已落在0.0003°容差内，循环可以不执行；上一／下一因此不是对输入JD严格小于／大于的保证。"
+  },
+  "reconstruction_implementation": {
+    "function": "_computeChart(chart, returnDate)",
+    "inherited_fields": [
+      {"field": "地点", "code": "chart.pos", "meaning": "沿用传入原盘的纬度与经度"},
+      {"field": "宫制", "code": "chart.hsys", "meaning": "沿用传入原盘的宫制标识"},
+      {"field": "对象集", "code": "[obj.id for obj in chart.objects]", "meaning": "只重建原盘当前包含的对象ID"}
+    ],
+    "recomputed_fields": ["回归时刻的太阳与其他对象位置", "回归时刻的宫位与轴点"],
+    "not_inherited": ["原盘天体黄经", "原盘宫位黄经", "另行指定的回归所在地"],
+    "location_boundary": "公开接口没有单独的return location参数；要做异地回归盘需在本函数之外明确建立另一地点口径。"
+  },
+  "fixed_runtime_fixture": {
+    "scope": "锁定实现复算夹具",
+    "natal_datetime": "2000-01-01 12:00 UT",
+    "natal_location": "51°29′N, 0°00′W",
+    "house_system": "Whole Sign",
+    "object_ids": ["Sun", "Moon", "Mercury"],
+    "natal_sun_longitude": 280.368918822,
+    "query_datetime": "2004-06-30 12:00 UT",
+    "runtime": "flatlib提交856d26b8bd1316ccdafe76399994696f9510de9e；pyswisseph 2.10.3.2",
+    "note": "固定夹具只验证代码输入输出，不对应用户，也不生成回归盘解释。"
+  },
+  "return_pair": [
+    {
+      "direction": "previous",
+      "name": "上一太阳回归",
+      "datetime_utc": "2004-01-01 11:14:25 UT",
+      "julian_day": 2453005.968349535,
+      "sun_longitude": 280.368951156,
+      "longitude_error_degrees": 0.000032334,
+      "asc_longitude": 357.757121537
+    },
+    {
+      "direction": "next",
+      "name": "下一太阳回归",
+      "datetime_utc": "2004-12-31 17:00:17 UT",
+      "julian_day": 2453371.208527763,
+      "sun_longitude": 280.369211913,
+      "longitude_error_degrees": 0.000293091,
+      "asc_longitude": 113.245961747
+    }
+  ],
+  "timezone_probe": {
+    "same_query_instant": {
+      "utc": "2004-06-30 12:00 +00:00",
+      "utc_plus_8": "2004-06-30 20:00 +08:00",
+      "julian_day": 2453187.0
+    },
+    "same_return_julian_day": 2453371.208527763,
+    "display_results": [
+      {"offset": "+00:00", "datetime": "2004-12-31 17:00:17", "calendar_date": "2004-12-31"},
+      {"offset": "+08:00", "datetime": "2005-01-01 01:00:17", "calendar_date": "2005-01-01"}
+    ],
+    "finding": "绝对回归时刻相同，返回Datetime沿用查询时刻的UTC offset，因此本地日期可以跨年。"
+  },
+  "reconstruction_probe": {
+    "direction": "next",
+    "input": {
+      "location": "51°29′N, 0°00′W",
+      "house_system": "Whole Sign",
+      "object_ids": ["Sun", "Moon", "Mercury"]
+    },
+    "output": {
+      "location": "51°29′N, 0°00′W",
+      "house_system": "Whole Sign",
+      "object_ids": ["Sun", "Moon", "Mercury"],
+      "sun_longitude": 280.369211913,
+      "asc_longitude": 113.245961747
+    },
+    "finding": "地点、宫制与对象ID保持；天体和轴点按回归时刻重新计算。"
+  },
+  "coverage_comparison": [
+    {
+      "field": "太阳回归",
+      "author_source": "太阳每年回到本命精确度数时起盘。",
+      "flatlib": "提供上一／下一太阳回归搜索与Chart重建。",
+      "status": "专门模块已接通",
+      "handling": "精确度数按软件0.0003°迭代容差理解，不写成数学零误差。"
+    },
+    {
+      "field": "月亮回归",
+      "author_source": "月亮约每27.3天回到本命月亮度数时起盘。",
+      "flatlib": "模块说明写solar and lunar returns，但紧接着明确当前只处理solar returns，代码没有月返入口。",
+      "status": "来源存在／实现未接通",
+      "handling": "页面不生成月亮回归日期或月返盘。"
+    },
+    {
+      "field": "有效期",
+      "author_source": "作者概括太阳回归盘从生日到下一个生日。",
+      "flatlib": "搜索的是太阳精确黄经回归；固定夹具显示回归时刻与民用生日时刻并不必然重合。",
+      "status": "来源概括与计算锚点分层",
+      "handling": "保留作者说法为来源陈述，不据此把生日00:00或出生时刻当作回归时刻。"
+    },
+    {
+      "field": "地点口径",
+      "author_source": "当前作者段落没有说明出生地、现居地或回归所在地的选择。",
+      "flatlib": "重建函数固定沿用传入chart.pos。",
+      "status": "实现有默认／来源未裁决",
+      "handling": "只发布实现默认，不宣布它是唯一传统口径。"
+    }
+  ],
+  "reading_boundaries": [
+    "页面不读取出生资料、当前位置或目标年份；所有日期、地点和对象集都是固定代码夹具。",
+    "太阳回归时刻是黄经搜索结果；显示日期还依赖UTC offset，不能脱离时区保存。",
+    "0.0003°是锁定实现的停止阈值，不是本项目宣布的统一占星精度标准。",
+    "回归盘沿用原盘地点是当前函数默认，不代表出生地、居住地与回归所在地争议已经解决。",
+    "作者资料中的年度重点、相位格局、月度运势和事件解释不进入页面输出。"
+  ],
+  "public_sources": [
+    {
+      "type": "参考资料",
+      "title": "fortune-telling-skills：太阳回归与月亮回归",
+      "url": "https://github.com/doododod/fortune-telling-skills/blob/8bcc734491ac75cfb21c1de8727c9fc3f9427b1e/astrology-chart-analysis/references/predictive-techniques.md#%E5%9B%9E%E5%BD%92%E7%9B%98return-charts",
+      "note": "提供太阳回归、月亮回归及作者有效期说明；解释重点与运势说法不继承。"
+    },
+    {
+      "type": "实现资料",
+      "title": "flatlib：回归盘搜索与重建",
+      "url": "https://github.com/flatangle/flatlib/blob/856d26b8bd1316ccdafe76399994696f9510de9e/flatlib/predictives/returns.py",
+      "note": "提供上一／下一太阳回归入口、原盘地点／宫制／对象集继承逻辑，并明确当前只处理太阳回归。"
+    },
+    {
+      "type": "实现资料",
+      "title": "flatlib：回归Datetime封装",
+      "url": "https://github.com/flatangle/flatlib/blob/856d26b8bd1316ccdafe76399994696f9510de9e/flatlib/ephem/ephem.py",
+      "note": "把回归Julian Day转换成沿用查询UTC offset的Datetime。"
+    },
+    {
+      "type": "实现资料",
+      "title": "flatlib：太阳回归迭代器",
+      "url": "https://github.com/flatangle/flatlib/blob/856d26b8bd1316ccdafe76399994696f9510de9e/flatlib/ephem/tools.py",
+      "note": "提供0.9833°平均日运动步长、0.0003°停止阈值及向前／向后方向距离。"
+    }
+  ],
+  "internal_review": {
+    "source_status": "作者回归盘条目、锁定实现与固定运行夹具已交叉核对。",
+    "rights_status": "只保存接口结构、短公式、少量复算结果与来源链接。",
+    "excluded_claims": ["太阳回归年度主题", "回归ASC解释", "月度运势", "事件预测", "地点流派裁决"]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "name-structure",
+  "title": "姓与名的结构",
+  "summary": "姓名先按原有字序分成姓氏与名字，再记录各部分的字符数；五格所用的单姓、复姓、单名、双名，是四种计算模板，不等于全部现实姓名形态。",
+  "core_fields": [
+    {"label": "原姓名", "content": "按原登记或原资料逐字保存"},
+    {"label": "姓氏", "content": "姓名中表示姓的连续字符"},
+    {"label": "名字", "content": "姓名中姓氏之后的名字符"},
+    {"label": "字序", "content": "每个字符在姓、名及全名中的位置"}
+  ],
+  "common_patterns": [
+    {"id": "single-single", "surname_type": "单姓", "given_type": "单名", "layout": ["姓一", "名一"], "surname_length": 1, "given_length": 1},
+    {"id": "single-double", "surname_type": "单姓", "given_type": "双名", "layout": ["姓一", "名一", "名二"], "surname_length": 1, "given_length": 2},
+    {"id": "compound-single", "surname_type": "复姓", "given_type": "单名", "layout": ["姓一", "姓二", "名一"], "surname_length": 2, "given_length": 1},
+    {"id": "compound-double", "surname_type": "复姓", "given_type": "双名", "layout": ["姓一", "姓二", "名一", "名二"], "surname_length": 2, "given_length": 2}
+  ],
+  "input_order": ["保存原姓名字符串", "确定姓氏范围", "确定名字范围", "为字符编号", "再交给笔画口径节点"],
+  "boundaries": [
+    "这里的‘姓名’指人的姓氏与名字，不包括笔名、艺名、网名和字号",
+    "复姓是一个由多个字符组成的姓氏，不可仅按总字数把第一个字当姓",
+    "少数民族姓名、冠姓、双姓及超过四字的姓名另存结构，不强塞入四种五格模板",
+    "姓名结构只确定文字位置，不计算笔画，也不产生姓名评价"
+  ],
+  "public_sources": [
+    {"title": "教育部《重编国语辞典修订本》：姓名", "note": "用于确认姓名由姓氏与名字组成。", "url": "https://dict.revised.moe.edu.tw/dictView.jsp?ID=111154&la=0&powerMode=0"},
+    {"title": "《中华人民共和国民法典》姓名权和名称权", "note": "用于区分法定姓名与笔名、艺名、网名、字号等其他称谓，并保留姓氏选择的现实边界。", "url": "https://fjca.miit.gov.cn/zwgk/zcwj/wjfb/art/2020/art_9f0ef44677164c5eb3a5585bf82a07cb.html"},
+    {"title": "教育部《2010年中国语言生活状况报告》", "note": "报告的人名语料统计分别记录单字姓、二字姓与三字姓，说明现实姓氏长度不止一种。", "url": "https://hudong.moe.gov.cn/s78/A19/A19_ztzl/baogao/201105/t20110512_130351.html"}
+  ]
+}

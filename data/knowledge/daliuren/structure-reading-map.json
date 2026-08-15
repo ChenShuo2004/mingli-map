@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0.0",
+  "id": "daliuren_structure_reading_map",
+  "title": "大六壬对象与生成链总览",
+  "summary": "现有三套可运行实现都能拆成同一条阅读主线：月将与占时先形成天地盘，日干经寄宫与日支共同生成四课，四课关系再进入分支选择形成三传，最后附上贵人、十二天将及其他派生字段。这种重合只证明结构可以互相比较，不把软件实现升级为传统唯一规则。",
+  "headline": "先沿生成顺序读盘，不把所有名词摊成一张表",
+  "steps": [
+    {"label": "输入", "value": "月将 · 占时 · 日干支", "note": "三个字段分别进入天地盘与四课，不先解释吉凶。"},
+    {"label": "底盘", "value": "地盘 → 天盘", "note": "十二地支形成可正查、反查的对应关系。"},
+    {"label": "四课", "value": "干阳 · 干阴 · 支阳 · 支阴", "note": "日干先寄宫，再逐层取天盘上神。"},
+    {"label": "三传", "value": "初传 → 中传 → 末传", "note": "根据课间生克、阴阳与特殊条件分流。"},
+    {"label": "附加层", "value": "贵人 · 十二天将", "note": "天将的起点、昼夜与顺逆另有版本条件。"}
+  ],
+  "facts": [
+    {"label": "共同主线", "detail": "kinliuren、qimen-go、dalurenpython 都覆盖天地盘、四课与三传。"},
+    {"label": "比较单位", "detail": "比较的是每一步输入、映射、候选与结果，不用仓库数量投票。"},
+    {"label": "当前边界", "detail": "第一批只解释生成结构，不接收真人时间、年命或事项。"}
+  ],
+  "reading_boundaries": ["三套实现重合不等于传统共识。", "课体、神煞、年命与个人解释不进入本批主线。", "页面只展示冻结结构，不生成新盘。"],
+  "public_sources": [
+    {"title": "kinliuren 锁定实现", "url": "https://github.com/kentang2017/kinliuren/tree/3ba45a9540f08269b56d81508a061c7d46938785", "note": "提供天地盘、四课、三传与天将的完整可执行链。"},
+    {"title": "qimen-go 锁定大六壬实现", "url": "https://github.com/deminzhang/qimen-go/blob/4d3f58fa0f401b5b3a337f119138e99e90685dda/xuan/big6.go", "note": "提供第二套可比较实现。"},
+    {"title": "dalurenpython 锁定实现", "url": "https://github.com/wlhyl/dalurenpython/tree/62764a4ad2c10f5ccc34b86c8520d9f4a96ba3aa", "note": "无仓库许可；这里只引用结构结论与固定比较。"}
+  ],
+  "internal_review": {"reviewed_on": "2026-08-10", "owner": ["火华", "Codex"], "status": "formal_structure_with_implementation_boundary"}
+}

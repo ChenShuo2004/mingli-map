@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0",
+  "id": "liuyao_najia_assembly",
+  "title": "纳甲",
+  "summary": "纳甲把八卦在内、外位置分别连接到天干与地支。先确定经卦和内外位置，再从固定起点沿阳支或阴支轨道把三个地支装入对应爻位；它是后续五行与六亲关系的装配层。",
+  "page_order": "页面统一按初爻到上爻、由下往上读取。古籍表若把阴卦写成由上往下装，换成页面顺序后会呈现为阴支逆行。",
+  "branch_tracks": [
+    {"id": "yang", "label": "阳支轨", "polarity": "阳", "direction": "从下往上顺行", "branches": ["子", "寅", "辰", "午", "申", "戌"], "step": "每次跨过一个阴支，前进到下一阳支"},
+    {"id": "yin", "label": "阴支轨", "polarity": "阴", "direction": "从下往上逆行", "branches": ["丑", "亥", "酉", "未", "巳", "卯"], "step": "每次跨过一个阳支，退到下一阴支"}
+  ],
+  "assembly_steps": [
+    {"label": "先定位置", "value": "内卦 / 外卦", "note": "内卦承接初、二、三爻；外卦承接四、五、上爻。"},
+    {"label": "再分支轨", "value": "阳顺 / 阴逆", "note": "乾震坎艮沿阳支轨，坤巽离兑沿阴支轨。"},
+    {"label": "最后找起点", "value": "每卦每侧固定", "note": "支轨只说明前后次序，不能代替各经卦在内外位置的固定起点。"}
+  ],
+  "stem_rule": "天干直接按经卦与内外位置查固定表：乾为内甲外壬、坤为内乙外癸，其余六卦内外同干。地支的轨道规律不能反推出天干。",
+  "trigrams": [
+    {"name": "乾", "element": "金", "polarity": "阳", "track_id": "yang", "inner_stem": "甲", "outer_stem": "壬", "inner_branches": ["子", "寅", "辰"], "outer_branches": ["午", "申", "戌"]},
+    {"name": "兑", "element": "金", "polarity": "阴", "track_id": "yin", "inner_stem": "丁", "outer_stem": "丁", "inner_branches": ["巳", "卯", "丑"], "outer_branches": ["亥", "酉", "未"]},
+    {"name": "离", "element": "火", "polarity": "阴", "track_id": "yin", "inner_stem": "己", "outer_stem": "己", "inner_branches": ["卯", "丑", "亥"], "outer_branches": ["酉", "未", "巳"]},
+    {"name": "震", "element": "木", "polarity": "阳", "track_id": "yang", "inner_stem": "庚", "outer_stem": "庚", "inner_branches": ["子", "寅", "辰"], "outer_branches": ["午", "申", "戌"]},
+    {"name": "巽", "element": "木", "polarity": "阴", "track_id": "yin", "inner_stem": "辛", "outer_stem": "辛", "inner_branches": ["丑", "亥", "酉"], "outer_branches": ["未", "巳", "卯"]},
+    {"name": "坎", "element": "水", "polarity": "阳", "track_id": "yang", "inner_stem": "戊", "outer_stem": "戊", "inner_branches": ["寅", "辰", "午"], "outer_branches": ["申", "戌", "子"]},
+    {"name": "艮", "element": "土", "polarity": "阳", "track_id": "yang", "inner_stem": "丙", "outer_stem": "丙", "inner_branches": ["辰", "午", "申"], "outer_branches": ["戌", "子", "寅"]},
+    {"name": "坤", "element": "土", "polarity": "阴", "track_id": "yin", "inner_stem": "乙", "outer_stem": "癸", "inner_branches": ["未", "巳", "卯"], "outer_branches": ["丑", "亥", "酉"]}
+  ],
+  "reading_boundary": "这里解释固定映射如何进入六个爻位，不提供起卦或排卦输入。",
+  "internal_review": {
+    "status": "classical_table_and_implementation_cross_checked",
+    "reviewed_at": "2026-08-05",
+    "source_refs": ["github_chxb_jishiyu_97b6d6d_js_6yao", "bushi_zhengzong_scan_volume_1_pdf_page_21_najia_song", "bushi_zhengzong_scan_volume_1_pdf_pages_34_58_hexagram_tables", "ctext_bushi_zhengzong_lines_214_231_najia_song_table"],
+    "boundary": "表值用于知识解释；仓库代码与页面素材均未复制到公开应用。"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "schema_version":"1.0.0","id":"qimen_solar_term_three_yuan_ju_table","title":"二十四节气与上中下三元局数",
+  "summary":"同一个节气不是只对应一局，而是按上元、中元、下元各对应一个局数。当前表共24个节气、72个局数位；它是‘节气＋三元→阴阳几局’的查询表，不负责解释三元怎样由拆补、置闰或茅山法取得。",
+  "columns":["上元","中元","下元"],
+  "tables":{
+    "阳遁":[
+      {"term":"冬至","values":[1,7,4]},{"term":"小寒","values":[2,8,5]},{"term":"大寒","values":[3,9,6]},
+      {"term":"立春","values":[8,5,2]},{"term":"雨水","values":[9,6,3]},{"term":"惊蛰","values":[1,7,4]},
+      {"term":"春分","values":[3,9,6]},{"term":"清明","values":[4,1,7]},{"term":"谷雨","values":[5,2,8]},
+      {"term":"立夏","values":[4,1,7]},{"term":"小满","values":[5,2,8]},{"term":"芒种","values":[6,3,9]}
+    ],
+    "阴遁":[
+      {"term":"夏至","values":[9,3,6]},{"term":"小暑","values":[8,2,5]},{"term":"大暑","values":[7,1,4]},
+      {"term":"立秋","values":[2,5,8]},{"term":"处暑","values":[1,4,7]},{"term":"白露","values":[9,3,6]},
+      {"term":"秋分","values":[7,1,4]},{"term":"寒露","values":[6,9,3]},{"term":"霜降","values":[5,8,2]},
+      {"term":"立冬","values":[6,9,3]},{"term":"小雪","values":[5,8,2]},{"term":"大雪","values":[4,7,1]}
+    ]
+  },
+  "fixed_checks":[
+    {"term":"小寒","yuan":"下元","result":"阳遁5局","evidence":"qimen-go固定盘 2024-01-15 12:00"},
+    {"term":"夏至","yuan":"上元","result":"阴遁9局","evidence":"qimen-go固定盘 2024-06-21 12:00"},
+    {"term":"大雪","yuan":"下元","result":"阴遁1局","evidence":"qimen-go固定盘 2024-12-21 00:00，仍在冬至交节前"}
+  ],
+  "reading_boundaries":["72个表位允许查询与固定例核对，不开放日期计算。","来源表把每节气三元概括为各5日；具体起止受起局法影响，不能据此跳过版本比较。","表值一致只证明实现资料重合，不能替代传统版本页码。"],
+  "public_sources":[
+    {"title":"mingli-skills 锁定24节气三元表","url":"https://github.com/weizeW/mingli-skills/blob/c16eca0/qimen-dunjia/data/jieqi_jushu.json","note":"提供24×3完整表值；仓库自称多源核验但缺逐项页码。"},
+    {"title":"qimenpaipan 锁定局数表","url":"https://github.com/redrockhorse/qimenpaipan/blob/b6de54245cf7a514f59e51833dc01a87e1a3a849/qimenpaipan.py#L145-L194","note":"第二套实现保存相同表值。"},
+    {"title":"qimen-go 锁定三张固定盘","url":"https://github.com/deminzhang/qimen-go/blob/4d3f58fa0f401b5b3a337f119138e99e90685dda/xuan/qimen.go","note":"用于核对小寒下元阳5、夏至上元阴9、大雪下元阴1三个固定结果。"}
+  ],
+  "internal_review":{"status":"formal_fixed_lookup_table","reviewed_at":"2026-08-09","owner":["火华","Codex"],"source_refs":["github_weizew_mingli_skills_c16eca0","github_redrockhorse_qimenpaipan_b6de542","github_deminzhang_qimen_go_4d3f58f"],"deduplication":"局数表与决定三元的算法分开。","known_gaps":["表源家族独立性与传统页码不足。"],"boundary":"固定表查询，不自动定局。"}
+}

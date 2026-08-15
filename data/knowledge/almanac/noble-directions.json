@@ -1,0 +1,13 @@
+{
+  "id":"noble-directions","title":"阳贵神与阴贵神方位","summary":"阳贵神与阴贵神都按日干取值，但属于两张对应表；页面保留阴阳两列，不压成单一“贵人方”。",
+  "rows":[
+    {"stem":"甲","yang":"西南","yin":"东北"},{"stem":"乙","yang":"西南","yin":"正北"},{"stem":"丙","yang":"正西","yin":"西北"},{"stem":"丁","yang":"西北","yin":"正西"},{"stem":"戊","yang":"东北","yin":"西南"},
+    {"stem":"己","yang":"正北","yin":"西南"},{"stem":"庚","yang":"正南","yin":"东北"},{"stem":"辛","yang":"东北","yin":"正南"},{"stem":"壬","yang":"正东","yin":"东南"},{"stem":"癸","yang":"东南","yin":"正东"}
+  ],
+  "fixed_example":{"date":"1986-05-29","day_stem":"癸","yang":"东南","yin":"正东"},
+  "boundaries":["这里记录黄历日神方，不与命理神煞中的天乙贵人自动合并","阴贵与阳贵必须保留字段名"],
+  "public_sources":[
+    {"title":"《协纪辨方书》贵登天门时定局","note":"提供十干阳贵、阴贵的传统取值线索。","url":"https://www.shidianguji.com/book/SK1619/chapter/1l9lm14wf6rkz"},
+    {"title":"lunar-javascript 锁定实现","note":"十干双表、八方显示和固定样本来自锁定版本。","url":"https://github.com/6tail/lunar-javascript/tree/4c45a59"}
+  ]
+}

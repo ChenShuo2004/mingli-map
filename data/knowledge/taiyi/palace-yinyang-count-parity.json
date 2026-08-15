@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0.0",
+  "id": "palace-yinyang-count-parity",
+  "title": "太乙宫阴阳与主客算奇偶",
+  "summary": "把卷二‘阴阳和不和’拆成两条输入轴：太乙所处宫位先按8、3、4、9与1、2、6、7分为阳宫、阴宫，主算与客算再各自只取奇偶。阳宫配奇数为重阳，阴宫配偶数为重阴；阳宫配偶数或阴宫配奇数进入阴阳和。锁定tui_danger复用了同一四格结构，但和型分支没有直接返回‘阴阳和’四字，而且只处理主算、客算，不读取定算。因此展示结构状态，不公开函数附带的厄会断语。",
+  "fixed_input": "1552年9月24日 0时0分 · 年计",
+  "palace_groups": [
+    {"id": "yang", "name": "阳宫", "palaces": [8, 3, 4, 9], "positions": ["子", "艮", "卯", "巽"], "note": "这是卷二与锁定函数共同使用的宫位分组，不由数字奇偶推出。"},
+    {"id": "yin", "name": "阴宫", "palaces": [1, 2, 6, 7], "positions": ["乾", "午", "酉", "坤"], "note": "一宫虽是奇数，仍属于阴宫；六宫虽是偶数，也同属阴宫。"}
+  ],
+  "parity_axis": [
+    {"id": "odd", "name": "奇", "rule": "主算或客算 mod 2 = 1", "examples": [7, 13, 19]},
+    {"id": "even", "name": "偶", "rule": "主算或客算 mod 2 = 0", "examples": [18]}
+  ],
+  "matrix": [
+    {"id": "yang-odd", "palace_nature": "阳宫", "count_parity": "奇", "classical_state": "重阳 · 不和", "public_state": "重阳", "implementation_note": "锁定函数明确返回‘为重阳’，其后厄会文字不公开。", "tone": "same"},
+    {"id": "yang-even", "palace_nature": "阳宫", "count_parity": "偶", "classical_state": "阴阳和", "public_state": "和型分支", "implementation_note": "锁定函数进入非重分支，但没有直接返回‘阴阳和’名称。", "tone": "mixed"},
+    {"id": "yin-odd", "palace_nature": "阴宫", "count_parity": "奇", "classical_state": "阴阳和", "public_state": "和型分支", "implementation_note": "锁定函数进入非重分支，但没有直接返回‘阴阳和’名称。", "tone": "mixed"},
+    {"id": "yin-even", "palace_nature": "阴宫", "count_parity": "偶", "classical_state": "重阴 · 不和", "public_state": "重阴", "implementation_note": "锁定函数明确返回‘为重阴’，其后厄会文字不公开。", "tone": "same"}
+  ],
+  "method_results": [
+    {"method": 0, "label": "太乙统宗", "accumulated": 10155469, "board": "阳遁十三局", "taiyi_palace": 6, "taiyi_position": "酉", "palace_nature": "阴宫", "host_count": 18, "host_parity": "偶", "host_state": "重阴", "host_basis": "函数明确命名", "guest_count": 19, "guest_parity": "奇", "guest_state": "和型分支", "guest_basis": "据原典矩阵命名；函数未写‘阴阳和’", "status": "与金镜、太乙局相同"},
+    {"method": 1, "label": "太乙金镜", "accumulated": 1938109, "board": "阳遁十三局", "taiyi_palace": 6, "taiyi_position": "酉", "palace_nature": "阴宫", "host_count": 18, "host_parity": "偶", "host_state": "重阴", "host_basis": "函数明确命名", "guest_count": 19, "guest_parity": "奇", "guest_state": "和型分支", "guest_basis": "据原典矩阵命名；函数未写‘阴阳和’", "status": "固定例"},
+    {"method": 2, "label": "太乙淘金歌", "accumulated": 10155745, "board": "阳遁一局", "taiyi_palace": 1, "taiyi_position": "乾", "palace_nature": "阴宫", "host_count": 7, "host_parity": "奇", "host_state": "和型分支", "host_basis": "据原典矩阵命名；函数未写‘阴阳和’", "guest_count": 13, "guest_parity": "奇", "guest_state": "和型分支", "guest_basis": "据原典矩阵命名；函数未写‘阴阳和’", "status": "主算由重阴切换为和型分支"},
+    {"method": 3, "label": "太乙局", "accumulated": 10155469, "board": "阳遁十三局", "taiyi_palace": 6, "taiyi_position": "酉", "palace_nature": "阴宫", "host_count": 18, "host_parity": "偶", "host_state": "重阴", "host_basis": "函数明确命名", "guest_count": 19, "guest_parity": "奇", "guest_state": "和型分支", "guest_basis": "据原典矩阵命名；函数未写‘阴阳和’", "status": "与统宗、金镜相同"}
+  ],
+  "layer_differences": [
+    {"label": "宫阴阳不是宫数奇偶", "classical": "8、3、4、9为阳宫；1、2、6、7为阴宫", "implementation": "用固定宫集合查阴阳，不计算宫数mod 2", "handling": "本节点先展示宫位分组，再展示算数奇偶，阻止两条轴混为一条。"},
+    {"label": "和型名称没有直接返回", "classical": "阳宫配偶、阴宫配奇称阴阳和", "implementation": "两个分支只返回后续厄会文字，未写‘阴阳和’", "handling": "本节点写‘和型分支（据原典矩阵）’，不伪装成函数原文。"},
+    {"label": "定算不在函数输入内", "classical": "卷二围绕太乙、上下二目与算数相配展开", "implementation": "tui_danger只读取主算、客算，不读取定算", "handling": "固定例只画主、客两条结果，不为定算补造同层输出。"},
+    {"label": "原典还有另一套数类名称", "classical": "同段另列纯阴、纯阳、杂阴阳、上和、次和、下和等数值组", "implementation": "cal_des另用numdict查这些标签，未被tui_danger调用", "handling": "本节点只处理宫阴阳×算奇偶；数类表保留为后续独立校勘对象。"},
+    {"label": "厄会断语不纳入本节点", "classical": "原文把不和继续接到胜负等判断", "implementation": "tui_danger返回火、水、主厄、客厄等文本", "handling": "仅保留重阳、重阴、和型结构，不展示现实结果解释。"}
+  ],
+  "reading_boundaries": [
+    {"label": "可识别", "note": "八个太乙宫的阴阳分组，以及主算、客算的奇偶轴。"},
+    {"label": "可复核", "note": "固定年计四个method如何落入四格矩阵，及哪些名称来自函数、哪些来自原典结构。"},
+    {"label": "不由此推出", "note": "重阳、重阴或和型对真人健康、灾厄、胜负、行动时机具有现实效力。"}
+  ],
+  "public_sources": [
+    {"title": "《太乙金鏡式經》卷二：推阴阳和不和", "url": "https://ctext.org/wiki.pl?chapter=872714&if=gb&remap=gb", "note": "第36条保存阳宫／阴宫分组、算数奇偶与重阳、重阴、阴阳和的组合条件；来源连接四库本影像与OCR。"},
+    {"title": "kintaiyi锁定阴阳厄会函数", "url": "https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L1276-L1300", "note": "固定提交的tui_danger按太乙宫集合和主客算奇偶走四个分支；和型分支未直接命名‘阴阳和’。"},
+    {"title": "kintaiyi锁定主客算入口", "url": "https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L628-L677", "note": "主算、客算由当前阴阳遁与局数查表取得；本页只对返回算数取奇偶。"},
+    {"title": "kintaiyi锁定固定例输入", "url": "https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/examples/basic_usage.py#L13-L20", "note": "固定输入1552-09-24 00:00、年计；本页在临时锁定环境复跑method 0—3。"}
+  ],
+  "internal_review": {
+    "status": "formal_palace_nature_count_parity_node",
+    "reviewed_at": "2026-08-06",
+    "owner": ["火华", "Codex"],
+    "source_refs": ["ctext_taiyi_jinjing_vol_2", "github_kentang2017_kintaiyi_f2719d6"],
+    "runtime_environment": "temporary Python venv; locked repository commit installed from source",
+    "runtime_command": "Taiyi(1552, 9, 24, 0, 0).ty/home_cal/away_cal/tui_danger(0, method), method=0..3",
+    "raw_runtime_outputs_withheld": ["method 0/1/3: 太乙在陰宮，主筭得偶，為重陰，厄在水，主厄。太乙在陰宮，客筭得奇，客沒厄。", "method 2: 太乙在陰宮，主筭得奇，主沒厄。太乙在陰宮，客筭得奇，客沒厄。"],
+    "deduplication": "不并入主客算与七类位置关系：关系页比较对象之间同宫、相邻、对宫，本页比较一个宫位属性与两个算数奇偶。不并入三门五将：三门五将页处理组合判定函数，本页处理阴阳和不和的四格结构。",
+    "known_gaps": ["卷二同段纯阴纯阳、杂阴阳、上和次和下和数类尚未建立独立版本表", "tui_danger未发现专项测试", "‘上下二目就算数’的完整古法逐位过程仍需底本校勘"],
+    "boundary": "固定样本、无真人输入、无随机；本节点不展示厄会、火水、胜负、灾害或行动判断。"
+  }
+}

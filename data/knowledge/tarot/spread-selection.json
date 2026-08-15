@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "id": "tarot-spread-selection",
+  "title": "按问题层次选择牌阵",
+  "summary": "根据要区分的问题层次选择牌位数量，而不是先挑最复杂的牌阵。",
+  "axes": [
+    {"id":"focus","label":"只看一个焦点","question":"现在只需要一个观察入口吗？"},
+    {"id":"sequence","label":"需要前后次序","question":"要把三个阶段或三个角度分开吗？"},
+    {"id":"factors","label":"需要多个因素","question":"现状、挑战、建议、环境等是否要分别占位？"},
+    {"id":"system","label":"需要完整结构","question":"是否真的需要十个彼此不同的牌位？"}
+  ],
+  "choices": [
+    {"id":"single","label":"单张","count":1,"fit":"一个焦点或一次观察练习","not_fit":"问题本身包含多个需要分别回答的部分","positions":["指引"],"prompt":"我今天先观察哪个学习环节？","route":"/topic/tarot/spread-structures?spread=single&position=1"},
+    {"id":"three","label":"三张","count":3,"fit":"三个阶段、角度或对照项","not_fit":"需要把环境、行动和结果等更多因素分别保存","positions":["过去","现在","未来"],"prompt":"过去、现在和接下来分别要注意什么？","route":"/topic/tarot/spread-structures?spread=three&position=1"},
+    {"id":"five","label":"五张","count":5,"fit":"问题中有多个明确因素","not_fit":"只是一个简单焦点，或尚未写清问题","positions":["现状","挑战","建议","环境","结果"],"prompt":"现状、挑战、可行动处和环境怎样分开看？","route":"/topic/tarot/spread-structures?spread=five&position=1"},
+    {"id":"celtic","label":"凯尔特十字","count":10,"fit":"需要十个牌位共同描述的复杂结构","not_fit":"只是因为它最有名，或无法说明每个牌位的任务","positions":["覆盖","阻碍","目标","基础","过去","近未来","自我","环境","希望与恐惧","结果"],"prompt":"每个牌位是否都对应一个确实需要区分的问题？","route":"/topic/tarot/spread-structures?spread=celtic&version=waite_1910&position=1"}
+  ],
+  "selection_steps": ["先写一句问题","圈出需要分别回答的部分","用最少牌位覆盖这些部分","确认牌位名称与版本","再进入空牌位结构页"],
+  "fixed_examples": [
+    {"question":"今天复习时先注意什么？","choice":"single","reason":"只有一个当前焦点。"},
+    {"question":"一个计划的过去、现在与下一步怎样变化？","choice":"three","reason":"明确需要三个阶段。"},
+    {"question":"现状、挑战、行动、环境与结果怎样分开？","choice":"five","reason":"五个因素都需要独立位置。"},
+    {"question":"我只是想快速得到一个方向。","choice":"single","reason":"不需要用十个牌位增加无关信息。"}
+  ],
+  "boundary":"这是按问题层次与牌位数量整理的学习导航；不宣称某个问题只能使用一种牌阵。",
+  "public_sources": [
+    {"title":"Project Gutenberg：Waite 1910凯尔特十字","note":"原书给出十个牌位的次序、作用与布局，支撑复杂牌阵必须逐位读取。","url":"https://www.gutenberg.org/cache/epub/43548/pg43548-images.html#VII"},
+    {"title":"bazi-agent：固定提交中的四种牌阵","note":"提供单张、三张、五张和凯尔特十字的固定牌位版本；选择规则是依据牌位数量整理的学习导航。","url":"https://github.com/DadanLuo/bazi_agent/blob/24f0216e13730df3d2b53e413d00ca3c9f2f40b4/src/core/tarot_data.py"}
+  ],
+  "internal_review": {"status":"formal_spread_selection_node","reviewed_at":"2026-08-07","source_refs":["gutenberg_waite_43548","github_dadanluo_bazi_agent_24f0216"],"ownership":"K-TAROT.07 牌阵与解读","boundary":"牌位结构与本站选择导航分层；不抽牌，不生成结论。"}
+}

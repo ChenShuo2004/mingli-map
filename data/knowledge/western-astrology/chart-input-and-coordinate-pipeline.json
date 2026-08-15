@@ -1,0 +1,27 @@
+{
+  "schema_version":"1.0.0","id":"western_astrology_chart_input_and_coordinate_pipeline","title":"星盘输入与坐标生成链","summary":"一张星盘首先是确定性坐标产品：本地日期、时间和UTC offset共同确定Julian Day，地理纬度／经度与宫制决定宫位和轴点，对象ID决定计算哪些天体。解释必须发生在这条生成链之后。",
+  "concept_cards":[
+    {"id":"datetime","name":"Datetime","tag":"日期＋时间＋时区","summary":"本地时间先按UTC offset换算为绝对时刻，再生成Julian Day。","details":["历法参数可选Gregorian或Julian","同一墙上时间换时区会改变JD","同一JD可有不同本地显示"]},
+    {"id":"geopos","name":"GeoPos","tag":"纬度＋经度","summary":"地点输入转换为带正负号的角度，供宫位、轴点和昼夜判断使用。","details":["北纬／东经为正","南纬／西经为负"]},
+    {"id":"objects","name":"对象位置","tag":"Swiss Ephemeris","summary":"对象ID、Datetime和GeoPos进入星历接口，生成黄经、黄纬与速度等字段。","details":["默认传统对象集可覆盖七曜与若干计算点","恒星按需单独计算"]},
+    {"id":"houses","name":"宫位与轴点","tag":"宫制参数","summary":"同一时刻地点可按不同宫制生成宫位；轴点另存，不能总用一宫／十宫替代ASC／MC。","details":["默认Alcabitius","可显式选择Whole Sign","Chart同时保存houses与angles"]}
+  ],
+  "fixed_samples":[
+    {"id":"input","label":"固定输入","input":"2000-01-01 12:00 +00:00 · 51°29′N 0°W","output":"JD 2451545.000000","note":"Gregorian固定夹具"},
+    {"id":"objects","label":"七曜位置","input":"Sun Moon Mercury Venus Mars Jupiter Saturn","output":"摩羯10.369° · 天蝎13.324° · 摩羯1.889° · 射手1.566° · 水瓶27.963° · 白羊25.253° · 金牛10.396°","note":"锁定Swiss Ephemeris结果"},
+    {"id":"angles","label":"四轴点","input":"Whole Sign · Greenwich固定地点","output":"ASC 24.271° · MC 279.611° · DESC 204.271° · IC 99.611°","note":"轴点单独保存"},
+    {"id":"container","label":"Chart容器","input":"date · pos · hsys · IDs","output":"objects · houses · angles","note":"解释前的数据结构"}
+  ],
+  "comparisons":[
+    {"field":"本地时间与绝对时刻","left":"日期／时间字符串是本地显示","right":"Julian Day表示绝对时刻","handling":"任何日期样本必须连同UTC offset保存。"},
+    {"field":"宫位与轴点","left":"houses来自宫制分区","right":"angles保存ASC、MC、DESC、IC","handling":"非所有宫制的一宫等于ASC、十宫等于MC。"},
+    {"field":"默认与传统","left":"软件默认宫制是Alcabitius","right":"作者教学资料默认整宫制","handling":"两个默认分别登记，不宣布唯一标准。"}
+  ],
+  "reading_boundaries":["页面只展示固定夹具，不读取用户出生资料或位置。","星历输出是坐标，不自动形成性格、吉凶或事件结论。","UTC offset、地理经纬度和宫制缺一不可省略为无上下文日期。","软件默认值只代表实现选择。"],
+  "public_sources":[
+    {"type":"实现资料","title":"flatlib：Chart构造器","url":"https://github.com/flatangle/flatlib/blob/856d26b8bd1316ccdafe76399994696f9510de9e/flatlib/chart.py#L26-L45","note":"展示date、pos、hsys与IDs怎样生成objects、houses和angles。"},
+    {"type":"实现资料","title":"flatlib：Datetime与Julian Day","url":"https://github.com/flatangle/flatlib/blob/856d26b8bd1316ccdafe76399994696f9510de9e/flatlib/datetime.py","note":"提供Gregorian／Julian日期、时间、UTC offset与Julian Day转换。"},
+    {"type":"实现资料","title":"flatlib：GeoPos","url":"https://github.com/flatangle/flatlib/blob/856d26b8bd1316ccdafe76399994696f9510de9e/flatlib/geopos.py","note":"提供纬度／经度字符串与带符号角度之间的转换。"}
+  ],
+  "internal_review":{"excluded_claims":["个人命盘","坐标即解释","默认宫制即传统共识"]}
+}

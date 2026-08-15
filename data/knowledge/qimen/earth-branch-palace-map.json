@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0.0",
+  "id": "qimen_earth_branch_palace_map",
+  "title": "十二地支怎样进入八个外围宫",
+  "summary": "十二地支不平均分进九宫：子、卯、午、酉各占一个四正宫，丑寅、辰巳、未申、戌亥各共享一个四维宫，中五宫没有地支落点。这张底表被旬空、马星、入墓等后续规则反复调用。",
+  "branch_to_palace": [
+    {"branch": "子", "palace": 1, "palace_name": "坎一宫", "axis": "四正", "direction": "北"},
+    {"branch": "丑", "palace": 8, "palace_name": "艮八宫", "axis": "四维", "direction": "东北"},
+    {"branch": "寅", "palace": 8, "palace_name": "艮八宫", "axis": "四维", "direction": "东北"},
+    {"branch": "卯", "palace": 3, "palace_name": "震三宫", "axis": "四正", "direction": "东"},
+    {"branch": "辰", "palace": 4, "palace_name": "巽四宫", "axis": "四维", "direction": "东南"},
+    {"branch": "巳", "palace": 4, "palace_name": "巽四宫", "axis": "四维", "direction": "东南"},
+    {"branch": "午", "palace": 9, "palace_name": "离九宫", "axis": "四正", "direction": "南"},
+    {"branch": "未", "palace": 2, "palace_name": "坤二宫", "axis": "四维", "direction": "西南"},
+    {"branch": "申", "palace": 2, "palace_name": "坤二宫", "axis": "四维", "direction": "西南"},
+    {"branch": "酉", "palace": 7, "palace_name": "兑七宫", "axis": "四正", "direction": "西"},
+    {"branch": "戌", "palace": 6, "palace_name": "乾六宫", "axis": "四维", "direction": "西北"},
+    {"branch": "亥", "palace": 6, "palace_name": "乾六宫", "axis": "四维", "direction": "西北"}
+  ],
+  "palace_groups": [
+    {"palace": 1, "palace_name": "坎一宫", "branches": ["子"], "axis": "四正"},
+    {"palace": 8, "palace_name": "艮八宫", "branches": ["丑", "寅"], "axis": "四维"},
+    {"palace": 3, "palace_name": "震三宫", "branches": ["卯"], "axis": "四正"},
+    {"palace": 4, "palace_name": "巽四宫", "branches": ["辰", "巳"], "axis": "四维"},
+    {"palace": 9, "palace_name": "离九宫", "branches": ["午"], "axis": "四正"},
+    {"palace": 2, "palace_name": "坤二宫", "branches": ["未", "申"], "axis": "四维"},
+    {"palace": 7, "palace_name": "兑七宫", "branches": ["酉"], "axis": "四正"},
+    {"palace": 6, "palace_name": "乾六宫", "branches": ["戌", "亥"], "axis": "四维"}
+  ],
+  "dependency_examples": [
+    {"rule": "旬空", "input": "戌、亥空", "lookup": "戌亥同属乾六宫", "result": "盘面只标一个空亡宫"},
+    {"rule": "马星", "input": "马支为寅", "lookup": "寅属艮八宫", "result": "马星落八宫"},
+    {"rule": "入墓", "input": "墓支为辰", "lookup": "辰属巽四宫", "result": "以四宫作为条件落点"}
+  ],
+  "reading_boundaries": [
+    "本页只保存地支到九宫坐标的固定映射，不读取当前时支、月支或命盘。",
+    "四正宫各一支、四维宫各两支；中五宫没有地支，本页不为它补造地支。",
+    "旬空、马星和入墓页继续维护各自的上游条件，本页只承担共同的坐标换算。"
+  ],
+  "public_sources": [
+    {
+      "title": "mingli-skills 锁定地支入宫表",
+      "url": "https://github.com/weizeW/mingli-skills/blob/c16eca0/qimen-dunjia/data/dizhi_gong.json",
+      "note": "提供地支对宫、宫对地支和四正／四维分组。"
+    },
+    {
+      "title": "qimenpaipan 锁定时支宫位常量",
+      "url": "https://github.com/redrockhorse/qimenpaipan/blob/b6de54245cf7a514f59e51833dc01a87e1a3a849/qimenpaipan.py",
+      "note": "SHIZHI_POSITION 保存相同的十二支到八个外围宫映射。"
+    }
+  ],
+  "internal_review": {
+    "status": "formal_coordinate_map",
+    "reviewed_at": "2026-08-09",
+    "owner": ["火华", "Codex"],
+    "source_refs": ["github_weizew_mingli_skills_c16eca0", "github_redrockhorse_qimenpaipan_b6de542"],
+    "deduplication": "九宫坐标页维护宫号、方位与八卦；本页只维护十二地支怎样落到八个外围宫，并作为旬空、马星、入墓的共同依赖。",
+    "known_gaps": ["来源仓库称12来源一致，但没有提供逐条规则级页码。"],
+    "boundary": "固定坐标映射，不输出状态或判断。"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "id": "tarot-question-framing",
+  "title": "如何提出问题",
+  "summary": "把模糊问题整理成对象、主题和时间范围清楚的问题。",
+  "dimensions": [
+    {"id":"perspective","label":"对象","prompt":"问题主要关于谁？","good":"回到提问者能够观察或采取的行动","avoid":"替未在场的人读取思想、感受或决定"},
+    {"id":"topic","label":"主题","prompt":"这次只看什么？","good":"一次保留一个主要主题","avoid":"把关系、工作、金钱和健康挤进同一个问题"},
+    {"id":"time","label":"时间","prompt":"查看哪一段时间？","good":"写明本周、未来三个月或另一段范围","avoid":"只写“以后”“最终”而没有范围"},
+    {"id":"form","label":"问法","prompt":"希望了解什么？","good":"使用“什么”“怎样”“哪些因素”","avoid":"预先要求唯一的“会／不会”答案"}
+  ],
+  "examples": [
+    {"id":"relationship","before":"他到底在想什么？","after":"我在这段关系中可以观察什么，并采取什么行动？","reason":"把焦点从未在场者的想法移回自己的观察与行动。"},
+    {"id":"study","before":"我以后会成功吗？","after":"未来三个月，我可以怎样调整目前的学习计划？","reason":"补入主题和时间范围，并把答案改成可观察的因素。"},
+    {"id":"choice","before":"我该不该离职？","after":"继续或离开目前工作时，我分别需要评估哪些因素？","reason":"保留两个选项，不预先要求牌面替人作决定。"},
+    {"id":"professional","before":"我的诊断是不是错了？","after":"医疗问题交由合格专业人士处理。","reason":"塔罗学习页不替代医疗、法律或其他专业意见。"}
+  ],
+  "source_layers": [
+    {"label":"Waite 1910","note":"原书区分“明确问题”的凯尔特方法与“没有明确问题”的另一种方法。"},
+    {"label":"学习整理模板","note":"对象、主题、时间和问法用于帮助初学者保存清楚输入，不冒充唯一传统格式。"},
+    {"label":"TABI伦理规范","note":"第三方问题应重写或拒绝；健康、法律等事项应建议咨询合格专业人士。"}
+  ],
+  "public_sources": [
+    {"title":"Project Gutenberg：Waite 1910明确问题与时间范围","note":"第七节把凯尔特方法用于明确问题；第八节说明若询问一定时间，需在洗牌前写清范围。","url":"https://www.gutenberg.org/cache/epub/43548/pg43548-images.html#III7"},
+    {"title":"TABI：Aims and Ethics","note":"该协会伦理规范要求保护隐私、重写或拒绝第三方问题，并在健康或法律事项上建议咨询合格专业人士。","url":"https://tabi.org.uk/about-us/aims-and-ethics/"}
+  ],
+  "internal_review": {"status":"formal_question_structure_node","reviewed_at":"2026-08-07","source_refs":["gutenberg_waite_43548","tabi_ethics"],"ownership":"K-TAROT.05 使用方法","boundary":"问题模板是本站项目判断；Waite历史版本与TABI现代伦理来源分别标注。"}
+}

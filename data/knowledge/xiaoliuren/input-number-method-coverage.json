@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0.0",
+  "id": "xiaoliuren_input_number_method_coverage",
+  "title": "时间三数、变通三数与任意数列",
+  "summary": "版本二笔记在月、日、时三数之外，又提出变通三数和任意长度数列两层扩展。三者不能只因为最后都写成数字就当成同一个入口：时间三数有明确字段与顺序，变通三数保留三段结构但数字怎样取得取决于材料，任意数列连输入数量都不固定，且来源把选择交给第一反应。本节点只登记三类作者方法的输入形状、已知规则和缺口，不接收报数或执行起课。",
+  "source_scope": {
+    "source": "Horace-Maxwell/divination-notes-prompt 小六壬笔记·版本二",
+    "commit": "b22ecfaafcd17782ddc0f633df163b6492b766d4",
+    "status": "无仓库许可、未独立核验的作者汇编；只保存原创结构摘要"
+  },
+  "methods": [
+    {
+      "id": "calendar_three_numbers",
+      "label": "时间三数",
+      "input_shape": "固定3段",
+      "inputs": ["农历月数", "农历日数", "时支序数"],
+      "sequence_rule": "从大安起月，月落点起日，日落点起时",
+      "coverage": "字段、次序、六宫循环均明确",
+      "evidence_status": "版本二详细说明；另有maifusha具名实现可复算",
+      "public_action": "只展示固定教材"
+    },
+    {
+      "id": "flexible_three_numbers",
+      "label": "变通三数",
+      "input_shape": "固定3段，材料可变",
+      "inputs": ["三个数字", "三个字的笔画数", "三张牌等可数字化材料"],
+      "sequence_rule": "仍按三次接续循环处理",
+      "coverage": "三段结构明确；不同材料的数字化细则不完整",
+      "evidence_status": "版本二作者扩展",
+      "public_action": "只列输入类型，不提供转换器"
+    },
+    {
+      "id": "arbitrary_length_sequence",
+      "label": "任意数列",
+      "input_shape": "1至任意多段",
+      "inputs": ["号码", "座位号", "页码", "牌面", "物件数量等"],
+      "sequence_rule": "来源称可逐数掐算，但没有形成统一字段协议",
+      "coverage": "输入数量开放；分段、取整、混合材料和停止条件缺少统一规则",
+      "evidence_status": "版本二作者进一步扩展，并强调第一反应",
+      "public_action": "只登记覆盖缺口，不执行"
+    }
+  ],
+  "comparison_axes": [
+    {"axis": "输入数量", "calendar": "3", "flexible": "3", "arbitrary": "1至任意"},
+    {"axis": "字段身份", "calendar": "月／日／时", "flexible": "材料转成三数", "arbitrary": "无统一字段"},
+    {"axis": "转换规则", "calendar": "明确", "flexible": "部分明确", "arbitrary": "缺统一协议"},
+    {"axis": "本项目处置", "calendar": "固定例展示", "flexible": "目录说明", "arbitrary": "边界登记"}
+  ],
+  "known_gaps": [
+    "汉字笔画采用何字形、异体字和计数标准，来源没有给出可复现字表。",
+    "牌面、号码或物件如何处理0、重复、负数、分隔符与多位数，来源没有统一协议。",
+    "任意长度数列怎样对应月课、日课、时课或更多阶段，来源没有稳定对象模型。",
+    "第一反应属于作者方法的选择原则，不能机械验证，也不能当成输入校验规则。"
+  ],
+  "reading_boundaries": [
+    "页面不提供报数、笔画、抽牌、号码或物件输入控件。",
+    "不声称三类入口效果相同，也不把作者经验升级为共识。",
+    "不输出落宫、吉凶、应期或个人结论。"
+  ],
+  "public_sources": [
+    {
+      "title": "Horace-Maxwell 小六壬笔记版本二",
+      "url": "https://github.com/Horace-Maxwell/divination-notes-prompt/blob/b22ecfaafcd17782ddc0f633df163b6492b766d4/%E5%B0%8F%E5%85%AD%E5%A3%AC%E7%AC%94%E8%AE%B0.md",
+      "note": "第二节说明月日时路径，第三节提出变通三数与任意长度取数；仓库无许可，页面不复用长文和案例。"
+    }
+  ],
+  "internal_review": {
+    "reviewed_on": "2026-08-09",
+    "owner": ["火华", "Codex"],
+    "status": "formal_author_extension_coverage_map"
+  }
+}

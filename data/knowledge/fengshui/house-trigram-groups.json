@@ -1,0 +1,25 @@
+{
+  "id": "house-trigram-groups",
+  "title": "宅卦与东西四宅",
+  "summary": "宅卦由住宅坐山所属卦宫命名：坎、离、震、巽归东四宅，乾、坤、艮、兑归西四宅；同一卦宫统摄三个二十四山坐山。",
+  "houses": [
+    {"trigram":"坎","direction":"北","sitting_mountains":["壬","子","癸"],"facing":"南","group":"东四宅"},
+    {"trigram":"艮","direction":"东北","sitting_mountains":["丑","艮","寅"],"facing":"西南","group":"西四宅"},
+    {"trigram":"震","direction":"东","sitting_mountains":["甲","卯","乙"],"facing":"西","group":"东四宅"},
+    {"trigram":"巽","direction":"东南","sitting_mountains":["辰","巽","巳"],"facing":"西北","group":"东四宅"},
+    {"trigram":"离","direction":"南","sitting_mountains":["丙","午","丁"],"facing":"北","group":"东四宅"},
+    {"trigram":"坤","direction":"西南","sitting_mountains":["未","坤","申"],"facing":"东北","group":"西四宅"},
+    {"trigram":"兑","direction":"西","sitting_mountains":["庚","酉","辛"],"facing":"东","group":"西四宅"},
+    {"trigram":"乾","direction":"西北","sitting_mountains":["戌","乾","亥"],"facing":"东南","group":"西四宅"}
+  ],
+  "groups": [
+    {"label":"东四宅","trigrams":["坎","离","震","巽"],"directions":["北","南","东","东南"]},
+    {"label":"西四宅","trigrams":["乾","坤","艮","兑"],"directions":["西北","西南","东北","西"]}
+  ],
+  "reading_order": ["读取坐山度数","映射到二十四山","三山归入一个卦宫","以卦名命名宅卦","再归入东四宅或西四宅"],
+  "boundaries": ["宅卦取住宅坐山，不以向首直接命名","同属一个宅卦的三个山位仍保留各自度数和正兼边界","东西四宅是八宅内部的二分，不等同现代住宅类型"],
+  "public_sources": [
+    {"title":"南华大学论文：传统阳宅风水观的主要流派","note":"用于核对坎震巽离为东四宅、乾坤艮兑为西四宅及一卦管三山。","url":"https://nhuir.nhu.edu.tw/retrieve/27257/090NHU00259002-002.pdf"},
+    {"title":"南华大学：风水场域之意象性研究","note":"用于核对东四宫与西四宫的分组。","url":"https://nhuir.nhu.edu.tw/retrieve/28545/092NHU05699014-001.pdf"}
+  ]
+}

@@ -1,0 +1,315 @@
+{
+  "id": "taiyi-minute-count",
+  "topic_id": "taiyi",
+  "title": "kintaiyi分计扩展",
+  "summary": "分计是锁定 kintaiyi 接口中的 ji_style 4：程序把一小时的六十分钟逐分配给一轮六十甲子，以分干支校正积分数的模六十位置，再以积分数模七十二得到局号。它与年、月、日、时计共用式盘下游，却没有在当前选定古籍中找到同名计法；定遁时又不读取分干支，而在冬半年改看时干支、夏半年改看日干支。因此把现代扩展身份、分钟干支、积分公式、定遁旁路和下游缺口分别保存。",
+  "identity_layers": [
+    {
+      "id": "interface",
+      "index": "01",
+      "name": "普通式盘入口",
+      "value": "ji_style = 4",
+      "status": "锁定接口明确",
+      "note": "进入 pan、kook、ty 和式盘对象，不需要性别参数。"
+    },
+    {
+      "id": "source",
+      "index": "02",
+      "name": "古籍身份",
+      "value": "同名层待核",
+      "status": "当前未找到直接原典",
+      "note": "选定《太乙金镜式经》用式段列岁、月、日、时，没有据此推出分计。"
+    },
+    {
+      "id": "ganzhi",
+      "index": "03",
+      "name": "分干支",
+      "value": "每小时一轮六十甲子",
+      "status": "现代实现规则",
+      "note": "同一小时第0至59分依次对应60个干支；下一小时从新的第0分位置重新走一轮。"
+    },
+    {
+      "id": "life",
+      "index": "04",
+      "name": "命法分钟支",
+      "value": "每10分钟约走一辰",
+      "status": "另一条可选接口",
+      "note": "minute_to_virtual_branch只供命法可选参数使用，不是普通分计的积分与局号算法。"
+    }
+  ],
+  "generation_chain": [
+    {
+      "id": "day",
+      "index": "01",
+      "label": "公历日差",
+      "input": "当前年月日时分",
+      "formula": "int(JD − 1900-12-21 00:00)",
+      "output": "整数日差",
+      "note": "小时和分钟先进入儒略日差，随后被int向零截断。"
+    },
+    {
+      "id": "raw",
+      "index": "02",
+      "label": "积分原数",
+      "input": "日差、小时、分钟与method常数",
+      "formula": "(积日 − 1) × 23 + 小时 × 10500 + (分钟 + 1)",
+      "output": "base_result",
+      "note": "10500同时是60的整数倍且除72余60，使相邻小时的局号仍可接续。"
+    },
+    {
+      "id": "minute-ganzhi",
+      "index": "03",
+      "label": "分干支校正",
+      "input": "当日子时干支 + 当前分钟序号",
+      "formula": "调整积分，使积分 mod 60 = 分干支序号",
+      "output": "积分数",
+      "note": "程序保持大数值，只向前补0至59使模六十对齐。"
+    },
+    {
+      "id": "board",
+      "index": "04",
+      "label": "局号与行宫",
+      "input": "积分数",
+      "formula": "积分数 mod 72；余0作72局",
+      "output": "阴／阳遁第1至72局",
+      "note": "遁别由另一条日／时干支旁路决定，不由分干支决定。"
+    }
+  ],
+  "fixed_input": "1552年9月24日 00:00 · 秋分后 · 丙戌日 · 戊子时",
+  "fixed_methods": [
+    {
+      "method": 0,
+      "label": "太乙统宗",
+      "accumulated": 16281330239,
+      "minute_ganzhi": "壬戌",
+      "remainder60": 59,
+      "board": "阴遁四十七局",
+      "board_number": 47,
+      "taiyi_palace": 1,
+      "status": "与method 3同值"
+    },
+    {
+      "method": 1,
+      "label": "太乙金镜",
+      "accumulated": 16047790139,
+      "minute_ganzhi": "壬戌",
+      "remainder60": 59,
+      "board": "阴遁十一局",
+      "board_number": 11,
+      "taiyi_palace": 6,
+      "status": "与method 2同值"
+    },
+    {
+      "method": 2,
+      "label": "太乙淘金歌",
+      "accumulated": 16047790139,
+      "minute_ganzhi": "壬戌",
+      "remainder60": 59,
+      "board": "阴遁十一局",
+      "board_number": 11,
+      "taiyi_palace": 6,
+      "status": "与method 1同值"
+    },
+    {
+      "method": 3,
+      "label": "太乙局",
+      "accumulated": 16281330239,
+      "minute_ganzhi": "壬戌",
+      "remainder60": 59,
+      "board": "阴遁四十七局",
+      "board_number": 47,
+      "taiyi_palace": 1,
+      "status": "与method 0同值"
+    }
+  ],
+  "minute_sequence": [
+    {
+      "time": "00:00",
+      "minute_index": 0,
+      "minute_ganzhi": "壬戌",
+      "accumulated": 16047790139,
+      "board_number": 11,
+      "transition": "固定起点"
+    },
+    {
+      "time": "00:01",
+      "minute_index": 1,
+      "minute_ganzhi": "癸亥",
+      "accumulated": 16047790140,
+      "board_number": 12,
+      "transition": "相邻一分钟加1"
+    },
+    {
+      "time": "00:02",
+      "minute_index": 2,
+      "minute_ganzhi": "甲子",
+      "accumulated": 16047790141,
+      "board_number": 13,
+      "transition": "六十甲子重启"
+    },
+    {
+      "time": "00:59",
+      "minute_index": 59,
+      "minute_ganzhi": "辛酉",
+      "accumulated": 16047790198,
+      "board_number": 70,
+      "transition": "本小时末"
+    },
+    {
+      "time": "01:00",
+      "minute_index": 0,
+      "minute_ganzhi": "壬戌",
+      "accumulated": 16047800639,
+      "board_number": 71,
+      "transition": "积分跃加10441，但模60与模72都只前进1"
+    },
+    {
+      "time": "01:01",
+      "minute_index": 1,
+      "minute_ganzhi": "癸亥",
+      "accumulated": 16047800640,
+      "board_number": 72,
+      "transition": "七十二局走满"
+    }
+  ],
+  "dun_routes": [
+    {
+      "half": "冬至起半年",
+      "selector": "时干支",
+      "first_group": "甲丙戊庚壬时干：申酉戌亥子丑为阳，其余为阴",
+      "reverse_group": "乙丁己辛癸时干反转",
+      "minute_ganzhi_role": "不参与定遁",
+      "status": "程序旁路；原典依据待核"
+    },
+    {
+      "half": "夏至起半年",
+      "selector": "日干支",
+      "first_group": "甲丙戊庚壬日干：申酉戌亥子丑为阴，其余为阳",
+      "reverse_group": "乙丁己辛癸日干反转",
+      "minute_ganzhi_role": "不参与定遁",
+      "status": "程序旁路；原典依据待核"
+    }
+  ],
+  "downstream_boundaries": [
+    {
+      "label": "纪元改读时干支",
+      "implementation": "getepoch对分计读取时干支；jiyuan也以时干支选择五子元标签。",
+      "effect": "积分数虽然逐分变化，纪元字符串不随分干支逐分变化。",
+      "status": "设计依据待核"
+    },
+    {
+      "label": "五子元局固定例为空",
+      "implementation": "分计改走min_five_zi_yuan，不使用普通five_zi_yuan。",
+      "effect": "既有1552固定例四个method均未得到五子元局字符串。",
+      "status": "不补造结果"
+    },
+    {
+      "label": "积数连续不等于原数连续",
+      "implementation": "相邻分钟加1；跨小时原数跃加10441。",
+      "effect": "因10441对60、72、360都余1，干支序号、局号和周纪余数仍表现为逐分前进。",
+      "status": "实现刻意保持余数连续"
+    },
+    {
+      "label": "日界仍需专项检查",
+      "implementation": "小时项在午夜清零，日差项只增加23，分干支又随新日子时起点重建。",
+      "effect": "23:59至次日00:00的积分原数和各周期是否连续，现有测试未覆盖。",
+      "status": "待运行复核"
+    },
+    {
+      "label": "普通分计与命法分钟支不同",
+      "implementation": "普通分计每分钟走一个干支；命法可选函数每10分钟移动一个虚拟地支。",
+      "effect": "两者输入尺度、输出对象和下游用途都不同。",
+      "status": "不可合并"
+    }
+  ],
+  "source_differences": [
+    {
+      "label": "古籍只直接列到时计",
+      "classical": "当前选定用式与时局材料明确保存岁、月、日、时及冬夏二至时计。",
+      "implementation": "README和代码另设ji_style 4分计。",
+      "handling": "节点标题保留“分计”，身份明确写成来源仓库现代扩展。"
+    },
+    {
+      "label": "局号与遁别使用不同输入",
+      "classical": "未找到分计同名规则可供对照。",
+      "implementation": "分干支校正积分；日／时干支决定阴阳遁。",
+      "handling": "两条路线分开展示，不用一个“分干支”概括全部输入。"
+    },
+    {
+      "label": "具名method只改变两组常数",
+      "classical": "未完成四标签与古籍版本的逐条对应。",
+      "implementation": "固定分计下method 0=3、method 1=2，形成两组积分和两组局号。",
+      "handling": "只称实现分支，不称四套已证古法。"
+    }
+  ],
+  "reading_boundaries": [
+    {
+      "label": "可理解",
+      "note": "分计怎样由时间生成分干支、积分数、局号和太乙行宫。"
+    },
+    {
+      "label": "可复核",
+      "note": "固定时刻四个method、六个相邻分钟／跨小时样本，以及冬夏两条定遁入口。"
+    },
+    {
+      "label": "明确待核",
+      "note": "同名古籍依据、日界连续性、分计纪元与五子元局旁路。"
+    },
+    {
+      "label": "不由此推出",
+      "note": "程序具有分钟入口不代表传统太乙普遍存在分计，也不用于真人起盘或分钟级吉凶判断。"
+    }
+  ],
+  "public_sources": [
+    {
+      "title": "《太乙金镜式经》卷二：岁、月、日、时用式",
+      "url": "https://ctext.org/wiki.pl?chapter=275091&if=gb&remap=gb",
+      "note": "用于确认当前选定材料直接列出的用式层级；不能以未见分计证明所有传统都不存在分计。"
+    },
+    {
+      "title": "《武备志》：时计与冬夏二至",
+      "url": "https://ctext.org/wiki.pl?chapter=3064539&if=gb&remap=gb",
+      "note": "提供时计积时和二至分遁的原典对照层，不外推为分计规则。"
+    },
+    {
+      "title": "kintaiyi 锁定分计积分实现",
+      "url": "https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L431-L445",
+      "note": "日差、23倍、小时10500倍、分钟加一及分干支模60校正。"
+    },
+    {
+      "title": "kintaiyi 锁定分干支生成",
+      "url": "https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/config.py#L516-L532",
+      "note": "五狗遁起点和一日1440分钟的六十甲子循环映射。"
+    },
+    {
+      "title": "kintaiyi 锁定分计定遁与局号",
+      "url": "https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L500-L534",
+      "note": "分计按冬夏半年改读时干支或日干支，并与积分模72局号组合。"
+    },
+    {
+      "title": "kintaiyi 锁定分计纪元与五子元旁路",
+      "url": "https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L534-L569",
+      "note": "分计另走min_five_zi_yuan，并在纪元层改读时干支。"
+    },
+    {
+      "title": "kintaiyi 锁定命法分钟虚拟支",
+      "url": "https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L96-L101",
+      "note": "每10分钟移动一辰的可选命法函数；用于证明它与普通分计不是同一算法。"
+    }
+  ],
+  "internal_review": {
+    "status": "formal_minute_count_audit",
+    "reviewed_at": "2026-08-07",
+    "owner": ["火华", "Codex"],
+    "runtime_basis": "复用2026-08-06锁定环境保存的1552固定分计结果；积分数、模60／72、相邻分钟及跨小时值由锁定公式机械复算。",
+    "decision": "新增短名对象节点“分计”。公开其现代实现结构与缺口，不因五计目录需要对称就补写古法身份。",
+    "deduplication": "不并入“五计”：五计只负责入口总览；本页展开分干支、积分、局号和旁路。不并入“阴阳遁”：该页比较五种定遁输入，本页还要解释积分公式与分计专属下游。不并入“时计”：两者的积数单位、干支层与定遁入口均不同。",
+    "known_gaps": [
+      "未找到分计同名古籍规则",
+      "23:59至次日00:00的积分、局号和纪元连续性没有专项运行测试",
+      "min_five_zi_yuan固定例为空且依据未明",
+      "分计纪元改读时干支而非分干支的依据未明"
+    ],
+    "boundary": "固定案例、无真人输入、无随机；不输出吉凶、行动、战争、灾异或个人结论。"
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0.0",
+  "id": "qimen_nine_star_palace_states",
+  "title": "九星落宫的旺相休囚废",
+  "summary": "九星落宫使用星五行与实际落宫五行的关系，依次标作旺、相、休、囚、废。这里的“我”固定指九星：星生宫为旺、星宫同五行为相、宫生星为休、宫克星为囚、星克宫为废；它不是月支季令的旺相休囚死。",
+  "viewpoint": "九星为我，实际落宫为他",
+  "star_groups": [
+    {"element": "水", "stars": ["天蓬"]},
+    {"element": "土", "stars": ["天芮", "天禽", "天任"]},
+    {"element": "木", "stars": ["天冲", "天辅"]},
+    {"element": "金", "stars": ["天心", "天柱"]},
+    {"element": "火", "stars": ["天英"]}
+  ],
+  "palace_groups": [
+    {"element": "水", "palaces": [1], "names": ["坎一宫"]},
+    {"element": "土", "palaces": [2, 5, 8], "names": ["坤二宫", "中五宫", "艮八宫"]},
+    {"element": "木", "palaces": [3, 4], "names": ["震三宫", "巽四宫"]},
+    {"element": "金", "palaces": [6, 7], "names": ["乾六宫", "兑七宫"]},
+    {"element": "火", "palaces": [9], "names": ["离九宫"]}
+  ],
+  "relation_rules": [
+    {"state": "旺", "formula": "星生宫", "source_wording": "我生者"},
+    {"state": "相", "formula": "星与宫同五行", "source_wording": "同我者"},
+    {"state": "休", "formula": "宫生星", "source_wording": "生我者"},
+    {"state": "囚", "formula": "宫克星", "source_wording": "克我者"},
+    {"state": "废", "formula": "星克宫", "source_wording": "我克者"}
+  ],
+  "fixed_star_examples": [
+    {"star": "天蓬", "star_element": "水", "palace": 3, "palace_name": "震三宫", "palace_element": "木", "state": "旺", "formula": "水生木"},
+    {"star": "天蓬", "star_element": "水", "palace": 1, "palace_name": "坎一宫", "palace_element": "水", "state": "相", "formula": "水与水同五行"},
+    {"star": "天蓬", "star_element": "水", "palace": 6, "palace_name": "乾六宫", "palace_element": "金", "state": "休", "formula": "金生水"},
+    {"star": "天蓬", "star_element": "水", "palace": 2, "palace_name": "坤二宫", "palace_element": "土", "state": "囚", "formula": "土克水"},
+    {"star": "天蓬", "star_element": "水", "palace": 9, "palace_name": "离九宫", "palace_element": "火", "state": "废", "formula": "水克火"}
+  ],
+  "reading_boundaries": [
+    "必须使用九星在当前盘中的实际落宫；原始宫位只用于识别对象，不能替代移动后的落点。",
+    "天禽能否独立落中、寄坤或随天芮属于盘式版本问题；本页保留中五宫土这个坐标，但不裁定天禽如何进入。",
+    "旺、相、休、囚、废只保存关系标签，不附加凶星减凶、凶门更凶等结果解释。",
+    "来源表称落宫为主、月令为辅，但没有给出两层合成算法；本页只发布落宫层。"
+  ],
+  "public_sources": [
+    {
+      "title": "mingli-skills 锁定九星旺衰规则",
+      "url": "https://github.com/weizeW/mingli-skills/blob/c16eca0/qimen-dunjia/data/wuxing.json",
+      "note": "提供以九星为“我”的旺、相、休、囚、废五条关系；仓库缺规则级古籍页码。"
+    },
+    {
+      "title": "mingli-skills 锁定九星与九宫五行",
+      "url": "https://github.com/weizeW/mingli-skills/blob/c16eca0/qimen-dunjia/data/yuandan.json",
+      "note": "提供九星五行、原始宫位及九宫五行，用于建立对象与坐标分组。"
+    },
+    {
+      "title": "qimenpaipan 锁定九星移动实现",
+      "url": "https://github.com/redrockhorse/qimenpaipan/blob/b6de54245cf7a514f59e51833dc01a87e1a3a849/qimenpaipan.py#L880-L936",
+      "note": "说明判断时需要读取九星的实际移动落宫，并保留天禽寄随的实现边界。"
+    }
+  ],
+  "internal_review": {
+    "status": "formal_relation_system",
+    "reviewed_at": "2026-08-09",
+    "owner": ["火华", "Codex"],
+    "source_refs": ["github_weizew_mingli_skills_c16eca0", "github_redrockhorse_qimenpaipan_b6de542"],
+    "deduplication": "九星对象页维护名称、五行和原始宫位；本页只维护星移动后与实际落宫之间的五态关系。",
+    "known_gaps": ["五态规则缺规则级古籍页码。", "来源只说兼看月令，没有提供落宫层与月令层的合成算法。", "不同盘式的天禽中宫处理继续版本化。"],
+    "boundary": "识别九星与落宫五行关系，不输出旺衰裁决或事件判断。"
+  }
+}

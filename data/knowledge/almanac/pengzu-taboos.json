@@ -1,0 +1,14 @@
+{
+  "id":"pengzu-taboos","title":"彭祖百忌","summary":"每日干支各取一条短句：十天干表与十二地支表组合成当日两条，不是为六十甲子另造六十条独立规则。",
+  "stem_rows":[
+    {"stem":"甲","text":"不开仓，财物耗散"},{"stem":"乙","text":"不栽植，千株不长"},{"stem":"丙","text":"不修灶，必见灾殃"},{"stem":"丁","text":"不剃头，头必生疮"},{"stem":"戊","text":"不受田，田主不祥"},{"stem":"己","text":"不破券，二比并亡"},{"stem":"庚","text":"不经络，织机虚张"},{"stem":"辛","text":"不合酱，主人不尝"},{"stem":"壬","text":"不泱水，更难提防"},{"stem":"癸","text":"不词讼，理弱敌强"}
+  ],
+  "branch_rows":[
+    {"branch":"子","text":"不问卜，自惹祸殃"},{"branch":"丑","text":"不冠带，主不还乡"},{"branch":"寅","text":"不祭祀，神鬼不尝"},{"branch":"卯","text":"不穿井，水泉不香"},{"branch":"辰","text":"不哭泣，必主重丧"},{"branch":"巳","text":"不远行，财物伏藏"},{"branch":"午","text":"不苫盖，屋主更张"},{"branch":"未","text":"不服药，毒气入肠"},{"branch":"申","text":"不安床，鬼祟入房"},{"branch":"酉","text":"不会客，醉坐颠狂"},{"branch":"戌","text":"不吃犬，作怪上床"},{"branch":"亥","text":"不嫁娶，不利新郎"}
+  ],
+  "fixed_example":{"date":"1986-05-29","day":"癸酉","stem_text":"癸不词讼，理弱敌强","branch_text":"酉不会客，醉坐颠狂"},
+  "boundaries":["文本是传统历注条目，不是现代风险评估","只说明干条与支条怎样组合，不延伸个人判断"],
+  "public_sources":[
+    {"title":"lunar-javascript 锁定实现","note":"十干、十二支条目和固定日期组合来自锁定版本。","url":"https://github.com/6tail/lunar-javascript/tree/4c45a59"}
+  ]
+}

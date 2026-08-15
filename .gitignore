@@ -1,0 +1,23 @@
+.DS_Store
+.obsidian/
+AGENTS.md
+
+# Local and generated application files
+app/node_modules/
+app/dist/
+app/artifacts/
+app/.vercel/
+
+# Research workspace and generated caches
+tmp/
+data/sources/
+data/comparisons/
+docs/research/
+intake/
+scripts/
+
+# Local source books and working notes
+*.pdf
+*.mobi
+未命名.md
+补充收集到的文案/

@@ -1,0 +1,21 @@
+{
+  "schema_version":"1.0",
+  "id":"twenty-eight-mansions",
+  "title":"二十八宿",
+  "summary":"二十八宿把黄赤道附近的星空分为二十八组，并按东、北、西、南四象各收七宿；黄历中的日宿是在这套名称上增加每日轮值。",
+  "zones":[
+    {"direction":"东","symbol":"青龙","mansions":["角","亢","氐","房","心","尾","箕"]},
+    {"direction":"北","symbol":"玄武","mansions":["斗","牛","女","虚","危","室","壁"]},
+    {"direction":"西","symbol":"白虎","mansions":["奎","娄","胃","昴","毕","觜","参"]},
+    {"direction":"南","symbol":"朱雀","mansions":["井","鬼","柳","星","张","翼","轸"]}
+  ],
+  "fixed_sequence":[
+    {"date":"1986-05-25","mansion":"房"},{"date":"1986-05-26","mansion":"心"},{"date":"1986-05-27","mansion":"尾"},{"date":"1986-05-28","mansion":"箕"},{"date":"1986-05-29","mansion":"斗"},{"date":"1986-05-30","mansion":"牛"},{"date":"1986-05-31","mansion":"女"}
+  ],
+  "boundaries":["天文分区与黄历日宿共用名称，但不是同一种数据","宿的动物、七曜和吉凶属于附加字段","二十八宿与十二星座不是同一坐标系统"],
+  "public_sources":[
+    {"title":"故宫博物院：二十八宿","note":"用于确认二十八宿作为中国古代黄赤道带星空分区的身份。","url":"https://www.dpm.org.cn/lemmas/244773.html"},
+    {"title":"中国科学技术馆：三垣四象二十八宿","note":"用于核对四象与每象七宿的分组结构。","url":"https://www.cdstm.cn/museum/zphc/cn/201704/t20170427_483688.html"},
+    {"title":"tyme4ts 1.5.2","note":"七日固定样本的每日轮值来自锁定实现。","url":"https://github.com/6tail/tyme4ts"}
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id": "virtual-one-rules",
+  "title": "补一规则与五格异版",
+  "summary": "补一是五格公式中的虚拟计数单位，不是姓名新增字符，也不进入总格；单姓、单名与外格所需的补一必须按同一结构版本处理。",
+  "virtual_rules": [
+    {"condition": "单姓", "field": "天格", "rule": "S1＋1", "record": "姓氏外侧补一"},
+    {"condition": "单名", "field": "地格", "rule": "G1＋1", "record": "名字外侧补一"},
+    {"condition": "单姓单名", "field": "外格", "rule": "2", "record": "两侧各一虚拟单位"},
+    {"condition": "单姓双名或复姓单名", "field": "外格", "rule": "总格－人格＋1", "record": "人格之外的真实笔画再补一"},
+    {"condition": "复姓双名", "field": "外格", "rule": "总格－人格", "record": "人格之外均为真实姓名用字，不补一"}
+  ],
+  "version_register": [
+    {"id": "four-template", "label": "姓名笔画四模板", "status": "公式表", "content": "按单姓单名、单姓双名、复姓单名、复姓双名分别计算；tianji表格与八字辅助工具资料后段相合。"},
+    {"id": "birth-ganzhi-definition", "label": "出生干支异版", "status": "不兼容定义", "content": "八字辅助工具同一文本前段以出生年、出生日干支定义天格与人格，与姓名笔画五格不能同时使用。"},
+    {"id": "outer-minimum-two", "label": "外格至少为2", "status": "程序下限", "content": "tianji程序在公式之后把小于2的外格改为2；公式表没有列出这一处理，因此单独记录。"}
+  ],
+  "record_fields": ["公式版本", "姓名结构", "真实字符笔画", "补一位置", "五格原始值", "程序附加处理"],
+  "boundaries": [
+    "补一不写回姓名字符串，也不伪装成缺失字符",
+    "总格不含任何补一单位",
+    "冲突版本并列保存，不把出生干支定义改写成姓名笔画定义",
+    "程序设置的数值下限与五格公式分开记录"
+  ],
+  "public_sources": [
+    {"title": "tianji：公式表与姓名五格脚本", "note": "用于区分公开公式与脚本附加的外格下限处理。", "url": "https://github.com/Ficere/tianji"},
+    {"title": "八字辅助工具：两种五格定义", "note": "同一资料同时出现出生干支定义与姓名笔画公式，两者按不兼容版本并列。", "url": "https://github.com/TVB-JINPAIJIANZHI/bazifuzugongju"}
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0.0",
+  "id": "meihua_external_signs_ten_responses",
+  "title": "外应与十应",
+  "summary": "外应是对起卦或解卦时周遭现象的总称；三要描述观察通道，十应则把可能出现的材料分为天时、地理、人事、时令、方位、动物、静物、言语、声音和颜色。公开节点只整理这三层结构与固定分类例，不调用摄像头或麦克风，也不把观察对象自动映射成卦或结论。",
+  "layers": [
+    {"id": "external-sign", "label": "外应", "question": "正在观察什么？", "answer": "当时周遭出现的现象"},
+    {"id": "three-channels", "label": "三要", "question": "通过什么通道得到？", "answer": "眼见、耳闻、心感"},
+    {"id": "ten-responses", "label": "十应", "question": "材料归入哪一类？", "answer": "十种环境分类"}
+  ],
+  "observation_channels": [
+    {"id": "eye", "label": "眼要", "scope": "所见", "examples": ["天气", "人物", "动物", "物品", "颜色", "方向"]},
+    {"id": "ear", "label": "耳要", "scope": "所闻", "examples": ["言语", "声响", "数量", "方向"]},
+    {"id": "mind", "label": "心要", "scope": "所感", "examples": ["突然念头", "即时感觉"], "boundary": "主观感受不能由页面自动验证或分类"}
+  ],
+  "categories": [
+    {"number": 1, "id": "weather", "label": "天时", "scope": "天气、日月星辰变化", "fixed_example": "固定例：晴朗天空", "primary_channel": "眼要"},
+    {"number": 2, "id": "geography", "label": "地理", "scope": "地形、所在环境", "fixed_example": "固定例：河川岸边", "primary_channel": "眼要"},
+    {"number": 3, "id": "people", "label": "人事", "scope": "人的行为与状态", "fixed_example": "固定例：两人交谈", "primary_channel": "眼要"},
+    {"number": 4, "id": "season", "label": "时令", "scope": "季节、节气、时辰", "fixed_example": "固定例：秋季", "primary_channel": "眼要"},
+    {"number": 5, "id": "direction", "label": "方位", "scope": "东南西北、上下左右", "fixed_example": "固定例：东方", "primary_channel": "眼要"},
+    {"number": 6, "id": "animal", "label": "动物", "scope": "飞禽、走兽、虫鱼", "fixed_example": "固定例：一只狗", "primary_channel": "眼要"},
+    {"number": 7, "id": "object", "label": "静物", "scope": "器具、建筑、植物", "fixed_example": "固定例：一座钟", "primary_channel": "眼要"},
+    {"number": 8, "id": "speech", "label": "言语", "scope": "周遭听到的话语", "fixed_example": "固定例：一句问候", "primary_channel": "耳要"},
+    {"number": 9, "id": "sound", "label": "声音", "scope": "非言语的声响", "fixed_example": "固定例：钟声", "primary_channel": "耳要"},
+    {"number": 10, "id": "color", "label": "颜色", "scope": "当下看到的颜色", "fixed_example": "固定例：红色", "primary_channel": "眼要"}
+  ],
+  "scope_boundary": {
+    "preserved": "保留外应、三要与十应之间的层级，以及十种分类名称。",
+    "excluded": "来源中的吉凶、疾病、婚姻、财运、应期、方位指示及照片自由映射均不进入公开节点。"
+  },
+  "reading_boundaries": [
+    "十应是观察材料的分类，不证明环境现象能够预测现实结果。",
+    "页面不读取摄像头、麦克风、位置、照片或用户描述。",
+    "固定例只用于练习归类，不继续对应八卦、五行、结果或行动建议。"
+  ],
+  "public_sources": [
+    {"title": "muyen/meihua-yishu 锁定外应与十应资料", "url": "https://github.com/muyen/meihua-yishu/blob/aecdf87ebef26328c32caa65d40b2f9d273088ec/references/ying-guides.md", "note": "保存外应、三要、十应层级与十类名称；具体判断和真人用途被排除。"},
+    {"title": "muyen/meihua-yishu 锁定八卦类象资料", "url": "https://github.com/muyen/meihua-yishu/blob/aecdf87ebef26328c32caa65d40b2f9d273088ec/references/bagua-wanwu.md", "note": "只用于确认来源把天气、人物、动物、物品、颜色等作为观察材料；不复用健康、人格和事项断语。"}
+  ],
+  "internal_review": {
+    "status": "formal_taxonomy_node_without_live_sensing_or_interpretation",
+    "reviewed_at": "2026-08-09",
+    "owner": ["火华", "Codex"],
+    "source_refs": ["github_muyen_meihua_yishu_aecdf87"],
+    "deduplication": "不并入八卦类象：本页只回答观察材料如何分类，不保存每一类到八卦的庞大对应表。不并入卦气旺衰：时令在十应中只是一个类别，卦气节点另行处理时令与五行状态。",
+    "known_gaps": ["来源把传统归属与作者扩写、现代应用混在同一文件，缺逐条版次页码。", "照片与环境提示依赖LLM自由映射，不能机械验证，也不构成预测有效性。"],
+    "boundary": "只公开层级与分类；无传感器、自由文本映射、真人事项或结果判断。"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0.0",
+  "id": "qimen_eight_doors",
+  "title": "八门对象与原始宫位",
+  "summary": "八门是休、生、伤、杜、景、死、惊、开八个对象。原始盘把它们分别连接到一、八、三、四、九、二、七、六宫；中五宫没有原始门。原始宫位是装盘参照，不代表具体时局中的门仍停在原处。",
+  "items": [
+    {"name":"休门","home_palace":1,"element":"水"}, {"name":"生门","home_palace":8,"element":"土"},
+    {"name":"伤门","home_palace":3,"element":"木"}, {"name":"杜门","home_palace":4,"element":"木"},
+    {"name":"景门","home_palace":9,"element":"火"}, {"name":"死门","home_palace":2,"element":"土"},
+    {"name":"惊门","home_palace":7,"element":"金"}, {"name":"开门","home_palace":6,"element":"金"}
+  ],
+  "rotation_order": ["休门","生门","伤门","杜门","景门","死门","惊门","开门"],
+  "reading_boundaries": ["原始宫位、转动顺序和具体落宫是三个字段。", "本页不发布吉凶标签、门迫、宫制或事项用神。", "飞盘实现可出现九门或中门，不能用八门节点覆盖所有盘式版本。"],
+  "public_sources": [
+    {"title":"mingli-skills 锁定元旦盘","url":"https://github.com/weizeW/mingli-skills/blob/c16eca0/qimen-dunjia/data/yuandan.json","note":"提供八门名称、五行、原始宫位和排列顺序。"},
+    {"title":"qimenpaipan 锁定八门实现","url":"https://github.com/redrockhorse/qimenpaipan/blob/b6de54245cf7a514f59e51833dc01a87e1a3a849/qimenpaipan.py#L937-L988","note":"展示转盘中值使与八门的移动实现；只有运行示例，没有正式断言测试。"}
+  ],
+  "internal_review":{"status":"formal_object_identity_node","reviewed_at":"2026-08-09","owner":["火华","Codex"],"source_refs":["github_weizew_mingli_skills_c16eca0","github_redrockhorse_qimenpaipan_b6de542"],"deduplication":"只保存八门身份、五行和原始位置；移动算法进入四盘装配。","boundary":"不输出门义与行动选择。"}
+}

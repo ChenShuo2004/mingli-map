@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0",
+  "id": "bazi_heavenly_stem_relations",
+  "title": "天干与十神",
+  "summary": "十神不是天干固定自带的名称，而是以日主为基准，根据五行生克方向与阴阳同异生成的十种关系。",
+  "presentation_rule": "公开页面先解释关系如何生成，再给出完整对照。天干相合只表示配对；是否合化需要另行判断。",
+  "consensus_scope": {
+    "status": "accepted",
+    "accepted": [
+      "十天干的五行与阴阳属性",
+      "十神由五行生克方向和阴阳同异生成的规则",
+      "甲己、乙庚、丙辛、丁壬、戊癸五组相合配对"
+    ],
+    "not_implied": [
+      "相合必然合化",
+      "十神名称可以脱离日主固定使用",
+      "关系名称本身等于吉凶结论"
+    ]
+  },
+  "stems": [
+    { "stem": "甲", "element": "木", "polarity": "阳" },
+    { "stem": "乙", "element": "木", "polarity": "阴" },
+    { "stem": "丙", "element": "火", "polarity": "阳" },
+    { "stem": "丁", "element": "火", "polarity": "阴" },
+    { "stem": "戊", "element": "土", "polarity": "阳" },
+    { "stem": "己", "element": "土", "polarity": "阴" },
+    { "stem": "庚", "element": "金", "polarity": "阳" },
+    { "stem": "辛", "element": "金", "polarity": "阴" },
+    { "stem": "壬", "element": "水", "polarity": "阳" },
+    { "stem": "癸", "element": "水", "polarity": "阴" }
+  ],
+  "ten_god_rules": [
+    { "relation": "同我", "same_polarity": "比肩", "opposite_polarity": "劫财" },
+    { "relation": "我生", "same_polarity": "食神", "opposite_polarity": "伤官" },
+    { "relation": "我克", "same_polarity": "偏财", "opposite_polarity": "正财" },
+    { "relation": "克我", "same_polarity": "七杀", "opposite_polarity": "正官" },
+    { "relation": "生我", "same_polarity": "偏印", "opposite_polarity": "正印" }
+  ],
+  "five_combinations": [
+    { "members": ["甲", "己"], "resulting_element": "土" },
+    { "members": ["乙", "庚"], "resulting_element": "金" },
+    { "members": ["丙", "辛"], "resulting_element": "水" },
+    { "members": ["丁", "壬"], "resulting_element": "木" },
+    { "members": ["戊", "癸"], "resulting_element": "火" }
+  ],
+  "public_sources": [
+    {"title": "《千里命稿·六神篇》", "note": "以日主与其他天干的生克和阴阳关系说明十神。", "url": "https://www.luckclub.cn/bazi/003/009/"},
+    {"title": "《渊海子平·天干相合》", "note": "列出甲己、乙庚、丙辛、丁壬、戊癸五组天干配对。", "url": "https://www.luckclub.cn/bazi/001/004/"}
+  ],
+  "internal_review": {
+    "status": "cross_checked",
+    "reviewed_at": "2026-08-03",
+    "source_refs": [
+      "github_mystilight_mystilight_8char_45fb1a8",
+      "github_minervaowl7_bazi_pro_65955b3",
+      "github_dadanluo_bazi_agent_24f0216",
+      "github_chonglou_destiny_b849d17",
+      "yuan_hai_zi_ping_tian_gan_xiang_he",
+      "san_ming_tong_hui_vol_5_ten_gods"
+    ]
+  }
+}

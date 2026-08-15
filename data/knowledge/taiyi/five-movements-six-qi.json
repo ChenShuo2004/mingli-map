@@ -1,0 +1,70 @@
+{
+  "schema_version":"1.0.0",
+  "id":"taiyi-five-movements-six-qi",
+  "title":"kintaiyi五运六气入口",
+  "summary":"锁定实现以年干定五运与运音，以干阴阳标太过／不及，以年支定司天，再把对冲支重新查同一张司天表作为在泉；太乙宫、文昌与始击只作为附加盘面字段。它没有展开原典所说的主运／客运五步和主气／客气六步，因此本节点将稳定的年干年支入口、固定程序输出和未完成层次分开，不把年度摘要写成完整五运六气系统，也不输出气候、疾病、灾异或地域判断。",
+  "fixed_input":"1552年9月24日 00:00 · 壬子年 · 年计",
+  "layers":[
+    {"id":"movement","index":"01","name":"五运","input":"年干","output":"土／金／水／木／火运及宫／商／羽／角／徵音","status":"两干一组"},
+    {"id":"excess","index":"02","name":"太过不及","input":"年干阴阳","output":"阳干太过、阴干不及","status":"年度标签"},
+    {"id":"sitian","index":"03","name":"司天","input":"年支","output":"六气名与气化","status":"六组支对"},
+    {"id":"zaiquan","index":"04","name":"在泉","input":"年支对冲支","output":"再次查司天表所得名称","status":"实现简化；待核"},
+    {"id":"board","index":"05","name":"盘面附加层","input":"太乙宫、文昌、始击","output":"太乙宫五音、主气、客气","status":"未展开运气步序"}
+  ],
+  "stem_movements":[
+    {"stems":["甲","己"],"movement":"土运","tone":"宫","excess":"甲太过／己不及"},
+    {"stems":["乙","庚"],"movement":"金运","tone":"商","excess":"庚太过／乙不及"},
+    {"stems":["丙","辛"],"movement":"水运","tone":"羽","excess":"丙太过／辛不及"},
+    {"stems":["丁","壬"],"movement":"木运","tone":"角","excess":"壬太过／丁不及"},
+    {"stems":["戊","癸"],"movement":"火运","tone":"徵","excess":"戊太过／癸不及"}
+  ],
+  "branch_qi":[
+    {"branches":["子","午"],"qi":"少阴","transformation":"热气"},
+    {"branches":["丑","未"],"qi":"太阴","transformation":"湿气"},
+    {"branches":["寅","申"],"qi":"少阳","transformation":"相火"},
+    {"branches":["卯","酉"],"qi":"阳明","transformation":"燥气"},
+    {"branches":["辰","戌"],"qi":"太阳","transformation":"寒气"},
+    {"branches":["巳","亥"],"qi":"厥阴","transformation":"风气"}
+  ],
+  "fixed_result":{
+    "year_stem":"壬","year_branch":"子","movement":"木运","movement_tone":"角","excess":"太过","sitian":"少阴","sitian_transformation":"热气","opposite_branch":"午","implemented_zaiquan":"少阴","implemented_zaiquan_transformation":"热气","special_meeting":"无特殊岁会","wenchang":"巽","shiji":"辰","main_qi":"天目文昌在巽","guest_qi":"始击在辰"
+  },
+  "method_palace_tones":[
+    {"method":0,"label":"太乙统宗","board":13,"taiyi_palace":"酉","representative_branch":"酉","palace_tone":"羽","status":"与method 1／3同组"},
+    {"method":1,"label":"太乙金镜","board":13,"taiyi_palace":"酉","representative_branch":"酉","palace_tone":"羽","status":"固定完整例"},
+    {"method":2,"label":"太乙淘金歌","board":1,"taiyi_palace":"乾","representative_branch":"亥","palace_tone":"角","status":"只改变盘面附加层"},
+    {"method":3,"label":"太乙局","board":13,"taiyi_palace":"酉","representative_branch":"酉","palace_tone":"羽","status":"与method 0／1同组"}
+  ],
+  "implementation_differences":[
+    {"label":"年度摘要不等于完整五运六气","source":"选定卷十文本明确区分主运、客运、主气、客气，并描述逐年迭迁。","implementation":"wuyun_liuqi只返回一项年运、一项司天、一项在泉及若干年度标签，没有五运五步或六气六步时间轴。","handling":"节点标题保留知识对象名，正文明确当前只实现年度入口层。"},
+    {"label":"在泉用对冲支重查司天表","source":"原典把司天与在泉列为相对但不同的上下气位。","implementation":"程序把年支加6得到对冲支，再调用同一_SITIAN表；因子午等本就在同组，六组都会得到司天与在泉同名。","handling":"固定例显示程序值，标为简化／待核，不写成传统在泉表。"},
+    {"label":"岁会与天符条件只实现少数组合","source":"卷十另列九宫三旗、天会、岁会、逆会与太乙天符等层次。","implementation":"函数仅检查五运本支、运气上见及三条硬编码‘三合为治’，没有完整九宫三旗合会链。","handling":"只显示‘无特殊岁会’等程序标签，不宣称传统条件穷尽。"},
+    {"label":"文昌主气、始击客气只是字符串附加","source":"选定文本强调主客运气的常动常静层次。","implementation":"普通结果直接写‘文昌在某位（主气）’和‘始击在某位（客气）’，未生成一年六步的主客气序列。","handling":"作为盘面接口关系展示，不升格为完整主客气排布。"},
+    {"label":"四method只在盘面附加层分叉","source":"五运和司天年度入口由年干支决定。","implementation":"固定日期四method的年干支相同；method 2仅因太乙宫从酉变乾，使宫五音由羽变角。","handling":"核心年运与盘面附加字段分栏显示。"},
+    {"label":"合会断语不纳入本节点","source":"卷十和代码下游包含气候、灾异、顺逆、掩格等解释。","implementation":"wuyun_tianmu_hehui与vol10_zonghe可继续派生相关文本。","handling":"本节点止于字段来源、固定值和实现缺口。"}
+  ],
+  "reading_boundaries":[
+    {"label":"可理解","note":"五组年干运、六组年支司天、太过不及与盘面附加入口。"},
+    {"label":"可比较","note":"method 2为何只改变太乙宫五音，不改变壬子年的木运、角音、太过和司天。"},
+    {"label":"待核验","note":"完整主客运五步、主客气六步、在泉表、九宫三旗岁会与太乙天符条件。"},
+    {"label":"不作断语","note":"不输出气候、健康、疾病、灾异、地域、军事实操或真人结论。"}
+  ],
+  "public_sources":[
+    {"title":"《太乙统宗宝鉴》卷三／卷十连接文本","url":"https://ctext.org/wiki.pl?chapter=182017&if=gb","note":"可辨五运、六气、主客气、太乙天符等结构；OCR不稳，关键字句须回看影像。"},
+    {"title":"《太乙统宗宝鉴》相邻五运条目","url":"https://ctext.org/wiki.pl?chapter=4989633&if=gb","note":"保存五运、上见、岁会与三合条目连接文本；只作底本导航和结构互证。"},
+    {"title":"《太乙统宗宝鉴》书目与影像入口","url":"https://ctext.org/wiki.pl?if=gb&res=444363","note":"卷三、卷十底本入口，不把自动OCR当作无误校本。"},
+    {"title":"kintaiyi锁定五运六气常数表","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/config.py#L1114-L1183","note":"保存年干五运、年支六气、岁会支、上见关系和干阴阳。"},
+    {"title":"kintaiyi锁定年度五运六气函数","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/config.py#L1219-L1271","note":"保存司天、对冲支在泉、太过不及、岁会标签及盘面附加字段。"},
+    {"title":"kintaiyi锁定合会下游","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/config.py#L1278-L1320","note":"继续把文昌、始击、太乙宫组合成掩格和生克文本；本节点不采用断语。"},
+    {"title":"kintaiyi锁定普通结果接口","url":"https://github.com/kentang2017/kintaiyi/blob/f2719d674adb0b4c710fb9d298283c9ccb05a545/src/kintaiyi/kintaiyi.py#L2277-L2282","note":"普通式盘传入年干支、太乙宫、文昌和始击。"}
+  ],
+  "internal_review":{
+    "status":"formal_five_movements_six_qi_annual_interface_audit",
+    "reviewed_at":"2026-08-07",
+    "owner":["火华","Codex"],
+    "runtime_basis":"固定壬子年干支、酉／乾太乙宫、巽文昌与辰始击均取自已核年计节点，按锁定映射逐式复算",
+    "deduplication":"不并入‘五音’：五运音只由年干生成，五音页则处理算数、宫和日時支多入口。不并入‘阴阳遁’：太过不及是年干阴阳标签，不是式盘阳遁／阴遁。不并入‘九星’：两者虽同见卷六／卷十扩展输出，但周期、输入和对象均不同。",
+    "known_gaps":["主客运五步未实现","主客气六步未实现","在泉映射与原典结构未闭合","岁会天符只实现简化条件","缺少专项测试和逐页影像校勘"],
+    "boundary":"固定年度结构、无真人输入、无随机；不公开气候、疾病、灾异、地域、军事和行动断语。"
+  }
+}

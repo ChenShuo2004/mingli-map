@@ -1,0 +1,103 @@
+{
+  "schema_version": "1.0",
+  "id": "bazi_earthly_branch_relations",
+  "title": "地支关系",
+  "summary": "同一个地支可以同时参与多种二支或三支关系。关系名称描述结构，不直接等于吉凶结论。",
+  "presentation_rule": "公开页面呈现多来源一致或有古籍明文的关系成员。六合不写死合化结果；刑保留结构，不采用有分歧的道德化类别名；破与暗合暂留内部。",
+  "consensus_scope": {
+    "status": "accepted_core_only",
+    "accepted": [
+      "六合、六冲、六害、三合、三会的成员结构",
+      "相刑的循环、互刑和自刑结构"
+    ],
+    "held_back": [
+      "六合必然产生固定合化结果",
+      "关系名称直接等于吉凶",
+      "破、暗合及其他扩展关系的统一公开版本"
+    ]
+  },
+  "branches": ["子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"],
+  "branch_attributes": [
+    {"branch": "子", "element": "水", "polarity": "阳", "animal": "鼠"},
+    {"branch": "丑", "element": "土", "polarity": "阴", "animal": "牛"},
+    {"branch": "寅", "element": "木", "polarity": "阳", "animal": "虎"},
+    {"branch": "卯", "element": "木", "polarity": "阴", "animal": "兔"},
+    {"branch": "辰", "element": "土", "polarity": "阳", "animal": "龙"},
+    {"branch": "巳", "element": "火", "polarity": "阴", "animal": "蛇"},
+    {"branch": "午", "element": "火", "polarity": "阳", "animal": "马"},
+    {"branch": "未", "element": "土", "polarity": "阴", "animal": "羊"},
+    {"branch": "申", "element": "金", "polarity": "阳", "animal": "猴"},
+    {"branch": "酉", "element": "金", "polarity": "阴", "animal": "鸡"},
+    {"branch": "戌", "element": "土", "polarity": "阳", "animal": "狗"},
+    {"branch": "亥", "element": "水", "polarity": "阴", "animal": "猪"}
+  ],
+  "relations": {
+    "liu_he": {
+      "label": "六合",
+      "kind": "pairs",
+      "records": [["子", "丑"], ["寅", "亥"], ["卯", "戌"], ["辰", "酉"], ["巳", "申"], ["午", "未"]]
+    },
+    "liu_chong": {
+      "label": "六冲",
+      "kind": "pairs",
+      "records": [["子", "午"], ["丑", "未"], ["寅", "申"], ["卯", "酉"], ["辰", "戌"], ["巳", "亥"]]
+    },
+    "liu_hai": {
+      "label": "六害",
+      "alias": "相穿",
+      "kind": "pairs",
+      "records": [["子", "未"], ["丑", "午"], ["寅", "巳"], ["卯", "辰"], ["申", "亥"], ["酉", "戌"]]
+    },
+    "xing": {
+      "label": "相刑",
+      "kind": "structures",
+      "records": [
+        { "type": "cycle", "members": ["寅", "巳", "申"] },
+        { "type": "cycle", "members": ["丑", "戌", "未"] },
+        { "type": "mutual", "members": ["子", "卯"] },
+        { "type": "self", "members": ["辰", "午", "酉", "亥"] }
+      ]
+    },
+    "san_he": {
+      "label": "三合",
+      "kind": "groups",
+      "records": [
+        { "members": ["申", "子", "辰"], "resulting_element": "水" },
+        { "members": ["亥", "卯", "未"], "resulting_element": "木" },
+        { "members": ["寅", "午", "戌"], "resulting_element": "火" },
+        { "members": ["巳", "酉", "丑"], "resulting_element": "金" }
+      ]
+    },
+    "san_hui": {
+      "label": "三会",
+      "alias": "方局",
+      "kind": "groups",
+      "records": [
+        { "members": ["寅", "卯", "辰"], "resulting_element": "木" },
+        { "members": ["巳", "午", "未"], "resulting_element": "火" },
+        { "members": ["申", "酉", "戌"], "resulting_element": "金" },
+        { "members": ["亥", "子", "丑"], "resulting_element": "水" }
+      ]
+    }
+  },
+  "public_sources": [
+    {"title": "《渊海子平·论十二支六合》", "note": "六合固定配对的来源。", "url": "https://www.luckclub.cn/bazi/001/007/"},
+    {"title": "《渊海子平·论十二支三合》", "note": "四组三合成员与五行属性的来源。", "url": "https://www.luckclub.cn/bazi/001/008/"},
+    {"title": "《渊海子平·论十二支相冲》", "note": "六组地支相冲的来源。", "url": "https://www.luckclub.cn/bazi/001/009/"},
+    {"title": "《渊海子平·论十二支相穿》", "note": "六害／相穿配对的来源。", "url": "https://www.luckclub.cn/bazi/001/010/"},
+    {"title": "《渊海子平·论十二支相刑》", "note": "相刑结构的来源。", "url": "https://www.luckclub.cn/bazi/001/011/"},
+    {"title": "《命理约言·支方论》", "note": "寅卯辰、巳午未、申酉戌、亥子丑四组三会的另一条古籍依据。", "url": "https://www.luckclub.cn/bazi/018/081/"}
+  ],
+  "internal_review": {
+    "status": "core_cross_checked_extensions_held_back",
+    "reviewed_at": "2026-08-03",
+    "source_refs": [
+      "github_mystilight_mystilight_8char_45fb1a8",
+      "github_minervaowl7_bazi_pro_65955b3",
+      "github_dadanluo_bazi_agent_24f0216",
+      "github_chonglou_destiny_b849d17",
+      "yuan_hai_zi_ping_branch_relations",
+      "ming_li_yue_yan_branch_relations"
+    ]
+  }
+}
