@@ -93,8 +93,6 @@ if (TOPICS.dream) {
 }
 
 const TOPIC_LIST = methods.map((method) => TOPICS[method.id]).filter(Boolean)
-const TOTAL_KNOWLEDGE_ENTRIES = TOPIC_LIST.reduce((total, item) => total + item.cards.length, 0)
-const TOTAL_GUIDE_ENTRIES = 17
 
 const LIUYAO_ROUTE_ALIASES = {
   'repeating-opposing-change': 'moving-lines-change',
@@ -493,10 +491,6 @@ function GlobalMap({ activeLens, setActiveLens }) {
       <main className="overview-main global-main">
         <div className="map-hero">
           <div className="map-hero-copy">
-            <div className="hero-evidence" aria-label={`知命图谱共有 ${TOTAL_KNOWLEDGE_ENTRIES} 个公开知识入口`}>
-              <span><strong>{TOTAL_GUIDE_ENTRIES}</strong>张专题导读</span>
-              <span><strong>{TOTAL_KNOWLEDGE_ENTRIES - TOTAL_GUIDE_ENTRIES}</strong>个正式节点</span>
-            </div>
             <p className="hero-kicker">传统文化知识地图 · 概念、规则、关系与来源</p>
             <h1><span>知命图谱</span></h1>
             <p className="hero-summary">从阴阳五行、干支历法，到八字、六爻、紫微、塔罗与太乙。<br />沿着概念、规则、关系和来源往下走，看清一条知识从哪里来，又与哪些体系相连。</p>

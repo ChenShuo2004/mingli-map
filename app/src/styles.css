@@ -535,10 +535,6 @@ button.side-item:hover .side-arrow, button.side-item:focus-visible .side-arrow {
 .map-hero h1 { margin: 0; font: 700 clamp(58px, 7vw, 94px)/1.05 "Songti SC", "STSong", serif; letter-spacing: -.08em; }
 .map-hero h1 span { color: transparent; background: linear-gradient(105deg, #3156d9 8%, #8a63e9 52%, #2ba978 100%); background-clip: text; -webkit-background-clip: text; }
 .map-hero-copy { width: min(860px, 100%); margin: 0 auto; }
-.hero-evidence { display: flex; justify-content: center; align-items: center; gap: 20px; margin-bottom: 18px; color: #7b8492; font-size: 11px; letter-spacing: .08em; }
-.hero-evidence span { display: inline-flex; align-items: baseline; gap: 5px; }
-.hero-evidence span + span { padding-left: 20px; border-left: 1px solid #dce2ec; }
-.hero-evidence strong { color: var(--blue); font: 760 15px/1 ui-monospace, "SFMono-Regular", monospace; letter-spacing: 0; }
 .map-hero-copy .hero-kicker { margin: 0 0 14px; color: var(--blue); font-size: 12px; font-weight: 720; letter-spacing: .1em; }
 .hero-summary { max-width: 780px; margin: 23px auto 0; color: #667085; font-size: 15px; line-height: 1.85; }
 .hero-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 25px; }
@@ -2279,7 +2275,7 @@ button.side-item:hover .side-arrow, button.side-item:focus-visible .side-arrow {
   .overview-main { padding: 28px 16px 70px; }.page-heading { margin-bottom: 34px; }.page-heading h1 { font-size: 39px; }.page-heading > p:last-child { font-size: 15px; }
   .section-heading { align-items: flex-end; }
   .topic-learning-path { margin-bottom: 30px; padding: 17px; }.topic-learning-path header { display: grid; gap: 7px; }.topic-learning-path h2 { font-size: 19px; }.topic-learning-path > div { width: calc(100% + 17px); margin-right: -17px; padding-right: 17px; }
-  .global-main { padding-top: 28px; }.map-hero { min-height: 0; margin-bottom: 24px; }.map-hero h1 { font-size: 50px; line-height: 1.12; }.hero-evidence { gap: 10px; margin-bottom: 14px; }.hero-evidence span + span { padding-left: 10px; }.map-hero-copy .hero-kicker { margin-bottom: 10px; font-size: 11px; line-height: 1.6; }.hero-summary { margin-top: 17px; font-size: 14px; line-height: 1.75; }.hero-summary br { display: none; }.hero-actions { display: grid; grid-template-columns: 1fr; margin-top: 20px; }.hero-actions button { width: 100%; }.hero-stats { align-items: stretch; margin-top: 23px; }.hero-stats span { flex: 1; display: grid; gap: 5px; padding: 0 9px; line-height: 1.35; }.hero-stats strong { font-size: 21px; }
+  .global-main { padding-top: 28px; }.map-hero { min-height: 0; margin-bottom: 24px; }.map-hero h1 { font-size: 50px; line-height: 1.12; }.map-hero-copy .hero-kicker { margin-bottom: 10px; font-size: 11px; line-height: 1.6; }.hero-summary { margin-top: 17px; font-size: 14px; line-height: 1.75; }.hero-summary br { display: none; }.hero-actions { display: grid; grid-template-columns: 1fr; margin-top: 20px; }.hero-actions button { width: 100%; }.hero-stats { align-items: stretch; margin-top: 23px; }.hero-stats span { flex: 1; display: grid; gap: 5px; padding: 0 9px; line-height: 1.35; }.hero-stats strong { font-size: 21px; }
   .mobile-lens-nav { width: calc(100% + 32px); display: flex; gap: 7px; margin: 0 -16px 28px; padding: 0 16px 10px; overflow-x: auto; overscroll-behavior-inline: contain; scrollbar-width: none; }
   .mobile-lens-nav::-webkit-scrollbar { display: none; }
   .mobile-lens-nav button { flex: 0 0 auto; min-width: 58px; height: 38px; padding: 0 14px; border: 1px solid #dbe1eb; border-radius: 20px; color: #687385; background: rgba(255,255,255,.96); font-size: 12px; cursor: pointer; }
