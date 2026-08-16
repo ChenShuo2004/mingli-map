@@ -1,7 +1,7 @@
 import { Fragment, useEffect, useMemo, useRef, useState } from 'react'
 import { SolarDay } from 'tyme4ts'
 import { baziLearningPath, baziLearningStages, datasets, groups, knowledgeCards } from './knowledge.js'
-import { liuyaoCards, liuyaoDatasets, liuyaoGroups, liuyaoLearningStages } from './liuyao.js'
+import { liuyaoCards, liuyaoDatasets, liuyaoGroups, liuyaoLearningPath, liuyaoLearningStages } from './liuyao.js'
 import { knowledgeFoundations, lenses, methods } from './map.js'
 import { meihuaCards, meihuaDatasets } from './meihua.js'
 import { qimenCards, qimenDatasetByCardId, qimenDatasets, qimenLearningStages } from './qimen.js'
@@ -10,7 +10,7 @@ import { taiyiDatasets, taiyiLearningStages } from './taiyi.js'
 import { tarotDatasets, tarotLearningPath, tarotLearningStages, tarotNodeRelations } from './tarot.js'
 import { ziweiDatasets, ziweiLearningPath, ziweiLearningStages } from './ziwei.js'
 import { westernAstrologyDatasets } from './western-astrology.js'
-import { astrologyBranchStages, astrologyTraditions, findAstrologyBranchNode } from './astrology-branches.js'
+import { astrologyBranchStages, astrologyIntroductionCard, astrologyTraditions, findAstrologyBranchNode } from './astrology-branches.js'
 import { xiaoliurenCards, xiaoliurenDatasets, xiaoliurenLearningStages } from './xiaoliuren.js'
 import { daliurenDatasetByCardId, daliurenFixedLesson } from './daliuren.js'
 import { PERSONALITY_ROUTE_ALIASES, personalityLearningStages } from './personality.js'
@@ -42,8 +42,9 @@ const TOPICS = {
   },
   liuyao: {
     id: 'liuyao', title: '六爻', kicker: '六爻 · 结构骨架', cards: liuyaoCards, groups: liuyaoGroups,
-    eyebrow: '从六条线，看到关系怎样被装入',
-    description: '沿着卦体、纳甲、六亲与飞伏，理解六爻如何从阴阳爻位逐层形成一张关系结构。',
+    eyebrow: '先知道它在围绕什么搭盘，再进入术语',
+    description: '六爻不是把六条线直接翻译成结论，而是围绕一个问题，把卦体、位置、干支、六亲、动变和时间状态装进同一张关系盘里。',
+    learningPath: liuyaoLearningPath,
     searchHint: '搜索概念：动爻、纳甲、六冲…', emptyHint: '可以试试“动爻”“纳甲”或“六冲”。',
   },
   ...frameworkTopics,
@@ -57,12 +58,43 @@ if (TOPICS.ziwei) {
 if (TOPICS.tarot) TOPICS.tarot.learningPath = tarotLearningPath
 if (TOPICS.taiyi) TOPICS.taiyi.eyebrow = '先知道时间怎样进入，再去看盘与关系'
 if (TOPICS.taiyi) TOPICS.taiyi.description = '太乙不是先读断语，而是先把时间装进积数、局号、阴阳遁和式盘，再进入主客算与位置关系。这张地图先帮助你认清这些层次。'
+if (TOPICS.qimen) {
+  TOPICS.qimen.eyebrow = '先知道盘面由哪几层组成，再进入局数与对象'
+  TOPICS.qimen.description = '奇门遁甲不是先背格局名，而是先分清九宫坐标、时间入口、地盘局数，以及星、门、神怎样分层装进同一张盘。'
+}
 if (TOPICS.mbti) {
   TOPICS.mbti.eyebrow = '先分清题目、分数、常模与报告，不把问卷当成一句结论'
   TOPICS.mbti.description = '人格问卷先是一套测量工具：题目怎样被回答、答案怎样计分、分数怎样参照常模，再决定报告怎样被阅读。这里先帮你认清测量链，而不是直接贴类型标签。'
 }
+if (TOPICS.meihua) {
+  TOPICS.meihua.eyebrow = '先知道数字和时间怎样变成卦，再进入体用与观察层'
+  TOPICS.meihua.description = '梅花易数不是先背卦名，而是先把数字、时间或观察材料转换成上下卦与动爻，再区分卦形、体用和后续观察层。'
+}
+if (TOPICS.xiaoliuren) {
+  TOPICS.xiaoliuren.eyebrow = '先知道六宫怎样循环，再进入版本、字段和四盘'
+  TOPICS.xiaoliuren.description = '小六壬不是先背宫义，而是先把六宫顺序、月日时三步起课和版本分歧分开，再看动态字段怎样装进盘面。'
+  TOPICS.xiaoliuren.learningPath = [xiaoliurenCards[0].title, ...xiaoliurenLearningStages.flatMap((stage) => stage.cardIds.map((id) => xiaoliurenCards.find((card) => card.id === id)?.title).filter(Boolean))]
+}
+if (TOPICS.daliuren) {
+  TOPICS.daliuren.eyebrow = '先知道一张课式由什么组成，再进入四课三传'
+  TOPICS.daliuren.description = '大六壬不是先记课体名称，而是先把月将、占时、天地盘、四课、三传和天将的生成链条看清，再讨论各种结构标签。'
+}
+if (TOPICS.fengshui) {
+  TOPICS.fengshui.eyebrow = '先知道它在观察环境的哪几层，再进入罗盘与飞星'
+  TOPICS.fengshui.description = '风水不是先背一句吉凶口诀，而是先分清环境形势、空间坐标、坐向记录、八宅关系和玄空时间层各自在处理什么。'
+}
+if (TOPICS.naming) {
+  TOPICS.naming.eyebrow = '先知道名字怎样被拆成文字输入和数理字段，再进入关系'
+  TOPICS.naming.description = '姓名与数理不是先挑一个好听字，而是先分清姓氏、字形、笔画口径、五格结构和数理解释分别属于哪一层。'
+}
+if (TOPICS.dream) {
+  TOPICS.dream.eyebrow = '先知道它在整理哪几种梦材料，再进入梦象与占辞'
+  TOPICS.dream.description = '占梦不是把梦直接翻成一句结论，而是先分清材料来源、梦象分类、占辞结构、梦例叙事和相邻体系边界。'
+}
 
 const TOPIC_LIST = methods.map((method) => TOPICS[method.id]).filter(Boolean)
+const TOTAL_KNOWLEDGE_ENTRIES = TOPIC_LIST.reduce((total, item) => total + item.cards.length, 0)
+const TOTAL_GUIDE_ENTRIES = 17
 
 const LIUYAO_ROUTE_ALIASES = {
   'repeating-opposing-change': 'moving-lines-change',
@@ -143,6 +175,9 @@ function App() {
   const [query, setQuery] = useState('')
   const [activeLens, setActiveLens] = useState('today')
   const [pendingGlobalSection, setPendingGlobalSection] = useState('')
+  const [contactOpen, setContactOpen] = useState(false)
+  const [groupOpen, setGroupOpen] = useState(false)
+  const [contactBannerVisible, setContactBannerVisible] = useState(true)
 
   useEffect(() => {
     const onHashChange = () => {
@@ -215,7 +250,8 @@ function App() {
 
   return (
     <div className="app-shell">
-      <Topbar query={query} setQuery={setQuery} mode={isTopic ? 'topic' : 'global'} topic={topic} goGlobal={goGlobal} goGlobalSection={goGlobalSection} goTopic={goTopic} />
+      <Topbar query={query} setQuery={setQuery} mode={isTopic ? 'topic' : 'global'} topic={topic} goGlobal={goGlobal} goGlobalSection={goGlobalSection} goTopic={goTopic} openGroup={() => setGroupOpen(true)} />
+      {contactBannerVisible && <ContactBanner openContact={() => setContactOpen(true)} dismiss={() => setContactBannerVisible(false)} />}
       {selectedCard ? (
         <DetailPage card={selectedCard} topic={topic} goHome={() => goTopic(topicId)} openCard={openCard} />
       ) : isTopic ? (
@@ -223,11 +259,84 @@ function App() {
       ) : (
         <GlobalMap activeLens={activeLens} setActiveLens={setActiveLens} />
       )}
+      <ContactDock openContact={() => setContactOpen(true)} />
+      {contactOpen && <ContactPanel close={() => setContactOpen(false)} />}
+      {groupOpen && <GroupPanel close={() => setGroupOpen(false)} />}
     </div>
   )
 }
 
-function Topbar({ query, setQuery, mode, topic, goGlobal, goGlobalSection, goTopic }) {
+function ContactQrPreview() {
+  return <span className="contact-qr-preview" aria-hidden="true"><img src="/assets/contact/youwendu-wecom.jpg" alt="" /></span>
+}
+
+function ContactBanner({ openContact, dismiss }) {
+  return <aside className="follow-banner" aria-label="联系方式">
+    <button className="follow-banner-entry" type="button" onClick={openContact}>
+      <ContactQrPreview />
+      <p><strong>联系有温度</strong><span>扫码联系我们，有温度</span></p>
+      <i aria-hidden="true">查看二维码</i>
+    </button>
+    <button className="follow-banner-close" type="button" onClick={dismiss} aria-label="关闭联系方式提示">×</button>
+  </aside>
+}
+
+function ContactDock({ openContact }) {
+  return <button className="follow-dock" type="button" onClick={openContact} aria-label="打开有温度联系方式">
+    <ContactQrPreview />
+    <p><strong>联系有温度</strong><span>扫码联系我们，有温度</span></p>
+  </button>
+}
+
+function ContactPanel({ close }) {
+  useEffect(() => {
+    const onKeyDown = (event) => event.key === 'Escape' && close()
+    document.addEventListener('keydown', onKeyDown)
+    return () => document.removeEventListener('keydown', onKeyDown)
+  }, [close])
+
+  return <div className="contact-panel-backdrop" role="presentation" onMouseDown={(event) => event.target === event.currentTarget && close()}>
+    <section className="contact-panel contact-only" role="dialog" aria-modal="true" aria-labelledby="contact-panel-title">
+      <header>
+        <div><small>有温度 · 企业微信</small><h2 id="contact-panel-title">联系有温度</h2><p>扫描企业微信二维码，联系我们了解产品、项目与合作。</p></div>
+        <button type="button" onClick={close} aria-label="关闭联系方式">×</button>
+      </header>
+      <div className="contact-panel-grid single">
+        <article className="contact-card wecom">
+          <div><small>企业微信</small><h3>扫码联系我们，有温度</h3><p>二维码使用你提供的有温度企业微信原图，不改变其中的联系入口。</p></div>
+          <figure><img src="/assets/contact/youwendu-wecom.jpg" alt="有温度企业微信二维码" /><figcaption>企业微信扫码 · 联系有温度</figcaption></figure>
+          <a href="https://work.weixin.qq.com/ct/wcde0bd407df48d4a81e202228797a4890b2" target="_blank" rel="noreferrer">在企业微信中打开 <span>↗</span></a>
+        </article>
+      </div>
+    </section>
+  </div>
+}
+
+function GroupPanel({ close }) {
+  useEffect(() => {
+    const onKeyDown = (event) => event.key === 'Escape' && close()
+    document.addEventListener('keydown', onKeyDown)
+    return () => document.removeEventListener('keydown', onKeyDown)
+  }, [close])
+
+  return <div className="contact-panel-backdrop" role="presentation" onMouseDown={(event) => event.target === event.currentTarget && close()}>
+    <section className="contact-panel group-panel" role="dialog" aria-modal="true" aria-labelledby="group-panel-title">
+      <header>
+        <div><small>有温度 · 交流群</small><h2 id="group-panel-title">加入飞书群聊</h2><p>扫描群二维码，或直接在飞书中打开群聊邀请。</p></div>
+        <button type="button" onClick={close} aria-label="关闭交流群">×</button>
+      </header>
+      <div className="contact-panel-grid single">
+        <article className="contact-card feishu-group">
+          <div><small>飞书群聊</small><h3>有温度交流群</h3><p>二维码由有温度提供，有效期至 2027 年 8 月 15 日。</p></div>
+          <figure><img src="/assets/contact/youwendu-feishu-group.png" alt="有温度飞书交流群二维码" /><figcaption>飞书扫码 · 加入有温度交流群</figcaption></figure>
+          <a href="https://applink.feishu.cn/client/chat/chatter/add_by_link?link_token=d40md8d0-01d1-4b38-8808-39e9a80307fd&amp;qr_code=true" target="_blank" rel="noreferrer">在飞书中打开 <span>↗</span></a>
+        </article>
+      </div>
+    </section>
+  </div>
+}
+
+function Topbar({ query, setQuery, mode, topic, goGlobal, goGlobalSection, goTopic, openGroup }) {
   const [mapMenuOpen, setMapMenuOpen] = useState(false)
   const [topicMenuOpen, setTopicMenuOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
@@ -298,7 +407,7 @@ function Topbar({ query, setQuery, mode, topic, goGlobal, goGlobalSection, goTop
           </button>
           {mapMenuOpen && (
             <div className="map-menu-panel" role="menu" aria-label="选择知识地图入口">
-              <button role="menuitem" onClick={() => selectMapSection('global-method-heading', 'all')}><span><strong>全部方法</strong><small>16 种方法的观察入口</small></span><i aria-hidden="true">→</i></button>
+              <button role="menuitem" onClick={() => selectMapSection('global-method-heading', 'all')}><span><strong>全部专题</strong><small>16 个知识专题的总入口</small></span><i aria-hidden="true">→</i></button>
               <button role="menuitem" onClick={() => selectMapSection('foundation-heading', 'foundations')}><span><strong>知识底座</strong><small>4 个跨体系的上游结构</small></span><i aria-hidden="true">→</i></button>
             </div>
           )}
@@ -327,9 +436,9 @@ function Topbar({ query, setQuery, mode, topic, goGlobal, goGlobalSection, goTop
         </div>
       </nav>
       <div className="topbar-actions">
-        <button className="nav-placeholder" type="button" aria-disabled="true" title="GitHub 链接待接入">GitHub</button>
-        <button className="group-placeholder" type="button" aria-disabled="true" title="交流群入口待接入">交流群</button>
-        <button className="temperature-home" type="button" aria-disabled="true" title="主页链接待接入">有温度出品</button>
+        <a className="nav-placeholder" href="https://github.com/ChenShuo2004/mingli-map" target="_blank" rel="noreferrer">GitHub</a>
+        <a className="temperature-home" href="https://aiyouwendu.com/products" target="_blank" rel="noreferrer">有温度出品</a>
+        <button className="group-placeholder" type="button" onClick={openGroup}>加入交流群</button>
         <button className="search-trigger" type="button" ref={searchButtonRef} onClick={() => setSearchOpen((open) => !open)} aria-label="搜索知识" aria-expanded={searchOpen}>{ICONS.search}</button>
       </div>
       <label className={searchOpen ? 'search-box open' : 'search-box'} ref={searchBoxRef}>
@@ -384,20 +493,23 @@ function GlobalMap({ activeLens, setActiveLens }) {
       <main className="overview-main global-main">
         <div className="map-hero">
           <div className="map-hero-copy">
+            <div className="hero-evidence" aria-label={`知命图谱共有 ${TOTAL_KNOWLEDGE_ENTRIES} 个公开知识入口`}>
+              <span><strong>{TOTAL_GUIDE_ENTRIES}</strong>张专题导读</span>
+              <span><strong>{TOTAL_KNOWLEDGE_ENTRIES - TOTAL_GUIDE_ENTRIES}</strong>个正式节点</span>
+            </div>
             <p className="hero-kicker">传统文化知识地图 · 概念、规则、关系与来源</p>
-            <h1>把散落的术数知识<br />放回「<span>知命图谱</span>」</h1>
+            <h1><span>知命图谱</span></h1>
             <p className="hero-summary">从阴阳五行、干支历法，到八字、六爻、紫微、塔罗与太乙。<br />沿着概念、规则、关系和来源往下走，看清一条知识从哪里来，又与哪些体系相连。</p>
             <div className="hero-actions">
               <button onClick={() => showSection('all', 'global-method-heading')}>浏览整张知识地图</button>
               <button onClick={() => showSection('foundations', 'foundation-heading')}>从知识底座开始</button>
             </div>
             <div className="hero-stats" aria-label="知命图谱当前规模">
-              <span><strong>{methods.length}</strong>种方法</span>
-              <span><strong>{methods.filter((method) => method.status === '已有内容').length}</strong>个重点专题</span>
+              <span><strong>{methods.length}</strong>个知识专题</span>
+              <span><strong>{lenses.length - 1}</strong>个观察维度</span>
               <span><strong>{knowledgeFoundations.length}</strong>个知识底座</span>
             </div>
           </div>
-          <LensCompass activeLens={activeLens} setActiveLens={setActiveLens} />
         </div>
         <nav className="mobile-lens-nav" aria-label="手机端知识地图观察入口">
           <button className={activeLens === 'today' ? 'active' : ''} onClick={() => setActiveLens('today')}>今日</button>
@@ -415,7 +527,7 @@ function GlobalMap({ activeLens, setActiveLens }) {
         ) : (
           <section className="global-method-section" aria-labelledby="global-method-heading">
             <header className="section-heading">
-              <div><h2 id="global-method-heading">{selectedLens?.label}</h2><span>{visibleMethods.length} 种方法</span></div>
+              <div><h2 id="global-method-heading">{selectedLens?.label}</h2><span>{visibleMethods.length} 个专题</span></div>
             </header>
             <div className="method-grid">
               {visibleMethods.map((method) => <MethodCard method={method} onOpen={() => openMethod(method)} key={method.id} />)}
@@ -601,17 +713,6 @@ function TodayPanel() {
   )
 }
 
-function LensCompass({ activeLens, setActiveLens }) {
-  return (
-    <div className="lens-compass" aria-label="六种观察入口">
-      <div className="compass-core"><small>同一张</small><strong>关系网</strong></div>
-      {lenses.slice(1).map((lens, index) => (
-        <button className={`${lens.id === activeLens ? 'active ' : ''}lens-${index + 1}`} onClick={() => setActiveLens(lens.id)} key={lens.id}>{lens.short}</button>
-      ))}
-    </div>
-  )
-}
-
 function MethodCard({ method, onOpen }) {
   const available = Boolean(method.route)
   return (
@@ -682,7 +783,16 @@ function Overview({ topic, cards, openCard, query, goGlobal }) {
         {!query && topic.id === 'tarot' && <TarotTopicIntroduction openCard={openCard} />}
         {!query && topic.id === 'taiyi' && <TaiyiTopicIntroduction openCard={openCard} />}
         {!query && topic.id === 'mbti' && <PersonalityTopicIntroduction openCard={openCard} />}
-        {!query && topic.learningPath && topic.id !== 'meihua' && topic.id !== 'astrology' && topic.id !== 'qimen' && topic.id !== 'fengshui' && topic.id !== 'naming' && topic.id !== 'palmistry' && <TopicLearningPath items={topic.learningPath} cards={topic.cards} openCard={openCard} />}
+        {!query && topic.id === 'liuyao' && <LiuyaoTopicIntroduction openCard={openCard} />}
+        {!query && topic.id === 'meihua' && <MeihuaTopicIntroduction openCard={openCard} />}
+        {!query && topic.id === 'qimen' && <QimenTopicIntroduction openCard={openCard} />}
+        {!query && topic.id === 'xiaoliuren' && <XiaoliurenTopicIntroduction openCard={openCard} />}
+        {!query && topic.id === 'daliuren' && <DaliurenTopicIntroduction openCard={openCard} />}
+        {!query && topic.id === 'fengshui' && <FengshuiTopicIntroduction openCard={openCard} />}
+        {!query && topic.id === 'naming' && <NamingTopicIntroduction openCard={openCard} />}
+        {!query && topic.id === 'dream' && <DreamTopicIntroduction openCard={openCard} />}
+        {!query && topic.id === 'palmistry' && <PalmistryTopicIntroduction openCard={openCard} />}
+        {!query && topic.learningPath && topic.id !== 'astrology' && topic.id !== 'qimen' && topic.id !== 'fengshui' && topic.id !== 'naming' && topic.id !== 'palmistry' && <TopicLearningPath items={topic.learningPath} cards={topic.cards} openCard={openCard} />}
 
         {!query && topic.id === 'astrology' && <AstrologyTraditionBand openCard={openCard} />}
 
@@ -711,6 +821,224 @@ function Overview({ topic, cards, openCard, query, goGlobal }) {
   )
 }
 
+function LiuyaoTopicIntroduction({ openCard }) {
+  const steps = [
+    '先建立卦体、世应和装配位置。',
+    '再把纳甲、六亲、飞伏装进爻位。',
+    '然后看动爻、变卦和地支关系怎样启动作用。',
+    '最后围绕用神与应期继续读下去。',
+  ]
+  const notes = [
+    ['它不是', '把六条爻直接换成固定吉凶标签。'],
+    ['它更像', '围绕一个问题，把关系、状态、时间装进同一张盘。'],
+    ['这张地图当前在做', '解释卦体、装配、关系、状态和取用层次。'],
+    ['当前不做', '替真人起卦、代替占断或给行动建议。'],
+  ]
+  return <section className="topic-introduction-band" aria-labelledby="liuyao-topic-introduction">
+    <header><small>先认识六爻</small><h2 id="liuyao-topic-introduction">六爻不是先看六条线，它先围绕一个问题搭出一张关系盘</h2></header>
+    <div className="topic-introduction-steps">{steps.map((item, index) => <article key={item}><i>{index + 1}</i><p>{item}</p></article>)}</div>
+    <div className="topic-introduction-notes">{notes.map(([label, text]) => <article key={label}><small>{label}</small><p>{text}</p></article>)}</div>
+    <footer><button onClick={() => openCard('introduction-reading-map')}>先看：六爻从哪里开始{ICONS.arrow}</button></footer>
+  </section>
+}
+
+function MeihuaTopicIntroduction({ openCard }) {
+  const steps = [
+    '先把数字或时间换成上下卦。',
+    '再由总数推出动爻。',
+    '然后分开看本卦、互卦、变卦与体用。',
+    '最后才接入卦气、外应和其他观察层。',
+  ]
+  const notes = [
+    ['它不是', '看到卦名就一步到位判断。'],
+    ['它更像', '把数字或时间逐层变成卦形、体用和关系箭头的转换链。'],
+    ['这张地图当前在做', '解释数怎样落卦、卦怎样变化、关系怎样成立、哪些是附加观察层。'],
+    ['当前不做', '替真人起卦、给吉凶判断或行动建议。'],
+  ]
+  return <section className="topic-introduction-band" aria-labelledby="meihua-topic-introduction">
+    <header><small>先认识梅花易数</small><h2 id="meihua-topic-introduction">梅花易数不是先背卦名，它先把数字和时间一步步变成卦形关系</h2></header>
+    <div className="topic-introduction-steps">{steps.map((item, index) => <article key={item}><i>{index + 1}</i><p>{item}</p></article>)}</div>
+    <div className="topic-introduction-notes">{notes.map(([label, text]) => <article key={label}><small>{label}</small><p>{text}</p></article>)}</div>
+    <footer><button onClick={() => openCard('introduction-reading-map')}>先看：梅花易数从哪里开始{ICONS.arrow}</button></footer>
+  </section>
+}
+
+function QimenTopicIntroduction({ openCard }) {
+  const steps = [
+    '先固定九宫、地支和地盘这些不动的坐标。',
+    '再分清三奇六仪、八门、九星、八神分别是什么对象。',
+    '然后才看阴阳遁、三元和起局法怎样决定盘面。',
+    '最后再读旬空、马星、击刑、门迫、旺衰和跨层条件。',
+  ]
+  const notes = [
+    ['它不是', '看到一个格局名就直接跳到结论。'],
+    ['它更像', '先搭一张多层盘面，再看不同对象怎样被时间和盘式推动。'],
+    ['这张地图当前在做', '解释九宫、局数、对象层、装盘顺序和条件标签。'],
+    ['当前不做', '替真人起局、给方位建议或输出吉凶判断。'],
+  ]
+  return <section className="topic-introduction-band" aria-labelledby="qimen-topic-introduction">
+    <header><small>先认识奇门遁甲</small><h2 id="qimen-topic-introduction">奇门遁甲不是先背格局，它先把时间装进一张分层盘面</h2></header>
+    <div className="topic-introduction-steps">{steps.map((item, index) => <article key={item}><i>{index + 1}</i><p>{item}</p></article>)}</div>
+    <div className="topic-introduction-notes">{notes.map(([label, text]) => <article key={label}><small>{label}</small><p>{text}</p></article>)}</div>
+    <footer><button onClick={() => openCard('introduction-reading-map')}>先看：奇门遁甲从哪里开始{ICONS.arrow}</button></footer>
+  </section>
+}
+
+function XiaoliurenTopicIntroduction({ openCard }) {
+  const steps = [
+    '先认六宫固定顺序，而不是先背宫义。',
+    '再看月课、日课、时课怎样一步步沿六宫循环。',
+    '然后把版本、属性分歧和四盘字段分层接入。',
+    '最后再看哪些地方只是资料差异，不能硬并成唯一答案。',
+  ]
+  const notes = [
+    ['它不是', '拿一个宫名直接翻译成结果。'],
+    ['它更像', '一条很短的起课链，加上一层层后接的版本字段和解释材料。'],
+    ['这张地图当前在做', '解释六宫、起课、版本、动态字段和来源冲突。'],
+    ['当前不做', '读取当前时间、接收报数或给个人断语。'],
+  ]
+  return <section className="topic-introduction-band" aria-labelledby="xiaoliuren-topic-introduction">
+    <header><small>先认识小六壬</small><h2 id="xiaoliuren-topic-introduction">小六壬不是先背宫义，它先让六宫循环起来</h2></header>
+    <div className="topic-introduction-steps">{steps.map((item, index) => <article key={item}><i>{index + 1}</i><p>{item}</p></article>)}</div>
+    <div className="topic-introduction-notes">{notes.map(([label, text]) => <article key={label}><small>{label}</small><p>{text}</p></article>)}</div>
+    <footer><button onClick={() => openCard('introduction-reading-map')}>先看：小六壬从哪里开始{ICONS.arrow}</button></footer>
+  </section>
+}
+
+function DaliurenTopicIntroduction({ openCard }) {
+  const steps = [
+    '先固定月将、占时怎样把天地盘搭起来。',
+    '再看四课怎样从盘面里被提出来。',
+    '然后看三传怎样从四课继续分流生成。',
+    '最后再接入天将、课体和各种关系标签。',
+  ]
+  const notes = [
+    ['它不是', '先记一堆课名，再回头猜它们从哪里来。'],
+    ['它更像', '一条从盘面到四课、再到三传的生成链。'],
+    ['这张地图当前在做', '解释对象、生成步骤、关系标签和来源边界。'],
+    ['当前不做', '替真人起课、输出事情判断或给行动建议。'],
+  ]
+  return <section className="topic-introduction-band" aria-labelledby="daliuren-topic-introduction">
+    <header><small>先认识大六壬</small><h2 id="daliuren-topic-introduction">大六壬不是先记课体名称，它先生成一张完整课式</h2></header>
+    <div className="topic-introduction-steps">{steps.map((item, index) => <article key={item}><i>{index + 1}</i><p>{item}</p></article>)}</div>
+    <div className="topic-introduction-notes">{notes.map(([label, text]) => <article key={label}><small>{label}</small><p>{text}</p></article>)}</div>
+    <footer><button onClick={() => openCard('structure-reading-map')}>先看：从一张完整课式读懂大六壬{ICONS.arrow}</button></footer>
+  </section>
+}
+
+function FengshuiTopicIntroduction({ openCard }) {
+  const steps = [
+    '先分清它在看环境、空间还是时间层。',
+    '再把形势、罗盘坐向、八宅和玄空飞星拆开。',
+    '然后才看同一处空间怎样被不同方法记录。',
+    '最后再回到各自规则，不把它们揉成一句总判断。',
+  ]
+  const notes = [
+    ['它不是', '看到一个房屋朝向就直接下结论。'],
+    ['它更像', '先建立环境与方位坐标，再接入不同方法的阅读框架。'],
+    ['这张地图当前在做', '解释形势、坐向、八宅、玄空和紫白时间层的边界。'],
+    ['当前不做', '替真人看宅、评吉凶或给搬迁布置建议。'],
+  ]
+  return <section className="topic-introduction-band" aria-labelledby="fengshui-topic-introduction">
+    <header><small>先认识风水</small><h2 id="fengshui-topic-introduction">风水不是先背口诀，它先观察环境、坐标和时间层</h2></header>
+    <div className="topic-introduction-steps">{steps.map((item, index) => <article key={item}><i>{index + 1}</i><p>{item}</p></article>)}</div>
+    <div className="topic-introduction-notes">{notes.map(([label, text]) => <article key={label}><small>{label}</small><p>{text}</p></article>)}</div>
+    <footer><button onClick={() => openCard('fengshui-reading-map')}>先看：风水从哪里开始{ICONS.arrow}</button></footer>
+  </section>
+}
+
+function NamingTopicIntroduction({ openCard }) {
+  const steps = [
+    '先固定姓氏、名字、字形和版本来源。',
+    '再确认笔画口径，不把不同字书混用。',
+    '然后看五格、三才和数理怎样逐层生成。',
+    '最后再回到解释边界，不把一个数字当成人生结论。',
+  ]
+  const notes = [
+    ['它不是', '先找一个听起来吉利的字就结束。'],
+    ['它更像', '把文字输入一步步转换成结构字段，再看这些字段怎样被不同体系解释。'],
+    ['这张地图当前在做', '解释文字、笔画、五格、三才和数理的关系链。'],
+    ['当前不做', '替真人起名、打分或给命运结论。'],
+  ]
+  return <section className="topic-introduction-band" aria-labelledby="naming-topic-introduction">
+    <header><small>先认识姓名与数理</small><h2 id="naming-topic-introduction">姓名与数理不是先挑字，它先把文字变成一组结构字段</h2></header>
+    <div className="topic-introduction-steps">{steps.map((item, index) => <article key={item}><i>{index + 1}</i><p>{item}</p></article>)}</div>
+    <div className="topic-introduction-notes">{notes.map(([label, text]) => <article key={label}><small>{label}</small><p>{text}</p></article>)}</div>
+    <footer><button onClick={() => openCard('naming-reading-map')}>先看：姓名与数理从哪里开始{ICONS.arrow}</button></footer>
+  </section>
+}
+
+function DreamTopicIntroduction({ openCard }) {
+  const steps = [
+    '先分清你看到的是哪一类梦材料。',
+    '再把梦象、占辞、梦例和后事叙事拆开。',
+    '然后看不同文本怎样保存相同或冲突的说法。',
+    '最后再把医梦、宗教梦和现代研究与传统占梦分开。',
+  ]
+  const notes = [
+    ['它不是', '把一个梦直接翻成一句现成答案。'],
+    ['它更像', '先整理梦材料和解释结构，再比较不同传统怎么处理梦。'],
+    ['这张地图当前在做', '解释梦象索引、占辞结构、梦例叙事和相邻体系边界。'],
+    ['当前不做', '替真人解梦、预测事件或给行动建议。'],
+  ]
+  return <section className="topic-introduction-band" aria-labelledby="dream-topic-introduction">
+    <header><small>先认识占梦</small><h2 id="dream-topic-introduction">占梦不是一句梦辞表，它先整理梦材料和解释结构</h2></header>
+    <div className="topic-introduction-steps">{steps.map((item, index) => <article key={item}><i>{index + 1}</i><p>{item}</p></article>)}</div>
+    <div className="topic-introduction-notes">{notes.map(([label, text]) => <article key={label}><small>{label}</small><p>{text}</p></article>)}</div>
+    <footer><button onClick={() => openCard('dream-reading-map')}>先看：占梦从哪里开始{ICONS.arrow}</button></footer>
+  </section>
+}
+
+function PalmistryTopicIntroduction({ openCard }) {
+  const steps = [
+    '先固定图像方向和记录条件。',
+    '再把面部结构和手部结构分开观察。',
+    '然后看术语是在描述位置、比例、纹理还是版本名称。',
+    '最后再回到来源，不把图像特征直接换成人物结论。',
+  ]
+  const notes = [
+    ['它不是', '看一眼五官或掌纹就直接给人下判断。'],
+    ['它更像', '一套图像观察语言，先记录可见事实，再区分传统术语和版本解释。'],
+    ['这张地图当前在做', '解释观察对象、图像条件、面相、手相和来源版本。'],
+    ['当前不做', '识别人、评人格、断吉凶或给医疗寿夭结论。'],
+  ]
+  return <section className="topic-introduction-band" aria-labelledby="palmistry-topic-introduction">
+    <header><small>先认识相学</small><h2 id="palmistry-topic-introduction">相学不是先看吉凶，它先把图像变成可记录的观察语言</h2></header>
+    <div className="topic-introduction-steps">{steps.map((item, index) => <article key={item}><i>{index + 1}</i><p>{item}</p></article>)}</div>
+    <div className="topic-introduction-notes">{notes.map(([label, text]) => <article key={label}><small>{label}</small><p>{text}</p></article>)}</div>
+    <footer><button onClick={() => openCard('palmistry-reading-map')}>先看：相学从哪里开始{ICONS.arrow}</button></footer>
+  </section>
+}
+
+function AstrologyTopicIntroductionPreview() {
+  return <div className="card-visual bazi-intro-preview"><strong>占星</strong><i>→</i><div>{['西方古典', '印度占星', '中式星学'].map((item) => <span key={item}>{item}</span>)}</div><small>先分清三条路径</small></div>
+}
+
+function AstrologyTopicGuide({ openCard }) {
+  const traditions = [
+    ...astrologyTraditions.map((item) => ({
+      ...item,
+      cardId: item.firstCardId,
+      firstTitle: item.cardId || item.firstCardId,
+    })),
+  ]
+  const boundaries = [
+    '这里帮助你分清三条传统的对象、坐标和时间方法，不替用户读取真人命盘。',
+    '不同传统的相似名词不会强行并成一套通用算法。',
+    '固定例只用来理解结构，不输出人格、事件或行动结论。',
+  ]
+  return <section className="interactive-section western-guide astrology-topic-guide">
+    <header><small>第一次进入占星</small><h2>先把它理解成三条并列传统，而不是一套统一规则</h2><p>这个总专题把西方古典占星、印度占星和中式星学放在同一入口下，是为了帮助读者比较它们各自怎样组织坐标、对象和时间技术，而不是把三者混写成一种占星。</p></header>
+    <div className="astrology-guide-grid">{traditions.map((item, index) => <article key={item.id}><small>路径 {index + 1}</small><strong>{item.title}</strong><p>{item.coordinate}</p><p>{item.objects}</p><p>{item.timing}</p><button onClick={() => openCard(item.firstCardId)}>进入：{TOPICS.astrology.cards.find((card) => card.id === item.firstCardId)?.title || item.title}{ICONS.arrow}</button></article>)}</div>
+    <div className="knowledge-block"><div className="interactive-heading"><span>先分开的三件事</span><h2>三条传统的差别，主要出在坐标、对象集和时间推进法</h2></div><div className="bazi-intro-categories">
+      <article><small>坐标不一样</small><strong>黄道零点和参考面不同</strong><p>西方古典会区分回归黄道与恒星黄道，印度占星把恒星黄道与 ayanamsa 放在前面，中式星学还会把黄道、赤道和二十八宿并列保存。</p></article>
+      <article><small>对象不一样</small><strong>盘里装的对象集合不同</strong><p>西方古典围绕七曜、星座、宫位和 lots；印度占星会继续装九曜、Rashi、Bhava、Nakshatra；中式星学则围绕七政四余、宫位、星官与盘式。</p></article>
+      <article><small>时间技术不一样</small><strong>后续推进链条不同</strong><p>西方古典看 profections、solar return、primary directions 等，印度占星看 Dasha、行运和 Tajaka，中式星学则把历法测度、月将时支与覆盘偏移接起来。</p></article>
+    </div></div>
+    <div className="bazi-boundary-list">{boundaries.map((item) => <p key={item}>{item}</p>)}</div>
+  </section>
+}
+
 function AstrologyTraditionBand({ openCard }) {
   return <section className="astrology-tradition-band" aria-labelledby="astrology-traditions-title">
     <header><small>一个总专题 · 三条传统路径</small><h2 id="astrology-traditions-title">先辨认坐标与对象，再进入各自的规则</h2></header>
@@ -726,7 +1054,7 @@ function AstrologyLearningSections({ topic, openCard }) {
   return <div className="astrology-learning-sections">{astrologyBranchStages.map((stage, stageIndex) => {
     const stageCards = topic.cards.filter((card) => stage.groups.includes(card.group))
     return <section className={`astrology-learning-stage ${stage.id}`} key={stage.id}>
-      <header><i>{String(stageIndex + 1).padStart(2, '0')}</i><div><small>传统路径</small><h2>{stage.title}</h2></div><p>{stage.note}</p><b>{stageCards.filter((card) => card.id !== 'western-classical-start').length}<span>节点</span></b></header>
+      <header><i>{String(stageIndex + 1).padStart(2, '0')}</i><div><small>传统路径</small><h2>{stage.title}</h2></div><p>{stage.note}</p><b>{stageCards.filter((card) => !['astrology-reading-map', 'western-classical-start'].includes(card.id)).length}<span>节点</span></b></header>
       {stage.groups.map((group) => {
         const groupCards = stageCards.filter((card) => card.group === group)
         if (!groupCards.length) return null
@@ -1340,6 +1668,7 @@ function CardVisual({ id, topicId, card }) {
   if (topicId === 'meihua' && id === 'complement-inverse-hexagrams') return <MeihuaComplementInversePreview />
   if (topicId === 'meihua' && id === 'line-position-structure') return <MeihuaLinePositionPreview />
   if (topicId === 'meihua' && id === 'precise-time-modern-extension') return <MeihuaPreciseTimePreview />
+  if (topicId === 'astrology' && id === 'astrology-reading-map') return <AstrologyTopicIntroductionPreview />
   if (topicId === 'astrology' && id === 'seven-traditional-planets') return <WesternPlanetsPreview />
   if (topicId === 'astrology' && id === 'western-classical-start') return <WesternAstrologyIntroductionPreview />
   if (topicId === 'astrology' && id === 'houses-and-house-systems') return <WesternHousesPreview />
@@ -3263,6 +3592,7 @@ function DetailInteractive({ id, topicId, card, openCard }) {
   if (topicId === 'meihua' && id === 'complement-inverse-hexagrams') return <MeihuaComplementInverseDetail />
   if (topicId === 'meihua' && id === 'line-position-structure') return <MeihuaLinePositionDetail />
   if (topicId === 'meihua' && id === 'precise-time-modern-extension') return <MeihuaPreciseTimeDetail />
+  if (topicId === 'astrology' && id === 'astrology-reading-map') return <AstrologyTopicGuide openCard={openCard} />
   if (topicId === 'astrology' && id === 'seven-traditional-planets') return <WesternPlanetsDetail openCard={openCard} />
   if (topicId === 'astrology' && id === 'western-classical-start') return <WesternAstrologyV1Guide cards={TOPICS.astrology.cards} openCard={openCard} />
   if (topicId === 'astrology' && id === 'houses-and-house-systems') return <WesternHousesDetail />

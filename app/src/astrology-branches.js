@@ -1,5 +1,6 @@
 import indianAstrology from '@published/indian-astrology/nodes.json'
 import chineseAstral from '@published/chinese-astral/nodes.json'
+import { westernAstrologyIntroductionCard } from './western-astrology.js'
 
 export const astrologyBranchDatasets = { indianAstrology, chineseAstral }
 
@@ -27,6 +28,24 @@ const buildCards = (dataset, traditionGroup) => dataset.groups.flatMap((group) =
 export const indianAstrologyCards = buildCards(indianAstrology, '印度占星')
 export const chineseAstralCards = buildCards(chineseAstral, '中式星学')
 export const astrologyBranchCards = [...indianAstrologyCards, ...chineseAstralCards]
+
+export const astrologyIntroductionCard = {
+  id: 'astrology-reading-map',
+  group: '专题导读',
+  title: '先认识占星',
+  latin: 'Astrology reading map',
+  question: '第一次进入这个总专题，应该先怎样分清西方古典、印度占星和中式星学？',
+  summary: '这里的“占星”不是一套单一规则，而是三条各自成体系的路径：西方古典占星先固定黄道、宫位、七曜与预测技术；印度占星在恒星黄道、九曜、Rashi、Bhava、Nakshatra与Dasha链条内工作；中式星学则把七政四余、宫位、星官、历法测度与覆盘盘式并列保存。这个导读先帮助读者分清三条路径各自在处理什么，再进入具体节点。',
+  count: '1 张总导读 · 3 条传统路径',
+  tags: ['从零开始', '三条路径', '专题总览'],
+  searchTerms: ['占星是什么', '西方占星和印度占星区别', '中式星学是什么', '占星学习顺序'],
+  publicSources: [
+    ...(westernAstrologyIntroductionCard.publicSources || []),
+    ...(indianAstrologyCards[0]?.publicSources || []),
+    ...(chineseAstralCards[0]?.publicSources || []),
+  ].filter((source, index, sources) => sources.findIndex((item) => item.url === source.url) === index).slice(0, 3),
+  status: '导读节点',
+}
 
 export const astrologyTraditions = [
   {

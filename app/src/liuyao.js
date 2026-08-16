@@ -177,6 +177,30 @@ export const liuyaoLearningStages = [
   { id: 'focus', label: '最后定位', question: '围绕什么继续读？', note: '辅助身法、目标角色与后续时间关系放在结构成立之后。', cards: ['month-hexagram-body', 'four-spirit-roles', 'timing-triggers'] },
 ]
 
+export const liuyaoLearningPath = [
+  '六爻从哪里开始',
+  '六爻卦体',
+  '八宫',
+  '世应',
+  '纳甲',
+  '六亲',
+  '飞神与伏神',
+  '六神',
+  '星煞',
+  '动爻与变卦',
+  '爻的作用关系',
+  '六冲与六合',
+  '三合局',
+  '三刑与六害',
+  '时间来源',
+  '十二消息卦',
+  '生旺墓绝',
+  '旬空',
+  '卦身与世身',
+  '用神与相关角色',
+  '应期',
+]
+
 const sourceIdsForCard = (card) => card.sourceIds || [card.id]
 const liuyaoCardsMissingPublicSources = liuyaoCardsWithPendingSources.filter((card) => sourceIdsForCard(card).some((id) => !liuyaoPublicSources[id]?.length))
 if (liuyaoCardsMissingPublicSources.length) {

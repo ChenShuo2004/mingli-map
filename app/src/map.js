@@ -1,5 +1,5 @@
 export const lenses = [
-  { id: 'all', label: '全部方法', short: '全貌', description: '不预设唯一分类，先看目前进入地图的方法。' },
+  { id: 'all', label: '全部专题', short: '全貌', description: '不预设唯一分类，先看目前进入地图的知识专题。' },
   { id: 'birth', label: '出生推命', short: '出生', description: '从出生时间、历法或天体位置建立人生模型。' },
   { id: 'question', label: '问事占断', short: '问事', description: '围绕具体问题起卦、排局、抽取或演算。' },
   { id: 'omen', label: '征兆启示', short: '征兆', description: '解释梦境、异常现象与被认为有意义的讯息。' },
@@ -49,7 +49,7 @@ const methodDefinitions = [
   {
     id: 'astrology', title: '占星', latin: 'Astrology', question: '不同占星传统如何用天体与时间组织判断？',
     input: '时间与地点', medium: '天体、宫位与周期', output: '出生／问事／择时', lenses: ['birth', 'question', 'environment'],
-    tags: ['西方 · 印度 · 中式', '天体位置', '三条路径'], status: '三种传统已展开', count: '55 个正式节点 · 1 张西占导读',
+    tags: ['西方 · 印度 · 中式', '天体位置', '三条路径'], status: '三种传统已展开', count: '2 张导读 · 55 个正式节点',
   },
   {
     id: 'liuyao', title: '六爻', latin: 'Liu Yao', question: '一次起卦如何围绕具体事情建立关系？',
@@ -125,7 +125,7 @@ export const methods = methodDefinitions.map((method) => ({
   count: ({
     bazi: '1 张导读 · 18 个正式节点',
     ziwei: '1 张导读 · 17 个正式节点',
-    astrology: '1 张导读 · 55 个正式节点',
+    astrology: '2 张导读 · 55 个正式节点',
     liuyao: '1 张导读 · 20 个正式节点',
     tarot: '1 张导读 · 17 个正式节点',
     taiyi: '1 张导读 · 32 个正式节点',

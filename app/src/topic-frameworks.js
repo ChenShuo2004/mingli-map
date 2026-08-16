@@ -5,7 +5,7 @@ import { adjectiveStarVersionInventoryCard, birthYearTransformationsCard, fiveEl
 import { meihuaCards } from './meihua.js'
 import { qimenCards, qimenLearningStages } from './qimen.js'
 import { westernAstrologyCards } from './western-astrology.js'
-import { astrologyBranchCards } from './astrology-branches.js'
+import { astrologyBranchCards, astrologyIntroductionCard } from './astrology-branches.js'
 import { xiaoliurenCards, xiaoliurenLearningStages } from './xiaoliuren.js'
 import { daliurenCards, daliurenLearningPath } from './daliuren.js'
 import { personalityTopic } from './personality.js'
@@ -62,7 +62,7 @@ const generatedFrameworkTopics = Object.fromEntries(frameworkData.topics.map((to
       if (card.id === 'face-forms') return palmistryCards
       return []
     }
-    if (topic.id === 'astrology' && card.id === 'western-classical') return [...westernAstrologyCards, ...astrologyBranchCards]
+    if (topic.id === 'astrology' && card.id === 'western-classical') return [astrologyIntroductionCard, ...westernAstrologyCards, ...astrologyBranchCards]
     if (topic.id === 'astrology' && ['vedic-traditions', 'chinese-astral'].includes(card.id)) return []
     return {
       ...card,
