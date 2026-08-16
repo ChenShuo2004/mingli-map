@@ -815,6 +815,30 @@ function Overview({ topic, cards, openCard, query, goGlobal }) {
   )
 }
 
+function StructuredTopicIntroduction({ id, title, steps, notes, openGuide }) {
+  return (
+    <section className="topic-demonstration ziwei-introduction-band" aria-labelledby={id}>
+      <header className="topic-demo-heading">
+        <div><p>先认识这门知识</p><h2 id={id}>{title}</h2></div>
+        <button className="topic-intro-link" onClick={openGuide}>打开完整导读 {ICONS.arrow}</button>
+      </header>
+      <div className="bazi-intro-grid">
+        <article className="bazi-intro-hero">
+          <small>一句话先懂</small>
+          <strong>{notes[1][1]}</strong>
+          <p>{notes[2][1]}</p>
+        </article>
+        <div className="bazi-intro-steps">
+          {steps.map((item, index) => <span key={item}><i>{index + 1}</i><b>{item}</b></span>)}
+        </div>
+        <div className="bazi-intro-contrast">
+          {notes.map(([label, text]) => <article key={label}><small>{label}</small><p>{text}</p></article>)}
+        </div>
+      </div>
+    </section>
+  )
+}
+
 function LiuyaoTopicIntroduction({ openCard }) {
   const steps = [
     '先建立卦体、世应和装配位置。',
@@ -828,12 +852,7 @@ function LiuyaoTopicIntroduction({ openCard }) {
     ['这张地图当前在做', '解释卦体、装配、关系、状态和取用层次。'],
     ['当前不做', '替真人起卦、代替占断或给行动建议。'],
   ]
-  return <section className="topic-introduction-band" aria-labelledby="liuyao-topic-introduction">
-    <header><small>先认识六爻</small><h2 id="liuyao-topic-introduction">六爻不是先看六条线，它先围绕一个问题搭出一张关系盘</h2></header>
-    <div className="topic-introduction-steps">{steps.map((item, index) => <article key={item}><i>{index + 1}</i><p>{item}</p></article>)}</div>
-    <div className="topic-introduction-notes">{notes.map(([label, text]) => <article key={label}><small>{label}</small><p>{text}</p></article>)}</div>
-    <footer><button onClick={() => openCard('introduction-reading-map')}>先看：六爻从哪里开始{ICONS.arrow}</button></footer>
-  </section>
+  return <StructuredTopicIntroduction id="liuyao-topic-introduction" title="六爻不是先看六条线，它先围绕一个问题搭出一张关系盘" steps={steps} notes={notes} openGuide={() => openCard('introduction-reading-map')} />
 }
 
 function MeihuaTopicIntroduction({ openCard }) {
@@ -849,12 +868,7 @@ function MeihuaTopicIntroduction({ openCard }) {
     ['这张地图当前在做', '解释数怎样落卦、卦怎样变化、关系怎样成立、哪些是附加观察层。'],
     ['当前不做', '替真人起卦、给吉凶判断或行动建议。'],
   ]
-  return <section className="topic-introduction-band" aria-labelledby="meihua-topic-introduction">
-    <header><small>先认识梅花易数</small><h2 id="meihua-topic-introduction">梅花易数不是先背卦名，它先把数字和时间一步步变成卦形关系</h2></header>
-    <div className="topic-introduction-steps">{steps.map((item, index) => <article key={item}><i>{index + 1}</i><p>{item}</p></article>)}</div>
-    <div className="topic-introduction-notes">{notes.map(([label, text]) => <article key={label}><small>{label}</small><p>{text}</p></article>)}</div>
-    <footer><button onClick={() => openCard('introduction-reading-map')}>先看：梅花易数从哪里开始{ICONS.arrow}</button></footer>
-  </section>
+  return <StructuredTopicIntroduction id="meihua-topic-introduction" title="梅花易数不是先背卦名，它先把数字和时间一步步变成卦形关系" steps={steps} notes={notes} openGuide={() => openCard('introduction-reading-map')} />
 }
 
 function QimenTopicIntroduction({ openCard }) {
@@ -870,12 +884,7 @@ function QimenTopicIntroduction({ openCard }) {
     ['这张地图当前在做', '解释九宫、局数、对象层、装盘顺序和条件标签。'],
     ['当前不做', '替真人起局、给方位建议或输出吉凶判断。'],
   ]
-  return <section className="topic-introduction-band" aria-labelledby="qimen-topic-introduction">
-    <header><small>先认识奇门遁甲</small><h2 id="qimen-topic-introduction">奇门遁甲不是先背格局，它先把时间装进一张分层盘面</h2></header>
-    <div className="topic-introduction-steps">{steps.map((item, index) => <article key={item}><i>{index + 1}</i><p>{item}</p></article>)}</div>
-    <div className="topic-introduction-notes">{notes.map(([label, text]) => <article key={label}><small>{label}</small><p>{text}</p></article>)}</div>
-    <footer><button onClick={() => openCard('introduction-reading-map')}>先看：奇门遁甲从哪里开始{ICONS.arrow}</button></footer>
-  </section>
+  return <StructuredTopicIntroduction id="qimen-topic-introduction" title="奇门遁甲不是先背格局，它先把时间装进一张分层盘面" steps={steps} notes={notes} openGuide={() => openCard('introduction-reading-map')} />
 }
 
 function XiaoliurenTopicIntroduction({ openCard }) {
@@ -891,12 +900,7 @@ function XiaoliurenTopicIntroduction({ openCard }) {
     ['这张地图当前在做', '解释六宫、起课、版本、动态字段和来源冲突。'],
     ['当前不做', '读取当前时间、接收报数或给个人断语。'],
   ]
-  return <section className="topic-introduction-band" aria-labelledby="xiaoliuren-topic-introduction">
-    <header><small>先认识小六壬</small><h2 id="xiaoliuren-topic-introduction">小六壬不是先背宫义，它先让六宫循环起来</h2></header>
-    <div className="topic-introduction-steps">{steps.map((item, index) => <article key={item}><i>{index + 1}</i><p>{item}</p></article>)}</div>
-    <div className="topic-introduction-notes">{notes.map(([label, text]) => <article key={label}><small>{label}</small><p>{text}</p></article>)}</div>
-    <footer><button onClick={() => openCard('introduction-reading-map')}>先看：小六壬从哪里开始{ICONS.arrow}</button></footer>
-  </section>
+  return <StructuredTopicIntroduction id="xiaoliuren-topic-introduction" title="小六壬不是先背宫义，它先让六宫循环起来" steps={steps} notes={notes} openGuide={() => openCard('introduction-reading-map')} />
 }
 
 function DaliurenTopicIntroduction({ openCard }) {
@@ -912,12 +916,7 @@ function DaliurenTopicIntroduction({ openCard }) {
     ['这张地图当前在做', '解释对象、生成步骤、关系标签和来源边界。'],
     ['当前不做', '替真人起课、输出事情判断或给行动建议。'],
   ]
-  return <section className="topic-introduction-band" aria-labelledby="daliuren-topic-introduction">
-    <header><small>先认识大六壬</small><h2 id="daliuren-topic-introduction">大六壬不是先记课体名称，它先生成一张完整课式</h2></header>
-    <div className="topic-introduction-steps">{steps.map((item, index) => <article key={item}><i>{index + 1}</i><p>{item}</p></article>)}</div>
-    <div className="topic-introduction-notes">{notes.map(([label, text]) => <article key={label}><small>{label}</small><p>{text}</p></article>)}</div>
-    <footer><button onClick={() => openCard('structure-reading-map')}>先看：从一张完整课式读懂大六壬{ICONS.arrow}</button></footer>
-  </section>
+  return <StructuredTopicIntroduction id="daliuren-topic-introduction" title="大六壬不是先记课体名称，它先生成一张完整课式" steps={steps} notes={notes} openGuide={() => openCard('structure-reading-map')} />
 }
 
 function FengshuiTopicIntroduction({ openCard }) {
@@ -933,12 +932,7 @@ function FengshuiTopicIntroduction({ openCard }) {
     ['这张地图当前在做', '解释形势、坐向、八宅、玄空和紫白时间层的边界。'],
     ['当前不做', '替真人看宅、评吉凶或给搬迁布置建议。'],
   ]
-  return <section className="topic-introduction-band" aria-labelledby="fengshui-topic-introduction">
-    <header><small>先认识风水</small><h2 id="fengshui-topic-introduction">风水不是先背口诀，它先观察环境、坐标和时间层</h2></header>
-    <div className="topic-introduction-steps">{steps.map((item, index) => <article key={item}><i>{index + 1}</i><p>{item}</p></article>)}</div>
-    <div className="topic-introduction-notes">{notes.map(([label, text]) => <article key={label}><small>{label}</small><p>{text}</p></article>)}</div>
-    <footer><button onClick={() => openCard('fengshui-reading-map')}>先看：风水从哪里开始{ICONS.arrow}</button></footer>
-  </section>
+  return <StructuredTopicIntroduction id="fengshui-topic-introduction" title="风水不是先背口诀，它先观察环境、坐标和时间层" steps={steps} notes={notes} openGuide={() => openCard('fengshui-reading-map')} />
 }
 
 function NamingTopicIntroduction({ openCard }) {
@@ -954,12 +948,7 @@ function NamingTopicIntroduction({ openCard }) {
     ['这张地图当前在做', '解释文字、笔画、五格、三才和数理的关系链。'],
     ['当前不做', '替真人起名、打分或给命运结论。'],
   ]
-  return <section className="topic-introduction-band" aria-labelledby="naming-topic-introduction">
-    <header><small>先认识姓名与数理</small><h2 id="naming-topic-introduction">姓名与数理不是先挑字，它先把文字变成一组结构字段</h2></header>
-    <div className="topic-introduction-steps">{steps.map((item, index) => <article key={item}><i>{index + 1}</i><p>{item}</p></article>)}</div>
-    <div className="topic-introduction-notes">{notes.map(([label, text]) => <article key={label}><small>{label}</small><p>{text}</p></article>)}</div>
-    <footer><button onClick={() => openCard('naming-reading-map')}>先看：姓名与数理从哪里开始{ICONS.arrow}</button></footer>
-  </section>
+  return <StructuredTopicIntroduction id="naming-topic-introduction" title="姓名与数理不是先挑字，它先把文字变成一组结构字段" steps={steps} notes={notes} openGuide={() => openCard('naming-reading-map')} />
 }
 
 function DreamTopicIntroduction({ openCard }) {
@@ -975,12 +964,7 @@ function DreamTopicIntroduction({ openCard }) {
     ['这张地图当前在做', '解释梦象索引、占辞结构、梦例叙事和相邻体系边界。'],
     ['当前不做', '替真人解梦、预测事件或给行动建议。'],
   ]
-  return <section className="topic-introduction-band" aria-labelledby="dream-topic-introduction">
-    <header><small>先认识占梦</small><h2 id="dream-topic-introduction">占梦不是一句梦辞表，它先整理梦材料和解释结构</h2></header>
-    <div className="topic-introduction-steps">{steps.map((item, index) => <article key={item}><i>{index + 1}</i><p>{item}</p></article>)}</div>
-    <div className="topic-introduction-notes">{notes.map(([label, text]) => <article key={label}><small>{label}</small><p>{text}</p></article>)}</div>
-    <footer><button onClick={() => openCard('dream-reading-map')}>先看：占梦从哪里开始{ICONS.arrow}</button></footer>
-  </section>
+  return <StructuredTopicIntroduction id="dream-topic-introduction" title="占梦不是一句梦辞表，它先整理梦材料和解释结构" steps={steps} notes={notes} openGuide={() => openCard('dream-reading-map')} />
 }
 
 function PalmistryTopicIntroduction({ openCard }) {
@@ -996,12 +980,7 @@ function PalmistryTopicIntroduction({ openCard }) {
     ['这张地图当前在做', '解释观察对象、图像条件、面相、手相和来源版本。'],
     ['当前不做', '识别人、评人格、断吉凶或给医疗寿夭结论。'],
   ]
-  return <section className="topic-introduction-band" aria-labelledby="palmistry-topic-introduction">
-    <header><small>先认识相学</small><h2 id="palmistry-topic-introduction">相学不是先看吉凶，它先把图像变成可记录的观察语言</h2></header>
-    <div className="topic-introduction-steps">{steps.map((item, index) => <article key={item}><i>{index + 1}</i><p>{item}</p></article>)}</div>
-    <div className="topic-introduction-notes">{notes.map(([label, text]) => <article key={label}><small>{label}</small><p>{text}</p></article>)}</div>
-    <footer><button onClick={() => openCard('palmistry-reading-map')}>先看：相学从哪里开始{ICONS.arrow}</button></footer>
-  </section>
+  return <StructuredTopicIntroduction id="palmistry-topic-introduction" title="相学不是先看吉凶，它先把图像变成可记录的观察语言" steps={steps} notes={notes} openGuide={() => openCard('palmistry-reading-map')} />
 }
 
 function AstrologyTopicIntroductionPreview() {
