@@ -786,7 +786,7 @@ function Overview({ topic, cards, openCard, query, goGlobal }) {
         {!query && topic.id === 'naming' && <NamingTopicIntroduction openCard={openCard} />}
         {!query && topic.id === 'dream' && <DreamTopicIntroduction openCard={openCard} />}
         {!query && topic.id === 'palmistry' && <PalmistryTopicIntroduction openCard={openCard} />}
-        {!query && topic.learningPath && topic.id !== 'astrology' && topic.id !== 'qimen' && topic.id !== 'fengshui' && topic.id !== 'naming' && topic.id !== 'palmistry' && <TopicLearningPath items={topic.learningPath} cards={topic.cards} openCard={openCard} />}
+        {!query && topic.learningPath && !['astrology', 'qimen', 'fengshui', 'naming', 'palmistry', 'meihua', 'xiaoliuren', 'daliuren'].includes(topic.id) && <TopicLearningPath items={topic.learningPath} cards={topic.cards} openCard={openCard} />}
 
         {!query && topic.id === 'astrology' && <AstrologyTraditionBand openCard={openCard} />}
 
