@@ -1,3 +1,5 @@
+> **English:** An interactive knowledge map for exploring concepts, rules, relationships, and sources across Chinese metaphysics and traditional culture.
+
 # 知命图谱
 
 把散落在传统文化、术数与人格测量中的概念、规则、关系和来源，整理成可以逐层探索的知识地图。
